@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Domácí Učitel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: #f8f9fa; overflow-x: hidden; }
+    button { font-family: 'Nunito', sans-serif; cursor: pointer; border: none; transition: transform 0.1s; }
+    button:hover { transform: scale(1.02); }
+    button:active { transform: scale(0.98); }
+    input, textarea { font-family: 'Nunito', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes blink { 0%, 20% { opacity: 0.2; } 50% { opacity: 1; } 80%, 100% { opacity: 0.2; } }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <script type="text/babel">
+    const { useState, useRef, useEffect } = React;
+    const DB = {
+      matika: { name: "Matematika", icon: "🔢", color: "#FF6B35", topics: ["Číselný obor","Sčítání a odčítání","Násobení","Dělení","Zlomky","Geometrie","Jednotky","Slovní úlohy"] },
+      cestina: { name: "Čeština", icon: "📖", color: "#4ECDC4", topics: ["Vyjmenovaná slova","Pády","Vzory podst. jmen","Slovesa","Čtení s porozuměním"] },
+      prirodoveda: { name: "Přírodověda", icon: "🌿", color: "#45B7D1", topics: ["Rostliny","Živočichové","Lidské tělo","Počasí"] },
+      vlastiveda: { name: "Vlastivěda", icon: "🗺️", color: "#96CEB4", topics: ["Mapa a orientace","Kraje ČR","Historie"] },
+      anglictina: { name: "Angličtina", icon: "🇬🇧", color: "#DDA0DD", topics: ["Slovní zásoba","Jednoduché věty","Školní potřeby"] }
+    };
+    const TUTOR_RESPONSES = [
+      "Výborně! To je správně! 🎯","Skoro! Zkus se podívat na to ještě jednou...","Dobrá práce! Pojďme na další úlohu.",
+      "Hmm, to není úplně ono. Zkus to jinak.","Super, jdeš na to skvěle!","Dobře přemýšlíš! Ale odpověď je trochu jiná."
+    ];
+    function LoginScreen({ onSelect }) {
+      return (
+        <div style={S.container}>
+          <div style={S.loginCard} className="fade-in">
+            <div style={S.logoArea}>
+              <div style={{fontSize:64,marginBottom:8}}>📚</div>
+              <h1 style={{fontSize:28,fontWeight:800,color:'#2d3436'}}>Domácí Učitel</h1>
+              <p style={{fontSize:16,color:'#888',marginTop:4}}>4. třída ZŠ</p>
+            </div>
+            <button style={{...S.bigBtn,background:'#FF6B35'}} onClick={()=>onSelect('student')}>🎒 Jsem žák</button>
+            <button style={{...S.bigBtn,background:'#4ECDC4'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič / učitel</button>
+            <p style={{marginTop:30,fontSize:12,color:'#bbb'}}>v0.1 — prototyp Jaty</p>
+          </div>
+        </div>
+      );
+    }
+    function SubjectPicker({ onPick, onBack }) {
+      return (
+        <div style={S.container}>
+          <div style={S.header}><button style={S.backBtn} onClick={onBack}>← Zpět</button><h2 style={S.headerTitle}>Co budeme procvičovat?</h2></div>
+          <div style={{padding:'16px 20px',display:'flex',flexDirection:'column',gap:10}}>
+            {Object.entries(DB).map(([k,s])=>(
+              <button key={k} style={{display:'flex',alignItems:'center',gap:14,padding:'18px 16px',background:'#fff',borderRadius:14,boxShadow:'0 2px 8px rgba(0,0,0,0.06)',textAlign:'left',borderLeft:`5px solid ${s.color}`}} onClick={()=>onPick(k)} className="fade-in">
+                <span style={{fontSize:32}}>{s.icon}</span>
+                <span style={{fontSize:16,fontWeight:700,color:'#2d3436',flex:1}}>{s.name}</span>
+                <span style={{fontSize:12,color:'#999'}}>{s.topics.length} témat</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    function ChatScreen({ subject, onBack }) {
+      const [msgs,setMsgs]=useState([{from:'tutor',text:`Ahoj! 👋 Dneska se podíváme na ${DB[subject].name}. Jsi připravený?`}]);
+      const [inp,setInp]=useState('');const [typing,setTyping]=useState(false);const [tc,setTc]=useState(0);
+      const end=useRef(null);const iRef=useRef(null);
+      useEffect(()=>{end.current?.scrollIntoView({behavior:'smooth'});},[msgs]);
+      const send=()=>{if(!inp.trim())return;const t=inp.trim();setInp('');setMsgs(p=>[...p,{from:'student',text:t}]);setTyping(true);const nc=tc+1;setTc(nc);
+        setTimeout(()=>{const r=TUTOR_RESPONSES[Math.floor(Math.random()*TUTOR_RESPONSES.length)];setTyping(false);setMsgs(p=>[...p,{from:'tutor',text:r}]);
+          if(nc>0&&nc%5===0)setTimeout(()=>setMsgs(p=>[...p,{from:'tutor',text:'🎮 Paráda, máš za sebou 5 úloh! Chceš si dát pauzu? Můžu ti říct vtipný fakt o Minecraftu!'}]),1000);
+        },800+Math.random()*800);};
+      return (
+        <div style={{maxWidth:480,margin:'0 auto',height:'100vh',display:'flex',flexDirection:'column',background:'#f0f2f5'}}>
+          <div style={{display:'flex',alignItems:'center',gap:10,padding:'14px 16px',color:'#fff',background:DB[subject].color}}>
+            <button style={{background:'rgba(255,255,255,0.25)',border:'none',color:'#fff',fontSize:18,padding:'6px 12px',borderRadius:8,fontWeight:700}} onClick={onBack}>←</button>
+            <span style={{fontSize:24}}>{DB[subject].icon}</span><span style={{fontSize:17,fontWeight:700,flex:1}}>{DB[subject].name}</span>
+          </div>
+          <div style={{flex:1,overflowY:'auto',padding:'16px 12px',display:'flex',flexDirection:'column',gap:8}}>
+            {msgs.map((m,i)=>m.from==='tutor'?(
+              <div key={i} style={{display:'flex',alignItems:'flex-start',gap:8,maxWidth:'85%'}} className="fade-in">
+                <span style={{fontSize:24,marginTop:4}}>🤖</span>
+                <div style={{background:'#fff',padding:'10px 14px',borderRadius:'4px 16px 16px 16px',fontSize:15,lineHeight:1.5,color:'#2d3436',boxShadow:'0 1px 4px rgba(0,0,0,0.06)'}}>{m.text}</div>
+              </div>
+            ):(
+              <div key={i} style={{display:'flex',justifyContent:'flex-end',maxWidth:'85%',alignSelf:'flex-end'}} className="fade-in">
+                <div style={{background:'#4ECDC4',color:'#fff',padding:'10px 14px',borderRadius:'16px 4px 16px 16px',fontSize:15,lineHeight:1.5}}>{m.text}</div>
+              </div>
+            ))}
+            {typing&&<div style={{display:'flex',alignItems:'flex-start',gap:8}}><span style={{fontSize:24,marginTop:4}}>🤖</span><div style={{background:'#fff',padding:'10px 14px',borderRadius:'4px 16px 16px 16px',fontSize:15}}><span style={{animation:'blink 1.4s infinite'}}>● ● ●</span></div></div>}
+            <div ref={end}/>
+          </div>
+          <div style={{display:'flex',gap:8,padding:'10px 12px',background:'#fff',borderTop:'1px solid #eee'}}>
+            <input ref={iRef} style={{flex:1,padding:'12px 16px',borderRadius:24,border:'2px solid #e0e0e0',fontSize:15,outline:'none'}} value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Napiš odpověď..."/>
+            <button style={{width:48,height:48,borderRadius:'50%',background:'#4ECDC4',color:'#fff',fontSize:20,display:'flex',alignItems:'center',justifyContent:'center'}} onClick={send}>➤</button>
+          </div>
+        </div>
+      );
+    }
+    function ParentDashboard({ onBack }) {
+      const pd={matika:{sessions:3,avg:72,strong:['Násobení'],weak:['Zlomky']},cestina:{sessions:5,avg:65,strong:['Čtení'],weak:['Vyjmenovaná slova']},prirodoveda:{sessions:1,avg:80,strong:[],weak:[]},vlastiveda:{sessions:0,avg:0,strong:[],weak:[]},anglictina:{sessions:2,avg:70,strong:['Barvy'],weak:['Věty']}};
+      return (
+        <div style={S.container}>
+          <div style={S.header}><button style={S.backBtn} onClick={onBack}>← Zpět</button><h2 style={S.headerTitle}>📊 Přehled pokroku</h2></div>
+          <div style={{padding:'16px 20px'}} className="fade-in">
+            <div style={{background:'#fff',borderRadius:16,padding:'18px 20px',marginBottom:16,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}}>
+              <h3 style={{fontSize:16,marginBottom:8}}>Celkový přehled</h3>
+              <p style={{fontSize:14,color:'#666'}}>Celkem lekcí: {Object.values(pd).reduce((s,p)=>s+p.sessions,0)}</p>
+              <p style={{fontSize:14,color:'#666'}}>Průměrné skóre: {Math.round(Object.values(pd).filter(p=>p.sessions>0).reduce((s,p)=>s+p.avg,0)/Object.values(pd).filter(p=>p.sessions>0).length)}%</p>
+            </div>
+            {Object.entries(DB).map(([k,s])=>{const p=pd[k];return(
+              <div key={k} style={{background:'#fff',borderRadius:14,padding:'14px 16px',marginBottom:10,boxShadow:'0 2px 6px rgba(0,0,0,0.04)'}}>
+                <div style={{display:'flex',justifyContent:'space-between',fontSize:14,fontWeight:600,marginBottom:8}}><span>{s.icon} {s.name}</span><span style={{fontSize:12,color:'#b2bec3'}}>{p.sessions} lekcí</span></div>
+                <div style={{height:8,background:'#f0f0f0',borderRadius:4,overflow:'hidden'}}><div style={{height:'100%',borderRadius:4,width:`${p.avg}%`,background:s.color,transition:'width 0.5s ease'}}/></div>
+                <div style={{fontSize:12,color:'#888',textAlign:'right',marginTop:4}}>{p.avg}%</div>
+                {p.weak.length>0&&<div style={{fontSize:12,color:'#e17055',marginTop:6,padding:'4px 8px',background:'#ffeaa7',borderRadius:6}}>⚠️ Trénovat: <strong>{p.weak.join(', ')}</strong></div>}
+                {p.strong.length>0&&<div style={{fontSize:12,color:'#00b894',marginTop:4,padding:'4px 8px',background:'#e8f5e9',borderRadius:6}}>✅ Silné: <strong>{p.strong.join(', ')}</strong></div>}
+              </div>
+            );})}
+          </div>
+        </div>
+      );
+    }
+    const S={
+      container:{maxWidth:480,margin:'0 auto',minHeight:'100vh',background:'#f8f9fa',padding:'0 0 20px'},
+      loginCard:{padding:'60px 24px 40px',textAlign:'center'},
+      logoArea:{marginBottom:40},
+      bigBtn:{display:'block',width:'100%',padding:'18px 24px',borderRadius:16,color:'#fff',fontSize:18,fontWeight:700,marginBottom:12,boxShadow:'0 4px 12px rgba(0,0,0,0.15)'},
+      header:{padding:'16px 20px',background:'#fff',borderBottom:'1px solid #eee',display:'flex',alignItems:'center',gap:12,position:'sticky',top:0,zIndex:10},
+      backBtn:{background:'#f0f0f0',padding:'8px 14px',borderRadius:10,fontSize:14,fontWeight:600,color:'#333'},
+      headerTitle:{fontSize:18,fontWeight:700,color:'#2d3436'}
+    };
+    function App(){const[v,setV]=useState('login');const[sub,setSub]=useState(null);
+      if(v==='login')return<LoginScreen onSelect={setV}/>;
+      if(v==='student'&&!sub)return<SubjectPicker onPick={s=>{setSub(s);setV('chat');}} onBack={()=>setV('login')}/>;
+      if(v==='chat')return<ChatScreen subject={sub} onBack={()=>{setSub(null);setV('student');}}/>; n      if(v==='parent')return<ParentDashboard onBack={()=>setV('login')}/>;
+      return null;
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
