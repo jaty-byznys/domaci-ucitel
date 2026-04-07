@@ -348,11 +348,23 @@ ${task.rule ? 'Pravidlo: ' + task.rule : ''}`;
       const [score, setScore] = useState({ correct: 0, total: 0 });
       const [aiHistory, setAiHistory] = useState([]);
       const [waitingChoice, setWaitingChoice] = useState(null);
+      const [readingQIdx, setReadingQIdx] = useState(0);
       const endRef = useRef(null);
       const inputRef = useRef(null);
 
       const allTasks = unit.skills.flatMap(sk => sk.tasks);
       const currentTask = allTasks[taskIdx] || null;
+
+      // Pro reading tasky: vrátí aktuální pod-otázku jako "virtuální task"
+      function getEffectiveTask() {
+        if (!currentTask) return null;
+        if (currentTask.type === 'reading' && currentTask.questions) {
+          const q = currentTask.questions[readingQIdx];
+          if (!q) return null;
+          return { ...q, type: 'open', hint: currentTask.hint || 'Přečti si text pozorně.' };
+        }
+        return currentTask;
+      }
 
       useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
 
@@ -380,12 +392,14 @@ ${task.rule ? 'Pravidlo: ' + task.rule : ''}`;
 
       async function handleAnswer(answer) {
         if (!currentTask || typing) return;
+        const effTask = getEffectiveTask();
+        if (!effTask) return;
         addMsg('student', answer);
         setInp('');
         setWaitingChoice(null);
         setTyping(true);
 
-        const result = checkAnswer(currentTask, answer);
+        const result = checkAnswer(effTask, answer);
 
         if (result.correct) {
           // Správně!
@@ -401,14 +415,23 @@ ${task.rule ? 'Pravidlo: ' + task.rule : ''}`;
 
             // Další úloha
             setTimeout(() => {
-              const next = taskIdx + 1;
-              if (next < allTasks.length) {
-                setTaskIdx(next);
-                const nt = allTasks[next];
-                addMsg('tutor', formatQuestion(nt));
-                if (nt.type === 'choice') setWaitingChoice(nt.options);
+              // Reading task: pokud jsou další pod-otázky, zůstaň u stejného tasku
+              if (currentTask.type === 'reading' && currentTask.questions &&
+                  readingQIdx + 1 < currentTask.questions.length) {
+                const nextQIdx = readingQIdx + 1;
+                setReadingQIdx(nextQIdx);
+                addMsg('tutor', currentTask.questions[nextQIdx].question);
               } else {
-                addMsg('tutor', `To je pro dnešek vše! Skóre: ${score.correct+1}/${score.total+1} ✨`);
+                setReadingQIdx(0);
+                const next = taskIdx + 1;
+                if (next < allTasks.length) {
+                  setTaskIdx(next);
+                  const nt = allTasks[next];
+                  addMsg('tutor', formatQuestion(nt));
+                  if (nt.type === 'choice') setWaitingChoice(nt.options);
+                } else {
+                  addMsg('tutor', `To je pro dnešek vše! Skóre: ${score.correct+1}/${score.total+1} ✨`);
+                }
               }
             }, 800);
           }, 600);
@@ -421,42 +444,54 @@ ${task.rule ? 'Pravidlo: ' + task.rule : ''}`;
             // Po 3 pokusech ukázat řešení
             setTimeout(() => {
               setTyping(false);
-              const ans = Array.isArray(currentTask.answer)
-                ? currentTask.answer.join(', ') : currentTask.answer;
-              addMsg('tutor', `Nevadí! Správná odpověď je: ${ans}. ${currentTask.hint || ''}`);
+              const effT = getEffectiveTask();
+              const ans = effT ? (Array.isArray(effT.answer)
+                ? effT.answer.join(', ') : effT.answer) : '?';
+              addMsg('tutor', `Nevadí! Správná odpověď je: ${ans}. ${effT?.hint || ''}`);
               setScore(p => ({...p, total: p.total+1}));
               setAttempts(0);
               setTimeout(() => {
-                const next = taskIdx + 1;
-                if (next < allTasks.length) {
-                  setTaskIdx(next);
-                  const nt = allTasks[next];
-                  addMsg('tutor', formatQuestion(nt));
-                  if (nt.type === 'choice') setWaitingChoice(nt.options);
+                // Reading: další pod-otázka?
+                if (currentTask.type === 'reading' && currentTask.questions &&
+                    readingQIdx + 1 < currentTask.questions.length) {
+                  const nextQIdx = readingQIdx + 1;
+                  setReadingQIdx(nextQIdx);
+                  addMsg('tutor', currentTask.questions[nextQIdx].question);
                 } else {
-                  addMsg('tutor', `Hotovo! Skóre: ${score.correct}/${score.total+1}`);
+                  setReadingQIdx(0);
+                  const next = taskIdx + 1;
+                  if (next < allTasks.length) {
+                    setTaskIdx(next);
+                    const nt = allTasks[next];
+                    addMsg('tutor', formatQuestion(nt));
+                    if (nt.type === 'choice') setWaitingChoice(nt.options);
+                  } else {
+                    addMsg('tutor', `Hotovo! Skóre: ${score.correct}/${score.total+1}`);
+                  }
                 }
               }, 1200);
             }, 600);
           } else {
             // Zkusit AI feedback, fallback na hint
             if (apiKey) {
+              const effT = getEffectiveTask();
               const newHistory = [...aiHistory,
-                {role:'user', content:`Žák odpověděl: "${answer}" na otázku: "${currentTask.question}". Odpověď je špatná. ${result.feedback ? 'Specifická zpětná vazba: '+result.feedback : ''} Pomoz mu najít správnou odpověď, ale NEŘÍKEJ ji. Pokus č.${newAttempts}/3.`}
+                {role:'user', content:`Žák odpověděl: "${answer}" na otázku: "${effT?.question || currentTask.question}". Odpověď je špatná. ${result.feedback ? 'Specifická zpětná vazba: '+result.feedback : ''} Pomoz mu najít správnou odpověď, ale NEŘÍKEJ ji. Pokus č.${newAttempts}/3.`}
               ];
-              const aiResp = await askTutor(newHistory, currentTask, apiKey);
+              const aiResp = await askTutor(newHistory, effT || currentTask, apiKey);
               setTyping(false);
               if (aiResp) {
                 addMsg('tutor', aiResp);
                 setAiHistory([...newHistory, {role:'assistant', content: aiResp}]);
               } else {
-                const fb = result.feedback || currentTask.hint || 'Zkus to ještě jednou.';
+                const fb = result.feedback || effT?.hint || currentTask.hint || 'Zkus to ještě jednou.';
                 addMsg('tutor', fb);
               }
             } else {
               setTimeout(() => {
                 setTyping(false);
-                const fb = result.feedback || currentTask.hint || 'Hmm, to není ono. Zkus to jinak.';
+                const effT = getEffectiveTask();
+                const fb = result.feedback || effT?.hint || currentTask.hint || 'Hmm, to není ono. Zkus to jinak.';
                 addMsg('tutor', fb);
               }, 500);
             }
