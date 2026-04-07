@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; h}
     :root {
       --bg: #0f1117; --card: #1a1d27; --card2: #242834;
       --text: #e8e8ed; --text2: #9ca3af; --text3: #6b7280;
@@ -516,7 +516,7 @@ function ChatScreen({subject,unit,child,onBack,apiKey}){
       try{
         const{data}=await sb.from('sessions').insert({
           child_id:child.id, subject, unit_id:unit.id
-        }).select('id').single();
+        }).select('id').maybeSingle();
         if(data)setSessionId(data.id);
       }catch{}
       if(allTasks.length>0){
@@ -547,7 +547,7 @@ function ChatScreen({subject,unit,child,onBack,apiKey}){
       });
       // Update skill_progress
       const{data:existing}=await sb.from('skill_progress').select('*')
-        .eq('child_id',child.id).eq('skill_id',skillId).single();
+        .eq('child_id',child.id).eq('skill_id',skillId).maybeSingle();
       if(existing){
         const newTotal=existing.total_attempts+1;
         const newCorrect=existing.correct_answers+(correct?1:0);
@@ -907,9 +907,9 @@ function App(){
 
   async function loadFamily(userId){
     // Get or create family
-    let{data:fam}=await sb.from('families').select('*').eq('auth_id',userId).single();
+    let{data:fam}=await sb.from('families').select('*').eq('auth_id',userId).maybeSingle();
     if(!fam){
-      const{data:newFam}=await sb.from('families').insert({auth_id:userId}).select('*').single();
+      const{data:newFam}=await sb.from('families').insert({auth_id:userId}).select('*').maybeSingle();
       fam=newFam;
     }
     setFamily(fam);
