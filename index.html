@@ -468,11 +468,19 @@ function TopicPicker({subject,child,onPick,onBack,progress}){
         {s.units.map((u,i)=>{
           const tc=u.skills.reduce((s2,sk)=>s2+sk.tasks.length,0);
           // Check progress for this unit
-          const done=progress.filter(p=>p.skill_id&&u.skills.some(sk=>sk.id===p.skill_id)).length;
+          const unitSkillIds=u.skills.map(sk=>sk.id);
+          const unitProgress=progress.filter(p=>unitSkillIds.includes(p.skill_id));
+          const avgScore=unitProgress.length?
+            Math.round(unitProgress.reduce((sum,p)=>sum+p.avg_score,0)/unitProgress.length*10)/10:null;
+          const statusColor=avgScore===null?'var(--text3)':avgScore>=2.5?'var(--green)':avgScore>=1.5?'var(--accent)':'var(--red)';
+          const statusText=avgScore===null?'Nové':avgScore>=2.5?'💪 Jde ti':avgScore>=1.5?'📝 Procvičuj':'🔄 Opakuj';
           return(
             <button key={u.id} className="topic-card fade-in"
-              style={{animationDelay:`${i*0.05}s`}} onClick={()=>onPick(u)}>
-              <span className="topic-name">{u.name}</span>
+              style={{animationDelay:`${i*0.05}s`,borderLeft:`3px solid ${statusColor}`}} onClick={()=>onPick(u)}>
+              <div style={{flex:1}}>
+                <span className="topic-name">{u.name}</span>
+                {avgScore!==null&&<div style={{fontSize:11,color:statusColor,marginTop:2}}>{statusText} ({avgScore}/3)</div>}
+              </div>
               <span className="topic-badge">{tc} úloh</span>
             </button>
           );
@@ -494,6 +502,7 @@ function ChatScreen({subject,unit,child,onBack,apiKey}){
   const[choices,setChoices]=useState(null);
   const[done,setDone]=useState(false);
   const[sessionId,setSessionId]=useState(null);
+  const[rewardMode,setRewardMode]=useState(null);
   const endRef=useRef(null);
 
   const allTasks=unit.skills.flatMap(sk=>sk.tasks);
@@ -536,11 +545,51 @@ function ChatScreen({subject,unit,child,onBack,apiKey}){
         skill_id:skillId, answer, is_correct:correct, score:pts,
         attempts:attempts+1, used_hint:attempts>0
       });
+      // Update skill_progress
+      const{data:existing}=await sb.from('skill_progress').select('*')
+        .eq('child_id',child.id).eq('skill_id',skillId).single();
+      if(existing){
+        const newTotal=existing.total_attempts+1;
+        const newCorrect=existing.correct_answers+(correct?1:0);
+        const newScore=((existing.avg_score*(newTotal-1))+pts)/newTotal;
+        await sb.from('skill_progress').update({
+          total_attempts:newTotal, correct_answers:newCorrect,
+          avg_score:Math.round(newScore*100)/100,
+          last_practiced:new Date().toISOString()
+        }).eq('id',existing.id);
+      }else{
+        await sb.from('skill_progress').insert({
+          child_id:child.id, skill_id:skillId,
+          total_attempts:1, correct_answers:correct?1:0,
+          avg_score:pts, last_practiced:new Date().toISOString()
+        });
+      }
     }catch(e){console.error('Save answer error:',e);}
   }
 
   async function handleAns(answer){
     if(!task||typing||done)return;
+    // Handle reward quiz answer
+    if(rewardMode){
+      add('student',answer);
+      setChoices(null);
+      const isRight=answer===rewardMode.opts[rewardMode.opts.indexOf(rewardMode.a.split('!')[0])||1];
+      add('tutor',isRight?'Správně! Jsi expert! 🎉':'Dobrý pokus! 😄 Jedeme dál!');
+      setRewardMode(null);
+      setTimeout(()=>{
+        const next=taskIdx+1;
+        if(next<allTasks.length){
+          setTaskIdx(next);
+          const nt=allTasks[next];
+          add('tutor',fmtQ(nt));
+          if(nt.type==='choice')setChoices(nt.options);
+        }else{
+          setDone(true);
+          add('tutor',`🏁 Hotovo! Výsledek: ${score.ok}/${score.total}`);
+        }
+      },800);
+      return;
+    }
     add('student',answer);
     setInp(''); setChoices(null); setTyping(true);
 
@@ -564,9 +613,21 @@ function ChatScreen({subject,unit,child,onBack,apiKey}){
         setTimeout(()=>{
           const next=taskIdx+1;
           if(next<allTasks.length){
-            // Every 5 correct answers — reward offer
+            // Every 5 correct answers — reward!
             if((score.ok+1)%5===0&&score.ok>0){
-              add('tutor','🎮 Pět správně v řadě! Zasloužíš si pauzu. Ale můžem taky pokračovat.');
+              const rewards=[
+                {q:'🎮 Minecraft kvíz! Kolik srdíček má Steve na začátku?',a:'10 (20 half-hearts)',opts:['5','10','20']},
+                {q:'🎮 Víš, jaký mob v Minecraftu exploduje?',a:'Creeper!',opts:['Zombie','Creeper','Skeleton']},
+                {q:'🎮 Z čeho se v Minecraftu vyrobí pochodeň?',a:'Tyčka + uhlí',opts:['Tyčka + uhlí','Dřevo + kámen','Železo + dřevo']},
+                {q:'🚽 Skibidi kvíz! Kdo je hlavní nepřítel Skibidi Toilet?',a:'Cameraman!',opts:['Cameraman','Speakerman','TV Man']},
+                {q:'🚽 Jakou zbraň používá Titan Cameraman?',a:'Laser z oka',opts:['Meč','Laser z oka','Bazuku']},
+                {q:'🎮 Co dropne Ender Dragon v Minecraftu?',a:'XP a Dragon Egg',opts:['Diamanty','XP a Dragon Egg','Netherite']},
+              ];
+              const r=rewards[Math.floor(Math.random()*rewards.length)];
+              add('tutor',`🏆 Pět správně! Bonus otázka:\n\n${r.q}`);
+              setChoices(r.opts);
+              setRewardMode(r);
+              return;
             }
             setTaskIdx(next);
             const nt=allTasks[next];
@@ -686,11 +747,14 @@ function ParentDash({children:kids,onBack}){
           .eq('child_id',ch.id).order('created_at',{ascending:false}).limit(20);
         const{data:answers}=await sb.from('answers').select('*')
           .eq('child_id',ch.id).order('created_at',{ascending:false}).limit(200);
+        const{data:skillProg}=await sb.from('skill_progress').select('*')
+          .eq('child_id',ch.id);
         st[ch.id]={
           sessions:sessions||[],
           answers:answers||[],
           totalCorrect:(answers||[]).filter(a=>a.is_correct).length,
           totalAnswers:(answers||[]).length,
+          skills:skillProg||[],
         };
       }
       setStats(st); setL(false);
@@ -748,6 +812,24 @@ function ParentDash({children:kids,onBack}){
               <div style={{fontSize:11,color:'var(--text3)',textAlign:'right',marginTop:4}}>
                 {s.totalAnswers===0?'Zatím bez dat':`${s.totalCorrect} z ${s.totalAnswers} správně`}
               </div>
+
+              {s.skills&&s.skills.length>0&&(
+                <div style={{marginTop:12,borderTop:'1px solid var(--card2)',paddingTop:10}}>
+                  <div style={{fontSize:12,fontWeight:700,color:'var(--text2)',marginBottom:6}}>Dovednosti:</div>
+                  {s.skills.sort((a,b)=>a.avg_score-b.avg_score).slice(0,8).map(sk=>{
+                    const col=sk.avg_score>=2.5?'var(--green)':sk.avg_score>=1.5?'var(--accent)':'var(--red)';
+                    const label=sk.avg_score>=2.5?'💪':sk.avg_score>=1.5?'📝':'🔄';
+                    return(
+                      <div key={sk.skill_id} style={{display:'flex',alignItems:'center',gap:8,marginBottom:4,fontSize:12}}>
+                        <span>{label}</span>
+                        <span style={{flex:1,color:'var(--text2)'}}>{sk.skill_id}</span>
+                        <span style={{color:col,fontWeight:700}}>{sk.avg_score}/3</span>
+                        <span style={{color:'var(--text3)',fontSize:10}}>({sk.total_attempts}×)</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })}
