@@ -105,8 +105,8 @@
     const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
     const COLORS = { matika:'var(--matika)', cestina:'var(--cestina)', prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', anglictina:'var(--anglictina)' };
 
-    function getApiKey() { return localStorage.getItem('du_api_key') || ''; }
-    function setApiKeyLS(k) { localStorage.setItem('du_api_key', k); }
+    function getApiKey() { try { return localStorage.getItem('du_api_key') || ''; } catch(e) { return ''; } }
+    function setApiKeyLS(k) { try { localStorage.setItem('du_api_key', k); } catch(e) {} }
 
     function normalize(s) {
       return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');
@@ -238,215 +238,151 @@
 
     function MissionScreen({ dayData, onBack }) {
       const [msgs, setMsgs] = useState([]);
-      const [phase, setPhase] = useState('intro');
-      const [okruhIdx, setOkruhIdx] = useState(0);
-      const [qIdx, setQIdx] = useState(0);
       const [waitingChoice, setWaitingChoice] = useState(null);
       const [typing, setTyping] = useState(false);
       const [inp, setInp] = useState('');
-      const [attempts, setAttempts] = useState(0);
       const [score, setScore] = useState({correct:0, total:0});
-      const [paused, setPaused] = useState(false);
+      const [showContinue, setShowContinue] = useState(false);
       const endRef = useRef(null);
+      const posRef = useRef({okruh:0, q:0, attempts:0, phase:'intro', continueAction:null});
 
       useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
 
-      function addMsg(type, text, avatar) {
-        setMsgs(p => [...p, {type, text, avatar}]);
+      function add(type, text, avatar) { setMsgs(p=>[...p,{type,text,avatar}]); }
+      function dialog(who, text) {
+        const w=who.toLowerCase();
+        const t=w==='agent'?'agent':['skripek','repak','kotva','krivak'].includes(w)?'pirat':'volta';
+        add(t,(POSTAVA_NAME[w]||who)+': '+text, AVATAR[w]||'❓');
       }
-      function addDialog(postava, text) {
-        const p = postava.toLowerCase();
-        const type = (p==='agent') ? 'agent' : (['skripek','repak','kotva','krivak'].includes(p) ? 'pirat' : 'volta');
-        addMsg(type, (POSTAVA_NAME[p]||postava)+': '+text, AVATAR[p]||'❓');
-      }
-      function addNarration(text) { addMsg('scenka', text); }
-      function addSber(text) { addMsg('sber', '🎁 '+text); }
 
-      // Autoplay intro on mount
       useEffect(() => {
-        if (!dayData || !dayData.intro) return;
-        let delay = 0;
-        const timers = [];
-        // Intro dialogs
-        dayData.intro.forEach((d, i) => {
-          delay += 600 + (d.t || d.text || '').length * 15;
-          timers.push(setTimeout(() => addDialog(d.p || d.postava, d.t || d.text), delay));
+        if (!dayData||!dayData.intro||dayData.intro.length===0) {
+          startQuestion(0,0);
+          return;
+        }
+        let d=0; const tt=[];
+        dayData.intro.forEach(item => {
+          d+=400+(item.t||item.text||'').length*12;
+          tt.push(setTimeout(()=>dialog(item.p||item.postava,item.t||item.text),d));
         });
-        // After intro, show first question
-        delay += 1200;
-        timers.push(setTimeout(() => {
-          setPhase('question');
-          showQuestion(0, 0);
-        }, delay));
-        return () => timers.forEach(clearTimeout);
+        d+=1000;
+        tt.push(setTimeout(()=>startQuestion(0,0),d));
+        return ()=>tt.forEach(clearTimeout);
       }, []);
 
-      function showQuestion(oIdx, qI) {
-        const okruh = dayData.okruhy[oIdx];
-        if (!okruh) { finishDay(); return; }
-        const q = okruh.otazky[qI];
-        if (!q) { finishOkruh(oIdx); return; }
-
-        // Show okruh header at question 0
-        if (qI === 0) {
-          const predmetColors = {cestina:'var(--cestina)', matika:'var(--matika)', anglictina:'var(--anglictina)', prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', mix:'var(--accent)'};
-          addMsg('scenka', '━━━ '+okruh.tema+' ━━━');
-        }
-
-        // Volta intro for this question
-        if (q.vi) {
-          addDialog('volta', q.vi);
-        } else {
-          addDialog('volta', q.question);
-        }
-
-        // Show choice buttons
-        if (q.options) {
-          setWaitingChoice(q.options);
-        }
+      function startQuestion(oI,qI) {
+        const ok=dayData.okruhy[oI];
+        if(!ok){finishDay();return;}
+        const q=ok.otazky[qI];
+        if(!q){finishOkruh(oI);return;}
+        posRef.current={...posRef.current,okruh:oI,q:qI,attempts:0,phase:'question'};
+        if(qI===0) add('scenka','━━━ '+(ok.tema||'Okruh '+(oI+1))+' ━━━');
+        if(q.vi) dialog('volta',q.vi); else dialog('volta',q.question);
+        if(q.options) setWaitingChoice(q.options);
       }
 
       function handleAnswer(answer) {
-        if (typing) return;
-        addMsg('student', answer, '🕵️');
+        if(typing||showContinue) return;
+        const pos=posRef.current;
+        const ok=dayData.okruhy[pos.okruh];
+        const q=ok.otazky[pos.q];
+        add('student',answer,'🕵️');
         setWaitingChoice(null);
         setTyping(true);
-
-        const okruh = dayData.okruhy[okruhIdx];
-        const q = okruh.otazky[qIdx];
-        const isCorrect = normalize(answer) === normalize(q.answer);
-
-        setTimeout(() => {
+        const correct=normalize(answer)===normalize(q.answer);
+        setTimeout(()=>{
           setTyping(false);
-          if (isCorrect) {
-            const voltaText = q.vs || ['Správně!','Výborně!','Přesně tak!'][Math.floor(Math.random()*3)];
-            addDialog('volta', voltaText);
-            setScore(p => ({correct:p.correct+1, total:p.total+1}));
-            setAttempts(0);
-            // After question 5, show akce
-            setTimeout(() => advanceQuestion(okruhIdx, qIdx), 800);
+          if(correct){
+            dialog('volta',q.vs||['Správně!','Výborně!','Přesně tak!'][Math.floor(Math.random()*3)]);
+            setScore(p=>({correct:p.correct+1,total:p.total+1}));
+            posRef.current.attempts=0;
+            setTimeout(()=>advance(pos.okruh,pos.q),700);
           } else {
-            const na = attempts + 1;
-            setAttempts(na);
-            if (na >= 3) {
-              addDialog('volta', 'Správná odpověď: ' + q.answer + '. ' + (q.vn || q.hint || ''));
-              setScore(p => ({...p, total:p.total+1}));
-              setAttempts(0);
-              setTimeout(() => advanceQuestion(okruhIdx, qIdx), 1000);
+            pos.attempts++;
+            posRef.current.attempts=pos.attempts;
+            if(pos.attempts>=3){
+              dialog('volta','Správná odpověď: '+q.answer);
+              setScore(p=>({...p,total:p.total+1}));
+              posRef.current.attempts=0;
+              setTimeout(()=>advance(pos.okruh,pos.q),900);
             } else {
-              const hint = q.vn || q.hint || 'Zkus to jinak.';
-              addDialog('volta', hint);
-              if (q.options) setWaitingChoice(q.options);
+              dialog('volta',q.vn||q.hint||'Zkus to jinak.');
+              if(q.options) setWaitingChoice(q.options);
             }
           }
-        }, 500);
+        },500);
       }
 
-      function advanceQuestion(oIdx, qI) {
-        const okruh = dayData.okruhy[oIdx];
-        const nextQ = qI + 1;
-
-        // After question 5 (index 4), show akce if exists
-        if (nextQ === 5 && okruh.akce) {
-          showAkce(okruh.akce, () => {
-            showQuestion(oIdx, nextQ);
-          });
+      function advance(oI,qI) {
+        const ok=dayData.okruhy[oI];
+        const nq=qI+1;
+        if(nq===5&&ok.akce){
+          playAkce(ok.akce,()=>startQuestion(oI,nq));
           return;
         }
-
-        // After last question in okruh (index 9), show scenka
-        if (nextQ >= okruh.otazky.length) {
-          finishOkruh(oIdx);
+        if(nq>=ok.otazky.length){
+          finishOkruh(oI);
           return;
         }
-
-        showQuestion(oIdx, nextQ);
-        setQIdx(nextQ);
+        startQuestion(oI,nq);
       }
 
-      function showAkce(akce, callback) {
-        let delay = 0;
-        const timers = [];
-        if (akce.dialog) {
-          akce.dialog.forEach(d => {
-            delay += 500 + (d.t||'').length * 12;
-            timers.push(setTimeout(() => addDialog(d.p, d.t), delay));
-          });
-        }
-        if (akce.zprava) {
-          delay += 600;
-          timers.push(setTimeout(() => addSber(akce.zprava), delay));
-        }
-        delay += 1000;
-        timers.push(setTimeout(() => {
-          setPaused(true);
-          // Wait for user to tap continue
-          setMsgs(p => [...p, {type:'continue', text:''}]);
-        }, delay));
-        // Store callback for continue
-        window._akceCallback = callback;
+      function playAkce(akce,cb) {
+        let d=0; const tt=[];
+        (akce.dialog||[]).forEach(item=>{
+          d+=400+(item.t||'').length*10;
+          tt.push(setTimeout(()=>dialog(item.p,item.t),d));
+        });
+        if(akce.zprava){d+=500;tt.push(setTimeout(()=>add('sber','🎁 '+akce.zprava),d));}
+        d+=800;
+        tt.push(setTimeout(()=>{
+          posRef.current.continueAction=cb;
+          setShowContinue(true);
+        },d));
       }
 
-      function handleContinue() {
-        setPaused(false);
-        // Remove continue message
-        setMsgs(p => p.filter(m => m.type !== 'continue'));
-        if (window._akceCallback) { window._akceCallback(); window._akceCallback = null; }
-        if (window._scenkaCallback) { window._scenkaCallback(); window._scenkaCallback = null; }
-      }
-
-      function finishOkruh(oIdx) {
-        const okruh = dayData.okruhy[oIdx];
-        let delay = 0;
-        const timers = [];
-
-        // Scenka po okruhu
-        if (okruh.scenka && okruh.scenka.length > 0) {
-          okruh.scenka.forEach(d => {
-            delay += 500 + (d.t||'').length * 12;
-            timers.push(setTimeout(() => addDialog(d.p, d.t), delay));
-          });
-        }
-
-        delay += 800;
-        const nextOkruh = oIdx + 1;
-        if (nextOkruh < dayData.okruhy.length) {
-          timers.push(setTimeout(() => {
-            setPaused(true);
-            setMsgs(p => [...p, {type:'continue', text:''}]);
-            window._scenkaCallback = () => {
-              setOkruhIdx(nextOkruh);
-              setQIdx(0);
-              setAttempts(0);
-              showQuestion(nextOkruh, 0);
-            };
-          }, delay));
+      function finishOkruh(oI) {
+        const ok=dayData.okruhy[oI];
+        let d=0; const tt=[];
+        (ok.scenka||[]).forEach(item=>{
+          d+=400+(item.t||'').length*10;
+          tt.push(setTimeout(()=>dialog(item.p,item.t),d));
+        });
+        d+=800;
+        const nextO=oI+1;
+        if(nextO<dayData.okruhy.length){
+          tt.push(setTimeout(()=>{
+            posRef.current.continueAction=()=>startQuestion(nextO,0);
+            setShowContinue(true);
+          },d));
         } else {
-          timers.push(setTimeout(() => finishDay(), delay));
+          tt.push(setTimeout(()=>finishDay(),d));
         }
       }
 
       function finishDay() {
-        let delay = 0;
-        const timers = [];
-        if (dayData.zaver) {
-          dayData.zaver.forEach(d => {
-            delay += 500 + (d.t||d.text||'').length * 12;
-            timers.push(setTimeout(() => addDialog(d.p||d.postava, d.t||d.text), delay));
-          });
-        }
-        delay += 800;
-        timers.push(setTimeout(() => {
-          addMsg('sber', '📊 Den dokončen! Skóre: ' + score.correct + '/' + score.total);
-          if (dayData.predmety_sberu && dayData.predmety_sberu.length > 0) {
-            setTimeout(() => {
-              addMsg('sber', '🎒 Sebrané předměty: ' + dayData.predmety_sberu.map(p=>p.nazev).join(', '));
-            }, 500);
+        let d=0; const tt=[];
+        (dayData.zaver||[]).forEach(item=>{
+          d+=400+(item.t||item.text||'').length*10;
+          tt.push(setTimeout(()=>dialog(item.p||item.postava,item.t||item.text),d));
+        });
+        d+=600;
+        tt.push(setTimeout(()=>{
+          add('sber','📊 Den dokončen! Skóre: '+score.correct+'/'+score.total);
+          if(dayData.predmety_sberu&&dayData.predmety_sberu.length>0){
+            setTimeout(()=>add('sber','🎒 Sebrané předměty: '+dayData.predmety_sberu.map(p=>p.nazev).join(', ')),400);
           }
-        }, delay));
+        },d));
       }
 
-      const send = () => { if (!inp.trim()) return; handleAnswer(inp.trim()); setInp(''); };
+      function handleContinue() {
+        setShowContinue(false);
+        const cb=posRef.current.continueAction;
+        posRef.current.continueAction=null;
+        if(cb) cb();
+      }
+
+      const send=()=>{if(!inp.trim())return;handleAnswer(inp.trim());setInp('');};
 
       return (<div className="chat-screen">
         <div className="chat-header">
@@ -456,20 +392,20 @@
           <span className="score-badge score-correct">{score.correct}/{score.total}</span>
         </div>
         <div className="chat-messages">
-          {msgs.map((m,i) => {
-            if (m.type==='continue') return (<button key={i} className="continue-btn fade-in" onClick={handleContinue}>Pokračovat ▶</button>);
-            if (m.type==='student') return (<div key={i} className="msg msg-student fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            if (m.type==='scenka') return (<div key={i} className="msg msg-scenka fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            if (m.type==='sber') return (<div key={i} className="msg msg-sber fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            const cls = m.type==='pirat' ? 'msg-pirat' : m.type==='agent' ? 'msg-agent' : 'msg-volta';
+          {msgs.map((m,i)=>{
+            if(m.type==='student') return (<div key={i} className="msg msg-student fade-in"><div className="msg-bubble">{m.text}</div></div>);
+            if(m.type==='scenka') return (<div key={i} className="msg msg-scenka fade-in"><div className="msg-bubble">{m.text}</div></div>);
+            if(m.type==='sber') return (<div key={i} className="msg msg-sber fade-in"><div className="msg-bubble">{m.text}</div></div>);
+            const cls=m.type==='pirat'?'msg-pirat':m.type==='agent'?'msg-agent':'msg-volta';
             return (<div key={i} className={'msg msg-tutor '+cls+' fade-in'}><span className="msg-avatar">{m.avatar}</span><div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div></div>);
           })}
-          {typing && <div className="msg msg-tutor msg-volta"><span className="msg-avatar">🧪</span><div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
-          {waitingChoice && !typing && !paused && <div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>{waitingChoice.map((opt,i) => (<button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>{opt}</button>))}</div>}
+          {typing&&<div className="msg msg-tutor msg-volta"><span className="msg-avatar">🧪</span><div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
+          {waitingChoice&&!typing&&!showContinue&&<div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>{waitingChoice.map((opt,i)=>(<button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>{opt}</button>))}</div>}
+          {showContinue&&<button className="continue-btn fade-in" onClick={handleContinue}>Pokračovat ▶</button>}
           <div ref={endRef}/>
         </div>
         <div className="chat-input">
-          <input value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();send();}}} placeholder="Napiš odpověď..." />
+          <input value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();send();}}} placeholder="Napiš odpověď..."/>
           <button onClick={send}>➤</button>
         </div>
       </div>);
