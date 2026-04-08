@@ -1,0 +1,296 @@
+{
+  "id": "PR4-01",
+  "name": "Živá a neživá příroda",
+  "order": 0,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "PR4-01-01",
+      "name": "Živá a neživá příroda",
+      "difficulty": 1,
+      "theory": "Živá příroda: rostliny, živočichové, houby. Neživá: voda, vzduch, horniny, půda, slunce.",
+      "tasks": [
+        {
+          "id": "PR4-01-01-001",
+          "type": "choice",
+          "question": "Co patří do živé přírody?",
+          "options": [
+            "písek",
+            "kámen",
+            "vzduch",
+            "voda",
+            "strom"
+          ],
+          "answer": "strom",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-002",
+          "type": "choice",
+          "question": "Co patří do neživé přírody?",
+          "options": [
+            "rostlina",
+            "hornina",
+            "ryba",
+            "kočka",
+            "houba"
+          ],
+          "answer": "hornina",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-003",
+          "type": "choice",
+          "question": "Která vlastnost je typická pro živé organismy?",
+          "options": [
+            "rozmnožují se",
+            "nemění se",
+            "nerostou",
+            "nejedí",
+            "jsou tvrdé"
+          ],
+          "answer": "rozmnožují se",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-004",
+          "type": "choice",
+          "question": "Které z těchto není živý organismus?",
+          "options": [
+            "hřib",
+            "skála",
+            "řasa",
+            "mech",
+            "mravenec"
+          ],
+          "answer": "skála",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-005",
+          "type": "choice",
+          "question": "Na co dělíme živou přírodu?",
+          "options": [
+            "rostliny, živočichové, houby",
+            "teplo, světlo, zvuk",
+            "voda, vzduch, země",
+            "kameny, písek, hlína",
+            "den, noc, soumrak"
+          ],
+          "answer": "rostliny, živočichové, houby",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-006",
+          "type": "choice",
+          "question": "Která vlastnost NEPATŘÍ mezi vlastnosti živých organismů?",
+          "options": [
+            "dýchají",
+            "rostou",
+            "potřebují výživu",
+            "svítí ve tmě",
+            "rozmnožují se"
+          ],
+          "answer": "svítí ve tmě",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-007",
+          "type": "choice",
+          "question": "Voda je:",
+          "options": [
+            "houba",
+            "neživá příroda",
+            "živá příroda",
+            "rostlina",
+            "živočich"
+          ],
+          "answer": "neživá příroda",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-008",
+          "type": "choice",
+          "question": "Houba patří do:",
+          "options": [
+            "hornin",
+            "kapalin",
+            "neživé přírody",
+            "minerálů",
+            "živé přírody"
+          ],
+          "answer": "živé přírody",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-009",
+          "type": "choice",
+          "question": "Co potřebují rostliny k životu?",
+          "options": [
+            "jen světlo",
+            "jen vodu",
+            "jen vzduch",
+            "vodu, světlo, vzduch a živiny",
+            "jen půdu"
+          ],
+          "answer": "vodu, světlo, vzduch a živiny",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-010",
+          "type": "choice",
+          "question": "Co je fotosyntéza?",
+          "options": [
+            "rozmnožování hub",
+            "proces, kdy rostliny vyrábí kyslík pomocí slunce",
+            "proud vody v řece",
+            "proces, kdy zvířata dýchají",
+            "růst krystalů"
+          ],
+          "answer": "proces, kdy rostliny vyrábí kyslík pomocí slunce",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-011",
+          "type": "choice",
+          "question": "Slunce je:",
+          "options": [
+            "rostlina",
+            "živá příroda",
+            "ani živá ani neživá",
+            "organismus",
+            "neživá příroda"
+          ],
+          "answer": "neživá příroda",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-012",
+          "type": "choice",
+          "question": "Půda je:",
+          "options": [
+            "živočich",
+            "houba",
+            "neživá příroda (ale obsahuje živé organismy)",
+            "rostlina",
+            "živá příroda"
+          ],
+          "answer": "neživá příroda (ale obsahuje živé organismy)",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-013",
+          "type": "choice",
+          "question": "Který organismus NENÍ rostlina?",
+          "options": [
+            "kapradina",
+            "mrkev",
+            "sedmikráska",
+            "hřib",
+            "dub"
+          ],
+          "answer": "hřib",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-014",
+          "type": "choice",
+          "question": "Vzduch je:",
+          "options": [
+            "organismus",
+            "živá příroda",
+            "houba",
+            "neživá příroda",
+            "rostlina"
+          ],
+          "answer": "neživá příroda",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-015",
+          "type": "choice",
+          "question": "Mech je:",
+          "options": [
+            "houba",
+            "rostlina (výtrusná)",
+            "nerost",
+            "neživá příroda",
+            "živočich"
+          ],
+          "answer": "rostlina (výtrusná)",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-016",
+          "type": "choice",
+          "question": "Bakterie patří do:",
+          "options": [
+            "kapalin",
+            "neživé přírody",
+            "nerostů",
+            "hornin",
+            "živé přírody"
+          ],
+          "answer": "živé přírody",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-017",
+          "type": "choice",
+          "question": "Co vzniká při fotosyntéze?",
+          "options": [
+            "vodík",
+            "helium",
+            "dusík",
+            "oxid uhličitý",
+            "kyslík"
+          ],
+          "answer": "kyslík",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-018",
+          "type": "choice",
+          "question": "Rostliny potřebují k fotosyntéze:",
+          "options": [
+            "tmu",
+            "měsíční svit",
+            "vítr",
+            "déšť",
+            "sluneční světlo"
+          ],
+          "answer": "sluneční světlo",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-019",
+          "type": "choice",
+          "question": "Živé organismy se liší od neživé přírody tím, že:",
+          "options": [
+            "nemění se",
+            "jsou vždy mokré",
+            "rostou a rozmnožují se",
+            "jsou vždy měkké",
+            "jsou vždy zelené"
+          ],
+          "answer": "rostou a rozmnožují se",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        },
+        {
+          "id": "PR4-01-01-020",
+          "type": "choice",
+          "question": "Koloběh vody patří do:",
+          "options": [
+            "živé přírody",
+            "živočichů",
+            "hub",
+            "rostlin",
+            "neživé přírody"
+          ],
+          "answer": "neživé přírody",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        }
+      ]
+    }
+  ]
+}

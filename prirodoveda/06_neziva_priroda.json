@@ -1,0 +1,296 @@
+{
+  "id": "PR4-06",
+  "name": "Neživá příroda",
+  "order": 5,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "PR4-06-01",
+      "name": "Neživá příroda",
+      "difficulty": 1,
+      "theory": "Neživá příroda: voda (3 skupenství, koloběh), vzduch (dusík, kyslík), horniny, nerosty, půda, slunce.",
+      "tasks": [
+        {
+          "id": "PR4-06-01-001",
+          "type": "choice",
+          "question": "Voda se vyskytuje ve skupenstvích:",
+          "options": [
+            "jen kapalné",
+            "pevné a plynné",
+            "jen plynné",
+            "jen pevné",
+            "pevné (led), kapalné (voda), plynné (pára)"
+          ],
+          "answer": "pevné (led), kapalné (voda), plynné (pára)",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-002",
+          "type": "choice",
+          "question": "Koloběh vody: slunce ohřeje vodu →",
+          "options": [
+            "voda zmrzne → sníh",
+            "voda zmizí",
+            "voda teče do vesmíru",
+            "voda se změní v kámen",
+            "pára stoupá → ochlazení → mraky → déšť"
+          ],
+          "answer": "pára stoupá → ochlazení → mraky → déšť",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-003",
+          "type": "choice",
+          "question": "Vzduch obsahuje hlavně:",
+          "options": [
+            "jen oxid uhličitý",
+            "jen kyslík",
+            "dusík a kyslík",
+            "jen vodík",
+            "jen helium"
+          ],
+          "answer": "dusík a kyslík",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-004",
+          "type": "choice",
+          "question": "Kyslík potřebujeme k:",
+          "options": [
+            "jídlu",
+            "vidění",
+            "spaní",
+            "pití",
+            "dýchání"
+          ],
+          "answer": "dýchání",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-005",
+          "type": "choice",
+          "question": "Horniny jsou:",
+          "options": [
+            "rostliny",
+            "houby",
+            "zvířata",
+            "nerosty tvořící zemskou kůru (žula, vápenec, pískovec)",
+            "živé organismy"
+          ],
+          "answer": "nerosty tvořící zemskou kůru (žula, vápenec, pískovec)",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-006",
+          "type": "choice",
+          "question": "Půda vzniká:",
+          "options": [
+            "z plastů",
+            "z vody",
+            "ze slunce",
+            "zvětráváním hornin a rozkladem organismů",
+            "z vzduchu"
+          ],
+          "answer": "zvětráváním hornin a rozkladem organismů",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-007",
+          "type": "choice",
+          "question": "Půda obsahuje:",
+          "options": [
+            "jen vodu",
+            "minerály, humus, vodu, vzduch, organismy",
+            "jen kameny",
+            "jen písek",
+            "jen hlínu"
+          ],
+          "answer": "minerály, humus, vodu, vzduch, organismy",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-008",
+          "type": "choice",
+          "question": "Slunce je pro Zemi zdrojem:",
+          "options": [
+            "hornin",
+            "vzduchu",
+            "vody",
+            "tepla a světla",
+            "půdy"
+          ],
+          "answer": "tepla a světla",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-009",
+          "type": "choice",
+          "question": "Led je:",
+          "options": [
+            "jiná látka než voda",
+            "kapalné skupenství",
+            "nerost",
+            "plynné skupenství",
+            "pevné skupenství vody"
+          ],
+          "answer": "pevné skupenství vody",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-010",
+          "type": "choice",
+          "question": "Pára je:",
+          "options": [
+            "kapalné skupenství",
+            "jiná látka",
+            "plynné skupenství vody",
+            "nerost",
+            "pevné skupenství"
+          ],
+          "answer": "plynné skupenství vody",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-011",
+          "type": "choice",
+          "question": "Žula je:",
+          "options": [
+            "kapalina",
+            "živočich",
+            "hornina",
+            "rostlina",
+            "houba"
+          ],
+          "answer": "hornina",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-012",
+          "type": "choice",
+          "question": "Vápenec je:",
+          "options": [
+            "hornina (tvoří se z mořských organismů)",
+            "kov",
+            "plast",
+            "rostlina",
+            "houba"
+          ],
+          "answer": "hornina (tvoří se z mořských organismů)",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-013",
+          "type": "choice",
+          "question": "Humus je:",
+          "options": [
+            "typ vody",
+            "druh horniny",
+            "tmavá úrodná složka půdy z rozložených organismů",
+            "druh plastu",
+            "plynná látka"
+          ],
+          "answer": "tmavá úrodná složka půdy z rozložených organismů",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-014",
+          "type": "choice",
+          "question": "Voda se vypařuje při:",
+          "options": [
+            "zmrazení",
+            "tlaku",
+            "zahřívání",
+            "tmě",
+            "tichu"
+          ],
+          "answer": "zahřívání",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-015",
+          "type": "choice",
+          "question": "Voda zamrzá při:",
+          "options": [
+            "-50 °C",
+            "10 °C",
+            "100 °C",
+            "0 °C",
+            "50 °C"
+          ],
+          "answer": "0 °C",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-016",
+          "type": "choice",
+          "question": "Voda se vaří při:",
+          "options": [
+            "50 °C",
+            "0 °C",
+            "200 °C",
+            "100 °C",
+            "10 °C"
+          ],
+          "answer": "100 °C",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-017",
+          "type": "choice",
+          "question": "Mraky vznikají:",
+          "options": [
+            "z kouře",
+            "z ledu na zemi",
+            "ze slunce",
+            "ochlazením vodní páry ve výšce",
+            "z prachu"
+          ],
+          "answer": "ochlazením vodní páry ve výšce",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-018",
+          "type": "choice",
+          "question": "Déšť padá, když:",
+          "options": [
+            "je zima",
+            "fouká vítr",
+            "je noc",
+            "kapičky v mraku se spojí do větších kapek",
+            "slunce svítí"
+          ],
+          "answer": "kapičky v mraku se spojí do větších kapek",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-019",
+          "type": "choice",
+          "question": "Sníh padá, když:",
+          "options": [
+            "je léto",
+            "fouká vítr",
+            "svítí slunce",
+            "prší",
+            "kapičky v mraku zamrznou (velmi nízká teplota)"
+          ],
+          "answer": "kapičky v mraku zamrznou (velmi nízká teplota)",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        },
+        {
+          "id": "PR4-06-01-020",
+          "type": "choice",
+          "question": "Nerost je:",
+          "options": [
+            "rostlina",
+            "přirozeně se vyskytující látka v přírodě (křemen, slída)",
+            "živý organismus",
+            "živočich",
+            "houba"
+          ],
+          "answer": "přirozeně se vyskytující látka v přírodě (křemen, slída)",
+          "hint": "Voda: 3 skupenství. Koloběh vody. Vzduch: dusík + kyslík."
+        }
+      ]
+    }
+  ]
+}

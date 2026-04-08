@@ -1,0 +1,296 @@
+{
+  "id": "PR4-07",
+  "name": "Roční období a počasí",
+  "order": 6,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "PR4-07-01",
+      "name": "Roční období a počasí",
+      "difficulty": 1,
+      "theory": "Jaro, léto, podzim, zima. Příčina: náklon zemské osy. Počasí: teplota, srážky, vítr.",
+      "tasks": [
+        {
+          "id": "PR4-07-01-001",
+          "type": "choice",
+          "question": "Proč se střídají roční období?",
+          "options": [
+            "kvůli mrakům",
+            "kvůli náklonu zemské osy",
+            "kvůli větru",
+            "kvůli Měsíci",
+            "kvůli vzdálenosti od Slunce"
+          ],
+          "answer": "kvůli náklonu zemské osy",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-002",
+          "type": "choice",
+          "question": "Které roční období je po zimě?",
+          "options": [
+            "žádné",
+            "jaro",
+            "zima",
+            "léto",
+            "podzim"
+          ],
+          "answer": "jaro",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-003",
+          "type": "choice",
+          "question": "Na jaře:",
+          "options": [
+            "příroda se probouzí, rostliny raší, ptáci se vracejí",
+            "zvířata hibernují",
+            "sněží",
+            "padá listí",
+            "dozrává ovoce"
+          ],
+          "answer": "příroda se probouzí, rostliny raší, ptáci se vracejí",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-004",
+          "type": "choice",
+          "question": "V létě:",
+          "options": [
+            "rostliny raší",
+            "sněží",
+            "padá listí",
+            "zvířata hibernují",
+            "je nejteplejší, dozrává ovoce a obilí"
+          ],
+          "answer": "je nejteplejší, dozrává ovoce a obilí",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-005",
+          "type": "choice",
+          "question": "Na podzim:",
+          "options": [
+            "je nejteplejší",
+            "sněží",
+            "rostliny raší",
+            "zvířata se probouzejí",
+            "padá listí, ptáci odlétají na jih, sklízí se úroda"
+          ],
+          "answer": "padá listí, ptáci odlétají na jih, sklízí se úroda",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-006",
+          "type": "choice",
+          "question": "V zimě:",
+          "options": [
+            "ptáci se vracejí",
+            "je nejchladněji, některá zvířata hibernují, sněží",
+            "je nejteplejší",
+            "rostliny kvetou",
+            "dozrává ovoce"
+          ],
+          "answer": "je nejchladněji, některá zvířata hibernují, sněží",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-007",
+          "type": "choice",
+          "question": "Stěhovaví ptáci odlétají:",
+          "options": [
+            "v zimě na východ",
+            "na jaře na sever",
+            "nikam",
+            "na podzim na jih",
+            "v létě na západ"
+          ],
+          "answer": "na podzim na jih",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-008",
+          "type": "choice",
+          "question": "Stěhovaví ptáci se vracejí:",
+          "options": [
+            "na jaře",
+            "v zimě",
+            "nikdy",
+            "v létě",
+            "na podzim"
+          ],
+          "answer": "na jaře",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-009",
+          "type": "choice",
+          "question": "Hibernace znamená:",
+          "options": [
+            "lovení",
+            "rozmnožování",
+            "zimní spánek zvířat",
+            "letní spánek",
+            "přelet na jih"
+          ],
+          "answer": "zimní spánek zvířat",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-010",
+          "type": "choice",
+          "question": "Ježek v zimě:",
+          "options": [
+            "kvete",
+            "staví hnízdo",
+            "plave v rybníce",
+            "hibernuje (zimní spánek)",
+            "létá na jih"
+          ],
+          "answer": "hibernuje (zimní spánek)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-011",
+          "type": "choice",
+          "question": "Vlaštovka v zimě:",
+          "options": [
+            "staví hnízdo",
+            "plave v rybníce",
+            "zůstává v ČR",
+            "odlétá na jih (stěhovavý pták)",
+            "hibernuje"
+          ],
+          "answer": "odlétá na jih (stěhovavý pták)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-012",
+          "type": "choice",
+          "question": "Sýkorka v zimě:",
+          "options": [
+            "hibernuje",
+            "plave",
+            "odlétá na jih",
+            "zůstává v ČR (nepřelétavý pták)",
+            "kvete"
+          ],
+          "answer": "zůstává v ČR (nepřelétavý pták)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-013",
+          "type": "choice",
+          "question": "Nejdelší den v roce je:",
+          "options": [
+            "kolem 21. prosince",
+            "kolem 21. září",
+            "1. ledna",
+            "kolem 21. března",
+            "kolem 21. června"
+          ],
+          "answer": "kolem 21. června",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-014",
+          "type": "choice",
+          "question": "Nejkratší den v roce je:",
+          "options": [
+            "kolem 21. září",
+            "kolem 21. března",
+            "kolem 21. června",
+            "kolem 21. prosince",
+            "1. ledna"
+          ],
+          "answer": "kolem 21. prosince",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-015",
+          "type": "choice",
+          "question": "Teplota se měří:",
+          "options": [
+            "pravítkem",
+            "teploměrem (ve stupních Celsia)",
+            "kompasem",
+            "váhou",
+            "hodinami"
+          ],
+          "answer": "teploměrem (ve stupních Celsia)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-016",
+          "type": "choice",
+          "question": "Vítr vzniká:",
+          "options": [
+            "z vody",
+            "prouděním vzduchu (teplý stoupá, studený klesá)",
+            "z hornin",
+            "ze slunce",
+            "z rostlin"
+          ],
+          "answer": "prouděním vzduchu (teplý stoupá, studený klesá)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-017",
+          "type": "choice",
+          "question": "Bouřka vzniká, když:",
+          "options": [
+            "fouká mírný vítr",
+            "je klid",
+            "je sucho",
+            "svítí slunce",
+            "se střetne teplý a studený vzduch"
+          ],
+          "answer": "se střetne teplý a studený vzduch",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-018",
+          "type": "choice",
+          "question": "Duha vzniká:",
+          "options": [
+            "z rostlin",
+            "z větru",
+            "z hornin",
+            "z blesků",
+            "rozkladem slunečního světla v kapkách vody"
+          ],
+          "answer": "rozkladem slunečního světla v kapkách vody",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-019",
+          "type": "choice",
+          "question": "Mlha je:",
+          "options": [
+            "druh horniny",
+            "nízko položený oblak (kapičky vody ve vzduchu)",
+            "druh rostliny",
+            "druh sněhu",
+            "druh deště"
+          ],
+          "answer": "nízko položený oblak (kapičky vody ve vzduchu)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        },
+        {
+          "id": "PR4-07-01-020",
+          "type": "choice",
+          "question": "Rosa na trávě vzniká:",
+          "options": [
+            "ochlazením vzduchu v noci (pára zkondenzuje)",
+            "z půdy",
+            "ze sněhu",
+            "z deště",
+            "z řeky"
+          ],
+          "answer": "ochlazením vzduchu v noci (pára zkondenzuje)",
+          "hint": "Roční období se střídají kvůli náklonu zemské osy."
+        }
+      ]
+    }
+  ]
+}

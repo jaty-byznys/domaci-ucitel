@@ -1,0 +1,296 @@
+{
+  "id": "PR4-03",
+  "name": "Rostliny",
+  "order": 2,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "PR4-03-01",
+      "name": "Rostliny",
+      "difficulty": 1,
+      "theory": "Části rostliny: kořen, stonek, list, květ, plod, semeno. Byliny vs dřeviny. Listnaté vs jehličnaté.",
+      "tasks": [
+        {
+          "id": "PR4-03-01-001",
+          "type": "choice",
+          "question": "Části těla rostliny:",
+          "options": [
+            "kmen, podhoubí, list",
+            "hlava, tělo, nohy",
+            "květ, výtrus, houba",
+            "klobouk, třeň, podhoubí",
+            "kořen, stonek, list, květ, plod, semeno"
+          ],
+          "answer": "kořen, stonek, list, květ, plod, semeno",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-002",
+          "type": "choice",
+          "question": "K čemu slouží kořen?",
+          "options": [
+            "přitahuje hmyz",
+            "vyrábí kyslík",
+            "tvoří semena",
+            "chrání před deštěm",
+            "přijímá vodu a živiny z půdy"
+          ],
+          "answer": "přijímá vodu a živiny z půdy",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-003",
+          "type": "choice",
+          "question": "Byliny mají:",
+          "options": [
+            "větve s kůrou",
+            "měkký zelený stonek",
+            "tvrdý dřevnatý kmen",
+            "kůru",
+            "letokruhy"
+          ],
+          "answer": "měkký zelený stonek",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-004",
+          "type": "choice",
+          "question": "Dřeviny mají:",
+          "options": [
+            "tvrdý dřevnatý kmen nebo keř",
+            "jen listy",
+            "měkký zelený stonek",
+            "jen květy",
+            "jen kořeny"
+          ],
+          "answer": "tvrdý dřevnatý kmen nebo keř",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-005",
+          "type": "choice",
+          "question": "Pšenice je:",
+          "options": [
+            "okrasná rostlina",
+            "ovocný strom",
+            "jedovatá rostlina",
+            "zelenina",
+            "polní plodina (obilnina)"
+          ],
+          "answer": "polní plodina (obilnina)",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-006",
+          "type": "choice",
+          "question": "Jabloň je:",
+          "options": [
+            "keř",
+            "polní plodina",
+            "zelenina",
+            "jehličnatý strom",
+            "ovocný strom"
+          ],
+          "answer": "ovocný strom",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-007",
+          "type": "choice",
+          "question": "Mrkev je zelenina:",
+          "options": [
+            "cibulová",
+            "listová",
+            "kořenová",
+            "stonková",
+            "plodová"
+          ],
+          "answer": "kořenová",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-008",
+          "type": "choice",
+          "question": "Rajče je zelenina:",
+          "options": [
+            "cibulová",
+            "plodová",
+            "stonková",
+            "listová",
+            "kořenová"
+          ],
+          "answer": "plodová",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-009",
+          "type": "choice",
+          "question": "Špenát je zelenina:",
+          "options": [
+            "cibulová",
+            "listová",
+            "plodová",
+            "kořenová",
+            "stonková"
+          ],
+          "answer": "listová",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-010",
+          "type": "choice",
+          "question": "Cibule je zelenina:",
+          "options": [
+            "kořenová",
+            "listová",
+            "cibulová",
+            "plodová",
+            "stonková"
+          ],
+          "answer": "cibulová",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-011",
+          "type": "choice",
+          "question": "Listnaté stromy:",
+          "options": [
+            "na podzim shazují listy",
+            "nikdy nerostou",
+            "mají jehličí celý rok",
+            "nemají kořeny",
+            "nekvětou"
+          ],
+          "answer": "na podzim shazují listy",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-012",
+          "type": "choice",
+          "question": "Jehličnaté stromy:",
+          "options": [
+            "shazují listy na podzim",
+            "nemají semena",
+            "mají jehličí (smrk, borovice, jedle)",
+            "nemají kořeny",
+            "rostou jen v tropech"
+          ],
+          "answer": "mají jehličí (smrk, borovice, jedle)",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-013",
+          "type": "choice",
+          "question": "Dub je strom:",
+          "options": [
+            "houba",
+            "listnatý",
+            "bylina",
+            "keř",
+            "jehličnatý"
+          ],
+          "answer": "listnatý",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-014",
+          "type": "choice",
+          "question": "Smrk je strom:",
+          "options": [
+            "keř",
+            "jehličnatý",
+            "listnatý",
+            "bylina",
+            "houba"
+          ],
+          "answer": "jehličnatý",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-015",
+          "type": "choice",
+          "question": "Opylení zajišťuje:",
+          "options": [
+            "přenos pylu na bliznu (hmyzem nebo větrem)",
+            "hnojení",
+            "zalévání rostlin",
+            "kácení stromů",
+            "sázení semen"
+          ],
+          "answer": "přenos pylu na bliznu (hmyzem nebo větrem)",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-016",
+          "type": "choice",
+          "question": "Plod dužnatý — příklad:",
+          "options": [
+            "slunečnice",
+            "jablko",
+            "mák",
+            "ořech",
+            "pšenice"
+          ],
+          "answer": "jablko",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-017",
+          "type": "choice",
+          "question": "Plod suchý — příklad:",
+          "options": [
+            "švestka",
+            "jablko",
+            "hruška",
+            "ořech",
+            "třešeň"
+          ],
+          "answer": "ořech",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-018",
+          "type": "choice",
+          "question": "Která rostlina je jedovatá?",
+          "options": [
+            "sedmikráska",
+            "rulík zlomocný",
+            "jabloň",
+            "mrkev",
+            "kopretina"
+          ],
+          "answer": "rulík zlomocný",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-019",
+          "type": "choice",
+          "question": "Chráněné rostliny:",
+          "options": [
+            "nesmíme je trhat (sněženka, koniklec)",
+            "neexistují v ČR",
+            "jsou vždy jedovaté",
+            "rostou jen v obchodě",
+            "smíme je trhat"
+          ],
+          "answer": "nesmíme je trhat (sněženka, koniklec)",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        },
+        {
+          "id": "PR4-03-01-020",
+          "type": "choice",
+          "question": "Kukuřice je:",
+          "options": [
+            "polní plodina",
+            "keř",
+            "jedovatá rostlina",
+            "ovocný strom",
+            "houba"
+          ],
+          "answer": "polní plodina",
+          "hint": "Rostlina: kořen, stonek, list, květ, plod, semeno."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "id": "PR4-02",
+  "name": "Houby",
+  "order": 1,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "PR4-02-01",
+      "name": "Houby",
+      "difficulty": 1,
+      "theory": "Houby: klobouk + třeň + podhoubí. Rourkaté (hřib) vs lupenité (muchomůrka). Jedlé vs jedovaté.",
+      "tasks": [
+        {
+          "id": "PR4-02-01-001",
+          "type": "choice",
+          "question": "Z čeho se skládá tělo houby?",
+          "options": [
+            "hlava, tělo, nohy",
+            "květy, plody, semena",
+            "kořen, stonek, list",
+            "kmen, větve, listy",
+            "klobouk, třeň, podhoubí"
+          ],
+          "answer": "klobouk, třeň, podhoubí",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-002",
+          "type": "choice",
+          "question": "Která houba je jedovatá?",
+          "options": [
+            "ryzec pravý",
+            "muchomůrka zelená",
+            "křemenáč",
+            "bedla vysoká",
+            "hřib smrkový"
+          ],
+          "answer": "muchomůrka zelená",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-003",
+          "type": "choice",
+          "question": "Co je podhoubí?",
+          "options": [
+            "vlákna houby ukrytá v půdě",
+            "klobouk houby",
+            "list houby",
+            "stonek houby",
+            "květ houby"
+          ],
+          "answer": "vlákna houby ukrytá v půdě",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-004",
+          "type": "choice",
+          "question": "Houby rourkaté mají pod kloboukem:",
+          "options": [
+            "lupenky",
+            "kořeny",
+            "semena",
+            "hladkou plochu",
+            "rourky"
+          ],
+          "answer": "rourky",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-005",
+          "type": "choice",
+          "question": "Houby lupenité mají pod kloboukem:",
+          "options": [
+            "hladkou plochu",
+            "rourky",
+            "semena",
+            "kořeny",
+            "lupenky"
+          ],
+          "answer": "lupenky",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-006",
+          "type": "choice",
+          "question": "Která houba je jedlá?",
+          "options": [
+            "závojenka olovová",
+            "hřib smrkový",
+            "vláknice",
+            "muchomůrka červená",
+            "muchomůrka zelená"
+          ],
+          "answer": "hřib smrkový",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-007",
+          "type": "choice",
+          "question": "Muchomůrka zelená je:",
+          "options": [
+            "léčivá houba",
+            "jedlá houba",
+            "mírně jedovatá",
+            "nejjedovatější houba v ČR",
+            "vzácná ale jedlá"
+          ],
+          "answer": "nejjedovatější houba v ČR",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-008",
+          "type": "choice",
+          "question": "Co NEDĚLÁME při sběru hub?",
+          "options": [
+            "bereme jen známé houby",
+            "nesbíráme houby které neznáme",
+            "ukazujeme znalci",
+            "vaříme před jídlem",
+            "dáváme do košíku"
+          ],
+          "answer": "nesbíráme houby které neznáme",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-009",
+          "type": "choice",
+          "question": "Hřib je houba:",
+          "options": [
+            "jedovatá",
+            "rourkatá",
+            "výtrusná bez klobouku",
+            "lupenitá",
+            "vodní"
+          ],
+          "answer": "rourkatá",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-010",
+          "type": "choice",
+          "question": "Muchomůrka červená je:",
+          "options": [
+            "léčivá",
+            "nejchutnější houba",
+            "nejedovatá",
+            "jedovatá",
+            "jedlá"
+          ],
+          "answer": "jedovatá",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-011",
+          "type": "choice",
+          "question": "Ryzec je houba:",
+          "options": [
+            "neexistuje",
+            "smrtelně jedovatá",
+            "nejedlá",
+            "jedovatá",
+            "jedlá"
+          ],
+          "answer": "jedlá",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-012",
+          "type": "choice",
+          "question": "Třeň houby je:",
+          "options": [
+            "podhoubí",
+            "nožička (stonek houby)",
+            "klobouk",
+            "kořen",
+            "list"
+          ],
+          "answer": "nožička (stonek houby)",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-013",
+          "type": "choice",
+          "question": "Kde roste podhoubí?",
+          "options": [
+            "ve vodě",
+            "na klobouku",
+            "v půdě",
+            "na listech",
+            "ve vzduchu"
+          ],
+          "answer": "v půdě",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-014",
+          "type": "choice",
+          "question": "Bedla vysoká je:",
+          "options": [
+            "jedlá houba",
+            "neexistující houba",
+            "vodní houba",
+            "jedovatá houba",
+            "houba bez klobouku"
+          ],
+          "answer": "jedlá houba",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-015",
+          "type": "choice",
+          "question": "Křemenáč je houba:",
+          "options": [
+            "jedlá lupenitá",
+            "jedlá rourkatá",
+            "jedlá bez klobouku",
+            "jedovatá rourkatá",
+            "jedovatá lupenitá"
+          ],
+          "answer": "jedlá rourkatá",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-016",
+          "type": "choice",
+          "question": "Kolik druhů hub je jedovatých v ČR — přibližně?",
+          "options": [
+            "všechny kromě hřibu",
+            "desítky druhů",
+            "tisíce",
+            "žádný",
+            "jen 1"
+          ],
+          "answer": "desítky druhů",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-017",
+          "type": "choice",
+          "question": "Houby se rozmnožují:",
+          "options": [
+            "výtrusy",
+            "listy",
+            "květy",
+            "semeny",
+            "kořeny"
+          ],
+          "answer": "výtrusy",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-018",
+          "type": "choice",
+          "question": "Kam dáváme nasbírané houby?",
+          "options": [
+            "do kapsy",
+            "do igelitové tašky",
+            "do batohu bez obalu",
+            "do košíku nebo papírového sáčku",
+            "do PET lahve"
+          ],
+          "answer": "do košíku nebo papírového sáčku",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-019",
+          "type": "choice",
+          "question": "Které části houby jíme?",
+          "options": [
+            "klobouk a třeň",
+            "kořeny",
+            "výtrusy",
+            "podhoubí",
+            "listy"
+          ],
+          "answer": "klobouk a třeň",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        },
+        {
+          "id": "PR4-02-01-020",
+          "type": "choice",
+          "question": "Co dělá podhoubí?",
+          "options": [
+            "plodí semena",
+            "kvete",
+            "dýchá kyslík",
+            "fotosyntézu",
+            "přijímá živiny z půdy"
+          ],
+          "answer": "přijímá živiny z půdy",
+          "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+        }
+      ]
+    }
+  ]
+}
