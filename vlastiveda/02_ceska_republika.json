@@ -1,0 +1,296 @@
+{
+  "id": "VL4-02",
+  "name": "Česká republika",
+  "order": 1,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "VL4-02-01",
+      "name": "Česká republika",
+      "difficulty": 1,
+      "theory": "ČR: 14 krajů, Praha, 4 sousedé (DE, PL, SK, AT). Řeky: Vltava, Labe, Morava. Pohoří: Krkonoše (Sněžka).",
+      "tasks": [
+        {
+          "id": "VL4-02-01-001",
+          "type": "choice",
+          "question": "Hlavní město ČR:",
+          "options": [
+            "Praha",
+            "Ostrava",
+            "Plzeň",
+            "Olomouc",
+            "Brno"
+          ],
+          "answer": "Praha",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-002",
+          "type": "choice",
+          "question": "Kolik krajů má ČR?",
+          "options": [
+            "8",
+            "12",
+            "16",
+            "14",
+            "10"
+          ],
+          "answer": "14",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-003",
+          "type": "choice",
+          "question": "Sousední státy ČR:",
+          "options": [
+            "Německo, Polsko, Slovensko, Rakousko",
+            "Německo, Francie, Itálie, Polsko",
+            "Německo, Dánsko, Slovensko, Rakousko",
+            "Polsko, Maďarsko, Slovinsko, Německo",
+            "Německo, Polsko, Ukrajina, Rakousko"
+          ],
+          "answer": "Německo, Polsko, Slovensko, Rakousko",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-004",
+          "type": "choice",
+          "question": "Nejvyšší hora ČR:",
+          "options": [
+            "Praděd",
+            "Ještěd",
+            "Sněžka (1 603 m)",
+            "Říp",
+            "Lysá hora"
+          ],
+          "answer": "Sněžka (1 603 m)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-005",
+          "type": "choice",
+          "question": "Sněžka leží v:",
+          "options": [
+            "Krkonoších",
+            "na Šumavě",
+            "Jeseníkách",
+            "Beskydech",
+            "v Krušných horách"
+          ],
+          "answer": "Krkonoších",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-006",
+          "type": "choice",
+          "question": "Nejdelší řeka protékající ČR:",
+          "options": [
+            "Dyje",
+            "Morava",
+            "Labe",
+            "Ohře",
+            "Vltava (430 km)"
+          ],
+          "answer": "Vltava (430 km)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-007",
+          "type": "choice",
+          "question": "Labe teče do:",
+          "options": [
+            "Černého moře",
+            "Baltského moře",
+            "Severního moře",
+            "Atlantiku",
+            "Středozemního moře"
+          ],
+          "answer": "Severního moře",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-008",
+          "type": "choice",
+          "question": "Morava teče do:",
+          "options": [
+            "Středozemního moře",
+            "Severního moře",
+            "Atlantiku",
+            "Baltského moře",
+            "Černého moře (přes Dunaj)"
+          ],
+          "answer": "Černého moře (přes Dunaj)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-009",
+          "type": "choice",
+          "question": "Odra teče do:",
+          "options": [
+            "Baltského moře",
+            "Severního moře",
+            "Středozemního moře",
+            "Atlantiku",
+            "Černého moře"
+          ],
+          "answer": "Baltského moře",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-010",
+          "type": "choice",
+          "question": "Šumava je:",
+          "options": [
+            "město",
+            "rybník",
+            "pohoří na jihozápadě ČR",
+            "pohoří na severu ČR",
+            "řeka"
+          ],
+          "answer": "pohoří na jihozápadě ČR",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-011",
+          "type": "choice",
+          "question": "Krajské město Jihomoravského kraje:",
+          "options": [
+            "Zlín",
+            "Ostrava",
+            "Brno",
+            "Jihlava",
+            "Olomouc"
+          ],
+          "answer": "Brno",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-012",
+          "type": "choice",
+          "question": "Krajské město Moravskoslezského kraje:",
+          "options": [
+            "Opava",
+            "Brno",
+            "Ostrava",
+            "Olomouc",
+            "Zlín"
+          ],
+          "answer": "Ostrava",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-013",
+          "type": "choice",
+          "question": "Krajské město Plzeňského kraje:",
+          "options": [
+            "Liberec",
+            "Karlovy Vary",
+            "České Budějovice",
+            "Plzeň",
+            "Praha"
+          ],
+          "answer": "Plzeň",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-014",
+          "type": "choice",
+          "question": "Hlavní město Slovenska:",
+          "options": [
+            "Vídeň",
+            "Praha",
+            "Varšava",
+            "Bratislava",
+            "Berlín"
+          ],
+          "answer": "Bratislava",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-015",
+          "type": "choice",
+          "question": "Hlavní město Německa:",
+          "options": [
+            "Drážďany",
+            "Mnichov",
+            "Berlín",
+            "Vídeň",
+            "Hamburk"
+          ],
+          "answer": "Berlín",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-016",
+          "type": "choice",
+          "question": "Hlavní město Polska:",
+          "options": [
+            "Varšava",
+            "Gdaňsk",
+            "Vratislav",
+            "Berlín",
+            "Krakov"
+          ],
+          "answer": "Varšava",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-017",
+          "type": "choice",
+          "question": "Hlavní město Rakouska:",
+          "options": [
+            "Salzburg",
+            "Vídeň",
+            "Innsbruck",
+            "Linec",
+            "Graz"
+          ],
+          "answer": "Vídeň",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-018",
+          "type": "choice",
+          "question": "Úmoří — Vltava teče do:",
+          "options": [
+            "Baltského moře",
+            "Severního moře (přes Labe)",
+            "Černého moře",
+            "Atlantiku",
+            "Středozemního moře"
+          ],
+          "answer": "Severního moře (přes Labe)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-019",
+          "type": "choice",
+          "question": "Beskydy jsou:",
+          "options": [
+            "rybník",
+            "město",
+            "řeka",
+            "nížina",
+            "pohoří na východě ČR (Morava)"
+          ],
+          "answer": "pohoří na východě ČR (Morava)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        },
+        {
+          "id": "VL4-02-01-020",
+          "type": "choice",
+          "question": "Krušné hory leží na hranici s:",
+          "options": [
+            "Německem (severozápad ČR)",
+            "Rakouskem",
+            "Slovenskem",
+            "Maďarskem",
+            "Polskem"
+          ],
+          "answer": "Německem (severozápad ČR)",
+          "hint": "Praha je hlavní město. ČR má 14 krajů a 4 sousedy."
+        }
+      ]
+    }
+  ]
+}

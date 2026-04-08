@@ -1,0 +1,296 @@
+{
+  "id": "VL4-04",
+  "name": "Slované",
+  "order": 3,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "VL4-04-01",
+      "name": "Slované",
+      "difficulty": 1,
+      "theory": "Slované: 6. stol. Sámova říše (7. stol.), Velká Morava (9. stol.). Cyril a Metoděj: hlaholice + křesťanství.",
+      "tasks": [
+        {
+          "id": "VL4-04-01-001",
+          "type": "choice",
+          "question": "Slované přišli na naše území v:",
+          "options": [
+            "3. století",
+            "6. století",
+            "15. století",
+            "10. století",
+            "1. století"
+          ],
+          "answer": "6. století",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-002",
+          "type": "choice",
+          "question": "Sámova říše vznikla v:",
+          "options": [
+            "15. století",
+            "3. století",
+            "5. století",
+            "10. století",
+            "7. století (první státní útvar Slovanů u nás)"
+          ],
+          "answer": "7. století (první státní útvar Slovanů u nás)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-003",
+          "type": "choice",
+          "question": "Sámo byl:",
+          "options": [
+            "římský císař",
+            "keltský náčelník",
+            "franský kupec, který se stal vůdcem Slovanů",
+            "germánský král",
+            "slovanský kněz"
+          ],
+          "answer": "franský kupec, který se stal vůdcem Slovanů",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-004",
+          "type": "choice",
+          "question": "Velká Morava vznikla v:",
+          "options": [
+            "15. století",
+            "3. století",
+            "9. století",
+            "12. století",
+            "5. století"
+          ],
+          "answer": "9. století",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-005",
+          "type": "choice",
+          "question": "Konstantin (Cyril) a Metoděj přišli z:",
+          "options": [
+            "Egypta",
+            "Říma",
+            "Byzantské říše (Řecko)",
+            "Anglie",
+            "Francie"
+          ],
+          "answer": "Byzantské říše (Řecko)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-006",
+          "type": "choice",
+          "question": "Konstantin a Metoděj přinesli:",
+          "options": [
+            "latinu a islám",
+            "arabštinu",
+            "slovanské písmo (hlaholici) a křesťanství",
+            "řečtinu a buddhismus",
+            "čínské znaky"
+          ],
+          "answer": "slovanské písmo (hlaholici) a křesťanství",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-007",
+          "type": "choice",
+          "question": "Hlaholice je:",
+          "options": [
+            "arabské písmo",
+            "egyptské hieroglyfy",
+            "latinské písmo",
+            "první slovanské písmo vytvořené Konstantinem",
+            "čínské písmo"
+          ],
+          "answer": "první slovanské písmo vytvořené Konstantinem",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-008",
+          "type": "choice",
+          "question": "Velká Morava zanikla:",
+          "options": [
+            "v 5. století",
+            "v 8. století",
+            "v 15. století",
+            "začátkem 10. století (nájezdy Maďarů)",
+            "ve 12. století"
+          ],
+          "answer": "začátkem 10. století (nájezdy Maďarů)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-009",
+          "type": "choice",
+          "question": "Hlavní město Velké Moravy bylo pravděpodobně:",
+          "options": [
+            "Brno",
+            "Olomouc",
+            "na jižní Moravě (Mikulčice nebo Staré Město)",
+            "Praha",
+            "Bratislava"
+          ],
+          "answer": "na jižní Moravě (Mikulčice nebo Staré Město)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-010",
+          "type": "choice",
+          "question": "Slované se živili hlavně:",
+          "options": [
+            "těžbou uhlí",
+            "zemědělstvím",
+            "lovem mamutů",
+            "rybolovem na moři",
+            "obchodem se zlatem"
+          ],
+          "answer": "zemědělstvím",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-011",
+          "type": "choice",
+          "question": "Křesťanství na Moravu přinesli:",
+          "options": [
+            "Římané",
+            "Frankové",
+            "Vikingové",
+            "Konstantin a Metoděj",
+            "Keltové"
+          ],
+          "answer": "Konstantin a Metoděj",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-012",
+          "type": "choice",
+          "question": "Konstantin změnil jméno na:",
+          "options": [
+            "Cyril (před smrtí vstoupil do kláštera)",
+            "Karel",
+            "Boleslav",
+            "Metoděj",
+            "Václav"
+          ],
+          "answer": "Cyril (před smrtí vstoupil do kláštera)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-013",
+          "type": "choice",
+          "question": "Metoděj byl:",
+          "options": [
+            "franský král",
+            "římský císař",
+            "bratr Konstantina (Cyrila), arcibiskup moravský",
+            "keltský druid",
+            "egyptský faraon"
+          ],
+          "answer": "bratr Konstantina (Cyrila), arcibiskup moravský",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-014",
+          "type": "choice",
+          "question": "Slované uctívali před křesťanstvím:",
+          "options": [
+            "egyptské bohy",
+            "římské bohy",
+            "jednoho boha",
+            "nikoho",
+            "pohanské bohy (Perun, Veles...)"
+          ],
+          "answer": "pohanské bohy (Perun, Veles...)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-015",
+          "type": "choice",
+          "question": "Sámova říše bojovala proti:",
+          "options": [
+            "Římanům",
+            "Číňanům",
+            "Egypťanům",
+            "Frankům (Avarům)",
+            "Řekům"
+          ],
+          "answer": "Frankům (Avarům)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-016",
+          "type": "choice",
+          "question": "Velká Morava zahrnovala:",
+          "options": [
+            "jen Slezsko",
+            "celou Evropu",
+            "jen Čechy",
+            "Moravu, Slovensko a části okolních zemí",
+            "jen Prahu"
+          ],
+          "answer": "Moravu, Slovensko a části okolních zemí",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-017",
+          "type": "choice",
+          "question": "Kdo zničil Velkou Moravu?",
+          "options": [
+            "Římané",
+            "Keltové",
+            "Frankové",
+            "Maďaři (Uhři)",
+            "Vikingové"
+          ],
+          "answer": "Maďaři (Uhři)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-018",
+          "type": "choice",
+          "question": "Panovník Velké Moravy Rastislav:",
+          "options": [
+            "napsal kroniku",
+            "bojoval u Lipan",
+            "založil Prahu",
+            "postavil Karlštejn",
+            "pozval Konstantina a Metoděje"
+          ],
+          "answer": "pozval Konstantina a Metoděje",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-019",
+          "type": "choice",
+          "question": "Svatopluk byl:",
+          "options": [
+            "maďarský vůdce",
+            "franský kupec",
+            "mocný panovník Velké Moravy (po Rastislavovi)",
+            "římský císař",
+            "český král"
+          ],
+          "answer": "mocný panovník Velké Moravy (po Rastislavovi)",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        },
+        {
+          "id": "VL4-04-01-020",
+          "type": "choice",
+          "question": "Staroslověnština je:",
+          "options": [
+            "arabština",
+            "latina",
+            "dnešní čeština",
+            "jazyk, kterým Konstantin a Metoděj šířili křesťanství",
+            "řečtina"
+          ],
+          "answer": "jazyk, kterým Konstantin a Metoděj šířili křesťanství",
+          "hint": "Slované přišli v 6. století. Sámova říše, Velká Morava, Cyril a Metoděj."
+        }
+      ]
+    }
+  ]
+}

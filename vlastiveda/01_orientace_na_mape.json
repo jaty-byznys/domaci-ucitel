@@ -1,0 +1,296 @@
+{
+  "id": "VL4-01",
+  "name": "Orientace na mapě",
+  "order": 0,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "VL4-01-01",
+      "name": "Orientace na mapě",
+      "difficulty": 1,
+      "theory": "Orientace: S(sever), J(jih), V(východ), Z(západ). Kompas, měřítko, legenda.",
+      "tasks": [
+        {
+          "id": "VL4-01-01-001",
+          "type": "choice",
+          "question": "Kolik hlavních světových stran existuje?",
+          "options": [
+            "4 (S, J, V, Z)",
+            "2",
+            "3",
+            "8",
+            "6"
+          ],
+          "answer": "4 (S, J, V, Z)",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-002",
+          "type": "choice",
+          "question": "Sever je na mapě:",
+          "options": [
+            "nahoře",
+            "dole",
+            "vpravo",
+            "uprostřed",
+            "vlevo"
+          ],
+          "answer": "nahoře",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-003",
+          "type": "choice",
+          "question": "Jih je na mapě:",
+          "options": [
+            "vpravo",
+            "nahoře",
+            "uprostřed",
+            "dole",
+            "vlevo"
+          ],
+          "answer": "dole",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-004",
+          "type": "choice",
+          "question": "Východ je na mapě:",
+          "options": [
+            "nahoře",
+            "dole",
+            "uprostřed",
+            "vpravo",
+            "vlevo"
+          ],
+          "answer": "vpravo",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-005",
+          "type": "choice",
+          "question": "Západ je na mapě:",
+          "options": [
+            "nahoře",
+            "uprostřed",
+            "dole",
+            "vlevo",
+            "vpravo"
+          ],
+          "answer": "vlevo",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-006",
+          "type": "choice",
+          "question": "Kompas (buzola) ukazuje vždy na:",
+          "options": [
+            "západ",
+            "východ",
+            "sever",
+            "jih",
+            "nahoru"
+          ],
+          "answer": "sever",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-007",
+          "type": "choice",
+          "question": "Měřítko mapy udává:",
+          "options": [
+            "barvu mapy",
+            "poměr vzdálenosti na mapě a ve skutečnosti",
+            "počet měst",
+            "název mapy",
+            "výšku hor"
+          ],
+          "answer": "poměr vzdálenosti na mapě a ve skutečnosti",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-008",
+          "type": "choice",
+          "question": "Legenda mapy je:",
+          "options": [
+            "kompas",
+            "vysvětlivky značek použitých na mapě",
+            "rámeček",
+            "měřítko",
+            "název mapy"
+          ],
+          "answer": "vysvětlivky značek použitých na mapě",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-009",
+          "type": "choice",
+          "question": "Vedlejší světové strany jsou:",
+          "options": [
+            "S, J, V, Z",
+            "vlevo, vpravo",
+            "přední, zadní",
+            "SV, SZ, JV, JZ",
+            "nahoru, dolů"
+          ],
+          "answer": "SV, SZ, JV, JZ",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-010",
+          "type": "choice",
+          "question": "Turistická mapa slouží k:",
+          "options": [
+            "stavění domů",
+            "plavání lodí",
+            "létání letadlem",
+            "řízení auta",
+            "orientaci při turistice (cesty, značky, výšky)"
+          ],
+          "answer": "orientaci při turistice (cesty, značky, výšky)",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-011",
+          "type": "choice",
+          "question": "Na silniční mapě najdeme:",
+          "options": [
+            "turistické stezky",
+            "silnice, dálnice, města",
+            "výšky hor",
+            "druhy stromů",
+            "vodní toky"
+          ],
+          "answer": "silnice, dálnice, města",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-012",
+          "type": "choice",
+          "question": "Modrá barva na mapě většinou značí:",
+          "options": [
+            "lesy",
+            "vodu (řeky, jezera, moře)",
+            "města",
+            "pole",
+            "hory"
+          ],
+          "answer": "vodu (řeky, jezera, moře)",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-013",
+          "type": "choice",
+          "question": "Zelená barva na mapě většinou značí:",
+          "options": [
+            "lesy a nížiny",
+            "pole",
+            "hory",
+            "města",
+            "vodu"
+          ],
+          "answer": "lesy a nížiny",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-014",
+          "type": "choice",
+          "question": "Hnědá barva na mapě většinou značí:",
+          "options": [
+            "lesy",
+            "města",
+            "vodu",
+            "hory a kopce",
+            "pole"
+          ],
+          "answer": "hory a kopce",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-015",
+          "type": "choice",
+          "question": "Pokud je měřítko 1:100 000, pak 1 cm na mapě =",
+          "options": [
+            "1 km ve skutečnosti",
+            "100 km",
+            "100 m",
+            "1 m",
+            "10 km"
+          ],
+          "answer": "1 km ve skutečnosti",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-016",
+          "type": "choice",
+          "question": "SV znamená:",
+          "options": [
+            "jihovýchod",
+            "jihozápad",
+            "severozápad",
+            "střed",
+            "severovýchod"
+          ],
+          "answer": "severovýchod",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-017",
+          "type": "choice",
+          "question": "JZ znamená:",
+          "options": [
+            "severovýchod",
+            "severozápad",
+            "jihovýchod",
+            "střed",
+            "jihozápad"
+          ],
+          "answer": "jihozápad",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-018",
+          "type": "choice",
+          "question": "Na jaké straně vychází slunce?",
+          "options": [
+            "uprostřed",
+            "na jihu",
+            "na západě",
+            "na severu",
+            "na východě"
+          ],
+          "answer": "na východě",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-019",
+          "type": "choice",
+          "question": "Na jaké straně slunce zapadá?",
+          "options": [
+            "na jihu",
+            "na severu",
+            "na východě",
+            "uprostřed",
+            "na západě"
+          ],
+          "answer": "na západě",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        },
+        {
+          "id": "VL4-01-01-020",
+          "type": "choice",
+          "question": "Obecně zeměpisná mapa ukazuje:",
+          "options": [
+            "jen turistické cesty",
+            "povrch, řeky, hory, města",
+            "jen hranice",
+            "jen počasí",
+            "jen silnice"
+          ],
+          "answer": "povrch, řeky, hory, města",
+          "hint": "Hlavní světové strany: S, J, V, Z. Na mapě: S nahoře, J dole."
+        }
+      ]
+    }
+  ]
+}

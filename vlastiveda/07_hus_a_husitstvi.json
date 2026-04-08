@@ -1,0 +1,296 @@
+{
+  "id": "VL4-07",
+  "name": "Jan Hus a husitství",
+  "order": 6,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "VL4-07-01",
+      "name": "Jan Hus a husitství",
+      "difficulty": 1,
+      "theory": "Jan Hus: kritika církve, upálen 1415. Husitské války: Žižka, vozové hradby. Kompaktáta = konec válek.",
+      "tasks": [
+        {
+          "id": "VL4-07-01-001",
+          "type": "choice",
+          "question": "Jan Hus byl:",
+          "options": [
+            "vojevůdce",
+            "král",
+            "obchodník",
+            "kazatel a profesor, kritizoval nedostatky církve",
+            "malíř"
+          ],
+          "answer": "kazatel a profesor, kritizoval nedostatky církve",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-002",
+          "type": "choice",
+          "question": "Jan Hus kázal v:",
+          "options": [
+            "v Kutné Hoře",
+            "na Moravě",
+            "katedrále sv. Víta",
+            "na Karlštejně",
+            "Betlémské kapli v Praze"
+          ],
+          "answer": "Betlémské kapli v Praze",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-003",
+          "type": "choice",
+          "question": "Jan Hus kritizoval:",
+          "options": [
+            "vojáky",
+            "prodávání odpustků a bohatství církve",
+            "chudé lidi",
+            "učitele",
+            "krále"
+          ],
+          "answer": "prodávání odpustků a bohatství církve",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-004",
+          "type": "choice",
+          "question": "Jan Hus byl upálen v roce:",
+          "options": [
+            "1310",
+            "1348",
+            "1500",
+            "1415",
+            "1212"
+          ],
+          "answer": "1415",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-005",
+          "type": "choice",
+          "question": "Jan Hus byl upálen v:",
+          "options": [
+            "Paříži",
+            "Praze",
+            "Říme",
+            "Kostnici (Konstanz, Německo)",
+            "Brně"
+          ],
+          "answer": "Kostnici (Konstanz, Německo)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-006",
+          "type": "choice",
+          "question": "Husitské války začaly:",
+          "options": [
+            "1500",
+            "1310",
+            "1415",
+            "1419 (defenestrace — vyhazování z oken)",
+            "1348"
+          ],
+          "answer": "1419 (defenestrace — vyhazování z oken)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-007",
+          "type": "choice",
+          "question": "Jan Žižka byl:",
+          "options": [
+            "husitský vojevůdce",
+            "římský císař",
+            "český král",
+            "malíř",
+            "kazatel"
+          ],
+          "answer": "husitský vojevůdce",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-008",
+          "type": "choice",
+          "question": "Jan Žižka bojoval:",
+          "options": [
+            "za krále",
+            "za husitské myšlenky i když oslepl",
+            "za papeže",
+            "proti husitům",
+            "za Turky"
+          ],
+          "answer": "za husitské myšlenky i když oslepl",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-009",
+          "type": "choice",
+          "question": "Husité bojovali na:",
+          "options": [
+            "lodích",
+            "koních",
+            "slonech",
+            "letadlech",
+            "vozových hradbách"
+          ],
+          "answer": "vozových hradbách",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-010",
+          "type": "choice",
+          "question": "Basilejská kompaktáta:",
+          "options": [
+            "vznik Velké Moravy",
+            "korunovace krále",
+            "dohoda mezi husity a církví (konec válek)",
+            "založení univerzity",
+            "stavba mostu"
+          ],
+          "answer": "dohoda mezi husity a církví (konec válek)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-011",
+          "type": "choice",
+          "question": "Odpustky jsou:",
+          "options": [
+            "královský dekret",
+            "druh daně",
+            "vojenský rozkaz",
+            "druh jídla",
+            "církevní listiny, které měly odpouštět hříchy za peníze"
+          ],
+          "answer": "církevní listiny, které měly odpouštět hříchy za peníze",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-012",
+          "type": "choice",
+          "question": "Betlémská kaple je v:",
+          "options": [
+            "Kutné Hoře",
+            "Brně",
+            "Plzni",
+            "Olomouci",
+            "Praze"
+          ],
+          "answer": "Praze",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-013",
+          "type": "choice",
+          "question": "Husité chtěli:",
+          "options": [
+            "zakázat češtinu",
+            "přijímání z kalicha i pro laiky (pod obojí)",
+            "zrušit armádu",
+            "zrušit školy",
+            "uzavřít kostely"
+          ],
+          "answer": "přijímání z kalicha i pro laiky (pod obojí)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-014",
+          "type": "choice",
+          "question": "Kalich je symbolem:",
+          "options": [
+            "husitství",
+            "Římanů",
+            "Lucemburků",
+            "Keltů",
+            "Přemyslovců"
+          ],
+          "answer": "husitství",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-015",
+          "type": "choice",
+          "question": "Jan Hus řekl (podle tradice):",
+          "options": [
+            "'Já jsem král'",
+            "'Praha matka měst'",
+            "'Čechy jsou nejlepší'",
+            "'Pravda vítězí'",
+            "'Bůh je velký'"
+          ],
+          "answer": "'Pravda vítězí'",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-016",
+          "type": "choice",
+          "question": "Defenestrace znamená:",
+          "options": [
+            "korunovaci",
+            "stěhování",
+            "bitvu",
+            "modlitbu",
+            "vyhození z okna"
+          ],
+          "answer": "vyhození z okna",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-017",
+          "type": "choice",
+          "question": "Pražská defenestrace 1419 vedla k:",
+          "options": [
+            "konci středověku",
+            "stavbě Karlštejna",
+            "příchodu Slovanů",
+            "založení univerzity",
+            "začátku husitských válek"
+          ],
+          "answer": "začátku husitských válek",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-018",
+          "type": "choice",
+          "question": "Husitské války trvaly:",
+          "options": [
+            "100 let",
+            "50 let",
+            "asi 15 let (1419–1434)",
+            "1 rok",
+            "5 let"
+          ],
+          "answer": "asi 15 let (1419–1434)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-019",
+          "type": "choice",
+          "question": "Bitva u Lipan (1434):",
+          "options": [
+            "bitva s Turky",
+            "konec husitských válek (husité proti husitům)",
+            "začátek válek",
+            "bitva s Římany",
+            "bitva s Kelty"
+          ],
+          "answer": "konec husitských válek (husité proti husitům)",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        },
+        {
+          "id": "VL4-07-01-020",
+          "type": "choice",
+          "question": "Jan Hus psal:",
+          "options": [
+            "jen německy",
+            "jen arabsky",
+            "jen latinsky",
+            "česky i latinsky, zasloužil se o český pravopis",
+            "jen řecky"
+          ],
+          "answer": "česky i latinsky, zasloužil se o český pravopis",
+          "hint": "Jan Hus: kazatel, upálen 1415 v Kostnici. Husitské války: Jan Žižka."
+        }
+      ]
+    }
+  ]
+}

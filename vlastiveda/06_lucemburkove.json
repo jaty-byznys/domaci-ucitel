@@ -1,0 +1,296 @@
+{
+  "id": "VL4-06",
+  "name": "Lucemburkové",
+  "order": 5,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "VL4-06-01",
+      "name": "Lucemburkové",
+      "difficulty": 1,
+      "theory": "Lucemburkové: Jan Lucemburský, Karel IV. (otec vlasti, 1348 univerzita), Václav IV.",
+      "tasks": [
+        {
+          "id": "VL4-06-01-001",
+          "type": "choice",
+          "question": "Jan Lucemburský se stal českým králem v roce:",
+          "options": [
+            "1415",
+            "1212",
+            "1310",
+            "1306",
+            "1348"
+          ],
+          "answer": "1310",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-002",
+          "type": "choice",
+          "question": "Karel IV. je nazýván:",
+          "options": [
+            "moudrý král",
+            "král železný a zlatý",
+            "poslední rytíř",
+            "první president",
+            "otec vlasti"
+          ],
+          "answer": "otec vlasti",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-003",
+          "type": "choice",
+          "question": "Karel IV. založil Univerzitu Karlovu v roce:",
+          "options": [
+            "1415",
+            "1310",
+            "1348",
+            "1212",
+            "1400"
+          ],
+          "answer": "1348",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-004",
+          "type": "choice",
+          "question": "Karlův most v Praze nechal postavit:",
+          "options": [
+            "Jan Hus",
+            "Karel IV.",
+            "Václav IV.",
+            "Přemysl Otakar II.",
+            "Jan Lucemburský"
+          ],
+          "answer": "Karel IV.",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-005",
+          "type": "choice",
+          "question": "Nové Město pražské založil:",
+          "options": [
+            "Václav IV.",
+            "Karel IV.",
+            "Jan Lucemburský",
+            "Přemysl Otakar I.",
+            "svatý Václav"
+          ],
+          "answer": "Karel IV.",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-006",
+          "type": "choice",
+          "question": "Hrad Karlštejn sloužil k:",
+          "options": [
+            "výrobě zbraní",
+            "bydlení chudých",
+            "těžbě zlata",
+            "uložení korunovačních klenotů",
+            "pěstování obilí"
+          ],
+          "answer": "uložení korunovačních klenotů",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-007",
+          "type": "choice",
+          "question": "Karel IV. byl zároveň:",
+          "options": [
+            "carem",
+            "sultánem",
+            "papežem",
+            "římský císař",
+            "faraonem"
+          ],
+          "answer": "římský císař",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-008",
+          "type": "choice",
+          "question": "Václav IV. byl:",
+          "options": [
+            "bratr Karla IV.",
+            "vnuk Karla IV.",
+            "dědeček Karla IV.",
+            "otec Karla IV.",
+            "syn Karla IV."
+          ],
+          "answer": "syn Karla IV.",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-009",
+          "type": "choice",
+          "question": "Jan Lucemburský padl v bitvě u:",
+          "options": [
+            "Slavkova",
+            "Lipan",
+            "Kresčaku (Crécy) 1346 — byl slepý",
+            "Moravského pole",
+            "Bílé Hory"
+          ],
+          "answer": "Kresčaku (Crécy) 1346 — byl slepý",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-010",
+          "type": "choice",
+          "question": "Jan Lucemburský přišel o:",
+          "options": [
+            "zrak (oslepl) — přesto bojoval",
+            "ruku",
+            "hrad",
+            "korunu",
+            "nohu"
+          ],
+          "answer": "zrak (oslepl) — přesto bojoval",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-011",
+          "type": "choice",
+          "question": "Univerzita Karlova v Praze je:",
+          "options": [
+            "německá univerzita",
+            "nejstarší na světě",
+            "nejstarší univerzita ve střední Evropě",
+            "založena ve 20. století",
+            "nejmladší v ČR"
+          ],
+          "answer": "nejstarší univerzita ve střední Evropě",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-012",
+          "type": "choice",
+          "question": "Karel IV. vládl v letech:",
+          "options": [
+            "1346–1378",
+            "1310–1346",
+            "1415–1420",
+            "1212–1250",
+            "1378–1419"
+          ],
+          "answer": "1346–1378",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-013",
+          "type": "choice",
+          "question": "Česká koruna za Karla IV. zahrnovala:",
+          "options": [
+            "Čechy, Moravu, Slezsko, Lužici",
+            "jen Moravu",
+            "jen Prahu",
+            "jen Čechy",
+            "celou Evropu"
+          ],
+          "answer": "Čechy, Moravu, Slezsko, Lužici",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-014",
+          "type": "choice",
+          "question": "Karel IV. mluvil:",
+          "options": [
+            "jen latinsky",
+            "5 jazyky (česky, latinsky, německy, francouzsky, italsky)",
+            "2 jazyky",
+            "jen německy",
+            "jen česky"
+          ],
+          "answer": "5 jazyky (česky, latinsky, německy, francouzsky, italsky)",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-015",
+          "type": "choice",
+          "question": "Zlatá bula Karla IV. (1356):",
+          "options": [
+            "založila univerzitu",
+            "stanovila pravidla volby římského císaře",
+            "zrušila kláštery",
+            "postavila most",
+            "zahájila války"
+          ],
+          "answer": "stanovila pravidla volby římského císaře",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-016",
+          "type": "choice",
+          "question": "Karel IV. nechal vybudovat:",
+          "options": [
+            "katedrálu sv. Víta na Pražském hradě",
+            "Koloseum",
+            "Kreml",
+            "Big Ben",
+            "Eiffelovu věž"
+          ],
+          "answer": "katedrálu sv. Víta na Pražském hradě",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-017",
+          "type": "choice",
+          "question": "Václav IV. měl problémy s:",
+          "options": [
+            "Turky",
+            "šlechtou a církví (slabý panovník)",
+            "piráty",
+            "dinosaury",
+            "Vikingy"
+          ],
+          "answer": "šlechtou a církví (slabý panovník)",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-018",
+          "type": "choice",
+          "question": "Po Václavu IV. nastoupil:",
+          "options": [
+            "Přemysl III.",
+            "Jan II.",
+            "Zikmund Lucemburský (jeho bratr)",
+            "Karel V.",
+            "Rudolf I."
+          ],
+          "answer": "Zikmund Lucemburský (jeho bratr)",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-019",
+          "type": "choice",
+          "question": "Karel IV. se narodil v:",
+          "options": [
+            "Londýně",
+            "Paříži",
+            "Římě",
+            "Berlíně",
+            "Praze (1316)"
+          ],
+          "answer": "Praze (1316)",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        },
+        {
+          "id": "VL4-06-01-020",
+          "type": "choice",
+          "question": "Karla IV. vychovali v:",
+          "options": [
+            "Itálii",
+            "Rusku",
+            "Španělsku",
+            "Anglii",
+            "Francii (na dvoře francouzského krále)"
+          ],
+          "answer": "Francii (na dvoře francouzského krále)",
+          "hint": "Karel IV. = otec vlasti. Univerzita 1348. Karlův most. Karlštejn."
+        }
+      ]
+    }
+  ]
+}
