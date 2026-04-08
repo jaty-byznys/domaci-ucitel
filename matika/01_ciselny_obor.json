@@ -1295,6 +1295,154 @@
           "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
         }
       ]
+    },
+    {
+      "id": "MA4-01-05",
+      "name": "Další úlohy",
+      "difficulty": 2,
+      "theory": "",
+      "tasks": [
+        {
+          "id": "MA4-01-05-001",
+          "type": "choice",
+          "question": "Zapiš číslo: čtyři sta tisíc",
+          "options": [
+            "40 000",
+            "4 000 000",
+            "4 000",
+            "440 000",
+            "400 000"
+          ],
+          "answer": "400 000",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-002",
+          "type": "choice",
+          "question": "Jaká číslice je na místě stovek v čísle 927 364?",
+          "options": [
+            "7",
+            "2",
+            "3",
+            "9",
+            "6"
+          ],
+          "answer": "3",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-003",
+          "type": "choice",
+          "question": "Zaokrouhli 567 890 na desetitisíce:",
+          "options": [
+            "580 000",
+            "500 000",
+            "567 000",
+            "570 000",
+            "560 000"
+          ],
+          "answer": "570 000",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-004",
+          "type": "choice",
+          "question": "Přečti 205 030:",
+          "options": [
+            "dvě stě pět tisíc třicet",
+            "dvacet pět tisíc třicet",
+            "dvě stě padesát tisíc tři sta",
+            "dvě stě pět set třicet",
+            "dvacet pět tisíc tři sta"
+          ],
+          "answer": "dvě stě pět tisíc třicet",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-005",
+          "type": "choice",
+          "question": "Seřaď: 345 000, 354 000, 340 000, 350 000",
+          "options": [
+            "340 000, 345 000, 350 000, 354 000",
+            "350 000, 340 000, 354 000, 345 000",
+            "345 000, 340 000, 354 000, 350 000",
+            "354 000, 350 000, 345 000, 340 000",
+            "340 000, 350 000, 345 000, 354 000"
+          ],
+          "answer": "340 000, 345 000, 350 000, 354 000",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-006",
+          "type": "choice",
+          "question": "Zaokrouhli 849 500 na statisíce:",
+          "options": [
+            "900 000",
+            "849 000",
+            "850 000",
+            "800 000",
+            "840 000"
+          ],
+          "answer": "800 000",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-007",
+          "type": "choice",
+          "question": "Doplň znak: 503 000 ___ 530 000",
+          "options": [
+            "≤",
+            "<",
+            "≥",
+            "=",
+            ">"
+          ],
+          "answer": "<",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-008",
+          "type": "choice",
+          "question": "Rozlož: 708 050",
+          "options": [
+            "70 000 + 8 000 + 50",
+            "700 000 + 800 + 50",
+            "700 000 + 80 + 50",
+            "708 000 + 50",
+            "700 000 + 8 000 + 50"
+          ],
+          "answer": "700 000 + 8 000 + 50",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-009",
+          "type": "choice",
+          "question": "Kolik desetitisíců v čísle 926 471?",
+          "options": [
+            "7",
+            "4",
+            "2",
+            "6",
+            "9"
+          ],
+          "answer": "2",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-05-010",
+          "type": "choice",
+          "question": "Zaokrouhli 995 000 na statisíce:",
+          "options": [
+            "995 000",
+            "900 000",
+            "1 000 000",
+            "999 000",
+            "990 000"
+          ],
+          "answer": "1 000 000",
+          "hint": "Řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        }
+      ]
     }
   ]
 }

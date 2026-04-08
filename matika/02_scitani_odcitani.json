@@ -579,6 +579,854 @@
           "hint": "Piš pod sebe, zarovnej řády, počítej zprava."
         }
       ]
+    },
+    {
+      "id": "MA4-02-03",
+      "name": "Další úlohy",
+      "difficulty": 2,
+      "theory": "",
+      "tasks": [
+        {
+          "id": "MA4-02-03-001",
+          "type": "choice",
+          "question": "567 + 433 =",
+          "options": [
+            "1 100",
+            "1 000",
+            "1 010",
+            "990",
+            "900"
+          ],
+          "answer": "1 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-002",
+          "type": "choice",
+          "question": "2 345 + 3 655 =",
+          "options": [
+            "7 000",
+            "6 000",
+            "5 900",
+            "6 100",
+            "5 000"
+          ],
+          "answer": "6 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-003",
+          "type": "choice",
+          "question": "15 678 + 4 322 =",
+          "options": [
+            "21 000",
+            "19 000",
+            "19 900",
+            "20 000",
+            "20 100"
+          ],
+          "answer": "20 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-004",
+          "type": "choice",
+          "question": "78 456 + 21 544 =",
+          "options": [
+            "99 000",
+            "99 900",
+            "100 100",
+            "100 000",
+            "101 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-005",
+          "type": "choice",
+          "question": "345 678 + 654 322 =",
+          "options": [
+            "900 000",
+            "1 000 000",
+            "999 999",
+            "999 000",
+            "1 000 001"
+          ],
+          "answer": "1 000 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-006",
+          "type": "choice",
+          "question": "1 + 999 999 =",
+          "options": [
+            "1 000 001",
+            "999 000",
+            "1 000 000",
+            "10 000",
+            "999 998"
+          ],
+          "answer": "1 000 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-007",
+          "type": "choice",
+          "question": "50 000 + 50 000 =",
+          "options": [
+            "150 000",
+            "10 000",
+            "100 000",
+            "50 000",
+            "1 000 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-008",
+          "type": "choice",
+          "question": "123 + 456 + 789 =",
+          "options": [
+            "1 378",
+            "1 368",
+            "1 268",
+            "1 468",
+            "1 358"
+          ],
+          "answer": "1 368",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-009",
+          "type": "choice",
+          "question": "10 000 + 20 000 + 30 000 =",
+          "options": [
+            "70 000",
+            "40 000",
+            "80 000",
+            "50 000",
+            "60 000"
+          ],
+          "answer": "60 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-010",
+          "type": "choice",
+          "question": "999 + 1 =",
+          "options": [
+            "900",
+            "1 001",
+            "1 000",
+            "100",
+            "998"
+          ],
+          "answer": "1 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-011",
+          "type": "choice",
+          "question": "7 890 - 3 456 =",
+          "options": [
+            "4 424",
+            "4 534",
+            "4 444",
+            "4 334",
+            "4 434"
+          ],
+          "answer": "4 434",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-012",
+          "type": "choice",
+          "question": "45 000 - 23 000 =",
+          "options": [
+            "32 000",
+            "20 000",
+            "23 000",
+            "22 000",
+            "21 000"
+          ],
+          "answer": "22 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-013",
+          "type": "choice",
+          "question": "100 000 - 55 555 =",
+          "options": [
+            "44 445",
+            "44 455",
+            "45 445",
+            "44 435",
+            "44 545"
+          ],
+          "answer": "44 445",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-014",
+          "type": "choice",
+          "question": "678 000 - 234 000 =",
+          "options": [
+            "444 000",
+            "443 000",
+            "454 000",
+            "445 000",
+            "434 000"
+          ],
+          "answer": "444 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-015",
+          "type": "choice",
+          "question": "1 000 000 - 1 =",
+          "options": [
+            "999 998",
+            "1 000 001",
+            "999 999",
+            "9 999",
+            "999 000"
+          ],
+          "answer": "999 999",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-016",
+          "type": "choice",
+          "question": "500 - 275 =",
+          "options": [
+            "125",
+            "225",
+            "215",
+            "325",
+            "235"
+          ],
+          "answer": "225",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-017",
+          "type": "choice",
+          "question": "3 000 - 1 750 =",
+          "options": [
+            "1 250",
+            "1 150",
+            "1 350",
+            "1 260",
+            "1 240"
+          ],
+          "answer": "1 250",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-018",
+          "type": "choice",
+          "question": "25 000 - 17 890 =",
+          "options": [
+            "7 100",
+            "7 120",
+            "7 210",
+            "7 110",
+            "7 010"
+          ],
+          "answer": "7 110",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-019",
+          "type": "choice",
+          "question": "400 000 - 199 999 =",
+          "options": [
+            "200 101",
+            "199 001",
+            "201 001",
+            "200 001",
+            "200 000"
+          ],
+          "answer": "200 001",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-020",
+          "type": "choice",
+          "question": "750 000 - 250 000 =",
+          "options": [
+            "600 000",
+            "550 000",
+            "450 000",
+            "400 000",
+            "500 000"
+          ],
+          "answer": "500 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-021",
+          "type": "choice",
+          "question": "8 765 + 1 235 =",
+          "options": [
+            "10 000",
+            "9 900",
+            "9 000",
+            "11 000",
+            "10 100"
+          ],
+          "answer": "10 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-022",
+          "type": "choice",
+          "question": "67 890 + 32 110 =",
+          "options": [
+            "101 000",
+            "99 900",
+            "99 000",
+            "100 100",
+            "100 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-023",
+          "type": "choice",
+          "question": "234 567 + 765 433 =",
+          "options": [
+            "999 000",
+            "1 000 001",
+            "999 999",
+            "1 000 000",
+            "900 000"
+          ],
+          "answer": "1 000 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-024",
+          "type": "choice",
+          "question": "9 999 + 9 999 =",
+          "options": [
+            "19 999",
+            "19 998",
+            "20 000",
+            "19 997",
+            "19 998"
+          ],
+          "answer": "19 998",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-025",
+          "type": "choice",
+          "question": "45 678 - 45 678 =",
+          "options": [
+            "0",
+            "45 677",
+            "45 678",
+            "1",
+            "91 356"
+          ],
+          "answer": "0",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-026",
+          "type": "choice",
+          "question": "100 - 37 =",
+          "options": [
+            "67",
+            "53",
+            "73",
+            "63",
+            "57"
+          ],
+          "answer": "63",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-027",
+          "type": "choice",
+          "question": "5 000 - 2 468 =",
+          "options": [
+            "2 632",
+            "2 522",
+            "2 542",
+            "2 532",
+            "2 432"
+          ],
+          "answer": "2 532",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-028",
+          "type": "choice",
+          "question": "80 000 - 45 321 =",
+          "options": [
+            "34 669",
+            "34 779",
+            "34 679",
+            "34 689",
+            "34 579"
+          ],
+          "answer": "34 679",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-029",
+          "type": "choice",
+          "question": "300 000 - 123 456 =",
+          "options": [
+            "176 534",
+            "176 644",
+            "176 554",
+            "176 444",
+            "176 544"
+          ],
+          "answer": "176 544",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-030",
+          "type": "choice",
+          "question": "999 999 - 888 888 =",
+          "options": [
+            "111 101",
+            "111 011",
+            "111 121",
+            "111 211",
+            "111 111"
+          ],
+          "answer": "111 111",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-031",
+          "type": "choice",
+          "question": "456 + 789 =",
+          "options": [
+            "1 255",
+            "1 345",
+            "1 145",
+            "1 235",
+            "1 245"
+          ],
+          "answer": "1 245",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-032",
+          "type": "choice",
+          "question": "3 456 + 6 544 =",
+          "options": [
+            "9 000",
+            "10 000",
+            "10 100",
+            "9 900",
+            "11 000"
+          ],
+          "answer": "10 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-033",
+          "type": "choice",
+          "question": "12 345 + 87 655 =",
+          "options": [
+            "99 900",
+            "100 000",
+            "99 000",
+            "101 000",
+            "100 100"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-034",
+          "type": "choice",
+          "question": "600 + 400 =",
+          "options": [
+            "1 100",
+            "700",
+            "1 000",
+            "500",
+            "900"
+          ],
+          "answer": "1 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-035",
+          "type": "choice",
+          "question": "5 500 + 4 500 =",
+          "options": [
+            "9 000",
+            "10 000",
+            "10 500",
+            "11 000",
+            "9 500"
+          ],
+          "answer": "10 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-036",
+          "type": "choice",
+          "question": "1 000 - 1 =",
+          "options": [
+            "1 001",
+            "900",
+            "999",
+            "99",
+            "998"
+          ],
+          "answer": "999",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-037",
+          "type": "choice",
+          "question": "10 000 - 3 333 =",
+          "options": [
+            "6 657",
+            "6 677",
+            "6 567",
+            "6 667",
+            "6 767"
+          ],
+          "answer": "6 667",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-038",
+          "type": "choice",
+          "question": "200 000 - 100 001 =",
+          "options": [
+            "99 000",
+            "99 998",
+            "100 001",
+            "99 899",
+            "99 999"
+          ],
+          "answer": "99 999",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-039",
+          "type": "choice",
+          "question": "55 555 + 44 445 =",
+          "options": [
+            "100 100",
+            "101 000",
+            "100 000",
+            "99 900",
+            "99 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-040",
+          "type": "choice",
+          "question": "876 543 - 123 456 =",
+          "options": [
+            "753 097",
+            "753 087",
+            "753 077",
+            "753 187",
+            "752 987"
+          ],
+          "answer": "753 087",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-041",
+          "type": "choice",
+          "question": "456 789 + 543 211 =",
+          "options": [
+            "900 000",
+            "1 000 001",
+            "999 000",
+            "999 999",
+            "1 000 000"
+          ],
+          "answer": "1 000 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-042",
+          "type": "choice",
+          "question": "7 654 - 4 321 =",
+          "options": [
+            "3 323",
+            "3 433",
+            "3 343",
+            "3 233",
+            "3 333"
+          ],
+          "answer": "3 333",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-043",
+          "type": "choice",
+          "question": "90 000 - 45 000 =",
+          "options": [
+            "44 000",
+            "45 000",
+            "35 000",
+            "46 000",
+            "55 000"
+          ],
+          "answer": "45 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-044",
+          "type": "choice",
+          "question": "250 + 750 =",
+          "options": [
+            "1 500",
+            "500",
+            "1 100",
+            "1 000",
+            "900"
+          ],
+          "answer": "1 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-045",
+          "type": "choice",
+          "question": "33 333 + 66 667 =",
+          "options": [
+            "99 900",
+            "99 000",
+            "100 000",
+            "99 999",
+            "100 001"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-046",
+          "type": "choice",
+          "question": "800 000 - 400 000 =",
+          "options": [
+            "300 000",
+            "500 000",
+            "400 000",
+            "450 000",
+            "350 000"
+          ],
+          "answer": "400 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-047",
+          "type": "choice",
+          "question": "15 000 + 25 000 + 60 000 =",
+          "options": [
+            "80 000",
+            "120 000",
+            "100 000",
+            "110 000",
+            "90 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-048",
+          "type": "choice",
+          "question": "999 - 500 =",
+          "options": [
+            "509",
+            "499",
+            "498",
+            "489",
+            "500"
+          ],
+          "answer": "499",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-049",
+          "type": "choice",
+          "question": "12 000 - 8 765 =",
+          "options": [
+            "3 225",
+            "3 245",
+            "3 235",
+            "3 135",
+            "3 335"
+          ],
+          "answer": "3 235",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-050",
+          "type": "choice",
+          "question": "444 444 + 555 556 =",
+          "options": [
+            "900 000",
+            "999 999",
+            "999 000",
+            "1 000 001",
+            "1 000 000"
+          ],
+          "answer": "1 000 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-051",
+          "type": "choice",
+          "question": "65 432 - 12 345 =",
+          "options": [
+            "52 987",
+            "53 097",
+            "53 077",
+            "53 087",
+            "53 187"
+          ],
+          "answer": "53 087",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-052",
+          "type": "choice",
+          "question": "100 000 - 50 001 =",
+          "options": [
+            "49 998",
+            "50 001",
+            "49 999",
+            "50 999",
+            "49 000"
+          ],
+          "answer": "49 999",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-053",
+          "type": "choice",
+          "question": "7 777 + 2 223 =",
+          "options": [
+            "9 000",
+            "10 100",
+            "11 000",
+            "10 000",
+            "9 900"
+          ],
+          "answer": "10 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-054",
+          "type": "choice",
+          "question": "350 000 + 150 000 =",
+          "options": [
+            "400 000",
+            "300 000",
+            "550 000",
+            "500 000",
+            "600 000"
+          ],
+          "answer": "500 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-055",
+          "type": "choice",
+          "question": "60 000 - 35 678 =",
+          "options": [
+            "24 422",
+            "24 312",
+            "24 322",
+            "24 332",
+            "24 222"
+          ],
+          "answer": "24 322",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-056",
+          "type": "choice",
+          "question": "11 111 + 11 111 =",
+          "options": [
+            "22 122",
+            "22 222",
+            "22 322",
+            "22 212",
+            "22 232"
+          ],
+          "answer": "22 222",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-057",
+          "type": "choice",
+          "question": "500 000 - 123 456 =",
+          "options": [
+            "376 554",
+            "376 444",
+            "376 544",
+            "376 644",
+            "376 534"
+          ],
+          "answer": "376 544",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-058",
+          "type": "choice",
+          "question": "75 000 + 25 000 =",
+          "options": [
+            "100 000",
+            "99 000",
+            "101 000",
+            "90 000",
+            "110 000"
+          ],
+          "answer": "100 000",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-059",
+          "type": "choice",
+          "question": "888 888 - 444 444 =",
+          "options": [
+            "444 454",
+            "444 544",
+            "444 434",
+            "444 444",
+            "444 344"
+          ],
+          "answer": "444 444",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        },
+        {
+          "id": "MA4-02-03-060",
+          "type": "choice",
+          "question": "999 999 - 1 =",
+          "options": [
+            "999 997",
+            "999 000",
+            "1 000 000",
+            "999 998",
+            "999 899"
+          ],
+          "answer": "999 998",
+          "hint": "Sčítej a odčítej po řádech nebo pod sebou."
+        }
+      ]
     }
   ]
 }
