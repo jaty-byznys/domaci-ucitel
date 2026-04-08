@@ -1,0 +1,959 @@
+{
+  "mise": 1,
+  "den": 1,
+  "nazev": "První den v laboratoři",
+  "mesic": "září",
+  "obtiznost": 1,
+  "obrazky": {
+    "uvod": "img/m01/d01/volta_laborator.png",
+    "akce_ok1": "img/m01/d01/skripek_vyskoci.png",
+    "akce_ok2": "img/m01/d01/repak_kbelik.png",
+    "predmety": "img/predmety/den01_sber.png"
+  },
+  "postavy": {
+    "volta": {
+      "avatar": "img/postavy/volta.png",
+      "emoji": "🧪",
+      "barva": "#3B82F6"
+    },
+    "agent": {
+      "avatar": "img/postavy/agent.png",
+      "emoji": "🕵️",
+      "barva": "#22C55E"
+    },
+    "skripek": {
+      "avatar": "img/postavy/skripek.png",
+      "emoji": "😰",
+      "barva": "#EF4444"
+    },
+    "repak": {
+      "avatar": "img/postavy/repak.png",
+      "emoji": "🍖",
+      "barva": "#EF4444"
+    },
+    "keksik": {
+      "avatar": "img/postavy/keksik.png",
+      "emoji": "🦜",
+      "barva": "#EF4444"
+    },
+    "krivak": {
+      "avatar": "img/postavy/krivak.png",
+      "emoji": "☠️",
+      "barva": "#EF4444"
+    },
+    "piratka": {
+      "avatar": "img/postavy/piratka.png",
+      "emoji": "⚓",
+      "barva": "#EF4444"
+    }
+  },
+  "uvod": [
+    {
+      "postava": "popis",
+      "text": "Černá obrazovka. Zvuk kroků na štěrku. Pomalu se rozsvítí — pohled na budovu zvenku. Vyvrácené dveře, prasklá okna, z jednoho okna se kouří."
+    },
+    {
+      "postava": "popis",
+      "text": "Uvnitř chaos. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce je lepenkou přilepená předpona VY-. Na tabuli je napůl smazaný nákres stromu."
+    },
+    {
+      "postava": "volta",
+      "text": "Agente! Konečně! Víš co je horší než když ti piráti ukradnou laboratoř?"
+    },
+    {
+      "postava": "agent",
+      "text": "Co?"
+    },
+    {
+      "postava": "volta",
+      "text": "Když ti rozstříhají poznámky! Podívej se na to — mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku."
+    },
+    {
+      "postava": "volta",
+      "text": "Byla to moje nejlepší práce! Roky výzkumu!"
+    },
+    {
+      "postava": "volta",
+      "text": "...Dobře, psal jsem to včera večer. Ale to je detail."
+    },
+    {
+      "postava": "volta",
+      "text": "Začneme od základu. Každé slovo má srdce — KOŘEN. Bez něj je to jen hromádka písmen, co se tváří důležitě. Jako kapitán Krivák — samá pozlátka, žádný obsah."
+    }
+  ],
+  "okruhy": [
+    {
+      "okruh": 1,
+      "predmet": "cestina",
+      "tema": "Stavba slova",
+      "intro": [
+        {
+          "postava": "volta",
+          "text": "Hele — tenhle se ještě drží pohromadě. Podívej se na ta slova a najdi jejich srdce — kořen."
+        }
+      ],
+      "otazky": [
+        {
+          "id": "CJ4-01-01-01",
+          "question": "Jaký je kořen slova 'domek'?",
+          "options": [
+            "dome",
+            "dom",
+            "domek",
+            "domeč",
+            "do"
+          ],
+          "answer": "dom",
+          "hint": "Kořen je společná část příbuzných slov — domek, domov, domácí...",
+          "vi": "Hele — tenhle se ještě drží pohromadě. Jaký je kořen slova DOMEK?",
+          "vs": "DOM! Domek, domov, domácí — celá rodina. Jako můj domov. Teda... MŮJ domov teď vypadá TAKHLE.",
+          "vn": "Skoro! Kořen je ta NEJKRATŠÍ část, co pořád nese význam. Dom-ek — přípona je -ek. Co zbyde?"
+        },
+        {
+          "id": "CJ4-01-01-02",
+          "question": "Které slovo je příbuzné ke slovu 'les'?",
+          "options": [
+            "lest",
+            "lesní",
+            "lesk",
+            "lesen",
+            "léto"
+          ],
+          "answer": "lesní",
+          "hint": "Příbuzná slova mají stejný kořen a souvisí významem.",
+          "vi": "Les. Krásné slovo. Tři písmena, celý svět. Které slovo je mu příbuzné?",
+          "vs": "LESNÍ! Les, les-ní, les-ník, pra-les — celá rodina. A pozor — LEST tam nepatří! To je ten cizí chlap na rodinné oslavě, co jí zdarma a nikdo ho nezná.",
+          "vn": "Příbuzná slova mají stejný KOŘEN a souvisí VÝZNAMEM. Les a lesk? Vypadají podobně, ale co má lesk společného se stromy?"
+        },
+        {
+          "id": "CJ4-01-01-03",
+          "question": "Jaký je kořen slova 'vodník'?",
+          "options": [
+            "vodní",
+            "vod",
+            "vodník",
+            "vo",
+            "voda"
+          ],
+          "answer": "vod",
+          "hint": "Zkus najít nejkratší společnou část slov: voda, vodní, vodník.",
+          "vi": "Podívej co jsem našel v louži! VODNÍK. Kořen?",
+          "vs": "VOD! Voda, vod-ní, vod-ník, vod-stvo. Kořen VOD drží celou mokrou rodinu pohromadě.",
+          "vn": "Pozor — VODA už má koncovku -a. Kořen je kratší. Vod-ník — přípona -ník. Co zbyde?"
+        },
+        {
+          "id": "CJ4-01-01-04",
+          "question": "Ve slově 'předměstí' je předpona:",
+          "options": [
+            "město",
+            "před",
+            "před-",
+            "městí",
+            "pře"
+          ],
+          "answer": "před-",
+          "hint": "Předpona stojí PŘED kořenem slova.",
+          "vi": "Tahle je šikovná. Předměstí — co je tu předpona?",
+          "vs": "PŘED-! Před-městí. Kořen MĚST. A předpona PŘED říká — je to před městem. Za hradbami. Kde bydlel Krivák, než si pořídil loď.",
+          "vn": "Předpona stojí PŘED kořenem. Kořen je MĚST (jako město). Co stojí před ním?"
+        },
+        {
+          "id": "CJ4-01-01-05",
+          "question": "Které slovo NEMÁ předponu?",
+          "options": [
+            "přelet",
+            "záhon",
+            "výlet",
+            "hora",
+            "nákup"
+          ],
+          "answer": "hora",
+          "hint": "Předpona je část přidaná před kořen — hledej slovo, kde nic takového není.",
+          "vi": "Jedna z těchto slov je čisté. Žádná předpona. Které?",
+          "vs": "HORA! Přelet má PŘE-, záhon má ZÁ-, výlet má VÝ-, nákup má NÁ-. Ale hora? Hora je prostě hora. Žádné ozdoby.",
+          "vn": "Předpona je část PŘIDANÁ před kořen. U jednoho z těch slov nic takového není — je to rovnou kořen."
+        },
+        {
+          "id": "CJ4-01-01-06",
+          "question": "Jaký je kořen slova 'rybář'?",
+          "options": [
+            "rybá",
+            "ryb",
+            "rybář",
+            "ář",
+            "ry"
+          ],
+          "answer": "ryb",
+          "hint": "Příbuzná slova: ryba, rybník, rybářský — co mají společného?",
+          "vi": "Krivákův rybářský prut. Ten chlap loví ryby v laboratoři. Ale dobře — kořen slova RYBÁŘ?",
+          "vs": "RYB! Ryb-ář, ryb-ka, ryb-ník — pořád ryba, ale jiný příběh. A Krivák? Ten RYB-ářský prut ukradl. Jako všechno ostatní.",
+          "vn": "RYBA už má koncovku -a. Kořen je kratší. Ryb-ář — odtrhni příponu -ář..."
+        },
+        {
+          "id": "CJ4-01-01-07",
+          "question": "Ve slově 'kouzelník' je přípona:",
+          "options": [
+            "-ník-",
+            "-zel",
+            "kouzel",
+            "-lník",
+            "-ník"
+          ],
+          "answer": "-ník",
+          "hint": "Přípona je část slova ZA kořenem.",
+          "vi": "Kouzelník! Hezké slovo. Přípona?",
+          "vs": "NÍK! Kouzel-ník. Přípona -ník dělá z kouzla člověka. Jako les-ník z lesa. Nebo pod-vod-ník z podvodu. ...Nebo Krivák z... ne, to nefunguje.",
+          "vn": "Přípona je ZA kořenem. Kořen je KOUZEL (od kouzlo). Co stojí za ním?"
+        },
+        {
+          "id": "CJ4-01-01-08",
+          "question": "Které dva slova jsou příbuzná?",
+          "options": [
+            "kůň — kuna",
+            "strom — stromek",
+            "pes — pero",
+            "kniha — knír",
+            "vlak — vlk"
+          ],
+          "answer": "strom — stromek",
+          "hint": "Příbuzná slova mají stejný kořen a souvisí významem.",
+          "vi": "Dvě slova z jedné rodiny. Které?",
+          "vs": "STROM a STROMEK! Kořen STROM. Kůň a kuna? Vypadají podobně, ale kůň nepatří do kuniny rodiny. A kuna nepatří do stáje.",
+          "vn": "Příbuzná slova mají stejný kořen a souvisí VÝZNAMEM. Pes a pero? Začínají stejně, ale jeden štěká a druhý píše."
+        },
+        {
+          "id": "CJ4-01-01-09",
+          "question": "Ve slově 'zátka' je předpona:",
+          "options": [
+            "-tka",
+            "zát",
+            "zá-",
+            "za-",
+            "z-"
+          ],
+          "answer": "zá-",
+          "hint": "Kořen je -tk- (jako zatknout, zátka). Co stojí před ním?",
+          "vi": "Zátka! Kdo sem dal zátku?! ...Ale dobrá — jaká je předpona?",
+          "vs": "ZÁ-! Zá-tka. Od zatknout, zastavit — zátka ZASTAVUJE tekutinu. Předpona ZÁ- říká směr — dovnitř, uzavřít.",
+          "vn": "Kořen je -TK- (od zatkni). Předpona stojí PŘED ním. Co tam je?"
+        },
+        {
+          "id": "CJ4-01-01-10",
+          "question": "Jaký je kořen slova 'květina'?",
+          "options": [
+            "kv",
+            "tina",
+            "květ",
+            "květina",
+            "květin"
+          ],
+          "answer": "květ",
+          "hint": "Květ, květák, květina, kvetoucí — co mají společného?",
+          "vi": "Podívej! Jedna květina přežila piráty! Hrdinka. Její kořen?",
+          "vs": "KVĚT! Květ-ina, květ-ák, kvet-oucí, roz-kvést. A tahle květina — ta přežila piráty, explozi a moje zalévání. Což je statisticky nejnebezpečnější z těch tří.",
+          "vn": "Květ-ina. Přípona -ina. Kořen je to, co zbyde — a nese význam květu."
+        }
+      ],
+      "akce_po_5": {
+        "obrazek": "img/m01/d01/skripek_vyskoci.png",
+        "dialogy": [
+          {
+            "postava": "popis",
+            "text": "Zpoza převráceného stolu VYSKOČÍ pirát Skřípek — malý, nervózní, na hlavě obrovský klobouk, drží v ruce papír vzhůru nohama."
+          },
+          {
+            "postava": "skripek",
+            "text": "Stůj! Nikam nepůjdeš! Mám tu rozkaz od kapitána! ...Ehm... Počkej, je to vzhůru nohama."
+          },
+          {
+            "postava": "agent",
+            "text": "Hele, Skřípku. Jaký je kořen slova ROZKAZ?"
+          },
+          {
+            "postava": "skripek",
+            "text": "Co? Ehm... rozka? ...Roz?"
+          },
+          {
+            "postava": "agent",
+            "text": "KAZ. Jako v KAZIT. A to je přesně to, co Krivák umí nejlíp."
+          },
+          {
+            "postava": "volta",
+            "text": "Krásné. Porazil jsi piráta gramatikou. To se nevidí každý den."
+          }
+        ],
+        "sber": {
+          "nazev": "Krivákův rozkaz",
+          "popis": "Na rubu je kus náčrtku mapy!",
+          "ikona": "📜"
+        }
+      },
+      "scenka_po": {
+        "dialogy": [
+          {
+            "postava": "volta",
+            "text": "Deset slov, deset kořenů. Víš co? Kořen je jako DNA slova. Změníš příponu — změní se funkce. Změníš předponu — změní se směr. Ale kořen zůstává."
+          },
+          {
+            "postava": "repak",
+            "text": "KDE JE TEN AGENT?! Kapitán řekl, že tu je agent! Já ho nevidím!"
+          },
+          {
+            "postava": "volta",
+            "text": "...Stojí tři metry od tebe, Řepáku."
+          },
+          {
+            "postava": "repak",
+            "text": "KDE?!"
+          },
+          {
+            "postava": "volta",
+            "text": "Za dveřmi. Kde stojíš TY."
+          },
+          {
+            "postava": "repak",
+            "text": "...Aha. A KTERÉ dveře?"
+          },
+          {
+            "postava": "volta",
+            "text": "Ten chlap nenajde dveře a chce najít TEBE. Myslím, že jsi v bezpečí. Jdeme na další okruh."
+          }
+        ],
+        "sber": {
+          "nazev": "Voltova květina",
+          "popis": "Jediná přeživší z laboratoře!",
+          "ikona": "🌸"
+        }
+      }
+    },
+    {
+      "okruh": 2,
+      "predmet": "matika",
+      "tema": "Číselný obor do 1 000 000",
+      "intro": [
+        {
+          "postava": "volta",
+          "text": "Moje výpočty! Piráti je naházeli do skříně! Potřebuju je roztřídit."
+        },
+        {
+          "postava": "agent",
+          "text": "Vy jste vědec."
+        },
+        {
+          "postava": "volta",
+          "text": "Já jsem TEORETICKÝ vědec. To znamená, že mám teorie. Čísla počítá kalkulačka. Jenže ta spadla ze stolu a od tý doby ukazuje jen osmičky."
+        }
+      ],
+      "otazky": [
+        {
+          "id": "MA4-01-01-01",
+          "question": "Jak se čte číslo 4 526?",
+          "options": [
+            "čtyři sta padesát dva šest",
+            "čtyři tisíce pět set dvacet šest",
+            "čtyřicet pět tisíc dvacet šest",
+            "čtyři tisíce padesát šest",
+            "čtyři tisíce pětadvacet šest"
+          ],
+          "answer": "čtyři tisíce pět set dvacet šest",
+          "hint": "Rozlož si číslo na řády: tisíce, stovky, desítky, jednotky."
+        },
+        {
+          "id": "MA4-01-01-02",
+          "question": "Které číslo je největší?",
+          "options": [
+            "8 901",
+            "9 018",
+            "8 190",
+            "9 801",
+            "8 910"
+          ],
+          "answer": "9 801",
+          "hint": "Porovnávej od nejvyššího řádu — od tisíců."
+        },
+        {
+          "id": "MA4-01-01-03",
+          "question": "Kolik stovek je v čísle 3 742?",
+          "options": [
+            "3",
+            "37",
+            "7",
+            "74",
+            "42"
+          ],
+          "answer": "7",
+          "hint": "Podívej se na číslici na místě stovek (třetí zprava)."
+        },
+        {
+          "id": "MA4-01-01-04",
+          "question": "Zaokrouhli číslo 6 478 na tisíce:",
+          "options": [
+            "6 500",
+            "7 000",
+            "6 000",
+            "6 480",
+            "6 400"
+          ],
+          "answer": "6 000",
+          "hint": "Podívej se na číslici stovek (4). Je menší než 5? Zaokrouhluj dolů."
+        },
+        {
+          "id": "MA4-01-01-05",
+          "question": "Jaký je rozklad čísla 5 203?",
+          "options": [
+            "5 000 + 200 + 30",
+            "5 000 + 200 + 3",
+            "5 000 + 20 + 3",
+            "500 + 200 + 3",
+            "5 000 + 203"
+          ],
+          "answer": "5 000 + 200 + 3",
+          "hint": "Rozlož na tisíce + stovky + desítky + jednotky. Pozor — kolik je desítek?"
+        },
+        {
+          "id": "MA4-01-01-06",
+          "question": "Které číslo je menší než 2 350?",
+          "options": [
+            "2 503",
+            "2 351",
+            "2 350",
+            "3 250",
+            "2 305"
+          ],
+          "answer": "2 305",
+          "hint": "Hledáš číslo, které je MÉNĚ než 2 350."
+        },
+        {
+          "id": "MA4-01-01-07",
+          "question": "Číslo 7 090 má na místě desítek:",
+          "options": [
+            "7",
+            "0",
+            "9",
+            "90",
+            "70"
+          ],
+          "answer": "9",
+          "hint": "Místo desítek je druhé zprava."
+        },
+        {
+          "id": "MA4-01-01-08",
+          "question": "Seřaď od nejmenšího: 1 520, 1 250, 1 502",
+          "options": [
+            "1 520, 1 250, 1 502",
+            "1 502, 1 250, 1 520",
+            "1 250, 1 520, 1 502",
+            "1 250, 1 502, 1 520",
+            "1 502, 1 520, 1 250"
+          ],
+          "answer": "1 250, 1 502, 1 520",
+          "hint": "Všechna čísla začínají na 1 tisíc — porovnej stovky."
+        },
+        {
+          "id": "MA4-01-01-09",
+          "question": "Zaokrouhli 3 850 na stovky:",
+          "options": [
+            "3 800",
+            "3 900",
+            "4 000",
+            "3 850",
+            "3 860"
+          ],
+          "answer": "3 900",
+          "hint": "Desítky jsou 5 — zaokrouhluj nahoru."
+        },
+        {
+          "id": "MA4-01-01-10",
+          "question": "Které číslo zapíšeš jako 'šest tisíc čtyřicet'?",
+          "options": [
+            "6 400",
+            "6 004",
+            "6 404",
+            "6 040",
+            "60 040"
+          ],
+          "answer": "6 040",
+          "hint": "Šest tisíc = 6 000. Čtyřicet = 40. Sečti."
+        }
+      ],
+      "akce_po_5": {
+        "obrazek": "img/m01/d01/repak_kbelik.png",
+        "dialogy": [
+          {
+            "postava": "popis",
+            "text": "Dveře se otevřou — a dovnitř vpadne Řepák. Obrovský, kulatý, s kbelíkem na hlavě místo přilby."
+          },
+          {
+            "postava": "repak",
+            "text": "STŮJTE! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
+          },
+          {
+            "postava": "agent",
+            "text": "Řepáku... máš na hlavě kbelík."
+          },
+          {
+            "postava": "repak",
+            "text": "To je PŘILBA! Taktická!"
+          },
+          {
+            "postava": "volta",
+            "text": "V tom kbelíku je mapa. Dáš mi ji?"
+          },
+          {
+            "postava": "repak",
+            "text": "...Jaká mapa?"
+          },
+          {
+            "postava": "volta",
+            "text": "Ta co ti trčí z kbelíku."
+          },
+          {
+            "postava": "repak",
+            "text": "...Aháá. Tak to si NECHÁM!"
+          },
+          {
+            "postava": "volta",
+            "text": "Agent mu sundal kbelík, než stačil mrknout."
+          }
+        ],
+        "sber": {
+          "nazev": "Kbelík s mapou",
+          "popis": "Uvnitř kbelíku je kus mapy okolí!",
+          "ikona": "🪣"
+        }
+      },
+      "scenka_po": {
+        "dialogy": [
+          {
+            "postava": "volta",
+            "text": "Čísla mají řád. Jednotky, desítky, stovky, tisíce. Každé číslo ví, kde stojí. Na rozdíl od Řepáka."
+          },
+          {
+            "postava": "volta",
+            "text": "A na tom rádiu z antény — slyším Kriváka. Říká, že má plán. Nemá plán. Ale MYSLÍ si, že má. A to je nebezpečnější."
+          }
+        ],
+        "sber": {
+          "nazev": "Krivákova anténa",
+          "popis": "Odposlech pirátského rádia!",
+          "ikona": "📡"
+        }
+      }
+    },
+    {
+      "okruh": 3,
+      "predmet": "anglictina",
+      "tema": "Barvy a čísla",
+      "intro": [
+        {
+          "postava": "volta",
+          "text": "Hele — tady na stole jsou kartičky. Angličtina! Barvy a čísla. Krivák nechal kartičky — asi se chtěl učit, ale vzdal to po 'red'."
+        },
+        {
+          "postava": "volta",
+          "text": "Barvy jsou jak pirátská vlajka — buď ji znáš, nebo jsi v problémech."
+        }
+      ],
+      "otazky": [
+        {
+          "id": "AJ4-01-01-01",
+          "question": "Jak se anglicky řekne 'modrá'?",
+          "options": [
+            "red",
+            "blue",
+            "green",
+            "black",
+            "brown"
+          ],
+          "answer": "blue",
+          "hint": "Začíná na B a má 4 písmena."
+        },
+        {
+          "id": "AJ4-01-01-02",
+          "question": "Co znamená anglické slovo 'seven'?",
+          "options": [
+            "šest",
+            "devět",
+            "sedm",
+            "pět",
+            "osm"
+          ],
+          "answer": "sedm",
+          "hint": "Je to číslo mezi six (6) a eight (8)."
+        },
+        {
+          "id": "AJ4-01-01-03",
+          "question": "Jakou barvu označuje slovo 'yellow'?",
+          "options": [
+            "oranžová",
+            "zelená",
+            "žlutá",
+            "bílá",
+            "červená"
+          ],
+          "answer": "žlutá",
+          "hint": "Barva slunce a banánu."
+        },
+        {
+          "id": "AJ4-01-01-04",
+          "question": "Jak se anglicky řekne číslo 12?",
+          "options": [
+            "twenty",
+            "eleven",
+            "thirteen",
+            "twelve",
+            "ten"
+          ],
+          "answer": "twelve",
+          "hint": "Začíná na TW- a je o jedno víc než eleven."
+        },
+        {
+          "id": "AJ4-01-01-05",
+          "question": "Co znamená 'green'?",
+          "options": [
+            "šedá",
+            "hnědá",
+            "zelená",
+            "růžová",
+            "černá"
+          ],
+          "answer": "zelená",
+          "hint": "Barva trávy a stromů."
+        },
+        {
+          "id": "AJ4-01-01-06",
+          "question": "Jak se anglicky řekne 'patnáct'?",
+          "options": [
+            "fourteen",
+            "fifty",
+            "thirteen",
+            "fifteen",
+            "sixteen"
+          ],
+          "answer": "fifteen",
+          "hint": "Five + teen = ?"
+        },
+        {
+          "id": "AJ4-01-01-07",
+          "question": "Která barva je 'white'?",
+          "options": [
+            "černá",
+            "šedá",
+            "bílá",
+            "žlutá",
+            "modrá"
+          ],
+          "answer": "bílá",
+          "hint": "Barva sněhu."
+        },
+        {
+          "id": "AJ4-01-01-08",
+          "question": "Kolik je 'twenty'?",
+          "options": [
+            "12",
+            "22",
+            "20",
+            "30",
+            "10"
+          ],
+          "answer": "20",
+          "hint": "Twen-ty = dvacet. Jsou tam dvě desítky."
+        },
+        {
+          "id": "AJ4-01-01-09",
+          "question": "Jak se anglicky řekne 'černá'?",
+          "options": [
+            "brown",
+            "grey",
+            "white",
+            "black",
+            "blue"
+          ],
+          "answer": "black",
+          "hint": "Začíná na BL- a má 5 písmen."
+        },
+        {
+          "id": "AJ4-01-01-10",
+          "question": "Co znamená 'nine'?",
+          "options": [
+            "nula",
+            "devět",
+            "pět",
+            "jedna",
+            "osm"
+          ],
+          "answer": "devět",
+          "hint": "Je to o jedno méně než ten (10)."
+        }
+      ],
+      "akce_po_5": {
+        "dialogy": [
+          {
+            "postava": "popis",
+            "text": "Oknem vletí papoušek. Zeleno-červeno-modrý. Přistane na stole a sežere sušenku."
+          },
+          {
+            "postava": "volta",
+            "text": "KEKSÍK! Ten papoušek patří pirátům! Ale myslím, že právě dezertoval. Za sušenku."
+          },
+          {
+            "postava": "keksik",
+            "text": "KEKSÍK! KEKSÍK!"
+          },
+          {
+            "postava": "volta",
+            "text": "Vidíš? Umí jedno slovo. Ale umí ho SKVĚLE."
+          }
+        ],
+        "sber": {
+          "nazev": "Papouščí peříčko",
+          "popis": "Symbol nového spojenectví!",
+          "ikona": "🪶"
+        }
+      },
+      "scenka_po": {
+        "dialogy": [
+          {
+            "postava": "volta",
+            "text": "RED, BLUE, GREEN... anglické barvy. A víš co? Papoušek Keksík je všechny najednou."
+          },
+          {
+            "postava": "keksik",
+            "text": "KEKSÍK!"
+          },
+          {
+            "postava": "volta",
+            "text": "...A umí konverzaci na úrovni některých pirátů, co znám."
+          }
+        ]
+      }
+    },
+    {
+      "okruh": 4,
+      "predmet": "mix",
+      "tema": "Chaos — mix všech předmětů",
+      "intro": [
+        {
+          "postava": "volta",
+          "text": "Poslední okruh! Krivák sem naházel hromadu harampádí — všechno namíchané. Čeština, matika, angličtina, přírodověda, vlastivěda. Roztřiď to!"
+        },
+        {
+          "postava": "volta",
+          "text": "Piráti říkají chaos. Já říkám příležitost."
+        }
+      ],
+      "otazky": [
+        {
+          "id": "CH4-M01-D01-01",
+          "predmet": "cestina",
+          "question": "Jaký je kořen slova 'zahrada'?",
+          "options": [
+            "za",
+            "zahrad",
+            "hrad",
+            "rada",
+            "grad"
+          ],
+          "answer": "hrad",
+          "hint": "Ohrada, hradba, zahrada — co mají společného?"
+        },
+        {
+          "id": "CH4-M01-D01-02",
+          "predmet": "matika",
+          "question": "Které číslo je nejmenší? 5 100, 5 010, 5 001",
+          "options": [
+            "5 100",
+            "5 001",
+            "5 010",
+            "všechna jsou stejná",
+            "nelze určit"
+          ],
+          "answer": "5 001",
+          "hint": "Tisíce jsou stejné — porovnej stovky."
+        },
+        {
+          "id": "CH4-M01-D01-03",
+          "predmet": "anglictina",
+          "question": "Jak se anglicky řekne 'červená'?",
+          "options": [
+            "green",
+            "orange",
+            "red",
+            "pink",
+            "purple"
+          ],
+          "answer": "red",
+          "hint": "Má jen 3 písmena."
+        },
+        {
+          "id": "CH4-M01-D01-04",
+          "predmet": "prirodoveda",
+          "question": "Která z těchto věcí patří do ŽIVÉ přírody?",
+          "options": [
+            "kámen",
+            "voda",
+            "strom",
+            "písek",
+            "vzduch"
+          ],
+          "answer": "strom",
+          "hint": "Živé organismy rostou, dýchají a rozmnožují se."
+        },
+        {
+          "id": "CH4-M01-D01-05",
+          "predmet": "vlastiveda",
+          "question": "Která světová strana je naproti severu?",
+          "options": [
+            "východ",
+            "západ",
+            "jih",
+            "severovýchod",
+            "severozápad"
+          ],
+          "answer": "jih",
+          "hint": "Na kompasu je naproti S vždy..."
+        },
+        {
+          "id": "CH4-M01-D01-06",
+          "predmet": "matika",
+          "question": "Zaokrouhli 2 740 na tisíce:",
+          "options": [
+            "2 000",
+            "2 700",
+            "3 000",
+            "2 800",
+            "2 750"
+          ],
+          "answer": "3 000",
+          "hint": "Stovky jsou 7 — je to víc než 5? Zaokrouhluj nahoru."
+        },
+        {
+          "id": "CH4-M01-D01-07",
+          "predmet": "cestina",
+          "question": "Které slovo má předponu?",
+          "options": [
+            "město",
+            "výlet",
+            "stůl",
+            "okno",
+            "kočka"
+          ],
+          "answer": "výlet",
+          "hint": "Předpona stojí před kořenem — vy-let."
+        },
+        {
+          "id": "CH4-M01-D01-08",
+          "predmet": "anglictina",
+          "question": "Kolik je 'three + four'?",
+          "options": [
+            "six",
+            "eight",
+            "five",
+            "seven",
+            "nine"
+          ],
+          "answer": "seven",
+          "hint": "3 + 4 = ?"
+        },
+        {
+          "id": "CH4-M01-D01-09",
+          "predmet": "prirodoveda",
+          "question": "Co NENÍ vlastnost živých organismů?",
+          "options": [
+            "růst",
+            "rozmnožování",
+            "dýchání",
+            "svícení",
+            "výživa"
+          ],
+          "answer": "svícení",
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se a přijímají potravu. Co tam nepatří?"
+        },
+        {
+          "id": "CH4-M01-D01-10",
+          "predmet": "vlastiveda",
+          "question": "K čemu slouží kompas?",
+          "options": [
+            "k měření teploty",
+            "k určení světových stran",
+            "k měření vzdálenosti",
+            "k měření času",
+            "k určení výšky"
+          ],
+          "answer": "k určení světových stran",
+          "hint": "Střelka kompasu ukazuje vždy na sever."
+        }
+      ],
+      "scenka_po": null
+    }
+  ],
+  "zaver": [
+    {
+      "postava": "volta",
+      "text": "Agente. Zastav se na chvilku."
+    },
+    {
+      "postava": "agent",
+      "text": "Co je?"
+    },
+    {
+      "postava": "volta",
+      "text": "Ty to nevíš, ale... já měl dneska obavy. Piráti mi vzali všechno. Laboratoř, vynálezy, poznámky. A pak jsi přišel ty."
+    },
+    {
+      "postava": "volta",
+      "text": "Za pár hodin jsme poskládali víc, než jsem čekal za týden. Slova mají kořeny. Čísla mají řád. A barvy mají jména. I v angličtině."
+    },
+    {
+      "postava": "agent",
+      "text": "To je práce agenta."
+    },
+    {
+      "postava": "volta",
+      "text": "Ne. To je práce DOBRÉHO agenta. A dobrých agentů není moc."
+    },
+    {
+      "postava": "volta",
+      "text": "Zítra pokračujeme. Ten rozkaz co jsi sebral Skřípkovi — na rubu je kus mapy. A ta mapa vede..."
+    },
+    {
+      "postava": "volta",
+      "text": "...někam. Zatím nevím kam. Ale zjistíme to. Ty a já. Jako kořen a přípona — každý sám je k ničemu, ale dohromady dáváme smysl."
+    },
+    {
+      "postava": "agent",
+      "text": "A Řepák?"
+    },
+    {
+      "postava": "volta",
+      "text": "Řepák je citoslovce. Občas vykřikne, nikdo neví proč, ale svět by bez něj byl nudnější."
+    }
+  ],
+  "sber_dne": [
+    {
+      "nazev": "Krivákův rozkaz",
+      "popis": "Na rubu je kus náčrtku mapy!",
+      "ikona": "📜"
+    },
+    {
+      "nazev": "Voltova květina",
+      "popis": "Jediná přeživší z laboratoře!",
+      "ikona": "🌸"
+    },
+    {
+      "nazev": "Kbelík s mapou",
+      "popis": "Uvnitř je kus mapy okolí!",
+      "ikona": "🪣"
+    },
+    {
+      "nazev": "Krivákova anténa",
+      "popis": "Odposlech pirátského rádia!",
+      "ikona": "📡"
+    },
+    {
+      "nazev": "Papouščí peříčko",
+      "popis": "Symbol nového spojenectví!",
+      "ikona": "🪶"
+    }
+  ]
+}
