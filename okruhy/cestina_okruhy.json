@@ -4638,6 +4638,76 @@
         ],
         "answer": "y — lyžování",
         "hint": "Je to vyjmenované slovo po L, nebo ne? Zkus si říct řadu."
+      },
+      {
+        "id": "CJ4-03-11-006",
+        "type": "choice",
+        "question": "Doplň i/y: Pel_něk roste na poli jako plevel.",
+        "options": [
+          "i — peliněk",
+          "y — pelyněk",
+          "ý — pelýněk",
+          "í — pelíněk",
+          "i — pelynek"
+        ],
+        "answer": "y — pelyněk",
+        "hint": "Pelyněk je vyjmenované slovo po L — najdeš ho v řadě."
+      },
+      {
+        "id": "CJ4-03-11-007",
+        "type": "choice",
+        "question": "Doplň i/y: Kal_šek na stole byl plný vody.",
+        "options": [
+          "y — kalýšek",
+          "í — kalíšek",
+          "i — kališek",
+          "ý — kalýšek",
+          "y — kalyšek"
+        ],
+        "answer": "í — kalíšek",
+        "hint": "Je kalíšek odvozené od vyjmenovaného slova? Zkus ho najít v řadě po L."
+      },
+      {
+        "id": "CJ4-03-11-008",
+        "type": "choice",
+        "question": "Doplň i/y: Vzl_kání dítěte bylo slyšet z pokoje.",
+        "options": [
+          "i — vzlikání",
+          "y — vzlykání",
+          "ý — vzlýkání",
+          "í — vzlíkání",
+          "i — vzlykání"
+        ],
+        "answer": "y — vzlykání",
+        "hint": "Vzlykat je vyjmenované slovo po L."
+      },
+      {
+        "id": "CJ4-03-11-009",
+        "type": "choice",
+        "question": "Doplň i/y: Bl_skavice osvětlila celou oblohu.",
+        "options": [
+          "ý — blýskavice",
+          "i — bliskavice",
+          "í — blískavice",
+          "y — blyskavice",
+          "i — bliskavice"
+        ],
+        "answer": "ý — blýskavice",
+        "hint": "Blýskat se je vyjmenované slovo po L. A co jeho odvozená slova?"
+      },
+      {
+        "id": "CJ4-03-11-010",
+        "type": "choice",
+        "question": "Doplň i/y: Pl_tvání vodou škodí přírodě.",
+        "options": [
+          "i — plitvání",
+          "í — plítvání",
+          "ý — plýtvání",
+          "y — plytvání",
+          "i — plitvání"
+        ],
+        "answer": "ý — plýtvání",
+        "hint": "Plýtvat je vyjmenované slovo po L. Odvozená slova mají stejné y/ý."
       }
     ]
   },
