@@ -282,6 +282,7 @@
           setPhase('feedback');
           const newResults = [...results, 'correct'];
           setResults(newResults);
+          console.log('CORRECT - results:', JSON.stringify(newResults));
           setGuideMsg(attempts > 0 ? rnd(GUIDE_CORRECT_AFTER_FAIL) : rnd(GUIDE_CORRECT));
           setFeedback('');
           advanceToNext(newResults);
@@ -297,6 +298,7 @@
             setPhase('revealed');
             const newResults = [...results, 'wrong'];
             setResults(newResults);
+            console.log('3RD WRONG - results:', JSON.stringify(newResults));
             setGuideMsg('Nevadí! Správná odpověď: ' + task.answer);
             setFeedback(task.hint || '');
             advanceToNext(newResults);
