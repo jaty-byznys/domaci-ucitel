@@ -10,18 +10,174 @@
       "difficulty": 2,
       "theory": "Vyjmenovaná slova po L: slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš. A slova odvozená.",
       "tasks": [
-        {"id":"CJ4-01-02-001","type":"choice","question":"Doplň i/y: Děti sl_šely divný zvuk.","options":["y — slyšely","i — slišely","ý — slýšely","í — slíšely","y — slišely"],"answer":"y — slyšely","hint":"'Slyšet' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-002","type":"choice","question":"Doplň i/y: U potoka stál starý ml_n.","options":["ý — mlýn","í — mlín","y — mlyn","i — mlin","ý — mlín"],"answer":"ý — mlýn","hint":"'Mlýn' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-003","type":"choice","question":"Doplň i/y: Na obloze se bl_skalo.","options":["ý — blýskalo","í — blískalo","y — blyskalo","i — bliskalo","ý — blískalo"],"answer":"ý — blýskalo","hint":"'Blýskat se' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-004","type":"choice","question":"Doplň i/y: Sl_šíš ten zvuk?","options":["y — slyšíš","i — slišíš","ý — slýšíš","í — slíšíš","y — slišíš"],"answer":"y — slyšíš","hint":"Od 'slyšet'."},
-        {"id":"CJ4-01-02-005","type":"choice","question":"Doplň i/y: Ml_nář mlel obilí.","options":["ý — mlýnář","í — mlínář","y — mlynář","i — mlinář","ý — mlínář"],"answer":"ý — mlýnář","hint":"'Mlýnář' je od 'mlýn'."},
-        {"id":"CJ4-01-02-006","type":"choice","question":"Doplň i/y: Bl_skavý prsten ležel na stole.","options":["ý — blýskavý","í — blískavý","y — blyskavý","i — bliskavý","ý — blískavý"],"answer":"ý — blýskavý","hint":"Od 'blýskat se'."},
-        {"id":"CJ4-01-02-007","type":"choice","question":"Doplň i/y: Nesl_šel jsem zvonek.","options":["y — neslyšel","i — neslišel","ý — neslýšel","í — neslíšel","y — neslišel"],"answer":"y — neslyšel","hint":"Od 'slyšet'."},
-        {"id":"CJ4-01-02-008","type":"choice","question":"Doplň i/y: Ml_nské kolo se točilo.","options":["ý — mlýnské","í — mlínské","y — mlynské","i — mlinské","ý — mlínské"],"answer":"ý — mlýnské","hint":"Od 'mlýn'."},
-        {"id":"CJ4-01-02-009","type":"choice","question":"Doplň i/y: Sl_chám pozorně učitelku.","options":["ý — slýchám","í — slíchám","y — slychám","i — slichám","ý — slíchám"],"answer":"ý — slýchám","hint":"'Slýchat' je od 'slyšet'."},
-        {"id":"CJ4-01-02-010","type":"choice","question":"Doplň i/y: Zabl_sklo se jí v očích.","options":["ý — zablýsklo","í — zablísklo","y — zablysklo","i — zablisklo","ý — zablísklo"],"answer":"ý — zablýsklo","hint":"Od 'blýskat se'."},
-        {"id":"CJ4-01-02-011","type":"choice","question":"Doplň i/y: Ml_nek na kávu je starý.","options":["ý — mlýnek","í — mlínek","y — mlynek","i — mlinek","ý — mlínek"],"answer":"ý — mlýnek","hint":"Od 'mlýn'."},
-        {"id":"CJ4-01-02-012","type":"choice","question":"Doplň i/y: Nedosl_chavý dědeček se ptal znovu.","options":["ý — nedoslýchavý","í — nedoslíchavý","y — nedoslychavý","i — nedoslichavý","ý — nedoslíchavý"],"answer":"ý — nedoslýchavý","hint":"Od 'slyšet/slýchat'."}
+        {
+          "id": "CJ4-01-02-001",
+          "type": "choice",
+          "question": "Doplň i/y: Děti sl_šely divný zvuk.",
+          "options": [
+            "y — slyšely",
+            "y — slišely",
+            "í — slíšely",
+            "ý — slýšely",
+            "i — slišely"
+          ],
+          "answer": "y — slyšely",
+          "hint": "'Slyšet' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-002",
+          "type": "choice",
+          "question": "Doplň i/y: U potoka stál starý ml_n.",
+          "options": [
+            "í — mlín",
+            "ý — mlín",
+            "y — mlyn",
+            "ý — mlýn",
+            "i — mlin"
+          ],
+          "answer": "ý — mlýn",
+          "hint": "'Mlýn' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-003",
+          "type": "choice",
+          "question": "Doplň i/y: Na obloze se bl_skalo.",
+          "options": [
+            "ý — blískalo",
+            "ý — blýskalo",
+            "i — bliskalo",
+            "í — blískalo",
+            "y — blyskalo"
+          ],
+          "answer": "ý — blýskalo",
+          "hint": "'Blýskat se' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-004",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_šíš ten zvuk?",
+          "options": [
+            "í — slíšíš",
+            "y — slyšíš",
+            "ý — slýšíš",
+            "i — slišíš",
+            "y — slišíš"
+          ],
+          "answer": "y — slyšíš",
+          "hint": "Od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-005",
+          "type": "choice",
+          "question": "Doplň i/y: Ml_nář mlel obilí.",
+          "options": [
+            "i — mlinář",
+            "ý — mlínář",
+            "ý — mlýnář",
+            "í — mlínář",
+            "y — mlynář"
+          ],
+          "answer": "ý — mlýnář",
+          "hint": "'Mlýnář' je od 'mlýn'."
+        },
+        {
+          "id": "CJ4-01-02-006",
+          "type": "choice",
+          "question": "Doplň i/y: Bl_skavý prsten ležel na stole.",
+          "options": [
+            "ý — blýskavý",
+            "ý — blískavý",
+            "i — bliskavý",
+            "y — blyskavý",
+            "í — blískavý"
+          ],
+          "answer": "ý — blýskavý",
+          "hint": "Od 'blýskat se'."
+        },
+        {
+          "id": "CJ4-01-02-007",
+          "type": "choice",
+          "question": "Doplň i/y: Nesl_šel jsem zvonek.",
+          "options": [
+            "y — neslišel",
+            "ý — neslýšel",
+            "i — neslišel",
+            "y — neslyšel",
+            "í — neslíšel"
+          ],
+          "answer": "y — neslyšel",
+          "hint": "Od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-008",
+          "type": "choice",
+          "question": "Doplň i/y: Ml_nské kolo se točilo.",
+          "options": [
+            "ý — mlýnské",
+            "í — mlínské",
+            "ý — mlínské",
+            "y — mlynské",
+            "i — mlinské"
+          ],
+          "answer": "ý — mlýnské",
+          "hint": "Od 'mlýn'."
+        },
+        {
+          "id": "CJ4-01-02-009",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_chám pozorně učitelku.",
+          "options": [
+            "í — slíchám",
+            "ý — slíchám",
+            "y — slychám",
+            "ý — slýchám",
+            "i — slichám"
+          ],
+          "answer": "ý — slýchám",
+          "hint": "'Slýchat' je od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-010",
+          "type": "choice",
+          "question": "Doplň i/y: Zabl_sklo se jí v očích.",
+          "options": [
+            "ý — zablýsklo",
+            "í — zablísklo",
+            "ý — zablísklo",
+            "y — zablysklo",
+            "i — zablisklo"
+          ],
+          "answer": "ý — zablýsklo",
+          "hint": "Od 'blýskat se'."
+        },
+        {
+          "id": "CJ4-01-02-011",
+          "type": "choice",
+          "question": "Doplň i/y: Ml_nek na kávu je starý.",
+          "options": [
+            "í — mlínek",
+            "y — mlynek",
+            "i — mlinek",
+            "ý — mlínek",
+            "ý — mlýnek"
+          ],
+          "answer": "ý — mlýnek",
+          "hint": "Od 'mlýn'."
+        },
+        {
+          "id": "CJ4-01-02-012",
+          "type": "choice",
+          "question": "Doplň i/y: Nedosl_chavý dědeček se ptal znovu.",
+          "options": [
+            "ý — nedoslíchavý",
+            "í — nedoslíchavý",
+            "i — nedoslichavý",
+            "ý — nedoslýchavý",
+            "y — nedoslychavý"
+          ],
+          "answer": "ý — nedoslýchavý",
+          "hint": "Od 'slyšet/slýchat'."
+        }
       ]
     },
     {
@@ -30,18 +186,174 @@
       "difficulty": 2,
       "theory": "Polykat, plynout, plýtvat, vzlykat — vyjmenovaná slova po L. Odvozená: spolknout, plyn, plynový, plýtvání, vzlykot...",
       "tasks": [
-        {"id":"CJ4-01-02-013","type":"choice","question":"Doplň i/y: Nepol_kej jídlo tak rychle!","options":["y — polykej","i — polikej","ý — polýkej","í — políkej","y — polikej"],"answer":"y — polykej","hint":"'Polykat' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-014","type":"choice","question":"Doplň i/y: Čas pl_ne rychle.","options":["y — plyne","i — pline","ý — plýne","í — plíne","y — pline"],"answer":"y — plyne","hint":"'Plynout' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-015","type":"choice","question":"Doplň i/y: Nepl_tvej vodou!","options":["ý — neplýtvej","í — neplítvej","y — neplytvej","i — neplitvej","ý — neplítvej"],"answer":"ý — neplýtvej","hint":"'Plýtvat' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-016","type":"choice","question":"Doplň i/y: Dítě vzl_kalo v koutě.","options":["y — vzlykalo","i — vzlikalo","ý — vzlýkalo","í — vzlíkalo","y — vzlikalo"],"answer":"y — vzlykalo","hint":"'Vzlykat' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-017","type":"choice","question":"Doplň i/y: Spol_kl jsem léky.","options":["y — spolykl","i — spolikl","ý — spolýkl","í — spolíkl","y — spolikl"],"answer":"y — spolykl","hint":"Od 'polykat'. 'Spolknout/spolykl' — odvozené."},
-        {"id":"CJ4-01-02-018","type":"choice","question":"Doplň i/y: Pl_nový sporák funguje na plyn.","options":["y — plynový","i — plinový","ý — plýnový","í — plínový","y — plinový"],"answer":"y — plynový","hint":"'Plyn' je od 'plynout'."},
-        {"id":"CJ4-01-02-019","type":"choice","question":"Doplň i/y: Pl_tvání jídlem je špatné.","options":["ý — plýtvání","í — plítvání","y — plytvání","i — plitvání","ý — plítvání"],"answer":"ý — plýtvání","hint":"Od 'plýtvat'."},
-        {"id":"CJ4-01-02-020","type":"choice","question":"Doplň i/y: Vzl_kot se nesl tmou.","options":["y — vzlykot","i — vzlikot","ý — vzlýkot","í — vzlíkot","y — vzlikot"],"answer":"y — vzlykot","hint":"Od 'vzlykat'."},
-        {"id":"CJ4-01-02-021","type":"choice","question":"Doplň i/y: Upl_nul celý rok.","options":["y — uplynul","i — uplinul","ý — uplýnul","í — uplínul","y — uplinul"],"answer":"y — uplynul","hint":"Od 'plynout'."},
-        {"id":"CJ4-01-02-022","type":"choice","question":"Doplň i/y: Pl_nule mluvil celou hodinu.","options":["y — plynule","i — plinule","ý — plýnule","í — plínule","y — plinule"],"answer":"y — plynule","hint":"Od 'plynout'. Plynulá řeč = tekoucí hladce."},
-        {"id":"CJ4-01-02-023","type":"choice","question":"Doplň i/y: Pol_kací reflex je automatický.","options":["y — polykací","i — polikací","ý — polýkací","í — políkací","y — polikací"],"answer":"y — polykací","hint":"Od 'polykat'."},
-        {"id":"CJ4-01-02-024","type":"choice","question":"Doplň i/y: Rozpl_val se nad dárkem.","options":["ý — rozplýval","í — rozplíval","y — rozplyval","i — rozplival","ý — rozplíval"],"answer":"ý — rozplýval","hint":"'Rozplývat se' — od 'plynout/plývat'."}
+        {
+          "id": "CJ4-01-02-013",
+          "type": "choice",
+          "question": "Doplň i/y: Nepol_kej jídlo tak rychle!",
+          "options": [
+            "ý — polýkej",
+            "y — polykej",
+            "i — polikej",
+            "í — políkej",
+            "y — polikej"
+          ],
+          "answer": "y — polykej",
+          "hint": "'Polykat' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-014",
+          "type": "choice",
+          "question": "Doplň i/y: Čas pl_ne rychle.",
+          "options": [
+            "y — plyne",
+            "i — pline",
+            "ý — plýne",
+            "í — plíne",
+            "y — pline"
+          ],
+          "answer": "y — plyne",
+          "hint": "'Plynout' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-015",
+          "type": "choice",
+          "question": "Doplň i/y: Nepl_tvej vodou!",
+          "options": [
+            "ý — neplítvej",
+            "y — neplytvej",
+            "í — neplítvej",
+            "i — neplitvej",
+            "ý — neplýtvej"
+          ],
+          "answer": "ý — neplýtvej",
+          "hint": "'Plýtvat' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-016",
+          "type": "choice",
+          "question": "Doplň i/y: Dítě vzl_kalo v koutě.",
+          "options": [
+            "i — vzlikalo",
+            "y — vzlykalo",
+            "í — vzlíkalo",
+            "y — vzlikalo",
+            "ý — vzlýkalo"
+          ],
+          "answer": "y — vzlykalo",
+          "hint": "'Vzlykat' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-017",
+          "type": "choice",
+          "question": "Doplň i/y: Spol_kl jsem léky.",
+          "options": [
+            "y — spolykl",
+            "í — spolíkl",
+            "y — spolikl",
+            "ý — spolýkl",
+            "i — spolikl"
+          ],
+          "answer": "y — spolykl",
+          "hint": "Od 'polykat'. 'Spolknout/spolykl' — odvozené."
+        },
+        {
+          "id": "CJ4-01-02-018",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_nový sporák funguje na plyn.",
+          "options": [
+            "i — plinový",
+            "y — plynový",
+            "y — plinový",
+            "í — plínový",
+            "ý — plýnový"
+          ],
+          "answer": "y — plynový",
+          "hint": "'Plyn' je od 'plynout'."
+        },
+        {
+          "id": "CJ4-01-02-019",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_tvání jídlem je špatné.",
+          "options": [
+            "ý — plítvání",
+            "y — plytvání",
+            "í — plítvání",
+            "ý — plýtvání",
+            "i — plitvání"
+          ],
+          "answer": "ý — plýtvání",
+          "hint": "Od 'plýtvat'."
+        },
+        {
+          "id": "CJ4-01-02-020",
+          "type": "choice",
+          "question": "Doplň i/y: Vzl_kot se nesl tmou.",
+          "options": [
+            "y — vzlikot",
+            "í — vzlíkot",
+            "i — vzlikot",
+            "y — vzlykot",
+            "ý — vzlýkot"
+          ],
+          "answer": "y — vzlykot",
+          "hint": "Od 'vzlykat'."
+        },
+        {
+          "id": "CJ4-01-02-021",
+          "type": "choice",
+          "question": "Doplň i/y: Upl_nul celý rok.",
+          "options": [
+            "ý — uplýnul",
+            "y — uplynul",
+            "i — uplinul",
+            "í — uplínul",
+            "y — uplinul"
+          ],
+          "answer": "y — uplynul",
+          "hint": "Od 'plynout'."
+        },
+        {
+          "id": "CJ4-01-02-022",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_nule mluvil celou hodinu.",
+          "options": [
+            "y — plynule",
+            "y — plinule",
+            "í — plínule",
+            "ý — plýnule",
+            "i — plinule"
+          ],
+          "answer": "y — plynule",
+          "hint": "Od 'plynout'. Plynulá řeč = tekoucí hladce."
+        },
+        {
+          "id": "CJ4-01-02-023",
+          "type": "choice",
+          "question": "Doplň i/y: Pol_kací reflex je automatický.",
+          "options": [
+            "ý — polýkací",
+            "i — polikací",
+            "y — polikací",
+            "y — polykací",
+            "í — políkací"
+          ],
+          "answer": "y — polykací",
+          "hint": "Od 'polykat'."
+        },
+        {
+          "id": "CJ4-01-02-024",
+          "type": "choice",
+          "question": "Doplň i/y: Rozpl_val se nad dárkem.",
+          "options": [
+            "ý — rozplýval",
+            "y — rozplyval",
+            "i — rozplival",
+            "í — rozplíval",
+            "ý — rozplíval"
+          ],
+          "answer": "ý — rozplýval",
+          "hint": "'Rozplývat se' — od 'plynout/plývat'."
+        }
       ]
     },
     {
@@ -50,18 +362,174 @@
       "difficulty": 2,
       "theory": "Lysý, lýtko, lýko, lyže, pelyněk, plyš — vyjmenovaná slova po L. Odvozená: lysina, lýtkový, lyžař, lyžování, pelyňkový, plyšový...",
       "tasks": [
-        {"id":"CJ4-01-02-025","type":"choice","question":"Doplň i/y: L_sý dědeček nosil čepici.","options":["y — lysý","i — lisý","ý — lýsý","í — lísý","y — lisý"],"answer":"y — lysý","hint":"'Lysý' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-026","type":"choice","question":"Doplň i/y: Bolelo ho l_tko.","options":["ý — lýtko","í — lítko","y — lytko","i — litko","ý — lítko"],"answer":"ý — lýtko","hint":"'Lýtko' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-027","type":"choice","question":"Doplň i/y: L_ko se používá na vázání.","options":["ý — lýko","í — líko","y — lyko","i — liko","ý — líko"],"answer":"ý — lýko","hint":"'Lýko' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-028","type":"choice","question":"Doplň i/y: V zimě jezdíme na l_žích.","options":["y — lyžích","i — ližích","ý — lýžích","í — lížích","y — ližích"],"answer":"y — lyžích","hint":"'Lyže' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-029","type":"choice","question":"Doplň i/y: Pel_něk je hořká bylina.","options":["y — pelyněk","i — pelině","ý — pelýněk","í — pelíněk","y — pelinek"],"answer":"y — pelyněk","hint":"'Pelyněk' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-030","type":"choice","question":"Doplň i/y: Dostal pl_šového medvídka.","options":["y — plyšového","i — plišového","ý — plýšového","í — plíšového","y — plišového"],"answer":"y — plyšového","hint":"'Plyš' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-031","type":"choice","question":"Doplň i/y: L_žař sjížděl svah.","options":["y — lyžař","i — ližař","ý — lýžař","í — lížař","y — ližař"],"answer":"y — lyžař","hint":"Od 'lyže'."},
-        {"id":"CJ4-01-02-032","type":"choice","question":"Doplň i/y: Na hlavě měl l_sinu.","options":["y — lysinu","i — lisinu","ý — lýsinu","í — lísinu","y — lisinu"],"answer":"y — lysinu","hint":"Od 'lysý'."},
-        {"id":"CJ4-01-02-033","type":"choice","question":"Doplň i/y: L_žování je zimní sport.","options":["y — lyžování","i — ližování","ý — lýžování","í — lížování","y — ližování"],"answer":"y — lyžování","hint":"Od 'lyže'."},
-        {"id":"CJ4-01-02-034","type":"choice","question":"Doplň i/y: Pl_šová hračka ležela na posteli.","options":["y — plyšová","i — plišová","ý — plýšová","í — plíšová","y — plišová"],"answer":"y — plyšová","hint":"Od 'plyš'."},
-        {"id":"CJ4-01-02-035","type":"choice","question":"Doplň i/y: L_tkový sval ho bolel po běhu.","options":["ý — lýtkový","í — lítkový","y — lytkový","i — litkový","ý — lítkový"],"answer":"ý — lýtkový","hint":"Od 'lýtko'."},
-        {"id":"CJ4-01-02-036","type":"choice","question":"Doplň i/y: Ol_sal se jako kočka.","options":["y — olysal","i — olisal","ý — olýsal","í — olísal","y — olisal"],"answer":"y — olysal","hint":"Od 'lysý'. 'Olysat' = stát se lysým."}
+        {
+          "id": "CJ4-01-02-025",
+          "type": "choice",
+          "question": "Doplň i/y: L_sý dědeček nosil čepici.",
+          "options": [
+            "i — lisý",
+            "ý — lýsý",
+            "y — lisý",
+            "y — lysý",
+            "í — lísý"
+          ],
+          "answer": "y — lysý",
+          "hint": "'Lysý' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-026",
+          "type": "choice",
+          "question": "Doplň i/y: Bolelo ho l_tko.",
+          "options": [
+            "ý — lítko",
+            "ý — lýtko",
+            "i — litko",
+            "y — lytko",
+            "í — lítko"
+          ],
+          "answer": "ý — lýtko",
+          "hint": "'Lýtko' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-027",
+          "type": "choice",
+          "question": "Doplň i/y: L_ko se používá na vázání.",
+          "options": [
+            "í — líko",
+            "y — lyko",
+            "ý — lýko",
+            "i — liko",
+            "ý — líko"
+          ],
+          "answer": "ý — lýko",
+          "hint": "'Lýko' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-028",
+          "type": "choice",
+          "question": "Doplň i/y: V zimě jezdíme na l_žích.",
+          "options": [
+            "i — ližích",
+            "ý — lýžích",
+            "y — ližích",
+            "í — lížích",
+            "y — lyžích"
+          ],
+          "answer": "y — lyžích",
+          "hint": "'Lyže' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-029",
+          "type": "choice",
+          "question": "Doplň i/y: Pel_něk je hořká bylina.",
+          "options": [
+            "y — pelyněk",
+            "i — pelině",
+            "y — pelinek",
+            "ý — pelýněk",
+            "í — pelíněk"
+          ],
+          "answer": "y — pelyněk",
+          "hint": "'Pelyněk' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-030",
+          "type": "choice",
+          "question": "Doplň i/y: Dostal pl_šového medvídka.",
+          "options": [
+            "ý — plýšového",
+            "y — plyšového",
+            "i — plišového",
+            "y — plišového",
+            "í — plíšového"
+          ],
+          "answer": "y — plyšového",
+          "hint": "'Plyš' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-031",
+          "type": "choice",
+          "question": "Doplň i/y: L_žař sjížděl svah.",
+          "options": [
+            "ý — lýžař",
+            "y — lyžař",
+            "y — ližař",
+            "i — ližař",
+            "í — lížař"
+          ],
+          "answer": "y — lyžař",
+          "hint": "Od 'lyže'."
+        },
+        {
+          "id": "CJ4-01-02-032",
+          "type": "choice",
+          "question": "Doplň i/y: Na hlavě měl l_sinu.",
+          "options": [
+            "ý — lýsinu",
+            "í — lísinu",
+            "y — lysinu",
+            "i — lisinu",
+            "y — lisinu"
+          ],
+          "answer": "y — lysinu",
+          "hint": "Od 'lysý'."
+        },
+        {
+          "id": "CJ4-01-02-033",
+          "type": "choice",
+          "question": "Doplň i/y: L_žování je zimní sport.",
+          "options": [
+            "y — lyžování",
+            "i — ližování",
+            "y — ližování",
+            "ý — lýžování",
+            "í — lížování"
+          ],
+          "answer": "y — lyžování",
+          "hint": "Od 'lyže'."
+        },
+        {
+          "id": "CJ4-01-02-034",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_šová hračka ležela na posteli.",
+          "options": [
+            "y — plišová",
+            "i — plišová",
+            "í — plíšová",
+            "ý — plýšová",
+            "y — plyšová"
+          ],
+          "answer": "y — plyšová",
+          "hint": "Od 'plyš'."
+        },
+        {
+          "id": "CJ4-01-02-035",
+          "type": "choice",
+          "question": "Doplň i/y: L_tkový sval ho bolel po běhu.",
+          "options": [
+            "y — lytkový",
+            "í — lítkový",
+            "ý — lýtkový",
+            "i — litkový",
+            "ý — lítkový"
+          ],
+          "answer": "ý — lýtkový",
+          "hint": "Od 'lýtko'."
+        },
+        {
+          "id": "CJ4-01-02-036",
+          "type": "choice",
+          "question": "Doplň i/y: Ol_sal se jako kočka.",
+          "options": [
+            "y — olysal",
+            "ý — olýsal",
+            "i — olisal",
+            "í — olísal",
+            "y — olisal"
+          ],
+          "answer": "y — olysal",
+          "hint": "Od 'lysý'. 'Olysat' = stát se lysým."
+        }
       ]
     },
     {
@@ -70,18 +538,174 @@
       "difficulty": 2,
       "theory": "Pozor! Tato slova NEJSOU vyjmenovaná po L: liška, lípa, líný, líbat, líčit,list, linka, lít, líh. Píšeme u nich měkké i/í.",
       "tasks": [
-        {"id":"CJ4-01-02-037","type":"choice","question":"Doplň i/y: L_ška utekla do lesa.","options":["i — liška","y — lyška","í — líška","ý — lýška","i — lyška"],"answer":"i — liška","hint":"'Liška' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-038","type":"choice","question":"Doplň i/y: Pod l_pou stála lavička.","options":["í — lípou","ý — lýpou","i — lipou","y — lypou","í — lypou"],"answer":"í — lípou","hint":"'Lípa' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-039","type":"choice","question":"Doplň i/y: L_ný žák neudělal úkoly.","options":["í — líný","ý — lýný","i — liný","y — lyný","í — lyný"],"answer":"í — líný","hint":"'Líný' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-040","type":"choice","question":"Doplň i/y: L_stek spadl ze stromu.","options":["i — listek","y — lystek","í — lístek","ý — lýstek","i — lystek"],"answer":"í — lístek","hint":"'Lístek/list' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-041","type":"choice","question":"Doplň i/y: Maminka ho pol_bila na čelo.","options":["í — políbila","ý — polýbila","i — polibila","y — polybila","í — polybila"],"answer":"í — políbila","hint":"'Líbat/políbit' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-042","type":"choice","question":"Doplň i/y: Venku l_lo jako z konve.","options":["i — lilo","y — lylo","í — lílo","ý — lýlo","i — lylo"],"answer":"i — lilo","hint":"'Lít' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-043","type":"choice","question":"Doplň i/y: L_nka autobusu jede do centra.","options":["i — linka","y — lynka","í — línka","ý — lýnka","i — lynka"],"answer":"i — linka","hint":"'Linka' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-044","type":"choice","question":"Doplň i/y: Mal_ny jsou červené bobule.","options":["i — maliny","y — malyny","í — malíny","ý — malýny","i — malyny"],"answer":"i — maliny","hint":"'Malina' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-045","type":"choice","question":"Doplň i/y: Kol_k stál u plotu.","options":["í — kolík","ý — kolýk","i — kolik","y — kolyk","í — kolyk"],"answer":"í — kolík","hint":"'Kolík' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-046","type":"choice","question":"Doplň i/y: Ul_ta hlemýždě ležela na cestě.","options":["i — ulita","y — ulyta","í — ulíta","ý — ulýta","i — ulyta"],"answer":"i — ulita","hint":"'Ulita' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-047","type":"choice","question":"Doplň i/y: Kal_šek stál na stole.","options":["í — kalíšek","ý — kalýšek","i — kalíšek","y — kalyšek","í — kalyšek"],"answer":"í — kalíšek","hint":"'Kalíšek' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-048","type":"choice","question":"Doplň i/y: Chlapec byl vel_ce chytrý.","options":["i — velice","y — velyce","í — velíce","ý — velýce","i — velyce"],"answer":"i — velice","hint":"'Velice' NENÍ vyjmenované slovo po L."}
+        {
+          "id": "CJ4-01-02-037",
+          "type": "choice",
+          "question": "Doplň i/y: L_ška utekla do lesa.",
+          "options": [
+            "i — liška",
+            "í — líška",
+            "y — lyška",
+            "ý — lýška",
+            "i — lyška"
+          ],
+          "answer": "i — liška",
+          "hint": "'Liška' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-038",
+          "type": "choice",
+          "question": "Doplň i/y: Pod l_pou stála lavička.",
+          "options": [
+            "í — lípou",
+            "y — lypou",
+            "i — lipou",
+            "í — lypou",
+            "ý — lýpou"
+          ],
+          "answer": "í — lípou",
+          "hint": "'Lípa' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-039",
+          "type": "choice",
+          "question": "Doplň i/y: L_ný žák neudělal úkoly.",
+          "options": [
+            "i — liný",
+            "í — lyný",
+            "í — líný",
+            "y — lyný",
+            "ý — lýný"
+          ],
+          "answer": "í — líný",
+          "hint": "'Líný' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-040",
+          "type": "choice",
+          "question": "Doplň i/y: L_stek spadl ze stromu.",
+          "options": [
+            "í — lístek",
+            "i — listek",
+            "y — lystek",
+            "i — lystek",
+            "ý — lýstek"
+          ],
+          "answer": "í — lístek",
+          "hint": "'Lístek/list' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-041",
+          "type": "choice",
+          "question": "Doplň i/y: Maminka ho pol_bila na čelo.",
+          "options": [
+            "i — polibila",
+            "ý — polýbila",
+            "í — polybila",
+            "í — políbila",
+            "y — polybila"
+          ],
+          "answer": "í — políbila",
+          "hint": "'Líbat/políbit' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-042",
+          "type": "choice",
+          "question": "Doplň i/y: Venku l_lo jako z konve.",
+          "options": [
+            "í — lílo",
+            "y — lylo",
+            "i — lylo",
+            "ý — lýlo",
+            "i — lilo"
+          ],
+          "answer": "i — lilo",
+          "hint": "'Lít' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-043",
+          "type": "choice",
+          "question": "Doplň i/y: L_nka autobusu jede do centra.",
+          "options": [
+            "í — línka",
+            "i — lynka",
+            "ý — lýnka",
+            "y — lynka",
+            "i — linka"
+          ],
+          "answer": "i — linka",
+          "hint": "'Linka' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-044",
+          "type": "choice",
+          "question": "Doplň i/y: Mal_ny jsou červené bobule.",
+          "options": [
+            "i — malyny",
+            "í — malíny",
+            "y — malyny",
+            "ý — malýny",
+            "i — maliny"
+          ],
+          "answer": "i — maliny",
+          "hint": "'Malina' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-045",
+          "type": "choice",
+          "question": "Doplň i/y: Kol_k stál u plotu.",
+          "options": [
+            "ý — kolýk",
+            "í — kolík",
+            "i — kolik",
+            "y — kolyk",
+            "í — kolyk"
+          ],
+          "answer": "í — kolík",
+          "hint": "'Kolík' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-046",
+          "type": "choice",
+          "question": "Doplň i/y: Ul_ta hlemýždě ležela na cestě.",
+          "options": [
+            "i — ulita",
+            "i — ulyta",
+            "y — ulyta",
+            "ý — ulýta",
+            "í — ulíta"
+          ],
+          "answer": "i — ulita",
+          "hint": "'Ulita' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-047",
+          "type": "choice",
+          "question": "Doplň i/y: Kal_šek stál na stole.",
+          "options": [
+            "ý — kalýšek",
+            "y — kalyšek",
+            "i — kalíšek",
+            "í — kalíšek",
+            "í — kalyšek"
+          ],
+          "answer": "í — kalíšek",
+          "hint": "'Kalíšek' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-048",
+          "type": "choice",
+          "question": "Doplň i/y: Chlapec byl vel_ce chytrý.",
+          "options": [
+            "i — velyce",
+            "ý — velýce",
+            "i — velice",
+            "í — velíce",
+            "y — velyce"
+          ],
+          "answer": "i — velice",
+          "hint": "'Velice' NENÍ vyjmenované slovo po L."
+        }
       ]
     },
     {
@@ -90,18 +714,174 @@
       "difficulty": 3,
       "theory": "Pozor na záměny! Lysý (bez vlasů) × líský (od líska). Lyže × líže (od lízat). Lýko × líko (neexistuje). Slyšet × slídit.",
       "tasks": [
-        {"id":"CJ4-01-02-049","type":"choice","question":"Doplň i/y: Pes l_zal kost.","options":["í — lízal","ý — lýzal","i — lizal","y — lyzal","í — lyzal"],"answer":"í — lízal","hint":"'Lízat' NENÍ vyjmenované slovo po L! Pozor na záměnu s 'lyže'."},
-        {"id":"CJ4-01-02-050","type":"choice","question":"Doplň i/y: L_žařský svah byl strmý.","options":["y — lyžařský","i — ližařský","ý — lýžařský","í — lížařský","y — ližařský"],"answer":"y — lyžařský","hint":"Od 'lyže' — vyjmenované."},
-        {"id":"CJ4-01-02-051","type":"choice","question":"Doplň i/y: Kočka si l_zala packy.","options":["í — lízala","ý — lýzala","i — lizala","y — lyzala","í — lyzala"],"answer":"í — lízala","hint":"'Lízat' NENÍ vyjmenované. Měkké í."},
-        {"id":"CJ4-01-02-052","type":"choice","question":"Doplň i/y: Pol_cista řídil dopravu.","options":["i — policista","y — polycista","í — polícista","ý — polýcista","i — polycista"],"answer":"i — policista","hint":"'Policista' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-053","type":"choice","question":"Doplň i/y: Sl_díl po chodbě jako špion.","options":["í — slídil","ý — slýdil","i — slidil","y — slydil","í — slydil"],"answer":"í — slídil","hint":"'Slídit' NENÍ vyjmenované. Pozor na záměnu se 'slyšet'."},
-        {"id":"CJ4-01-02-054","type":"choice","question":"Které slovo je vyjmenované po L?","options":["plyš","plíseň","plížit","plínka","plískat"],"answer":"plyš","hint":"Z nabídky jen 'plyš' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-055","type":"choice","question":"Které slovo NENÍ vyjmenované po L?","options":["lípa","slyšet","mlýn","lyže","plýtvat"],"answer":"lípa","hint":"'Lípa' NENÍ ve vyjmenovaných slovech po L."},
-        {"id":"CJ4-01-02-056","type":"choice","question":"Doplň i/y: Sl_pice snášela vejce.","options":["i — slipice","y — slypice","í — slípice","ý — slýpice","i — slypice"],"answer":"i — slipice","hint":"'Slepice/slipice' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-057","type":"choice","question":"Doplň i/y: L_stina je druh stromu.","options":["í — líska/listina","i — listina","ý — lýstina","y — lystina","í — lystina"],"answer":"i — listina","hint":"'Listina' (dokument) NENÍ vyjmenované."},
-        {"id":"CJ4-01-02-058","type":"choice","question":"Doplň i/y: Nal_stoval správnou stránku.","options":["i — nalistoval","y — nalystoval","í — nalístoval","ý — nalýstoval","i — nalystoval"],"answer":"i — nalistoval","hint":"Od 'list'. NENÍ vyjmenované."},
-        {"id":"CJ4-01-02-059","type":"choice","question":"Které slovo je odvozené od vyjmenovaného po L?","options":["lyžařka","lístek","líčidlo","línější","lišejník"],"answer":"lyžařka","hint":"'Lyžařka' je od 'lyže' — vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-060","type":"choice","question":"Doplň i/y: Pl_seň se rozrostla na zdi.","options":["í — plíseň","ý — plýseň","i — pliseň","y — plyseň","í — plyseň"],"answer":"í — plíseň","hint":"'Plíseň' NENÍ vyjmenované slovo po L. Pozor na záměnu s 'plyš'."}
+        {
+          "id": "CJ4-01-02-049",
+          "type": "choice",
+          "question": "Doplň i/y: Pes l_zal kost.",
+          "options": [
+            "ý — lýzal",
+            "í — lyzal",
+            "i — lizal",
+            "í — lízal",
+            "y — lyzal"
+          ],
+          "answer": "í — lízal",
+          "hint": "'Lízat' NENÍ vyjmenované slovo po L! Pozor na záměnu s 'lyže'."
+        },
+        {
+          "id": "CJ4-01-02-050",
+          "type": "choice",
+          "question": "Doplň i/y: L_žařský svah byl strmý.",
+          "options": [
+            "y — lyžařský",
+            "y — ližařský",
+            "ý — lýžařský",
+            "i — ližařský",
+            "í — lížařský"
+          ],
+          "answer": "y — lyžařský",
+          "hint": "Od 'lyže' — vyjmenované."
+        },
+        {
+          "id": "CJ4-01-02-051",
+          "type": "choice",
+          "question": "Doplň i/y: Kočka si l_zala packy.",
+          "options": [
+            "i — lizala",
+            "y — lyzala",
+            "ý — lýzala",
+            "í — lyzala",
+            "í — lízala"
+          ],
+          "answer": "í — lízala",
+          "hint": "'Lízat' NENÍ vyjmenované. Měkké í."
+        },
+        {
+          "id": "CJ4-01-02-052",
+          "type": "choice",
+          "question": "Doplň i/y: Pol_cista řídil dopravu.",
+          "options": [
+            "i — policista",
+            "ý — polýcista",
+            "y — polycista",
+            "i — polycista",
+            "í — polícista"
+          ],
+          "answer": "i — policista",
+          "hint": "'Policista' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-053",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_díl po chodbě jako špion.",
+          "options": [
+            "í — slídil",
+            "y — slydil",
+            "i — slidil",
+            "í — slydil",
+            "ý — slýdil"
+          ],
+          "answer": "í — slídil",
+          "hint": "'Slídit' NENÍ vyjmenované. Pozor na záměnu se 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-054",
+          "type": "choice",
+          "question": "Které slovo je vyjmenované po L?",
+          "options": [
+            "plínka",
+            "plížit",
+            "plyš",
+            "plíseň",
+            "plískat"
+          ],
+          "answer": "plyš",
+          "hint": "Z nabídky jen 'plyš' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-055",
+          "type": "choice",
+          "question": "Které slovo NENÍ vyjmenované po L?",
+          "options": [
+            "slyšet",
+            "plýtvat",
+            "mlýn",
+            "lyže",
+            "lípa"
+          ],
+          "answer": "lípa",
+          "hint": "'Lípa' NENÍ ve vyjmenovaných slovech po L."
+        },
+        {
+          "id": "CJ4-01-02-056",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_pice snášela vejce.",
+          "options": [
+            "í — slípice",
+            "i — slypice",
+            "i — slipice",
+            "y — slypice",
+            "ý — slýpice"
+          ],
+          "answer": "i — slipice",
+          "hint": "'Slepice/slipice' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-057",
+          "type": "choice",
+          "question": "Doplň i/y: L_stina je druh stromu.",
+          "options": [
+            "í — lystina",
+            "í — líska/listina",
+            "i — listina",
+            "y — lystina",
+            "ý — lýstina"
+          ],
+          "answer": "i — listina",
+          "hint": "'Listina' (dokument) NENÍ vyjmenované."
+        },
+        {
+          "id": "CJ4-01-02-058",
+          "type": "choice",
+          "question": "Doplň i/y: Nal_stoval správnou stránku.",
+          "options": [
+            "y — nalystoval",
+            "i — nalistoval",
+            "i — nalystoval",
+            "í — nalístoval",
+            "ý — nalýstoval"
+          ],
+          "answer": "i — nalistoval",
+          "hint": "Od 'list'. NENÍ vyjmenované."
+        },
+        {
+          "id": "CJ4-01-02-059",
+          "type": "choice",
+          "question": "Které slovo je odvozené od vyjmenovaného po L?",
+          "options": [
+            "lišejník",
+            "líčidlo",
+            "lístek",
+            "línější",
+            "lyžařka"
+          ],
+          "answer": "lyžařka",
+          "hint": "'Lyžařka' je od 'lyže' — vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-060",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_seň se rozrostla na zdi.",
+          "options": [
+            "í — plíseň",
+            "í — plyseň",
+            "ý — plýseň",
+            "i — pliseň",
+            "y — plyseň"
+          ],
+          "answer": "í — plíseň",
+          "hint": "'Plíseň' NENÍ vyjmenované slovo po L. Pozor na záměnu s 'plyš'."
+        }
       ]
     },
     {
@@ -110,46 +890,566 @@
       "difficulty": 2,
       "theory": "Souhrn všech vyjmenovaných slov po L a jejich odvozenin. Nezapomeň: slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš.",
       "tasks": [
-        {"id":"CJ4-01-02-061","type":"choice","question":"Doplň i/y: L_žařské středisko bylo plné lidí.","options":["y — lyžařské","i — ližařské","ý — lýžařské","í — lížařské","y — ližařské"],"answer":"y — lyžařské","hint":"Od 'lyže'."},
-        {"id":"CJ4-01-02-062","type":"choice","question":"Doplň i/y: Sl_šitelný zvuk přicházel z lesa.","options":["y — slyšitelný","i — slišitelný","ý — slýšitelný","í — slíšitelný","y — slišitelný"],"answer":"y — slyšitelný","hint":"Od 'slyšet'."},
-        {"id":"CJ4-01-02-063","type":"choice","question":"Doplň i/y: Pl_nárna zásobuje město plynem.","options":["y — plynárna","i — plinárna","ý — plýnárna","í — plínárna","y — plinárna"],"answer":"y — plynárna","hint":"Od 'plyn/plynout'."},
-        {"id":"CJ4-01-02-064","type":"choice","question":"Doplň i/y: Nesl_chané chování žáka.","options":["ý — neslýchané","í — neslíchané","y — neslychané","i — neslichané","ý — neslíchané"],"answer":"ý — neslýchané","hint":"Od 'slyšet/slýchat'."},
-        {"id":"CJ4-01-02-065","type":"choice","question":"Doplň i/y: Pl_šák ležel na posteli.","options":["y — plyšák","i — plišák","ý — plýšák","í — plíšák","y — plišák"],"answer":"y — plyšák","hint":"Od 'plyš'."},
-        {"id":"CJ4-01-02-066","type":"choice","question":"Doplň i/y: L_sá lebka se bl_skala na slunci.","options":["y, ý — lysá, blýskala","i, í — lisá, blískala","y, í — lysá, blískala","i, ý — lisá, blýskala","ý, y — lýsá, blyskala"],"answer":"y, ý — lysá, blýskala","hint":"'Lysá' od 'lysý', 'blýskala' od 'blýskat se'. Obě vyjmenovaná."},
-        {"id":"CJ4-01-02-067","type":"choice","question":"Doplň i/y: Pl_tvat energií je nerozumné.","options":["ý — plýtvat","í — plítvat","y — plytvat","i — plitvat","ý — plítvat"],"answer":"ý — plýtvat","hint":"'Plýtvat' — vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-068","type":"choice","question":"Doplň i/y: Pol_kal tabletu a zapil ji vodou.","options":["y — polykal","i — polikal","ý — polýkal","í — políkal","y — polikal"],"answer":"y — polykal","hint":"Od 'polykat'."},
-        {"id":"CJ4-01-02-069","type":"choice","question":"Doplň i/y: Na l_tkách měl modřiny.","options":["ý — lýtkách","í — lítkách","y — lytkách","i — litkách","ý — lítkách"],"answer":"ý — lýtkách","hint":"Od 'lýtko'."},
-        {"id":"CJ4-01-02-070","type":"choice","question":"Doplň i/y: Pel_ňkový čaj je hořký.","options":["y — pelyňkový","i — peliňkový","ý — pelýňkový","í — pelíňkový","y — peliňkový"],"answer":"y — pelyňkový","hint":"Od 'pelyněk'."},
-        {"id":"CJ4-01-02-071","type":"choice","question":"Doplň i/y: Řeka pl_nula klidně krajinou.","options":["y — plynula","i — plinula","ý — plýnula","í — plínula","y — plinula"],"answer":"y — plynula","hint":"Od 'plynout'."},
-        {"id":"CJ4-01-02-072","type":"choice","question":"Doplň i/y: Mal_č běžel za mámou.","options":["í — malíč","ý — malýč","i — malič","y — malyč","í — malyč"],"answer":"í — malíč","hint":"'Malíč' NENÍ vyjmenované slovo po L. Měkké í. Ale pozor — správně se říká 'malíček'."},
-        {"id":"CJ4-01-02-073","type":"choice","question":"Doplň i/y: Vl_dce rozhodl o válce.","options":["í — vlídce","á — vládce","i — vlidce","y — vlydce","á — vládce"],"answer":"á — vládce","hint":"Pozor — 'vládce' má á, ne i/y. Žádné vyjmenované slovo."},
-        {"id":"CJ4-01-02-074","type":"choice","question":"Doplň i/y: L_koví omotávalo strom.","options":["ý — lýkoví","í — líkoví","y — lykoví","i — likoví","ý — líkoví"],"answer":"ý — lýkoví","hint":"Od 'lýko'."},
-        {"id":"CJ4-01-02-075","type":"choice","question":"Doplň i/y: Kol_k máš let?","options":["i — kolik","y — kolyk","í — kolík","ý — kolýk","i — kolyk"],"answer":"i — kolik","hint":"'Kolik' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-076","type":"choice","question":"Doplň i/y: Sl_šel jsem, jak bl_skavice udeřila.","options":["y, ý — slyšel, blýskavice","i, í — slišel, blískavice","y, í — slyšel, blískavice","i, ý — slišel, blýskavice","ý, y — slýšel, blyskavice"],"answer":"y, ý — slyšel, blýskavice","hint":"Obě od vyjmenovaných: 'slyšet' a 'blýskat se'."},
-        {"id":"CJ4-01-02-077","type":"choice","question":"Doplň i/y: Vzl_kavé dítě se nemohlo uklidnit.","options":["y — vzlykavé","i — vzlikavé","ý — vzlýkavé","í — vzlíkavé","y — vzlikavé"],"answer":"y — vzlykavé","hint":"Od 'vzlykat'."},
-        {"id":"CJ4-01-02-078","type":"choice","question":"Doplň i/y: L_ska roste u potoka.","options":["í — líska","ý — lýska","i — liska","y — lyska","í — lyska"],"answer":"í — líska","hint":"'Líska' (keř) NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-079","type":"choice","question":"Doplň i/y: Opl_val bohatstvím.","options":["ý — oplýval","í — oplíval","y — oplyval","i — oplival","ý — oplíval"],"answer":"ý — oplýval","hint":"'Oplývat' od 'plynout/plývat'. Vyjmenované."},
-        {"id":"CJ4-01-02-080","type":"choice","question":"Doplň i/y: Pol_kat hrášek po jednom.","options":["y — polykat","i — polikat","ý — polýkat","í — políkat","y — polikat"],"answer":"y — polykat","hint":"'Polykat' — vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-081","type":"choice","question":"Kolik vyjmenovaných slov po L znáš?","options":["13","7","10","5","15"],"answer":"13","hint":"Slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš."},
-        {"id":"CJ4-01-02-082","type":"choice","question":"Které slovo je vyjmenované po L?","options":["vzlykat","vzlínat","vlít","vlísat","vlídný"],"answer":"vzlykat","hint":"Z nabídky jen 'vzlykat' je vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-083","type":"choice","question":"Doplň i/y: Ml_nářka pekla chléb.","options":["ý — mlýnářka","í — mlínářka","y — mlynářka","i — mlinářka","ý — mlínářka"],"answer":"ý — mlýnářka","hint":"Od 'mlýn/mlýnář'."},
-        {"id":"CJ4-01-02-084","type":"choice","question":"Doplň i/y: Přepl_val se přes plot.","options":["í — přeplížil","ý — přelýzal","i — přeplival","y — přeplyval","í — přeplíval"],"answer":"í — přeplížil","hint":"Pozor — 'plížit se' NENÍ vyjmenované. Ale otázka je na 'přeplival' — 'plivat' taky ne. Správně: přeplížil = přelezl, od 'plížit', měkké í."},
-        {"id":"CJ4-01-02-085","type":"choice","question":"Doplň i/y: Pl_nový kotel vytápí dům.","options":["y — plynový","i — plinový","ý — plýnový","í — plínový","y — plinový"],"answer":"y — plynový","hint":"Od 'plyn/plynout'."},
-        {"id":"CJ4-01-02-086","type":"choice","question":"Doplň i/y: L_žařka vyhrála závod.","options":["y — lyžařka","i — ližařka","ý — lýžařka","í — lížařka","y — ližařka"],"answer":"y — lyžařka","hint":"Od 'lyže'."},
-        {"id":"CJ4-01-02-087","type":"choice","question":"Doplň i/y: Bl_skot hvězd byl krásný.","options":["ý — blýskot","í — blískot","y — blyskot","i — bliskot","ý — blískot"],"answer":"ý — blýskot","hint":"Od 'blýskat se'."},
-        {"id":"CJ4-01-02-088","type":"choice","question":"Doplň i/y: L_sá hora je kopec v Beskydech.","options":["y — Lysá","i — Lisá","ý — Lýsá","í — Lísá","y — Lisá"],"answer":"y — Lysá","hint":"Od 'lysý'. Lysá hora = hora bez stromů na vrcholu."},
-        {"id":"CJ4-01-02-089","type":"choice","question":"Doplň i/y: Sl_šení se mu zhoršilo.","options":["y — slyšení","i — slišení","ý — slýšení","í — slíšení","y — slišení"],"answer":"y — slyšení","hint":"Od 'slyšet'."},
-        {"id":"CJ4-01-02-090","type":"choice","question":"Doplň i/y: Vel_ký pl_šový medvěd.","options":["i, y — veliký, plyšový","y, i — velyký, plišový","í, y — velíký, plyšový","i, ý — veliký, plýšový","y, y — velyký, plyšový"],"answer":"i, y — veliký, plyšový","hint":"'Veliký' NENÍ vyjmenované (měkké i). 'Plyšový' JE od 'plyš' (tvrdé y)."},
-        {"id":"CJ4-01-02-091","type":"choice","question":"Které slovo NENÍ vyjmenované po L?","options":["líný","lysý","lyže","plyš","lýtko"],"answer":"líný","hint":"'Líný' NENÍ ve vyjmenovaných slovech po L."},
-        {"id":"CJ4-01-02-092","type":"choice","question":"Doplň i/y: Nápl_ň polštáře byla měkká.","options":["y — náplyň","i — nápliň","í — náplíň","ý — náplýň","y — nápliň"],"answer":"y — náplyň","hint":"Pozor — 'náplň' se píše bez y/i za l. Ale 'naplynit' by bylo od 'plyn'. Trik."},
-        {"id":"CJ4-01-02-093","type":"choice","question":"Doplň i/y: Vysl_šel svědky u soudu.","options":["ý — vyslýchal","í — vyslíchal","y — vyslychal","i — vyslichal","ý — vyslíchal"],"answer":"ý — vyslýchal","hint":"Od 'slyšet/slýchat'."},
-        {"id":"CJ4-01-02-094","type":"choice","question":"Doplň i/y: L_monáda byla studená.","options":["i — limonáda","y — lymonáda","í — límonáda","ý — lýmonáda","i — lymonáda"],"answer":"i — limonáda","hint":"'Limonáda' NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-095","type":"choice","question":"Doplň i/y: Spl_nul mu sen o cestování.","options":["y — splynul","i — splinul","ý — splýnul","í — splínul","y — splinul"],"answer":"y — splynul","hint":"Od 'plynout'. 'Splynout' = sloučit se."},
-        {"id":"CJ4-01-02-096","type":"choice","question":"Doplň i/y: Odpl_vala loď z přístavu.","options":["y — odplývala","i — odplívala","ý — odplývala","í — odplívala","y — odplívala"],"answer":"y — odplývala","hint":"Od 'plynout/plývat'."},
-        {"id":"CJ4-01-02-097","type":"choice","question":"Doplň i/y: Zasl_šel kroky za dveřmi.","options":["y — zaslyšel","i — zaslišel","ý — zaslýšel","í — zaslíšel","y — zaslišel"],"answer":"y — zaslyšel","hint":"Od 'slyšet'."},
-        {"id":"CJ4-01-02-098","type":"choice","question":"Doplň i/y: Pol_kl sousto a napil se.","options":["y — polykl","i — polikl","ý — polýkl","í — políkl","y — polikl"],"answer":"y — polykl","hint":"Od 'polykat'."},
-        {"id":"CJ4-01-02-099","type":"choice","question":"Doplň i/y: Sl_vy rostly v zahradě.","options":["í — slívy","ý — slývy","i — slivy","y — slyvy","í — slyvy"],"answer":"í — slívy","hint":"'Slíva' (švestka) NENÍ vyjmenované slovo po L."},
-        {"id":"CJ4-01-02-100","type":"choice","question":"Které dvě slova z řady jsou vyjmenovaná po L?","options":["lysý, plyš","líný, lípa","lízat, líčit","listí, linka","líska, líbat"],"answer":"lysý, plyš","hint":"Z nabídky jen 'lysý' a 'plyš' jsou vyjmenovaná slova po L."}
+        {
+          "id": "CJ4-01-02-061",
+          "type": "choice",
+          "question": "Doplň i/y: L_žařské středisko bylo plné lidí.",
+          "options": [
+            "ý — lýžařské",
+            "y — lyžařské",
+            "y — ližařské",
+            "í — lížařské",
+            "i — ližařské"
+          ],
+          "answer": "y — lyžařské",
+          "hint": "Od 'lyže'."
+        },
+        {
+          "id": "CJ4-01-02-062",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_šitelný zvuk přicházel z lesa.",
+          "options": [
+            "y — slyšitelný",
+            "y — slišitelný",
+            "ý — slýšitelný",
+            "í — slíšitelný",
+            "i — slišitelný"
+          ],
+          "answer": "y — slyšitelný",
+          "hint": "Od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-063",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_nárna zásobuje město plynem.",
+          "options": [
+            "y — plynárna",
+            "i — plinárna",
+            "í — plínárna",
+            "ý — plýnárna",
+            "y — plinárna"
+          ],
+          "answer": "y — plynárna",
+          "hint": "Od 'plyn/plynout'."
+        },
+        {
+          "id": "CJ4-01-02-064",
+          "type": "choice",
+          "question": "Doplň i/y: Nesl_chané chování žáka.",
+          "options": [
+            "y — neslychané",
+            "ý — neslíchané",
+            "í — neslíchané",
+            "i — neslichané",
+            "ý — neslýchané"
+          ],
+          "answer": "ý — neslýchané",
+          "hint": "Od 'slyšet/slýchat'."
+        },
+        {
+          "id": "CJ4-01-02-065",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_šák ležel na posteli.",
+          "options": [
+            "í — plíšák",
+            "i — plišák",
+            "ý — plýšák",
+            "y — plyšák",
+            "y — plišák"
+          ],
+          "answer": "y — plyšák",
+          "hint": "Od 'plyš'."
+        },
+        {
+          "id": "CJ4-01-02-066",
+          "type": "choice",
+          "question": "Doplň i/y: L_sá lebka se bl_skala na slunci.",
+          "options": [
+            "y, ý — lysá, blýskala",
+            "i, ý — lisá, blýskala",
+            "ý, y — lýsá, blyskala",
+            "i, í — lisá, blískala",
+            "y, í — lysá, blískala"
+          ],
+          "answer": "y, ý — lysá, blýskala",
+          "hint": "'Lysá' od 'lysý', 'blýskala' od 'blýskat se'. Obě vyjmenovaná."
+        },
+        {
+          "id": "CJ4-01-02-067",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_tvat energií je nerozumné.",
+          "options": [
+            "ý — plýtvat",
+            "i — plitvat",
+            "y — plytvat",
+            "ý — plítvat",
+            "í — plítvat"
+          ],
+          "answer": "ý — plýtvat",
+          "hint": "'Plýtvat' — vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-068",
+          "type": "choice",
+          "question": "Doplň i/y: Pol_kal tabletu a zapil ji vodou.",
+          "options": [
+            "y — polikal",
+            "í — políkal",
+            "ý — polýkal",
+            "y — polykal",
+            "i — polikal"
+          ],
+          "answer": "y — polykal",
+          "hint": "Od 'polykat'."
+        },
+        {
+          "id": "CJ4-01-02-069",
+          "type": "choice",
+          "question": "Doplň i/y: Na l_tkách měl modřiny.",
+          "options": [
+            "ý — lítkách",
+            "í — lítkách",
+            "ý — lýtkách",
+            "i — litkách",
+            "y — lytkách"
+          ],
+          "answer": "ý — lýtkách",
+          "hint": "Od 'lýtko'."
+        },
+        {
+          "id": "CJ4-01-02-070",
+          "type": "choice",
+          "question": "Doplň i/y: Pel_ňkový čaj je hořký.",
+          "options": [
+            "í — pelíňkový",
+            "ý — pelýňkový",
+            "y — peliňkový",
+            "y — pelyňkový",
+            "i — peliňkový"
+          ],
+          "answer": "y — pelyňkový",
+          "hint": "Od 'pelyněk'."
+        },
+        {
+          "id": "CJ4-01-02-071",
+          "type": "choice",
+          "question": "Doplň i/y: Řeka pl_nula klidně krajinou.",
+          "options": [
+            "y — plinula",
+            "ý — plýnula",
+            "y — plynula",
+            "i — plinula",
+            "í — plínula"
+          ],
+          "answer": "y — plynula",
+          "hint": "Od 'plynout'."
+        },
+        {
+          "id": "CJ4-01-02-072",
+          "type": "choice",
+          "question": "Doplň i/y: Mal_č běžel za mámou.",
+          "options": [
+            "í — malíč",
+            "ý — malýč",
+            "y — malyč",
+            "i — malič",
+            "í — malyč"
+          ],
+          "answer": "í — malíč",
+          "hint": "'Malíč' NENÍ vyjmenované slovo po L. Měkké í. Ale pozor — správně se říká 'malíček'."
+        },
+        {
+          "id": "CJ4-01-02-073",
+          "type": "choice",
+          "question": "Doplň i/y: Vl_dce rozhodl o válce.",
+          "options": [
+            "í — vlídce",
+            "y — vlydce",
+            "á — vládce",
+            "i — vlidce",
+            "á — vládce"
+          ],
+          "answer": "á — vládce",
+          "hint": "Pozor — 'vládce' má á, ne i/y. Žádné vyjmenované slovo."
+        },
+        {
+          "id": "CJ4-01-02-074",
+          "type": "choice",
+          "question": "Doplň i/y: L_koví omotávalo strom.",
+          "options": [
+            "ý — líkoví",
+            "i — likoví",
+            "í — líkoví",
+            "ý — lýkoví",
+            "y — lykoví"
+          ],
+          "answer": "ý — lýkoví",
+          "hint": "Od 'lýko'."
+        },
+        {
+          "id": "CJ4-01-02-075",
+          "type": "choice",
+          "question": "Doplň i/y: Kol_k máš let?",
+          "options": [
+            "i — kolik",
+            "ý — kolýk",
+            "í — kolík",
+            "i — kolyk",
+            "y — kolyk"
+          ],
+          "answer": "i — kolik",
+          "hint": "'Kolik' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-076",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_šel jsem, jak bl_skavice udeřila.",
+          "options": [
+            "i, ý — slišel, blýskavice",
+            "i, í — slišel, blískavice",
+            "y, ý — slyšel, blýskavice",
+            "y, í — slyšel, blískavice",
+            "ý, y — slýšel, blyskavice"
+          ],
+          "answer": "y, ý — slyšel, blýskavice",
+          "hint": "Obě od vyjmenovaných: 'slyšet' a 'blýskat se'."
+        },
+        {
+          "id": "CJ4-01-02-077",
+          "type": "choice",
+          "question": "Doplň i/y: Vzl_kavé dítě se nemohlo uklidnit.",
+          "options": [
+            "i — vzlikavé",
+            "y — vzlikavé",
+            "í — vzlíkavé",
+            "ý — vzlýkavé",
+            "y — vzlykavé"
+          ],
+          "answer": "y — vzlykavé",
+          "hint": "Od 'vzlykat'."
+        },
+        {
+          "id": "CJ4-01-02-078",
+          "type": "choice",
+          "question": "Doplň i/y: L_ska roste u potoka.",
+          "options": [
+            "í — líska",
+            "ý — lýska",
+            "í — lyska",
+            "i — liska",
+            "y — lyska"
+          ],
+          "answer": "í — líska",
+          "hint": "'Líska' (keř) NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-079",
+          "type": "choice",
+          "question": "Doplň i/y: Opl_val bohatstvím.",
+          "options": [
+            "ý — oplýval",
+            "í — oplíval",
+            "y — oplyval",
+            "i — oplival",
+            "ý — oplíval"
+          ],
+          "answer": "ý — oplýval",
+          "hint": "'Oplývat' od 'plynout/plývat'. Vyjmenované."
+        },
+        {
+          "id": "CJ4-01-02-080",
+          "type": "choice",
+          "question": "Doplň i/y: Pol_kat hrášek po jednom.",
+          "options": [
+            "ý — polýkat",
+            "y — polikat",
+            "í — políkat",
+            "i — polikat",
+            "y — polykat"
+          ],
+          "answer": "y — polykat",
+          "hint": "'Polykat' — vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-081",
+          "type": "choice",
+          "question": "Kolik vyjmenovaných slov po L znáš?",
+          "options": [
+            "7",
+            "13",
+            "5",
+            "10",
+            "15"
+          ],
+          "answer": "13",
+          "hint": "Slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš."
+        },
+        {
+          "id": "CJ4-01-02-082",
+          "type": "choice",
+          "question": "Které slovo je vyjmenované po L?",
+          "options": [
+            "vlídný",
+            "vzlínat",
+            "vlít",
+            "vlísat",
+            "vzlykat"
+          ],
+          "answer": "vzlykat",
+          "hint": "Z nabídky jen 'vzlykat' je vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-083",
+          "type": "choice",
+          "question": "Doplň i/y: Ml_nářka pekla chléb.",
+          "options": [
+            "í — mlínářka",
+            "y — mlynářka",
+            "ý — mlínářka",
+            "ý — mlýnářka",
+            "i — mlinářka"
+          ],
+          "answer": "ý — mlýnářka",
+          "hint": "Od 'mlýn/mlýnář'."
+        },
+        {
+          "id": "CJ4-01-02-084",
+          "type": "choice",
+          "question": "Doplň i/y: Přepl_val se přes plot.",
+          "options": [
+            "y — přeplyval",
+            "í — přeplíval",
+            "ý — přelýzal",
+            "i — přeplival",
+            "í — přeplížil"
+          ],
+          "answer": "í — přeplížil",
+          "hint": "Pozor — 'plížit se' NENÍ vyjmenované. Ale otázka je na 'přeplival' — 'plivat' taky ne. Správně: přeplížil = přelezl, od 'plížit', měkké í."
+        },
+        {
+          "id": "CJ4-01-02-085",
+          "type": "choice",
+          "question": "Doplň i/y: Pl_nový kotel vytápí dům.",
+          "options": [
+            "í — plínový",
+            "y — plinový",
+            "ý — plýnový",
+            "i — plinový",
+            "y — plynový"
+          ],
+          "answer": "y — plynový",
+          "hint": "Od 'plyn/plynout'."
+        },
+        {
+          "id": "CJ4-01-02-086",
+          "type": "choice",
+          "question": "Doplň i/y: L_žařka vyhrála závod.",
+          "options": [
+            "y — lyžařka",
+            "ý — lýžařka",
+            "i — ližařka",
+            "y — ližařka",
+            "í — lížařka"
+          ],
+          "answer": "y — lyžařka",
+          "hint": "Od 'lyže'."
+        },
+        {
+          "id": "CJ4-01-02-087",
+          "type": "choice",
+          "question": "Doplň i/y: Bl_skot hvězd byl krásný.",
+          "options": [
+            "y — blyskot",
+            "ý — blýskot",
+            "i — bliskot",
+            "í — blískot",
+            "ý — blískot"
+          ],
+          "answer": "ý — blýskot",
+          "hint": "Od 'blýskat se'."
+        },
+        {
+          "id": "CJ4-01-02-088",
+          "type": "choice",
+          "question": "Doplň i/y: L_sá hora je kopec v Beskydech.",
+          "options": [
+            "ý — Lýsá",
+            "y — Lysá",
+            "i — Lisá",
+            "y — Lisá",
+            "í — Lísá"
+          ],
+          "answer": "y — Lysá",
+          "hint": "Od 'lysý'. Lysá hora = hora bez stromů na vrcholu."
+        },
+        {
+          "id": "CJ4-01-02-089",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_šení se mu zhoršilo.",
+          "options": [
+            "y — slyšení",
+            "y — slišení",
+            "í — slíšení",
+            "i — slišení",
+            "ý — slýšení"
+          ],
+          "answer": "y — slyšení",
+          "hint": "Od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-090",
+          "type": "choice",
+          "question": "Doplň i/y: Vel_ký pl_šový medvěd.",
+          "options": [
+            "i, ý — veliký, plýšový",
+            "y, y — velyký, plyšový",
+            "i, y — veliký, plyšový",
+            "í, y — velíký, plyšový",
+            "y, i — velyký, plišový"
+          ],
+          "answer": "i, y — veliký, plyšový",
+          "hint": "'Veliký' NENÍ vyjmenované (měkké i). 'Plyšový' JE od 'plyš' (tvrdé y)."
+        },
+        {
+          "id": "CJ4-01-02-091",
+          "type": "choice",
+          "question": "Které slovo NENÍ vyjmenované po L?",
+          "options": [
+            "plyš",
+            "lysý",
+            "líný",
+            "lyže",
+            "lýtko"
+          ],
+          "answer": "líný",
+          "hint": "'Líný' NENÍ ve vyjmenovaných slovech po L."
+        },
+        {
+          "id": "CJ4-01-02-092",
+          "type": "choice",
+          "question": "Doplň i/y: Nápl_ň polštáře byla měkká.",
+          "options": [
+            "y — nápliň",
+            "ý — náplýň",
+            "y — náplyň",
+            "i — nápliň",
+            "í — náplíň"
+          ],
+          "answer": "y — náplyň",
+          "hint": "Pozor — 'náplň' se píše bez y/i za l. Ale 'naplynit' by bylo od 'plyn'. Trik."
+        },
+        {
+          "id": "CJ4-01-02-093",
+          "type": "choice",
+          "question": "Doplň i/y: Vysl_šel svědky u soudu.",
+          "options": [
+            "i — vyslichal",
+            "ý — vyslíchal",
+            "y — vyslychal",
+            "í — vyslíchal",
+            "ý — vyslýchal"
+          ],
+          "answer": "ý — vyslýchal",
+          "hint": "Od 'slyšet/slýchat'."
+        },
+        {
+          "id": "CJ4-01-02-094",
+          "type": "choice",
+          "question": "Doplň i/y: L_monáda byla studená.",
+          "options": [
+            "y — lymonáda",
+            "ý — lýmonáda",
+            "i — lymonáda",
+            "í — límonáda",
+            "i — limonáda"
+          ],
+          "answer": "i — limonáda",
+          "hint": "'Limonáda' NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-095",
+          "type": "choice",
+          "question": "Doplň i/y: Spl_nul mu sen o cestování.",
+          "options": [
+            "í — splínul",
+            "ý — splýnul",
+            "y — splynul",
+            "i — splinul",
+            "y — splinul"
+          ],
+          "answer": "y — splynul",
+          "hint": "Od 'plynout'. 'Splynout' = sloučit se."
+        },
+        {
+          "id": "CJ4-01-02-096",
+          "type": "choice",
+          "question": "Doplň i/y: Odpl_vala loď z přístavu.",
+          "options": [
+            "ý — odplývala",
+            "í — odplívala",
+            "y — odplývala",
+            "i — odplívala",
+            "y — odplívala"
+          ],
+          "answer": "y — odplývala",
+          "hint": "Od 'plynout/plývat'."
+        },
+        {
+          "id": "CJ4-01-02-097",
+          "type": "choice",
+          "question": "Doplň i/y: Zasl_šel kroky za dveřmi.",
+          "options": [
+            "ý — zaslýšel",
+            "í — zaslíšel",
+            "y — zaslišel",
+            "y — zaslyšel",
+            "i — zaslišel"
+          ],
+          "answer": "y — zaslyšel",
+          "hint": "Od 'slyšet'."
+        },
+        {
+          "id": "CJ4-01-02-098",
+          "type": "choice",
+          "question": "Doplň i/y: Pol_kl sousto a napil se.",
+          "options": [
+            "y — polikl",
+            "í — políkl",
+            "y — polykl",
+            "ý — polýkl",
+            "i — polikl"
+          ],
+          "answer": "y — polykl",
+          "hint": "Od 'polykat'."
+        },
+        {
+          "id": "CJ4-01-02-099",
+          "type": "choice",
+          "question": "Doplň i/y: Sl_vy rostly v zahradě.",
+          "options": [
+            "i — slivy",
+            "y — slyvy",
+            "í — slyvy",
+            "ý — slývy",
+            "í — slívy"
+          ],
+          "answer": "í — slívy",
+          "hint": "'Slíva' (švestka) NENÍ vyjmenované slovo po L."
+        },
+        {
+          "id": "CJ4-01-02-100",
+          "type": "choice",
+          "question": "Které dvě slova z řady jsou vyjmenovaná po L?",
+          "options": [
+            "líska, líbat",
+            "listí, linka",
+            "lysý, plyš",
+            "lízat, líčit",
+            "líný, lípa"
+          ],
+          "answer": "lysý, plyš",
+          "hint": "Z nabídky jen 'lysý' a 'plyš' jsou vyjmenovaná slova po L."
+        }
       ]
     }
   ]
