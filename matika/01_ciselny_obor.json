@@ -1,0 +1,1300 @@
+{
+  "id": "MA4-01",
+  "name": "Číselný obor do 1 000 000",
+  "order": 0,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "MA4-01-01",
+      "name": "Čtení a zápis čísel",
+      "difficulty": 1,
+      "theory": "Čísla do milionu mají 6 řádů: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce.",
+      "tasks": [
+        {
+          "id": "MA4-01-01-001",
+          "type": "choice",
+          "question": "Zapiš číslo: dvě stě čtyřicet pět tisíc tři sta dvanáct",
+          "options": [
+            "245 213",
+            "245 312",
+            "24 532",
+            "2 453 120",
+            "254 312"
+          ],
+          "answer": "245 312",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-002",
+          "type": "choice",
+          "question": "Zapiš číslo: sto dvacet tisíc",
+          "options": [
+            "120 000",
+            "20 100",
+            "102 000",
+            "12 000",
+            "1 200 000"
+          ],
+          "answer": "120 000",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-003",
+          "type": "choice",
+          "question": "Zapiš číslo: sedm set tisíc osmdesát",
+          "options": [
+            "780 000",
+            "708 000",
+            "700 800",
+            "700 080",
+            "70 080"
+          ],
+          "answer": "700 080",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-004",
+          "type": "choice",
+          "question": "Zapiš číslo: pět set třicet čtyři tisíce šest set jeden",
+          "options": [
+            "543 601",
+            "53 461",
+            "534 601",
+            "534 610",
+            "534 061"
+          ],
+          "answer": "534 601",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-005",
+          "type": "choice",
+          "question": "Přečti číslo 456 789:",
+          "options": [
+            "čtyři sta šedesát pět tisíc sedm set devadesát osm",
+            "čtyři sta padesát šest tisíc sedmdesát devět",
+            "čtyři sta padesát tisíc šest set sedmdesát osm",
+            "čtyřicet pět tisíc šest set sedmdesát osm",
+            "čtyři sta padesát šest tisíc sedm set osmdesát devět"
+          ],
+          "answer": "čtyři sta padesát šest tisíc sedm set osmdesát devět",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-006",
+          "type": "choice",
+          "question": "Přečti číslo 301 050:",
+          "options": [
+            "třicet jedna tisíc padesát",
+            "tři sta jeden tisíc padesát",
+            "tři sta tisíc padesát",
+            "tři sta deset tisíc padesát",
+            "třicet jeden tisíc pět set"
+          ],
+          "answer": "tři sta jeden tisíc padesát",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-007",
+          "type": "choice",
+          "question": "Zapiš číslo: devět set devadesát devět tisíc devět set devadesát devět",
+          "options": [
+            "99 999",
+            "990 999",
+            "9 999 999",
+            "999 999",
+            "999 099"
+          ],
+          "answer": "999 999",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-008",
+          "type": "choice",
+          "question": "Kolik řádů má číslo 385 240?",
+          "options": [
+            "7 řádů (miliony)",
+            "3 řády (stovky)",
+            "6 řádů (statisíce)",
+            "5 řádů (desetitisíce)",
+            "4 řády (tisíce)"
+          ],
+          "answer": "6 řádů (statisíce)",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-009",
+          "type": "choice",
+          "question": "Jaká číslice je na místě tisíců v čísle 472 856?",
+          "options": [
+            "2",
+            "8",
+            "5",
+            "4",
+            "7"
+          ],
+          "answer": "2",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-010",
+          "type": "choice",
+          "question": "Jaká číslice je na místě desetitisíců v čísle 638 194?",
+          "options": [
+            "8",
+            "1",
+            "9",
+            "6",
+            "3"
+          ],
+          "answer": "3",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-011",
+          "type": "choice",
+          "question": "Zapiš číslo: čtyřicet tisíc dvě stě",
+          "options": [
+            "400 200",
+            "40 200",
+            "4 200",
+            "40 020",
+            "42 000"
+          ],
+          "answer": "40 200",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-012",
+          "type": "choice",
+          "question": "Přečti číslo 800 005:",
+          "options": [
+            "osm set tisíc pět",
+            "osm set tisíc padesát",
+            "osmdesát tisíc pět",
+            "osm set pět",
+            "osm set tisíc pět set"
+          ],
+          "answer": "osm set tisíc pět",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-013",
+          "type": "choice",
+          "question": "Jaká číslice je na místě statisíců v čísle 752 103?",
+          "options": [
+            "5",
+            "0",
+            "2",
+            "7",
+            "1"
+          ],
+          "answer": "7",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-014",
+          "type": "choice",
+          "question": "Zapiš číslo: šest set sedmdesát osm tisíc",
+          "options": [
+            "67 800",
+            "607 800",
+            "6 780",
+            "678 00",
+            "678 000"
+          ],
+          "answer": "678 000",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-015",
+          "type": "choice",
+          "question": "Kolik jednotek má číslo 456 321?",
+          "options": [
+            "6",
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "answer": "1",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-016",
+          "type": "choice",
+          "question": "Kolik desítek má číslo 456 321?",
+          "options": [
+            "2",
+            "4",
+            "3",
+            "1",
+            "5"
+          ],
+          "answer": "2",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-017",
+          "type": "choice",
+          "question": "Kolik stovek má číslo 456 321?",
+          "options": [
+            "3",
+            "6",
+            "2",
+            "4",
+            "5"
+          ],
+          "answer": "3",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-018",
+          "type": "choice",
+          "question": "Kolik tisíců má číslo 456 321?",
+          "options": [
+            "2",
+            "4",
+            "5",
+            "6",
+            "3"
+          ],
+          "answer": "6",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-019",
+          "type": "choice",
+          "question": "Zapiš číslo slovem: 100 100",
+          "options": [
+            "deset tisíc sto",
+            "sto tisíc jeden",
+            "jeden milion sto",
+            "sto deset tisíc",
+            "sto tisíc sto"
+          ],
+          "answer": "sto tisíc sto",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        },
+        {
+          "id": "MA4-01-01-020",
+          "type": "choice",
+          "question": "Rozlož na řády: 523 041",
+          "options": [
+            "52 000 + 3 041",
+            "500 000 + 20 000 + 3 000 + 400 + 1",
+            "523 000 + 41",
+            "500 000 + 23 000 + 41",
+            "500 000 + 20 000 + 3 000 + 40 + 1"
+          ],
+          "answer": "500 000 + 20 000 + 3 000 + 40 + 1",
+          "hint": "Vzpomeň si na řády: jednotky, desítky, stovky, tisíce, desetitisíce, statisíce."
+        }
+      ]
+    },
+    {
+      "id": "MA4-01-02",
+      "name": "Porovnávání a řazení čísel",
+      "difficulty": 1,
+      "theory": "Čísla porovnáváme od nejvyššího řádu. Víc číslic = větší číslo. Znaky: < (menší), > (větší), = (rovná se).",
+      "tasks": [
+        {
+          "id": "MA4-01-02-001",
+          "type": "choice",
+          "question": "Doplň znak: 345 678 ___ 354 678",
+          "options": [
+            "=",
+            ">",
+            "<",
+            "≤",
+            "≥"
+          ],
+          "answer": "<",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-002",
+          "type": "choice",
+          "question": "Doplň znak: 500 000 ___ 499 999",
+          "options": [
+            "<",
+            "=",
+            "≥",
+            "≤",
+            ">"
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-003",
+          "type": "choice",
+          "question": "Doplň znak: 123 456 ___ 123 456",
+          "options": [
+            "≤",
+            ">",
+            "=",
+            "<",
+            "≥"
+          ],
+          "answer": "=",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-004",
+          "type": "choice",
+          "question": "Doplň znak: 890 000 ___ 809 000",
+          "options": [
+            "≥",
+            ">",
+            "<",
+            "≤",
+            "="
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-005",
+          "type": "choice",
+          "question": "Doplň znak: 99 999 ___ 100 000",
+          "options": [
+            "≤",
+            "=",
+            "≥",
+            "<",
+            ">"
+          ],
+          "answer": "<",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-006",
+          "type": "choice",
+          "question": "Doplň znak: 750 300 ___ 750 030",
+          "options": [
+            "≤",
+            "=",
+            "≥",
+            ">",
+            "<"
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-007",
+          "type": "choice",
+          "question": "Doplň znak: 200 100 ___ 201 000",
+          "options": [
+            ">",
+            "≥",
+            "<",
+            "=",
+            "≤"
+          ],
+          "answer": "<",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-008",
+          "type": "choice",
+          "question": "Které číslo je největší?",
+          "options": [
+            "456 798",
+            "465 789",
+            "456 789",
+            "445 789",
+            "456 879"
+          ],
+          "answer": "456 789",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-009",
+          "type": "choice",
+          "question": "Které číslo je nejmenší?",
+          "options": [
+            "108 765",
+            "98 765",
+            "198 765",
+            "987 650",
+            "100 000"
+          ],
+          "answer": "98 765",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-010",
+          "type": "choice",
+          "question": "Seřaď od nejmenšího: 5 000, 50 000, 500, 500 000",
+          "options": [
+            "500 000, 50 000, 5 000, 500",
+            "500, 5 000, 50 000, 500 000",
+            "500, 50 000, 5 000, 500 000",
+            "50 000, 5 000, 500, 500 000",
+            "5 000, 500, 50 000, 500 000"
+          ],
+          "answer": "500, 5 000, 50 000, 500 000",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-011",
+          "type": "choice",
+          "question": "Doplň znak: 610 000 ___ 601 000",
+          "options": [
+            "<",
+            ">",
+            "≤",
+            "=",
+            "≥"
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-012",
+          "type": "choice",
+          "question": "Které číslo je větší: 399 999 nebo 400 000?",
+          "options": [
+            "399 999",
+            "jsou stejné",
+            "nelze určit",
+            "400 000",
+            "oba jsou milion"
+          ],
+          "answer": "400 000",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-013",
+          "type": "choice",
+          "question": "Doplň znak: 250 000 ___ 250 000",
+          "options": [
+            ">",
+            "≥",
+            "≤",
+            "=",
+            "<"
+          ],
+          "answer": "=",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-014",
+          "type": "choice",
+          "question": "Které číslo leží mezi 300 000 a 400 000?",
+          "options": [
+            "3 500",
+            "305",
+            "450 000",
+            "250 000",
+            "350 000"
+          ],
+          "answer": "350 000",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-015",
+          "type": "choice",
+          "question": "Doplň znak: 111 111 ___ 111 112",
+          "options": [
+            "<",
+            "≥",
+            "=",
+            ">",
+            "≤"
+          ],
+          "answer": "<",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-016",
+          "type": "choice",
+          "question": "Seřaď od největšího: 100, 10 000, 1 000, 100 000",
+          "options": [
+            "100 000, 10 000, 1 000, 100",
+            "100, 1 000, 10 000, 100 000",
+            "10 000, 100 000, 1 000, 100",
+            "1 000, 100, 10 000, 100 000",
+            "100 000, 1 000, 10 000, 100"
+          ],
+          "answer": "100 000, 10 000, 1 000, 100",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-017",
+          "type": "choice",
+          "question": "Které číslo je nejblíž číslu 500 000?",
+          "options": [
+            "400 000",
+            "450 000",
+            "600 000",
+            "550 000",
+            "499 500"
+          ],
+          "answer": "499 500",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-018",
+          "type": "choice",
+          "question": "Doplň znak: 999 000 ___ 990 000",
+          "options": [
+            ">",
+            "≥",
+            "<",
+            "≤",
+            "="
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-019",
+          "type": "choice",
+          "question": "Doplň znak: 305 100 ___ 305 010",
+          "options": [
+            "≤",
+            "=",
+            "≥",
+            ">",
+            "<"
+          ],
+          "answer": ">",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        },
+        {
+          "id": "MA4-01-02-020",
+          "type": "choice",
+          "question": "Které číslo je menší: 678 901 nebo 679 001?",
+          "options": [
+            "nelze určit",
+            "678 901",
+            "žádné",
+            "jsou stejné",
+            "679 001"
+          ],
+          "answer": "678 901",
+          "hint": "Porovnávej od nejvyššího řádu. Číslo s více řády je vždy větší."
+        }
+      ]
+    },
+    {
+      "id": "MA4-01-03",
+      "name": "Zaokrouhlování",
+      "difficulty": 2,
+      "theory": "Podívej se na číslici za řádem zaokrouhlení. Je-li 0–4 → dolů, je-li 5–9 → nahoru.",
+      "tasks": [
+        {
+          "id": "MA4-01-03-001",
+          "type": "choice",
+          "question": "Zaokrouhli 4 567 na desítky:",
+          "options": [
+            "4 560",
+            "4 500",
+            "4 600",
+            "5 000",
+            "4 570"
+          ],
+          "answer": "4 570",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-002",
+          "type": "choice",
+          "question": "Zaokrouhli 4 567 na stovky:",
+          "options": [
+            "4 000",
+            "4 570",
+            "4 600",
+            "5 000",
+            "4 500"
+          ],
+          "answer": "4 600",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-003",
+          "type": "choice",
+          "question": "Zaokrouhli 4 567 na tisíce:",
+          "options": [
+            "4 000",
+            "4 600",
+            "5 000",
+            "4 500",
+            "4 570"
+          ],
+          "answer": "5 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-004",
+          "type": "choice",
+          "question": "Zaokrouhli 23 456 na desítky:",
+          "options": [
+            "23 400",
+            "23 500",
+            "23 460",
+            "24 000",
+            "23 450"
+          ],
+          "answer": "23 460",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-005",
+          "type": "choice",
+          "question": "Zaokrouhli 23 456 na stovky:",
+          "options": [
+            "23 400",
+            "23 500",
+            "23 000",
+            "23 460",
+            "24 000"
+          ],
+          "answer": "23 500",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-006",
+          "type": "choice",
+          "question": "Zaokrouhli 23 456 na tisíce:",
+          "options": [
+            "20 000",
+            "23 000",
+            "23 500",
+            "24 000",
+            "23 400"
+          ],
+          "answer": "23 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-007",
+          "type": "choice",
+          "question": "Zaokrouhli 23 456 na desetitisíce:",
+          "options": [
+            "23 000",
+            "20 000",
+            "30 000",
+            "24 000",
+            "25 000"
+          ],
+          "answer": "20 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-008",
+          "type": "choice",
+          "question": "Zaokrouhli 678 432 na statisíce:",
+          "options": [
+            "600 000",
+            "678 000",
+            "670 000",
+            "680 000",
+            "700 000"
+          ],
+          "answer": "700 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-009",
+          "type": "choice",
+          "question": "Zaokrouhli 678 432 na desetitisíce:",
+          "options": [
+            "670 000",
+            "678 000",
+            "700 000",
+            "680 000",
+            "690 000"
+          ],
+          "answer": "680 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-010",
+          "type": "choice",
+          "question": "Zaokrouhli 678 432 na tisíce:",
+          "options": [
+            "670 000",
+            "680 000",
+            "678 000",
+            "679 000",
+            "677 000"
+          ],
+          "answer": "678 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-011",
+          "type": "choice",
+          "question": "Zaokrouhli 345 na desítky:",
+          "options": [
+            "350",
+            "400",
+            "300",
+            "340",
+            "345"
+          ],
+          "answer": "350",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-012",
+          "type": "choice",
+          "question": "Zaokrouhli 345 na stovky:",
+          "options": [
+            "350",
+            "400",
+            "340",
+            "300",
+            "345"
+          ],
+          "answer": "300",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-013",
+          "type": "choice",
+          "question": "Zaokrouhli 850 na stovky:",
+          "options": [
+            "850",
+            "900",
+            "860",
+            "800",
+            "1 000"
+          ],
+          "answer": "900",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-014",
+          "type": "choice",
+          "question": "Zaokrouhli 450 na stovky:",
+          "options": [
+            "450",
+            "500",
+            "440",
+            "460",
+            "400"
+          ],
+          "answer": "500",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-015",
+          "type": "choice",
+          "question": "Zaokrouhli 555 555 na statisíce:",
+          "options": [
+            "500 000",
+            "555 000",
+            "560 000",
+            "1 000 000",
+            "600 000"
+          ],
+          "answer": "600 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-016",
+          "type": "choice",
+          "question": "Zaokrouhli 149 999 na statisíce:",
+          "options": [
+            "149 000",
+            "100 000",
+            "140 000",
+            "200 000",
+            "150 000"
+          ],
+          "answer": "100 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-017",
+          "type": "choice",
+          "question": "Zaokrouhli 250 000 na statisíce:",
+          "options": [
+            "200 000",
+            "250 000",
+            "240 000",
+            "300 000",
+            "260 000"
+          ],
+          "answer": "300 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-018",
+          "type": "choice",
+          "question": "Zaokrouhli 73 821 na tisíce:",
+          "options": [
+            "70 000",
+            "73 900",
+            "74 000",
+            "73 000",
+            "73 800"
+          ],
+          "answer": "74 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-019",
+          "type": "choice",
+          "question": "Zaokrouhli 199 500 na tisíce:",
+          "options": [
+            "200 000",
+            "200 500",
+            "199 000",
+            "199 500",
+            "201 000"
+          ],
+          "answer": "200 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-020",
+          "type": "choice",
+          "question": "Zaokrouhli 505 050 na desetitisíce:",
+          "options": [
+            "506 000",
+            "510 000",
+            "520 000",
+            "500 000",
+            "505 000"
+          ],
+          "answer": "510 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-021",
+          "type": "choice",
+          "question": "Zaokrouhli 12 345 na desítky:",
+          "options": [
+            "12 300",
+            "12 350",
+            "12 000",
+            "12 400",
+            "12 340"
+          ],
+          "answer": "12 350",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-022",
+          "type": "choice",
+          "question": "Zaokrouhli 12 345 na stovky:",
+          "options": [
+            "13 000",
+            "12 400",
+            "12 300",
+            "12 350",
+            "12 000"
+          ],
+          "answer": "12 300",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-023",
+          "type": "choice",
+          "question": "Zaokrouhli 12 345 na tisíce:",
+          "options": [
+            "13 000",
+            "10 000",
+            "12 300",
+            "12 500",
+            "12 000"
+          ],
+          "answer": "12 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-024",
+          "type": "choice",
+          "question": "Zaokrouhli 12 345 na desetitisíce:",
+          "options": [
+            "15 000",
+            "10 000",
+            "12 000",
+            "20 000",
+            "13 000"
+          ],
+          "answer": "10 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-025",
+          "type": "choice",
+          "question": "Zaokrouhli 985 na desítky:",
+          "options": [
+            "985",
+            "1 000",
+            "980",
+            "990",
+            "900"
+          ],
+          "answer": "990",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-026",
+          "type": "choice",
+          "question": "Zaokrouhli 985 na stovky:",
+          "options": [
+            "990",
+            "900",
+            "985",
+            "980",
+            "1 000"
+          ],
+          "answer": "1 000",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-027",
+          "type": "choice",
+          "question": "Na kolik zaokrouhlíme číslo 47 382, aby vyšlo 47 400?",
+          "options": [
+            "na stovky",
+            "na desetitisíce",
+            "na jednotky",
+            "na desítky",
+            "na tisíce"
+          ],
+          "answer": "na stovky",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-028",
+          "type": "choice",
+          "question": "Na kolik zaokrouhlíme číslo 47 382, aby vyšlo 47 380?",
+          "options": [
+            "na stovky",
+            "na tisíce",
+            "na desetitisíce",
+            "na jednotky",
+            "na desítky"
+          ],
+          "answer": "na desítky",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-029",
+          "type": "choice",
+          "question": "Na kolik zaokrouhlíme číslo 47 382, aby vyšlo 47 000?",
+          "options": [
+            "na desítky",
+            "na desetitisíce",
+            "na statisíce",
+            "na tisíce",
+            "na stovky"
+          ],
+          "answer": "na tisíce",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        },
+        {
+          "id": "MA4-01-03-030",
+          "type": "choice",
+          "question": "Na kolik zaokrouhlíme číslo 47 382, aby vyšlo 50 000?",
+          "options": [
+            "na desítky",
+            "na stovky",
+            "na desetitisíce",
+            "na statisíce",
+            "na tisíce"
+          ],
+          "answer": "na desetitisíce",
+          "hint": "Podívej se na číslici za řádem, na který zaokrouhluješ. Je 5 nebo víc? → zaokrouhli nahoru. Je méně než 5? → zaokrouhli dolů."
+        }
+      ]
+    },
+    {
+      "id": "MA4-01-04",
+      "name": "Mix — číselný obor",
+      "difficulty": 2,
+      "theory": "Zopakujeme čtení, zápis, porovnávání a zaokrouhlování čísel do milionu.",
+      "tasks": [
+        {
+          "id": "MA4-01-04-001",
+          "type": "choice",
+          "question": "Zapiš číslo: tři sta patnáct tisíc dvě stě",
+          "options": [
+            "315 200",
+            "350 200",
+            "305 200",
+            "31 520",
+            "315 020"
+          ],
+          "answer": "315 200",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-002",
+          "type": "choice",
+          "question": "Doplň znak: 456 000 ___ 465 000",
+          "options": [
+            ">",
+            "=",
+            "≤",
+            "≥",
+            "<"
+          ],
+          "answer": "<",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-003",
+          "type": "choice",
+          "question": "Zaokrouhli 567 890 na tisíce:",
+          "options": [
+            "567 000",
+            "568 000",
+            "567 900",
+            "570 000",
+            "560 000"
+          ],
+          "answer": "568 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-004",
+          "type": "choice",
+          "question": "Jaká číslice je na místě desetitisíců v čísle 839 274?",
+          "options": [
+            "3",
+            "8",
+            "2",
+            "9",
+            "7"
+          ],
+          "answer": "3",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-005",
+          "type": "choice",
+          "question": "Doplň znak: 700 001 ___ 699 999",
+          "options": [
+            "≤",
+            "<",
+            "=",
+            "≥",
+            ">"
+          ],
+          "answer": ">",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-006",
+          "type": "choice",
+          "question": "Zaokrouhli 45 678 na stovky:",
+          "options": [
+            "45 700",
+            "45 600",
+            "46 000",
+            "45 000",
+            "45 680"
+          ],
+          "answer": "45 700",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-007",
+          "type": "choice",
+          "question": "Které číslo je největší?",
+          "options": [
+            "899 999",
+            "900 234",
+            "890 234",
+            "891 234",
+            "901 234"
+          ],
+          "answer": "901 234",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-008",
+          "type": "choice",
+          "question": "Rozlož na řády: 204 030",
+          "options": [
+            "20 000 + 4 000 + 30",
+            "200 000 + 40 + 30",
+            "200 000 + 400 + 30",
+            "204 000 + 30",
+            "200 000 + 4 000 + 30"
+          ],
+          "answer": "200 000 + 4 000 + 30",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-009",
+          "type": "choice",
+          "question": "Zaokrouhli 395 000 na statisíce:",
+          "options": [
+            "300 000",
+            "390 000",
+            "500 000",
+            "395 000",
+            "400 000"
+          ],
+          "answer": "400 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-010",
+          "type": "choice",
+          "question": "Přečti číslo 600 006:",
+          "options": [
+            "šedesát tisíc šest",
+            "šest set tisíc šedesát",
+            "šest set šest",
+            "šest milionů šest",
+            "šest set tisíc šest"
+          ],
+          "answer": "šest set tisíc šest",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-011",
+          "type": "choice",
+          "question": "Kolik tisíců je v čísle 482 915?",
+          "options": [
+            "2",
+            "4",
+            "9",
+            "1",
+            "8"
+          ],
+          "answer": "2",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-012",
+          "type": "choice",
+          "question": "Doplň znak: 555 555 ___ 555 555",
+          "options": [
+            ">",
+            "<",
+            "=",
+            "≤",
+            "≥"
+          ],
+          "answer": "=",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-013",
+          "type": "choice",
+          "question": "Zaokrouhli 999 500 na tisíce:",
+          "options": [
+            "1 000 500",
+            "999 500",
+            "1 000 000",
+            "999 000",
+            "999 600"
+          ],
+          "answer": "1 000 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-014",
+          "type": "choice",
+          "question": "Seřaď od nejmenšího: 80 000, 8 000, 800 000, 800",
+          "options": [
+            "800, 80 000, 8 000, 800 000",
+            "800 000, 80 000, 8 000, 800",
+            "800, 8 000, 80 000, 800 000",
+            "8 000, 800, 80 000, 800 000",
+            "80 000, 800, 8 000, 800 000"
+          ],
+          "answer": "800, 8 000, 80 000, 800 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-015",
+          "type": "choice",
+          "question": "Zaokrouhli 50 500 na tisíce:",
+          "options": [
+            "51 500",
+            "55 000",
+            "50 500",
+            "51 000",
+            "50 000"
+          ],
+          "answer": "51 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-016",
+          "type": "choice",
+          "question": "Jaká číslice je na místě stovek v čísle 741 258?",
+          "options": [
+            "5",
+            "1",
+            "7",
+            "4",
+            "2"
+          ],
+          "answer": "2",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-017",
+          "type": "choice",
+          "question": "Které číslo je nejblíž číslu 250 000?",
+          "options": [
+            "249 800",
+            "260 000",
+            "300 000",
+            "240 000",
+            "200 000"
+          ],
+          "answer": "249 800",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-018",
+          "type": "choice",
+          "question": "Zapiš číslo: půl milionu",
+          "options": [
+            "5 000 000",
+            "5 000",
+            "500 000",
+            "550 000",
+            "50 000"
+          ],
+          "answer": "500 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-019",
+          "type": "choice",
+          "question": "Doplň znak: 100 001 ___ 100 010",
+          "options": [
+            "≤",
+            "≥",
+            ">",
+            "<",
+            "="
+          ],
+          "answer": "<",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        },
+        {
+          "id": "MA4-01-04-020",
+          "type": "choice",
+          "question": "Zaokrouhli 456 789 na desetitisíce:",
+          "options": [
+            "460 000",
+            "457 000",
+            "450 000",
+            "456 000",
+            "500 000"
+          ],
+          "answer": "460 000",
+          "hint": "Vzpomeň si na řády a pravidla zaokrouhlování."
+        }
+      ]
+    }
+  ]
+}
