@@ -291,6 +291,450 @@
           "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
         }
       ]
+    },
+    {
+      "id": "PR4-02-02",
+      "name": "Stavba houby a druhy",
+      "difficulty": 1,
+      "theory": "Houba: klobouk, třeň, podhoubí. Rourkaté: hřib, křemenáč. Lupenaté: muchomůrka, ryzec, bedla.",
+      "tasks": [
+        {
+          "id": "PR4-02-02-001",
+          "type": "choice",
+          "question": "Jak se říká podzemní části houby?",
+          "options": [
+            "kořen",
+            "stonek",
+            "podhoubí",
+            "klobouk",
+            "list"
+          ],
+          "answer": "podhoubí",
+          "hint": "Největší část houby je pod zemí."
+        },
+        {
+          "id": "PR4-02-02-002",
+          "type": "choice",
+          "question": "Co má houba místo stonku?",
+          "options": [
+            "větev",
+            "kořen",
+            "třeň",
+            "list",
+            "květ"
+          ],
+          "answer": "třeň",
+          "hint": "Třeň = noha houby."
+        },
+        {
+          "id": "PR4-02-02-003",
+          "type": "choice",
+          "question": "Jak poznáš rourkatou houbu?",
+          "options": [
+            "má lupeny pod kloboukem",
+            "má rourky pod kloboukem",
+            "má listy",
+            "má květy",
+            "má kořeny"
+          ],
+          "answer": "má rourky pod kloboukem",
+          "hint": "Rourky vypadají jako houbička."
+        },
+        {
+          "id": "PR4-02-02-004",
+          "type": "choice",
+          "question": "Hřib smrkový je houba:",
+          "options": [
+            "lupenatá",
+            "rourkatá",
+            "bez klobouku",
+            "jedovatá",
+            "vodní"
+          ],
+          "answer": "rourkatá",
+          "hint": "Pod kloboukem má rourky."
+        },
+        {
+          "id": "PR4-02-02-005",
+          "type": "choice",
+          "question": "Co je lupenatá houba?",
+          "options": [
+            "houba s rourkami",
+            "houba s lupeny pod kloboukem",
+            "houba bez klobouku",
+            "houba na stromě",
+            "vodní houba"
+          ],
+          "answer": "houba s lupeny pod kloboukem",
+          "hint": "Lupeny = tenké plátky."
+        },
+        {
+          "id": "PR4-02-02-006",
+          "type": "choice",
+          "question": "Jak se rozmnožují houby?",
+          "options": [
+            "semeny",
+            "výtrusy",
+            "řízky",
+            "cibulkami",
+            "oddenky"
+          ],
+          "answer": "výtrusy",
+          "hint": "Výtrusy jsou drobné jako prach."
+        },
+        {
+          "id": "PR4-02-02-007",
+          "type": "choice",
+          "question": "Co dělá podhoubí?",
+          "options": [
+            "kvete",
+            "přijímá živiny z půdy",
+            "fotosyntézu",
+            "létá",
+            "plave"
+          ],
+          "answer": "přijímá živiny z půdy",
+          "hint": "Podhoubí je hlavní tělo houby."
+        },
+        {
+          "id": "PR4-02-02-008",
+          "type": "choice",
+          "question": "Kde houby nejčastěji rostou?",
+          "options": [
+            "na poušti",
+            "ve vlhkém lese",
+            "na sněhu",
+            "na moři",
+            "v řece"
+          ],
+          "answer": "ve vlhkém lese",
+          "hint": "Houby milují vlhko a stín."
+        },
+        {
+          "id": "PR4-02-02-009",
+          "type": "choice",
+          "question": "Ryzec má pod kloboukem:",
+          "options": [
+            "rourky",
+            "lupeny",
+            "nic",
+            "chlupy",
+            "kořeny"
+          ],
+          "answer": "lupeny",
+          "hint": "Ryzec je lupenatá houba."
+        },
+        {
+          "id": "PR4-02-02-010",
+          "type": "choice",
+          "question": "Co mají společného hřib a křemenáč?",
+          "options": [
+            "jsou jedovaté",
+            "jsou lupenatí",
+            "jsou rourkatí",
+            "rostou jen v zimě",
+            "jsou červené"
+          ],
+          "answer": "jsou rourkatí",
+          "hint": "Oba mají rourky pod kloboukem."
+        }
+      ]
+    },
+    {
+      "id": "PR4-02-03",
+      "name": "Jedlé a jedovaté houby",
+      "difficulty": 2,
+      "theory": "Jedlé: hřib, křemenáč, ryzec, bedla, klouzek. Jedovaté: muchomůrka zelená (smrtelná!), muchomůrka červená.",
+      "tasks": [
+        {
+          "id": "PR4-02-03-001",
+          "type": "choice",
+          "question": "Která houba je NEJJEDOVATĚJŠÍ v ČR?",
+          "options": [
+            "hřib smrkový",
+            "bedla vysoká",
+            "muchomůrka zelená",
+            "ryzec pravý",
+            "křemenáč"
+          ],
+          "answer": "muchomůrka zelená",
+          "hint": "Smrtelně jedovatá, zaměnitelná s bedlou."
+        },
+        {
+          "id": "PR4-02-03-002",
+          "type": "choice",
+          "question": "Která houba je jedlá?",
+          "options": [
+            "muchomůrka zelená",
+            "závojenka olovová",
+            "muchomůrka červená",
+            "klouzek obecný",
+            "holubinka vrhavka"
+          ],
+          "answer": "klouzek obecný",
+          "hint": "Klouzek má slizký klobouk."
+        },
+        {
+          "id": "PR4-02-03-003",
+          "type": "choice",
+          "question": "Co děláš s neznámou houbou?",
+          "options": [
+            "ochutnáš ji",
+            "odneseš domů",
+            "necháš ji být",
+            "zničíš ji",
+            "dáš ji psovi"
+          ],
+          "answer": "necháš ji být",
+          "hint": "Neznámé houby nikdy nesbíráme."
+        },
+        {
+          "id": "PR4-02-03-004",
+          "type": "choice",
+          "question": "Proč je muchomůrka zelená nebezpečná?",
+          "options": [
+            "špatně voní",
+            "vypadá jako bedla a je smrtelně jedovatá",
+            "je velká",
+            "roste rychle",
+            "má ostré lupeny"
+          ],
+          "answer": "vypadá jako bedla a je smrtelně jedovatá",
+          "hint": "Záměna s bedlou je nejčastější příčina otrav."
+        },
+        {
+          "id": "PR4-02-03-005",
+          "type": "choice",
+          "question": "Kam neseš houby na kontrolu?",
+          "options": [
+            "do školy",
+            "do knihovny",
+            "na mykologickou poradnu",
+            "na poštu",
+            "do obchodu"
+          ],
+          "answer": "na mykologickou poradnu",
+          "hint": "Mykolog = odborník na houby."
+        },
+        {
+          "id": "PR4-02-03-006",
+          "type": "choice",
+          "question": "Které tvrzení je PRAVDIVÉ?",
+          "options": [
+            "všechny červené houby jsou jedovaté",
+            "všechny bílé houby jsou jedlé",
+            "jedovatost nelze poznat podle barvy",
+            "jedovaté houby vždy smrdí",
+            "jedlé houby rostou jen v lese"
+          ],
+          "answer": "jedovatost nelze poznat podle barvy",
+          "hint": "Barva neříká nic o jedovatosti."
+        },
+        {
+          "id": "PR4-02-03-007",
+          "type": "choice",
+          "question": "Jak přenášíme houby z lesa?",
+          "options": [
+            "v igelitce",
+            "v proutěném košíku",
+            "v kapse",
+            "v ruce",
+            "v pytli"
+          ],
+          "answer": "v proutěném košíku",
+          "hint": "Košík propouští vzduch."
+        },
+        {
+          "id": "PR4-02-03-008",
+          "type": "choice",
+          "question": "Je muchomůrka červená smrtelně jedovatá?",
+          "options": [
+            "ano, vždy smrtelná",
+            "ne, jedovatá ale málokdy smrtelná",
+            "ne, je jedlá po uvaření",
+            "ne, jen nejedlá",
+            "není jedovatá"
+          ],
+          "answer": "ne, jedovatá ale málokdy smrtelná",
+          "hint": "Zelená je smrtelná, červená jen jedovatá."
+        },
+        {
+          "id": "PR4-02-03-009",
+          "type": "choice",
+          "question": "Komu zavoláš při otravě houbami?",
+          "options": [
+            "učiteli",
+            "záchranné službě (155)",
+            "do knihovny",
+            "sousedovi",
+            "nikomu"
+          ],
+          "answer": "záchranné službě (155)",
+          "hint": "155 = záchranná služba."
+        },
+        {
+          "id": "PR4-02-03-010",
+          "type": "choice",
+          "question": "Proč neničíme jedovaté houby v lese?",
+          "options": [
+            "je to zakázáno",
+            "jsou součástí přírody a mají svou roli",
+            "změní jedovatost",
+            "z nich vzniknou jedlé",
+            "nám neublíží"
+          ],
+          "answer": "jsou součástí přírody a mají svou roli",
+          "hint": "Houby rozkládají organickou hmotu a pomáhají lesu."
+        }
+      ]
+    },
+    {
+      "id": "PR4-02-04",
+      "name": "Houby — pravidla sběru a mix",
+      "difficulty": 2,
+      "theory": "Pravidla houbaře: sbírej jen co znáš, neznámé nech, používej košík, netrháš s podhoubím, nejsi si jist = mykolog.",
+      "tasks": [
+        {
+          "id": "PR4-02-04-001",
+          "type": "choice",
+          "question": "Co je správné pravidlo houbaře?",
+          "options": [
+            "sbírej vše a doma třiď",
+            "sbírej jen houby co znáš",
+            "jedovaté houby rozkopni",
+            "sbírej i plesnivé",
+            "sbírej do igelitky"
+          ],
+          "answer": "sbírej jen houby co znáš",
+          "hint": "Nejbezpečnější pravidlo."
+        },
+        {
+          "id": "PR4-02-04-002",
+          "type": "choice",
+          "question": "V jakém období sbíráme nejvíc hub?",
+          "options": [
+            "na jaře",
+            "v létě a na podzim",
+            "v zimě",
+            "celoročně",
+            "jen v prosinci"
+          ],
+          "answer": "v létě a na podzim",
+          "hint": "Po dešti v teplých měsících."
+        },
+        {
+          "id": "PR4-02-04-003",
+          "type": "choice",
+          "question": "Komu se nejvíc podobá jedovatá muchomůrka zelená?",
+          "options": [
+            "hřibu",
+            "ryzci",
+            "bedle",
+            "klouzku",
+            "křemenáči"
+          ],
+          "answer": "bedle",
+          "hint": "Proto je tak nebezpečná."
+        },
+        {
+          "id": "PR4-02-04-004",
+          "type": "choice",
+          "question": "Co NESMÍŠ dělat s neznámou houbou?",
+          "options": [
+            "fotografovat ji",
+            "vyhledat v atlasu",
+            "ochutnat ji",
+            "nechat v lese",
+            "zeptat se mykologa"
+          ],
+          "answer": "ochutnat ji",
+          "hint": "Ani ochutnávka může být nebezpečná."
+        },
+        {
+          "id": "PR4-02-04-005",
+          "type": "choice",
+          "question": "Bedla vysoká je:",
+          "options": [
+            "jedovatá houba",
+            "jedlá houba",
+            "neexistující houba",
+            "rostlina",
+            "mech"
+          ],
+          "answer": "jedlá houba",
+          "hint": "Bedla je velká a chutná."
+        },
+        {
+          "id": "PR4-02-04-006",
+          "type": "choice",
+          "question": "Křemenáč osikový je:",
+          "options": [
+            "jedovatý",
+            "jedlý",
+            "nejedlý",
+            "neexistuje",
+            "rostlina"
+          ],
+          "answer": "jedlý",
+          "hint": "Křemenáčy jsou oblíbené jedlé houby."
+        },
+        {
+          "id": "PR4-02-04-007",
+          "type": "choice",
+          "question": "Která část houby obsahuje výtrusy?",
+          "options": [
+            "podhoubí",
+            "třeň",
+            "klobouk (rourky/lupeny)",
+            "kořen",
+            "list"
+          ],
+          "answer": "klobouk (rourky/lupeny)",
+          "hint": "Výtrusy se uvolňují zpod klobouku."
+        },
+        {
+          "id": "PR4-02-04-008",
+          "type": "choice",
+          "question": "Proč netrháme houby i s podhoubím?",
+          "options": [
+            "je to těžké",
+            "aby mohly růst další houby",
+            "podhoubí smrdí",
+            "je to zakázáno",
+            "podhoubí je jedovaté"
+          ],
+          "answer": "aby mohly růst další houby",
+          "hint": "Podhoubí = základ pro nové houby."
+        },
+        {
+          "id": "PR4-02-04-009",
+          "type": "choice",
+          "question": "Která houba roste na stromech?",
+          "options": [
+            "hřib",
+            "muchomůrka",
+            "troudnatec",
+            "ryzec",
+            "klouzek"
+          ],
+          "answer": "troudnatec",
+          "hint": "Troudnatec je parazit na stromech."
+        },
+        {
+          "id": "PR4-02-04-010",
+          "type": "choice",
+          "question": "Jakou roli mají houby v lese?",
+          "options": [
+            "žádnou",
+            "rozkládají odumřelou hmotu",
+            "vyrábí kyslík",
+            "loví zvířata",
+            "vytvářejí vodu"
+          ],
+          "answer": "rozkládají odumřelou hmotu",
+          "hint": "Houby jsou přírodní recyklátoři."
+        }
+      ]
     }
   ]
 }

@@ -35,119 +35,119 @@
           "houba"
         ],
         "answer": "hornina",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "hint": "Hornina neroste, nedýchá, nerozmnožuje se."
       },
       {
         "id": "PR4-01-01-003",
         "type": "choice",
-        "question": "Která vlastnost je typická pro živé organismy?",
+        "question": "Co je živý organismus?",
         "options": [
-          "rozmnožují se",
-          "nemění se",
-          "nerostou",
-          "nejedí",
-          "jsou tvrdé"
+          "oblak",
+          "řeka",
+          "led",
+          "strom",
+          "skála"
         ],
-        "answer": "rozmnožují se",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "strom",
+        "hint": "Strom roste, dýchá, rozmnožuje se."
       },
       {
         "id": "PR4-01-01-004",
         "type": "choice",
-        "question": "Které z těchto není živý organismus?",
+        "question": "Která vlastnost je typická pro živé organismy?",
         "options": [
-          "hřib",
-          "skála",
-          "řasa",
-          "mech",
-          "mravenec"
+          "tavení",
+          "krystalizace",
+          "rozmnožování",
+          "magnetismus",
+          "vodivost"
         ],
-        "answer": "skála",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "rozmnožování",
+        "hint": "Živé organismy vytvářejí potomky."
       },
       {
         "id": "PR4-01-01-005",
         "type": "choice",
-        "question": "Na co dělíme živou přírodu?",
+        "question": "Do které skupiny patří houby?",
         "options": [
-          "rostliny, živočichové, houby",
-          "teplo, světlo, zvuk",
-          "voda, vzduch, země",
-          "kameny, písek, hlína",
-          "den, noc, soumrak"
+          "neživá příroda",
+          "rostliny",
+          "živočichové",
+          "houby (vlastní skupina)",
+          "nerosty"
         ],
-        "answer": "rostliny, živočichové, houby",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "houby (vlastní skupina)",
+        "hint": "Houby nejsou ani rostliny, ani živočichové."
       },
       {
         "id": "PR4-01-01-006",
         "type": "choice",
-        "question": "Která vlastnost NEPATŘÍ mezi vlastnosti živých organismů?",
+        "question": "Co NEPATŘÍ do živé přírody?",
         "options": [
-          "dýchají",
-          "rostou",
-          "potřebují výživu",
-          "svítí ve tmě",
-          "rozmnožují se"
+          "mravenec",
+          "sedmikráska",
+          "hřib",
+          "žába",
+          "písek"
         ],
-        "answer": "svítí ve tmě",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "písek",
+        "hint": "Písek je neživá příroda."
       },
       {
         "id": "PR4-01-01-007",
         "type": "choice",
-        "question": "Voda je:",
+        "question": "Na jaké tři skupiny dělíme živou přírodu?",
         "options": [
-          "houba",
-          "neživá příroda",
-          "živá příroda",
-          "rostlina",
-          "živočich"
+          "voda, vzduch, půda",
+          "rostliny, živočichové, houby",
+          "kameny, písky, hlíny",
+          "ryby, ptáci, savci",
+          "stromy, keře, byliny"
         ],
-        "answer": "neživá příroda",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "rostliny, živočichové, houby",
+        "hint": "Tři hlavní skupiny organismů."
       },
       {
         "id": "PR4-01-01-008",
         "type": "choice",
-        "question": "Houba patří do:",
+        "question": "Co mají společného strom a kočka?",
         "options": [
-          "hornin",
-          "kapalin",
-          "neživé přírody",
-          "minerálů",
-          "živé přírody"
+          "oba létají",
+          "oba jsou neživé",
+          "oba jsou živé organismy",
+          "oba žijí ve vodě",
+          "oba jsou rostliny"
         ],
-        "answer": "živé přírody",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "oba jsou živé organismy",
+        "hint": "Oba rostou, dýchají, rozmnožují se."
       },
       {
         "id": "PR4-01-01-009",
         "type": "choice",
-        "question": "Co potřebují rostliny k životu?",
+        "question": "Proč je voda neživá?",
         "options": [
-          "jen světlo",
-          "jen vodu",
-          "jen vzduch",
-          "vodu, světlo, vzduch a živiny",
-          "jen půdu"
+          "je studená",
+          "neroste a nerozmnožuje se",
+          "je průhledná",
+          "teče",
+          "je mokrá"
         ],
-        "answer": "vodu, světlo, vzduch a živiny",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "neroste a nerozmnožuje se",
+        "hint": "Voda nemá vlastnosti živého organismu."
       },
       {
         "id": "PR4-01-01-010",
         "type": "choice",
-        "question": "Co je fotosyntéza?",
+        "question": "Který z těchto výroků je PRAVDIVÝ?",
         "options": [
-          "rozmnožování hub",
-          "proces, kdy rostliny vyrábí kyslík pomocí slunce",
-          "proud vody v řece",
-          "proces, kdy zvířata dýchají",
-          "růst krystalů"
+          "kameny dýchají",
+          "slunce je živý organismus",
+          "rostliny se rozmnožují",
+          "vzduch je živý",
+          "oheň je živý organismus"
         ],
-        "answer": "proces, kdy rostliny vyrábí kyslík pomocí slunce",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "rostliny se rozmnožují",
+        "hint": "Rozmnožování je znak živých organismů."
       }
     ]
   },
@@ -164,142 +164,598 @@
       {
         "id": "PR4-01-02-001",
         "type": "choice",
-        "question": "Slunce je:",
+        "question": "Co živé organismy potřebují k životu?",
         "options": [
-          "rostlina",
-          "živá příroda",
-          "ani živá ani neživá",
-          "organismus",
-          "neživá příroda"
+          "jen vodu",
+          "jen světlo",
+          "potravu, vodu a vzduch",
+          "jen teplo",
+          "jen půdu"
         ],
-        "answer": "neživá příroda",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "potravu, vodu a vzduch",
+        "hint": "Základní potřeby: jíst, pít, dýchat."
       },
       {
         "id": "PR4-01-02-002",
         "type": "choice",
-        "question": "Půda je:",
+        "question": "Co NEDĚLAJÍ neživé věci?",
         "options": [
-          "živočich",
-          "houba",
-          "neživá příroda (ale obsahuje živé organismy)",
-          "rostlina",
-          "živá příroda"
+          "existují",
+          "zabírají prostor",
+          "rostou samy od sebe",
+          "mají tvar",
+          "mají barvu"
         ],
-        "answer": "neživá příroda (ale obsahuje živé organismy)",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "rostou samy od sebe",
+        "hint": "Kámen neroste — živé organismy ano."
       },
       {
         "id": "PR4-01-02-003",
         "type": "choice",
-        "question": "Který organismus NENÍ rostlina?",
+        "question": "Který organismus NEDÝCHÁ?",
         "options": [
-          "kapradina",
-          "mrkev",
-          "sedmikráska",
-          "hřib",
-          "dub"
+          "strom",
+          "ryba",
+          "člověk",
+          "kámen",
+          "pes"
         ],
-        "answer": "hřib",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "kámen",
+        "hint": "Dýchání je vlastnost živých organismů."
       },
       {
         "id": "PR4-01-02-004",
         "type": "choice",
-        "question": "Vzduch je:",
+        "question": "Co znamená, že organismus reaguje na podněty?",
         "options": [
-          "organismus",
-          "živá příroda",
-          "houba",
-          "neživá příroda",
-          "rostlina"
+          "je hlučný",
+          "odpovídá na změny v okolí",
+          "je velký",
+          "má barvu",
+          "je tvrdý"
         ],
-        "answer": "neživá příroda",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "odpovídá na změny v okolí",
+        "hint": "Třeba slunečnice se otáčí za sluncem."
       },
       {
         "id": "PR4-01-02-005",
         "type": "choice",
-        "question": "Mech je:",
+        "question": "Jak se říká schopnosti organismu vytvořit potomky?",
         "options": [
-          "houba",
-          "rostlina (výtrusná)",
-          "nerost",
-          "neživá příroda",
-          "živočich"
+          "dýchání",
+          "růst",
+          "rozmnožování",
+          "trávení",
+          "pohyb"
         ],
-        "answer": "rostlina (výtrusná)",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "rozmnožování",
+        "hint": "Potomci = nová generace."
       },
       {
         "id": "PR4-01-02-006",
         "type": "choice",
-        "question": "Bakterie patří do:",
+        "question": "Co NENÍ vlastnost živého organismu?",
         "options": [
-          "kapalin",
-          "neživé přírody",
-          "nerostů",
-          "hornin",
-          "živé přírody"
+          "dýchání",
+          "růst",
+          "rozmnožování",
+          "tavení",
+          "přijímání potravy"
         ],
-        "answer": "živé přírody",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "tavení",
+        "hint": "Tavení je fyzikální proces u neživých látek."
       },
       {
         "id": "PR4-01-02-007",
         "type": "choice",
-        "question": "Co vzniká při fotosyntéze?",
+        "question": "Je oheň živý?",
         "options": [
-          "vodík",
-          "helium",
-          "dusík",
-          "oxid uhličitý",
-          "kyslík"
+          "ano, roste",
+          "ano, dýchá",
+          "ne, nemá buňky a nerozmnožuje se",
+          "ano, pohybuje se",
+          "ano, potřebuje vzduch"
         ],
-        "answer": "kyslík",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "ne, nemá buňky a nerozmnožuje se",
+        "hint": "Oheň vypadá živě, ale nemá buňky."
       },
       {
         "id": "PR4-01-02-008",
         "type": "choice",
-        "question": "Rostliny potřebují k fotosyntéze:",
+        "question": "Co potřebuje semínko, aby začalo klíčit?",
         "options": [
-          "tmu",
-          "měsíční svit",
-          "vítr",
-          "déšť",
-          "sluneční světlo"
+          "jen tmu",
+          "vodu, teplo a vzduch",
+          "jen kameny",
+          "jen sníh",
+          "jen vítr"
         ],
-        "answer": "sluneční světlo",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "vodu, teplo a vzduch",
+        "hint": "Klíčení = začátek růstu."
       },
       {
         "id": "PR4-01-02-009",
         "type": "choice",
-        "question": "Živé organismy se liší od neživé přírody tím, že:",
+        "question": "Které tvrzení je PRAVDIVÉ?",
         "options": [
-          "nemění se",
-          "jsou vždy mokré",
-          "rostou a rozmnožují se",
-          "jsou vždy měkké",
-          "jsou vždy zelené"
+          "všechny živé organismy umí létat",
+          "živé organismy nepotřebují vodu",
+          "živé organismy se rozmnožují",
+          "neživé věci rostou rychleji",
+          "kameny dýchají"
         ],
-        "answer": "rostou a rozmnožují se",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "živé organismy se rozmnožují",
+        "hint": "Rozmnožování = klíčový znak života."
       },
       {
         "id": "PR4-01-02-010",
         "type": "choice",
-        "question": "Koloběh vody patří do:",
+        "question": "Proč ryba patří do živé přírody?",
         "options": [
-          "živé přírody",
-          "živočichů",
-          "hub",
-          "rostlin",
-          "neživé přírody"
+          "žije ve vodě",
+          "je mokrá",
+          "dýchá, roste a rozmnožuje se",
+          "je studená",
+          "plave"
         ],
-        "answer": "neživé přírody",
-        "hint": "Živé organismy rostou, dýchají, rozmnožují se."
+        "answer": "dýchá, roste a rozmnožuje se",
+        "hint": "Vlastnosti živého organismu."
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-01-03",
+    "predmet": "prirodoveda",
+    "tema": "Živá a neživá příroda",
+    "tema_id": "PR4-01",
+    "mise": 1,
+    "obtiznost": 1,
+    "poradi": 3,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-01-03-001",
+        "type": "choice",
+        "question": "Čím se rostliny liší od živočichů?",
+        "options": [
+          "nemají barvu",
+          "vyrábí si potravu ze slunečního světla",
+          "nepotřebují vodu",
+          "nemají kořeny",
+          "jsou vždy malé"
+        ],
+        "answer": "vyrábí si potravu ze slunečního světla",
+        "hint": "Fotosyntéza — jen rostliny to umí."
+      },
+      {
+        "id": "PR4-01-03-002",
+        "type": "choice",
+        "question": "Proč houby nepatří mezi rostliny?",
+        "options": [
+          "jsou příliš malé",
+          "neumí fotosyntézu",
+          "jsou vždy jedovaté",
+          "rostou jen v lese",
+          "nemají barvu"
+        ],
+        "answer": "neumí fotosyntézu",
+        "hint": "Houby si nevyrábí potravu ze slunce."
+      },
+      {
+        "id": "PR4-01-03-003",
+        "type": "choice",
+        "question": "Co je fotosyntéza?",
+        "options": [
+          "způsob pohybu rostlin",
+          "výroba potravy ze slunečního světla",
+          "rozmnožování hub",
+          "dýchání živočichů",
+          "změna barvy listů"
+        ],
+        "answer": "výroba potravy ze slunečního světla",
+        "hint": "Foto = světlo, syntéza = tvorba."
+      },
+      {
+        "id": "PR4-01-03-004",
+        "type": "choice",
+        "question": "Co je společné všem živočichům?",
+        "options": [
+          "mají křídla",
+          "žijí ve vodě",
+          "aktivně přijímají potravu",
+          "mají srst",
+          "mají čtyři nohy"
+        ],
+        "answer": "aktivně přijímají potravu",
+        "hint": "Živočichové musí hledat a jíst potravu."
+      },
+      {
+        "id": "PR4-01-03-005",
+        "type": "choice",
+        "question": "Kam zařadíme mravence?",
+        "options": [
+          "rostliny",
+          "houby",
+          "nerosty",
+          "živočichové",
+          "neživá příroda"
+        ],
+        "answer": "živočichové",
+        "hint": "Mravenec se pohybuje, hledá potravu."
+      },
+      {
+        "id": "PR4-01-03-006",
+        "type": "choice",
+        "question": "Který organismus si NEDOKÁŽE vyrobit potravu ze slunce?",
+        "options": [
+          "dub",
+          "sedmikráska",
+          "mech",
+          "zajíc",
+          "kapradina"
+        ],
+        "answer": "zajíc",
+        "hint": "Zajíc je živočich — musí jíst."
+      },
+      {
+        "id": "PR4-01-03-007",
+        "type": "choice",
+        "question": "Kam patří plíseň?",
+        "options": [
+          "rostliny",
+          "živočichové",
+          "houby",
+          "nerosty",
+          "neživá příroda"
+        ],
+        "answer": "houby",
+        "hint": "Plísně jsou druh hub."
+      },
+      {
+        "id": "PR4-01-03-008",
+        "type": "choice",
+        "question": "Je mořská řasa rostlina?",
+        "options": [
+          "ne, je to houba",
+          "ne, je to živočich",
+          "ano, provádí fotosyntézu",
+          "ne, je neživá",
+          "ne, je to nerost"
+        ],
+        "answer": "ano, provádí fotosyntézu",
+        "hint": "Řasy vyrábí potravu ze slunce."
+      },
+      {
+        "id": "PR4-01-03-009",
+        "type": "choice",
+        "question": "Co mají společného kaktus a dub?",
+        "options": [
+          "oba kvetou v zimě",
+          "oba jsou rostliny",
+          "oba žijí v lese",
+          "oba jsou keře",
+          "oba mají jehličí"
+        ],
+        "answer": "oba jsou rostliny",
+        "hint": "Různé, ale oboje rostliny."
+      },
+      {
+        "id": "PR4-01-03-010",
+        "type": "choice",
+        "question": "Jak houby získávají živiny?",
+        "options": [
+          "fotosyntézou",
+          "lovem",
+          "rozkladem organické hmoty",
+          "z nerostů",
+          "ze vzduchu"
+        ],
+        "answer": "rozkladem organické hmoty",
+        "hint": "Houby rozkládají zbytky rostlin a živočichů."
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-01-04",
+    "predmet": "prirodoveda",
+    "tema": "Živá a neživá příroda",
+    "tema_id": "PR4-01",
+    "mise": 1,
+    "obtiznost": 2,
+    "poradi": 4,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-01-04-001",
+        "type": "choice",
+        "question": "Jaká jsou tři skupenství vody?",
+        "options": [
+          "teplá, studená, vlažná",
+          "kapalná, pevná (led), plynná (pára)",
+          "slaná, sladká, minerální",
+          "čistá, špinavá, destilovaná",
+          "pitná, nepitná, teplá"
+        ],
+        "answer": "kapalná, pevná (led), plynná (pára)",
+        "hint": "Tři formy existence vody."
+      },
+      {
+        "id": "PR4-01-04-002",
+        "type": "choice",
+        "question": "Z čeho se skládá vzduch?",
+        "options": [
+          "jen z kyslíku",
+          "jen z dusíku",
+          "ze směsi plynů (hlavně dusík a kyslík)",
+          "jen z oxidu uhličitého",
+          "jen z vodní páry"
+        ],
+        "answer": "ze směsi plynů (hlavně dusík a kyslík)",
+        "hint": "78 % dusík, 21 % kyslík."
+      },
+      {
+        "id": "PR4-01-04-003",
+        "type": "choice",
+        "question": "Co je hornina?",
+        "options": [
+          "živý organismus",
+          "přírodní směs nerostů",
+          "druh rostliny",
+          "typ houby",
+          "kapalina"
+        ],
+        "answer": "přírodní směs nerostů",
+        "hint": "Hornina = směs minerálů."
+      },
+      {
+        "id": "PR4-01-04-004",
+        "type": "choice",
+        "question": "Co je Slunce?",
+        "options": [
+          "planeta",
+          "měsíc",
+          "hvězda",
+          "kometa",
+          "asteroid"
+        ],
+        "answer": "hvězda",
+        "hint": "Slunce je naše nejbližší hvězda."
+      },
+      {
+        "id": "PR4-01-04-005",
+        "type": "choice",
+        "question": "Jak vzniká půda?",
+        "options": [
+          "roste jako rostlina",
+          "zvětráváním hornin a rozkladem organismů",
+          "padá z oblak",
+          "lidé ji vyrábí",
+          "vzniká z vody"
+        ],
+        "answer": "zvětráváním hornin a rozkladem organismů",
+        "hint": "Dlouhý proces — tisíce let."
+      },
+      {
+        "id": "PR4-01-04-006",
+        "type": "choice",
+        "question": "Proč je Slunce důležité pro život?",
+        "options": [
+          "je hezké",
+          "dává teplo a světlo",
+          "je žluté",
+          "je velké",
+          "otáčí se"
+        ],
+        "answer": "dává teplo a světlo",
+        "hint": "Bez slunce by nebyl život na Zemi."
+      },
+      {
+        "id": "PR4-01-04-007",
+        "type": "choice",
+        "question": "Co se stane s vodou při 0 °C?",
+        "options": [
+          "vypaří se",
+          "zmrzne na led",
+          "nic",
+          "začne vřít",
+          "zmizí"
+        ],
+        "answer": "zmrzne na led",
+        "hint": "Bod mrazu = 0 °C."
+      },
+      {
+        "id": "PR4-01-04-008",
+        "type": "choice",
+        "question": "Co se stane s vodou při 100 °C?",
+        "options": [
+          "zmrzne",
+          "nic",
+          "začne vřít a vypařovat se",
+          "zhoustne",
+          "ztvrdne"
+        ],
+        "answer": "začne vřít a vypařovat se",
+        "hint": "Bod varu = 100 °C."
+      },
+      {
+        "id": "PR4-01-04-009",
+        "type": "choice",
+        "question": "Co je koloběh vody?",
+        "options": [
+          "voda jen teče do moře",
+          "výpar → mraky → déšť → řeky → moře",
+          "voda zmizí",
+          "voda se mění na kámen",
+          "voda stojí na místě"
+        ],
+        "answer": "výpar → mraky → déšť → řeky → moře",
+        "hint": "Nekonečný cyklus vody v přírodě."
+      },
+      {
+        "id": "PR4-01-04-010",
+        "type": "choice",
+        "question": "Který příklad je nerost?",
+        "options": [
+          "mech",
+          "houba",
+          "křemen",
+          "strom",
+          "ryba"
+        ],
+        "answer": "křemen",
+        "hint": "Křemen je běžný minerál."
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-01-05",
+    "predmet": "prirodoveda",
+    "tema": "Živá a neživá příroda",
+    "tema_id": "PR4-01",
+    "mise": 1,
+    "obtiznost": 2,
+    "poradi": 5,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-01-05-001",
+        "type": "choice",
+        "question": "Které DVĚ věci patří do neživé přírody?",
+        "options": [
+          "strom a ryba",
+          "mech a houba",
+          "voda a vzduch",
+          "kočka a pes",
+          "sedmikráska a mravenec"
+        ],
+        "answer": "voda a vzduch",
+        "hint": "Oba nerostou, nerozmnožují se."
+      },
+      {
+        "id": "PR4-01-05-002",
+        "type": "choice",
+        "question": "Proč diamant NENÍ živý?",
+        "options": [
+          "je tvrdý",
+          "je průhledný",
+          "nerozmnožuje se, neroste sám, nedýchá",
+          "je drahý",
+          "je malý"
+        ],
+        "answer": "nerozmnožuje se, neroste sám, nedýchá",
+        "hint": "Nemá vlastnosti živého organismu."
+      },
+      {
+        "id": "PR4-01-05-003",
+        "type": "choice",
+        "question": "Jakou roli mají houby v přírodě?",
+        "options": [
+          "vyrábí kyslík",
+          "rozkládají odumřelou hmotu",
+          "loví živočichy",
+          "tvoří horniny",
+          "vytvářejí vodu"
+        ],
+        "answer": "rozkládají odumřelou hmotu",
+        "hint": "Houby jsou přírodní recyklátoři."
+      },
+      {
+        "id": "PR4-01-05-004",
+        "type": "choice",
+        "question": "Co by se stalo bez rostlin?",
+        "options": [
+          "nic",
+          "nebyl by kyslík k dýchání",
+          "bylo by víc vody",
+          "bylo by tepleji",
+          "živočichové by fotosyntézovali"
+        ],
+        "answer": "nebyl by kyslík k dýchání",
+        "hint": "Rostliny vyrábí kyslík fotosyntézou."
+      },
+      {
+        "id": "PR4-01-05-005",
+        "type": "choice",
+        "question": "Která řada obsahuje POUZE živé organismy?",
+        "options": [
+          "strom, voda, mech",
+          "ryba, kámen, houba",
+          "mravenec, hřib, dub",
+          "vzduch, půda, led",
+          "slunce, oblak, vítr"
+        ],
+        "answer": "mravenec, hřib, dub",
+        "hint": "Živočich + houba + rostlina = živé."
+      },
+      {
+        "id": "PR4-01-05-006",
+        "type": "choice",
+        "question": "Kde najdeme živé organismy?",
+        "options": [
+          "jen na souši",
+          "jen ve vodě",
+          "jen ve vzduchu",
+          "v půdě, ve vodě, na souši i ve vzduchu",
+          "jen v lese"
+        ],
+        "answer": "v půdě, ve vodě, na souši i ve vzduchu",
+        "hint": "Život je všude."
+      },
+      {
+        "id": "PR4-01-05-007",
+        "type": "choice",
+        "question": "Je korál živý nebo neživý?",
+        "options": [
+          "neživý — je to kámen",
+          "živý — kolonie drobných živočichů",
+          "neživý — je ve vodě",
+          "živý — je to rostlina",
+          "neživý — nehýbe se"
+        ],
+        "answer": "živý — kolonie drobných živočichů",
+        "hint": "Koráli jsou drobní mořští živočichové."
+      },
+      {
+        "id": "PR4-01-05-008",
+        "type": "choice",
+        "question": "Co je přírodní společenstvo?",
+        "options": [
+          "jen rostliny",
+          "skupina lidí",
+          "soubor organismů na jednom místě",
+          "typ horniny",
+          "druh neživé přírody"
+        ],
+        "answer": "soubor organismů na jednom místě",
+        "hint": "Les = stromy + zvířata + houby + půda."
+      },
+      {
+        "id": "PR4-01-05-009",
+        "type": "choice",
+        "question": "Co mají společného houba a strom?",
+        "options": [
+          "oba dělají fotosyntézu",
+          "oba jsou živé organismy",
+          "oba jsou nerosty",
+          "oba mají květy",
+          "oba žijí ve vodě"
+        ],
+        "answer": "oba jsou živé organismy",
+        "hint": "Oba rostou a rozmnožují se."
+      },
+      {
+        "id": "PR4-01-05-010",
+        "type": "choice",
+        "question": "Proč chráníme přírodu?",
+        "options": [
+          "není to důležité",
+          "vše spolu souvisí a je propojené",
+          "jen kvůli rostlinám",
+          "jen kvůli zvířatům",
+          "jen kvůli lidem"
+        ],
+        "answer": "vše spolu souvisí a je propojené",
+        "hint": "Živá i neživá příroda tvoří jeden celek."
       }
     ]
   },
@@ -604,6 +1060,462 @@
         ],
         "answer": "přijímá živiny z půdy",
         "hint": "Houby mají klobouk, třeň a podhoubí. Sbírej jen houby které znáš!"
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-02-03",
+    "predmet": "prirodoveda",
+    "tema": "Houby",
+    "tema_id": "PR4-02",
+    "mise": 1,
+    "obtiznost": 1,
+    "poradi": 3,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-02-03-001",
+        "type": "choice",
+        "question": "Jak se říká podzemní části houby?",
+        "options": [
+          "kořen",
+          "stonek",
+          "podhoubí",
+          "klobouk",
+          "list"
+        ],
+        "answer": "podhoubí",
+        "hint": "Největší část houby je pod zemí."
+      },
+      {
+        "id": "PR4-02-03-002",
+        "type": "choice",
+        "question": "Co má houba místo stonku?",
+        "options": [
+          "větev",
+          "kořen",
+          "třeň",
+          "list",
+          "květ"
+        ],
+        "answer": "třeň",
+        "hint": "Třeň = noha houby."
+      },
+      {
+        "id": "PR4-02-03-003",
+        "type": "choice",
+        "question": "Jak poznáš rourkatou houbu?",
+        "options": [
+          "má lupeny pod kloboukem",
+          "má rourky pod kloboukem",
+          "má listy",
+          "má květy",
+          "má kořeny"
+        ],
+        "answer": "má rourky pod kloboukem",
+        "hint": "Rourky vypadají jako houbička."
+      },
+      {
+        "id": "PR4-02-03-004",
+        "type": "choice",
+        "question": "Hřib smrkový je houba:",
+        "options": [
+          "lupenatá",
+          "rourkatá",
+          "bez klobouku",
+          "jedovatá",
+          "vodní"
+        ],
+        "answer": "rourkatá",
+        "hint": "Pod kloboukem má rourky."
+      },
+      {
+        "id": "PR4-02-03-005",
+        "type": "choice",
+        "question": "Co je lupenatá houba?",
+        "options": [
+          "houba s rourkami",
+          "houba s lupeny pod kloboukem",
+          "houba bez klobouku",
+          "houba na stromě",
+          "vodní houba"
+        ],
+        "answer": "houba s lupeny pod kloboukem",
+        "hint": "Lupeny = tenké plátky."
+      },
+      {
+        "id": "PR4-02-03-006",
+        "type": "choice",
+        "question": "Jak se rozmnožují houby?",
+        "options": [
+          "semeny",
+          "výtrusy",
+          "řízky",
+          "cibulkami",
+          "oddenky"
+        ],
+        "answer": "výtrusy",
+        "hint": "Výtrusy jsou drobné jako prach."
+      },
+      {
+        "id": "PR4-02-03-007",
+        "type": "choice",
+        "question": "Co dělá podhoubí?",
+        "options": [
+          "kvete",
+          "přijímá živiny z půdy",
+          "fotosyntézu",
+          "létá",
+          "plave"
+        ],
+        "answer": "přijímá živiny z půdy",
+        "hint": "Podhoubí je hlavní tělo houby."
+      },
+      {
+        "id": "PR4-02-03-008",
+        "type": "choice",
+        "question": "Kde houby nejčastěji rostou?",
+        "options": [
+          "na poušti",
+          "ve vlhkém lese",
+          "na sněhu",
+          "na moři",
+          "v řece"
+        ],
+        "answer": "ve vlhkém lese",
+        "hint": "Houby milují vlhko a stín."
+      },
+      {
+        "id": "PR4-02-03-009",
+        "type": "choice",
+        "question": "Ryzec má pod kloboukem:",
+        "options": [
+          "rourky",
+          "lupeny",
+          "nic",
+          "chlupy",
+          "kořeny"
+        ],
+        "answer": "lupeny",
+        "hint": "Ryzec je lupenatá houba."
+      },
+      {
+        "id": "PR4-02-03-010",
+        "type": "choice",
+        "question": "Co mají společného hřib a křemenáč?",
+        "options": [
+          "jsou jedovaté",
+          "jsou lupenatí",
+          "jsou rourkatí",
+          "rostou jen v zimě",
+          "jsou červené"
+        ],
+        "answer": "jsou rourkatí",
+        "hint": "Oba mají rourky pod kloboukem."
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-02-04",
+    "predmet": "prirodoveda",
+    "tema": "Houby",
+    "tema_id": "PR4-02",
+    "mise": 1,
+    "obtiznost": 2,
+    "poradi": 4,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-02-04-001",
+        "type": "choice",
+        "question": "Která houba je NEJJEDOVATĚJŠÍ v ČR?",
+        "options": [
+          "hřib smrkový",
+          "bedla vysoká",
+          "muchomůrka zelená",
+          "ryzec pravý",
+          "křemenáč"
+        ],
+        "answer": "muchomůrka zelená",
+        "hint": "Smrtelně jedovatá, zaměnitelná s bedlou."
+      },
+      {
+        "id": "PR4-02-04-002",
+        "type": "choice",
+        "question": "Která houba je jedlá?",
+        "options": [
+          "muchomůrka zelená",
+          "závojenka olovová",
+          "muchomůrka červená",
+          "klouzek obecný",
+          "holubinka vrhavka"
+        ],
+        "answer": "klouzek obecný",
+        "hint": "Klouzek má slizký klobouk."
+      },
+      {
+        "id": "PR4-02-04-003",
+        "type": "choice",
+        "question": "Co děláš s neznámou houbou?",
+        "options": [
+          "ochutnáš ji",
+          "odneseš domů",
+          "necháš ji být",
+          "zničíš ji",
+          "dáš ji psovi"
+        ],
+        "answer": "necháš ji být",
+        "hint": "Neznámé houby nikdy nesbíráme."
+      },
+      {
+        "id": "PR4-02-04-004",
+        "type": "choice",
+        "question": "Proč je muchomůrka zelená nebezpečná?",
+        "options": [
+          "špatně voní",
+          "vypadá jako bedla a je smrtelně jedovatá",
+          "je velká",
+          "roste rychle",
+          "má ostré lupeny"
+        ],
+        "answer": "vypadá jako bedla a je smrtelně jedovatá",
+        "hint": "Záměna s bedlou je nejčastější příčina otrav."
+      },
+      {
+        "id": "PR4-02-04-005",
+        "type": "choice",
+        "question": "Kam neseš houby na kontrolu?",
+        "options": [
+          "do školy",
+          "do knihovny",
+          "na mykologickou poradnu",
+          "na poštu",
+          "do obchodu"
+        ],
+        "answer": "na mykologickou poradnu",
+        "hint": "Mykolog = odborník na houby."
+      },
+      {
+        "id": "PR4-02-04-006",
+        "type": "choice",
+        "question": "Které tvrzení je PRAVDIVÉ?",
+        "options": [
+          "všechny červené houby jsou jedovaté",
+          "všechny bílé houby jsou jedlé",
+          "jedovatost nelze poznat podle barvy",
+          "jedovaté houby vždy smrdí",
+          "jedlé houby rostou jen v lese"
+        ],
+        "answer": "jedovatost nelze poznat podle barvy",
+        "hint": "Barva neříká nic o jedovatosti."
+      },
+      {
+        "id": "PR4-02-04-007",
+        "type": "choice",
+        "question": "Jak přenášíme houby z lesa?",
+        "options": [
+          "v igelitce",
+          "v proutěném košíku",
+          "v kapse",
+          "v ruce",
+          "v pytli"
+        ],
+        "answer": "v proutěném košíku",
+        "hint": "Košík propouští vzduch."
+      },
+      {
+        "id": "PR4-02-04-008",
+        "type": "choice",
+        "question": "Je muchomůrka červená smrtelně jedovatá?",
+        "options": [
+          "ano, vždy smrtelná",
+          "ne, jedovatá ale málokdy smrtelná",
+          "ne, je jedlá po uvaření",
+          "ne, jen nejedlá",
+          "není jedovatá"
+        ],
+        "answer": "ne, jedovatá ale málokdy smrtelná",
+        "hint": "Zelená je smrtelná, červená jen jedovatá."
+      },
+      {
+        "id": "PR4-02-04-009",
+        "type": "choice",
+        "question": "Komu zavoláš při otravě houbami?",
+        "options": [
+          "učiteli",
+          "záchranné službě (155)",
+          "do knihovny",
+          "sousedovi",
+          "nikomu"
+        ],
+        "answer": "záchranné službě (155)",
+        "hint": "155 = záchranná služba."
+      },
+      {
+        "id": "PR4-02-04-010",
+        "type": "choice",
+        "question": "Proč neničíme jedovaté houby v lese?",
+        "options": [
+          "je to zakázáno",
+          "jsou součástí přírody a mají svou roli",
+          "změní jedovatost",
+          "z nich vzniknou jedlé",
+          "nám neublíží"
+        ],
+        "answer": "jsou součástí přírody a mají svou roli",
+        "hint": "Houby rozkládají organickou hmotu a pomáhají lesu."
+      }
+    ]
+  },
+  {
+    "okruh_id": "PR4-02-05",
+    "predmet": "prirodoveda",
+    "tema": "Houby",
+    "tema_id": "PR4-02",
+    "mise": 1,
+    "obtiznost": 2,
+    "poradi": 5,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "PR4-02-05-001",
+        "type": "choice",
+        "question": "Co je správné pravidlo houbaře?",
+        "options": [
+          "sbírej vše a doma třiď",
+          "sbírej jen houby co znáš",
+          "jedovaté houby rozkopni",
+          "sbírej i plesnivé",
+          "sbírej do igelitky"
+        ],
+        "answer": "sbírej jen houby co znáš",
+        "hint": "Nejbezpečnější pravidlo."
+      },
+      {
+        "id": "PR4-02-05-002",
+        "type": "choice",
+        "question": "V jakém období sbíráme nejvíc hub?",
+        "options": [
+          "na jaře",
+          "v létě a na podzim",
+          "v zimě",
+          "celoročně",
+          "jen v prosinci"
+        ],
+        "answer": "v létě a na podzim",
+        "hint": "Po dešti v teplých měsících."
+      },
+      {
+        "id": "PR4-02-05-003",
+        "type": "choice",
+        "question": "Komu se nejvíc podobá jedovatá muchomůrka zelená?",
+        "options": [
+          "hřibu",
+          "ryzci",
+          "bedle",
+          "klouzku",
+          "křemenáči"
+        ],
+        "answer": "bedle",
+        "hint": "Proto je tak nebezpečná."
+      },
+      {
+        "id": "PR4-02-05-004",
+        "type": "choice",
+        "question": "Co NESMÍŠ dělat s neznámou houbou?",
+        "options": [
+          "fotografovat ji",
+          "vyhledat v atlasu",
+          "ochutnat ji",
+          "nechat v lese",
+          "zeptat se mykologa"
+        ],
+        "answer": "ochutnat ji",
+        "hint": "Ani ochutnávka může být nebezpečná."
+      },
+      {
+        "id": "PR4-02-05-005",
+        "type": "choice",
+        "question": "Bedla vysoká je:",
+        "options": [
+          "jedovatá houba",
+          "jedlá houba",
+          "neexistující houba",
+          "rostlina",
+          "mech"
+        ],
+        "answer": "jedlá houba",
+        "hint": "Bedla je velká a chutná."
+      },
+      {
+        "id": "PR4-02-05-006",
+        "type": "choice",
+        "question": "Křemenáč osikový je:",
+        "options": [
+          "jedovatý",
+          "jedlý",
+          "nejedlý",
+          "neexistuje",
+          "rostlina"
+        ],
+        "answer": "jedlý",
+        "hint": "Křemenáčy jsou oblíbené jedlé houby."
+      },
+      {
+        "id": "PR4-02-05-007",
+        "type": "choice",
+        "question": "Která část houby obsahuje výtrusy?",
+        "options": [
+          "podhoubí",
+          "třeň",
+          "klobouk (rourky/lupeny)",
+          "kořen",
+          "list"
+        ],
+        "answer": "klobouk (rourky/lupeny)",
+        "hint": "Výtrusy se uvolňují zpod klobouku."
+      },
+      {
+        "id": "PR4-02-05-008",
+        "type": "choice",
+        "question": "Proč netrháme houby i s podhoubím?",
+        "options": [
+          "je to těžké",
+          "aby mohly růst další houby",
+          "podhoubí smrdí",
+          "je to zakázáno",
+          "podhoubí je jedovaté"
+        ],
+        "answer": "aby mohly růst další houby",
+        "hint": "Podhoubí = základ pro nové houby."
+      },
+      {
+        "id": "PR4-02-05-009",
+        "type": "choice",
+        "question": "Která houba roste na stromech?",
+        "options": [
+          "hřib",
+          "muchomůrka",
+          "troudnatec",
+          "ryzec",
+          "klouzek"
+        ],
+        "answer": "troudnatec",
+        "hint": "Troudnatec je parazit na stromech."
+      },
+      {
+        "id": "PR4-02-05-010",
+        "type": "choice",
+        "question": "Jakou roli mají houby v lese?",
+        "options": [
+          "žádnou",
+          "rozkládají odumřelou hmotu",
+          "vyrábí kyslík",
+          "loví zvířata",
+          "vytvářejí vodu"
+        ],
+        "answer": "rozkládají odumřelou hmotu",
+        "hint": "Houby jsou přírodní recyklátoři."
       }
     ]
   },

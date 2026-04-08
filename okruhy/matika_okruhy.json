@@ -8154,7 +8154,7 @@
     "predmet": "matika",
     "tema": "Slovní úlohy",
     "tema_id": "MA4-08",
-    "mise": 0,
+    "mise": 1,
     "obtiznost": 1,
     "poradi": 1,
     "scenka_id": null,
@@ -8306,7 +8306,7 @@
     "predmet": "matika",
     "tema": "Slovní úlohy",
     "tema_id": "MA4-08",
-    "mise": 0,
+    "mise": 2,
     "obtiznost": 1,
     "poradi": 2,
     "scenka_id": null,
@@ -8450,6 +8450,462 @@
         ],
         "answer": "o 3 cm",
         "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+      }
+    ]
+  },
+  {
+    "okruh_id": "MA4-08-03",
+    "predmet": "matika",
+    "tema": "Slovní úlohy",
+    "tema_id": "MA4-08",
+    "mise": 3,
+    "obtiznost": 1,
+    "poradi": 3,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "MA4-08-03-001",
+        "type": "choice",
+        "question": "Rohlík stojí 3 Kč. Kolik zaplatíš za 7 rohlíků?",
+        "options": [
+          "18 Kč",
+          "21 Kč",
+          "24 Kč",
+          "10 Kč",
+          "28 Kč"
+        ],
+        "answer": "21 Kč",
+        "hint": "7 × 3 = ?"
+      },
+      {
+        "id": "MA4-08-03-002",
+        "type": "choice",
+        "question": "Máš 100 Kč. Koupíš si zmrzlinu za 35 Kč. Kolik ti zbude?",
+        "options": [
+          "55 Kč",
+          "65 Kč",
+          "75 Kč",
+          "45 Kč",
+          "35 Kč"
+        ],
+        "answer": "65 Kč",
+        "hint": "100 − 35 = ?"
+      },
+      {
+        "id": "MA4-08-03-003",
+        "type": "choice",
+        "question": "Mléko stojí 25 Kč a chleba 38 Kč. Kolik zaplatíš za obojí?",
+        "options": [
+          "53 Kč",
+          "63 Kč",
+          "43 Kč",
+          "73 Kč",
+          "58 Kč"
+        ],
+        "answer": "63 Kč",
+        "hint": "25 + 38 = ?"
+      },
+      {
+        "id": "MA4-08-03-004",
+        "type": "choice",
+        "question": "Koupíš 4 sešity po 12 Kč. Kolik zaplatíš?",
+        "options": [
+          "36 Kč",
+          "44 Kč",
+          "48 Kč",
+          "52 Kč",
+          "40 Kč"
+        ],
+        "answer": "48 Kč",
+        "hint": "4 × 12 = ?"
+      },
+      {
+        "id": "MA4-08-03-005",
+        "type": "choice",
+        "question": "Platíš 78 Kč a dáš stokorunu. Kolik dostaneš zpět?",
+        "options": [
+          "12 Kč",
+          "22 Kč",
+          "32 Kč",
+          "28 Kč",
+          "18 Kč"
+        ],
+        "answer": "22 Kč",
+        "hint": "100 − 78 = ?"
+      },
+      {
+        "id": "MA4-08-03-006",
+        "type": "choice",
+        "question": "3 děti si koupily lízátka za 15 Kč celkem. Kolik stálo jedno?",
+        "options": [
+          "3 Kč",
+          "5 Kč",
+          "6 Kč",
+          "10 Kč",
+          "12 Kč"
+        ],
+        "answer": "5 Kč",
+        "hint": "15 ÷ 3 = ?"
+      },
+      {
+        "id": "MA4-08-03-007",
+        "type": "choice",
+        "question": "Táta koupil 2 kg jablek po 30 Kč/kg a 1 kg banánů za 35 Kč. Kolik zaplatil?",
+        "options": [
+          "65 Kč",
+          "85 Kč",
+          "95 Kč",
+          "75 Kč",
+          "90 Kč"
+        ],
+        "answer": "95 Kč",
+        "hint": "(2 × 30) + 35 = ?"
+      },
+      {
+        "id": "MA4-08-03-008",
+        "type": "choice",
+        "question": "Tričko stálo 250 Kč. Teď je sleva 50 Kč. Kolik stojí?",
+        "options": [
+          "150 Kč",
+          "180 Kč",
+          "200 Kč",
+          "220 Kč",
+          "300 Kč"
+        ],
+        "answer": "200 Kč",
+        "hint": "250 − 50 = ?"
+      },
+      {
+        "id": "MA4-08-03-009",
+        "type": "choice",
+        "question": "Máš 200 Kč. Koupíš knihu za 149 Kč. Kolik ti zbude?",
+        "options": [
+          "41 Kč",
+          "51 Kč",
+          "61 Kč",
+          "49 Kč",
+          "59 Kč"
+        ],
+        "answer": "51 Kč",
+        "hint": "200 − 149 = ?"
+      },
+      {
+        "id": "MA4-08-03-010",
+        "type": "choice",
+        "question": "6 dětí si rozdělí 42 bonbónů rovným dílem. Kolik dostane každé?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "5"
+        ],
+        "answer": "7",
+        "hint": "42 ÷ 6 = ?"
+      }
+    ]
+  },
+  {
+    "okruh_id": "MA4-08-04",
+    "predmet": "matika",
+    "tema": "Slovní úlohy",
+    "tema_id": "MA4-08",
+    "mise": 4,
+    "obtiznost": 2,
+    "poradi": 4,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "MA4-08-04-001",
+        "type": "choice",
+        "question": "Film začíná v 17:30 a trvá 90 minut. Kdy skončí?",
+        "options": [
+          "18:30",
+          "18:00",
+          "19:00",
+          "19:30",
+          "18:45"
+        ],
+        "answer": "19:00",
+        "hint": "90 minut = 1 hodina 30 minut. 17:30 + 1:30 = ?"
+      },
+      {
+        "id": "MA4-08-04-002",
+        "type": "choice",
+        "question": "Cesta do školy trvá 15 minut. Škola začíná v 8:00. Kdy musíš vyjít?",
+        "options": [
+          "7:30",
+          "7:45",
+          "7:50",
+          "7:55",
+          "7:40"
+        ],
+        "answer": "7:45",
+        "hint": "8:00 − 15 minut = ?"
+      },
+      {
+        "id": "MA4-08-04-003",
+        "type": "choice",
+        "question": "Vlak jede 2 hodiny. Odjíždí v 9:15. Kdy přijede?",
+        "options": [
+          "10:15",
+          "11:15",
+          "11:00",
+          "12:15",
+          "10:30"
+        ],
+        "answer": "11:15",
+        "hint": "9:15 + 2 hodiny = ?"
+      },
+      {
+        "id": "MA4-08-04-004",
+        "type": "choice",
+        "question": "Ze školy domů je 800 m. Tam a zpátky je kolik?",
+        "options": [
+          "800 m",
+          "1 200 m",
+          "1 600 m",
+          "2 000 m",
+          "400 m"
+        ],
+        "answer": "1 600 m",
+        "hint": "800 × 2 = ?"
+      },
+      {
+        "id": "MA4-08-04-005",
+        "type": "choice",
+        "question": "Hodina má 60 minut. Kolik minut mají 3 hodiny?",
+        "options": [
+          "120",
+          "150",
+          "180",
+          "200",
+          "160"
+        ],
+        "answer": "180",
+        "hint": "3 × 60 = ?"
+      },
+      {
+        "id": "MA4-08-04-006",
+        "type": "choice",
+        "question": "Přestávka trvá 10 minut. Kolik minut mají 4 přestávky?",
+        "options": [
+          "30",
+          "35",
+          "40",
+          "45",
+          "50"
+        ],
+        "answer": "40",
+        "hint": "4 × 10 = ?"
+      },
+      {
+        "id": "MA4-08-04-007",
+        "type": "choice",
+        "question": "Do Brna je 200 km a do Ostravy 370 km. O kolik je dál do Ostravy?",
+        "options": [
+          "130 km",
+          "150 km",
+          "170 km",
+          "180 km",
+          "200 km"
+        ],
+        "answer": "170 km",
+        "hint": "370 − 200 = ?"
+      },
+      {
+        "id": "MA4-08-04-008",
+        "type": "choice",
+        "question": "Auto jede 80 km za hodinu. Kolik ujede za 3 hodiny?",
+        "options": [
+          "160 km",
+          "200 km",
+          "240 km",
+          "280 km",
+          "320 km"
+        ],
+        "answer": "240 km",
+        "hint": "80 × 3 = ?"
+      },
+      {
+        "id": "MA4-08-04-009",
+        "type": "choice",
+        "question": "Výlet trvá od 8:00 do 14:00. Kolik hodin trvá?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "answer": "6",
+        "hint": "14 − 8 = ?"
+      },
+      {
+        "id": "MA4-08-04-010",
+        "type": "choice",
+        "question": "120 minut je kolik hodin?",
+        "options": [
+          "1",
+          "1,5",
+          "2",
+          "2,5",
+          "3"
+        ],
+        "answer": "2",
+        "hint": "120 ÷ 60 = ?"
+      }
+    ]
+  },
+  {
+    "okruh_id": "MA4-08-05",
+    "predmet": "matika",
+    "tema": "Slovní úlohy",
+    "tema_id": "MA4-08",
+    "mise": 5,
+    "obtiznost": 2,
+    "poradi": 5,
+    "scenka_id": null,
+    "otazky": [
+      {
+        "id": "MA4-08-05-001",
+        "type": "choice",
+        "question": "Ve třídě je 28 dětí. 15 jsou dívky. Kolik je chlapců?",
+        "options": [
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "answer": "13",
+        "hint": "28 − 15 = ?"
+      },
+      {
+        "id": "MA4-08-05-002",
+        "type": "choice",
+        "question": "Babička upekla 36 koláčků a rozdělila je rovným dílem 4 vnukům. Kolik dostal každý?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "answer": "9",
+        "hint": "36 ÷ 4 = ?"
+      },
+      {
+        "id": "MA4-08-05-003",
+        "type": "choice",
+        "question": "Na stromě bylo 45 jablek. Spadlo 18. Kolik zůstalo?",
+        "options": [
+          "23",
+          "25",
+          "27",
+          "29",
+          "33"
+        ],
+        "answer": "27",
+        "hint": "45 − 18 = ?"
+      },
+      {
+        "id": "MA4-08-05-004",
+        "type": "choice",
+        "question": "Máma koupila 3 balení jogurtů. V každém je 4 kusy. Kolik jogurtů má?",
+        "options": [
+          "7",
+          "10",
+          "12",
+          "14",
+          "15"
+        ],
+        "answer": "12",
+        "hint": "3 × 4 = ?"
+      },
+      {
+        "id": "MA4-08-05-005",
+        "type": "choice",
+        "question": "Kniha má 156 stran. Přečetl jsi 89. Kolik ti zbývá?",
+        "options": [
+          "57",
+          "67",
+          "77",
+          "87",
+          "47"
+        ],
+        "answer": "67",
+        "hint": "156 − 89 = ?"
+      },
+      {
+        "id": "MA4-08-05-006",
+        "type": "choice",
+        "question": "Krabice váží 2 kg. Kolik váží 8 stejných krabic?",
+        "options": [
+          "10 kg",
+          "12 kg",
+          "14 kg",
+          "16 kg",
+          "18 kg"
+        ],
+        "answer": "16 kg",
+        "hint": "8 × 2 = ?"
+      },
+      {
+        "id": "MA4-08-05-007",
+        "type": "choice",
+        "question": "V Zoo je 125 zvířat. Přivezli dalších 37. Kolik jich je teď?",
+        "options": [
+          "152",
+          "158",
+          "162",
+          "168",
+          "172"
+        ],
+        "answer": "162",
+        "hint": "125 + 37 = ?"
+      },
+      {
+        "id": "MA4-08-05-008",
+        "type": "choice",
+        "question": "Tramvaj jede každých 12 minut. Kolikrát projede za hodinu?",
+        "options": [
+          "3×",
+          "4×",
+          "5×",
+          "6×",
+          "7×"
+        ],
+        "answer": "5×",
+        "hint": "60 ÷ 12 = ?"
+      },
+      {
+        "id": "MA4-08-05-009",
+        "type": "choice",
+        "question": "Petr má 250 Kč, Jana má o 85 Kč víc. Kolik má Jana?",
+        "options": [
+          "165 Kč",
+          "285 Kč",
+          "315 Kč",
+          "335 Kč",
+          "350 Kč"
+        ],
+        "answer": "335 Kč",
+        "hint": "250 + 85 = ?"
+      },
+      {
+        "id": "MA4-08-05-010",
+        "type": "choice",
+        "question": "5 kamarádů se složilo na dárek za 350 Kč. Kolik dal každý?",
+        "options": [
+          "50 Kč",
+          "60 Kč",
+          "70 Kč",
+          "80 Kč",
+          "90 Kč"
+        ],
+        "answer": "70 Kč",
+        "hint": "350 ÷ 5 = ?"
       }
     ]
   },
