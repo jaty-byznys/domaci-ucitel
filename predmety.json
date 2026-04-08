@@ -1,0 +1,86 @@
+{
+  "cestina": {
+    "name": "Český jazyk",
+    "icon": "📖",
+    "temata": [
+      {"nazev": "Stavba slova", "soubor": "cestina/01_stavba_slova.json"},
+      {"nazev": "Vyjmenovaná slova po B", "soubor": "cestina/02_vyjmenovana_slova_B.json"},
+      {"nazev": "Vyjmenovaná slova po L", "soubor": "cestina/02_vyjmenovana_slova_L.json"},
+      {"nazev": "Vyjmenovaná slova po M", "soubor": "cestina/02_vyjmenovana_slova_M.json"},
+      {"nazev": "Vyjmenovaná slova po P", "soubor": "cestina/02_vyjmenovana_slova_P.json"},
+      {"nazev": "Vyjmenovaná slova po S", "soubor": "cestina/02_vyjmenovana_slova_S.json"},
+      {"nazev": "Vyjmenovaná slova po V", "soubor": "cestina/02_vyjmenovana_slova_V.json"},
+      {"nazev": "Vyjmenovaná slova po Z", "soubor": "cestina/02_vyjmenovana_slova_Z.json"},
+      {"nazev": "Slovní druhy", "soubor": "cestina/03_slovni_druhy.json"},
+      {"nazev": "Podstatná jména", "soubor": "cestina/04_podstatna_jmena.json"},
+      {"nazev": "Slovesa", "soubor": "cestina/05_slovesa.json"},
+      {"nazev": "Stavba věty", "soubor": "cestina/06_stavba_vety.json"},
+      {"nazev": "Čtení s porozuměním", "soubor": "cestina/07_cteni_s_porozumenim.json"}
+    ]
+  },
+  "matika": {
+    "name": "Matematika",
+    "icon": "🔢",
+    "temata": [
+      {"nazev": "Číselný obor do 1 000 000", "soubor": "matika/01_ciselny_obor.json"},
+      {"nazev": "Sčítání a odčítání", "soubor": "matika/02_scitani_odcitani.json"},
+      {"nazev": "Násobení", "soubor": "matika/03_nasobeni.json"},
+      {"nazev": "Dělení", "soubor": "matika/04_deleni.json"},
+      {"nazev": "Zlomky", "soubor": "matika/05_zlomky.json"},
+      {"nazev": "Geometrie", "soubor": "matika/06_geometrie.json"},
+      {"nazev": "Jednotky a převody", "soubor": "matika/07_jednotky.json"},
+      {"nazev": "Slovní úlohy", "soubor": "matika/08_slovni_ulohy.json"},
+      {"nazev": "Závorky a pořadí operací", "soubor": "matika/09_zavorky.json"},
+      {"nazev": "Práce s daty", "soubor": "matika/10_prace_s_daty.json"}
+    ]
+  },
+  "prirodoveda": {
+    "name": "Přírodověda",
+    "icon": "🌿",
+    "temata": [
+      {"nazev": "Živá a neživá příroda", "soubor": "prirodoveda/01_ziva_neziva_priroda.json"},
+      {"nazev": "Houby", "soubor": "prirodoveda/02_houby.json"},
+      {"nazev": "Rostliny", "soubor": "prirodoveda/03_rostliny.json"},
+      {"nazev": "Živočichové", "soubor": "prirodoveda/04_zivocichove.json"},
+      {"nazev": "Ekosystémy", "soubor": "prirodoveda/05_ekosystemy.json"},
+      {"nazev": "Neživá příroda", "soubor": "prirodoveda/06_neziva_priroda.json"},
+      {"nazev": "Roční období a počasí", "soubor": "prirodoveda/07_rocni_obdobi.json"},
+      {"nazev": "Člověk a zdraví", "soubor": "prirodoveda/08_clovek_a_zdravi.json"},
+      {"nazev": "Ochrana přírody", "soubor": "prirodoveda/09_ochrana_prirody.json"}
+    ]
+  },
+  "vlastiveda": {
+    "name": "Vlastivěda",
+    "icon": "🗺️",
+    "temata": [
+      {"nazev": "Orientace na mapě", "soubor": "vlastiveda/01_orientace_na_mape.json"},
+      {"nazev": "Česká republika", "soubor": "vlastiveda/02_ceska_republika.json"},
+      {"nazev": "Pravěk", "soubor": "vlastiveda/03_pravek.json"},
+      {"nazev": "Slované", "soubor": "vlastiveda/04_slovane.json"},
+      {"nazev": "Přemyslovci", "soubor": "vlastiveda/05_premyslovci.json"},
+      {"nazev": "Lucemburkové", "soubor": "vlastiveda/06_lucemburkove.json"},
+      {"nazev": "Jan Hus a husitství", "soubor": "vlastiveda/07_hus_a_husitstvi.json"}
+    ]
+  },
+  "anglictina": {
+    "name": "Angličtina",
+    "icon": "🇬🇧",
+    "temata": [
+      {"nazev": "Barvy a čísla", "soubor": "anglictina/01_barvy_cisla.json"},
+      {"nazev": "Rodina", "soubor": "anglictina/02_rodina.json"},
+      {"nazev": "Zvířata", "soubor": "anglictina/03_zvirata.json"},
+      {"nazev": "Jídlo a pití", "soubor": "anglictina/04_jidlo_piti.json"},
+      {"nazev": "Oblečení", "soubor": "anglictina/05_obleceni.json"},
+      {"nazev": "Části těla", "soubor": "anglictina/06_casti_tela.json"},
+      {"nazev": "Škola", "soubor": "anglictina/07_skola.json"},
+      {"nazev": "Dům a pokoj", "soubor": "anglictina/08_dum_pokoj.json"},
+      {"nazev": "Dny a měsíce", "soubor": "anglictina/09_dny_mesice.json"},
+      {"nazev": "Sloveso to be", "soubor": "anglictina/10_to_be.json"},
+      {"nazev": "Sloveso to have", "soubor": "anglictina/11_to_have.json"},
+      {"nazev": "Přítomný čas prostý", "soubor": "anglictina/12_pritomny_cas.json"},
+      {"nazev": "Can / can't", "soubor": "anglictina/13_can.json"},
+      {"nazev": "There is / There are", "soubor": "anglictina/14_there_is_are.json"},
+      {"nazev": "Předložky místa", "soubor": "anglictina/15_predlozky.json"}
+    ]
+  }
+}
