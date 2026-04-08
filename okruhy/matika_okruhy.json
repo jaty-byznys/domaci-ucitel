@@ -9292,6 +9292,76 @@
         ],
         "answer": "5",
         "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+      },
+      {
+        "id": "MA4-09-03-006",
+        "type": "choice",
+        "question": "(8 + 2) × 5 =",
+        "options": [
+          "18",
+          "50",
+          "42",
+          "30",
+          "45"
+        ],
+        "answer": "50",
+        "hint": "Nejdřív spočítej závorku: 8 + 2 = ?"
+      },
+      {
+        "id": "MA4-09-03-007",
+        "type": "choice",
+        "question": "6 × 3 + 4 × 2 =",
+        "options": [
+          "44",
+          "26",
+          "30",
+          "22",
+          "40"
+        ],
+        "answer": "26",
+        "hint": "Násobení se počítá dřív než sčítání: 6×3 a 4×2 zvlášť, pak sečti."
+      },
+      {
+        "id": "MA4-09-03-008",
+        "type": "choice",
+        "question": "30 - 4 × 5 =",
+        "options": [
+          "130",
+          "10",
+          "25",
+          "15",
+          "20"
+        ],
+        "answer": "10",
+        "hint": "Nejdřív vynásob 4 × 5, pak odečti od 30."
+      },
+      {
+        "id": "MA4-09-03-009",
+        "type": "choice",
+        "question": "(12 - 4) × (1 + 2) =",
+        "options": [
+          "24",
+          "30",
+          "18",
+          "36",
+          "12"
+        ],
+        "answer": "24",
+        "hint": "Spočítej obě závorky zvlášť, pak vynásob."
+      },
+      {
+        "id": "MA4-09-03-010",
+        "type": "choice",
+        "question": "5 + 10 ÷ 2 =",
+        "options": [
+          "7",
+          "10",
+          "15",
+          "8",
+          "12"
+        ],
+        "answer": "10",
+        "hint": "Dělení se počítá dřív než sčítání."
       }
     ]
   },
