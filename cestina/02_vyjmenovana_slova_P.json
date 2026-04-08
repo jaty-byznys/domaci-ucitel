@@ -1,1454 +1,1510 @@
 {
-  "id": "CJ4-01-04",
+  "id": "CJ4-02P",
   "name": "Vyjmenovaná slova po P",
-  "order": 4,
-  "prerequisite": null,
+  "order": 5,
+  "prerequisite": "CJ4-02M",
   "skills": [
     {
-      "id": "CJ4-01-04-A",
-      "name": "Vyjmenovaná slova po P — pýcha, pytel, pysk, netopýr, slepýš",
-      "difficulty": 2,
-      "theory": "Vyjmenovaná slova po P: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se. A slova odvozená.",
+      "id": "CJ4-02P-01",
+      "name": "Doplň i/y — vyjmenovaná a odvozená",
+      "difficulty": 1,
+      "theory": "Vyjmenovaná slova po P: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se. Ve vyjmenovaných slovech a slovech od nich odvozených píšeme Y/Ý.",
       "tasks": [
         {
-          "id": "CJ4-01-04-001",
+          "id": "CJ4-02P-01-001",
           "type": "choice",
           "question": "Doplň i/y: P_cha předchází pád.",
           "options": [
-            "ý — pýcha",
-            "ý — pícha",
             "y — pycha",
             "í — pícha",
+            "i — pycha",
+            "ý — pýcha",
             "i — picha"
           ],
           "answer": "ý — pýcha",
-          "hint": "'Pýcha' je vyjmenované slovo po P."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-002",
+          "id": "CJ4-02P-01-002",
+          "type": "choice",
+          "question": "Doplň i/y: Je velmi p_šný na svou práci.",
+          "options": [
+            "i — pyšný",
+            "i — pišný",
+            "y — pyšný",
+            "ý — pýšný",
+            "í — píšný"
+          ],
+          "answer": "y — pyšný",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-003",
+          "type": "choice",
+          "question": "Doplň i/y: Nep_šni se cizím peřím.",
+          "options": [
+            "í — nepíšni",
+            "ý — nepýšni",
+            "i — nepišni",
+            "i — nepyšni",
+            "y — nepyšni"
+          ],
+          "answer": "y — nepyšni",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-004",
+          "type": "choice",
+          "question": "Doplň i/y: P_šná paní šla po ulici.",
+          "options": [
+            "y — pyšná",
+            "í — píšná",
+            "i — pišná",
+            "ý — pýšná",
+            "i — pyšná"
+          ],
+          "answer": "y — pyšná",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-005",
           "type": "choice",
           "question": "Doplň i/y: V p_tli bylo obilí.",
           "options": [
-            "i — pitli",
-            "ý — pýtli",
-            "y — pitli",
             "y — pytli",
-            "í — pítli"
+            "í — pítli",
+            "ý — pýtli",
+            "i — pitli",
+            "i — pytli"
           ],
           "answer": "y — pytli",
-          "hint": "'Pytel' je vyjmenované slovo po P."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-003",
+          "id": "CJ4-02P-01-006",
           "type": "choice",
-          "question": "Doplň i/y: Opice měla velké p_sky.",
-          "options": [
-            "y — pisky",
-            "í — písky",
-            "y — pysky",
-            "i — pisky",
-            "ý — pýsky"
-          ],
-          "answer": "y — pysky",
-          "hint": "'Pysk' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-004",
-          "type": "choice",
-          "question": "Doplň i/y: Netop_r letěl nad zahradou.",
-          "options": [
-            "i — netopir",
-            "í — netopír",
-            "ý — netopír",
-            "y — netopyr",
-            "ý — netopýr"
-          ],
-          "answer": "ý — netopýr",
-          "hint": "'Netopýr' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-005",
-          "type": "choice",
-          "question": "Doplň i/y: Slep_š vypadá jako had, ale je to ještěrka.",
-          "options": [
-            "y — slepyš",
-            "í — slepíš",
-            "i — slepiš",
-            "ý — slepíš",
-            "ý — slepýš"
-          ],
-          "answer": "ý — slepýš",
-          "hint": "'Slepýš' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-006",
-          "type": "choice",
-          "question": "Doplň i/y: P_šný rytíř jel na koni.",
-          "options": [
-            "i — pišný",
-            "ý — pýšný",
-            "y — pyšný",
-            "í — píšný",
-            "y — pišný"
-          ],
-          "answer": "y — pyšný",
-          "hint": "'Pyšný' od 'pýcha'."
-        },
-        {
-          "id": "CJ4-01-04-007",
-          "type": "choice",
-          "question": "Doplň i/y: P_tlák lovil v lese.",
+          "question": "Doplň i/y: P_tlák lovil králíky.",
           "options": [
             "i — pitlák",
-            "y — pitlák",
-            "ý — pýtlák",
+            "i — pytlák",
+            "í — pítlák",
             "y — pytlák",
-            "í — pítlák"
+            "ý — pýtlák"
           ],
           "answer": "y — pytlák",
-          "hint": "'Pytlák' od 'pytel' — lovec, který dává kořist do pytle."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-008",
+          "id": "CJ4-02P-01-007",
           "type": "choice",
-          "question": "Doplň i/y: Netop_ří křídla jsou kožnatá.",
+          "question": "Doplň i/y: Nasadil p_tlovina na hlavu.",
           "options": [
+            "i — pitlovina",
+            "ý — pýtlovina",
+            "y — pytlovina",
+            "í — pítlovina",
+            "i — pytlovina"
+          ],
+          "answer": "y — pytlovina",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-008",
+          "type": "choice",
+          "question": "Doplň i/y: Opice má velké p_sky.",
+          "options": [
+            "i — pisky",
+            "ý — pýsky",
+            "í — písky",
+            "y — pysky",
+            "i — pysky"
+          ],
+          "answer": "y — pysky",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-009",
+          "type": "choice",
+          "question": "Doplň i/y: P_skatý člověk má velké rty.",
+          "options": [
+            "i — piskatý",
+            "í — pískatý",
+            "i — pyskatý",
+            "ý — pýskatý",
+            "y — pyskatý"
+          ],
+          "answer": "y — pyskatý",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-010",
+          "type": "choice",
+          "question": "Doplň i/y: V jeskyni visel netop_r.",
+          "options": [
+            "i — netopyr",
+            "y — netopyr",
+            "í — netopír",
+            "ý — netopýr",
+            "i — netopir"
+          ],
+          "answer": "ý — netopýr",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-011",
+          "type": "choice",
+          "question": "Doplň i/y: Netop_ří křídla jsou blanitá.",
+          "options": [
+            "y — netopyří",
             "i — netopiří",
             "ý — netopýří",
-            "ý — netopíří",
-            "y — netopyří",
+            "i — netopyří",
             "í — netopíří"
           ],
           "answer": "ý — netopýří",
-          "hint": "Od 'netopýr'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-009",
+          "id": "CJ4-02P-01-012",
           "type": "choice",
-          "question": "Doplň i/y: P_šnila se novými šaty.",
+          "question": "Doplň i/y: Na zahradě jsem viděl slep_še.",
           "options": [
-            "í — píšnila",
-            "i — pišnila",
-            "y — pyšnila",
-            "ý — pýšnila",
-            "y — pišnila"
+            "y — slepyše",
+            "i — slepyše",
+            "i — slepiše",
+            "ý — slepýše",
+            "í — slepíše"
           ],
-          "answer": "y — pyšnila",
-          "hint": "Od 'pýcha/pyšný'."
+          "answer": "ý — slepýše",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-010",
+          "id": "CJ4-02P-01-013",
           "type": "choice",
-          "question": "Doplň i/y: Nap_choval se jídlem.",
+          "question": "Doplň i/y: Slep_š je beznohý ještěr.",
           "options": [
-            "í — napíchoval",
-            "y — napichoval",
-            "ý — napýchoval",
-            "y — napychoval",
-            "i — napichoval"
+            "i — slepyš",
+            "i — slepiš",
+            "í — slepíš",
+            "y — slepyš",
+            "ý — slepýš"
           ],
-          "answer": "y — napychoval",
-          "hint": "Pozor — 'napychovat se' = nadýmat se pýchou. Od 'pýcha'. Ale 'napichovat' (na špejli) je od 'píchat'!"
+          "answer": "ý — slepýš",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-011",
-          "type": "choice",
-          "question": "Doplň i/y: P_tel mouky stál v komoře.",
-          "options": [
-            "í — pítel",
-            "ý — pýtel",
-            "i — pitel",
-            "y — pitel",
-            "y — pytel"
-          ],
-          "answer": "y — pytel",
-          "hint": "'Pytel' — vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-012",
-          "type": "choice",
-          "question": "Doplň i/y: Slep_ší nora byla pod kamenem.",
-          "options": [
-            "ý — slepíší",
-            "y — slepyší",
-            "í — slepíší",
-            "i — slepiší",
-            "ý — slepýší"
-          ],
-          "answer": "ý — slepýší",
-          "hint": "Od 'slepýš'."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-04-B",
-      "name": "Vyjmenovaná slova po P — pyl, kopyto, klopýtat, třpytit se",
-      "difficulty": 2,
-      "theory": "Pyl, kopyto, klopýtat, třpytit se — vyjmenovaná slova po P. Odvozená: pylový, kopýtko, klopýtnutí, třpytivý...",
-      "tasks": [
-        {
-          "id": "CJ4-01-04-013",
+          "id": "CJ4-02P-01-014",
           "type": "choice",
           "question": "Doplň i/y: Včely sbírají p_l z květů.",
           "options": [
-            "í — píl",
-            "i — pil",
-            "y — pil",
             "ý — pýl",
-            "y — pyl"
+            "i — pyl",
+            "y — pyl",
+            "í — píl",
+            "i — pil"
           ],
           "answer": "y — pyl",
-          "hint": "'Pyl' je vyjmenované slovo po P."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-014",
+          "id": "CJ4-02P-01-015",
           "type": "choice",
-          "question": "Doplň i/y: Kůň má čtyři kop_ta.",
+          "question": "Doplň i/y: P_lová alergie ho trápí.",
           "options": [
-            "í — kopíta",
-            "y — kopita",
-            "ý — kopýta",
-            "y — kopyta",
-            "i — kopita"
-          ],
-          "answer": "y — kopyta",
-          "hint": "'Kopyto' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-015",
-          "type": "choice",
-          "question": "Doplň i/y: Klop_tal na nerovném chodníku.",
-          "options": [
-            "i — klopital",
-            "y — klopytal",
-            "ý — klopítal",
-            "ý — klopýtal",
-            "í — klopítal"
-          ],
-          "answer": "ý — klopýtal",
-          "hint": "'Klopýtat' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-016",
-          "type": "choice",
-          "question": "Doplň i/y: Hvězdy se třp_tily na nebi.",
-          "options": [
-            "y — třpytily",
-            "y — třpitily",
-            "ý — třpýtily",
-            "í — třpítily",
-            "i — třpitily"
-          ],
-          "answer": "y — třpytily",
-          "hint": "'Třpytit se' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-017",
-          "type": "choice",
-          "question": "Doplň i/y: P_lová alergie ho trápí na jaře.",
-          "options": [
-            "ý — pýlová",
             "í — pílová",
             "y — pylová",
-            "y — pilová",
+            "i — pylová",
+            "ý — pýlová",
             "i — pilová"
           ],
           "answer": "y — pylová",
-          "hint": "Od 'pyl'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-018",
+          "id": "CJ4-02P-01-016",
           "type": "choice",
-          "question": "Doplň i/y: Kop_tko koníka zaklepalo.",
+          "question": "Doplň i/y: Kůň zvedl kop_to.",
           "options": [
-            "í — kopítko",
-            "i — kopitko",
-            "ý — kopítko",
-            "y — kopytko",
-            "ý — kopýtko"
+            "i — kopito",
+            "i — kopyto",
+            "y — kopyto",
+            "í — kopíto",
+            "ý — kopýto"
           ],
-          "answer": "ý — kopýtko",
-          "hint": "Od 'kopyto'."
+          "answer": "y — kopyto",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-019",
+          "id": "CJ4-02P-01-017",
           "type": "choice",
-          "question": "Doplň i/y: Třp_tivé šaty měla na plese.",
+          "question": "Doplň i/y: Kop_tník je druh rostliny.",
           "options": [
+            "i — kopitník",
+            "i — kopytník",
+            "í — kopítník",
+            "ý — kopýtník",
+            "y — kopytník"
+          ],
+          "answer": "y — kopytník",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-018",
+          "type": "choice",
+          "question": "Doplň i/y: Zvíře s kop_ty je sudokopytník.",
+          "options": [
+            "i — kopyty",
+            "ý — kopýty",
+            "í — kopíty",
+            "y — kopyty",
+            "i — kopity"
+          ],
+          "answer": "y — kopyty",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-019",
+          "type": "choice",
+          "question": "Doplň i/y: Klop_tal o kořen stromu.",
+          "options": [
+            "i — klopital",
+            "i — klopytal",
+            "y — klopytal",
+            "í — klopítal",
+            "ý — klopýtal"
+          ],
+          "answer": "ý — klopýtal",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-020",
+          "type": "choice",
+          "question": "Doplň i/y: Klop_tla na schodech.",
+          "options": [
+            "i — klopytla",
+            "í — klopítla",
+            "y — klopytla",
+            "ý — klopýtla",
+            "i — klopitla"
+          ],
+          "answer": "ý — klopýtla",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-021",
+          "type": "choice",
+          "question": "Doplň i/y: Klop_tání ho zpomalilo.",
+          "options": [
+            "i — klopitání",
+            "y — klopytání",
+            "i — klopytání",
+            "í — klopítání",
+            "ý — klopýtání"
+          ],
+          "answer": "ý — klopýtání",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-022",
+          "type": "choice",
+          "question": "Doplň i/y: Sníh se třp_til na slunci.",
+          "options": [
+            "í — třpítil",
+            "y — třpytil",
+            "i — třpitil",
+            "ý — třpýtil",
+            "i — třpytil"
+          ],
+          "answer": "y — třpytil",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-023",
+          "type": "choice",
+          "question": "Doplň i/y: Třp_tivé šaty nosila na ples.",
+          "options": [
+            "i — třpytivé",
             "í — třpítivé",
-            "ý — třpýtivé",
-            "y — třpitivé",
+            "i — třpitivé",
             "y — třpytivé",
-            "i — třpitivé"
+            "ý — třpýtivé"
           ],
           "answer": "y — třpytivé",
-          "hint": "Od 'třpytit se'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-020",
+          "id": "CJ4-02P-01-024",
           "type": "choice",
-          "question": "Doplň i/y: Klop_tl a málem upadl.",
+          "question": "Doplň i/y: Třp_t hvězd je krásný.",
           "options": [
-            "ý — klopýtl",
-            "í — klopítl",
-            "y — klopytl",
-            "i — klopitl",
-            "ý — klopítl"
-          ],
-          "answer": "ý — klopýtl",
-          "hint": "Od 'klopýtat'."
-        },
-        {
-          "id": "CJ4-01-04-021",
-          "type": "choice",
-          "question": "Doplň i/y: Op_lení květů zajišťují včely.",
-          "options": [
-            "i — opilení",
-            "í — opílení",
-            "y — opilení",
-            "y — opylení",
-            "ý — opýlení"
-          ],
-          "answer": "y — opylení",
-          "hint": "Od 'pyl'. Opylení = přenos pylu."
-        },
-        {
-          "id": "CJ4-01-04-022",
-          "type": "choice",
-          "question": "Doplň i/y: Třp_t diamantů oslňoval.",
-          "options": [
-            "í — třpít",
             "i — třpit",
             "y — třpyt",
-            "y — třpit",
+            "i — třpyt",
+            "í — třpít",
             "ý — třpýt"
           ],
           "answer": "y — třpyt",
-          "hint": "Od 'třpytit se'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-023",
-          "type": "choice",
-          "question": "Doplň i/y: Kop_tnatec je zvíře s kopyty.",
-          "options": [
-            "í — kopítnatec",
-            "y — kopitnatec",
-            "i — kopitnatec",
-            "y — kopytnatec",
-            "ý — kopýtnatec"
-          ],
-          "answer": "y — kopytnatec",
-          "hint": "Od 'kopyto'."
-        },
-        {
-          "id": "CJ4-01-04-024",
-          "type": "choice",
-          "question": "Doplň i/y: Zakop_tla o kámen.",
-          "options": [
-            "ý — zakopýtla",
-            "y — zakopytla",
-            "í — zakopítla",
-            "ý — zakopítla",
-            "i — zakopitla"
-          ],
-          "answer": "ý — zakopýtla",
-          "hint": "Od 'klopýtat/zakopýtnout'."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-04-C",
-      "name": "Vyjmenovaná slova po P — zpytovat, pykat, pýr, pýřit se",
-      "difficulty": 2,
-      "theory": "Zpytovat, pykat, pýr, pýřit se — vyjmenovaná slova po P. Odvozená: zpytavý, pokání/odpykání, pýřivý...",
-      "tasks": [
-        {
-          "id": "CJ4-01-04-025",
+          "id": "CJ4-02P-01-025",
           "type": "choice",
           "question": "Doplň i/y: Zp_toval své svědomí.",
           "options": [
-            "y — zpytoval",
-            "y — zpitoval",
-            "ý — zpýtoval",
+            "i — zpytoval",
+            "i — zpitoval",
             "í — zpítoval",
-            "i — zpitoval"
+            "ý — zpýtoval",
+            "y — zpytoval"
           ],
           "answer": "y — zpytoval",
-          "hint": "'Zpytovat' je vyjmenované slovo po P."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-026",
+          "id": "CJ4-02P-01-026",
           "type": "choice",
-          "question": "Doplň i/y: Musel p_kat za svůj čin.",
+          "question": "Doplň i/y: Jazykozp_tec studuje jazyk.",
           "options": [
-            "í — píkat",
+            "i — jazykozpytec",
+            "í — jazykozpítec",
+            "i — jazykozpitec",
+            "ý — jazykozpýtec",
+            "y — jazykozpytec"
+          ],
+          "answer": "y — jazykozpytec",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-027",
+          "type": "choice",
+          "question": "Doplň i/y: Za trest musel p_kat.",
+          "options": [
+            "i — pykat",
             "i — pikat",
-            "y — pykat",
-            "y — pikat",
-            "ý — pýkat"
+            "í — píkat",
+            "ý — pýkat",
+            "y — pykat"
           ],
           "answer": "y — pykat",
-          "hint": "'Pykat' je vyjmenované slovo po P."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-027",
+          "id": "CJ4-02P-01-028",
           "type": "choice",
-          "question": "Doplň i/y: P_r je plevel na zahradě.",
+          "question": "Doplň i/y: P_kal za svůj prohřešek.",
           "options": [
-            "í — pír",
-            "ý — pír",
-            "y — pyr",
-            "i — pir",
-            "ý — pýr"
+            "y — pykal",
+            "ý — pýkal",
+            "í — píkal",
+            "i — pykal",
+            "i — pikal"
           ],
-          "answer": "ý — pýr",
-          "hint": "'Pýr' je vyjmenované slovo po P."
+          "answer": "y — pykal",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-028",
+          "id": "CJ4-02P-01-029",
           "type": "choice",
-          "question": "Doplň i/y: P_řila se studem.",
+          "question": "Doplň i/y: Odp_kal si trest.",
           "options": [
-            "i — piřila",
-            "ý — pýřila",
-            "í — píŕila",
-            "y — pyřila",
-            "ý — píŕila"
-          ],
-          "answer": "ý — pýřila",
-          "hint": "'Pýřit se' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-029",
-          "type": "choice",
-          "question": "Doplň i/y: Odp_kal si trest ve vězení.",
-          "options": [
-            "y — odpikal",
             "i — odpikal",
+            "i — odpykal",
             "í — odpíkal",
             "ý — odpýkal",
             "y — odpykal"
           ],
           "answer": "y — odpykal",
-          "hint": "Od 'pykat'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-030",
+          "id": "CJ4-02P-01-030",
           "type": "choice",
-          "question": "Doplň i/y: Zp_tavý pohled učitelky.",
+          "question": "Doplň i/y: Na záhoně roste p_r.",
           "options": [
-            "y — zpytavý",
-            "i — zpitavý",
-            "y — zpitavý",
-            "í — zpítavý",
-            "ý — zpýtavý"
-          ],
-          "answer": "y — zpytavý",
-          "hint": "Od 'zpytovat'."
-        },
-        {
-          "id": "CJ4-01-04-031",
-          "type": "choice",
-          "question": "Doplň i/y: Odp_kání trestu trvalo rok.",
-          "options": [
-            "y — odpykání",
-            "ý — odpýkání",
-            "y — odpikání",
-            "í — odpíkání",
-            "i — odpikání"
-          ],
-          "answer": "y — odpykání",
-          "hint": "Od 'pykat'."
-        },
-        {
-          "id": "CJ4-01-04-032",
-          "type": "choice",
-          "question": "Doplň i/y: P_řil se jako rak.",
-          "options": [
-            "ý — píŕil",
-            "í — píŕil",
-            "i — piřil",
-            "y — pyřil",
-            "ý — pýřil"
-          ],
-          "answer": "ý — pýřil",
-          "hint": "Od 'pýřit se'. Zčervenal studem."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-04-D",
-      "name": "Vyjmenovaná slova po P — slova která NEJSOU vyjmenovaná",
-      "difficulty": 2,
-      "theory": "Pozor! NEJSOU vyjmenovaná: písmeno, pírko, písnička, píšťala, pivo, pilný, pila, pinčl, pirát, pistole. Píšeme měkké i/í.",
-      "tasks": [
-        {
-          "id": "CJ4-01-04-033",
-          "type": "choice",
-          "question": "Doplň i/y: P_škotek voněl z trouby.",
-          "options": [
-            "i — pyškot",
-            "y — pyškot",
-            "ý — pýškot",
-            "i — piškot",
-            "í — píškot"
-          ],
-          "answer": "i — piškot",
-          "hint": "'Piškot' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-034",
-          "type": "choice",
-          "question": "Doplň i/y: P_lný žák dostal jedničku.",
-          "options": [
-            "ý — pýlný",
-            "i — pylný",
-            "i — pilný",
-            "y — pylný",
-            "í — pílný"
-          ],
-          "answer": "i — pilný",
-          "hint": "'Pilný' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-035",
-          "type": "choice",
-          "question": "Doplň i/y: P_rát plul po moři.",
-          "options": [
-            "y — pyrát",
-            "í — pírát",
-            "i — pirát",
-            "ý — pýrát",
-            "i — pyrát"
-          ],
-          "answer": "i — pirát",
-          "hint": "'Pirát' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-036",
-          "type": "choice",
-          "question": "Doplň i/y: P_la řezala dřevo.",
-          "options": [
-            "i — pyla",
-            "ý — pýla",
-            "í — píla",
-            "y — pyla",
-            "i — pila"
-          ],
-          "answer": "i — pila",
-          "hint": "'Pila' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-037",
-          "type": "choice",
-          "question": "Doplň i/y: P_vo je nápoj pro dospělé.",
-          "options": [
-            "y — pyvo",
-            "i — pivo",
-            "i — pyvo",
-            "ý — pývo",
-            "í — pívo"
-          ],
-          "answer": "i — pivo",
-          "hint": "'Pivo' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-038",
-          "type": "choice",
-          "question": "Doplň i/y: P_smeno A je první v abecedě.",
-          "options": [
-            "í — písmeno",
-            "y — pysmeno",
-            "i — pismeno",
-            "ý — pýsmeno",
-            "í — pysmeno"
-          ],
-          "answer": "í — písmeno",
-          "hint": "'Písmeno' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-039",
-          "type": "choice",
-          "question": "Doplň i/y: P_sničku zpívaly děti.",
-          "options": [
-            "y — pysničku",
-            "í — písničku",
-            "ý — pýsničku",
-            "í — pysničku",
-            "i — pisničku"
-          ],
-          "answer": "í — písničku",
-          "hint": "'Písnička' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-040",
-          "type": "choice",
-          "question": "Doplň i/y: P_rko leželo na zemi.",
-          "options": [
-            "í — pírko",
-            "y — pyrko",
-            "i — pirko",
-            "ý — pýrko",
-            "í — pyrko"
-          ],
-          "answer": "í — pírko",
-          "hint": "'Pírko' (malé pero) NENÍ vyjmenované. Pozor na záměnu s 'pýr'."
-        },
-        {
-          "id": "CJ4-01-04-041",
-          "type": "choice",
-          "question": "Doplň i/y: Sp_nač je zdravá zelenina.",
-          "options": [
-            "i — špenát/spinač",
-            "y — spynač",
-            "i — spynač",
-            "í — špínač",
-            "ý — spýnač"
-          ],
-          "answer": "i — spinač",
-          "hint": "Pozor — správně 'špenát'. Ale 'spinač' NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-042",
-          "type": "choice",
-          "question": "Doplň i/y: P_štěl na píšťalku.",
-          "options": [
-            "í — pyskal",
-            "i — piskal",
-            "y — pyskal",
-            "í — pískl/pískal",
-            "ý — pýskal"
-          ],
-          "answer": "í — pískl/pískal",
-          "hint": "'Pískat' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-043",
-          "type": "choice",
-          "question": "Doplň i/y: Op_ce skákala po stromech.",
-          "options": [
-            "y — opyce",
-            "i — opice",
-            "í — opíce",
-            "i — opyce",
-            "ý — opýce"
-          ],
-          "answer": "i — opice",
-          "hint": "'Opice' NENÍ vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-044",
-          "type": "choice",
-          "question": "Doplň i/y: Kap_tán řídil loď.",
-          "options": [
-            "i — kapitán",
-            "y — kapytán",
-            "ý — kapýtán",
-            "i — kapytán",
-            "í — kapítán"
-          ],
-          "answer": "i — kapitán",
-          "hint": "'Kapitán' NENÍ vyjmenované slovo po P."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-04-E",
-      "name": "Vyjmenovaná slova po P — chytáky a záměny",
-      "difficulty": 3,
-      "theory": "Pozor! 'Pyl' (z květů) × 'pil' (od pít). 'Pykat' (trpět trest) × 'pikat' (hrát pikety). 'Pýr' (plevel) × 'pír-ko' (pero). 'Kopyto' × 'kopito' (neexistuje).",
-      "tasks": [
-        {
-          "id": "CJ4-01-04-045",
-          "type": "choice",
-          "question": "Doplň i/y: P_l celý den vodu.",
-          "options": [
-            "i — pil",
-            "i — pyl",
-            "ý — pýl",
-            "í — píl",
-            "y — pyl"
-          ],
-          "answer": "i — pil",
-          "hint": "'Pil' od 'pít' (pít vodu). NENÍ vyjmenované. 'Pyl' (z květů) JE."
-        },
-        {
-          "id": "CJ4-01-04-046",
-          "type": "choice",
-          "question": "Doplň i/y: P_l z květů způsobuje alergii.",
-          "options": [
-            "y — pil",
-            "ý — pýl",
-            "í — píl",
-            "y — pyl",
-            "i — pil"
-          ],
-          "answer": "y — pyl",
-          "hint": "'Pyl' (z květů) — vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-047",
-          "type": "choice",
-          "question": "Doplň i/y: Nap_l se studené vody.",
-          "options": [
-            "i — napil",
-            "i — napyl",
-            "í — napíl",
-            "y — napyl",
-            "ý — napýl"
-          ],
-          "answer": "i — napil",
-          "hint": "'Napít se' — od 'pít'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-048",
-          "type": "choice",
-          "question": "Které slovo je vyjmenované po P?",
-          "options": [
-            "kolíbka",
-            "kopidlo",
-            "kopřiva",
-            "kopie",
-            "kopyto"
-          ],
-          "answer": "kopyto",
-          "hint": "Z nabídky jen 'kopyto' je vyjmenované slovo po P."
-        },
-        {
-          "id": "CJ4-01-04-049",
-          "type": "choice",
-          "question": "Které slovo NENÍ vyjmenované po P?",
-          "options": [
-            "netopýr",
-            "kopyto",
-            "pytel",
-            "pýcha",
-            "pilník"
-          ],
-          "answer": "pilník",
-          "hint": "'Pilník' od 'pilovat/pila'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-050",
-          "type": "choice",
-          "question": "Doplň i/y: Vyp_l dům do základů.",
-          "options": [
-            "ý — vypýl",
-            "y — vypyl",
-            "í — vypíl",
-            "á — vypálil",
-            "i — vypil"
-          ],
-          "answer": "á — vypálil",
-          "hint": "Pozor — 'vypálit' nemá y ani i po p. Trik!"
-        },
-        {
-          "id": "CJ4-01-04-051",
-          "type": "choice",
-          "question": "Které slovo je odvozené od vyjmenovaného po P?",
-          "options": [
-            "vypínač",
-            "spínač",
-            "klíčový",
-            "špičatý",
-            "třpytka"
-          ],
-          "answer": "třpytka",
-          "hint": "'Třpytka' od 'třpytit se' — vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-052",
-          "type": "choice",
-          "question": "Doplň i/y: Vp_chla si jehlu do prstu.",
-          "options": [
-            "í — vpychla",
-            "i — vpichla",
-            "ý — vpýchla",
-            "í — vpíchla",
-            "y — vpychla"
-          ],
-          "answer": "í — vpíchla",
-          "hint": "'Vpíchnout' od 'píchat'. NENÍ vyjmenované. Pozor na záměnu s 'pýcha'."
-        },
-        {
-          "id": "CJ4-01-04-053",
-          "type": "choice",
-          "question": "Doplň i/y: Sp_sovatel napsal novou knihu.",
-          "options": [
-            "i — spysovatel",
-            "i — spisovatel",
-            "í — spísovatel",
-            "y — spysovatel",
-            "ý — spýsovatel"
-          ],
-          "answer": "i — spisovatel",
-          "hint": "'Spisovatel' od 'psát/spis'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-054",
-          "type": "choice",
-          "question": "Doplň i/y: P_tlovina je látka z pytle.",
-          "options": [
-            "y — pitlovina",
-            "í — pítlovina",
-            "i — pitlovina",
-            "ý — pýtlovina",
-            "y — pytlovina"
-          ],
-          "answer": "y — pytlovina",
-          "hint": "Od 'pytel'."
-        },
-        {
-          "id": "CJ4-01-04-055",
-          "type": "choice",
-          "question": "Doplň i/y: Op_loval hranu stolu.",
-          "options": [
-            "í — opíloval",
-            "i — opiloval",
-            "y — opyloval",
-            "ý — opýloval",
-            "i — opyloval"
-          ],
-          "answer": "i — opiloval",
-          "hint": "'Opilovat' od 'pila'. NENÍ vyjmenované. Záměna s 'opylovat' (květy)."
-        },
-        {
-          "id": "CJ4-01-04-056",
-          "type": "choice",
-          "question": "Doplň i/y: Včela op_lovala květy.",
-          "options": [
-            "y — opilovala",
-            "y — opylovala",
-            "í — opílovala",
-            "ý — opýlovala",
-            "i — opilovala"
-          ],
-          "answer": "y — opylovala",
-          "hint": "'Opylovat' od 'pyl'. JE vyjmenované."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-04-F",
-      "name": "Vyjmenovaná slova po P — souhrnné procvičování",
-      "difficulty": 2,
-      "theory": "Souhrn: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se.",
-      "tasks": [
-        {
-          "id": "CJ4-01-04-057",
-          "type": "choice",
-          "question": "Doplň i/y: P_šná princezna odmítla prince.",
-          "options": [
-            "y — pyšná",
-            "i — pišná",
-            "ý — pýšná",
-            "y — pišná",
-            "í — píšná"
-          ],
-          "answer": "y — pyšná",
-          "hint": "Od 'pýcha'."
-        },
-        {
-          "id": "CJ4-01-04-058",
-          "type": "choice",
-          "question": "Doplň i/y: P_tláci chytali zvěř do pastí.",
-          "options": [
-            "ý — pýtláci",
-            "í — pítláci",
-            "y — pytláci",
-            "y — pitláci",
-            "i — pitláci"
-          ],
-          "answer": "y — pytláci",
-          "hint": "Od 'pytel/pytlák'."
-        },
-        {
-          "id": "CJ4-01-04-059",
-          "type": "choice",
-          "question": "Doplň i/y: Na kop_tech koně byly podkovy.",
-          "options": [
-            "i — kopitech",
-            "ý — kopýtech",
-            "í — kopítech",
-            "y — kopytech",
-            "y — kopitech"
-          ],
-          "answer": "y — kopytech",
-          "hint": "Od 'kopyto'."
-        },
-        {
-          "id": "CJ4-01-04-060",
-          "type": "choice",
-          "question": "Doplň i/y: Třp_tky lákají ryby.",
-          "options": [
-            "y — třpitky",
-            "í — třpítky",
-            "y — třpytky",
-            "i — třpitky",
-            "ý — třpýtky"
-          ],
-          "answer": "y — třpytky",
-          "hint": "Od 'třpytit se'."
-        },
-        {
-          "id": "CJ4-01-04-061",
-          "type": "choice",
-          "question": "Doplň i/y: P_kal za své hříchy.",
-          "options": [
-            "y — pykal",
-            "y — pikal",
-            "í — píkal",
-            "ý — pýkal",
-            "i — pikal"
-          ],
-          "answer": "y — pykal",
-          "hint": "'Pykat' — vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-062",
-          "type": "choice",
-          "question": "Doplň i/y: Netop_ří jeskyně byla temná.",
-          "options": [
-            "i — netopiří",
-            "í — netopíří",
-            "ý — netopíří",
-            "y — netopyří",
-            "ý — netopýří"
-          ],
-          "answer": "ý — netopýří",
-          "hint": "Od 'netopýr'."
-        },
-        {
-          "id": "CJ4-01-04-063",
-          "type": "choice",
-          "question": "Doplň i/y: Na louce rostl p_r.",
-          "options": [
-            "ý — pír",
-            "ý — pýr",
-            "i — pir",
             "y — pyr",
+            "i — pir",
+            "ý — pýr",
+            "i — pyr",
             "í — pír"
           ],
           "answer": "ý — pýr",
-          "hint": "'Pýr' — vyjmenované. Plevel."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-064",
+          "id": "CJ4-02P-01-031",
           "type": "choice",
-          "question": "Doplň i/y: Slep_ši jsou neškodní.",
+          "question": "Doplň i/y: P_řila se studem.",
           "options": [
-            "i — slepiši",
-            "ý — slepýši",
-            "y — slepyši",
-            "í — slepíši",
-            "ý — slepíši"
+            "i — pyřila",
+            "ý — pýřila",
+            "í — píř ila",
+            "y — pyřila",
+            "i — piřila"
           ],
-          "answer": "ý — slepýši",
-          "hint": "Od 'slepýš'."
+          "answer": "ý — pýřila",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-065",
+          "id": "CJ4-02P-01-032",
           "type": "choice",
-          "question": "Doplň i/y: Klop_tala na schodech.",
+          "question": "Doplň i/y: P_la čaj s medem.",
           "options": [
-            "ý — klopítala",
-            "ý — klopýtala",
-            "i — klopitala",
-            "y — klopytala",
-            "í — klopítala"
+            "i — pila",
+            "y — pila",
+            "í — píla",
+            "y — pyla",
+            "ý — pýla"
           ],
-          "answer": "ý — klopýtala",
-          "hint": "Od 'klopýtat'."
+          "answer": "i — pila",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-066",
+          "id": "CJ4-02P-01-033",
           "type": "choice",
-          "question": "Doplň i/y: P_lové zrno je drobné.",
+          "question": "Doplň i/y: P_lka na dřevo je ostrá.",
           "options": [
-            "ý — pýlové",
-            "i — pilové",
-            "í — pílové",
-            "y — pilové",
-            "y — pylové"
+            "y — pilka",
+            "í — pílka",
+            "ý — pýlka",
+            "i — pilka",
+            "y — pylka"
           ],
-          "answer": "y — pylové",
-          "hint": "Od 'pyl'."
+          "answer": "i — pilka",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-067",
+          "id": "CJ4-02P-01-034",
           "type": "choice",
-          "question": "Doplň i/y: Zp_toval svědomí před spaním.",
+          "question": "Doplň i/y: P_smo je z abecedy.",
           "options": [
-            "y — zpitoval",
-            "y — zpytoval",
-            "ý — zpýtoval",
-            "í — zpítoval",
-            "i — zpitoval"
+            "ý — pýsmeno",
+            "y — pysmeno",
+            "í — písmeno",
+            "i — pismeno",
+            "y — písmeno"
           ],
-          "answer": "y — zpytoval",
-          "hint": "'Zpytovat' — vyjmenované."
+          "answer": "í — písmeno",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-068",
+          "id": "CJ4-02P-01-035",
           "type": "choice",
-          "question": "Doplň i/y: P_ří se červená jako rajče.",
+          "question": "Doplň i/y: P_ánista hrál krásně.",
           "options": [
-            "ý — pýří",
-            "í — píří",
-            "ý — píří",
-            "y — pyří",
-            "i — piří"
+            "i — pianista",
+            "ý — pýanista",
+            "y — pianista",
+            "y — pyanista",
+            "í — píanista"
           ],
-          "answer": "ý — pýří",
-          "hint": "Od 'pýřit se'."
+          "answer": "i — pianista",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-069",
+          "id": "CJ4-02P-01-036",
           "type": "choice",
-          "question": "Doplň i/y: P_tolačka je léčivá bylina.",
+          "question": "Doplň i/y: P_lný člověk pracuje s pílí.",
           "options": [
-            "i — piťolačka",
-            "i — pytolačka",
-            "í — pítolačka",
-            "y — pytolačka",
-            "ý — pýtolačka"
+            "i — pilný",
+            "í — pílný",
+            "ý — pýlný",
+            "y — pilný",
+            "y — pylný"
           ],
-          "answer": "i — piťolačka",
-          "hint": "NENÍ vyjmenované slovo po P. Ale pozor — správně 'pitolačka' se běžně nepoužívá."
+          "answer": "i — pilný",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-070",
+          "id": "CJ4-02P-01-037",
           "type": "choice",
-          "question": "Doplň i/y: Nep_šni se, to není hezké.",
+          "question": "Doplň i/y: P_škotek se naučil nový trik.",
           "options": [
-            "i — nepišni",
-            "y — nepišni",
-            "y — nepyšni",
-            "í — nepíšni",
-            "ý — nepýšni"
+            "í — píškotek",
+            "ý — pýškotek",
+            "y — pyškotek",
+            "i — piškotek",
+            "y — piškotek"
           ],
-          "answer": "y — nepyšni",
-          "hint": "Od 'pýcha/pyšnit se'."
+          "answer": "i — piškotek",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-071",
+          "id": "CJ4-02P-01-038",
           "type": "choice",
-          "question": "Doplň i/y: Vep_chla věci do batohu.",
+          "question": "Doplň i/y: Sp_sovna je plná jídla.",
           "options": [
-            "í — vepíchla",
-            "i — vepichla",
-            "i — vepychla",
-            "ý — vepýchla",
-            "y — vepychla"
+            "y — spížovna",
+            "ý — spýžovna",
+            "í — spížovna",
+            "y — spyžovna",
+            "i — spižovna"
           ],
-          "answer": "i — vepichla",
-          "hint": "Pozor — 'vepchat' nemá y po p. 'Vpíchnout' je od 'píchat'. NENÍ vyjmenované."
+          "answer": "í — spížovna",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
         },
         {
-          "id": "CJ4-01-04-072",
+          "id": "CJ4-02P-01-039",
           "type": "choice",
-          "question": "Doplň i/y: Třp_tivý sníh oslepoval oči.",
+          "question": "Doplň i/y: Op_ce lezla po stromě.",
+          "options": [
+            "i — opice",
+            "ý — opýce",
+            "y — opyce",
+            "y — opice",
+            "í — opíce"
+          ],
+          "answer": "i — opice",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-040",
+          "type": "choice",
+          "question": "Doplň i/y: Kup_l si nové auto.",
+          "options": [
+            "í — kupíl",
+            "ý — kupýl",
+            "i — kupil",
+            "y — kupil",
+            "y — kupyl"
+          ],
+          "answer": "i — kupil",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-041",
+          "type": "choice",
+          "question": "Doplň i/y: P_rát loď vyplul na moře.",
+          "options": [
+            "í — pírát",
+            "y — pirát",
+            "y — pyrát",
+            "ý — pýrát",
+            "i — pirát"
+          ],
+          "answer": "i — pirát",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-042",
+          "type": "choice",
+          "question": "Doplň i/y: Sp_nka na vlasy se zlomila.",
+          "options": [
+            "i — spinka",
+            "í — spínka",
+            "ý — spýnka",
+            "y — spynka",
+            "y — spínka"
+          ],
+          "answer": "í — spínka",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-043",
+          "type": "choice",
+          "question": "Doplň i/y: Králík žije v nop_ce.",
+          "options": [
+            "i — nopice",
+            "í — nopíce",
+            "ý — nopýce",
+            "y — nopice",
+            "y — nopyce"
+          ],
+          "answer": "í — nopíce",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-044",
+          "type": "choice",
+          "question": "Doplň i/y: Kap_tán řídil loď.",
+          "options": [
+            "ý — kapýtán",
+            "y — kapytán",
+            "í — kapítán",
+            "y — kapitán",
+            "i — kapitán"
+          ],
+          "answer": "i — kapitán",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-045",
+          "type": "choice",
+          "question": "Doplň i/y: Top_nky jsou v botníku.",
+          "options": [
+            "i — topinky",
+            "y — topynky",
+            "ý — topýnky",
+            "á — topánky",
+            "í — topínky"
+          ],
+          "answer": "á — topánky",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-046",
+          "type": "choice",
+          "question": "Doplň i/y: P_la vodu po tréninku.",
+          "options": [
+            "ý — pýla",
+            "i — pila",
+            "y — pila",
+            "y — pyla",
+            "í — píla"
+          ],
+          "answer": "i — pila",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-047",
+          "type": "choice",
+          "question": "Doplň i/y: Sp_la celou noc.",
+          "options": [
+            "i — spila",
+            "ý — spýla",
+            "y — spyla",
+            "a — spala",
+            "í — spíla"
+          ],
+          "answer": "a — spala",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-048",
+          "type": "choice",
+          "question": "Doplň i/y: Párátko je z p_liny.",
+          "options": [
+            "y — pyliny",
+            "í — píliny",
+            "i — piliny",
+            "ý — pýliny",
+            "y — piliny"
+          ],
+          "answer": "i — piliny",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-01-049",
+          "type": "choice",
+          "question": "Doplň i/y: P_vovar vaří pivo.",
+          "options": [
+            "y — pivovar",
+            "ý — pývovar",
+            "í — pívovar",
+            "i — pivovar",
+            "y — pyvovar"
+          ],
+          "answer": "i — pivovar",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po P."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02P-02",
+      "name": "Urči — je to vyjmenované?",
+      "difficulty": 1,
+      "theory": "Vyjmenovaná slova po P: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se.",
+      "tasks": [
+        {
+          "id": "CJ4-02P-02-001",
+          "type": "choice",
+          "question": "Je slovo 'pýcha' vyjmenované slovo po P?",
+          "options": [
+            "Ano, je to vyjmenované slovo po L",
+            "Ano, je to vyjmenované slovo po B",
+            "Ne, píše se 'pícha'",
+            "Ano, je to vyjmenované slovo po P",
+            "Ne, není to vyjmenované slovo"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-002",
+          "type": "choice",
+          "question": "Je slovo 'pilný' vyjmenované slovo po P?",
+          "options": [
+            "Ne, není to vyjmenované slovo po P",
+            "Ano, je to odvozené od 'pyl'",
+            "Ano, píše se 'pylný'",
+            "Ne, píše se 'pýlný'",
+            "Ano, je to vyjmenované slovo po P"
+          ],
+          "answer": "Ne, není to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-003",
+          "type": "choice",
+          "question": "Je slovo 'netopýr' vyjmenované slovo po P?",
+          "options": [
+            "Ano, je to vyjmenované slovo po M",
+            "Ne, píše se 'netopír'",
+            "Ano, je to vyjmenované slovo po P",
+            "Ano, je to vyjmenované slovo po B",
+            "Ne, není to vyjmenované slovo"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-004",
+          "type": "choice",
+          "question": "Je slovo 'pirát' vyjmenované slovo po P?",
+          "options": [
+            "Ne, není to vyjmenované slovo po P",
+            "Ne, píše se 'pírát'",
+            "Ano, je to odvozené od 'pykat'",
+            "Ano, píše se 'pyrát'",
+            "Ano, je to vyjmenované slovo po P"
+          ],
+          "answer": "Ne, není to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-005",
+          "type": "choice",
+          "question": "Je slovo 'třpytivý' odvozené od vyjmenovaného slova po P?",
+          "options": [
+            "Ano, je odvozené od slova 'pýcha'",
+            "Ano, je odvozené od slova 'třpytit se'",
+            "Ne, píše se 'třpitivý'",
+            "Ano, je odvozené od slova 'pyl'",
+            "Ne, není to odvozené slovo"
+          ],
+          "answer": "Ano, je odvozené od slova 'třpytit se'",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-006",
+          "type": "choice",
+          "question": "Je slovo 'klopýtat' vyjmenované slovo po P?",
+          "options": [
+            "Ano, je to vyjmenované slovo po P",
+            "Ano, je to vyjmenované slovo po M",
+            "Ne, není to vyjmenované slovo",
+            "Ne, píše se 'klopítat'",
+            "Ano, je to vyjmenované slovo po L"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-007",
+          "type": "choice",
+          "question": "Je slovo 'pilka' vyjmenované slovo po P?",
+          "options": [
+            "Ne, není to vyjmenované slovo po P",
+            "Ano, je to vyjmenované slovo po P",
+            "Ne, píše se 'pílka'",
+            "Ano, je to odvozené od 'pyl'",
+            "Ano, píše se 'pylka'"
+          ],
+          "answer": "Ne, není to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-008",
+          "type": "choice",
+          "question": "Je slovo 'pykat' vyjmenované slovo po P?",
+          "options": [
+            "Ano, je to vyjmenované slovo po P",
+            "Ano, je to vyjmenované slovo po B",
+            "Ne, není to vyjmenované slovo",
+            "Ano, je to vyjmenované slovo po S",
+            "Ne, píše se 'pikat'"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-009",
+          "type": "choice",
+          "question": "Je slovo 'pytlák' odvozené od vyjmenovaného slova po P?",
+          "options": [
+            "Ne, není to odvozené slovo",
+            "Ano, je odvozené od slova 'pýcha'",
+            "Ne, píše se 'pitlák'",
+            "Ano, je odvozené od slova 'pykat'",
+            "Ano, je odvozené od slova 'pytel'"
+          ],
+          "answer": "Ano, je odvozené od slova 'pytel'",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-02-010",
+          "type": "choice",
+          "question": "Je slovo 'slepýš' vyjmenované slovo po P?",
+          "options": [
+            "Ano, je to vyjmenované slovo po L",
+            "Ano, je to vyjmenované slovo po P",
+            "Ne, píše se 'slepíš'",
+            "Ne, není to vyjmenované slovo",
+            "Ano, je to vyjmenované slovo po S"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po P",
+          "hint": "Projdi si řadu vyjmenovaných slov po P."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02P-03",
+      "name": "Vyber správnou větu",
+      "difficulty": 2,
+      "theory": "Správný pravopis vyjmenovaných slov po P poznáš, když si je řekneš nahlas a porovnáš s řadou vyjmenovaných slov.",
+      "tasks": [
+        {
+          "id": "CJ4-02P-03-001",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Pýšný rytíř klopýtal po cestě.",
+            "Pišný rytíř klopýtal po cestě.",
+            "Pišný rytíř klopítal po cestě.",
+            "Pyšný rytíř klopýtal po cestě.",
+            "Pyšný rytíř klopítal po cestě."
+          ],
+          "answer": "Pyšný rytíř klopýtal po cestě.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-002",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Netopýr visel v jeskyni a slepíš ležel na kameni.",
+            "Netopýr visel v jeskyni a slepýš ležel na kameni.",
+            "Netopír visel v jeskyni a slepíš ležel na kameni.",
+            "Netopýr visel v jeskýni a slepýš ležel na kameni.",
+            "Netopír visel v jeskyni a slepýš ležel na kameni."
+          ],
+          "answer": "Netopýr visel v jeskyni a slepýš ležel na kameni.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-003",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "V pitli byl pil z květů.",
+            "V pýtli byl pýl z květů.",
+            "V pytli byl pyl z květů.",
+            "V pitli byl pyl z květů.",
+            "V pytli byl pil z květů."
+          ],
+          "answer": "V pytli byl pyl z květů.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-004",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Kůň zvedl kopýto a klopýtl o kámen.",
+            "Kůň zvedl kopito a klopýtl o kámen.",
+            "Kůň zvedl kopyto a klopýtl o kámen.",
+            "Kůň zvedl kopyto a klopítl o kámen.",
+            "Kůň zvedl kopito a klopítl o kámen."
+          ],
+          "answer": "Kůň zvedl kopyto a klopýtl o kámen.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-005",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Pýcha mu zabránila se omluvit a musel za to pykat.",
+            "Pýcha mu zabránila se omlivit a musel za to pykat.",
+            "Pícha mu zabránila se omluvit a musel za to pykat.",
+            "Pýcha mu zabránila se omluvit a musel za to pikat.",
+            "Pícha mu zabránila se omluvit a musel za to pikat."
+          ],
+          "answer": "Pýcha mu zabránila se omluvit a musel za to pykat.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-006",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Třpitivý sníh pokryl zahradu a na záhoně rostl pír.",
+            "Třpytivý sníh pokryl zahradu a na záhoně rostl pír.",
+            "Třpytivý sníh pokryl zahradu a na záhoně rostl pýr.",
+            "Třpýtivý sníh pokryl zahradu a na záhoně rostl pýr.",
+            "Třpitivý sníh pokryl zahradu a na záhoně rostl pýr."
+          ],
+          "answer": "Třpytivý sníh pokryl zahradu a na záhoně rostl pýr.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-007",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Pitlák zpytoval svědomí za svůj čin.",
+            "Pytlák zpytoval svědomí za svůj čin.",
+            "Pýtlák zpýtoval svědomí za svůj čin.",
+            "Pitlák zpitoval svědomí za svůj čin.",
+            "Pytlák zpitoval svědomí za svůj čin."
+          ],
+          "answer": "Pytlák zpytoval svědomí za svůj čin.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-008",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Opice má velké pisky a piskatou tvář.",
+            "Opice má velké pysky a pyskatou tvář.",
+            "Opice má velké pisky a pyskatou tvář.",
+            "Opice má velké pysky a piskatou tvář.",
+            "Opice má velké pýsky a pýskatou tvář."
+          ],
+          "answer": "Opice má velké pysky a pyskatou tvář.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-009",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Pýřila se studem, když klopýtla na jívišti.",
+            "Píř ila se studem, když klopýtla na jevišti.",
+            "Pýřila se studem, když klopýtla na jevišti.",
+            "Píř ila se studem, když klopítla na jevišti.",
+            "Pýřila se studem, když klopítla na jevišti."
+          ],
+          "answer": "Pýřila se studem, když klopýtla na jevišti.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        },
+        {
+          "id": "CJ4-02P-03-010",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Včely sbírají pil a třpyt slunce je oslňuje.",
+            "Včely sbírají pyl a třpit slunce je oslňuje.",
+            "Včely sbírají pil a třpit slunce je oslňuje.",
+            "Včely sbírají pýl a třpýt slunce je oslňuje.",
+            "Včely sbírají pyl a třpyt slunce je oslňuje."
+          ],
+          "answer": "Včely sbírají pyl a třpyt slunce je oslňuje.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po P."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02P-04",
+      "name": "Třídění — patří / nepatří",
+      "difficulty": 2,
+      "theory": "Vyjmenovaná slova po P si zapamatuj jako řadu. Slova mimo řadu (a neodvozená od ní) se píší s i/í.",
+      "tasks": [
+        {
+          "id": "CJ4-02P-04-001",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "slepýš",
+            "pytel",
+            "netopýr",
+            "pýcha",
+            "pirát"
+          ],
+          "answer": "pirát",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-002",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "třpytit se",
+            "zpytovat",
+            "klopýtat",
+            "kopyto",
+            "pilný"
+          ],
+          "answer": "pilný",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-003",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "pykat",
+            "pyl",
+            "pýřit se",
+            "pivovar",
+            "pýr"
+          ],
+          "answer": "pivovar",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-004",
+          "type": "choice",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "pilný",
+            "pirát",
+            "pivovar",
+            "pilka",
+            "pysk"
+          ],
+          "answer": "pysk",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-005",
+          "type": "choice",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "písmeno",
+            "piliny",
+            "kapitán",
+            "opice",
+            "klopýtat"
+          ],
+          "answer": "klopýtat",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-006",
+          "type": "choice",
+          "question": "Které slovo je ODVOZENÉ od vyjmenovaného slova po P?",
+          "options": [
+            "pilka",
+            "pirát",
+            "pytlák",
+            "pivovar",
+            "pilný"
+          ],
+          "answer": "pytlák",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-007",
+          "type": "choice",
+          "question": "Které slovo je ODVOZENÉ od vyjmenovaného slova po P?",
+          "options": [
+            "piliny",
+            "písmeno",
+            "pilný",
+            "pianista",
+            "třpytivý"
+          ],
+          "answer": "třpytivý",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-008",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi odvozená slova po P?",
+          "options": [
+            "třpyt",
+            "netopýří",
+            "kopytník",
+            "pyšný",
+            "pilka"
+          ],
+          "answer": "pilka",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-009",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi odvozená slova po P?",
+          "options": [
+            "pytlovina",
+            "klopýtání",
+            "pylový",
+            "pianista",
+            "slepýší"
+          ],
+          "answer": "pianista",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        },
+        {
+          "id": "CJ4-02P-04-010",
+          "type": "choice",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po P?",
+          "options": [
+            "pirát",
+            "pilný",
+            "pýr",
+            "pír",
+            "pivovar"
+          ],
+          "answer": "pýr",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po P."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02P-05",
+      "name": "Páry — rozliš význam slov",
+      "difficulty": 2,
+      "theory": "Některá slova znějí podobně, ale mají jiný význam. Například 'pyl' (z květů) a 'pil' (od pít).",
+      "tasks": [
+        {
+          "id": "CJ4-02P-05-001",
+          "type": "choice",
+          "question": "Jaký je rozdíl mezi 'pyl' a 'pil'?",
+          "options": [
+            "'pyl' se nepoužívá",
+            "Obě slova znamenají totéž",
+            "Obě slova jsou vyjmenovaná",
+            "'pyl' = pít, 'pil' = prášek z květů",
+            "'pyl' = prášek z květů (vyjmenované), 'pil' = pít v minulém čase"
+          ],
+          "answer": "'pyl' = prášek z květů (vyjmenované), 'pil' = pít v minulém čase",
+          "hint": "Zamysli se nad významem obou slov."
+        },
+        {
+          "id": "CJ4-02P-05-002",
+          "type": "choice",
+          "question": "Jaký je rozdíl mezi 'pykat' a 'pikat'?",
+          "options": [
+            "'pykat' = píchat, 'pikat' = nést trest",
+            "'pykat' = nést trest (vyjmenované), 'pikat' neexistuje — správně jen 'pykat'",
+            "'pikat' = nést trest, 'pykat' neexistuje",
+            "Obě slova jsou nevyjmenovaná",
+            "Obě slova znamenají totéž"
+          ],
+          "answer": "'pykat' = nést trest (vyjmenované), 'pikat' neexistuje — správně jen 'pykat'",
+          "hint": "Zamysli se nad významem obou slov."
+        },
+        {
+          "id": "CJ4-02P-05-003",
+          "type": "choice",
+          "question": "Ve větě 'Dědeček _____ pivo.' doplň správné slovo:",
+          "options": [
+            "pil (prášek z květů)",
+            "pyl (minulý čas od 'pít')",
+            "pil (minulý čas od 'pít')",
+            "pýl (minulý čas od 'pít')",
+            "pyl (prášek z květů)"
+          ],
+          "answer": "pil (minulý čas od 'pít')",
+          "hint": "Zamysli se nad významem obou slov."
+        },
+        {
+          "id": "CJ4-02P-05-004",
+          "type": "choice",
+          "question": "Ve větě 'Včely sbírají _____.' doplň správné slovo:",
+          "options": [
+            "píl (prášek z květů)",
+            "pyl (minulý čas od pít)",
+            "pil (prášek z květů)",
+            "pyl (prášek z květů)",
+            "pýl (prášek z květů)"
+          ],
+          "answer": "pyl (prášek z květů)",
+          "hint": "Zamysli se nad významem obou slov."
+        },
+        {
+          "id": "CJ4-02P-05-005",
+          "type": "choice",
+          "question": "Jaký je rozdíl mezi 'pyšný' a 'pišný'?",
+          "options": [
+            "Obě slova jsou nevyjmenovaná",
+            "'pišný' = hrdý, 'pyšný' neexistuje",
+            "Obě slova existují a znamenají totéž",
+            "'pyšný' = hrdý/nafoukaný (odvozené od pýcha), 'pišný' neexistuje",
+            "'pyšný' = tichý, 'pišný' = hrdý"
+          ],
+          "answer": "'pyšný' = hrdý/nafoukaný (odvozené od pýcha), 'pišný' neexistuje",
+          "hint": "Zamysli se nad významem obou slov."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02P-06",
+      "name": "Doplň i/y — mix a opakování",
+      "difficulty": 2,
+      "theory": "Teď si zopakujeme všechno dohromady — vyjmenovaná i nevyjmenovaná slova po P.",
+      "tasks": [
+        {
+          "id": "CJ4-02P-06-001",
+          "type": "choice",
+          "question": "Doplň i/y: Třp_tivý prsten nosila na ruce.",
           "options": [
             "ý — třpýtivý",
+            "i — třpytivý",
             "y — třpytivý",
-            "y — třpitivý",
-            "i — třpitivý",
-            "í — třpítivý"
+            "í — třpítivý",
+            "i — třpitivý"
           ],
           "answer": "y — třpytivý",
-          "hint": "Od 'třpytit se'."
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-073",
+          "id": "CJ4-02P-06-002",
           "type": "choice",
-          "question": "Doplň i/y: Prap_sky měl gorila obrovské.",
+          "question": "Doplň i/y: P_šná královna vládla zemi.",
           "options": [
-            "y — prapysky",
-            "i — prapisky",
-            "í — prapísky",
-            "y — prapisky",
-            "ý — prapýsky"
+            "ý — pýšná",
+            "i — pišná",
+            "y — pyšná",
+            "i — pyšná",
+            "í — píšná"
           ],
-          "answer": "y — prapysky",
-          "hint": "Od 'pysk'. Pozor — neformální."
+          "answer": "y — pyšná",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-074",
+          "id": "CJ4-02P-06-003",
           "type": "choice",
-          "question": "Doplň i/y: P_skelný humor měl kamarád.",
+          "question": "Doplň i/y: Netop_r spí hlavou dolů.",
           "options": [
-            "ý — pýskelný",
-            "y — pyskelný",
-            "y — piskelný",
-            "i — piskelný",
-            "í — pískelný"
+            "ý — netopýr",
+            "i — netopyr",
+            "í — netopír",
+            "y — netopyr",
+            "i — netopir"
           ],
-          "answer": "y — pyskelný",
-          "hint": "Od 'pysk'. Pyskelný = výsměšný."
+          "answer": "ý — netopýr",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-075",
+          "id": "CJ4-02P-06-004",
           "type": "choice",
-          "question": "Doplň i/y: P_tláctví je zakázané.",
+          "question": "Doplň i/y: V p_tli nesl brambory.",
           "options": [
-            "y — pitláctví",
-            "y — pytláctví",
-            "í — pítláctví",
-            "i — pitláctví",
-            "ý — pýtláctví"
+            "i — pytli",
+            "ý — pýtli",
+            "í — pítli",
+            "i — pitli",
+            "y — pytli"
           ],
-          "answer": "y — pytláctví",
-          "hint": "Od 'pytel/pytlák'."
+          "answer": "y — pytli",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-076",
+          "id": "CJ4-02P-06-005",
           "type": "choice",
-          "question": "Doplň i/y: Nep_rej mu, je to kamarád.",
+          "question": "Doplň i/y: Klop_tal po kamenité cestě.",
           "options": [
-            "i — nepirej",
-            "y — nepirej",
-            "y — nepyrej",
-            "í — nepírej",
-            "ý — nepýrej"
+            "ý — klopýtal",
+            "í — klopítal",
+            "i — klopital",
+            "y — klopytal",
+            "i — klopytal"
           ],
-          "answer": "y — nepyrej",
-          "hint": "Pozor — 'pýřit se' JE vyjmenované, ale toto slovo se běžně takto nepoužívá. Záleží na kontextu."
+          "answer": "ý — klopýtal",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-077",
+          "id": "CJ4-02P-06-006",
           "type": "choice",
-          "question": "Kolik vyjmenovaných slov po P znáš?",
+          "question": "Doplň i/y: Slep_š se plazil po zahradě.",
           "options": [
-            "5",
-            "10",
-            "7",
-            "20",
-            "13"
-          ],
-          "answer": "13",
-          "hint": "Pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se."
-        },
-        {
-          "id": "CJ4-01-04-078",
-          "type": "choice",
-          "question": "Které dvě slova jsou vyjmenovaná po P?",
-          "options": [
-            "pilník, pirát",
-            "pistole, pilot",
-            "pytel, netopýr",
-            "písnička, píšťala",
-            "pivo, pilný"
-          ],
-          "answer": "pytel, netopýr",
-          "hint": "Z nabídky jen 'pytel' a 'netopýr' jsou vyjmenovaná po P."
-        },
-        {
-          "id": "CJ4-01-04-079",
-          "type": "choice",
-          "question": "Doplň i/y: P_skátor je milovník rybaření.",
-          "options": [
-            "y — pyskátor",
-            "ý — pýskátor",
-            "i — piskátor",
-            "i — pyskátor",
-            "í — pískátor"
-          ],
-          "answer": "i — piskátor",
-          "hint": "'Piskátor' od latinského slova. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-080",
-          "type": "choice",
-          "question": "Doplň i/y: Vzkop_tl se a vyskočil.",
-          "options": [
-            "ý — vzkopýtl",
-            "y — vzkopytl",
-            "í — vzkopítl",
-            "ý — vzkopítl",
-            "i — vzkopitl"
-          ],
-          "answer": "ý — vzkopýtl",
-          "hint": "Od 'kopyto'. Vzkopýtnout = prudce vyskočit."
-        },
-        {
-          "id": "CJ4-01-04-081",
-          "type": "choice",
-          "question": "Doplň i/y: P_tolačka je sp_š zahradní rostlina.",
-          "options": [
-            "i, ý — piťolačka, spýš",
-            "y, ý — pytolačka, spýš",
-            "i, y — piťolačka, spyš",
-            "i, í — piťolačka, spíš",
-            "y, í — pytolačka, spíš"
-          ],
-          "answer": "i, í — piťolačka, spíš",
-          "hint": "Obě NEJSOU vyjmenovaná — měkké i/í."
-        },
-        {
-          "id": "CJ4-01-04-082",
-          "type": "choice",
-          "question": "Doplň i/y: P_skavý hlas zazněl z rádia.",
-          "options": [
-            "ý — pýskavý",
-            "i — piskavý",
-            "í — pískavý",
-            "y — pyskavý",
-            "í — pyskavý"
-          ],
-          "answer": "í — pískavý",
-          "hint": "'Pískavý' od 'pískat'. NENÍ vyjmenované. Pozor na záměnu s 'pysk'."
-        },
-        {
-          "id": "CJ4-01-04-083",
-          "type": "choice",
-          "question": "Doplň i/y: Úp_sek se p_šnil svým bohatstvím.",
-          "options": [
-            "y, i — úpysek, pišnil",
-            "y, y — úpysek, pyšnil",
-            "i, y — úpisek, pyšnil",
-            "í, y — úpísek, pyšnil",
-            "i, i — úpisek, pišnil"
-          ],
-          "answer": "i, y — úpisek, pyšnil",
-          "hint": "'Úpisek' od 'psát/úpis' — NENÍ vyjmenované. 'Pyšnil' od 'pýcha' — JE."
-        },
-        {
-          "id": "CJ4-01-04-084",
-          "type": "choice",
-          "question": "Doplň i/y: Překlop_tl přes práh.",
-          "options": [
-            "ý — překlopýtl",
-            "í — překlopítl",
-            "ý — překlopítl",
-            "i — překlopitl",
-            "y — překlopytl"
-          ],
-          "answer": "ý — překlopýtl",
-          "hint": "Od 'klopýtat'."
-        },
-        {
-          "id": "CJ4-01-04-085",
-          "type": "choice",
-          "question": "Doplň i/y: P_tlíček zlata ležel na stole.",
-          "options": [
-            "y — pitlíček",
-            "i — pitlíček",
-            "í — pítlíček",
-            "y — pytlíček",
-            "ý — pýtlíček"
-          ],
-          "answer": "y — pytlíček",
-          "hint": "Od 'pytel'."
-        },
-        {
-          "id": "CJ4-01-04-086",
-          "type": "choice",
-          "question": "Doplň i/y: P_lina je rostlina z čeledi hvězdnicovitých.",
-          "options": [
-            "y — pylina",
-            "y — pilina",
-            "í — pílina",
-            "ý — pýlina",
-            "i — pilina"
-          ],
-          "answer": "i — pilina",
-          "hint": "'Pilina' od 'pila' (odpad z řezání). NENÍ vyjmenované. 'Pyl' je něco jiného!"
-        },
-        {
-          "id": "CJ4-01-04-087",
-          "type": "choice",
-          "question": "Doplň i/y: Okop_tník je léčivá bylina.",
-          "options": [
-            "y — okopitník",
-            "i — okopitník",
-            "y — okopytník",
-            "ý — okopýtník",
-            "í — okopítník"
-          ],
-          "answer": "y — okopytník",
-          "hint": "'Kostival/okopytník' — od 'kopyto' (tvar listu)."
-        },
-        {
-          "id": "CJ4-01-04-088",
-          "type": "choice",
-          "question": "Doplň i/y: Třp_t zlata lákal dobrodruhy.",
-          "options": [
-            "y — třpit",
-            "ý — třpýt",
-            "í — třpít",
-            "i — třpit",
-            "y — třpyt"
-          ],
-          "answer": "y — třpyt",
-          "hint": "Od 'třpytit se'."
-        },
-        {
-          "id": "CJ4-01-04-089",
-          "type": "choice",
-          "question": "Doplň i/y: Výp_sku ze školy dostal za nemoc.",
-          "options": [
-            "i — výpysku",
-            "y — výpysku",
-            "í — výpísku",
-            "ý — výpýsku",
-            "i — výpisku"
-          ],
-          "answer": "i — výpisku",
-          "hint": "'Výpis/výpiska' od 'psát'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-04-090",
-          "type": "choice",
-          "question": "Doplň i/y: Slep_š je chráněný živočich.",
-          "options": [
-            "í — slepíš",
-            "ý — slepýš",
             "i — slepiš",
             "y — slepyš",
-            "ý — slepíš"
+            "i — slepyš",
+            "ý — slepýš",
+            "í — slepíš"
           ],
           "answer": "ý — slepýš",
-          "hint": "'Slepýš' — vyjmenované."
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-091",
+          "id": "CJ4-02P-06-007",
           "type": "choice",
-          "question": "Doplň i/y: P_tíček mouky stačil na koláč.",
+          "question": "Doplň i/y: Zp_toval své svědomí.",
           "options": [
-            "í — pítíček",
-            "ý — pýtíček",
-            "y — pitíček",
-            "y — pytíček",
-            "i — pitíček"
+            "i — zpitoval",
+            "ý — zpýtoval",
+            "í — zpítoval",
+            "y — zpytoval",
+            "i — zpytoval"
           ],
-          "answer": "y — pytíček",
-          "hint": "Od 'pytel'. Pytíček = malý pytlík."
+          "answer": "y — zpytoval",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-092",
+          "id": "CJ4-02P-06-008",
           "type": "choice",
-          "question": "Doplň i/y: Přep_chový byt měl bazén.",
+          "question": "Doplň i/y: P_kal za svou chybu.",
           "options": [
-            "i — přepichový",
-            "í — přepíchový",
-            "y — přepychový",
-            "y — přepichový",
-            "ý — přepýchový"
+            "i — pykal",
+            "y — pykal",
+            "i — pikal",
+            "ý — pýkal",
+            "í — píkal"
           ],
-          "answer": "y — přepychový",
-          "hint": "Od 'pýcha/přepych'."
+          "answer": "y — pykal",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-093",
+          "id": "CJ4-02P-06-009",
           "type": "choice",
-          "question": "Doplň i/y: P_ří na tvářích prozrazovalo stud.",
+          "question": "Doplň i/y: Na záhoně roste p_r.",
           "options": [
-            "í — píří",
-            "ý — pýří",
-            "y — pyří",
-            "i — piří",
-            "ý — píří"
+            "í — pír",
+            "i — pyr",
+            "y — pyr",
+            "ý — pýr",
+            "i — pir"
           ],
-          "answer": "ý — pýří",
-          "hint": "Od 'pýřit se'. Pýří = červenání."
+          "answer": "ý — pýr",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-094",
+          "id": "CJ4-02P-06-010",
           "type": "choice",
-          "question": "Doplň i/y: Zap_chala se a odvrátila hlavu.",
+          "question": "Doplň i/y: P_lová sezona začíná na jaře.",
           "options": [
-            "y — zapychala",
-            "í — zapíchala",
-            "i — zapichala",
-            "y — zapychala",
-            "ý — zapýchala"
+            "ý — pýlová",
+            "y — pylová",
+            "i — pylová",
+            "i — pilová",
+            "í — pílová"
           ],
-          "answer": "y — zapychala",
-          "hint": "Pozor — 'zapýchat se' = nadýmat se pýchou. Od 'pýcha'. Ale 'zapíchat' = bodnutí."
+          "answer": "y — pylová",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-095",
+          "id": "CJ4-02P-06-011",
           "type": "choice",
-          "question": "Doplň i/y: P_tláček chytil zajíce.",
+          "question": "Doplň i/y: Kop_ta koní duněla po cestě.",
           "options": [
-            "i — pitláček",
-            "ý — pýtláček",
-            "y — pytláček",
-            "y — pitláček",
-            "í — pítláček"
+            "ý — kopýta",
+            "y — kopyta",
+            "i — kopita",
+            "í — kopíta",
+            "i — kopyta"
           ],
-          "answer": "y — pytláček",
-          "hint": "Od 'pytel/pytlák'."
+          "answer": "y — kopyta",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-096",
+          "id": "CJ4-02P-06-012",
           "type": "choice",
-          "question": "Doplň i/y: Vep_šit se těžko projde dveřmi.",
+          "question": "Doplň i/y: P_řil se hanbou.",
           "options": [
-            "i — vepišit",
-            "í — vepíšit",
-            "ý — vepýšit",
-            "y — vepyšit",
-            "y — vepyšit"
+            "í — píř il",
+            "i — pyřil",
+            "i — piřil",
+            "ý — pýřil",
+            "y — pyřil"
           ],
-          "answer": "y — vepyšit",
-          "hint": "Neformální — ale od 'pýcha'. Vepyšit se = nadutě se tvářit."
+          "answer": "ý — pýřil",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-097",
+          "id": "CJ4-02P-06-013",
           "type": "choice",
-          "question": "Doplň i/y: Odp_kává si svůj trest.",
+          "question": "Doplň i/y: P_rát měl na hlavě klobouk.",
           "options": [
-            "y — odpykává",
-            "i — odpikává",
-            "í — odpíkává",
-            "ý — odpýkává",
-            "y — odpikává"
+            "y — pyrát",
+            "i — pirát",
+            "ý — pýrát",
+            "y — pirát",
+            "í — pírát"
           ],
-          "answer": "y — odpykává",
-          "hint": "Od 'pykat'."
+          "answer": "i — pirát",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-098",
+          "id": "CJ4-02P-06-014",
           "type": "choice",
-          "question": "Doplň i/y: Netop_ři spí hlavou dolů.",
+          "question": "Doplň i/y: P_la čistou vodu.",
           "options": [
-            "ý — netopýři",
-            "í — netopíři",
-            "y — netopyři",
-            "i — netopiři",
-            "ý — netopíři"
+            "í — píla",
+            "i — pila",
+            "ý — pýla",
+            "y — pyla",
+            "y — pila"
           ],
-          "answer": "ý — netopýři",
-          "hint": "Od 'netopýr'."
+          "answer": "i — pila",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-099",
+          "id": "CJ4-02P-06-015",
           "type": "choice",
-          "question": "Doplň i/y: P_lař řezal kmeny.",
+          "question": "Doplň i/y: P_lný student se učil denně.",
           "options": [
-            "i — pylař",
-            "í — pílař",
-            "y — pylař",
-            "i — pilař",
-            "ý — pýlař"
+            "i — pilný",
+            "y — pylný",
+            "y — pilný",
+            "ý — pýlný",
+            "í — pílný"
           ],
-          "answer": "i — pilař",
-          "hint": "'Pilař' od 'pila'. NENÍ vyjmenované."
+          "answer": "i — pilný",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-04-100",
+          "id": "CJ4-02P-06-016",
           "type": "choice",
-          "question": "Které slovo je vyjmenované po P a které NENÍ? 'pyl' a 'pil'",
+          "question": "Doplň i/y: P_smo z abecedy.",
           "options": [
-            "záleží na větě",
-            "pil JE, pyl NENÍ",
-            "obě JSOU",
-            "obě NEJSOU",
-            "pyl JE, pil NENÍ"
+            "í — písmeno",
+            "ý — pýsmeno",
+            "y — písmeno",
+            "i — pismeno",
+            "y — pysmeno"
           ],
-          "answer": "pyl JE, pil NENÍ",
-          "hint": "Pyl (z květů) = vyjmenované. Pil (od pít) = NENÍ vyjmenované."
+          "answer": "í — písmeno",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
+        },
+        {
+          "id": "CJ4-02P-06-017",
+          "type": "choice",
+          "question": "Doplň i/y: Op_ce skákala po větvích.",
+          "options": [
+            "í — opíce",
+            "y — opice",
+            "y — opyce",
+            "i — opice",
+            "ý — opýce"
+          ],
+          "answer": "i — opice",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
+        },
+        {
+          "id": "CJ4-02P-06-018",
+          "type": "choice",
+          "question": "Doplň i/y: P_skovec je druh horniny.",
+          "options": [
+            "ý — pýskovec",
+            "y — pyskovec",
+            "i — piskovec",
+            "y — pískovec",
+            "í — pískovec"
+          ],
+          "answer": "í — pískovec",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
+        },
+        {
+          "id": "CJ4-02P-06-019",
+          "type": "choice",
+          "question": "Doplň i/y: Kap_tola knihy byla zajímavá.",
+          "options": [
+            "í — kapítola",
+            "ý — kapýtola",
+            "y — kapytola",
+            "i — kapitola",
+            "y — kapitola"
+          ],
+          "answer": "i — kapitola",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
+        },
+        {
+          "id": "CJ4-02P-06-020",
+          "type": "choice",
+          "question": "Doplň i/y: P_tláci loví zvěř nelegálně.",
+          "options": [
+            "i — pitláci",
+            "i — pytláci",
+            "y — pytláci",
+            "í — pítláci",
+            "ý — pýtláci"
+          ],
+          "answer": "y — pytláci",
+          "hint": "Je to vyjmenované slovo po P, nebo ne? Zkus si říct řadu."
         }
       ]
     }

@@ -1,1454 +1,1510 @@
 {
-  "id": "CJ4-01-03",
+  "id": "CJ4-02M",
   "name": "Vyjmenovaná slova po M",
-  "order": 3,
-  "prerequisite": null,
+  "order": 4,
+  "prerequisite": "CJ4-02L",
   "skills": [
     {
-      "id": "CJ4-01-03-A",
-      "name": "Vyjmenovaná slova po M — my, mýt, myslit, mýlit se",
-      "difficulty": 2,
-      "theory": "Vyjmenovaná slova po M: my, mýt, myslit, mýlit se, hmyz, myš, hřmýt, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk. A slova odvozená.",
+      "id": "CJ4-02M-01",
+      "name": "Doplň i/y — vyjmenovaná a odvozená",
+      "difficulty": 1,
+      "theory": "Vyjmenovaná slova po M: my, mýt, myslit, mýlit se, hmyz, myš, hřmít, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk. Ve vyjmenovaných slovech a slovech od nich odvozených píšeme Y/Ý.",
       "tasks": [
         {
-          "id": "CJ4-01-03-001",
+          "id": "CJ4-02M-01-001",
           "type": "choice",
-          "question": "Doplň i/y: M_ jsme byli ve škole.",
+          "question": "Doplň i/y: M_ jsme šli do školy.",
           "options": [
-            "y — mí",
             "i — mi",
+            "i — my",
+            "ý — mý",
             "í — mí",
+            "y — my"
+          ],
+          "answer": "y — my",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-002",
+          "type": "choice",
+          "question": "Doplň i/y: Řekni m_ pravdu.",
+          "options": [
             "y — my",
+            "i — mi",
+            "y — mi",
+            "ý — mý",
+            "í — mí"
+          ],
+          "answer": "i — mi",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-003",
+          "type": "choice",
+          "question": "Doplň i/y: M_ všichni to víme.",
+          "options": [
+            "i — mi",
+            "y — my",
+            "í — mí",
+            "i — my",
             "ý — mý"
           ],
           "answer": "y — my",
-          "hint": "'My' (zájmeno, 1. osoba mn. čísla) je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-002",
+          "id": "CJ4-02M-01-004",
+          "type": "choice",
+          "question": "Doplň i/y: Dej m_ tu knihu.",
+          "options": [
+            "i — mi",
+            "y — my",
+            "ý — mý",
+            "í — mí",
+            "y — mi"
+          ],
+          "answer": "i — mi",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-005",
+          "type": "choice",
+          "question": "Doplň i/y: M_ máme psa.",
+          "options": [
+            "í — mí",
+            "y — my",
+            "i — mi",
+            "ý — mý",
+            "i — my"
+          ],
+          "answer": "y — my",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-006",
           "type": "choice",
           "question": "Doplň i/y: Babička m_la nádobí.",
           "options": [
-            "i — mila",
             "í — míla",
+            "i — mila",
             "ý — mýla",
-            "y — myla",
-            "y — mila"
+            "i — myla",
+            "y — myla"
           ],
           "answer": "y — myla",
-          "hint": "'Myla' je od 'mýt' (umývat) — vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-003",
+          "id": "CJ4-02M-01-007",
           "type": "choice",
-          "question": "Doplň i/y: M_slím, že to je správně.",
+          "question": "Doplň i/y: Um_j si ruce!",
+          "options": [
+            "í — umíj",
+            "i — umyj",
+            "ý — umýj",
+            "y — umyj",
+            "i — umij"
+          ],
+          "answer": "y — umyj",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-008",
+          "type": "choice",
+          "question": "Doplň i/y: M_dlo je v koupelně.",
+          "options": [
+            "ý — mýdlo",
+            "i — mydlo",
+            "y — mydlo",
+            "i — midlo",
+            "í — mídlo"
+          ],
+          "answer": "ý — mýdlo",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-009",
+          "type": "choice",
+          "question": "Doplň i/y: Um_vadlo je bílé.",
+          "options": [
+            "ý — umývadlo",
+            "y — umyvadlo",
+            "i — umivadlo",
+            "í — umívadlo",
+            "i — umyvadlo"
+          ],
+          "answer": "y — umyvadlo",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-010",
+          "type": "choice",
+          "question": "Doplň i/y: M_tí oken trvalo hodinu.",
+          "options": [
+            "í — mítí",
+            "ý — mýtí",
+            "i — mití",
+            "i — mytí",
+            "y — mytí"
+          ],
+          "answer": "y — mytí",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-011",
+          "type": "choice",
+          "question": "Doplň i/y: M_slím, že máš pravdu.",
           "options": [
             "ý — mýslím",
             "y — myslím",
-            "i — mislím",
-            "y — mislím",
-            "í — míslím"
+            "i — myslím",
+            "í — míslím",
+            "i — mislím"
           ],
           "answer": "y — myslím",
-          "hint": "'Myslit/myslet' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-004",
+          "id": "CJ4-02M-01-012",
           "type": "choice",
-          "question": "Doplň i/y: M_lil se v odpovědi.",
+          "question": "Doplň i/y: Pom_sli na to!",
           "options": [
-            "ý — mílil",
-            "ý — mýlil",
-            "y — mylil",
-            "í — mílil",
-            "i — milil"
+            "i — pomisli",
+            "ý — pomýsli",
+            "í — pomísli",
+            "y — pomysli",
+            "i — pomysli"
           ],
-          "answer": "ý — mýlil",
-          "hint": "'Mýlit se' je vyjmenované slovo po M."
+          "answer": "y — pomysli",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-005",
+          "id": "CJ4-02M-01-013",
           "type": "choice",
-          "question": "Doplň i/y: Um_l si ruce mýdlem.",
+          "question": "Doplň i/y: To je dom_šlivý člověk.",
           "options": [
-            "í — umíl",
-            "y — umyl",
-            "i — umil",
-            "ý — umýl",
-            "y — umil"
+            "i — domyšlivý",
+            "í — domíšlivý",
+            "y — domyšlivý",
+            "i — domišlivý",
+            "ý — domýšlivý"
           ],
-          "answer": "y — umyl",
-          "hint": "'Umýt' je od 'mýt' — vyjmenované."
+          "answer": "ý — domýšlivý",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-006",
+          "id": "CJ4-02M-01-014",
           "type": "choice",
-          "question": "Doplň i/y: Pom_slel si, že je to divné.",
+          "question": "Doplň i/y: M_šlenka ho napadla náhle.",
           "options": [
-            "y — pomislel",
-            "ý — pomýslel",
-            "i — pomislel",
-            "í — pomíslel",
-            "y — pomyslel"
-          ],
-          "answer": "y — pomyslel",
-          "hint": "Od 'myslit'."
-        },
-        {
-          "id": "CJ4-01-03-007",
-          "type": "choice",
-          "question": "Doplň i/y: Nem_l se, máš pravdu.",
-          "options": [
-            "ý — nemílíš",
-            "í — nemílíš",
-            "y — nemylíš",
-            "i — nemilíš",
-            "ý — nemýlíš"
-          ],
-          "answer": "ý — nemýlíš",
-          "hint": "Od 'mýlit se'."
-        },
-        {
-          "id": "CJ4-01-03-008",
-          "type": "choice",
-          "question": "Doplň i/y: M_šlenka ho napadla ve sprše.",
-          "options": [
-            "ý — mýšlenka",
             "í — míšlenka",
+            "i — myšlenka",
+            "y — myšlenka",
             "i — mišlenka",
-            "y — mišlenka",
-            "y — myšlenka"
+            "ý — mýšlenka"
           ],
           "answer": "y — myšlenka",
-          "hint": "'Myšlenka' je od 'myslit'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-009",
+          "id": "CJ4-02M-01-015",
           "type": "choice",
-          "question": "Doplň i/y: M_dlová bublina praskla.",
+          "question": "Doplň i/y: Vym_slel si výmluvu.",
           "options": [
-            "ý — mídlová",
-            "y — mydlová",
-            "i — midlová",
-            "í — mídlová",
-            "ý — mýdlová"
-          ],
-          "answer": "ý — mýdlová",
-          "hint": "'Mýdlo' je od 'mýt'."
-        },
-        {
-          "id": "CJ4-01-03-010",
-          "type": "choice",
-          "question": "Doplň i/y: Vym_slel si celý příběh.",
-          "options": [
-            "y — vymyslel",
-            "y — vymislel",
-            "i — vymislel",
             "ý — vymýslel",
-            "í — vymíslel"
+            "i — vymislel",
+            "i — vymyslel",
+            "í — vymíslel",
+            "y — vymyslel"
           ],
           "answer": "y — vymyslel",
-          "hint": "Od 'myslit'."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-011",
+          "id": "CJ4-02M-01-016",
           "type": "choice",
-          "question": "Doplň i/y: To je m_lný výsledek.",
+          "question": "Doplň i/y: M_líš se!",
           "options": [
-            "i — milný",
-            "í — mílný",
-            "ý — mýlný",
-            "y — milný",
-            "y — mylný"
+            "i — milíš",
+            "ý — mýlíš",
+            "i — mylíš",
+            "í — mílíš",
+            "y — mylíš"
           ],
-          "answer": "y — mylný",
-          "hint": "'Mylný' od 'mýlit se'."
+          "answer": "ý — mýlíš",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-012",
+          "id": "CJ4-02M-01-017",
           "type": "choice",
-          "question": "Doplň i/y: Přem_šlel celou noc.",
+          "question": "Doplň i/y: Om_l se v odpovědi.",
           "options": [
-            "y — přemyšlel",
-            "í — přemíšlel",
-            "ý — přemýšlel",
-            "ý — přemíšlel",
-            "i — přemišlel"
+            "i — omil",
+            "y — omyl",
+            "í — omíl",
+            "ý — omýl",
+            "i — omyl"
           ],
-          "answer": "ý — přemýšlel",
-          "hint": "Od 'myslit/přemýšlet'."
+          "answer": "ý — omýl",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-013",
+          "id": "CJ4-02M-01-018",
           "type": "choice",
-          "question": "Doplň i/y: Um_vadlo je v koupelně.",
+          "question": "Doplň i/y: To je om_l.",
           "options": [
-            "y — umyvadlo",
-            "y — umivadlo",
-            "i — umivadlo",
-            "í — umívadlo",
-            "ý — umývadlo"
+            "i — omyl",
+            "ý — omýl",
+            "y — omyl",
+            "i — omil",
+            "í — omíl"
           ],
-          "answer": "y — umyvadlo",
-          "hint": "Od 'mýt/umývat'."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-03-B",
-      "name": "Vyjmenovaná slova po M — hmyz, myš, hřmýt, Litomyšl",
-      "difficulty": 2,
-      "theory": "Hmyz, myš, hřmýt, Litomyšl — vyjmenovaná slova po M. Odvozená: hmyzí, myší, myšák, zahřmět, litomyšlský...",
-      "tasks": [
-        {
-          "id": "CJ4-01-03-014",
-          "type": "choice",
-          "question": "Doplň i/y: Na louce bylo plno hm_zu.",
-          "options": [
-            "y — hmizu",
-            "í — hmízu",
-            "i — hmizu",
-            "ý — hmýzu",
-            "y — hmyzu"
-          ],
-          "answer": "y — hmyzu",
-          "hint": "'Hmyz' je vyjmenované slovo po M."
+          "answer": "y — omyl",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-015",
+          "id": "CJ4-02M-01-019",
           "type": "choice",
-          "question": "Doplň i/y: M_š utekla do díry.",
+          "question": "Doplň i/y: M_lně pochopil zadání.",
           "options": [
-            "í — míš",
+            "ý — mýlně",
+            "i — mylně",
+            "í — mílně",
+            "y — mylně",
+            "i — milně"
+          ],
+          "answer": "y — mylně",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-020",
+          "type": "choice",
+          "question": "Doplň i/y: Na louce bzučel hm_z.",
+          "options": [
+            "i — hmyz",
+            "i — hmiz",
+            "ý — hmýz",
+            "í — hmíz",
+            "y — hmyz"
+          ],
+          "answer": "y — hmyz",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-021",
+          "type": "choice",
+          "question": "Doplň i/y: Hm_zí kousnutí ho bolelo.",
+          "options": [
+            "ý — hmýzí",
+            "i — hmyzí",
+            "í — hmízí",
+            "i — hmizí",
+            "y — hmyzí"
+          ],
+          "answer": "y — hmyzí",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-022",
+          "type": "choice",
+          "question": "Doplň i/y: Pod skříní běhala m_š.",
+          "options": [
+            "i — myš",
+            "ý — mýš",
             "i — miš",
             "y — myš",
-            "y — miš",
-            "ý — mýš"
+            "í — míš"
           ],
           "answer": "y — myš",
-          "hint": "'Myš' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-016",
+          "id": "CJ4-02M-01-023",
           "type": "choice",
-          "question": "Doplň i/y: Venku hřm_lo a bl_skalo se.",
+          "question": "Doplň i/y: Kočka chytila m_šku.",
           "options": [
-            "í, í — hřmílo, blískalo",
-            "ý, ý — hřmýlo, blýskalo",
-            "e, í — hřmelo, blískalo",
-            "ě, í — hřmělo, blískalo",
-            "ě, ý — hřmělo, blýskalo"
+            "ý — mýšku",
+            "i — mišku",
+            "i — myšku",
+            "y — myšku",
+            "í — míšku"
           ],
-          "answer": "ě, ý — hřmělo, blýskalo",
-          "hint": "'Hřmět/hřmýt' — od vyjmenovaného. 'Blýskat' — vyjmenované po L."
+          "answer": "y — myšku",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-017",
+          "id": "CJ4-02M-01-024",
           "type": "choice",
-          "question": "Doplň i/y: Jedeme do Litom_šle.",
+          "question": "Doplň i/y: M_šák Jerry utekl kočkovi.",
           "options": [
-            "y — Litomišle",
-            "i — Litomišle",
-            "ý — Litomýšle",
+            "y — myšák",
+            "ý — mýšák",
+            "í — míšák",
+            "i — mišák",
+            "i — myšák"
+          ],
+          "answer": "y — myšák",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-025",
+          "type": "choice",
+          "question": "Doplň i/y: Venku hřm_lo celou noc.",
+          "options": [
+            "y — hřmylo",
+            "i — hřmilo",
+            "ě — hřmělo",
+            "ý — hřmýlo",
+            "í — hřmílo"
+          ],
+          "answer": "ě — hřmělo",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-026",
+          "type": "choice",
+          "question": "Doplň i/y: Hřm_t je slyšet z dálky.",
+          "options": [
+            "í — hřmět",
+            "i — hřmit",
+            "y — hřmyt",
+            "ý — hřmýt",
+            "í — hřmít"
+          ],
+          "answer": "í — hřmít",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-027",
+          "type": "choice",
+          "question": "Doplň i/y: Jeli jsme do Litom_šle.",
+          "options": [
             "y — Litomyšle",
+            "ý — Litomýšle",
+            "i — Litomyšle",
+            "i — Litomišle",
             "í — Litomíšle"
           ],
           "answer": "y — Litomyšle",
-          "hint": "'Litomyšl' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-018",
+          "id": "CJ4-02M-01-028",
           "type": "choice",
-          "question": "Doplň i/y: Hm_zí bodnutí ho bolelo.",
+          "question": "Doplň i/y: Zam_kej dveře!",
           "options": [
-            "í — hmízí",
-            "y — hmizí",
-            "ý — hmýzí",
-            "y — hmyzí",
-            "i — hmizí"
+            "i — zamykej",
+            "y — zamykej",
+            "í — zamíkej",
+            "i — zamikej",
+            "ý — zamýkej"
           ],
-          "answer": "y — hmyzí",
-          "hint": "Od 'hmyz'."
+          "answer": "y — zamykej",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-019",
+          "id": "CJ4-02M-01-029",
           "type": "choice",
-          "question": "Doplň i/y: M_šák Jerry utíkal před kočkou.",
+          "question": "Doplň i/y: Zám_čník opravil zámek.",
           "options": [
-            "y — mišák",
-            "ý — mýšák",
-            "i — mišák",
-            "í — míšák",
-            "y — myšák"
+            "i — zámičník",
+            "ý — zámýčník",
+            "e — zámečník",
+            "í — zámíčník",
+            "y — zámyčník"
           ],
-          "answer": "y — myšák",
-          "hint": "Od 'myš'."
+          "answer": "e — zámečník",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-020",
+          "id": "CJ4-02M-01-030",
           "type": "choice",
-          "question": "Doplň i/y: Litom_šlský zámek je krásný.",
+          "question": "Doplň i/y: Odem_kal bránu klíčem.",
           "options": [
-            "y — litomišlský",
-            "i — litomišlský",
-            "í — litomíšlský",
-            "ý — litomýšlský",
-            "y — litomyšlský"
+            "i — odemikal",
+            "i — odemykal",
+            "y — odemykal",
+            "ý — odemýkal",
+            "í — odemíkal"
           ],
-          "answer": "y — litomyšlský",
-          "hint": "Od 'Litomyšl'."
+          "answer": "y — odemykal",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-021",
+          "id": "CJ4-02M-01-031",
           "type": "choice",
-          "question": "Doplň i/y: M_ší díra byla pod skříní.",
+          "question": "Doplň i/y: Sm_kal nohama po zemi.",
           "options": [
-            "i — miší",
-            "í — míší",
-            "y — miší",
-            "y — myší",
-            "ý — mýší"
-          ],
-          "answer": "y — myší",
-          "hint": "Od 'myš'."
-        },
-        {
-          "id": "CJ4-01-03-022",
-          "type": "choice",
-          "question": "Doplň i/y: Zahřm_lo tak, až se okna třásla.",
-          "options": [
-            "e — zahřmelo",
-            "ý — zahřmýlo",
-            "ě — zahřmělo",
-            "i — zahřmilo",
-            "í — zahřmílo"
-          ],
-          "answer": "ě — zahřmělo",
-          "hint": "Od 'hřmýt/hřmět'."
-        },
-        {
-          "id": "CJ4-01-03-023",
-          "type": "choice",
-          "question": "Doplň i/y: Počítačová m_š leží na stole.",
-          "options": [
-            "í — míš",
-            "i — miš",
-            "y — myš",
-            "y — miš",
-            "ý — mýš"
-          ],
-          "answer": "y — myš",
-          "hint": "'Myš' — i ta počítačová se píše s y."
-        },
-        {
-          "id": "CJ4-01-03-024",
-          "type": "choice",
-          "question": "Doplň i/y: Hm_zožravec jí hmyz.",
-          "options": [
-            "ý — hmýzožravec",
-            "y — hmyzožravec",
-            "í — hmízožravec",
-            "i — hmizožravec",
-            "y — hmizožravec"
-          ],
-          "answer": "y — hmyzožravec",
-          "hint": "Od 'hmyz'."
-        },
-        {
-          "id": "CJ4-01-03-025",
-          "type": "choice",
-          "question": "Doplň i/y: M_šinka se schovala v obilí.",
-          "options": [
-            "i — mišinka",
-            "í — míšinka",
-            "y — myšinka",
-            "ý — mýšinka",
-            "y — mišinka"
-          ],
-          "answer": "y — myšinka",
-          "hint": "Od 'myš'. Myšinka = malá myška."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-03-C",
-      "name": "Vyjmenovaná slova po M — zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk",
-      "difficulty": 2,
-      "theory": "Zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk — vyjmenovaná slova po M.",
-      "tasks": [
-        {
-          "id": "CJ4-01-03-026",
-          "type": "choice",
-          "question": "Doplň i/y: Zam_kal dveře na klíč.",
-          "options": [
-            "y — zamykal",
-            "í — zamíkal",
-            "i — zamikal",
-            "y — zamikal",
-            "ý — zamýkal"
-          ],
-          "answer": "y — zamykal",
-          "hint": "'Zamykat' je vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-027",
-          "type": "choice",
-          "question": "Doplň i/y: Sm_kal nohama po podlaze.",
-          "options": [
+            "ý — smýkal",
             "y — smykal",
             "i — smikal",
-            "ý — smíkal",
-            "í — smíkal",
-            "ý — smýkal"
+            "i — smykal",
+            "í — smíkal"
           ],
           "answer": "ý — smýkal",
-          "hint": "'Smýkat' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-028",
+          "id": "CJ4-02M-01-032",
+          "type": "choice",
+          "question": "Doplň i/y: Sm_čec na housle je nový.",
+          "options": [
+            "ý — smýčec",
+            "i — smičec",
+            "i — smyčec",
+            "y — smyčec",
+            "í — smíčec"
+          ],
+          "answer": "y — smyčec",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-033",
           "type": "choice",
           "question": "Doplň i/y: Dm_chal oheň měchem.",
           "options": [
-            "i — dmichal",
-            "ý — dmíchal",
-            "y — dmychal",
             "í — dmíchal",
+            "y — dmychal",
+            "i — dmichal",
+            "i — dmychal",
             "ý — dmýchal"
           ],
           "answer": "ý — dmýchal",
-          "hint": "'Dmýchat' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-029",
+          "id": "CJ4-02M-01-034",
+          "type": "choice",
+          "question": "Doplň i/y: Dm_chadlo je u krbu.",
+          "options": [
+            "i — dmichadlo",
+            "ý — dmýchadlo",
+            "í — dmíchadlo",
+            "y — dmychadlo",
+            "i — dmychadlo"
+          ],
+          "answer": "ý — dmýchadlo",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-035",
           "type": "choice",
           "question": "Doplň i/y: Na bradě mu rostlo chm_ří.",
           "options": [
-            "ý — chmíří",
             "y — chmyří",
+            "ý — chmýří",
+            "i — chmyří",
             "i — chmiří",
-            "í — chmíří",
-            "ý — chmýří"
+            "í — chmíří"
           ],
           "answer": "ý — chmýří",
-          "hint": "'Chmýří' je vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-030",
+          "id": "CJ4-02M-01-036",
           "type": "choice",
-          "question": "Doplň i/y: Nachom_tl se k nehodě.",
+          "question": "Doplň i/y: Nachom_tnul se k potyčce.",
           "options": [
-            "ý — nachomítl",
-            "í — nachomítl",
-            "ý — nachomýtl",
-            "y — nachomytl",
-            "i — nachomitl"
+            "i — nachomytnul",
+            "y — nachomytnul",
+            "i — nachomitnul",
+            "ý — nachomýtnul",
+            "í — nachomítnul"
           ],
-          "answer": "ý — nachomýtl",
-          "hint": "'Nachomýtnout se' je vyjmenované slovo po M."
+          "answer": "ý — nachomýtnul",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-031",
+          "id": "CJ4-02M-01-037",
           "type": "choice",
-          "question": "Doplň i/y: Jedeme na Kam_k nad Vltavou.",
+          "question": "Doplň i/y: Bydlíme v Kam_ku nad Vltavou.",
           "options": [
-            "í — Kamík",
-            "ý — Kamýk",
-            "i — Kamik",
-            "ý — Kamík",
-            "y — Kamyk"
+            "y — Kamyku",
+            "í — Kamíku",
+            "i — Kamyku",
+            "i — Kamiku",
+            "ý — Kamýku"
           ],
-          "answer": "ý — Kamýk",
-          "hint": "'Kamýk' je vyjmenované slovo po M."
+          "answer": "ý — Kamýku",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-032",
+          "id": "CJ4-02M-01-038",
           "type": "choice",
-          "question": "Doplň i/y: Odem_kal bránu kódem.",
+          "question": "Doplň i/y: M_nce svítila na slunci.",
           "options": [
-            "í — odemíkal",
-            "ý — odemýkal",
-            "y — odemikal",
-            "i — odemikal",
-            "y — odemykal"
+            "y — mynce",
+            "ý — mýnce",
+            "y — mince",
+            "i — mince",
+            "í — mínce"
           ],
-          "answer": "y — odemykal",
-          "hint": "Od 'zamykat/odmykat'."
+          "answer": "i — mince",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-033",
+          "id": "CJ4-02M-01-039",
           "type": "choice",
-          "question": "Doplň i/y: Sm_čec hrál na housle.",
+          "question": "Doplň i/y: M_ska s polévkou je na stole.",
           "options": [
-            "y — smičec",
-            "í — smíčec",
-            "i — smičec",
-            "ý — smýčec",
-            "y — smyčec"
+            "y — miska",
+            "ý — mýska",
+            "y — myska",
+            "i — miska",
+            "í — míska"
           ],
-          "answer": "y — smyčec",
-          "hint": "'Smyčec' je od 'smýkat'."
+          "answer": "i — miska",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-034",
+          "id": "CJ4-02M-01-040",
           "type": "choice",
-          "question": "Doplň i/y: Pam_kl se na jméno.",
+          "question": "Doplň i/y: M_lá holčička se smála.",
           "options": [
-            "y — pamykl",
-            "ý — pamýkl",
-            "i — pamikl",
-            "y — pamikl",
-            "í — pamíkl"
+            "í — mílá",
+            "i — milá",
+            "y — milá",
+            "y — mylá",
+            "ý — mýlá"
           ],
-          "answer": "y — pamykl",
-          "hint": "Pozor — toto slovo se běžně nepoužívá. Ale 'zamykat/odmykat' jsou vyjmenovaná."
+          "answer": "i — milá",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-035",
-          "type": "choice",
-          "question": "Doplň i/y: Přim_kl oči a usnul.",
-          "options": [
-            "í — přimíkl",
-            "ý — přimýkl",
-            "y — přimikl",
-            "y — přimykl",
-            "i — přimikl"
-          ],
-          "answer": "y — přimykl",
-          "hint": "Od 'zamykat/přimykat'. Přimknout oči = přivřít."
-        },
-        {
-          "id": "CJ4-01-03-036",
-          "type": "choice",
-          "question": "Doplň i/y: Sm_čka na krku se utahovala.",
-          "options": [
-            "y — smička",
-            "i — smička",
-            "í — smíčka",
-            "ý — smýčka",
-            "y — smyčka"
-          ],
-          "answer": "y — smyčka",
-          "hint": "Od 'smýkat'."
-        },
-        {
-          "id": "CJ4-01-03-037",
-          "type": "choice",
-          "question": "Doplň i/y: Kam_cký hrad je zřícenina.",
-          "options": [
-            "í — kamícký",
-            "i — kamický",
-            "ý — kamýcký",
-            "y — kamycký",
-            "ý — kamícký"
-          ],
-          "answer": "ý — kamýcký",
-          "hint": "Od 'Kamýk'."
-        }
-      ]
-    },
-    {
-      "id": "CJ4-01-03-D",
-      "name": "Vyjmenovaná slova po M — slova která NEJSOU vyjmenovaná",
-      "difficulty": 2,
-      "theory": "Pozor! Tato slova NEJSOU vyjmenovaná po M: milý, mír, místo, míč, mínit, mířit, mísa, mistr, minuta, minerál. Píšeme u nich měkké i/í.",
-      "tasks": [
-        {
-          "id": "CJ4-01-03-038",
+          "id": "CJ4-02M-01-041",
           "type": "choice",
           "question": "Doplň i/y: M_nuta má šedesát sekund.",
           "options": [
-            "y — mynuta",
             "í — mínuta",
-            "i — mynuta",
+            "ý — mýnuta",
             "i — minuta",
-            "ý — mýnuta"
+            "y — minuta",
+            "y — mynuta"
           ],
           "answer": "i — minuta",
-          "hint": "'Minuta' NENÍ vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-039",
+          "id": "CJ4-02M-01-042",
           "type": "choice",
-          "question": "Doplň i/y: M_lá babičko, přijedu zítra.",
+          "question": "Doplň i/y: Kam_on jel po dálnici.",
           "options": [
-            "i — mylá",
-            "ý — mýlá",
-            "i — milá",
-            "y — mylá",
-            "í — mílá"
+            "y — kamion",
+            "í — kamíon",
+            "y — kamyon",
+            "ý — kamýon",
+            "i — kamion"
           ],
-          "answer": "i — milá",
-          "hint": "'Milá' NENÍ vyjmenované slovo po M."
+          "answer": "i — kamion",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-040",
+          "id": "CJ4-02M-01-043",
           "type": "choice",
-          "question": "Doplň i/y: Na tom m_stě stál dům.",
+          "question": "Doplň i/y: M_str opravil auto.",
           "options": [
-            "ý — mýstě",
-            "y — mystě",
-            "í — místě",
-            "í — mystě",
-            "i — mistě"
-          ],
-          "answer": "í — místě",
-          "hint": "'Místo' NENÍ vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-041",
-          "type": "choice",
-          "question": "Doplň i/y: Hodil m_č přes zeď.",
-          "options": [
-            "ý — mýč",
-            "i — mič",
-            "í — míč",
-            "í — myč",
-            "y — myč"
-          ],
-          "answer": "í — míč",
-          "hint": "'Míč' NENÍ vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-042",
-          "type": "choice",
-          "question": "Doplň i/y: M_ř ve světě je důležitý.",
-          "options": [
-            "í — mír",
-            "í — myr",
-            "i — mir",
-            "ý — mýr",
-            "y — myr"
-          ],
-          "answer": "í — mír",
-          "hint": "'Mír' NENÍ vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-043",
-          "type": "choice",
-          "question": "Doplň i/y: M_řil na terč.",
-          "options": [
-            "ý — mýřil",
-            "í — myřil",
-            "i — miřil",
-            "y — myřil",
-            "í — mířil"
-          ],
-          "answer": "í — mířil",
-          "hint": "'Mířit' NENÍ vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-044",
-          "type": "choice",
-          "question": "Doplň i/y: M_ska stála na stole.",
-          "options": [
-            "i — miska",
-            "í — myska",
-            "ý — mýska",
-            "í — mísa/míska",
-            "y — myska"
-          ],
-          "answer": "í — mísa/míska",
-          "hint": "'Mísa' NENÍ vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-045",
-          "type": "choice",
-          "question": "Doplň i/y: M_str kuchař vařil oběd.",
-          "options": [
-            "i — mistr",
+            "y — mistr",
             "y — mystr",
-            "i — mystr",
             "ý — mýstr",
-            "í — místr"
+            "í — místr",
+            "i — mistr"
           ],
           "answer": "i — mistr",
-          "hint": "'Mistr' NENÍ vyjmenované slovo po M."
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-046",
+          "id": "CJ4-02M-01-044",
           "type": "choice",
-          "question": "Doplň i/y: Kam_nek ležel u potoka.",
+          "question": "Doplň i/y: M_zerný výsledek ho zklamal.",
           "options": [
-            "í — kamynek",
-            "ý — kamýnek",
-            "í — kamínek",
-            "i — kaminek",
-            "y — kamynek"
+            "y — mizerný",
+            "í — mízerný",
+            "i — mizerný",
+            "ý — mýzerný",
+            "y — myzerný"
           ],
-          "answer": "í — kamínek",
-          "hint": "'Kamínek' (malý kámen) NENÍ vyjmenované. Pozor na záměnu s 'Kamýk' (město)!"
+          "answer": "i — mizerný",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-047",
+          "id": "CJ4-02M-01-045",
           "type": "choice",
-          "question": "Doplň i/y: Zam_řil pušku na terč.",
+          "question": "Doplň i/y: Zm_zel v davu.",
           "options": [
-            "y — zamyřil",
-            "ý — zamýřil",
-            "í — zamyřil",
-            "i — zamiřil",
-            "í — zamířil"
+            "y — zmizel",
+            "i — zmizel",
+            "ý — zmýzel",
+            "í — zmízel",
+            "y — zmyzel"
           ],
-          "answer": "í — zamířil",
-          "hint": "'Zamířit' od 'mířit'. NENÍ vyjmenované."
+          "answer": "i — zmizel",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-048",
+          "id": "CJ4-02M-01-046",
           "type": "choice",
-          "question": "Doplň i/y: M_nerální voda je zdravá.",
+          "question": "Doplň i/y: M_neral je nerost.",
           "options": [
-            "i — mynerální",
-            "ý — mýnerální",
-            "y — mynerální",
-            "i — minerální",
-            "í — mínerální"
+            "i — minerál",
+            "y — minerál",
+            "y — mynerál",
+            "í — mínerál",
+            "ý — mýnerál"
           ],
-          "answer": "i — minerální",
-          "hint": "'Minerální' NENÍ vyjmenované slovo po M."
+          "answer": "i — minerál",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-049",
+          "id": "CJ4-02M-01-047",
           "type": "choice",
-          "question": "Doplň i/y: Sem_nko vyklíčilo v hlíně.",
+          "question": "Doplň i/y: Pom_nky jsou v neděli.",
           "options": [
-            "í — semínko",
-            "í — semynko",
-            "i — seminko",
-            "y — semynko",
-            "ý — semýnko"
+            "í — pomínky",
+            "y — pomynky",
+            "y — pomínky",
+            "ý — pomýnky",
+            "i — pominky"
           ],
-          "answer": "í — semínko",
-          "hint": "'Semínko' NENÍ vyjmenované slovo po M."
+          "answer": "í — pomínky",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-048",
+          "type": "choice",
+          "question": "Doplň i/y: Na m_sce přistálo letadlo.",
+          "options": [
+            "í — místě",
+            "y — mystě",
+            "ý — mýstě",
+            "i — mistě",
+            "y — místě"
+          ],
+          "answer": "í — místě",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-01-049",
+          "type": "choice",
+          "question": "Doplň i/y: M_rně se usmíval.",
+          "options": [
+            "y — myrně",
+            "ý — mýrně",
+            "i — mirně",
+            "í — mírně",
+            "y — mírně"
+          ],
+          "answer": "í — mírně",
+          "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po M."
         }
       ]
     },
     {
-      "id": "CJ4-01-03-E",
-      "name": "Vyjmenovaná slova po M — chytáky a záměny",
-      "difficulty": 3,
-      "theory": "Pozor na záměny! 'Mýt' (umývat) × 'mít' (vlastnit). 'Myslit' × 'mísit'. 'Mýlit se' × 'milovat'. 'Kamýk' (město) × 'kamínek' (malý kámen).",
+      "id": "CJ4-02M-02",
+      "name": "Urči — je to vyjmenované?",
+      "difficulty": 1,
+      "theory": "Vyjmenovaná slova po M: my, mýt, myslit, mýlit se, hmyz, myš, hřmít, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk.",
       "tasks": [
         {
-          "id": "CJ4-01-03-050",
+          "id": "CJ4-02M-02-001",
           "type": "choice",
-          "question": "Doplň i/y: M_l jsem dobrý nápad.",
+          "question": "Je slovo 'myslit' vyjmenované slovo po M?",
           "options": [
-            "ý — mýl",
-            "i — mil",
-            "y — myl",
-            "ě — měl",
-            "í — míl"
+            "Ne, není to vyjmenované slovo",
+            "Ne, píše se 'mislit'",
+            "Ano, je to vyjmenované slovo po B",
+            "Ano, je to vyjmenované slovo po M",
+            "Ano, je to vyjmenované slovo po L"
           ],
-          "answer": "ě — měl",
-          "hint": "'Mít' (vlastnit) → měl. Pozor, to není 'mýt' ani 'mýlit se'."
+          "answer": "Ano, je to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-051",
+          "id": "CJ4-02M-02-002",
           "type": "choice",
-          "question": "Doplň i/y: M_l auto šamponem.",
+          "question": "Je slovo 'mince' vyjmenované slovo po M?",
           "options": [
-            "ě — měl",
-            "y — myl",
-            "í — míl",
-            "i — mil",
-            "ý — mýl"
+            "Ne, píše se 'mýnce'",
+            "Ano, píše se 'mynce'",
+            "Ano, je to odvozené od 'mýt'",
+            "Ano, je to vyjmenované slovo po M",
+            "Ne, není to vyjmenované slovo po M"
           ],
-          "answer": "y — myl",
-          "hint": "'Mýt' (umývat) — vyjmenované. Myl auto = umýval ho."
+          "answer": "Ne, není to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-052",
+          "id": "CJ4-02M-02-003",
           "type": "choice",
-          "question": "Doplň i/y: M_loval svou ženu.",
+          "question": "Je slovo 'hmyz' vyjmenované slovo po M?",
           "options": [
-            "y — myloval",
-            "ý — mýloval",
-            "í — míloval",
-            "i — myloval",
-            "i — miloval"
+            "Ano, je to vyjmenované slovo po B",
+            "Ne, není to vyjmenované slovo",
+            "Ne, píše se 'hmiz'",
+            "Ano, je to vyjmenované slovo po M",
+            "Ano, je to vyjmenované slovo po L"
           ],
-          "answer": "i — miloval",
-          "hint": "'Milovat' NENÍ vyjmenované slovo po M. Měkké i."
+          "answer": "Ano, je to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-053",
+          "id": "CJ4-02M-02-004",
           "type": "choice",
-          "question": "Doplň i/y: Sm_sil barvy dohromady.",
+          "question": "Je slovo 'milý' vyjmenované slovo po M?",
           "options": [
-            "ý — smýsil",
-            "í — smísil",
-            "y — smysil",
-            "í — smysil",
-            "i — smisil"
+            "Ne, není to vyjmenované slovo po M",
+            "Ano, píše se 'mylý'",
+            "Ano, je to vyjmenované slovo po M",
+            "Ano, je to odvozené od 'mýlit se'",
+            "Ne, píše se 'mílý'"
           ],
-          "answer": "í — smísil",
-          "hint": "'Smísit' (míchat) NENÍ vyjmenované. Pozor na záměnu se 'smýkat'."
+          "answer": "Ne, není to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-054",
+          "id": "CJ4-02M-02-005",
           "type": "choice",
-          "question": "Doplň i/y: Kam_nek a Kam_k — co je co?",
+          "question": "Je slovo 'umyvadlo' odvozené od vyjmenovaného slova po M?",
           "options": [
-            "i, y — kaminek, Kamyk",
-            "í, í — kamínek, Kamík",
-            "y, í — kamynek, Kamík",
-            "í, ý — kamínek (kámen), Kamýk (město)",
-            "ý, í — kamýnek, Kamík"
+            "Ano, je odvozené od slova 'myš'",
+            "Ne, píše se 'umivadlo'",
+            "Ne, není to odvozené slovo",
+            "Ano, je odvozené od slova 'myslit'",
+            "Ano, je odvozené od slova 'mýt'"
           ],
-          "answer": "í, ý — kamínek (kámen), Kamýk (město)",
-          "hint": "Kamínek = malý kámen (NENÍ vyjmenované). Kamýk = město (JE vyjmenované)."
+          "answer": "Ano, je odvozené od slova 'mýt'",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-055",
+          "id": "CJ4-02M-02-006",
           "type": "choice",
-          "question": "Které slovo je vyjmenované po M?",
+          "question": "Je slovo 'myšlenka' odvozené od vyjmenovaného slova po M?",
           "options": [
-            "mistr",
-            "hmyz",
-            "mír",
-            "milý",
-            "míč"
+            "Ne, není to odvozené slovo",
+            "Ano, je odvozené od slova 'mýt'",
+            "Ano, je odvozené od slova 'myslit'",
+            "Ne, píše se 'mišlenka'",
+            "Ano, je odvozené od slova 'myš'"
           ],
-          "answer": "hmyz",
-          "hint": "Z nabídky jen 'hmyz' je vyjmenované slovo po M."
+          "answer": "Ano, je odvozené od slova 'myslit'",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
         },
         {
-          "id": "CJ4-01-03-056",
+          "id": "CJ4-02M-02-007",
           "type": "choice",
-          "question": "Které slovo NENÍ vyjmenované po M?",
+          "question": "Je slovo 'mizerný' vyjmenované slovo po M?",
           "options": [
-            "zamykat",
+            "Ne, není to vyjmenované slovo po M",
+            "Ne, píše se 'mízerný'",
+            "Ano, je to vyjmenované slovo po M",
+            "Ano, je to odvozené od 'mýlit se'",
+            "Ano, píše se 'myzerný'"
+          ],
+          "answer": "Ne, není to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
+        },
+        {
+          "id": "CJ4-02M-02-008",
+          "type": "choice",
+          "question": "Je slovo 'zamykat' vyjmenované slovo po M?",
+          "options": [
+            "Ano, je to vyjmenované slovo po L",
+            "Ne, není to vyjmenované slovo",
+            "Ano, je to vyjmenované slovo po Z",
+            "Ne, píše se 'zamikat'",
+            "Ano, je to vyjmenované slovo po M"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
+        },
+        {
+          "id": "CJ4-02M-02-009",
+          "type": "choice",
+          "question": "Je slovo 'mýdlo' odvozené od vyjmenovaného slova po M?",
+          "options": [
+            "Ne, není to odvozené slovo",
+            "Ne, píše se 'mídlo'",
+            "Ano, je odvozené od slova 'mýt'",
+            "Ano, je odvozené od slova 'mýlit se'",
+            "Ano, je odvozené od slova 'myslit'"
+          ],
+          "answer": "Ano, je odvozené od slova 'mýt'",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
+        },
+        {
+          "id": "CJ4-02M-02-010",
+          "type": "choice",
+          "question": "Je slovo 'chmýří' vyjmenované slovo po M?",
+          "options": [
+            "Ano, je to vyjmenované slovo po M",
+            "Ano, je to vyjmenované slovo po L",
+            "Ano, je to vyjmenované slovo po B",
+            "Ne, není to vyjmenované slovo",
+            "Ne, píše se 'chmíří'"
+          ],
+          "answer": "Ano, je to vyjmenované slovo po M",
+          "hint": "Projdi si řadu vyjmenovaných slov po M a zkus najít kořen slova."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02M-03",
+      "name": "Vyber správnou větu",
+      "difficulty": 2,
+      "theory": "Správný pravopis vyjmenovaných slov po M poznáš, když si je řekneš nahlas a porovnáš s řadou vyjmenovaných slov.",
+      "tasks": [
+        {
+          "id": "CJ4-02M-03-001",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "My jsme šli do školy a mysleli na oběd.",
+            "Mý jsme šli do školy a mysleli na oběd.",
+            "My jsme šli do školy a misleli na oběd.",
+            "Mi jsme šli do školy a mysleli na oběd.",
+            "Mi jsme šli do školy a misleli na oběd."
+          ],
+          "answer": "My jsme šli do školy a mysleli na oběd.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-002",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Babička myla nádobí mídlem.",
+            "Babička mila nádobí mídlem.",
+            "Babička mila nádobí mýdlem.",
+            "Babička myla nádobí mýdlem.",
+            "Babička mýla nádobí mýdlem."
+          ],
+          "answer": "Babička myla nádobí mýdlem.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-003",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Pod skříní běhala miš a hmyz bzučel u okna.",
+            "Pod skříní běhala myš a hmiz bzučel u okna.",
+            "Pod skříní běhala myš a hmyz bzučel u okna.",
+            "Pod skříní běhala mýš a hmýz bzučel u okna.",
+            "Pod skříní běhala miš a hmiz bzučel u okna."
+          ],
+          "answer": "Pod skříní běhala myš a hmyz bzučel u okna.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-004",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Zamykej dveře, ať se sem nikdo nenachomýtne.",
+            "Zamykej dveře, ať se sem nikdo nenachomítne.",
+            "Zamikej dveře, ať se sem nikdo nenachomýtne.",
+            "Zamýkej dveře, ať se sem nikdo nenachomýtne.",
+            "Zamikej dveře, ať se sem nikdo nenachomítne."
+          ],
+          "answer": "Zamykej dveře, ať se sem nikdo nenachomýtne.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-005",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Mýlíš se, to není omil, ale pravda.",
+            "Mýlíš se, to není omyl, ale pravda.",
+            "Mýlíš se, to není omýl, ale pravda.",
+            "Mílíš se, to není omil, ale pravda.",
+            "Mílíš se, to není omyl, ale pravda."
+          ],
+          "answer": "Mýlíš se, to není omyl, ale pravda.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-006",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Smičec na housle leží na stole.",
+            "Smyčec na housle leží na stolě.",
+            "Smyčec na housle leží na stole.",
+            "Smýčec na housle leží na stole.",
+            "Smičec na housle ležý na stole."
+          ],
+          "answer": "Smyčec na housle leží na stole.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-007",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Chmýří mu rostlo na bradě a dmýchal oheň.",
+            "Chmíří mu rostlo na bradě a dmíchal oheň.",
+            "Chmýřý mu rostlo na bradě a dmýchal oheň.",
+            "Chmýří mu rostlo na bradě a dmíchal oheň.",
+            "Chmíří mu rostlo na bradě a dmýchal oheň."
+          ],
+          "answer": "Chmýří mu rostlo na bradě a dmýchal oheň.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-008",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Jeli jsme do Litomyšle na výlet.",
+            "Jeli jsme do Litomišle na výlet.",
+            "Jeli jsme do Litomýšle na výlet.",
+            "Jeli jsme do Litomišle na výlet.",
+            "Jeli jsme do Litomyšle na výlet."
+          ],
+          "answer": "Jeli jsme do Litomyšle na výlet.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-009",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Mýslím, že mýš utekla do díry.",
+            "Mislím, že miš utekla do díry.",
+            "Myslím, že miš utekla do díry.",
+            "Mislím, že myš utekla do díry.",
+            "Myslím, že myš utekla do díry."
+          ],
+          "answer": "Myslím, že myš utekla do díry.",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        },
+        {
+          "id": "CJ4-02M-03-010",
+          "type": "choice",
+          "question": "Která věta je správně?",
+          "options": [
+            "Umij si ruce v umivadle!",
+            "Umyj si ruce v umyvadle!",
+            "Umyj si ruce v umivadle!",
+            "Umýj si ruce v umývadle!",
+            "Umij si ruce v umyvadle!"
+          ],
+          "answer": "Umyj si ruce v umyvadle!",
+          "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po M."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02M-04",
+      "name": "Třídění — patří / nepatří",
+      "difficulty": 2,
+      "theory": "Vyjmenovaná slova po M si můžeš zapamatovat jako řadu. Slova, která v řadě nejsou a nejsou od nich odvozená, se píší s i/í.",
+      "tasks": [
+        {
+          "id": "CJ4-02M-04-001",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po M?",
+          "options": [
             "mýt",
             "myš",
             "myslit",
-            "místo"
+            "hmyz",
+            "mince"
           ],
-          "answer": "místo",
-          "hint": "'Místo' NENÍ ve vyjmenovaných slovech po M."
+          "answer": "mince",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-057",
+          "id": "CJ4-02M-04-002",
           "type": "choice",
-          "question": "Doplň i/y: Pom_jel jsem se s kamarádem.",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po M?",
           "options": [
-            "í — pomíjel",
-            "ý — pomýjel",
-            "i — pomijel",
-            "í — pomyjel",
-            "y — pomyjel"
+            "zamykat",
+            "dmýchat",
+            "chmýří",
+            "milý",
+            "smýkat"
           ],
-          "answer": "í — pomíjel",
-          "hint": "'Pomíjet' NENÍ vyjmenované. Pozor na záměnu s 'pomýlit se'."
+          "answer": "milý",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-058",
+          "id": "CJ4-02M-04-003",
           "type": "choice",
-          "question": "Doplň i/y: Pom_lil se v počtech.",
+          "question": "Které slovo NEPATŘÍ mezi vyjmenovaná slova po M?",
           "options": [
-            "ý — pomílil",
-            "ý — pomýlil",
-            "i — pomilil",
-            "í — pomílil",
-            "y — pomylil"
+            "Kamýk",
+            "mýlit se",
+            "Litomyšl",
+            "minerál",
+            "nachomýtnout se"
           ],
-          "answer": "ý — pomýlil",
-          "hint": "Od 'mýlit se' — vyjmenované."
+          "answer": "minerál",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-059",
+          "id": "CJ4-02M-04-004",
           "type": "choice",
-          "question": "Doplň i/y: M_cí šampion zvítězil.",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po M?",
           "options": [
-            "i — mící",
-            "y — mycí",
-            "í — mící",
-            "y — mící",
-            "ý — mýcí"
+            "milý",
+            "minuta",
+            "myš",
+            "mince",
+            "mistr"
           ],
-          "answer": "y — mycí",
-          "hint": "'Mycí' (prostředek) od 'mýt'."
+          "answer": "myš",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-060",
+          "id": "CJ4-02M-04-005",
           "type": "choice",
-          "question": "Doplň i/y: Sm_sl života hledá každý.",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po M?",
           "options": [
-            "y — smisl",
-            "í — smísl",
-            "i — smisl",
-            "y — smysl",
-            "ý — smýsl"
+            "město",
+            "mírný",
+            "miska",
+            "místo",
+            "dmýchat"
           ],
-          "answer": "y — smysl",
-          "hint": "'Smysl' je od 'myslit'. Vyjmenované."
+          "answer": "dmýchat",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         },
         {
-          "id": "CJ4-01-03-061",
+          "id": "CJ4-02M-04-006",
           "type": "choice",
-          "question": "Které slovo je odvozené od vyjmenovaného po M?",
+          "question": "Které slovo je ODVOZENÉ od vyjmenovaného slova po M?",
           "options": [
-            "vymířit",
-            "vymyslet",
-            "vymísit",
-            "vymizet",
-            "vymínit"
+            "minerál",
+            "miska",
+            "mizerný",
+            "milión",
+            "myšlenka"
           ],
-          "answer": "vymyslet",
-          "hint": "'Vymyslet' od 'myslit'. Ostatní jsou od slov, která NEJSOU vyjmenovaná."
+          "answer": "myšlenka",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-04-007",
+          "type": "choice",
+          "question": "Které slovo je ODVOZENÉ od vyjmenovaného slova po M?",
+          "options": [
+            "milost",
+            "minerálka",
+            "minute",
+            "umyvadlo",
+            "mince"
+          ],
+          "answer": "umyvadlo",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-04-008",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi odvozená slova po M?",
+          "options": [
+            "myšák",
+            "mylně",
+            "mizerný",
+            "hmyzí",
+            "mýdlo"
+          ],
+          "answer": "mizerný",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-04-009",
+          "type": "choice",
+          "question": "Které slovo NEPATŘÍ mezi odvozená slova po M?",
+          "options": [
+            "smyčec",
+            "dmýchadlo",
+            "pomyslet",
+            "mistr",
+            "zamykat"
+          ],
+          "answer": "mistr",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
+        },
+        {
+          "id": "CJ4-02M-04-010",
+          "type": "choice",
+          "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po M?",
+          "options": [
+            "kamizola",
+            "kamion",
+            "kamarád",
+            "Kamýk",
+            "kameník"
+          ],
+          "answer": "Kamýk",
+          "hint": "Vzpomeň si na řadu vyjmenovaných slov po M."
         }
       ]
     },
     {
-      "id": "CJ4-01-03-F",
-      "name": "Vyjmenovaná slova po M — souhrnné procvičování",
+      "id": "CJ4-02M-05",
+      "name": "Páry — rozliš význam slov",
       "difficulty": 2,
-      "theory": "Souhrn: my, mýt, myslit, mýlit se, hmyz, myš, hřmýt, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk.",
+      "theory": "Některá slova znějí podobně, ale mají jiný význam a jiný pravopis. Například 'my' (zájmeno, kdo? my) a 'mi' (zájmeno, komu? mně/mi).",
       "tasks": [
         {
-          "id": "CJ4-01-03-062",
+          "id": "CJ4-02M-05-001",
           "type": "choice",
-          "question": "Doplň i/y: M_dlový bublinkovač baví děti.",
+          "question": "Jaký je rozdíl mezi 'my' a 'mi'?",
           "options": [
-            "i — midlový",
-            "ý — mídlový",
-            "í — mídlový",
-            "y — mydlový",
-            "ý — mýdlový"
+            "'my' = 3. pád (dej my), 'mi' = množné číslo",
+            "'my' se nepoužívá, správně je vždy 'mi'",
+            "Obě slova jsou vyjmenovaná",
+            "'my' = zájmeno, množné číslo (my všichni), 'mi' = zájmeno, 3. pád (dej mi)",
+            "Obě slova znamenají totéž"
           ],
-          "answer": "ý — mýdlový",
-          "hint": "Od 'mýdlo/mýt'."
+          "answer": "'my' = zájmeno, množné číslo (my všichni), 'mi' = zájmeno, 3. pád (dej mi)",
+          "hint": "Zamysli se nad významem obou slov."
         },
         {
-          "id": "CJ4-01-03-063",
+          "id": "CJ4-02M-05-002",
           "type": "choice",
-          "question": "Doplň i/y: Nesm_sl! To přece není pravda.",
+          "question": "Jaký je rozdíl mezi 'mýt' a 'mít'?",
           "options": [
-            "ý — nesmýsl",
-            "y — nesmisl",
-            "i — nesmisl",
-            "í — nesmísl",
-            "y — nesmysl"
+            "Obě slova znamenají totéž",
+            "'mýt' se nepoužívá",
+            "'mýt' = vlastnit, 'mít' = umývat",
+            "Obě slova jsou nevyjmenovaná",
+            "'mýt' = umývat (mýt nádobí), 'mít' = vlastnit (mít knihu)"
           ],
-          "answer": "y — nesmysl",
-          "hint": "Od 'myslit/smysl'."
+          "answer": "'mýt' = umývat (mýt nádobí), 'mít' = vlastnit (mít knihu)",
+          "hint": "Zamysli se nad významem obou slov."
         },
         {
-          "id": "CJ4-01-03-064",
+          "id": "CJ4-02M-05-003",
           "type": "choice",
-          "question": "Doplň i/y: Hm_zák je nepříjemný člověk.",
+          "question": "Ve větě 'Dej _____ ten hrnek.' doplň správné slovo:",
           "options": [
-            "y — hmyzák",
-            "ý — hmýzák",
-            "y — hmizák",
-            "i — hmizák",
-            "í — hmízák"
+            "mi (množné číslo)",
+            "mý (3. pád)",
+            "mí (množné číslo)",
+            "my (3. pád — komu?)",
+            "mi (3. pád — komu? mně/mi)"
           ],
-          "answer": "y — hmyzák",
-          "hint": "Od 'hmyz'. Hovorové slovo."
+          "answer": "mi (3. pád — komu? mně/mi)",
+          "hint": "Zamysli se nad významem obou slov."
         },
         {
-          "id": "CJ4-01-03-065",
+          "id": "CJ4-02M-05-004",
           "type": "choice",
-          "question": "Doplň i/y: Zam_kat dveře na noc je rozumné.",
+          "question": "Ve větě '_____ jsme to viděli.' doplň správné slovo:",
           "options": [
-            "ý — zamýkat",
-            "í — zamíkat",
-            "y — zamykat",
-            "i — zamikat",
-            "y — zamikat"
+            "Mí (zájmeno — kdo?)",
+            "Mi (3. pád)",
+            "My (zájmeno — kdo? my)",
+            "Mi (zájmeno — kdo?)",
+            "Mý (zájmeno — kdo?)"
           ],
-          "answer": "y — zamykat",
-          "hint": "'Zamykat' — vyjmenované."
+          "answer": "My (zájmeno — kdo? my)",
+          "hint": "Zamysli se nad významem obou slov."
         },
         {
-          "id": "CJ4-01-03-066",
+          "id": "CJ4-02M-05-005",
           "type": "choice",
-          "question": "Doplň i/y: M_slitel přemýšlel o vesmíru.",
+          "question": "Jaký je rozdíl mezi 'mýlit se' a 'milovat'?",
           "options": [
-            "i — mislitel",
-            "y — mislitel",
-            "í — míslitel",
-            "ý — mýslitel",
-            "y — myslitel"
+            "'mýlit se' = chybovat (vyjmenované), 'milovat' = mít rád (nevyjmenované)",
+            "Obě slova jsou vyjmenovaná po M",
+            "'mýlit se' = mít rád, 'milovat' = chybovat",
+            "Obě slova jsou nevyjmenovaná",
+            "'mýlit se' i 'milovat' se píší s y"
           ],
-          "answer": "y — myslitel",
-          "hint": "Od 'myslit'."
+          "answer": "'mýlit se' = chybovat (vyjmenované), 'milovat' = mít rád (nevyjmenované)",
+          "hint": "Zamysli se nad významem obou slov."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-02M-06",
+      "name": "Doplň i/y — mix a opakování",
+      "difficulty": 2,
+      "theory": "Teď si zopakujeme všechno dohromady — vyjmenovaná i nevyjmenovaná slova po M.",
+      "tasks": [
+        {
+          "id": "CJ4-02M-06-001",
+          "type": "choice",
+          "question": "Doplň i/y: M_slel na domov.",
+          "options": [
+            "i — myslel",
+            "y — myslel",
+            "i — mislel",
+            "ý — mýslel",
+            "í — míslel"
+          ],
+          "answer": "y — myslel",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-067",
+          "id": "CJ4-02M-06-002",
           "type": "choice",
-          "question": "Doplň i/y: Sm_sluplný rozhovor nás obohatil.",
+          "question": "Doplň i/y: M_dlo voní levandulí.",
           "options": [
-            "í — smísluplný",
-            "ý — smýsluplný",
-            "y — smysluplný",
-            "i — smisluplný",
-            "y — smisluplný"
+            "ý — mýdlo",
+            "í — mídlo",
+            "y — mydlo",
+            "i — mydlo",
+            "i — midlo"
           ],
-          "answer": "y — smysluplný",
-          "hint": "Od 'smysl/myslit'."
+          "answer": "ý — mýdlo",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-068",
+          "id": "CJ4-02M-06-003",
           "type": "choice",
-          "question": "Doplň i/y: Odem_kl zámek a vešel dovnitř.",
+          "question": "Doplň i/y: Hm_z létá kolem lampy.",
           "options": [
-            "i — odemikl",
-            "y — odemykl",
-            "ý — odemýkl",
-            "y — odemikl",
-            "í — odemíkl"
+            "ý — hmýz",
+            "i — hmyz",
+            "i — hmiz",
+            "í — hmíz",
+            "y — hmyz"
           ],
-          "answer": "y — odemykl",
-          "hint": "Od 'zamykat/odmykat'."
+          "answer": "y — hmyz",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-069",
+          "id": "CJ4-02M-06-004",
           "type": "choice",
-          "question": "Doplň i/y: Prom_šlený plán se podařil.",
+          "question": "Doplň i/y: Zam_kal dveře na dva západy.",
           "options": [
-            "y — promyšlený",
-            "í — promíšlený",
-            "i — promišlený",
-            "y — promišlený",
-            "ý — promýšlený"
+            "i — zamikal",
+            "ý — zamýkal",
+            "y — zamykal",
+            "í — zamíkal",
+            "i — zamykal"
           ],
-          "answer": "y — promyšlený",
-          "hint": "Od 'myslit/promyslet'."
+          "answer": "y — zamykal",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-070",
+          "id": "CJ4-02M-06-005",
           "type": "choice",
-          "question": "Doplň i/y: Um_vat si ruce je důležité.",
+          "question": "Doplň i/y: M_š utekla do díry.",
           "options": [
-            "í — umívat",
-            "ý — umývat",
-            "ý — umívat",
-            "y — umyvat",
-            "i — umivat"
+            "ý — mýš",
+            "i — myš",
+            "í — míš",
+            "y — myš",
+            "i — miš"
           ],
-          "answer": "ý — umývat",
-          "hint": "Od 'mýt'."
+          "answer": "y — myš",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-071",
+          "id": "CJ4-02M-06-006",
           "type": "choice",
-          "question": "Doplň i/y: M_šáci se hráli na zahradě.",
+          "question": "Doplň i/y: Sm_kal se po ledě.",
           "options": [
-            "y — mišáci",
-            "í — míšáci",
-            "i — mišáci",
-            "y — myšáci",
-            "ý — mýšáci"
+            "i — smikal",
+            "í — smíkal",
+            "y — smykal",
+            "i — smykal",
+            "ý — smýkal"
           ],
-          "answer": "y — myšáci",
-          "hint": "Od 'myš/myšák'."
+          "answer": "ý — smýkal",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-072",
+          "id": "CJ4-02M-06-007",
           "type": "choice",
-          "question": "Doplň i/y: Neom_lně tvrdil svou pravdu.",
+          "question": "Doplň i/y: Dm_chal oheň v krbu.",
           "options": [
-            "y — neomylně",
-            "ý — neomýlně",
-            "i — neomilně",
-            "í — neomílně",
-            "y — neomilně"
+            "y — dmychal",
+            "í — dmíchal",
+            "ý — dmýchal",
+            "i — dmichal",
+            "i — dmychal"
           ],
-          "answer": "y — neomylně",
-          "hint": "Od 'mýlit se/omyl'."
+          "answer": "ý — dmýchal",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-073",
+          "id": "CJ4-02M-06-008",
           "type": "choice",
-          "question": "Doplň i/y: Sm_čcový orchestr hrál krásně.",
+          "question": "Doplň i/y: Nachom_tnul se k nehodě.",
           "options": [
-            "ý — smýčcový",
-            "y — smyčcový",
-            "í — smíčcový",
-            "i — smičcový",
-            "y — smičcový"
+            "i — nachomytnul",
+            "y — nachomytnul",
+            "i — nachomitnul",
+            "í — nachomítnul",
+            "ý — nachomýtnul"
           ],
-          "answer": "y — smyčcový",
-          "hint": "Od 'smyčec/smýkat'."
+          "answer": "ý — nachomýtnul",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-074",
+          "id": "CJ4-02M-06-009",
           "type": "choice",
-          "question": "Doplň i/y: M_rná povaha mu pomáhala.",
+          "question": "Doplň i/y: M_ to zvládneme!",
           "options": [
-            "í — mírná",
-            "i — mirná",
-            "y — myrná",
-            "ý — mýrná",
-            "í — myrná"
-          ],
-          "answer": "í — mírná",
-          "hint": "'Mírný' od 'mír'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-03-075",
-          "type": "choice",
-          "question": "Doplň i/y: Vom_tl jsem celou noc.",
-          "options": [
-            "i — vomytl",
-            "y — vomytl",
-            "í — vomítl",
-            "i — vomitl",
-            "ý — vomýtl"
-          ],
-          "answer": "y — vomytl",
-          "hint": "Pozor — neformální slovo. Ale 'mýt' = čistit, od toho i vy-mýt."
-        },
-        {
-          "id": "CJ4-01-03-076",
-          "type": "choice",
-          "question": "Doplň i/y: Chm_ří z pampelišky létalo vzduchem.",
-          "options": [
-            "ý — chmýří",
-            "í — chmíří",
-            "ý — chmíří",
-            "i — chmiří",
-            "y — chmyří"
-          ],
-          "answer": "ý — chmýří",
-          "hint": "'Chmýří' — vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-077",
-          "type": "choice",
-          "question": "Doplň i/y: Dom_slel se správného řešení.",
-          "options": [
-            "í — domíslel",
-            "y — domislel",
-            "ý — domýslel",
-            "y — domyslel",
-            "i — domislel"
-          ],
-          "answer": "y — domyslel",
-          "hint": "Od 'myslit'."
-        },
-        {
-          "id": "CJ4-01-03-078",
-          "type": "choice",
-          "question": "Doplň i/y: Přem_stil nábytek do pokoje.",
-          "options": [
-            "y — přemystil",
-            "ý — přemýstil",
-            "í — přemístil",
-            "i — přemistil",
-            "í — přemystil"
-          ],
-          "answer": "í — přemístil",
-          "hint": "'Přemístit' od 'místo'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-03-079",
-          "type": "choice",
-          "question": "Doplň i/y: Vým_sl to nebyl, říkal pravdu.",
-          "options": [
-            "y — výmisl",
-            "í — výmísl",
-            "y — výmysl",
-            "i — výmisl",
-            "ý — výmýsl"
-          ],
-          "answer": "y — výmysl",
-          "hint": "Od 'myslit/vymyslet'."
-        },
-        {
-          "id": "CJ4-01-03-080",
-          "type": "choice",
-          "question": "Doplň i/y: M_lenec se snažil napravit chybu.",
-          "options": [
-            "í — milenec",
-            "y — mylenec",
-            "ý — mýlenec",
-            "í — mílenec",
-            "i — milenec"
-          ],
-          "answer": "i — milenec",
-          "hint": "Pozor! 'Milenec' od 'milovat'. NENÍ vyjmenované. Záměna s 'mýlit se'."
-        },
-        {
-          "id": "CJ4-01-03-081",
-          "type": "choice",
-          "question": "Doplň i/y: Om_l slova, která nechtěl říct.",
-          "options": [
-            "ý — omýl",
-            "í — omíl",
-            "y — omil",
-            "y — omyl",
-            "i — omil"
-          ],
-          "answer": "y — omyl",
-          "hint": "'Omyl' od 'mýlit se'."
-        },
-        {
-          "id": "CJ4-01-03-082",
-          "type": "choice",
-          "question": "Doplň i/y: Tam se m_ líbilo.",
-          "options": [
-            "ý — mý",
-            "y — my",
-            "í — mí",
             "i — mi",
-            "i — my"
-          ],
-          "answer": "i — mi",
-          "hint": "Pozor! 'Mi' (3. pád zájmena já) — měkké i. 'My' (1. osoba mn. čísla) — tvrdé y. Tady: líbilo se MI = mně."
-        },
-        {
-          "id": "CJ4-01-03-083",
-          "type": "choice",
-          "question": "Doplň i/y: M_ všichni půjdeme.",
-          "options": [
-            "y — my",
             "í — mí",
-            "ý — mý",
-            "i — mi",
-            "y — mí"
-          ],
-          "answer": "y — my",
-          "hint": "'My' (my všichni) — vyjmenované slovo po M."
-        },
-        {
-          "id": "CJ4-01-03-084",
-          "type": "choice",
-          "question": "Doplň i/y: Řekni m_, kde to je.",
-          "options": [
-            "ý — mý",
-            "í — mí",
-            "i — mi",
             "i — my",
+            "ý — mý",
             "y — my"
           ],
+          "answer": "y — my",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
+        },
+        {
+          "id": "CJ4-02M-06-010",
+          "type": "choice",
+          "question": "Doplň i/y: Řekni m_ to ještě jednou.",
+          "options": [
+            "y — my",
+            "í — mí",
+            "ý — mý",
+            "y — mi",
+            "i — mi"
+          ],
           "answer": "i — mi",
-          "hint": "'Mi' = mně (3. pád). Měkké i. NENÍ vyjmenované."
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-085",
+          "id": "CJ4-02M-06-011",
           "type": "choice",
-          "question": "Doplň i/y: Přem_šlivý člověk nejedná zbrkle.",
+          "question": "Doplň i/y: Um_j si ruce před jídlem!",
           "options": [
-            "ý — přemíšlivý",
-            "y — přemyšlivý",
-            "í — přemíšlivý",
-            "ý — přemýšlivý",
-            "i — přemišlivý"
+            "i — umij",
+            "i — umyj",
+            "í — umíj",
+            "y — umyj",
+            "ý — umýj"
           ],
-          "answer": "ý — přemýšlivý",
-          "hint": "Od 'myslit/přemýšlet'."
+          "answer": "y — umyj",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-086",
+          "id": "CJ4-02M-06-012",
           "type": "choice",
-          "question": "Doplň i/y: M_sto konání akce se změnilo.",
+          "question": "Doplň i/y: To je velký om_l.",
           "options": [
-            "í — místo",
-            "í — mysto",
-            "i — misto",
-            "y — mysto",
-            "ý — mýsto"
+            "i — omil",
+            "i — omyl",
+            "ý — omýl",
+            "y — omyl",
+            "í — omíl"
           ],
-          "answer": "í — místo",
-          "hint": "'Místo' NENÍ vyjmenované."
+          "answer": "y — omyl",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-087",
+          "id": "CJ4-02M-06-013",
           "type": "choice",
-          "question": "Doplň i/y: Hm_zí výzkum je důležitý.",
+          "question": "Doplň i/y: M_nce padla na zem.",
           "options": [
-            "y — hmizí",
-            "y — hmyzí",
-            "ý — hmýzí",
-            "i — hmizí",
-            "í — hmízí"
+            "í — mínce",
+            "ý — mýnce",
+            "y — mynce",
+            "i — mince",
+            "y — mince"
           ],
-          "answer": "y — hmyzí",
-          "hint": "Od 'hmyz'."
+          "answer": "i — mince",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-088",
+          "id": "CJ4-02M-06-014",
           "type": "choice",
-          "question": "Doplň i/y: Opom_jel důležitý detail.",
+          "question": "Doplň i/y: Jedeme do Litom_šle.",
           "options": [
-            "í — opomyjel",
-            "ý — opomýjel",
-            "í — opomíjel",
-            "y — opomyjel",
-            "i — opomijel"
+            "y — Litomyšle",
+            "í — Litomíšle",
+            "i — Litomišle",
+            "i — Litomyšle",
+            "ý — Litomýšle"
           ],
-          "answer": "í — opomíjel",
-          "hint": "'Opomíjet' NENÍ vyjmenované. Měkké í."
+          "answer": "y — Litomyšle",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-089",
+          "id": "CJ4-02M-06-015",
           "type": "choice",
-          "question": "Doplň i/y: M_sotín je vesnice na Moravě.",
+          "question": "Doplň i/y: M_lá paní čekala na autobus.",
           "options": [
-            "y — Mysotín",
-            "í — Mísotín",
-            "i — Misotín",
-            "ý — Mýsotín",
-            "i — Misotín"
+            "ý — mýlá",
+            "í — mílá",
+            "y — mylá",
+            "i — milá",
+            "y — milá"
           ],
-          "answer": "i — Misotín",
-          "hint": "'Misotín' NENÍ vyjmenované slovo po M. Místní názvy s y po M: jen Litomyšl a Kamýk."
+          "answer": "i — milá",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-090",
+          "id": "CJ4-02M-06-016",
           "type": "choice",
-          "question": "Doplň i/y: Vym_tit plevel ze záhonku.",
+          "question": "Doplň i/y: Pom_sli na to dvakrát.",
           "options": [
-            "í — vymítit",
-            "y — vymytit",
-            "ý — vymýtit",
-            "í — vymítit",
-            "i — vymitit"
+            "i — pomisli",
+            "í — pomísli",
+            "ý — pomýsli",
+            "i — pomysli",
+            "y — pomysli"
           ],
-          "answer": "ý — vymýtit",
-          "hint": "'Vymýtit' (odstranit) — od 'mýtit'. Souvisí s 'mýt'."
+          "answer": "y — pomysli",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-091",
+          "id": "CJ4-02M-06-017",
           "type": "choice",
-          "question": "Kolik vyjmenovaných slov po M znáš?",
+          "question": "Doplň i/y: Chm_ří mu porostlo na bradě.",
           "options": [
-            "10",
-            "14",
-            "5",
-            "7",
-            "20"
+            "ý — chmýří",
+            "i — chmyří",
+            "í — chmíří",
+            "y — chmyří",
+            "i — chmiří"
           ],
-          "answer": "14",
-          "hint": "My, mýt, myslit, mýlit se, hmyz, myš, hřmýt, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk."
+          "answer": "ý — chmýří",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-092",
+          "id": "CJ4-02M-06-018",
           "type": "choice",
-          "question": "Které dvě slova z řady jsou vyjmenovaná po M?",
+          "question": "Doplň i/y: M_zerná nálada ho provázela.",
           "options": [
-            "míč, mír",
-            "myš, hmyz",
-            "minerál, minuta",
-            "mistr, milý",
-            "mísa, místo"
+            "y — mizerná",
+            "í — mízerná",
+            "y — myzerná",
+            "ý — mýzerná",
+            "i — mizerná"
           ],
-          "answer": "myš, hmyz",
-          "hint": "Z nabídky jen 'myš' a 'hmyz' jsou vyjmenovaná."
+          "answer": "i — mizerná",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-093",
+          "id": "CJ4-02M-06-019",
           "type": "choice",
-          "question": "Doplň i/y: M_val jsem rád koláče.",
+          "question": "Doplň i/y: Sm_čcový kvartet hrál na koncertě.",
           "options": [
-            "i — mival",
-            "y — myval",
-            "ý — mýval",
-            "í — míval",
-            "í — myval"
+            "i — smičcový",
+            "í — smíčcový",
+            "ý — smýčcový",
+            "i — smyčcový",
+            "y — smyčcový"
           ],
-          "answer": "í — míval",
-          "hint": "'Míval' od 'mít' (vlastnit). NENÍ vyjmenované. Pozor na záměnu s 'mýval' (zvíře)!"
+          "answer": "y — smyčcový",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         },
         {
-          "id": "CJ4-01-03-094",
+          "id": "CJ4-02M-06-020",
           "type": "choice",
-          "question": "Doplň i/y: M_val je noční zvíře.",
+          "question": "Doplň i/y: V Kam_ku je krásný zámek.",
           "options": [
-            "i — mival",
-            "ý — mýval",
-            "ý — míval",
-            "y — myval",
-            "í — míval"
+            "i — Kamiku",
+            "ý — Kamýku",
+            "í — Kamíku",
+            "i — Kamyku",
+            "y — Kamyku"
           ],
-          "answer": "ý — mýval",
-          "hint": "'Mýval' (zvíře) — od 'mýt' (myje si potravu)."
-        },
-        {
-          "id": "CJ4-01-03-095",
-          "type": "choice",
-          "question": "Doplň i/y: Nám_tka kolegy byla oprávněná.",
-          "options": [
-            "i — namitka",
-            "ý — námýtka",
-            "í — namytka",
-            "í — námítka",
-            "y — namytka"
-          ],
-          "answer": "í — námítka",
-          "hint": "'Námítka' od 'namítat'. NENÍ vyjmenované."
-        },
-        {
-          "id": "CJ4-01-03-096",
-          "type": "choice",
-          "question": "Doplň i/y: Om_vat ovoce před jídlem.",
-          "options": [
-            "ý — omívat",
-            "i — omivat",
-            "í — omívat",
-            "ý — omývat",
-            "y — omyvat"
-          ],
-          "answer": "ý — omývat",
-          "hint": "Od 'mýt'."
-        },
-        {
-          "id": "CJ4-01-03-097",
-          "type": "choice",
-          "question": "Doplň i/y: Rozm_slel si to a zůstal doma.",
-          "options": [
-            "y — rozmislel",
-            "i — rozmislel",
-            "y — rozmyslel",
-            "ý — rozmýslel",
-            "í — rozmíslel"
-          ],
-          "answer": "y — rozmyslel",
-          "hint": "Od 'myslit/rozmyslet'."
-        },
-        {
-          "id": "CJ4-01-03-098",
-          "type": "choice",
-          "question": "Doplň i/y: M_cí prostředek na podlahu.",
-          "options": [
-            "i — micí",
-            "í — mící",
-            "y — mící",
-            "ý — mýcí",
-            "y — mycí"
-          ],
-          "answer": "y — mycí",
-          "hint": "Od 'mýt'. Mycí prostředek = na mytí."
-        },
-        {
-          "id": "CJ4-01-03-099",
-          "type": "choice",
-          "question": "Doplň i/y: Sm_šlený příběh nás pobavil.",
-          "options": [
-            "í — smíšlený",
-            "i — smišlený",
-            "y — smišlený",
-            "y — smyšlený",
-            "ý — smýšlený"
-          ],
-          "answer": "y — smyšlený",
-          "hint": "Od 'myslit/smyslet'. Smyšlený = vymyšlený."
-        },
-        {
-          "id": "CJ4-01-03-100",
-          "type": "choice",
-          "question": "Doplň i/y: Nachom_tl se k výhodné koupi.",
-          "options": [
-            "y — nachomytl",
-            "i — nachomitl",
-            "ý — nachomýtl",
-            "ý — nachomítl",
-            "í — nachomítl"
-          ],
-          "answer": "ý — nachomýtl",
-          "hint": "'Nachomýtnout se' — vyjmenované slovo po M."
+          "answer": "ý — Kamýku",
+          "hint": "Je to vyjmenované slovo po M, nebo ne? Zkus si říct řadu."
         }
       ]
     }
