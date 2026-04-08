@@ -286,7 +286,8 @@
           "nazev": "Krivákův rozkaz",
           "popis": "Na rubu je kus náčrtku mapy!",
           "ikona": "📜"
-        }
+        },
+        "video": "video/m01/d01/D1-S3.mp4"
       },
       "scenka_po": {
         "dialogy": [
@@ -520,7 +521,8 @@
           "nazev": "Kbelík s mapou",
           "popis": "Uvnitř kbelíku je kus mapy okolí!",
           "ikona": "🪣"
-        }
+        },
+        "video": "video/m01/d01/D1-S4.mp4"
       },
       "scenka_po": {
         "dialogy": [
@@ -709,7 +711,8 @@
           "nazev": "Papouščí peříčko",
           "popis": "Symbol nového spojenectví!",
           "ikona": "🪶"
-        }
+        },
+        "video": "video/m01/d01/D1-S5.mp4"
       },
       "scenka_po": {
         "dialogy": [
@@ -955,5 +958,14 @@
       "popis": "Symbol nového spojenectví!",
       "ikona": "🪶"
     }
-  ]
+  ],
+  "videa": {
+    "uvod_externi": "video/m01/d01/D1-S1.mp4",
+    "uvod_laborator": "video/m01/d01/D1-S2.mp4",
+    "akce_ok1_skripek": "video/m01/d01/D1-S3.mp4",
+    "akce_ok2_repak": "video/m01/d01/D1-S4.mp4",
+    "akce_ok3_keksik": "video/m01/d01/D1-S5.mp4",
+    "zaver": "video/m01/d01/D1-S6.mp4",
+    "predmety": "video/m01/d01/D1-P.mp4"
+  }
 }
