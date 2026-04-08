@@ -1,0 +1,34 @@
+{
+  "verze": "1.0",
+  "format": "desítkové okruhy",
+  "datum": "2026-04-08",
+  "predmety": {
+    "cestina": {
+      "okruhy": 121,
+      "tasks": 1205,
+      "temata": 13
+    },
+    "matika": {
+      "okruhy": 62,
+      "tasks": 600,
+      "temata": 10
+    },
+    "prirodoveda": {
+      "okruhy": 18,
+      "tasks": 180,
+      "temata": 9
+    },
+    "vlastiveda": {
+      "okruhy": 14,
+      "tasks": 140,
+      "temata": 7
+    },
+    "anglictina": {
+      "okruhy": 150,
+      "tasks": 1485,
+      "temata": 15
+    }
+  },
+  "celkem_okruhy": 365,
+  "celkem_ulohy": 3610
+}
