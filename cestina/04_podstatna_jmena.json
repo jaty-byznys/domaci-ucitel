@@ -1,0 +1,1448 @@
+{
+  "id": "CJ4-04",
+  "name": "Podstatná jména",
+  "order": 10,
+  "prerequisite": "CJ4-03",
+  "skills": [
+    {
+      "id": "CJ4-04-01",
+      "name": "Urči rod podstatného jména",
+      "difficulty": 1,
+      "theory": "Rod poznáš pomocí ukazovacího zájmena: TEN pes (mužský), TA kočka (ženský), TO město (střední).",
+      "tasks": [
+        {
+          "id": "CJ4-04-01-001",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'pes'?",
+          "options": [
+            "rod mužský i ženský",
+            "rod střední",
+            "rod mužský",
+            "nelze určit",
+            "rod ženský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-002",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'kočka'?",
+          "options": [
+            "rod ženský",
+            "rod mužský i ženský",
+            "rod mužský",
+            "rod střední",
+            "nelze určit"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-003",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'město'?",
+          "options": [
+            "rod střední",
+            "rod mužský",
+            "rod mužský i ženský",
+            "rod ženský",
+            "nelze určit"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-004",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'táta'?",
+          "options": [
+            "nelze určit",
+            "rod mužský",
+            "rod ženský",
+            "rod střední",
+            "rod mužský i ženský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-005",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'slunce'?",
+          "options": [
+            "rod mužský i ženský",
+            "rod mužský",
+            "rod ženský",
+            "nelze určit",
+            "rod střední"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-006",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'židle'?",
+          "options": [
+            "rod mužský",
+            "nelze určit",
+            "rod střední",
+            "rod mužský i ženský",
+            "rod ženský"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-007",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'kuře'?",
+          "options": [
+            "rod střední",
+            "rod mužský i ženský",
+            "rod mužský",
+            "nelze určit",
+            "rod ženský"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-008",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'les'?",
+          "options": [
+            "rod střední",
+            "rod mužský i ženský",
+            "nelze určit",
+            "rod mužský",
+            "rod ženský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-009",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'píseň'?",
+          "options": [
+            "rod mužský",
+            "rod střední",
+            "nelze určit",
+            "rod ženský",
+            "rod mužský i ženský"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-010",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'okno'?",
+          "options": [
+            "rod ženský",
+            "rod mužský",
+            "rod mužský i ženský",
+            "rod střední",
+            "nelze určit"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-011",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'předseda'?",
+          "options": [
+            "rod střední",
+            "nelze určit",
+            "rod ženský",
+            "rod mužský i ženský",
+            "rod mužský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-012",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'růže'?",
+          "options": [
+            "nelze určit",
+            "rod mužský i ženský",
+            "rod mužský",
+            "rod ženský",
+            "rod střední"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-013",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'moře'?",
+          "options": [
+            "rod střední",
+            "rod mužský i ženský",
+            "rod mužský",
+            "rod ženský",
+            "nelze určit"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-014",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'stroj'?",
+          "options": [
+            "rod ženský",
+            "nelze určit",
+            "rod střední",
+            "rod mužský i ženský",
+            "rod mužský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-015",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'kost'?",
+          "options": [
+            "rod střední",
+            "nelze určit",
+            "rod mužský",
+            "rod ženský",
+            "rod mužský i ženský"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-016",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'stavení'?",
+          "options": [
+            "rod střední",
+            "rod mužský",
+            "rod mužský i ženský",
+            "rod ženský",
+            "nelze určit"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-017",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'soudce'?",
+          "options": [
+            "rod mužský i ženský",
+            "nelze určit",
+            "rod ženský",
+            "rod střední",
+            "rod mužský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-018",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'tráva'?",
+          "options": [
+            "rod ženský",
+            "rod mužský",
+            "rod střední",
+            "rod mužský i ženský",
+            "nelze určit"
+          ],
+          "answer": "rod ženský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-019",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'letadlo'?",
+          "options": [
+            "rod střední",
+            "nelze určit",
+            "rod ženský",
+            "rod mužský i ženský",
+            "rod mužský"
+          ],
+          "answer": "rod střední",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        },
+        {
+          "id": "CJ4-04-01-020",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'hrad'?",
+          "options": [
+            "rod mužský i ženský",
+            "rod střední",
+            "nelze určit",
+            "rod mužský",
+            "rod ženský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Zkus si říct: ten (mužský), ta (ženský), to (střední)."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-04-02",
+      "name": "Urči pád",
+      "difficulty": 2,
+      "theory": "Pád poznáš podle otázky: 1. Kdo/Co, 2. Koho/Čeho, 3. Komu/Čemu, 4. Koho/Co, 5. Oslovení, 6. O kom/O čem, 7. Kým/Čím.",
+      "tasks": [
+        {
+          "id": "CJ4-04-02-001",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'pes' ve větě 'Pes běží.'?",
+          "options": [
+            "5. pád (oslovení)",
+            "2. pád (koho? čeho?)",
+            "1. pád (kdo? co?)",
+            "4. pád (koho? co?)",
+            "3. pád (komu? čemu?)"
+          ],
+          "answer": "1. pád (kdo? co?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-002",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'psa' ve větě 'Vidím psa.'?",
+          "options": [
+            "3. pád (komu? čemu?)",
+            "4. pád (koho? co?)",
+            "1. pád (kdo? co?)",
+            "6. pád (o kom? o čem?)",
+            "2. pád (koho? čeho?)"
+          ],
+          "answer": "4. pád (koho? co?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-003",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'psovi' ve větě 'Dám psovi žrádlo.'?",
+          "options": [
+            "1. pád (kdo? co?)",
+            "2. pád (koho? čeho?)",
+            "3. pád (komu? čemu?)",
+            "4. pád (koho? co?)",
+            "7. pád (kým? čím?)"
+          ],
+          "answer": "3. pád (komu? čemu?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-004",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'psa' ve větě 'Bez psa nepůjdu.'?",
+          "options": [
+            "1. pád (kdo? co?)",
+            "2. pád (koho? čeho?)",
+            "6. pád (o kom? o čem?)",
+            "4. pád (koho? co?)",
+            "3. pád (komu? čemu?)"
+          ],
+          "answer": "2. pád (koho? čeho?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-005",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'pse' ve větě 'Pojď sem, pse!'?",
+          "options": [
+            "3. pád (komu? čemu?)",
+            "5. pád (oslovení)",
+            "2. pád (koho? čeho?)",
+            "4. pád (koho? co?)",
+            "1. pád (kdo? co?)"
+          ],
+          "answer": "5. pád (oslovení)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-006",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'psovi' ve větě 'Mluvím o psovi.'?",
+          "options": [
+            "6. pád (o kom? o čem?)",
+            "1. pád (kdo? co?)",
+            "4. pád (koho? co?)",
+            "3. pád (komu? čemu?)",
+            "7. pád (kým? čím?)"
+          ],
+          "answer": "6. pád (o kom? o čem?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-007",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'psem' ve větě 'Jdu se psem.'?",
+          "options": [
+            "3. pád (komu? čemu?)",
+            "7. pád (kým? čím?)",
+            "1. pád (kdo? co?)",
+            "6. pád (o kom? o čem?)",
+            "4. pád (koho? co?)"
+          ],
+          "answer": "7. pád (kým? čím?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-008",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 1. pád?",
+          "options": [
+            "Kdo? Co?",
+            "Koho? Co?",
+            "Kým? Čím?",
+            "Koho? Čeho?",
+            "Komu? Čemu?"
+          ],
+          "answer": "Kdo? Co?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-009",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 4. pád?",
+          "options": [
+            "Koho? Co?",
+            "Koho? Čeho?",
+            "Kdo? Co?",
+            "Kým? Čím?",
+            "Komu? Čemu?"
+          ],
+          "answer": "Koho? Co?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-010",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 7. pád?",
+          "options": [
+            "Kým? Čím?",
+            "Kdo? Co?",
+            "O kom? O čem?",
+            "Koho? Čeho?",
+            "Komu? Čemu?"
+          ],
+          "answer": "Kým? Čím?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-011",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 2. pád?",
+          "options": [
+            "Kým? Čím?",
+            "Koho? Čeho?",
+            "Kdo? Co?",
+            "Komu? Čemu?",
+            "Koho? Co?"
+          ],
+          "answer": "Koho? Čeho?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-012",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 6. pád?",
+          "options": [
+            "Koho? Čeho?",
+            "Kým? Čím?",
+            "Komu? Čemu?",
+            "Kdo? Co?",
+            "O kom? O čem?"
+          ],
+          "answer": "O kom? O čem?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-013",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 3. pád?",
+          "options": [
+            "Kým? Čím?",
+            "Kdo? Co?",
+            "Komu? Čemu?",
+            "Koho? Čeho?",
+            "Koho? Co?"
+          ],
+          "answer": "Komu? Čemu?",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-014",
+          "type": "choice",
+          "question": "Jaká je pádová otázka pro 5. pád?",
+          "options": [
+            "Komu? Čemu?",
+            "Kdo? Co?",
+            "Oslovujeme, voláme",
+            "Koho? Čeho?",
+            "O kom? O čem?"
+          ],
+          "answer": "Oslovujeme, voláme",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-015",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'máma' ve větě 'Máma vaří.'?",
+          "options": [
+            "5. pád (oslovení)",
+            "2. pád (koho? čeho?)",
+            "3. pád (komu? čemu?)",
+            "4. pád (koho? co?)",
+            "1. pád (kdo? co?)"
+          ],
+          "answer": "1. pád (kdo? co?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-016",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'mámě' ve větě 'Dám to mámě.'?",
+          "options": [
+            "6. pád (o kom? o čem?)",
+            "1. pád (kdo? co?)",
+            "2. pád (koho? čeho?)",
+            "3. pád (komu? čemu?)",
+            "4. pád (koho? co?)"
+          ],
+          "answer": "3. pád (komu? čemu?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-017",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'mámu' ve větě 'Mám rád mámu.'?",
+          "options": [
+            "4. pád (koho? co?)",
+            "2. pád (koho? čeho?)",
+            "3. pád (komu? čemu?)",
+            "1. pád (kdo? co?)",
+            "7. pád (kým? čím?)"
+          ],
+          "answer": "4. pád (koho? co?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-018",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'stůl' ve větě 'Na stole leží kniha.'?",
+          "options": [
+            "1. pád (kdo? co?)",
+            "7. pád (kým? čím?)",
+            "3. pád (komu? čemu?)",
+            "4. pád (koho? co?)",
+            "6. pád (o kom? o čem?)"
+          ],
+          "answer": "6. pád (o kom? o čem?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-019",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'tužkou' ve větě 'Píšu tužkou.'?",
+          "options": [
+            "6. pád (o kom? o čem?)",
+            "3. pád (komu? čemu?)",
+            "7. pád (kým? čím?)",
+            "4. pád (koho? co?)",
+            "1. pád (kdo? co?)"
+          ],
+          "answer": "7. pád (kým? čím?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        },
+        {
+          "id": "CJ4-04-02-020",
+          "type": "choice",
+          "question": "V jakém pádu je slovo 'školy' ve větě 'Vrátil se ze školy.'?",
+          "options": [
+            "1. pád (kdo? co?)",
+            "4. pád (koho? co?)",
+            "3. pád (komu? čemu?)",
+            "2. pád (koho? čeho?)",
+            "6. pád (o kom? o čem?)"
+          ],
+          "answer": "2. pád (koho? čeho?)",
+          "hint": "Polož si pádovou otázku: 1. Kdo? Co? 2. Koho? Čeho? 3. Komu? Čemu? 4. Koho? Co? 5. Oslovení. 6. O kom? O čem? 7. Kým? Čím?"
+        }
+      ]
+    },
+    {
+      "id": "CJ4-04-03",
+      "name": "Vzory — mužský rod",
+      "difficulty": 2,
+      "theory": "Mužský rod životný: pán (-a v 2.p.), muž (-e v 2.p.), předseda (-y v 2.p.), soudce (-e v 2.p.). Neživotný: hrad (-u v 2.p.), stroj (-e v 2.p.).",
+      "tasks": [
+        {
+          "id": "CJ4-04-03-001",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'kluk'?",
+          "options": [
+            "muž",
+            "pán",
+            "hrad",
+            "stroj",
+            "předseda"
+          ],
+          "answer": "pán",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-002",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'učitel'?",
+          "options": [
+            "hrad",
+            "muž",
+            "soudce",
+            "stroj",
+            "pán"
+          ],
+          "answer": "muž",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-003",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'stůl'?",
+          "options": [
+            "předseda",
+            "pán",
+            "stroj",
+            "hrad",
+            "muž"
+          ],
+          "answer": "hrad",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-004",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'počítač'?",
+          "options": [
+            "hrad",
+            "soudce",
+            "pán",
+            "stroj",
+            "muž"
+          ],
+          "answer": "stroj",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-005",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'táta'?",
+          "options": [
+            "pán",
+            "hrad",
+            "soudce",
+            "muž",
+            "předseda"
+          ],
+          "answer": "předseda",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-006",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'průvodce'?",
+          "options": [
+            "předseda",
+            "muž",
+            "soudce",
+            "pán",
+            "hrad"
+          ],
+          "answer": "soudce",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-007",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'bratr'?",
+          "options": [
+            "pán",
+            "hrad",
+            "stroj",
+            "muž",
+            "předseda"
+          ],
+          "answer": "pán",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-008",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'nůž'?",
+          "options": [
+            "soudce",
+            "muž",
+            "stroj",
+            "pán",
+            "hrad"
+          ],
+          "answer": "stroj",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-009",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'hrnec'?",
+          "options": [
+            "hrad",
+            "předseda",
+            "pán",
+            "muž",
+            "stroj"
+          ],
+          "answer": "stroj",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-010",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'dědeček'?",
+          "options": [
+            "soudce",
+            "hrad",
+            "pán",
+            "předseda",
+            "muž"
+          ],
+          "answer": "pán",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-011",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'husita'?",
+          "options": [
+            "soudce",
+            "hrad",
+            "muž",
+            "pán",
+            "předseda"
+          ],
+          "answer": "předseda",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-012",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'les'?",
+          "options": [
+            "stroj",
+            "hrad",
+            "pán",
+            "předseda",
+            "muž"
+          ],
+          "answer": "hrad",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-013",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'kovář'?",
+          "options": [
+            "hrad",
+            "stroj",
+            "soudce",
+            "pán",
+            "muž"
+          ],
+          "answer": "muž",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-014",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'dům'?",
+          "options": [
+            "stroj",
+            "muž",
+            "hrad",
+            "předseda",
+            "pán"
+          ],
+          "answer": "hrad",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-015",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'prodavač'?",
+          "options": [
+            "pán",
+            "stroj",
+            "muž",
+            "hrad",
+            "soudce"
+          ],
+          "answer": "muž",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-016",
+          "type": "choice",
+          "question": "Který vzor je mužského rodu životného?",
+          "options": [
+            "stroj",
+            "žena",
+            "město",
+            "hrad",
+            "pán"
+          ],
+          "answer": "pán",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-017",
+          "type": "choice",
+          "question": "Který vzor je mužského rodu neživotného?",
+          "options": [
+            "soudce",
+            "pán",
+            "předseda",
+            "hrad",
+            "muž"
+          ],
+          "answer": "hrad",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-018",
+          "type": "choice",
+          "question": "Slovo 'otec' patří ke vzoru:",
+          "options": [
+            "stroj",
+            "pán",
+            "předseda",
+            "muž",
+            "hrad"
+          ],
+          "answer": "muž",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-019",
+          "type": "choice",
+          "question": "Slovo 'kostel' patří ke vzoru:",
+          "options": [
+            "předseda",
+            "muž",
+            "stroj",
+            "hrad",
+            "pán"
+          ],
+          "answer": "hrad",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        },
+        {
+          "id": "CJ4-04-03-020",
+          "type": "choice",
+          "question": "Slovo 'soudce' patří ke vzoru:",
+          "options": [
+            "předseda",
+            "muž",
+            "pán",
+            "hrad",
+            "soudce"
+          ],
+          "answer": "soudce",
+          "hint": "Mužský rod životný: pán, muž, předseda, soudce. Neživotný: hrad, stroj. Zkus slovo dát do 2. pádu."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-04-04",
+      "name": "Vzory — ženský a střední rod",
+      "difficulty": 2,
+      "theory": "Ženský rod: žena, růže, píseň, kost. Střední rod: město, moře, kuře, stavení. Vzor poznáš podle koncovky v 2. pádě.",
+      "tasks": [
+        {
+          "id": "CJ4-04-04-001",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'máma'?",
+          "options": [
+            "růže",
+            "kost",
+            "město",
+            "žena",
+            "píseň"
+          ],
+          "answer": "žena",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-002",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'ulice'?",
+          "options": [
+            "moře",
+            "žena",
+            "růže",
+            "píseň",
+            "kost"
+          ],
+          "answer": "růže",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-003",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'báseň'?",
+          "options": [
+            "kuře",
+            "žena",
+            "růže",
+            "píseň",
+            "kost"
+          ],
+          "answer": "píseň",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-004",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'noc'?",
+          "options": [
+            "růže",
+            "stavení",
+            "žena",
+            "kost",
+            "píseň"
+          ],
+          "answer": "kost",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-005",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'okno'?",
+          "options": [
+            "stavení",
+            "kuře",
+            "žena",
+            "město",
+            "moře"
+          ],
+          "answer": "město",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-006",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'pole'?",
+          "options": [
+            "kuře",
+            "stavení",
+            "moře",
+            "město",
+            "růže"
+          ],
+          "answer": "moře",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-007",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'štěně'?",
+          "options": [
+            "žena",
+            "město",
+            "moře",
+            "kuře",
+            "stavení"
+          ],
+          "answer": "kuře",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-008",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'nádraží'?",
+          "options": [
+            "město",
+            "kost",
+            "kuře",
+            "stavení",
+            "moře"
+          ],
+          "answer": "stavení",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-009",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'tráva'?",
+          "options": [
+            "žena",
+            "růže",
+            "město",
+            "píseň",
+            "kost"
+          ],
+          "answer": "žena",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-010",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'lavice'?",
+          "options": [
+            "růže",
+            "kost",
+            "moře",
+            "píseň",
+            "žena"
+          ],
+          "answer": "růže",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-011",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'radost'?",
+          "options": [
+            "žena",
+            "růže",
+            "píseň",
+            "stavení",
+            "kost"
+          ],
+          "answer": "kost",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-012",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'auto'?",
+          "options": [
+            "kuře",
+            "hrad",
+            "město",
+            "moře",
+            "stavení"
+          ],
+          "answer": "město",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-013",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'srdce'?",
+          "options": [
+            "moře",
+            "stavení",
+            "kuře",
+            "růže",
+            "město"
+          ],
+          "answer": "moře",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-014",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'kotě'?",
+          "options": [
+            "žena",
+            "stavení",
+            "kuře",
+            "město",
+            "moře"
+          ],
+          "answer": "kuře",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-015",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'náměstí'?",
+          "options": [
+            "kost",
+            "město",
+            "moře",
+            "kuře",
+            "stavení"
+          ],
+          "answer": "stavení",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-016",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'holka'?",
+          "options": [
+            "město",
+            "kost",
+            "růže",
+            "žena",
+            "píseň"
+          ],
+          "answer": "žena",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-017",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'myš'?",
+          "options": [
+            "růže",
+            "stavení",
+            "píseň",
+            "žena",
+            "kost"
+          ],
+          "answer": "kost",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-018",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'věž'?",
+          "options": [
+            "žena",
+            "píseň",
+            "moře",
+            "kost",
+            "růže"
+          ],
+          "answer": "kost",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-019",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'práce'?",
+          "options": [
+            "píseň",
+            "růže",
+            "žena",
+            "kost",
+            "město"
+          ],
+          "answer": "růže",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        },
+        {
+          "id": "CJ4-04-04-020",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme slovo 'vejce'?",
+          "options": [
+            "růže",
+            "kuře",
+            "moře",
+            "město",
+            "stavení"
+          ],
+          "answer": "kuře",
+          "hint": "Ženský rod: žena (-y v 2.p.), růže (-e v 2.p.), píseň (-ě v 2.p.), kost (-i v 2.p.). Střední rod: město (-a v 2.p.), moře (-e v 2.p.), kuře (-ete v 2.p.), stavení (-í v 2.p.)."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-04-05",
+      "name": "Mix — rod, pád, vzor",
+      "difficulty": 3,
+      "theory": "Teď si zopakujeme všechno: rod, pád, číslo a vzory podstatných jmen.",
+      "tasks": [
+        {
+          "id": "CJ4-04-05-001",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'tatínek':",
+          "options": [
+            "střední rod, vzor město",
+            "mužský rod, vzor předseda",
+            "ženský rod, vzor žena",
+            "mužský rod, vzor muž",
+            "mužský rod, vzor pán"
+          ],
+          "answer": "mužský rod, vzor pán",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-002",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'tramvaj':",
+          "options": [
+            "ženský rod, vzor píseň",
+            "mužský rod, vzor stroj",
+            "ženský rod, vzor růže",
+            "ženský rod, vzor žena",
+            "ženský rod, vzor kost"
+          ],
+          "answer": "ženský rod, vzor píseň",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-003",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'sluníčko':",
+          "options": [
+            "střední rod, vzor stavení",
+            "ženský rod, vzor žena",
+            "střední rod, vzor kuře",
+            "střední rod, vzor město",
+            "střední rod, vzor moře"
+          ],
+          "answer": "střední rod, vzor město",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-004",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'zahrada':",
+          "options": [
+            "ženský rod, vzor píseň",
+            "ženský rod, vzor růže",
+            "ženský rod, vzor kost",
+            "ženský rod, vzor žena",
+            "mužský rod, vzor hrad"
+          ],
+          "answer": "ženský rod, vzor žena",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-005",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'nůž':",
+          "options": [
+            "mužský rod, vzor muž",
+            "mužský rod, vzor stroj",
+            "mužský rod, vzor hrad",
+            "ženský rod, vzor kost",
+            "mužský rod, vzor pán"
+          ],
+          "answer": "mužský rod, vzor stroj",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-006",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'hokejista':",
+          "options": [
+            "mužský rod, vzor předseda",
+            "mužský rod, vzor muž",
+            "mužský rod, vzor soudce",
+            "mužský rod, vzor pán",
+            "ženský rod, vzor žena"
+          ],
+          "answer": "mužský rod, vzor předseda",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-007",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'postel':",
+          "options": [
+            "ženský rod, vzor kost",
+            "ženský rod, vzor růže",
+            "ženský rod, vzor píseň",
+            "mužský rod, vzor stroj",
+            "ženský rod, vzor žena"
+          ],
+          "answer": "ženský rod, vzor kost",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-008",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'letiště'?",
+          "options": [
+            "ženský rod, vzor růže",
+            "střední rod, vzor město",
+            "střední rod, vzor stavení",
+            "střední rod, vzor kuře",
+            "střední rod, vzor moře"
+          ],
+          "answer": "střední rod, vzor moře",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-009",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'housle':",
+          "options": [
+            "ženský rod, vzor růže",
+            "ženský rod, vzor kost",
+            "ženský rod, vzor píseň",
+            "střední rod, vzor moře",
+            "ženský rod, vzor žena"
+          ],
+          "answer": "ženský rod, vzor růže",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-010",
+          "type": "choice",
+          "question": "Urči rod a vzor slova 'řidič':",
+          "options": [
+            "mužský rod, vzor soudce",
+            "mužský rod, vzor stroj",
+            "mužský rod, vzor muž",
+            "mužský rod, vzor hrad",
+            "mužský rod, vzor pán"
+          ],
+          "answer": "mužský rod, vzor muž",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-011",
+          "type": "choice",
+          "question": "Slovo 'číslo' je v jakém čísle: 'psi běží'?",
+          "options": [
+            "jednotné číslo",
+            "dvojné číslo",
+            "obojí",
+            "nelze určit",
+            "množné číslo"
+          ],
+          "answer": "množné číslo",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-012",
+          "type": "choice",
+          "question": "Slovo 'číslo' je v jakém čísle: 'pes běží'?",
+          "options": [
+            "jednotné číslo",
+            "množné číslo",
+            "dvojné číslo",
+            "nelze určit",
+            "obojí"
+          ],
+          "answer": "jednotné číslo",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-013",
+          "type": "choice",
+          "question": "V jakém pádu je 'dětem' ve větě 'Dám dětem dárky.'?",
+          "options": [
+            "1. pád",
+            "2. pád",
+            "4. pád",
+            "7. pád",
+            "3. pád (komu? čemu?)"
+          ],
+          "answer": "3. pád (komu? čemu?)",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-014",
+          "type": "choice",
+          "question": "V jakém pádu je 'dárky' ve větě 'Dám dětem dárky.'?",
+          "options": [
+            "4. pád (koho? co?)",
+            "2. pád",
+            "1. pád",
+            "3. pád",
+            "7. pád"
+          ],
+          "answer": "4. pád (koho? co?)",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-015",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'dítě'?",
+          "options": [
+            "rod střední",
+            "rod mužský",
+            "nelze určit",
+            "rod mužský i ženský",
+            "rod ženský"
+          ],
+          "answer": "rod střední",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-016",
+          "type": "choice",
+          "question": "Podle jakého vzoru skloňujeme 'dítě'?",
+          "options": [
+            "moře",
+            "stavení",
+            "kuře",
+            "růže",
+            "město"
+          ],
+          "answer": "kuře",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-017",
+          "type": "choice",
+          "question": "Jaký rod má slovo 'průvodce'?",
+          "options": [
+            "rod mužský",
+            "rod ženský",
+            "nelze určit",
+            "rod střední",
+            "rod mužský i ženský"
+          ],
+          "answer": "rod mužský",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-018",
+          "type": "choice",
+          "question": "V jakém pádu je 'domů' ve větě 'Jdu z domů.'?",
+          "options": [
+            "4. pád",
+            "2. pád (koho? čeho?)",
+            "6. pád",
+            "1. pád",
+            "3. pád"
+          ],
+          "answer": "2. pád (koho? čeho?)",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-019",
+          "type": "choice",
+          "question": "Kolik pádů má čeština?",
+          "options": [
+            "5 pádů",
+            "8 pádů",
+            "4 pády",
+            "7 pádů",
+            "6 pádů"
+          ],
+          "answer": "7 pádů",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        },
+        {
+          "id": "CJ4-04-05-020",
+          "type": "choice",
+          "question": "Slovo 'hory' ve větě 'Vidím hory.' je v:",
+          "options": [
+            "3. pád, množné číslo",
+            "1. pád, jednotné číslo",
+            "2. pád, jednotné číslo",
+            "4. pád, množné číslo",
+            "1. pád, množné číslo"
+          ],
+          "answer": "4. pád, množné číslo",
+          "hint": "Urči nejdřív rod (ten/ta/to), pak vzor podle 2. pádu."
+        }
+      ]
+    }
+  ]
+}
