@@ -1618,11 +1618,11 @@
         "type": "choice",
         "question": "5 000 + 3 500 =",
         "options": [
-          "8 500",
-          "8 050",
-          "9 000",
           "7 500",
-          "8 000"
+          "9 000",
+          "8 000",
+          "8 050",
+          "8 500"
         ],
         "answer": "8 500",
         "hint": "Počítej od nejvyššího řádu, nebo pod sebou."
@@ -1632,9 +1632,9 @@
         "type": "choice",
         "question": "12 456 + 7 544 =",
         "options": [
-          "20 000",
-          "19 000",
           "19 900",
+          "19 000",
+          "20 000",
           "21 000",
           "20 100"
         ],
@@ -1646,11 +1646,11 @@
         "type": "choice",
         "question": "100 000 + 200 000 + 300 000 =",
         "options": [
-          "600 000",
-          "500 000",
-          "900 000",
           "700 000",
-          "300 000"
+          "600 000",
+          "300 000",
+          "900 000",
+          "500 000"
         ],
         "answer": "600 000",
         "hint": "Počítej od nejvyššího řádu, nebo pod sebou."
@@ -1660,11 +1660,11 @@
         "type": "choice",
         "question": "45 678 + 0 =",
         "options": [
-          "45 678",
           "0",
+          "45 679",
           "45 680",
           "45 677",
-          "45 679"
+          "45 678"
         ],
         "answer": "45 678",
         "hint": "Počítej od nejvyššího řádu, nebo pod sebou."
@@ -1852,11 +1852,11 @@
         "type": "choice",
         "question": "Písemně sečti: 27 856 + 34 678 =",
         "options": [
-          "62 534",
           "62 524",
           "62 544",
           "62 434",
-          "62 634"
+          "62 634",
+          "62 534"
         ],
         "answer": "62 534",
         "hint": "Piš pod sebe, zarovnej řády, počítej zprava."
@@ -1908,11 +1908,11 @@
         "type": "choice",
         "question": "Písemně odečti: 8 461 - 3 894 =",
         "options": [
-          "4 567",
           "4 577",
-          "4 467",
+          "4 667",
+          "4 567",
           "4 557",
-          "4 667"
+          "4 467"
         ],
         "answer": "4 567",
         "hint": "Piš pod sebe, zarovnej řády, počítej zprava."
@@ -2088,11 +2088,11 @@
         "type": "choice",
         "question": "Kolik je 456 + 544?",
         "options": [
-          "1 000",
-          "1 010",
+          "1 100",
           "900",
-          "990",
-          "1 100"
+          "1 010",
+          "1 000",
+          "990"
         ],
         "answer": "1 000",
         "hint": "Piš pod sebe, zarovnej řády, počítej zprava."
@@ -2116,8 +2116,8 @@
         "type": "choice",
         "question": "Kolik je 999 999 + 1?",
         "options": [
-          "1 000 000",
           "999 000",
+          "1 000 000",
           "1 000 001",
           "999 998",
           "10 000 000"
@@ -2322,11 +2322,11 @@
         "type": "choice",
         "question": "100 000 - 55 555 =",
         "options": [
-          "44 445",
+          "44 435",
           "44 455",
           "45 445",
-          "44 435",
-          "44 545"
+          "44 545",
+          "44 445"
         ],
         "answer": "44 445",
         "hint": "Sčítej a odčítej po řádech nebo pod sebou."
@@ -2336,11 +2336,11 @@
         "type": "choice",
         "question": "678 000 - 234 000 =",
         "options": [
-          "444 000",
+          "445 000",
           "443 000",
           "454 000",
-          "445 000",
-          "434 000"
+          "434 000",
+          "444 000"
         ],
         "answer": "444 000",
         "hint": "Sčítej a odčítej po řádech nebo pod sebou."
@@ -2378,10 +2378,10 @@
         "type": "choice",
         "question": "3 000 - 1 750 =",
         "options": [
+          "1 260",
+          "1 350",
           "1 250",
           "1 150",
-          "1 350",
-          "1 260",
           "1 240"
         ],
         "answer": "1 250",
@@ -2446,11 +2446,11 @@
         "type": "choice",
         "question": "8 765 + 1 235 =",
         "options": [
-          "10 000",
-          "9 900",
-          "9 000",
+          "10 100",
           "11 000",
-          "10 100"
+          "9 000",
+          "10 000",
+          "9 900"
         ],
         "answer": "10 000",
         "hint": "Sčítej a odčítej po řádech nebo pod sebou."
@@ -2492,7 +2492,7 @@
           "19 998",
           "20 000",
           "19 997",
-          "19 998"
+          "18 998"
         ],
         "answer": "19 998",
         "hint": "Sčítej a odčítej po řádech nebo pod sebou."
@@ -2502,11 +2502,11 @@
         "type": "choice",
         "question": "45 678 - 45 678 =",
         "options": [
-          "0",
-          "45 677",
+          "91 356",
           "45 678",
+          "0",
           "1",
-          "91 356"
+          "45 677"
         ],
         "answer": "0",
         "hint": "Sčítej a odčítej po řádech nebo pod sebou."
@@ -3000,10 +3000,10 @@
         "type": "choice",
         "question": "75 000 + 25 000 =",
         "options": [
-          "100 000",
           "99 000",
-          "101 000",
           "90 000",
+          "101 000",
+          "100 000",
           "110 000"
         ],
         "answer": "100 000",
@@ -8540,11 +8540,11 @@
         "type": "choice",
         "question": "Petr má 156 Kč, Honza má o 38 Kč víc. Kolik mají dohromady?",
         "options": [
+          "388 Kč",
           "350 Kč",
           "312 Kč",
           "118 Kč",
-          "194 Kč",
-          "388 Kč"
+          "194 Kč"
         ],
         "answer": "350 Kč",
         "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
@@ -8568,11 +8568,11 @@
         "type": "choice",
         "question": "Autobus vyjel v 8:15 a přijel v 10:00. Jak dlouho jel?",
         "options": [
-          "1 hodinu 45 minut",
-          "1 hodinu 30 minut",
           "1 hodinu 15 minut",
           "2 hodiny 15 minut",
-          "2 hodiny"
+          "1 hodinu 30 minut",
+          "2 hodiny",
+          "1 hodinu 45 minut"
         ],
         "answer": "1 hodinu 45 minut",
         "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
@@ -8624,11 +8624,11 @@
         "type": "choice",
         "question": "Lahev má 1,5 l džusu. Nalijeme 4 skleničky po 250 ml. Kolik zůstane?",
         "options": [
-          "500 ml",
-          "750 ml",
-          "250 ml",
+          "1 250 ml",
           "1 000 ml",
-          "1 250 ml"
+          "250 ml",
+          "750 ml",
+          "500 ml"
         ],
         "answer": "500 ml",
         "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"

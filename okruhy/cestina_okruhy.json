@@ -1576,11 +1576,11 @@
         "type": "choice",
         "question": "Doplň i/y: Na farmě chovají dob_tek.",
         "options": [
-          "y — dobytek",
+          "i — dobytek",
           "í — dobítek",
           "ý — dobýtek",
-          "i — dobytek",
-          "i — dobitek"
+          "i — dobitek",
+          "y — dobytek"
         ],
         "answer": "y — dobytek",
         "hint": "'Dobytek' je vyjmenované slovo po B."
@@ -1646,11 +1646,11 @@
         "type": "choice",
         "question": "Doplň i/y: Kob_la běžela po louce.",
         "options": [
-          "y — kobyla",
-          "i — kobila",
-          "i — kobyla",
           "ý — kobýla",
-          "í — kobíla"
+          "i — kobyla",
+          "y — kobyla",
+          "í — kobíla",
+          "i — kobila"
         ],
         "answer": "y — kobyla",
         "hint": "'Kobyla' je vyjmenované slovo po B."
@@ -1686,10 +1686,10 @@
         "type": "choice",
         "question": "Doplň i/y: Náš b_t je v třetím patře.",
         "options": [
-          "y — byt",
+          "i — byt",
           "i — bit",
           "ý — být",
-          "i — byt",
+          "y — byt",
           "í — bít"
         ],
         "answer": "y — byt",
@@ -1852,11 +1852,11 @@
         "type": "choice",
         "question": "Doplň i/y: Kupovali jsme náb_tkovou stěnu.",
         "options": [
-          "y — nábytkovou",
           "i — nábytkovou",
           "í — nábítkovou",
           "i — nábitkovou",
-          "ý — nábýtkovou"
+          "ý — nábýtkovou",
+          "y — nábytkovou"
         ],
         "answer": "y — nábytkovou",
         "hint": "Od 'nábytek'."
@@ -1866,11 +1866,11 @@
         "type": "choice",
         "question": "Doplň i/y: Ob_čejně vstáváme v sedm hodin.",
         "options": [
-          "y — obyčejně",
-          "ý — obýčejně",
-          "í — obíčejně",
+          "i — običejně",
           "i — obyčejně",
-          "i — običejně"
+          "í — obíčejně",
+          "y — obyčejně",
+          "ý — obýčejně"
         ],
         "answer": "y — obyčejně",
         "hint": "Od 'obyčej'."
@@ -1908,9 +1908,9 @@
         "type": "choice",
         "question": "Doplň i/y: B_valý ředitel odešel do důchodu.",
         "options": [
-          "ý — bývalý",
-          "y — bývalý",
           "í — bívalý",
+          "y — bývalý",
+          "ý — bývalý",
           "i — bívalí",
           "i — bývalý"
         ],
@@ -2004,10 +2004,10 @@
         "type": "choice",
         "question": "Doplň i/y: B_lý sníh pokryl krajinu.",
         "options": [
-          "í — bílý",
           "y — bílý",
-          "ý — býlý",
           "i — bílý",
+          "í — bílý",
+          "ý — býlý",
           "i — bílí"
         ],
         "answer": "í — bílý",
@@ -2074,11 +2074,11 @@
         "type": "choice",
         "question": "Doplň i/y: Nab_dka v obchodě byla velká.",
         "options": [
+          "ý — nabýdka",
           "í — nabídka",
           "y — nabýdka",
           "i — nabídka",
-          "y — nabídka",
-          "ý — nabýdka"
+          "y — nabídka"
         ],
         "answer": "í — nabídka",
         "hint": "'Nabídka' je od 'nabídnout', ne od 'být'."
@@ -2156,11 +2156,11 @@
         "type": "choice",
         "question": "Doplň i/y: B_dný člověk neměl co jíst.",
         "options": [
-          "í — bídný",
-          "ý — býdný",
-          "y — bídný",
+          "i — bídný",
           "i — bídní",
-          "i — bídný"
+          "í — bídný",
+          "y — bídný",
+          "ý — býdný"
         ],
         "answer": "í — bídný",
         "hint": "'Bídný' od 'bída'. NENÍ vyjmenované."
@@ -2336,11 +2336,11 @@
         "type": "choice",
         "question": "Je slovo 'dobytek' vyjmenované po B?",
         "options": [
-          "Ano, 'dobytek' je vyjmenované slovo po B",
-          "Ne, píšeme měkké i",
+          "Ano, ale jen v 1. pádě",
           "Ne, je to odvozené od 'dobít'",
-          "Ne, je to cizí slovo",
-          "Ano, ale jen v 1. pádě"
+          "Ne, píšeme měkké i",
+          "Ano, 'dobytek' je vyjmenované slovo po B",
+          "Ne, je to cizí slovo"
         ],
         "answer": "Ano, 'dobytek' je vyjmenované slovo po B",
         "hint": "'Dobytek' je přímo ve vyjmenovaných slovech po B."
@@ -2406,10 +2406,10 @@
         "type": "choice",
         "question": "Která věta je napsaná správně?",
         "options": [
-          "Obyvatelé města slavili.",
-          "Obvyatelé města slavili.",
-          "Obivatelé města slavili.",
           "Obivátelé města slavili.",
+          "Obvyatelé města slavili.",
+          "Obyvatelé města slavili.",
+          "Obivatelé města slavili.",
           "Obývatelé města slavili."
         ],
         "answer": "Obyvatelé města slavili.",
@@ -2530,10 +2530,10 @@
         "type": "choice",
         "question": "Které slovo NEPATŘÍ mezi vyjmenovaná po B?",
         "options": [
-          "bič",
-          "kobyla",
           "dobytek",
           "obyčej",
+          "kobyla",
+          "bič",
           "býk"
         ],
         "answer": "bič",
@@ -2612,10 +2612,10 @@
         "type": "choice",
         "question": "Ve kterém slově píšeme tvrdé Y po B?",
         "options": [
-          "obyčej",
-          "bidlo",
           "bič",
+          "obyčej",
           "bílek",
+          "bidlo",
           "bída"
         ],
         "answer": "obyčej",
@@ -2668,11 +2668,11 @@
         "type": "choice",
         "question": "'Nabýt' a 'nabít' — jaký je mezi nimi rozdíl?",
         "options": [
-          "'Nabýt' = získat (od být), 'nabít' = doplnit energii",
-          "'Nabýt' = doplnit energii, 'nabít' = získat",
           "Žádné z nich není vyjmenované",
+          "Jsou to stejná slova",
           "Obě jsou vyjmenovaná",
-          "Jsou to stejná slova"
+          "'Nabýt' = doplnit energii, 'nabít' = získat",
+          "'Nabýt' = získat (od být), 'nabít' = doplnit energii"
         ],
         "answer": "'Nabýt' = získat (od být), 'nabít' = doplnit energii",
         "hint": "'Nabýt' (získat majetek) je od 'být'. 'Nabít' (baterku) je od 'bít'."
@@ -2710,11 +2710,11 @@
         "type": "choice",
         "question": "'Odbýt' a 'odbít' — jaký je mezi nimi rozdíl?",
         "options": [
-          "'Odbýt' = zbavit se někoho (od být), 'odbít' = zaznít úderem",
-          "Obě jsou vyjmenovaná",
-          "'Odbýt' = zaznít, 'odbít' = zbavit se",
           "Jsou to stejná slova",
-          "Žádné z nich není vyjmenované"
+          "'Odbýt' = zaznít, 'odbít' = zbavit se",
+          "Žádné z nich není vyjmenované",
+          "'Odbýt' = zbavit se někoho (od být), 'odbít' = zaznít úderem",
+          "Obě jsou vyjmenovaná"
         ],
         "answer": "'Odbýt' = zbavit se někoho (od být), 'odbít' = zaznít úderem",
         "hint": "'Odbýt' je od 'být'. 'Odbít' (hodiny odbily) je od 'bít'."
@@ -2792,11 +2792,11 @@
         "type": "choice",
         "question": "Doplň i/y: Přeb_tek peněz nemáme.",
         "options": [
-          "y — přebytek",
+          "i — přebytek",
           "i — přebitek",
+          "y — přebytek",
           "í — přebítek",
-          "ý — přebýtek",
-          "i — přebytek"
+          "ý — přebýtek"
         ],
         "answer": "y — přebytek",
         "hint": "Od 'přebývat/být'."
@@ -2930,11 +2930,11 @@
         "type": "choice",
         "question": "Doplň i/y: M_val je noční zvíře.",
         "options": [
-          "ý — mýval",
           "í — míval",
           "y — mýval",
+          "i — mýval",
           "i — míval",
-          "i — mýval"
+          "ý — mýval"
         ],
         "answer": "ý — mýval",
         "hint": "Pozor — tohle je po M! 'Mýval' od 'mýt'."
@@ -2958,11 +2958,11 @@
         "type": "choice",
         "question": "Doplň i/y: B_strá řeka tekla údolím.",
         "options": [
-          "y — bystrá",
-          "i — bystrá",
+          "ý — býstrá",
           "í — bístrá",
+          "i — bystrá",
           "i — bistrá",
-          "ý — býstrá"
+          "y — bystrá"
         ],
         "answer": "y — bystrá",
         "hint": "Od 'bystrý'."
@@ -3234,11 +3234,11 @@
         "type": "choice",
         "question": "Diamant se krásně bl_ští.",
         "options": [
-          "ý — blýští",
           "í — blíští",
+          "i — blyští",
+          "ý — blýští",
           "i — blišti",
-          "y — blyští",
-          "i — blyští"
+          "y — blyští"
         ],
         "answer": "ý — blýští",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3304,10 +3304,10 @@
         "type": "choice",
         "question": "Pl_nový sporák je v kuchyni.",
         "options": [
-          "y — plynový",
-          "i — plinový",
-          "i — plynový",
           "í — plínový",
+          "i — plinový",
+          "y — plynový",
+          "i — plynový",
           "ý — plýnový"
         ],
         "answer": "y — plynový",
@@ -3332,11 +3332,11 @@
         "type": "choice",
         "question": "Nepl_tvej vodou!",
         "options": [
-          "ý — neplýtvej",
-          "y — neplytvej",
           "i — neplytvej",
-          "i — neplitvej",
-          "í — neplítvej"
+          "y — neplytvej",
+          "ý — neplýtvej",
+          "í — neplítvej",
+          "i — neplitvej"
         ],
         "answer": "ý — neplýtvej",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3358,11 +3358,11 @@
         "type": "choice",
         "question": "Pl_tvání jídlem je špatné.",
         "options": [
-          "ý — plýtvání",
           "i — plitvání",
-          "y — plytvání",
+          "i — plytvání",
+          "ý — plýtvání",
           "í — plítvání",
-          "i — plytvání"
+          "y — plytvání"
         ],
         "answer": "ý — plýtvání",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3428,11 +3428,11 @@
         "type": "choice",
         "question": "L_sina mu svítila na slunci.",
         "options": [
-          "y — lysina",
           "i — lisina",
           "ý — lýsina",
           "i — lysina",
-          "í — lísina"
+          "í — lísina",
+          "y — lysina"
         ],
         "answer": "y — lysina",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3442,11 +3442,11 @@
         "type": "choice",
         "question": "Pl_šatý muž nosil klobouk.",
         "options": [
+          "í — plíšatý",
           "e — plešatý",
-          "y — plyšatý",
           "ý — plýšatý",
           "i — plišatý",
-          "í — plíšatý"
+          "y — plyšatý"
         ],
         "answer": "e — plešatý",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3510,11 +3510,11 @@
         "type": "choice",
         "question": "L_kový provaz je pevný.",
         "options": [
-          "ý — lýkový",
           "í — líkový",
+          "ý — lýkový",
+          "i — likový",
           "y — lykový",
-          "i — lykový",
-          "i — likový"
+          "i — lykový"
         ],
         "answer": "ý — lýkový",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3690,11 +3690,11 @@
         "type": "choice",
         "question": "L_stek spadl na zem.",
         "options": [
-          "í — lístek",
+          "y — lístek",
           "ý — lýstek",
-          "i — listek",
           "y — lystek",
-          "y — lístek"
+          "i — listek",
+          "í — lístek"
         ],
         "answer": "í — lístek",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3704,11 +3704,11 @@
         "type": "choice",
         "question": "Mal_na je červená.",
         "options": [
-          "i — malina",
+          "y — malina",
+          "y — malyna",
           "í — malína",
           "ý — malýna",
-          "y — malina",
-          "y — malyna"
+          "i — malina"
         ],
         "answer": "i — malina",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3718,11 +3718,11 @@
         "type": "choice",
         "question": "Ukl_zela pokoj.",
         "options": [
-          "í — uklízela",
+          "i — uklizela",
           "y — uklízela",
           "y — uklyzela",
-          "ý — uklýzela",
-          "i — uklizela"
+          "í — uklízela",
+          "ý — uklýzela"
         ],
         "answer": "í — uklízela",
         "hint": "Zkus si vzpomenout na řadu vyjmenovaných slov po L."
@@ -3856,10 +3856,10 @@
         "type": "choice",
         "question": "Je slovo 'liška' vyjmenované slovo po L?",
         "options": [
-          "Ne, není to vyjmenované slovo po L",
-          "Ano, je to odvozené od 'lyže'",
-          "Ano, je to vyjmenované slovo po L",
           "Ano, píše se 'lyška'",
+          "Ne, není to vyjmenované slovo po L",
+          "Ano, je to vyjmenované slovo po L",
+          "Ano, je to odvozené od 'lyže'",
           "Ne, píše se 'líška'"
         ],
         "answer": "Ne, není to vyjmenované slovo po L",
@@ -3980,11 +3980,11 @@
         "type": "choice",
         "question": "Která věta je správně?",
         "options": [
+          "Ližař sjel svah a slyšel potlesk diváků.",
+          "Ližař sjel svah a slišel potlesk diváků.",
           "Lyžař sjel svah a slyšel potlesk diváků.",
           "Lyžař sjel svah a slišel potlesk diváků.",
-          "Lýžař sjel svah a slýšel potlesk diváků.",
-          "Ližař sjel svah a slišel potlesk diváků.",
-          "Ližař sjel svah a slyšel potlesk diváků."
+          "Lýžař sjel svah a slýšel potlesk diváků."
         ],
         "answer": "Lyžař sjel svah a slyšel potlesk diváků.",
         "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po L."
@@ -4022,11 +4022,11 @@
         "type": "choice",
         "question": "Která věta je správně?",
         "options": [
-          "Plyšový medvídek ležel na polštáři.",
-          "Plyšový medvídek ležel na polštáří.",
           "Plišový medvídek ležel na polštáři.",
+          "Plýšový medvídek ležel na polštáři.",
+          "Plyšový medvídek ležel na polštáří.",
           "Plyšový medvídek ležel na polštáři.",
-          "Plýšový medvídek ležel na polštáři."
+          "Plišový medvídek ležal na polštáři."
         ],
         "answer": "Plyšový medvídek ležel na polštáři.",
         "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po L."
@@ -4050,11 +4050,11 @@
         "type": "choice",
         "question": "Která věta je správně?",
         "options": [
+          "Na lýku se pletou košíki a rohože.",
           "Na lýku se pletou košíky a rohože.",
           "Na líku se pletou košíky a rohože.",
           "Na lyku se pletou košíky a rohože.",
-          "Na lýku se pletou košíki a rohože.",
-          "Na lýku se pletou košíky a rohože."
+          "Na lýku se pletou košíky a rohoži."
         ],
         "answer": "Na lýku se pletou košíky a rohože.",
         "hint": "Přečti si větu pečlivě a dávej pozor na y/ý ve vyjmenovaných slovech po L."
@@ -4160,10 +4160,10 @@
         "type": "choice",
         "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po L?",
         "options": [
-          "lýko",
-          "líný",
           "list",
+          "líný",
           "lípa",
+          "lýko",
           "liška"
         ],
         "answer": "lýko",
@@ -4174,11 +4174,11 @@
         "type": "choice",
         "question": "Které slovo PATŘÍ mezi vyjmenovaná slova po L?",
         "options": [
-          "vzlykat",
-          "list",
           "líčit",
           "limonáda",
-          "lítat"
+          "lítat",
+          "list",
+          "vzlykat"
         ],
         "answer": "vzlykat",
         "hint": "Vzpomeň si na řadu vyjmenovaných slov po L."
@@ -4298,11 +4298,11 @@
         "type": "choice",
         "question": "Ve větě 'Pes _____ mísu.' doplň správné slovo:",
         "options": [
-          "vylízal (olízal misku)",
-          "vylízal (zaslechl misku)",
-          "vylýzal (zaslechl misku)",
           "vylýzal (olízal misku)",
-          "vylýsal (olízal misku)"
+          "vylízal (zaslechl misku)",
+          "vylýsal (olízal misku)",
+          "vylýzal (zaslechl misku)",
+          "vylízal (olízal misku)"
         ],
         "answer": "vylízal (olízal misku)",
         "hint": "Zamysli se nad významem obou slov."
@@ -4312,11 +4312,11 @@
         "type": "choice",
         "question": "Ve větě 'Děti _____ zpěv ptáků.' doplň správné slovo:",
         "options": [
-          "slyšely (vnímaly zvuk)",
           "slízely (olizovaly)",
-          "slyšely (olizovaly)",
           "slízely (vnímaly zvuk)",
-          "slíšely (vnímaly zvuk)"
+          "slíšely (vnímaly zvuk)",
+          "slyšely (vnímaly zvuk)",
+          "slyšely (olizovaly)"
         ],
         "answer": "slyšely (vnímaly zvuk)",
         "hint": "Zamysli se nad významem obou slov."
@@ -4326,10 +4326,10 @@
         "type": "choice",
         "question": "Jaký je rozdíl mezi 'lysý' a 'líska'?",
         "options": [
+          "'lysý' = keř, 'líska' = bez vlasů",
+          "'lysý' i 'líska' se píší s y",
           "'lysý' = bez vlasů (vyjmenované), 'líska' = keř (nevyjmenované)",
           "Obě slova jsou nevyjmenovaná",
-          "'lysý' i 'líska' se píší s y",
-          "'lysý' = keř, 'líska' = bez vlasů",
           "Obě slova jsou vyjmenovaná po L"
         ],
         "answer": "'lysý' = bez vlasů (vyjmenované), 'líska' = keř (nevyjmenované)",
@@ -4548,11 +4548,11 @@
         "type": "choice",
         "question": "Doplň i/y: Chytil l_šku za ocas.",
         "options": [
-          "i — lišku",
-          "ý — lýšku",
-          "y — lišku",
           "í — líšku",
-          "y — lyšku"
+          "y — lišku",
+          "y — lyšku",
+          "ý — lýšku",
+          "i — lišku"
         ],
         "answer": "i — lišku",
         "hint": "Je to vyjmenované slovo po L, nebo ne? Zkus si říct řadu."
@@ -4602,11 +4602,11 @@
         "type": "choice",
         "question": "Doplň i/y: Sl_šíme hudbu z radia.",
         "options": [
-          "y — slyšíme",
           "í — slíšíme",
-          "i — slišíme",
           "i — slyšíme",
-          "ý — slýšíme"
+          "ý — slýšíme",
+          "y — slyšíme",
+          "i — slišíme"
         ],
         "answer": "y — slyšíme",
         "hint": "Je to vyjmenované slovo po L, nebo ne? Zkus si říct řadu."
@@ -4630,11 +4630,11 @@
         "type": "choice",
         "question": "Doplň i/y: L_žování začíná v prosinci.",
         "options": [
-          "y — lyžování",
           "i — ližování",
-          "i — lyžování",
+          "ý — lýžování",
+          "y — lyžování",
           "í — ližování",
-          "ý — lýžování"
+          "i — lyžování"
         ],
         "answer": "y — lyžování",
         "hint": "Je to vyjmenované slovo po L, nebo ne? Zkus si říct řadu."
@@ -4686,11 +4686,11 @@
         "type": "choice",
         "question": "Doplň i/y: Bl_skavice osvětlila celou oblohu.",
         "options": [
-          "ý — blýskavice",
-          "i — bliskavice",
           "í — blískavice",
+          "i — bliskavice",
+          "ý — blýskavice",
           "y — blyskavice",
-          "i — bliskavice"
+          "y — bliskavice"
         ],
         "answer": "ý — blýskavice",
         "hint": "Blýskat se je vyjmenované slovo po L. A co jeho odvozená slova?"
@@ -4704,7 +4704,7 @@
           "í — plítvání",
           "ý — plýtvání",
           "y — plytvání",
-          "i — plitvání"
+          "y — plitvání"
         ],
         "answer": "ý — plýtvání",
         "hint": "Plýtvat je vyjmenované slovo po L. Odvozená slova mají stejné y/ý."
@@ -17646,11 +17646,11 @@
         "type": "choice",
         "question": "Přečti si text:\n\n\"Naše třída jela na výlet do zoo. Autobus vyjel v osm ráno a cesta trvala hodinu. V zoo jsme nejdřív šli k opicím — ty nás bavily nejvíc, protože se houpaly na lanech a dělaly obličeje. Pak jsme viděli slony, žirafy a tučňáky. U tučňáků jsme zůstali nejdéle, protože zrovna měli krmení. Průvodce nám řekl, že tučňáci jedí ryby a mohou plavat rychlostí až 35 km/h. Po obědě jsme si koupili zmrzlinu a jeli domů. Vrátili jsme se ve tři odpoledne.\"\n\nV kolik hodin autobus vyjel?",
         "options": [
+          "v sedm ráno",
+          "v devět ráno",
           "v osm ráno",
           "v půl osmé",
-          "v devět ráno",
-          "v deset ráno",
-          "v sedm ráno"
+          "v deset ráno"
         ],
         "answer": "v osm ráno",
         "hint": "Vrať se k textu a najdi odpověď."
@@ -17674,11 +17674,11 @@
         "type": "choice",
         "question": "Proč zůstali u tučňáků nejdéle?",
         "options": [
-          "protože zrovna měli krmení",
-          "protože byli nejhezčí",
-          "protože tam byla lavička",
+          "protože se ztratili",
           "protože pršelo",
-          "protože se ztratili"
+          "protože byli nejhezčí",
+          "protože zrovna měli krmení",
+          "protože tam byla lavička"
         ],
         "answer": "protože zrovna měli krmení",
         "hint": "Vrať se k textu a najdi odpověď."
@@ -17716,11 +17716,11 @@
         "type": "choice",
         "question": "Přečti si text:\n\n\"Honza dostal k narozeninám štěně. Pojmenoval ho Rek. Rek byl zlatý retrívr s velkýma hnědýma očima. Ze začátku Rek kousal pantofle a tahle za záclony, ale Honza ho trpělivě učil. Po třech měsících už Rek uměl sedět, dát pac a přinést míček. Nejradši měl procházky v lese, kde mohl volně běhat. Honzova maminka říkala, že Rek je nejchytřejší pes v ulici. Honza s ním chodil na procházku každý den, ráno i večer.\"\n\nK jaké příležitosti Honza dostal štěně?",
         "options": [
-          "k narozeninám",
+          "jen tak",
           "k Vánocům",
           "k vysvědčení",
           "ke svátku",
-          "jen tak"
+          "k narozeninám"
         ],
         "answer": "k narozeninám",
         "hint": "Vrať se k textu a najdi odpověď."
