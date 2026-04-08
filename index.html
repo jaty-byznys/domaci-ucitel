@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Domácí Učitel</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; h}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #0f1117; --card: #1a1d27; --card2: #242834;
       --text: #e8e8ed; --text2: #9ca3af; --text3: #6b7280;
@@ -17,982 +16,628 @@
       --vlastiveda: #8b5cf6; --anglictina: #ec4899;
       --radius: 14px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text);
-      overflow-x:hidden; min-height:100vh; }
-    button { font-family:'Nunito',sans-serif; cursor:pointer; border:none;
-      transition:transform 0.15s,box-shadow 0.15s; }
-    button:hover { transform:translateY(-1px); }
-    button:active { transform:scale(0.97); }
-    input,textarea { font-family:'Nunito',sans-serif; }
+    body {
+      font-family: 'Nunito', sans-serif; background: var(--bg);
+      color: var(--text); overflow-x: hidden; min-height: 100vh;
+    }
+    button { font-family: 'Nunito', sans-serif; cursor: pointer; border: none;
+      transition: transform 0.15s, box-shadow 0.15s; }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: scale(0.97); }
+    input, textarea { font-family: 'Nunito', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes glow { 0%,100% { box-shadow: 0 0 5px var(--accent); } 50% { box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(245,158,11,0.3); } }
+    .fade-in { animation: fadeIn 0.35s ease-out; }
+    .slide-up { animation: slideUp 0.4s ease-out; }
 
-    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
-    @keyframes spin { to{transform:rotate(360deg)} }
-    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-    .fade-in { animation:fadeIn 0.35s ease-out; }
-    .slide-up { animation:slideUp 0.4s ease-out; }
+    .app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
+    .screen { min-height: 100vh; display: flex; flex-direction: column; }
 
-    .app { max-width:480px; margin:0 auto; min-height:100vh; position:relative; }
-    .screen { min-height:100vh; display:flex; flex-direction:column; }
-
-    /* Auth */
-    .auth-screen { justify-content:center; align-items:center; padding:40px 24px; }
-    .auth-logo { font-size:72px; margin-bottom:12px; filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4)); }
-    .auth-title { font-size:32px; font-weight:800; letter-spacing:-0.5px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .auth-sub { color:var(--text2); font-size:15px; margin:6px 0 32px; }
-    .auth-form { width:100%; max-width:340px; }
-    .auth-input { width:100%; padding:14px 16px; background:var(--card);
-      border:2px solid var(--card2); border-radius:12px; color:var(--text);
-      font-size:15px; outline:none; margin-bottom:10px; }
-    .auth-input:focus { border-color:var(--accent); }
-    .auth-input::placeholder { color:var(--text3); }
-    .auth-btn { display:block; width:100%; padding:16px; border-radius:var(--radius);
-      color:#000; font-size:16px; font-weight:700; margin-top:6px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); }
-    .auth-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
-    .auth-switch { color:var(--text2); font-size:14px; margin-top:20px; background:none;
-      text-align:center; width:100%; }
-    .auth-switch b { color:var(--accent); }
-    .auth-error { background:rgba(239,68,68,0.12); color:var(--red); padding:10px 14px;
-      border-radius:10px; font-size:13px; margin-bottom:10px; text-align:center; }
-    .auth-ver { color:var(--text3); font-size:11px; margin-top:40px; }
+    /* Login */
+    .login { justify-content: center; align-items: center; padding: 40px 24px; }
+    .login-logo { font-size: 72px; margin-bottom: 12px;
+      filter: drop-shadow(0 4px 12px rgba(245,158,11,0.4)); }
+    .login-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .login-sub { color: var(--text2); font-size: 15px; margin: 6px 0 40px; }
+    .login-btn { display: block; width: 100%; padding: 18px; border-radius: var(--radius);
+      color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 12px;
+      box-shadow: var(--shadow); }
+    .login-ver { color: var(--text3); font-size: 12px; margin-top: 40px; }
 
     /* Header */
-    .header { display:flex; align-items:center; gap:12px; padding:14px 18px;
-      background:var(--card); border-bottom:1px solid rgba(255,255,255,0.06);
-      position:sticky; top:0; z-index:10; }
-    .back-btn { background:var(--card2); padding:8px 14px; border-radius:10px;
-      font-size:14px; font-weight:600; color:var(--text2); }
-    .header-title { font-size:17px; font-weight:700; flex:1; }
+    .header { display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; background: var(--card);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky; top: 0; z-index: 10; }
+    .back-btn { background: var(--card2); padding: 8px 14px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; color: var(--text2); }
+    .header-title { font-size: 17px; font-weight: 700; flex: 1; }
 
-    /* Home */
-    .home-pad { padding:24px 18px; flex:1; }
-    .home-welcome { font-size:22px; font-weight:800; margin-bottom:4px; }
-    .home-sub { color:var(--text2); font-size:14px; margin-bottom:24px; }
+    /* Subject picker */
+    .subjects { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .subject-card { display: flex; align-items: center; gap: 14px;
+      padding: 18px 16px; background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); text-align: left;
+      border-left: 4px solid var(--accent); }
+    .subject-icon { font-size: 32px; }
+    .subject-name { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
+    .subject-info { font-size: 12px; color: var(--text3); }
 
-    /* Child cards */
-    .child-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .child-card { padding:22px 14px; background:var(--card); border-radius:var(--radius);
-      text-align:center; box-shadow:var(--shadow); border:2px solid transparent; }
-    .child-card:hover { border-color:var(--accent); }
-    .child-avatar { font-size:48px; margin-bottom:8px; }
-    .child-name { font-size:16px; font-weight:700; }
-    .child-grade { font-size:12px; color:var(--text3); margin-top:2px; }
-    .add-child { border:2px dashed var(--card2); background:transparent; color:var(--text3); box-shadow:none; }
-    .add-child:hover { border-color:var(--accent); color:var(--accent); }
-    .add-child .child-avatar { opacity:0.5; }
-
-    /* Onboarding */
-    .onb-form { padding:24px 18px; }
-    .onb-label { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text2); }
-    .onb-input { width:100%; padding:14px 16px; background:var(--card); border:2px solid var(--card2);
-      border-radius:12px; color:var(--text); font-size:16px; outline:none; margin-bottom:16px; }
-    .onb-input:focus { border-color:var(--accent); }
-    .onb-btn { width:100%; padding:16px; border-radius:var(--radius);
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#000; font-size:16px; font-weight:700; margin-top:8px; }
-    .onb-btn:disabled { opacity:0.5; }
-    .avatar-grid { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:12px 0 20px; }
-    .avatar-opt { font-size:36px; padding:6px; border-radius:12px; background:var(--card);
-      border:3px solid transparent; cursor:pointer; transition:all 0.2s; line-height:1; }
-    .avatar-opt.sel { border-color:var(--accent); background:rgba(245,158,11,0.15); transform:scale(1.15); }
-    .grade-grid { display:flex; gap:8px; margin:12px 0 20px; flex-wrap:wrap; }
-    .grade-opt { padding:10px 18px; border-radius:10px; background:var(--card);
-      font-size:15px; font-weight:700; color:var(--text); border:2px solid transparent; }
-    .grade-opt.sel { border-color:var(--accent); background:rgba(245,158,11,0.15); }
-
-    /* Subject & topic pickers */
-    .list-pad { padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
-    .subject-card { display:flex; align-items:center; gap:14px; padding:18px 16px;
-      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
-      text-align:left; border-left:4px solid var(--accent); width:100%; }
-    .subject-icon { font-size:32px; }
-    .subject-name { font-size:16px; font-weight:700; flex:1; }
-    .subject-info { font-size:12px; color:var(--text3); }
-    .topic-card { display:flex; align-items:center; gap:12px; padding:14px 16px;
-      background:var(--card); border-radius:12px; text-align:left;
-      border:1px solid rgba(255,255,255,0.04); width:100%; }
-    .topic-name { font-size:14px; font-weight:600; flex:1; }
-    .topic-badge { font-size:11px; padding:3px 8px; border-radius:6px;
-      background:var(--card2); color:var(--text3); }
+    /* Topic picker */
+    .topics { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .topic-card { display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; background: var(--card); border-radius: 12px;
+      text-align: left; border: 1px solid rgba(255,255,255,0.04); }
+    .topic-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+    .topic-count { font-size: 11px; color: var(--text3);
+      background: var(--card2); padding: 3px 8px; border-radius: 6px; }
 
     /* Chat */
-    .chat-screen { height:100vh; height:100dvh; display:flex; flex-direction:column; }
-    .chat-header { display:flex; align-items:center; gap:10px; padding:12px 16px;
-      background:var(--card); border-bottom:1px solid rgba(255,255,255,0.06); flex-shrink:0; }
-    .chat-messages { flex:1; overflow-y:auto; padding:16px 12px;
-      display:flex; flex-direction:column; gap:10px; }
-    .msg { display:flex; max-width:88%; }
-    .msg-tutor { align-items:flex-start; gap:8px; }
-    .msg-student { justify-content:flex-end; align-self:flex-end; }
-    .msg-avatar { font-size:22px; margin-top:4px; flex-shrink:0; }
-    .msg-bubble { padding:10px 14px; font-size:15px; line-height:1.55; }
-    .msg-tutor .msg-bubble { background:var(--card); border-radius:4px 16px 16px 16px; }
-    .msg-student .msg-bubble { background:var(--blue); color:#fff; border-radius:16px 4px 16px 16px; }
-    .typing-dots { display:flex; gap:4px; padding:12px 16px; }
-    .typing-dots span { width:8px; height:8px; background:var(--text3); border-radius:50%; animation:pulse 1.4s infinite; }
-    .typing-dots span:nth-child(2) { animation-delay:0.2s; }
-    .typing-dots span:nth-child(3) { animation-delay:0.4s; }
-    .chat-input { display:flex; gap:8px; padding:10px 12px; background:var(--card);
-      border-top:1px solid rgba(255,255,255,0.06); flex-shrink:0; }
-    .chat-input input { flex:1; padding:12px 16px; border-radius:24px; border:2px solid var(--card2);
-      background:var(--bg); color:var(--text); font-size:15px; outline:none; }
-    .chat-input input:focus { border-color:var(--accent); }
-    .chat-input button { width:48px; height:48px; border-radius:50%; background:var(--accent);
-      color:#fff; font-size:20px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .choices { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
-    .choice-btn { padding:10px 14px; background:var(--card2); border-radius:10px;
-      color:var(--text); font-size:14px; font-weight:600; text-align:left;
-      border:1px solid rgba(255,255,255,0.08); }
-    .choice-btn:hover { border-color:var(--accent); }
-    .score-badge { display:inline-flex; align-items:center; gap:4px; padding:2px 8px;
-      border-radius:6px; font-size:12px; font-weight:700;
-      background:rgba(16,185,129,0.15); color:var(--green); }
+    .chat-screen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+    .chat-header { display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; background: var(--card);
+      border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 16px 12px;
+      display: flex; flex-direction: column; gap: 10px; }
+    .msg { display: flex; max-width: 88%; }
+    .msg-tutor { align-items: flex-start; gap: 8px; }
+    .msg-student { justify-content: flex-end; align-self: flex-end; }
+    .msg-avatar { font-size: 22px; margin-top: 4px; flex-shrink: 0; }
+    .msg-bubble { padding: 10px 14px; font-size: 15px; line-height: 1.55; }
+    .msg-tutor .msg-bubble { background: var(--card); color: var(--text);
+      border-radius: 4px 16px 16px 16px; }
+    .msg-student .msg-bubble { background: var(--blue); color: #fff;
+      border-radius: 16px 4px 16px 16px; }
+    .typing-dots { display: flex; gap: 4px; padding: 12px 16px; }
+    .typing-dots span { width: 8px; height: 8px; background: var(--text3);
+      border-radius: 50%; animation: pulse 1.4s infinite; }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    .chat-input { display: flex; gap: 8px; padding: 10px 12px;
+      background: var(--card); border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+    .chat-input input { flex: 1; padding: 12px 16px; border-radius: 24px;
+      border: 2px solid var(--card2); background: var(--bg);
+      color: var(--text); font-size: 15px; outline: none; }
+    .chat-input input:focus { border-color: var(--accent); }
+    .chat-input button { width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-size: 20px;
+      display: flex; align-items: center; justify-content: center; }
+
+    /* Choice buttons */
+    .choices { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    .choice-btn { padding: 10px 14px; background: var(--card2);
+      border-radius: 10px; color: var(--text); font-size: 14px;
+      font-weight: 600; text-align: left;
+      border: 1px solid rgba(255,255,255,0.08); }
+    .choice-btn:hover { border-color: var(--accent); }
+
+    /* Score badge */
+    .score-badge { display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+    .score-correct { background: rgba(16,185,129,0.15); color: var(--green); }
+    .score-wrong { background: rgba(239,68,68,0.15); color: var(--red); }
 
     /* Dashboard */
-    .dash-pad { padding:16px 18px; flex:1; overflow-y:auto; }
-    .dash-card { background:var(--card); border-radius:var(--radius); padding:18px;
-      margin-bottom:12px; box-shadow:var(--shadow); }
-    .dash-label { font-size:13px; color:var(--text2); margin-bottom:4px; }
-    .dash-value { font-size:24px; font-weight:800; }
-    .progress-bar { height:8px; background:var(--card2); border-radius:4px; overflow:hidden; margin-top:8px; }
-    .progress-fill { height:100%; border-radius:4px; transition:width 0.5s ease; }
+    .dash-card { background: var(--card); border-radius: var(--radius);
+      padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
+    .dash-label { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
+    .dash-value { font-size: 24px; font-weight: 800; }
+    .progress-bar { height: 8px; background: var(--card2); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+    .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
 
-    .logout-btn { background:var(--card2); padding:6px 12px; border-radius:8px;
-      font-size:12px; font-weight:600; color:var(--text3); }
-    .spinner { width:32px; height:32px; border:3px solid var(--card2);
-      border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin:40px auto; }
-    .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-      padding:12px 20px; border-radius:12px; font-size:14px; font-weight:600;
-      z-index:100; animation:slideUp 0.3s ease-out; pointer-events:none; }
-    .toast-ok { background:var(--green); color:#fff; }
-    .toast-err { background:var(--red); color:#fff; }
-    .nav-bottom { display:flex; background:var(--card); border-top:1px solid rgba(255,255,255,0.06);
-      position:sticky; bottom:0; }
-    .nav-item { flex:1; padding:12px 0 10px; text-align:center; background:none; color:var(--text3);
-      font-size:11px; font-weight:600; display:flex; flex-direction:column; align-items:center; gap:2px; }
-    .nav-item.active { color:var(--accent); }
-    .nav-icon { font-size:20px; }
+    /* Settings */
+    .settings-input { width: 100%; padding: 12px 16px; background: var(--bg);
+      border: 2px solid var(--card2); border-radius: 10px;
+      color: var(--text); font-size: 15px; outline: none; }
+    .settings-input:focus { border-color: var(--accent); }
+    .settings-btn { width: 100%; padding: 14px; border-radius: var(--radius);
+      background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
   </style>
 </head>
 <body>
-<div id="root"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-<script id="db-data" type="application/json">{"meta":{"version":"0.1","grade":4,"country":"CZ","framework":"RVP ZV","created":"2026-04-06","author":"Jaty","description":"Databáze osnov a úloh pro AI tutora - 4. ročník ZŠ"},"matika":{"name":"Matematika","icon":"🔢","units":[{"id":"M4-01","name":"Číselný obor do 1 000 000","order":1,"prerequisite":null,"skills":[{"id":"M4-01-01","name":"Čtení a zápis čísel do milionu","difficulty":1,"tasks":[{"id":"M4-01-01-001","type":"open","question":"Zapiš číslo: třista padesát dva tisíc sto osm","answer":"352108","common_errors":["352 108","3521008","35218"],"error_explanations":{"352 108":"Správný zápis, ale číslo píšeme bez mezery nebo s mezerou jen po tisících — zkus to napsat jako jedno číslo.","3521008":"Pozor, přidáváš nulu navíc. Rozlož si to: 352 tisíc + 108.","35218":"Chybí ti jedna cifra. Kolik míst musí mít číslo, které má statisíce?"},"hint":"Rozlož si to: kolik je tisíců a kolik zbývá?"},{"id":"M4-01-01-002","type":"open","question":"Přečti číslo a napiš ho slovy: 205 470","answer":"dvěstě pět tisíc čtyřista sedmdesát","answer_variants":["dvě stě pět tisíc čtyři sta sedmdesát","dvěstěpěttisícčtyřistasedmdesát"],"hint":"Začni od největšího řádu — kolik je statisíců?"},{"id":"M4-01-01-003","type":"choice","question":"Které číslo je větší?","options":["89 450","98 045"],"answer":"98 045","hint":"Porovnej nejdřív desítky tisíců — kolik jich má každé číslo?"}]},{"id":"M4-01-02","name":"Porovnávání a řazení čísel","difficulty":1,"tasks":[{"id":"M4-01-02-001","type":"open","question":"Seřaď čísla od nejmenšího po největší: 4 500, 45 000, 450, 45","answer":"45, 450, 4 500, 45 000","hint":"Kolik číslic má každé číslo? Začni tím s nejméně ciframi."},{"id":"M4-01-02-002","type":"open","question":"Doplň správné znaménko (< nebo >): 12 850 ___ 12 580","answer":">","hint":"Obě čísla mají stejné desítky tisíců i tisíce. Porovnej stovky."},{"id":"M4-01-02-003","type":"choice","question":"Doplň správný znak: 34 567 ___ 34 576","options":["<",">","="],"answer":"<","hint":"Obě čísla mají stejné desítky tisíců, tisíce i stovky. Porovnej desítky."}]},{"id":"M4-01-03","name":"Zaokrouhlování","difficulty":2,"tasks":[{"id":"M4-01-03-001","type":"open","question":"Zaokrouhli číslo 3 467 na stovky.","answer":"3 500","common_errors":["3 400","3 000","3 470"],"error_explanations":{"3 400":"Podívej se na číslici desítek — je to 6. Je 6 menší nebo větší/rovno 5?","3 000":"To bys zaokrouhloval na tisíce. Zaokrouhlujeme na stovky — soustřeď se na stovky a desítky.","3 470":"To je zaokrouhlení na desítky, ne na stovky."},"hint":"Při zaokrouhlování na stovky se dívej na číslici desítek. Je 6 ≥ 5?"},{"id":"M4-01-03-002","type":"open","question":"Zaokrouhli číslo 24 350 na tisíce.","answer":"24 000","hint":"Dívej se na stovky — je 3 menší nebo větší/rovno 5?"}]}]},{"id":"M4-02","name":"Sčítání a odčítání do 1 000 000","order":2,"prerequisite":"M4-01","skills":[{"id":"M4-02-01","name":"Pamětné sčítání a odčítání","difficulty":1,"tasks":[{"id":"M4-02-01-001","type":"open","question":"Vypočítej zpaměti: 4 600 + 2 300","answer":"6900","answer_variants":["6 900"],"hint":"Sečti nejdřív tisíce (4+2) a pak stovky (6+3)."},{"id":"M4-02-01-002","type":"open","question":"Vypočítej zpaměti: 8 000 - 3 500","answer":"4500","answer_variants":["4 500"],"hint":"8 000 - 3 000 = ? A pak ještě odečti 500."}]},{"id":"M4-02-02","name":"Písemné sčítání a odčítání","difficulty":2,"tasks":[{"id":"M4-02-02-001","type":"open","question":"Písemně sečti: 34 568 + 17 845","answer":"52413","answer_variants":["52 413"],"hint":"Začni od jednotek a nezapomeň na přenos desítek!"},{"id":"M4-02-02-002","type":"open","question":"Písemně odečti: 50 000 - 23 467","answer":"26533","answer_variants":["26 533"],"common_errors":["27533","26543"],"error_explanations":{"27533":"Zkontroluj odčítání v řádu tisíců — nezapomněl/a jsi na výpůjčku?","26543":"Zkontroluj odčítání v řádu desítek."},"hint":"Odčítáme od samých nul — budeš potřebovat výpůjčky. Začni od jednotek."}]}]},{"id":"M4-03","name":"Násobení","order":3,"prerequisite":"M4-01","skills":[{"id":"M4-03-01","name":"Malá násobilka — opakování a automatizace","difficulty":1,"tasks":[{"id":"M4-03-01-001","type":"open","question":"7 × 8 = ?","answer":"56","hint":"Zkus si to rozložit: 7 × 8 = 7 × (10 - 2) = 70 - 14"},{"id":"M4-03-01-002","type":"open","question":"9 × 6 = ?","answer":"54","hint":"Trik s devítkou: 9 × 6 — desítky jsou o 1 méně než 6 (tedy 5), jednotky doplní do 9 (tedy 4)."},{"id":"M4-03-01-003","type":"open","question":"6 × 7 = ?","answer":"42","hint":"Je to stejné jako 7 × 6. Znáš odpověď na to?"}]},{"id":"M4-03-02","name":"Násobení jednociferným číslem","difficulty":2,"tasks":[{"id":"M4-03-02-001","type":"open","question":"Vypočítej: 234 × 6","answer":"1404","answer_variants":["1 404"],"hint":"Rozlož si to: (200 × 6) + (30 × 6) + (4 × 6)"},{"id":"M4-03-02-002","type":"open","question":"Vypočítej: 1 205 × 4","answer":"4820","answer_variants":["4 820"],"hint":"Rozlož: (1 000 × 4) + (200 × 4) + (5 × 4)"}]},{"id":"M4-03-03","name":"Násobení dvojciferným číslem","difficulty":3,"tasks":[{"id":"M4-03-03-001","type":"open","question":"Vypočítej: 45 × 12","answer":"540","hint":"Rozlož 12 na 10 + 2. Pak: (45 × 10) + (45 × 2)"},{"id":"M4-03-03-002","type":"open","question":"Vypočítej: 68 × 23","answer":"1564","answer_variants":["1 564"],"hint":"Rozlož 23 na 20 + 3. Pak: (68 × 20) + (68 × 3)"}]}]},{"id":"M4-04","name":"Dělení","order":4,"prerequisite":"M4-03","skills":[{"id":"M4-04-01","name":"Dělení v oboru malé násobilky","difficulty":1,"tasks":[{"id":"M4-04-01-001","type":"open","question":"56 : 7 = ?","answer":"8","hint":"Otázka zní: 7 × ? = 56. Co dáš za otazník?"},{"id":"M4-04-01-002","type":"open","question":"72 : 9 = ?","answer":"8","hint":"9 × ? = 72"}]},{"id":"M4-04-02","name":"Dělení se zbytkem","difficulty":2,"tasks":[{"id":"M4-04-02-001","type":"open","question":"29 : 4 = ? (zapiš s podílem a zbytkem)","answer":"7 zb. 1","answer_variants":["7 zbytek 1","7 (zb. 1)","7 R 1","7, zbytek 1"],"hint":"4 × 7 = 28. A 29 - 28 = ?. To je zbytek.","common_errors":["7","8"],"error_explanations":{"7":"Správný podíl, ale jaký je zbytek? 29 - (4 × 7) = ?","8":"4 × 8 = 32, to je víc než 29. Zkus menší číslo."}},{"id":"M4-04-02-002","type":"open","question":"50 : 6 = ? (zapiš s podílem a zbytkem)","answer":"8 zb. 2","answer_variants":["8 zbytek 2","8 (zb. 2)","8 R 2"],"hint":"Jaký je největší násobek 6, který se vejde do 50?"}]},{"id":"M4-04-03","name":"Dělení víceciferných čísel jednociferným","difficulty":3,"tasks":[{"id":"M4-04-03-001","type":"open","question":"846 : 3 = ?","answer":"282","hint":"Děl postupně: 8:3=2(zb.2), pak 24:3=8, pak 6:3=2"},{"id":"M4-04-03-002","type":"open","question":"1 525 : 5 = ?","answer":"305","hint":"Postupně: 15:5=3, 2:5 nejde (zapíšeme 0), 25:5=5"}]}]},{"id":"M4-05","name":"Zlomky — úvod","order":5,"prerequisite":"M4-04","skills":[{"id":"M4-05-01","name":"Pojem zlomku — část z celku","difficulty":1,"tasks":[{"id":"M4-05-01-001","type":"choice","question":"Pizza je rozřezaná na 8 dílků. Snědl jsi 3 dílky. Jaký zlomek pizzy jsi snědl?","options":["3/8","8/3","3/5","5/8"],"answer":"3/8","hint":"Kolik dílků celkem? To je jmenovatel (dole). Kolik jsi snědl? To je čitatel (nahoře)."},{"id":"M4-05-01-002","type":"open","question":"Čokoláda má 10 kostek. Máma ti dala 4 kostky. Jaký zlomek čokolády máš?","answer":"4/10","answer_variants":["2/5"],"hint":"Nahoře (čitatel) je to, co máš. Dole (jmenovatel) je celá čokoláda."},{"id":"M4-05-01-003","type":"open","question":"Kolik je třetina ze 30?","answer":"10","hint":"Třetina = dělit třemi."}]},{"id":"M4-05-02","name":"Porovnávání zlomků se stejným jmenovatelem","difficulty":2,"tasks":[{"id":"M4-05-02-001","type":"choice","question":"Který zlomek je větší: 3/7 nebo 5/7?","options":["3/7","5/7","Jsou stejné"],"answer":"5/7","hint":"Když mají zlomky stejný jmenovatel, stačí porovnat čitatele. Kdo má víc kousků?"}]}]},{"id":"M4-06","name":"Geometrie","order":6,"prerequisite":null,"skills":[{"id":"M4-06-01","name":"Obvod a obsah obdélníku a čtverce","difficulty":2,"tasks":[{"id":"M4-06-01-001","type":"open","question":"Vypočítej obvod obdélníku se stranami 8 cm a 5 cm.","answer":"26 cm","answer_variants":["26"],"common_errors":["13","40","13 cm","40 cm"],"error_explanations":{"13":"To je jen součet dvou stran. Obdélník má 4 strany — dvě délky a dvě šířky.","13 cm":"To je jen součet dvou stran. Obdélník má 4 strany — dvě délky a dvě šířky.","40":"To je obsah (8 × 5). Obvod se počítá jinak.","40 cm":"To je obsah (8 × 5). Obvod se počítá jinak — sečti všechny strany."},"hint":"Obvod = součet všech stran. Obdélník má dvě delší a dvě kratší strany."},{"id":"M4-06-01-002","type":"open","question":"Vypočítej obsah čtverce se stranou 9 cm.","answer":"81 cm²","answer_variants":["81","81 cm2"],"common_errors":["36","36 cm","18"],"error_explanations":{"36":"To je obvod (4 × 9). Obsah čtverce = strana × strana.","36 cm":"To je obvod (4 × 9). Obsah čtverce = strana × strana.","18":"To je jen 2 × 9. Obsah čtverce = strana × strana."},"hint":"Obsah čtverce = strana × strana. Takže 9 × 9 = ?"},{"id":"M4-06-01-003","type":"open","question":"Zahrada má tvar obdélníku 12 m × 8 m. Kolik metrů pletiva potřebuješ na plot kolem celé zahrady?","answer":"40 m","answer_variants":["40"],"hint":"Plot = obvod. O = 2×(12+8)"}]},{"id":"M4-06-02","name":"Přímky, polopřímky, úsečky","difficulty":1,"tasks":[{"id":"M4-06-02-001","type":"choice","question":"Co má dva koncové body?","options":["Přímka","Polopřímka","Úsečka"],"answer":"Úsečka","hint":"Přímka nemá žádný konec, polopřímka má jeden. Co má dva?"},{"id":"M4-06-02-002","type":"choice","question":"Dvě přímky, které se nikdy neprotnou, jsou:","options":["Rovnoběžné","Různoběžné","Kolmé"],"answer":"Rovnoběžné","hint":"Představ si koleje vlaku — jedou vedle sebe a nikdy se nepotkají."}]}]},{"id":"M4-07","name":"Jednotky a převody","order":7,"prerequisite":null,"skills":[{"id":"M4-07-01","name":"Jednotky délky","difficulty":2,"tasks":[{"id":"M4-07-01-001","type":"open","question":"Převeď: 3 km 250 m = ? m","answer":"3250","answer_variants":["3 250","3250 m","3 250 m"],"hint":"1 km = 1 000 m. Takže 3 km = ? m. A pak přičti těch 250."},{"id":"M4-07-01-002","type":"open","question":"Převeď: 4 800 m = ? km ? m","answer":"4 km 800 m","answer_variants":["4km 800m","4 km a 800 m"],"hint":"Kolikrát se vejde 1 000 do 4 800? To jsou kilometry. Zbytek jsou metry."}]},{"id":"M4-07-02","name":"Jednotky hmotnosti","difficulty":2,"tasks":[{"id":"M4-07-02-001","type":"open","question":"Převeď: 5 kg 300 g = ? g","answer":"5300","answer_variants":["5 300","5300 g","5 300 g"],"hint":"1 kg = 1 000 g. Takže 5 kg = ? g."}]},{"id":"M4-07-03","name":"Jednotky času","difficulty":2,"tasks":[{"id":"M4-07-03-001","type":"open","question":"Kolik minut je 2 hodiny a 15 minut?","answer":"135","answer_variants":["135 minut","135 min"],"hint":"1 hodina = 60 minut. Takže 2 hodiny = ? minut. A přičti 15."}]}]},{"id":"M4-08","name":"Slovní úlohy","order":8,"prerequisite":"M4-02","skills":[{"id":"M4-08-01","name":"Slovní úlohy — jedno a dvě početní operace","difficulty":2,"tasks":[{"id":"M4-08-01-001","type":"open","question":"V obchodě stojí sešit 18 Kč a tužka 12 Kč. Petr koupil 3 sešity a 5 tužek. Kolik zaplatil?","answer":"114 Kč","answer_variants":["114","114Kč"],"hint":"Rozlož to na dva kroky: 1) Kolik stojí 3 sešity? 2) Kolik stojí 5 tužek? 3) Sečti.","solution_steps":["3 × 18 = 54 Kč (sešity)","5 × 12 = 60 Kč (tužky)","54 + 60 = 114 Kč"]},{"id":"M4-08-01-002","type":"open","question":"Třída má 28 žáků. Na výlet jede o 5 žáků méně. Rozdělí se do skupin po 4. Kolik skupin bude?","answer":"6","answer_variants":["6 skupin"],"hint":"Nejdřív zjisti kolik jede na výlet. Pak děl počet skupinou.","solution_steps":["28 - 5 = 23 žáků jede","Ale pozor: 23 : 4 = 5 zb. 3","Potřebujeme 6 skupin (v jedné budou jen 3)"]}]}]}]},"cestina":{"name":"Český jazyk","icon":"📖","units":[{"id":"CJ4-01","name":"Vyjmenovaná slova","order":1,"prerequisite":null,"skills":[{"id":"CJ4-01-01","name":"Vyjmenovaná slova po B","difficulty":2,"theory":"Vyjmenovaná slova po B: být, bydlit, obyvatel, byt, příbytek, nábytek, dobytek, obyčej, bystrý, bylina, kobyla, býk, Přibyslav. A slova od nich odvozená (bývat, bydliště, dobytče...).","tasks":[{"id":"CJ4-01-01-001","type":"fill","question":"Doplň i/y: Ob_vatel tohoto domu je starý pán.","answer":"y","full_word":"obyvatel","rule":"Slovo 'obyvatel' je odvozeno od vyjmenovaného slova 'bydlit'.","hint":"Je to slovo odvozené od 'bydlit' — kdo někde bydlí, je ob_vatel."},{"id":"CJ4-01-01-002","type":"fill","question":"Doplň i/y: Kočka b_la na střeše.","answer":"y","full_word":"byla","rule":"Slovo 'byla' je tvar slova 'být' — vyjmenované slovo po B.","hint":"Je to od slovesa 'být'. A 'být' je vyjmenované slovo po B."},{"id":"CJ4-01-01-003","type":"fill","question":"Doplň i/y: Ptáček si b_l hnízdo z vět_ček.","answer":"i","full_word":"bil","rule":"'Bil' ve smyslu 'stavěl/ťukal' je od slovesa 'bít' (udeřit) — to NENÍ vyjmenované slovo.","common_errors":["y"],"error_explanations":{"y":"Pozor! 'Bít' (udeřit, ťukat) je jiné slovo než 'být' (existovat). Ptáček hnízdo staví — bije do větviček — tedy 'bil' s měkkým i."},"hint":"Co ptáček dělá? Staví hnízdo — ťuká, bije zobáčkem. Je to od 'bít' (udeřit), ne od 'být' (existovat)."},{"id":"CJ4-01-01-004","type":"fill","question":"Doplň i/y: Na farmě chovají dob_tek.","answer":"y","full_word":"dobytek","rule":"'Dobytek' je vyjmenované slovo po B.","hint":"Vzpomeň si na řadu: být, bydlit, obyvatel, byt, příbytek, nábytek, dob..."},{"id":"CJ4-01-01-005","type":"fill","question":"Doplň i/y: Novák b_dlí v Praze.","answer":"y","full_word":"bydlí","rule":"'Bydlí' je tvar slova 'bydlit' — vyjmenované slovo po B.","hint":"'Bydlit' je přímo v řadě vyjmenovaných slov po B."}]},{"id":"CJ4-01-02","name":"Vyjmenovaná slova po L","difficulty":2,"theory":"Vyjmenovaná slova po L: slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš. A slova od nich odvozená.","tasks":[{"id":"CJ4-01-02-001","type":"fill","question":"Doplň i/y: Děti sl_šely divný zvuk.","answer":"y","full_word":"slyšely","rule":"'Slyšet' je vyjmenované slovo po L.","hint":"'Slyšet' — je to první vyjmenované slovo po L."},{"id":"CJ4-01-02-002","type":"fill","question":"Doplň i/y: Nepol_kej jídlo tak rychle!","answer":"y","full_word":"polykej","rule":"'Polykat' je vyjmenované slovo po L.","hint":"Slyšet, mlýn, blýskat se, pol..."},{"id":"CJ4-01-02-003","type":"fill","question":"Doplň i/y: L_ška utekla do lesa.","answer":"i","full_word":"liška","rule":"'Liška' NENÍ vyjmenované slovo po L ani slovo odvozené — píšeme měkké i.","hint":"Je 'liška' ve vyjmenovaných slovech po L? Projdi si je."}]},{"id":"CJ4-01-03","name":"Vyjmenovaná slova po M","difficulty":2,"theory":"Vyjmenovaná slova po M: my, mýt, myslit, mýlit se, hmyz, myš, hřmýt, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk. A slova odvozená.","tasks":[{"id":"CJ4-01-03-001","type":"fill","question":"Doplň i/y: M_šlenka ho napadla ve sprše.","answer":"y","full_word":"myšlenka","rule":"'Myšlenka' je odvozena od 'myslit' — vyjmenované slovo po M.","hint":"Od jakého slova je 'myšlenka'? Od 'myslit' — a to je vyjmenované."},{"id":"CJ4-01-03-002","type":"fill","question":"Doplň i/y: Babička m_la nádobí.","answer":"y","full_word":"myla","rule":"'Myla' je od 'mýt' — vyjmenované slovo po M.","hint":"Co babička dělala? Myla — od slovesa 'mýt'."},{"id":"CJ4-01-03-003","type":"fill","question":"Doplň i/y: M_nuta má šedesát sekund.","answer":"i","full_word":"minuta","rule":"'Minuta' NENÍ vyjmenované slovo po M — píšeme měkké i.","hint":"Najdeš 'minuta' mezi vyjmenovanými slovy po M?"}]},{"id":"CJ4-01-04","name":"Vyjmenovaná slova po P","difficulty":2,"theory":"Vyjmenovaná slova po P: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se. A slova odvozená.","tasks":[{"id":"CJ4-01-04-001","type":"fill","question":"Doplň i/y: Kůň má čtyři kop_ta.","answer":"y","full_word":"kopyta","rule":"'Kopyto' je vyjmenované slovo po P.","hint":"Kop_to — je to ve vyjmenovaných slovech po P."},{"id":"CJ4-01-04-002","type":"fill","question":"Doplň i/y: P_škotek voněl z trouby.","answer":"i","full_word":"piškot","rule":"'Piškot' NENÍ vyjmenované slovo po P.","hint":"Najdeš 'piškot' ve vyjmenovaných slovech po P? Ne — takže měkké i."}]},{"id":"CJ4-01-05","name":"Vyjmenovaná slova po S","difficulty":2,"theory":"Vyjmenovaná slova po S: syn, sytý, sýr, syrový, sychravý, usychat, sýkora, sýček, sysel, syčet, sypat. A slova odvozená.","tasks":[{"id":"CJ4-01-05-001","type":"fill","question":"Doplň i/y: Máma nakrájela s_r na chleba.","answer":"ý","full_word":"sýr","answer_variants":["y"],"rule":"'Sýr' je vyjmenované slovo po S.","hint":"Co je to za jídlo? S_r — je to ve vyjmenovaných slovech po S."},{"id":"CJ4-01-05-002","type":"fill","question":"Doplň i/y: S_lnice byla mokrá.","answer":"i","full_word":"silnice","rule":"'Silnice' NENÍ vyjmenované slovo po S — píšeme měkké i.","hint":"'Silnice' — hledej ji ve vyjmenovaných slovech po S. Nenajdeš."}]},{"id":"CJ4-01-06","name":"Vyjmenovaná slova po V","difficulty":2,"theory":"Vyjmenovaná slova po V: vy-, vysoký, výt, výskat, zvykat, žvýkat, vydra, výr, vyžle, povyk, výheň, cavyky, lavýrovat, Vyškov, Vyšehrad. A slova odvozená.","tasks":[{"id":"CJ4-01-06-001","type":"fill","question":"Doplň i/y: V_tr foukal celou noc.","answer":"í","full_word":"vítr","answer_variants":["i"],"rule":"'Vítr' NENÍ vyjmenované slovo po V — píšeme měkké i.","common_errors":["y","ý"],"error_explanations":{"y":"Pozor! 'Vítr' není odvozeno od žádného vyjmenovaného slova po V. Prefix 'vy-' tu není.","ý":"Pozor! 'Vítr' není odvozeno od žádného vyjmenovaného slova po V."},"hint":"Začíná to na V, ale je to vyjmenované slovo? Zkus najít 'vítr' v řadě po V."},{"id":"CJ4-01-06-002","type":"fill","question":"Doplň i/y: Musíme si zv_kat na nové prostředí.","answer":"y","full_word":"zvykat","rule":"'Zvykat' je vyjmenované slovo po V.","hint":"Vy-, vysoký, výt, výskat, zv_kat..."}]},{"id":"CJ4-01-07","name":"Vyjmenovaná slova po Z","difficulty":2,"theory":"Vyjmenovaná slova po Z: brzy, jazyk, nazývat, Ruzyně. A slova odvozená (jazykový, brzičko...).","tasks":[{"id":"CJ4-01-07-001","type":"fill","question":"Doplň i/y: Mluví třemi jaz_ky.","answer":"y","full_word":"jazyky","rule":"'Jazyk' je vyjmenované slovo po Z.","hint":"Brzy, jaz_k — je to ve vyjmenovaných slovech po Z."},{"id":"CJ4-01-07-002","type":"fill","question":"Doplň i/y: Z_ma letos přišla brz_.","answer":["i","y"],"full_word":["zima","brzy"],"rule":"'Zima' NENÍ vyjmenované slovo (měkké i). 'Brzy' JE vyjmenované slovo po Z (tvrdé y).","hint":"Dvě mezery — u každé se rozhodni zvlášť. 'Zima' vyjmenované není, 'brzy' je."}]}]},{"id":"CJ4-02","name":"Podstatná jména","order":2,"prerequisite":null,"skills":[{"id":"CJ4-02-01","name":"Určování pádu podstatných jmen","difficulty":2,"theory":"7 pádů: 1. kdo/co, 2. koho/čeho (bez), 3. komu/čemu (k), 4. koho/co (vidím), 5. oslovení!, 6. o kom/čem (o), 7. kým/čím (s). Pomůcka: pomocné slovo + pádová otázka.","tasks":[{"id":"CJ4-02-01-001","type":"open","question":"Urči pád podtrženého slova: Dárek je pro MAMINKU.","answer":"4. pád","answer_variants":["4.","4.pád","čtvrtý pád","akuzativ"],"hint":"Pro koho? Pro maminku. Vidím KOHO/CO — to je otázka na 4. pád.","common_errors":["2. pád","3. pád"],"error_explanations":{"2. pád":"2. pád je BEZ koho/čeho. Tady je PRO maminku — ptáme se 'pro koho?' = vidím KOHO = 4. pád.","3. pád":"3. pád je KE komu/čemu. 'Pro maminku' — ptáme se 'pro koho?' = 4. pád."}},{"id":"CJ4-02-01-002","type":"open","question":"Urči pád podtrženého slova: Na STOLE leží kniha.","answer":"6. pád","answer_variants":["6.","6.pád","šestý pád","lokál"],"hint":"NA čem? Na stole. O KOM/ČEM — to je 6. pád. Pomůcka: předložka 'na' + kde = 6. pád."},{"id":"CJ4-02-01-003","type":"open","question":"Urči pád podtrženého slova: Půjdu ke KAMARÁDOVI.","answer":"3. pád","answer_variants":["3.","3.pád","třetí pád","dativ"],"hint":"KE komu? Ke kamarádovi. KOMU/ČEMU — to je 3. pád."}]},{"id":"CJ4-02-02","name":"Vzory podstatných jmen — rod mužský","difficulty":3,"theory":"Rod mužský životný: vzory PÁN, MUŽ, PŘEDSEDA, SOUDCE. Rod mužský neživotný: vzory HRAD, STROJ.","tasks":[{"id":"CJ4-02-02-001","type":"choice","question":"Jaký je vzor slova 'učitel'?","options":["pán","muž","předseda","soudce"],"answer":"muž","hint":"Zkus dosadit: bez učitele/bez muže — sedí to? Učitelé/muži — sedí?"},{"id":"CJ4-02-02-002","type":"choice","question":"Jaký je vzor slova 'počítač'?","options":["hrad","stroj"],"answer":"stroj","hint":"Je počítač životný nebo neživotný? Neživotný. Končí na měkkou souhlásku (č) — to je vzor stroj."}]},{"id":"CJ4-02-03","name":"Vzory podstatných jmen — rod ženský","difficulty":3,"theory":"Rod ženský: vzory ŽENA, RŮŽE, PÍSEŇ, KOST.","tasks":[{"id":"CJ4-02-03-001","type":"choice","question":"Jaký je vzor slova 'židle'?","options":["žena","růže","píseň","kost"],"answer":"růže","hint":"Židle — 2. pád: bez židle/bez růže. Sedí? Koncovka -e v 1. pádě — to je typicky růže."},{"id":"CJ4-02-03-002","type":"choice","question":"Jaký je vzor slova 'radost'?","options":["žena","růže","píseň","kost"],"answer":"kost","hint":"Radost — končí na souhlásku, 2. pád: bez radosti/bez kosti. Sedí!"}]},{"id":"CJ4-02-04","name":"Vzory podstatných jmen — rod střední","difficulty":3,"theory":"Rod střední: vzory MĚSTO, MOŘE, KUŘE, STAVENÍ.","tasks":[{"id":"CJ4-02-04-001","type":"choice","question":"Jaký je vzor slova 'okno'?","options":["město","moře","kuře","stavení"],"answer":"město","hint":"Okno — končí na -o. Města, okna — oboje -a v množném čísle."}]}]},{"id":"CJ4-03","name":"Slovesa","order":3,"prerequisite":null,"skills":[{"id":"CJ4-03-01","name":"Určování osoby, čísla a času sloves","difficulty":2,"tasks":[{"id":"CJ4-03-01-001","type":"open","question":"Urči osobu, číslo a čas slovesa: 'Pojedeme na výlet.'","answer":"1. osoba, množné číslo, budoucí čas","answer_variants":["1.os., mn.č., budoucí čas","1. os. mn. č. budoucí čas"],"hint":"KDO pojede? MY pojedeme — to je 1. osoba množného čísla. A KDY? Teprve to bude."},{"id":"CJ4-03-01-002","type":"open","question":"Urči osobu, číslo a čas slovesa: 'Zpívala krásnou píseň.'","answer":"3. osoba, jednotné číslo, minulý čas","answer_variants":["3.os., j.č., minulý čas"],"hint":"KDO zpívala? ONA (3. osoba). Jedna — jednotné číslo. Už to bylo — minulý čas."},{"id":"CJ4-03-01-003","type":"choice","question":"Jaký je vzor slova 'táta'?","options":["pán","hrad","muž","předseda"],"answer":"předseda","hint":"Životné podstatné jméno zakončené na -a."}]},{"id":"CJ4-03-02","name":"Shoda podmětu s přísudkem","difficulty":3,"tasks":[{"id":"CJ4-03-02-001","type":"fill","question":"Doplň koncovku: Kluci hráli/hrály na hřišti. → Kluci hrál_ na hřišti.","answer":"i","rule":"Podmět 'kluci' je rod mužský životný — v množném čísle minulého času píšeme -i.","hint":"Kluci = rod mužský životný. U rodu mužského životného v množném čísle píšeme -i."},{"id":"CJ4-03-02-002","type":"fill","question":"Doplň koncovku: Děvčata si hrál_ venku.","answer":"a","rule":"Podmět 'děvčata' je rod střední — v množném čísle minulého času píšeme -a.","hint":"Děvčata = rod střední (to děvče). Rod střední v množném čísle → koncovka -a."},{"id":"CJ4-03-02-003","type":"fill","question":"Doplň koncovku: Stromy rostl_ rychle.","answer":"y","rule":"Podmět 'stromy' je rod mužský neživotný — v množném čísle minulého času píšeme -y.","hint":"Stromy = rod mužský NEživotný (ten strom). U neživotného rodu mužského píšeme -y."}]}]},{"id":"CJ4-04","name":"Stavba věty","order":4,"prerequisite":null,"skills":[{"id":"CJ4-04-01","name":"Podmět a přísudek","difficulty":2,"tasks":[{"id":"CJ4-04-01-001","type":"open","question":"Najdi podmět a přísudek: 'Velký pes štěkal na pošťáka.'","answer":"podmět: pes, přísudek: štěkal","answer_variants":["pes - štěkal","pes, štěkal"],"hint":"KDO štěkal? To je podmět. Co DĚLAL? To je přísudek."},{"id":"CJ4-04-01-002","type":"open","question":"Najdi podmět a přísudek: 'Na jaře kvetou stromy.'","answer":"podmět: stromy, přísudek: kvetou","answer_variants":["stromy - kvetou","stromy, kvetou"],"hint":"CO kvete? Stromy — to je podmět. Co dělají? Kvetou — to je přísudek."}]},{"id":"CJ4-04-02","name":"Časování — přítomný, minulý, budoucí čas","difficulty":2,"tasks":[{"id":"CJ4-04-02-001","type":"choice","question":"V jakém čase je sloveso ve větě: 'Zítra pojedeme k babičce.'","options":["přítomný","minulý","budoucí"],"answer":"budoucí","hint":"Zítra = budoucnost. Pojedeme = budoucí čas."},{"id":"CJ4-04-02-002","type":"choice","question":"V jakém čase je sloveso: 'Včera pršelo.'","options":["přítomný","minulý","budoucí"],"answer":"minulý","hint":"Včera = minulost."}]}]},{"id":"CJ4-05","name":"Čtení s porozuměním","order":5,"prerequisite":null,"skills":[{"id":"CJ4-05-01","name":"Porozumění krátkému textu","difficulty":2,"tasks":[{"id":"CJ4-05-01-001","type":"reading","text":"Tomáš se probudil a podíval se z okna. Venku ležel sníh. Rychle se oblékl, snědl snídani a vyběhl ven. Postavil sněhuláka a pak se koulovačkou zahřál. Když začalo sněžit znovu, vrátil se domů.","questions":[{"question":"Co Tomáš uviděl z okna?","answer":"sníh","answer_variants":["venku ležel sníh","sníh venku"]},{"question":"Co Tomáš udělal jako první venku?","answer":"postavil sněhuláka","answer_variants":["sněhuláka","stavěl sněhuláka"]},{"question":"Proč se Tomáš vrátil domů?","answer":"začalo sněžit","answer_variants":["protože začalo sněžit","začalo sněžit znovu","sněžilo"]}]},{"id":"CJ4-05-01-002","type":"open","question":"Přečti: 'Tomáš si ráno zabalil svačinu, ale zapomněl ji doma na stole. Ve škole měl hlad.' Proč měl Tomáš hlad?","answer":"zapomněl svačinu doma","answer_variants":["nechal svačinu doma","zapomněl si svačinu","svačinu nechal na stole"],"hint":"Co se stalo se svačinou?"}]}]}]},"prirodoveda":{"name":"Přírodověda","icon":"🌿","units":[{"id":"PR4-01","name":"Rostliny","order":1,"skills":[{"id":"PR4-01-01","name":"Části rostliny","difficulty":1,"tasks":[{"id":"PR4-01-01-001","type":"choice","question":"Která část rostliny přijímá vodu a živiny z půdy?","options":["Kořen","Stonek","List","Květ"],"answer":"Kořen","hint":"Je to ta část, která je pod zemí."},{"id":"PR4-01-01-002","type":"choice","question":"Ve které části rostliny probíhá fotosyntéza?","options":["Kořen","Stonek","List","Plod"],"answer":"List","hint":"Je to ta zelená část — proč je zelená? Kvůli chlorofylu, který zachycuje světlo."},{"id":"PR4-01-01-003","type":"open","question":"K čemu rostlina potřebuje květ?","answer":"k rozmnožování","answer_variants":["rozmnožování","aby se rozmnožila","k opylení","aby měla semena","na rozmnožování"],"hint":"Co vznikne z květu? Plod se semeny. A k čemu semena slouží?"}]},{"id":"PR4-01-02","name":"Stromy listnaté a jehličnaté","difficulty":1,"tasks":[{"id":"PR4-01-02-001","type":"choice","question":"Který strom je jehličnatý?","options":["Dub","Smrk","Buk","Lípa"],"answer":"Smrk","hint":"Jehličnaté stromy mají jehličí místo listů. Který z nich má jehličí?"},{"id":"PR4-01-02-002","type":"open","question":"Co dělají listnaté stromy na podzim?","answer":"shazují listy","answer_variants":["opadávají jim listy","listy opadají","ztrácí listy","shazují listí"],"hint":"Proč se říká 'listnaté'? A co se děje s těmi listy, když přijde zima?"}]}]},{"id":"PR4-02","name":"Živočichové","order":2,"skills":[{"id":"PR4-02-01","name":"Skupiny živočichů","difficulty":1,"tasks":[{"id":"PR4-02-01-001","type":"choice","question":"Mezi savce patří:","options":["Orel","Kapr","Ježek","Žába"],"answer":"Ježek","hint":"Savci kojí mláďata mlékem a mají srst. Který z nich to dělá?"},{"id":"PR4-02-01-002","type":"choice","question":"Obojživelník je:","options":["Had","Žába","Ještěrka","Kapr"],"answer":"Žába","hint":"Obojživelníci žijí část života ve vodě a část na souši. Kdo z nich začíná život jako pulec?"},{"id":"PR4-02-01-003","type":"open","question":"Čím se liší plazi od obojživelníků?","answer":"mají šupiny","answer_variants":["šupiny","mají suchou kůži se šupinami","plazi mají šupiny a obojživelníci vlhkou kůži","suchou kůži"],"hint":"Podívej se na kůži — žába je hladká a vlhká, had nebo ještěrka...?"}]},{"id":"PR4-02-02","name":"Potravní řetězec","difficulty":2,"tasks":[{"id":"PR4-02-02-001","type":"open","question":"Seřaď do potravního řetězce: liška, tráva, myš","answer":"tráva → myš → liška","answer_variants":["tráva - myš - liška","tráva, myš, liška"],"hint":"Kdo koho jí? Začni tím, kdo nežere nic živého — roste ze země."}]}]},{"id":"PR4-03","name":"Lidské tělo","order":3,"skills":[{"id":"PR4-03-01","name":"Orgánové soustavy","difficulty":2,"tasks":[{"id":"PR4-03-01-001","type":"choice","question":"Který orgán přečerpává krev v těle?","options":["Plíce","Srdce","Mozek","Žaludek"],"answer":"Srdce","hint":"Přilož si ruku na hruď — cítíš, jak tluče?"},{"id":"PR4-03-01-002","type":"choice","question":"K čemu slouží plíce?","options":["K trávení","K dýchání","K pohybu","K myšlení"],"answer":"K dýchání","hint":"Co se stane, když se zhluboka nadechneš? Co se plní vzduchem?"}]}]},{"id":"PR4-04","name":"Počasí a roční období","order":4,"prerequisite":null,"skills":[{"id":"PR4-04-01","name":"Přírodní jevy a počasí","difficulty":1,"tasks":[{"id":"PR4-04-01-001","type":"choice","question":"Co způsobuje střídání ročních období?","options":["Vzdálenost Země od Slunce","Náklon zemské osy","Fáze Měsíce","Vítr"],"answer":"Náklon zemské osy","hint":"Země je nakloněná — proto svítí Slunce v létě víc a v zimě míň."},{"id":"PR4-04-01-002","type":"open","question":"Vyjmenuj 4 roční období v pořadí od jara.","answer":"jaro, léto, podzim, zima","hint":"Začni jarem..."}]}]}]},"vlastiveda":{"name":"Vlastivěda","icon":"🗺️","units":[{"id":"VL4-01","name":"Orientace na mapě","order":1,"skills":[{"id":"VL4-01-01","name":"Světové strany","difficulty":1,"tasks":[{"id":"VL4-01-01-001","type":"open","question":"Vyjmenuj čtyři hlavní světové strany.","answer":"sever, jih, východ, západ","answer_variants":["S, J, V, Z","sever jih východ západ"],"hint":"Na mapě: nahoře je S..., dole J..., vpravo V..., vlevo Z..."},{"id":"VL4-01-01-002","type":"choice","question":"Na mapě je sever:","options":["Nahoře","Dole","Vlevo","Vpravo"],"answer":"Nahoře","hint":"Vzpomeň si — kompas ukazuje nahoru."}]},{"id":"VL4-01-02","name":"Měřítko mapy a legenda","difficulty":2,"tasks":[{"id":"VL4-01-02-001","type":"open","question":"Co nám říká měřítko mapy?","answer":"kolikrát je mapa zmenšená oproti skutečnosti","answer_variants":["poměr vzdálenosti na mapě a ve skutečnosti","jak je mapa zmenšená","kolik km je 1 cm na mapě"],"hint":"Když na mapě je 1 cm a měřítko říká 1:100 000, kolik je to ve skutečnosti?"}]}]},{"id":"VL4-02","name":"Kraje České republiky","order":2,"skills":[{"id":"VL4-02-01","name":"Znalost krajů a krajských měst","difficulty":2,"tasks":[{"id":"VL4-02-01-001","type":"open","question":"Kolik krajů má Česká republika?","answer":"14","hint":"Včetně Prahy, která je také kraj."},{"id":"VL4-02-01-002","type":"open","question":"Jaké je krajské město Jihomoravského kraje?","answer":"Brno","hint":"Je to druhé největší město v Česku."},{"id":"VL4-02-01-003","type":"choice","question":"Který kraj leží na severu Čech?","options":["Jihočeský","Liberecký","Zlínský","Plzeňský"],"answer":"Liberecký","hint":"Na severu Čech — sousedí s Polskem a Německem. Jsou tam Jizerské hory."},{"id":"VL4-02-01-004","type":"open","question":"Jak se jmenuje hlavní město České republiky?","answer":"Praha","hint":"To snad víš 😊"}]}]},{"id":"VL4-03","name":"Povrch a vodstvo ČR","order":3,"skills":[{"id":"VL4-03-01","name":"Řeky a pohoří","difficulty":2,"tasks":[{"id":"VL4-03-01-001","type":"open","question":"Jak se jmenuje nejdelší řeka v České republice?","answer":"Vltava","hint":"Protéká Prahou a vlévá se do Labe."},{"id":"VL4-03-01-002","type":"open","question":"Jak se jmenuje nejvyšší hora České republiky?","answer":"Sněžka","hint":"Je v Krkonoších a měří 1 603 m n. m."},{"id":"VL4-03-01-003","type":"choice","question":"Do kterého moře odtéká většina českých řek?","options":["Středozemní moře","Severní moře","Baltské moře","Černé moře"],"answer":"Severní moře","hint":"Vltava → Labe → ... kam teče Labe? Přes Německo do..."}]}]}]},"anglictina":{"name":"Angličtina","icon":"🇬🇧","units":[{"id":"AJ4-01","name":"Základní slovní zásoba","order":1,"skills":[{"id":"AJ4-01-01","name":"Barvy a čísla","difficulty":1,"tasks":[{"id":"AJ4-01-01-001","type":"open","question":"Přelož do angličtiny: modrý","answer":"blue","hint":"Obloha je 'bl...' — zkus si vzpomenout."},{"id":"AJ4-01-01-002","type":"open","question":"Přelož do angličtiny: 12","answer":"twelve","common_errors":["twelv","twelf"],"hint":"Začíná na 'tw' a končí na '-elve'."},{"id":"AJ4-01-01-003","type":"open","question":"Přelož do češtiny: green","answer":"zelený","answer_variants":["zelená","zelené"],"hint":"Tráva je 'green' — jaká je tráva?"}]},{"id":"AJ4-01-02","name":"Rodina","difficulty":1,"tasks":[{"id":"AJ4-01-02-001","type":"open","question":"Přelož do angličtiny: maminka","answer":"mother","answer_variants":["mom","mum","mummy"],"hint":"M... — zkráceně se říká 'mum' nebo 'mom'."},{"id":"AJ4-01-02-002","type":"open","question":"Přelož do angličtiny: bratr","answer":"brother","hint":"Br... — začíná jako české 'bratr'."},{"id":"AJ4-01-02-003","type":"open","question":"Co znamená 'grandmother'?","answer":"babička","hint":"'Grand' = velký/hlavní + 'mother' = matka. Matka matky je...?"}]}]},{"id":"AJ4-02","name":"Jednoduché věty","order":2,"skills":[{"id":"AJ4-02-01","name":"Sloveso 'to be' — jsem, jsi, je","difficulty":2,"tasks":[{"id":"AJ4-02-01-001","type":"fill","question":"Doplň: I ___ a student.","answer":"am","hint":"I = já. S 'I' používáme 'am'. I am = Já jsem."},{"id":"AJ4-02-01-002","type":"fill","question":"Doplň: She ___ my sister.","answer":"is","hint":"She = ona. S 'she' (a 'he', 'it') používáme 'is'."},{"id":"AJ4-02-01-003","type":"fill","question":"Doplň: They ___ from Prague.","answer":"are","hint":"They = oni. S 'they' (a 'we', 'you') používáme 'are'."}]},{"id":"AJ4-02-02","name":"Jednoduché otázky a odpovědi","difficulty":2,"tasks":[{"id":"AJ4-02-02-001","type":"open","question":"Přelož: 'Jak se jmenuješ?' do angličtiny.","answer":"What is your name?","answer_variants":["What's your name?","What is your name"],"hint":"'What' = co/jaký, 'your' = tvůj, 'name' = jméno."},{"id":"AJ4-02-02-002","type":"open","question":"Odpověz anglicky: 'How old are you?' (je ti 10)","answer":"I am ten.","answer_variants":["I am ten years old.","I'm ten.","I'm ten years old.","I am 10.","I'm 10."],"hint":"'I am' = já jsem, pak řekni kolik — 'ten' = deset."}]}]},{"id":"AJ4-03","name":"Škola a každodenní život","order":3,"skills":[{"id":"AJ4-03-01","name":"Školní potřeby a předměty","difficulty":1,"tasks":[{"id":"AJ4-03-01-001","type":"open","question":"Přelož do angličtiny: tužka","answer":"pencil","hint":"P... — jako 'pen' (pero), ale delší slovo."},{"id":"AJ4-03-01-002","type":"open","question":"Přelož do angličtiny: kniha","answer":"book","hint":"B... — velmi krátké slovo, 4 písmena."},{"id":"AJ4-03-01-003","type":"open","question":"Co znamená 'classroom'?","answer":"třída","answer_variants":["učebna"],"hint":"'Class' = třída, 'room' = místnost. Dohromady?"}]}]}]},"agent_config":{"personality":{"name":"Učitel","tone":"přátelský, trpělivý, povzbuzující, ale upřímný","language":"čeština, tykání, jednoduchý jazyk pro 10leté dítě","rules":["Nikdy neříkej odpověď přímo — veď dítě k ní otázkami","Po správné odpovědi pochval konkrétně (ne jen 'super')","Po špatné odpovědi NIKDY neříkej 'špatně' — řekni 'skoro' nebo 'zkus to jinak'","Maximálně 3 nápovědy, pak ukaž řešení s vysvětlením","Používej příklady z reálného života dítěte (škola, sport, jídlo)","Krátké věty, max 2 řádky najednou","Po každých 5 úlohách nabídni přestávku nebo změnu předmětu","Emoji používej střídmě — max 1 na zprávu"]},"diagnostics":{"track_per_skill":true,"scoring":{"correct_first_try":3,"correct_with_hint":2,"correct_after_explanation":1,"incorrect":0},"skill_levels":{"weak":"průměr pod 1.5 z posledních 5 úloh","ok":"průměr 1.5-2.5","strong":"průměr nad 2.5"},"adaptive_rules":["Začni na střední obtížnosti","3× správně za sebou → zvyš obtížnost","2× špatně za sebou → sniž obtížnost","Slabé dovednosti opakuj každou 3. lekci","Silné dovednosti zařaď jednou za 2 týdny jako opakování"]},"session_flow":{"start":"Pozdrav → zeptej se co dělali ve škole NEBO navrhni procvičování slabých míst","during":"Úloha → odpověď → vyhodnocení → zpětná vazba → další úloha","end":"Shrnutí (co šlo, co trénovat) → pochvala za snahu → uložení pokroku","max_duration_minutes":30,"break_reminder_after_minutes":15},"rewards":{"theme":"Minecraft / Skibidi Toilet","trigger":"po každých 5 správných odpovědích","duration_minutes":5,"types":["kvíz na téma odměny","hádanka","mini příběh","vtipný fakt"]}}}</script>
-<script type="text/babel">
-const {useState,useRef,useEffect,useCallback} = React;
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <script id="db-data" type="application/json">{"meta": {"version": "0.1","grade": 4,"country": "CZ","framework": "RVP ZV","created": "2026-04-06","author": "Jaty","description": "Databáze osnov a úloh pro AI tutora - 4. ročník ZŠ"},"matika": {"name": "Matematika","icon": "🔢","units": [{"id": "M4-01","name": "Číselný obor do 1 000 000","order": 1,"prerequisite": null,"skills": [{"id": "M4-01-01","name": "Čtení a zápis čísel do milionu","difficulty": 1,"tasks": [{"id": "M4-01-01-001","type": "open","question": "Zapiš číslo: třista padesát dva tisíc sto osm","answer": "352108","common_errors": ["352 108","3521008","35218"],"error_explanations": {"352 108": "Správný zápis, ale číslo píšeme bez mezery nebo s mezerou jen po tisících — zkus to napsat jako jedno číslo.","3521008": "Pozor, přidáváš nulu navíc. Rozlož si to: 352 tisíc + 108.","35218": "Chybí ti jedna cifra. Kolik míst musí mít číslo, které má statisíce?"},"hint": "Rozlož si to: kolik je tisíců a kolik zbývá?"},{"id": "M4-01-01-002","type": "open","question": "Přečti číslo a napiš ho slovy: 205 470","answer": "dvěstě pět tisíc čtyřista sedmdesát","answer_variants": ["dvě stě pět tisíc čtyři sta sedmdesát","dvěstěpěttisícčtyřistasedmdesát"],"hint": "Začni od největšího řádu — kolik je statisíců?"},{"id": "M4-01-01-003","type": "choice","question": "Které číslo je větší?","options": ["89 450","98 045"],"answer": "98 045","hint": "Porovnej nejdřív desítky tisíců — kolik jich má každé číslo?"}]},{"id": "M4-01-02","name": "Porovnávání a řazení čísel","difficulty": 1,"tasks": [{"id": "M4-01-02-001","type": "open","question": "Seřaď čísla od nejmenšího po největší: 4 500, 45 000, 450, 45","answer": "45, 450, 4 500, 45 000","hint": "Kolik číslic má každé číslo? Začni tím s nejméně ciframi."},{"id": "M4-01-02-002","type": "open","question": "Doplň správné znaménko (< nebo >): 12 850 ___ 12 580","answer": ">","hint": "Obě čísla mají stejné desítky tisíců i tisíce. Porovnej stovky."},{"id": "M4-01-02-003","type": "choice","question": "Doplň správný znak: 34 567 ___ 34 576","options": ["<",">","="],"answer": "<","hint": "Obě čísla mají stejné desítky tisíců, tisíce i stovky. Porovnej desítky."}]},{"id": "M4-01-03","name": "Zaokrouhlování","difficulty": 2,"tasks": [{"id": "M4-01-03-001","type": "open","question": "Zaokrouhli číslo 3 467 na stovky.","answer": "3 500","common_errors": ["3 400","3 000","3 470"],"error_explanations": {"3 400": "Podívej se na číslici desítek — je to 6. Je 6 menší nebo větší/rovno 5?","3 000": "To bys zaokrouhloval na tisíce. Zaokrouhlujeme na stovky — soustřeď se na stovky a desítky.","3 470": "To je zaokrouhlení na desítky, ne na stovky."},"hint": "Při zaokrouhlování na stovky se dívej na číslici desítek. Je 6 ≥ 5?"},{"id": "M4-01-03-002","type": "open","question": "Zaokrouhli číslo 24 350 na tisíce.","answer": "24 000","hint": "Dívej se na stovky — je 3 menší nebo větší/rovno 5?"}]}]},{"id": "M4-02","name": "Sčítání a odčítání do 1 000 000","order": 2,"prerequisite": "M4-01","skills": [{"id": "M4-02-01","name": "Pamětné sčítání a odčítání","difficulty": 1,"tasks": [{"id": "M4-02-01-001","type": "open","question": "Vypočítej zpaměti: 4 600 + 2 300","answer": "6900","answer_variants": ["6 900"],"hint": "Sečti nejdřív tisíce (4+2) a pak stovky (6+3)."},{"id": "M4-02-01-002","type": "open","question": "Vypočítej zpaměti: 8 000 - 3 500","answer": "4500","answer_variants": ["4 500"],"hint": "8 000 - 3 000 = ? A pak ještě odečti 500."}]},{"id": "M4-02-02","name": "Písemné sčítání a odčítání","difficulty": 2,"tasks": [{"id": "M4-02-02-001","type": "open","question": "Písemně sečti: 34 568 + 17 845","answer": "52413","answer_variants": ["52 413"],"hint": "Začni od jednotek a nezapomeň na přenos desítek!"},{"id": "M4-02-02-002","type": "open","question": "Písemně odečti: 50 000 - 23 467","answer": "26533","answer_variants": ["26 533"],"common_errors": ["27533","26543"],"error_explanations": {"27533": "Zkontroluj odčítání v řádu tisíců — nezapomněl/a jsi na výpůjčku?","26543": "Zkontroluj odčítání v řádu desítek."},"hint": "Odčítáme od samých nul — budeš potřebovat výpůjčky. Začni od jednotek."}]}]},{"id": "M4-03","name": "Násobení","order": 3,"prerequisite": "M4-01","skills": [{"id": "M4-03-01","name": "Malá násobilka — opakování a automatizace","difficulty": 1,"tasks": [{"id": "M4-03-01-001","type": "open","question": "7 × 8 = ?","answer": "56","hint": "Zkus si to rozložit: 7 × 8 = 7 × (10 - 2) = 70 - 14"},{"id": "M4-03-01-002","type": "open","question": "9 × 6 = ?","answer": "54","hint": "Trik s devítkou: 9 × 6 — desítky jsou o 1 méně než 6 (tedy 5), jednotky doplní do 9 (tedy 4)."},{"id": "M4-03-01-003","type": "open","question": "6 × 7 = ?","answer": "42","hint": "Je to stejné jako 7 × 6. Znáš odpověď na to?"}]},{"id": "M4-03-02","name": "Násobení jednociferným číslem","difficulty": 2,"tasks": [{"id": "M4-03-02-001","type": "open","question": "Vypočítej: 234 × 6","answer": "1404","answer_variants": ["1 404"],"hint": "Rozlož si to: (200 × 6) + (30 × 6) + (4 × 6)"},{"id": "M4-03-02-002","type": "open","question": "Vypočítej: 1 205 × 4","answer": "4820","answer_variants": ["4 820"],"hint": "Rozlož: (1 000 × 4) + (200 × 4) + (5 × 4)"}]},{"id": "M4-03-03","name": "Násobení dvojciferným číslem","difficulty": 3,"tasks": [{"id": "M4-03-03-001","type": "open","question": "Vypočítej: 45 × 12","answer": "540","hint": "Rozlož 12 na 10 + 2. Pak: (45 × 10) + (45 × 2)"},{"id": "M4-03-03-002","type": "open","question": "Vypočítej: 68 × 23","answer": "1564","answer_variants": ["1 564"],"hint": "Rozlož 23 na 20 + 3. Pak: (68 × 20) + (68 × 3)"}]}]},{"id": "M4-04","name": "Dělení","order": 4,"prerequisite": "M4-03","skills": [{"id": "M4-04-01","name": "Dělení v oboru malé násobilky","difficulty": 1,"tasks": [{"id": "M4-04-01-001","type": "open","question": "56 : 7 = ?","answer": "8","hint": "Otázka zní: 7 × ? = 56. Co dáš za otazník?"},{"id": "M4-04-01-002","type": "open","question": "72 : 9 = ?","answer": "8","hint": "9 × ? = 72"}]},{"id": "M4-04-02","name": "Dělení se zbytkem","difficulty": 2,"tasks": [{"id": "M4-04-02-001","type": "open","question": "29 : 4 = ? (zapiš s podílem a zbytkem)","answer": "7 zb. 1","answer_variants": ["7 zbytek 1","7 (zb. 1)","7 R 1","7, zbytek 1"],"hint": "4 × 7 = 28. A 29 - 28 = ?. To je zbytek.","common_errors": ["7","8"],"error_explanations": {"7": "Správný podíl, ale jaký je zbytek? 29 - (4 × 7) = ?","8": "4 × 8 = 32, to je víc než 29. Zkus menší číslo."}},{"id": "M4-04-02-002","type": "open","question": "50 : 6 = ? (zapiš s podílem a zbytkem)","answer": "8 zb. 2","answer_variants": ["8 zbytek 2","8 (zb. 2)","8 R 2"],"hint": "Jaký je největší násobek 6, který se vejde do 50?"}]},{"id": "M4-04-03","name": "Dělení víceciferných čísel jednociferným","difficulty": 3,"tasks": [{"id": "M4-04-03-001","type": "open","question": "846 : 3 = ?","answer": "282","hint": "Děl postupně: 8:3=2(zb.2), pak 24:3=8, pak 6:3=2"},{"id": "M4-04-03-002","type": "open","question": "1 525 : 5 = ?","answer": "305","hint": "Postupně: 15:5=3, 2:5 nejde (zapíšeme 0), 25:5=5"}]}]},{"id": "M4-05","name": "Zlomky — úvod","order": 5,"prerequisite": "M4-04","skills": [{"id": "M4-05-01","name": "Pojem zlomku — část z celku","difficulty": 1,"tasks": [{"id": "M4-05-01-001","type": "choice","question": "Pizza je rozřezaná na 8 dílků. Snědl jsi 3 dílky. Jaký zlomek pizzy jsi snědl?","options": ["3/8","8/3","3/5","5/8"],"answer": "3/8","hint": "Kolik dílků celkem? To je jmenovatel (dole). Kolik jsi snědl? To je čitatel (nahoře)."},{"id": "M4-05-01-002","type": "open","question": "Čokoláda má 10 kostek. Máma ti dala 4 kostky. Jaký zlomek čokolády máš?","answer": "4/10","answer_variants": ["2/5"],"hint": "Nahoře (čitatel) je to, co máš. Dole (jmenovatel) je celá čokoláda."},{"id": "M4-05-01-003","type": "open","question": "Kolik je třetina ze 30?","answer": "10","hint": "Třetina = dělit třemi."}]},{"id": "M4-05-02","name": "Porovnávání zlomků se stejným jmenovatelem","difficulty": 2,"tasks": [{"id": "M4-05-02-001","type": "choice","question": "Který zlomek je větší: 3/7 nebo 5/7?","options": ["3/7","5/7","Jsou stejné"],"answer": "5/7","hint": "Když mají zlomky stejný jmenovatel, stačí porovnat čitatele. Kdo má víc kousků?"}]}]},{"id": "M4-06","name": "Geometrie","order": 6,"prerequisite": null,"skills": [{"id": "M4-06-01","name": "Obvod a obsah obdélníku a čtverce","difficulty": 2,"tasks": [{"id": "M4-06-01-001","type": "open","question": "Vypočítej obvod obdélníku se stranami 8 cm a 5 cm.","answer": "26 cm","answer_variants": ["26"],"common_errors": ["13","40","13 cm","40 cm"],"error_explanations": {"13": "To je jen součet dvou stran. Obdélník má 4 strany — dvě délky a dvě šířky.","13 cm": "To je jen součet dvou stran. Obdélník má 4 strany — dvě délky a dvě šířky.","40": "To je obsah (8 × 5). Obvod se počítá jinak.","40 cm": "To je obsah (8 × 5). Obvod se počítá jinak — sečti všechny strany."},"hint": "Obvod = součet všech stran. Obdélník má dvě delší a dvě kratší strany."},{"id": "M4-06-01-002","type": "open","question": "Vypočítej obsah čtverce se stranou 9 cm.","answer": "81 cm²","answer_variants": ["81","81 cm2"],"common_errors": ["36","36 cm","18"],"error_explanations": {"36": "To je obvod (4 × 9). Obsah čtverce = strana × strana.","36 cm": "To je obvod (4 × 9). Obsah čtverce = strana × strana.","18": "To je jen 2 × 9. Obsah čtverce = strana × strana."},"hint": "Obsah čtverce = strana × strana. Takže 9 × 9 = ?"},{"id": "M4-06-01-003","type": "open","question": "Zahrada má tvar obdélníku 12 m × 8 m. Kolik metrů pletiva potřebuješ na plot kolem celé zahrady?","answer": "40 m","answer_variants": ["40"],"hint": "Plot = obvod. O = 2×(12+8)"}]},{"id": "M4-06-02","name": "Přímky, polopřímky, úsečky","difficulty": 1,"tasks": [{"id": "M4-06-02-001","type": "choice","question": "Co má dva koncové body?","options": ["Přímka","Polopřímka","Úsečka"],"answer": "Úsečka","hint": "Přímka nemá žádný konec, polopřímka má jeden. Co má dva?"},{"id": "M4-06-02-002","type": "choice","question": "Dvě přímky, které se nikdy neprotnou, jsou:","options": ["Rovnoběžné","Různoběžné","Kolmé"],"answer": "Rovnoběžné","hint": "Představ si koleje vlaku — jedou vedle sebe a nikdy se nepotkají."}]}]},{"id": "M4-07","name": "Jednotky a převody","order": 7,"prerequisite": null,"skills": [{"id": "M4-07-01","name": "Jednotky délky","difficulty": 2,"tasks": [{"id": "M4-07-01-001","type": "open","question": "Převeď: 3 km 250 m = ? m","answer": "3250","answer_variants": ["3 250","3250 m","3 250 m"],"hint": "1 km = 1 000 m. Takže 3 km = ? m. A pak přičti těch 250."},{"id": "M4-07-01-002","type": "open","question": "Převeď: 4 800 m = ? km ? m","answer": "4 km 800 m","answer_variants": ["4km 800m","4 km a 800 m"],"hint": "Kolikrát se vejde 1 000 do 4 800? To jsou kilometry. Zbytek jsou metry."}]},{"id": "M4-07-02","name": "Jednotky hmotnosti","difficulty": 2,"tasks": [{"id": "M4-07-02-001","type": "open","question": "Převeď: 5 kg 300 g = ? g","answer": "5300","answer_variants": ["5 300","5300 g","5 300 g"],"hint": "1 kg = 1 000 g. Takže 5 kg = ? g."}]},{"id": "M4-07-03","name": "Jednotky času","difficulty": 2,"tasks": [{"id": "M4-07-03-001","type": "open","question": "Kolik minut je 2 hodiny a 15 minut?","answer": "135","answer_variants": ["135 minut","135 min"],"hint": "1 hodina = 60 minut. Takže 2 hodiny = ? minut. A přičti 15."}]}]},{"id": "M4-08","name": "Slovní úlohy","order": 8,"prerequisite": "M4-02","skills": [{"id": "M4-08-01","name": "Slovní úlohy — jedno a dvě početní operace","difficulty": 2,"tasks": [{"id": "M4-08-01-001","type": "open","question": "V obchodě stojí sešit 18 Kč a tužka 12 Kč. Petr koupil 3 sešity a 5 tužek. Kolik zaplatil?","answer": "114 Kč","answer_variants": ["114","114Kč"],"hint": "Rozlož to na dva kroky: 1) Kolik stojí 3 sešity? 2) Kolik stojí 5 tužek? 3) Sečti.","solution_steps": ["3 × 18 = 54 Kč (sešity)","5 × 12 = 60 Kč (tužky)","54 + 60 = 114 Kč"]},{"id": "M4-08-01-002","type": "open","question": "Třída má 28 žáků. Na výlet jede o 5 žáků méně. Rozdělí se do skupin po 4. Kolik skupin bude?","answer": "6","answer_variants": ["6 skupin"],"hint": "Nejdřív zjisti kolik jede na výlet. Pak děl počet skupinou.","solution_steps": ["28 - 5 = 23 žáků jede","Ale pozor: 23 : 4 = 5 zb. 3","Potřebujeme 6 skupin (v jedné budou jen 3)"]}]}]}]},"cestina": {"name": "Český jazyk","icon": "📖","units": [{"id": "CJ4-01","name": "Vyjmenovaná slova","order": 1,"prerequisite": null,"skills": [{"id": "CJ4-01-01","name": "Vyjmenovaná slova po B","difficulty": 2,"theory": "Vyjmenovaná slova po B: být, bydlit, obyvatel, byt, příbytek, nábytek, dobytek, obyčej, bystrý, bylina, kobyla, býk, Přibyslav. A slova od nich odvozená (bývat, bydliště, dobytče...).","tasks": [{"id": "CJ4-01-01-001","type": "fill","question": "Doplň i/y: Ob_vatel tohoto domu je starý pán.","answer": "y","full_word": "obyvatel","rule": "Slovo 'obyvatel' je odvozeno od vyjmenovaného slova 'bydlit'.","hint": "Je to slovo odvozené od 'bydlit' — kdo někde bydlí, je ob_vatel."},{"id": "CJ4-01-01-002","type": "fill","question": "Doplň i/y: Kočka b_la na střeše.","answer": "y","full_word": "byla","rule": "Slovo 'byla' je tvar slova 'být' — vyjmenované slovo po B.","hint": "Je to od slovesa 'být'. A 'být' je vyjmenované slovo po B."},{"id": "CJ4-01-01-003","type": "fill","question": "Doplň i/y: Ptáček si b_l hnízdo z vět_ček.","answer": "i","full_word": "bil","rule": "'Bil' ve smyslu 'stavěl/ťukal' je od slovesa 'bít' (udeřit) — to NENÍ vyjmenované slovo.","common_errors": ["y"],"error_explanations": {"y": "Pozor! 'Bít' (udeřit, ťukat) je jiné slovo než 'být' (existovat). Ptáček hnízdo staví — bije do větviček — tedy 'bil' s měkkým i."},"hint": "Co ptáček dělá? Staví hnízdo — ťuká, bije zobáčkem. Je to od 'bít' (udeřit), ne od 'být' (existovat)."},{"id": "CJ4-01-01-004","type": "fill","question": "Doplň i/y: Na farmě chovají dob_tek.","answer": "y","full_word": "dobytek","rule": "'Dobytek' je vyjmenované slovo po B.","hint": "Vzpomeň si na řadu: být, bydlit, obyvatel, byt, příbytek, nábytek, dob..."},{"id": "CJ4-01-01-005","type": "fill","question": "Doplň i/y: Novák b_dlí v Praze.","answer": "y","full_word": "bydlí","rule": "'Bydlí' je tvar slova 'bydlit' — vyjmenované slovo po B.","hint": "'Bydlit' je přímo v řadě vyjmenovaných slov po B."}]},{"id": "CJ4-01-02","name": "Vyjmenovaná slova po L","difficulty": 2,"theory": "Vyjmenovaná slova po L: slyšet, mlýn, blýskat se, polykat, plynout, plýtvat, vzlykat, lysý, lýtko, lýko, lyže, pelyněk, plyš. A slova od nich odvozená.","tasks": [{"id": "CJ4-01-02-001","type": "fill","question": "Doplň i/y: Děti sl_šely divný zvuk.","answer": "y","full_word": "slyšely","rule": "'Slyšet' je vyjmenované slovo po L.","hint": "'Slyšet' — je to první vyjmenované slovo po L."},{"id": "CJ4-01-02-002","type": "fill","question": "Doplň i/y: Nepol_kej jídlo tak rychle!","answer": "y","full_word": "polykej","rule": "'Polykat' je vyjmenované slovo po L.","hint": "Slyšet, mlýn, blýskat se, pol..."},{"id": "CJ4-01-02-003","type": "fill","question": "Doplň i/y: L_ška utekla do lesa.","answer": "i","full_word": "liška","rule": "'Liška' NENÍ vyjmenované slovo po L ani slovo odvozené — píšeme měkké i.","hint": "Je 'liška' ve vyjmenovaných slovech po L? Projdi si je."}]},{"id": "CJ4-01-03","name": "Vyjmenovaná slova po M","difficulty": 2,"theory": "Vyjmenovaná slova po M: my, mýt, myslit, mýlit se, hmyz, myš, hřmýt, Litomyšl, zamykat, smýkat, dmýchat, chmýří, nachomýtnout se, Kamýk. A slova odvozená.","tasks": [{"id": "CJ4-01-03-001","type": "fill","question": "Doplň i/y: M_šlenka ho napadla ve sprše.","answer": "y","full_word": "myšlenka","rule": "'Myšlenka' je odvozena od 'myslit' — vyjmenované slovo po M.","hint": "Od jakého slova je 'myšlenka'? Od 'myslit' — a to je vyjmenované."},{"id": "CJ4-01-03-002","type": "fill","question": "Doplň i/y: Babička m_la nádobí.","answer": "y","full_word": "myla","rule": "'Myla' je od 'mýt' — vyjmenované slovo po M.","hint": "Co babička dělala? Myla — od slovesa 'mýt'."},{"id": "CJ4-01-03-003","type": "fill","question": "Doplň i/y: M_nuta má šedesát sekund.","answer": "i","full_word": "minuta","rule": "'Minuta' NENÍ vyjmenované slovo po M — píšeme měkké i.","hint": "Najdeš 'minuta' mezi vyjmenovanými slovy po M?"}]},{"id": "CJ4-01-04","name": "Vyjmenovaná slova po P","difficulty": 2,"theory": "Vyjmenovaná slova po P: pýcha, pytel, pysk, netopýr, slepýš, pyl, kopyto, klopýtat, třpytit se, zpytovat, pykat, pýr, pýřit se. A slova odvozená.","tasks": [{"id": "CJ4-01-04-001","type": "fill","question": "Doplň i/y: Kůň má čtyři kop_ta.","answer": "y","full_word": "kopyta","rule": "'Kopyto' je vyjmenované slovo po P.","hint": "Kop_to — je to ve vyjmenovaných slovech po P."},{"id": "CJ4-01-04-002","type": "fill","question": "Doplň i/y: P_škotek voněl z trouby.","answer": "i","full_word": "piškot","rule": "'Piškot' NENÍ vyjmenované slovo po P.","hint": "Najdeš 'piškot' ve vyjmenovaných slovech po P? Ne — takže měkké i."}]},{"id": "CJ4-01-05","name": "Vyjmenovaná slova po S","difficulty": 2,"theory": "Vyjmenovaná slova po S: syn, sytý, sýr, syrový, sychravý, usychat, sýkora, sýček, sysel, syčet, sypat. A slova odvozená.","tasks": [{"id": "CJ4-01-05-001","type": "fill","question": "Doplň i/y: Máma nakrájela s_r na chleba.","answer": "ý","full_word": "sýr","answer_variants": ["y"],"rule": "'Sýr' je vyjmenované slovo po S.","hint": "Co je to za jídlo? S_r — je to ve vyjmenovaných slovech po S."},{"id": "CJ4-01-05-002","type": "fill","question": "Doplň i/y: S_lnice byla mokrá.","answer": "i","full_word": "silnice","rule": "'Silnice' NENÍ vyjmenované slovo po S — píšeme měkké i.","hint": "'Silnice' — hledej ji ve vyjmenovaných slovech po S. Nenajdeš."}]},{"id": "CJ4-01-06","name": "Vyjmenovaná slova po V","difficulty": 2,"theory": "Vyjmenovaná slova po V: vy-, vysoký, výt, výskat, zvykat, žvýkat, vydra, výr, vyžle, povyk, výheň, cavyky, lavýrovat, Vyškov, Vyšehrad. A slova odvozená.","tasks": [{"id": "CJ4-01-06-001","type": "fill","question": "Doplň i/y: V_tr foukal celou noc.","answer": "í","full_word": "vítr","answer_variants": ["i"],"rule": "'Vítr' NENÍ vyjmenované slovo po V — píšeme měkké i.","common_errors": ["y","ý"],"error_explanations": {"y": "Pozor! 'Vítr' není odvozeno od žádného vyjmenovaného slova po V. Prefix 'vy-' tu není.","ý": "Pozor! 'Vítr' není odvozeno od žádného vyjmenovaného slova po V."},"hint": "Začíná to na V, ale je to vyjmenované slovo? Zkus najít 'vítr' v řadě po V."},{"id": "CJ4-01-06-002","type": "fill","question": "Doplň i/y: Musíme si zv_kat na nové prostředí.","answer": "y","full_word": "zvykat","rule": "'Zvykat' je vyjmenované slovo po V.","hint": "Vy-, vysoký, výt, výskat, zv_kat..."}]},{"id": "CJ4-01-07","name": "Vyjmenovaná slova po Z","difficulty": 2,"theory": "Vyjmenovaná slova po Z: brzy, jazyk, nazývat, Ruzyně. A slova odvozená (jazykový, brzičko...).","tasks": [{"id": "CJ4-01-07-001","type": "fill","question": "Doplň i/y: Mluví třemi jaz_ky.","answer": "y","full_word": "jazyky","rule": "'Jazyk' je vyjmenované slovo po Z.","hint": "Brzy, jaz_k — je to ve vyjmenovaných slovech po Z."},{"id": "CJ4-01-07-002","type": "fill","question": "Doplň i/y: Z_ma letos přišla brz_.","answer": ["i","y"],"full_word": ["zima","brzy"],"rule": "'Zima' NENÍ vyjmenované slovo (měkké i). 'Brzy' JE vyjmenované slovo po Z (tvrdé y).","hint": "Dvě mezery — u každé se rozhodni zvlášť. 'Zima' vyjmenované není, 'brzy' je."}]}]},{"id": "CJ4-02","name": "Podstatná jména","order": 2,"prerequisite": null,"skills": [{"id": "CJ4-02-01","name": "Určování pádu podstatných jmen","difficulty": 2,"theory": "7 pádů: 1. kdo/co, 2. koho/čeho (bez), 3. komu/čemu (k), 4. koho/co (vidím), 5. oslovení!, 6. o kom/čem (o), 7. kým/čím (s). Pomůcka: pomocné slovo + pádová otázka.","tasks": [{"id": "CJ4-02-01-001","type": "choice","question": "Urči pád podtrženého slova: Dárek je pro MAMINKU.","answer": "4. pád","hint": "Pro koho? Pro maminku. Vidím KOHO/CO — to je otázka na 4. pád.","options": ["1. pád","2. pád","3. pád","4. pád","5. pád","6. pád","7. pád"]},{"id": "CJ4-02-01-002","type": "choice","question": "Urči pád podtrženého slova: Na STOLE leží kniha.","answer": "6. pád","hint": "NA čem? Na stole. O KOM/ČEM — to je 6. pád. Pomůcka: předložka 'na' + kde = 6. pád.","options": ["1. pád","2. pád","3. pád","4. pád","5. pád","6. pád","7. pád"]},{"id": "CJ4-02-01-003","type": "choice","question": "Urči pád podtrženého slova: Půjdu ke KAMARÁDOVI.","answer": "3. pád","hint": "KE komu? Ke kamarádovi. KOMU/ČEMU — to je 3. pád.","options": ["1. pád","2. pád","3. pád","4. pád","5. pád","6. pád","7. pád"]}]},{"id": "CJ4-02-02","name": "Vzory podstatných jmen — rod mužský","difficulty": 3,"theory": "Rod mužský životný: vzory PÁN, MUŽ, PŘEDSEDA, SOUDCE. Rod mužský neživotný: vzory HRAD, STROJ.","tasks": [{"id": "CJ4-02-02-001","type": "choice","question": "Jaký je vzor slova 'učitel'?","options": ["pán","muž","předseda","soudce"],"answer": "muž","hint": "Zkus dosadit: bez učitele/bez muže — sedí to? Učitelé/muži — sedí?"},{"id": "CJ4-02-02-002","type": "choice","question": "Jaký je vzor slova 'počítač'?","options": ["hrad","stroj"],"answer": "stroj","hint": "Je počítač životný nebo neživotný? Neživotný. Končí na měkkou souhlásku (č) — to je vzor stroj."}]},{"id": "CJ4-02-03","name": "Vzory podstatných jmen — rod ženský","difficulty": 3,"theory": "Rod ženský: vzory ŽENA, RŮŽE, PÍSEŇ, KOST.","tasks": [{"id": "CJ4-02-03-001","type": "choice","question": "Jaký je vzor slova 'židle'?","options": ["žena","růže","píseň","kost"],"answer": "růže","hint": "Židle — 2. pád: bez židle/bez růže. Sedí? Koncovka -e v 1. pádě — to je typicky růže."},{"id": "CJ4-02-03-002","type": "choice","question": "Jaký je vzor slova 'radost'?","options": ["žena","růže","píseň","kost"],"answer": "kost","hint": "Radost — končí na souhlásku, 2. pád: bez radosti/bez kosti. Sedí!"}]},{"id": "CJ4-02-04","name": "Vzory podstatných jmen — rod střední","difficulty": 3,"theory": "Rod střední: vzory MĚSTO, MOŘE, KUŘE, STAVENÍ.","tasks": [{"id": "CJ4-02-04-001","type": "choice","question": "Jaký je vzor slova 'okno'?","options": ["město","moře","kuře","stavení"],"answer": "město","hint": "Okno — končí na -o. Města, okna — oboje -a v množném čísle."}]}]},{"id": "CJ4-03","name": "Slovesa","order": 3,"prerequisite": null,"skills": [{"id": "CJ4-03-01","name": "Určování osoby, čísla a času sloves","difficulty": 2,"tasks": [{"id": "CJ4-03-01-001","type": "choice","question": "Urči osobu, číslo a čas slovesa: 'Pojedeme na výlet.'","answer": "1. osoba, množné číslo, budoucí čas","hint": "KDO pojede? MY pojedeme — to je 1. osoba množného čísla. A KDY? Teprve to bude.","options": ["1. osoba, množné číslo, budoucí čas","3. osoba, množné číslo, přítomný čas","1. osoba, jednotné číslo, budoucí čas","3. osoba, jednotné číslo, minulý čas"]},{"id": "CJ4-03-01-002","type": "choice","question": "Urči osobu, číslo a čas slovesa: 'Zpívala krásnou píseň.'","answer": "3. osoba, jednotné číslo, minulý čas","hint": "KDO zpívala? ONA (3. osoba). Jedna — jednotné číslo. Už to bylo — minulý čas.","options": ["3. osoba, jednotné číslo, minulý čas","1. osoba, jednotné číslo, přítomný čas","3. osoba, množné číslo, minulý čas","2. osoba, jednotné číslo, budoucí čas"]},{"id": "CJ4-03-01-003","type": "choice","question": "Jaký je vzor slova 'táta'?","options": ["pán","hrad","muž","předseda"],"answer": "předseda","hint": "Životné podstatné jméno zakončené na -a."}]},{"id": "CJ4-03-02","name": "Shoda podmětu s přísudkem","difficulty": 3,"tasks": [{"id": "CJ4-03-02-001","type": "fill","question": "Doplň koncovku: Kluci hráli/hrály na hřišti. → Kluci hrál_ na hřišti.","answer": "i","rule": "Podmět 'kluci' je rod mužský životný — v množném čísle minulého času píšeme -i.","hint": "Kluci = rod mužský životný. U rodu mužského životného v množném čísle píšeme -i."},{"id": "CJ4-03-02-002","type": "fill","question": "Doplň koncovku: Děvčata si hrál_ venku.","answer": "a","rule": "Podmět 'děvčata' je rod střední — v množném čísle minulého času píšeme -a.","hint": "Děvčata = rod střední (to děvče). Rod střední v množném čísle → koncovka -a."},{"id": "CJ4-03-02-003","type": "fill","question": "Doplň koncovku: Stromy rostl_ rychle.","answer": "y","rule": "Podmět 'stromy' je rod mužský neživotný — v množném čísle minulého času píšeme -y.","hint": "Stromy = rod mužský NEživotný (ten strom). U neživotného rodu mužského píšeme -y."}]}]},{"id": "CJ4-04","name": "Stavba věty","order": 4,"prerequisite": null,"skills": [{"id": "CJ4-04-01","name": "Podmět a přísudek","difficulty": 2,"tasks": [{"id": "CJ4-04-01-001","type": "choice","question": "Najdi podmět a přísudek: 'Velký pes štěkal na pošťáka.'","answer": "podmět: pes, přísudek: štěkal","hint": "KDO štěkal? To je podmět. Co DĚLAL? To je přísudek.","options": ["podmět: pes, přísudek: štěkal","podmět: velký, přísudek: štěkal","podmět: pošťák, přísudek: štěkal","podmět: pes, přísudek: velký"]},{"id": "CJ4-04-01-002","type": "choice","question": "Najdi podmět a přísudek: 'Na jaře kvetou stromy.'","answer": "podmět: stromy, přísudek: kvetou","hint": "CO kvete? Stromy — to je podmět. Co dělají? Kvetou — to je přísudek.","options": ["podmět: stromy, přísudek: kvetou","podmět: jaře, přísudek: kvetou","podmět: stromy, přísudek: na jaře","podmět: kvetou, přísudek: stromy"]}]},{"id": "CJ4-04-02","name": "Časování — přítomný, minulý, budoucí čas","difficulty": 2,"tasks": [{"id": "CJ4-04-02-001","type": "choice","question": "V jakém čase je sloveso ve větě: 'Zítra pojedeme k babičce.'","options": ["přítomný","minulý","budoucí"],"answer": "budoucí","hint": "Zítra = budoucnost. Pojedeme = budoucí čas."},{"id": "CJ4-04-02-002","type": "choice","question": "V jakém čase je sloveso: 'Včera pršelo.'","options": ["přítomný","minulý","budoucí"],"answer": "minulý","hint": "Včera = minulost."}]}]},{"id": "CJ4-05","name": "Čtení s porozuměním","order": 5,"prerequisite": null,"skills": [{"id": "CJ4-05-01","name": "Porozumění krátkému textu","difficulty": 2,"tasks": [{"id": "CJ4-05-01-001","type": "reading","text": "Tomáš se probudil a podíval se z okna. Venku ležel sníh. Rychle se oblékl, snědl snídani a vyběhl ven. Postavil sněhuláka a pak se koulovačkou zahřál. Když začalo sněžit znovu, vrátil se domů.","questions": [{"question": "Co Tomáš uviděl z okna?","answer": "Sníh","type": "choice","options": ["Sníh","Déšť","Slunce","Mlhu","Kamarády"]},{"question": "Co Tomáš udělal jako první venku?","answer": "Postavil sněhuláka","type": "choice","options": ["Postavil sněhuláka","Šel do školy","Hrál si s kamarádem","Udělal andílka ve sněhu"]},{"question": "Proč se Tomáš vrátil domů?","answer": "Začalo sněžit znovu","type": "choice","options": ["Začalo sněžit znovu","Měl hlad","Volala ho maminka","Byla mu zima","Ztratil rukavice"]}]},{"id": "CJ4-05-01-002","type": "choice","question": "Přečti: 'Tomáš si ráno zabalil svačinu, ale zapomněl ji doma na stole. Ve škole měl hlad.' Proč měl Tomáš hlad?","answer": "Zapomněl svačinu doma","hint": "Co se stalo se svačinou?","options": ["Zapomněl svačinu doma","Neměl na svačinu peníze","Snědl svačinu cestou do školy","Ve škole mu ji někdo sebral","Svačinu dal kamarádovi"]}]}]}]},"prirodoveda": {"name": "Přírodověda","icon": "🌿","units": [{"id": "PR4-01","name": "Rostliny","order": 1,"skills": [{"id": "PR4-01-01","name": "Části rostliny","difficulty": 1,"tasks": [{"id": "PR4-01-01-001","type": "choice","question": "Která část rostliny přijímá vodu a živiny z půdy?","options": ["Kořen","Stonek","List","Květ"],"answer": "Kořen","hint": "Je to ta část, která je pod zemí."},{"id": "PR4-01-01-002","type": "choice","question": "Ve které části rostliny probíhá fotosyntéza?","options": ["Kořen","Stonek","List","Plod"],"answer": "List","hint": "Je to ta zelená část — proč je zelená? Kvůli chlorofylu, který zachycuje světlo."},{"id": "PR4-01-01-003","type": "choice","question": "K čemu rostlina potřebuje květ?","answer": "K rozmnožování","hint": "Co vznikne z květu? Plod se semeny. A k čemu semena slouží?","options": ["K rozmnožování","K dýchání","K přijímání vody","K ochraně před sluncem"]}]},{"id": "PR4-01-02","name": "Stromy listnaté a jehličnaté","difficulty": 1,"tasks": [{"id": "PR4-01-02-001","type": "choice","question": "Který strom je jehličnatý?","options": ["Dub","Smrk","Buk","Lípa"],"answer": "Smrk","hint": "Jehličnaté stromy mají jehličí místo listů. Který z nich má jehličí?"},{"id": "PR4-01-02-002","type": "choice","question": "Co dělají listnaté stromy na podzim?","answer": "Shazují listy","hint": "Proč se říká 'listnaté'? A co se děje s těmi listy, když přijde zima?","options": ["Shazují listy","Rostou rychleji","Kvetou","Mění barvu kůry","Rostou jim nové větve"]}]}]},{"id": "PR4-02","name": "Živočichové","order": 2,"skills": [{"id": "PR4-02-01","name": "Skupiny živočichů","difficulty": 1,"tasks": [{"id": "PR4-02-01-001","type": "choice","question": "Mezi savce patří:","options": ["Orel","Kapr","Ježek","Žába"],"answer": "Ježek","hint": "Savci kojí mláďata mlékem a mají srst. Který z nich to dělá?"},{"id": "PR4-02-01-002","type": "choice","question": "Obojživelník je:","options": ["Had","Žába","Ještěrka","Kapr"],"answer": "Žába","hint": "Obojživelníci žijí část života ve vodě a část na souši. Kdo z nich začíná život jako pulec?"},{"id": "PR4-02-01-003","type": "choice","question": "Čím se liší plazi od obojživelníků?","answer": "Mají šupiny a suchou kůži","hint": "Podívej se na kůži — žába je hladká a vlhká, had nebo ještěrka...?","options": ["Mají šupiny a suchou kůži","Žijí jen ve vodě","Nemají páteř","Mají křídla","Kojí mláďata"]}]},{"id": "PR4-02-02","name": "Potravní řetězec","difficulty": 2,"tasks": [{"id": "PR4-02-02-001","type": "choice","question": "Seřaď do potravního řetězce: liška, tráva, myš","answer": "tráva → myš → liška","hint": "Kdo koho jí? Začni tím, kdo nežere nic živého — roste ze země.","options": ["tráva → myš → liška","myš → tráva → liška","liška → myš → tráva","tráva → liška → myš"]}]}]},{"id": "PR4-03","name": "Lidské tělo","order": 3,"skills": [{"id": "PR4-03-01","name": "Orgánové soustavy","difficulty": 2,"tasks": [{"id": "PR4-03-01-001","type": "choice","question": "Který orgán přečerpává krev v těle?","options": ["Plíce","Srdce","Mozek","Žaludek"],"answer": "Srdce","hint": "Přilož si ruku na hruď — cítíš, jak tluče?"},{"id": "PR4-03-01-002","type": "choice","question": "K čemu slouží plíce?","options": ["K trávení","K dýchání","K pohybu","K myšlení"],"answer": "K dýchání","hint": "Co se stane, když se zhluboka nadechneš? Co se plní vzduchem?"}]}]},{"id": "PR4-04","name": "Počasí a roční období","order": 4,"prerequisite": null,"skills": [{"id": "PR4-04-01","name": "Přírodní jevy a počasí","difficulty": 1,"tasks": [{"id": "PR4-04-01-001","type": "choice","question": "Co způsobuje střídání ročních období?","options": ["Vzdálenost Země od Slunce","Náklon zemské osy","Fáze Měsíce","Vítr"],"answer": "Náklon zemské osy","hint": "Země je nakloněná — proto svítí Slunce v létě víc a v zimě míň."},{"id": "PR4-04-01-002","type": "choice","question": "Vyjmenuj 4 roční období v pořadí od jara.","answer": "jaro, léto, podzim, zima","hint": "Začni jarem...","options": ["jaro, léto, podzim, zima","léto, podzim, zima, jaro","jaro, podzim, léto, zima","zima, jaro, léto, podzim"]}]}]}]},"vlastiveda": {"name": "Vlastivěda","icon": "🗺️","units": [{"id": "VL4-01","name": "Orientace na mapě","order": 1,"skills": [{"id": "VL4-01-01","name": "Světové strany","difficulty": 1,"tasks": [{"id": "VL4-01-01-001","type": "choice","question": "Vyjmenuj čtyři hlavní světové strany.","answer": "Sever, jih, východ, západ","hint": "Na mapě: nahoře je S..., dole J..., vpravo V..., vlevo Z...","options": ["Sever, jih, východ, západ","Sever, jih, vlevo, vpravo","Nahoře, dole, vlevo, vpravo","Sever, západ, jih, nahoru"]},{"id": "VL4-01-01-002","type": "choice","question": "Na mapě je sever:","options": ["Nahoře","Dole","Vlevo","Vpravo"],"answer": "Nahoře","hint": "Vzpomeň si — kompas ukazuje nahoru."}]},{"id": "VL4-01-02","name": "Měřítko mapy a legenda","difficulty": 2,"tasks": [{"id": "VL4-01-02-001","type": "choice","question": "Co nám říká měřítko mapy?","answer": "Kolikrát je mapa zmenšená oproti skutečnosti","hint": "Když na mapě je 1 cm a měřítko říká 1:100 000, kolik je to ve skutečnosti?","options": ["Kolikrát je mapa zmenšená oproti skutečnosti","Jaké barvy se na mapě používají","Kde je na mapě sever","Kolik měst je na mapě"]}]}]},{"id": "VL4-02","name": "Kraje České republiky","order": 2,"skills": [{"id": "VL4-02-01","name": "Znalost krajů a krajských měst","difficulty": 2,"tasks": [{"id": "VL4-02-01-001","type": "open","question": "Kolik krajů má Česká republika?","answer": "14","hint": "Včetně Prahy, která je také kraj."},{"id": "VL4-02-01-002","type": "open","question": "Jaké je krajské město Jihomoravského kraje?","answer": "Brno","hint": "Je to druhé největší město v Česku."},{"id": "VL4-02-01-003","type": "choice","question": "Který kraj leží na severu Čech?","options": ["Jihočeský","Liberecký","Zlínský","Plzeňský"],"answer": "Liberecký","hint": "Na severu Čech — sousedí s Polskem a Německem. Jsou tam Jizerské hory."},{"id": "VL4-02-01-004","type": "open","question": "Jak se jmenuje hlavní město České republiky?","answer": "Praha","hint": "To snad víš 😊"}]}]},{"id": "VL4-03","name": "Povrch a vodstvo ČR","order": 3,"skills": [{"id": "VL4-03-01","name": "Řeky a pohoří","difficulty": 2,"tasks": [{"id": "VL4-03-01-001","type": "open","question": "Jak se jmenuje nejdelší řeka v České republice?","answer": "Vltava","hint": "Protéká Prahou a vlévá se do Labe."},{"id": "VL4-03-01-002","type": "open","question": "Jak se jmenuje nejvyšší hora České republiky?","answer": "Sněžka","hint": "Je v Krkonoších a měří 1 603 m n. m."},{"id": "VL4-03-01-003","type": "choice","question": "Do kterého moře odtéká většina českých řek?","options": ["Středozemní moře","Severní moře","Baltské moře","Černé moře"],"answer": "Severní moře","hint": "Vltava → Labe → ... kam teče Labe? Přes Německo do..."}]}]}]},"anglictina": {"name": "Angličtina","icon": "🇬🇧","units": [{"id": "AJ4-01","name": "Základní slovní zásoba","order": 1,"skills": [{"id": "AJ4-01-01","name": "Barvy a čísla","difficulty": 1,"tasks": [{"id": "AJ4-01-01-001","type": "open","question": "Přelož do angličtiny: modrý","answer": "blue","hint": "Obloha je 'bl...' — zkus si vzpomenout."},{"id": "AJ4-01-01-002","type": "open","question": "Přelož do angličtiny: 12","answer": "twelve","common_errors": ["twelv","twelf"],"hint": "Začíná na 'tw' a končí na '-elve'."},{"id": "AJ4-01-01-003","type": "open","question": "Přelož do češtiny: green","answer": "zelený","answer_variants": ["zelená","zelené"],"hint": "Tráva je 'green' — jaká je tráva?"}]},{"id": "AJ4-01-02","name": "Rodina","difficulty": 1,"tasks": [{"id": "AJ4-01-02-001","type": "open","question": "Přelož do angličtiny: maminka","answer": "mother","answer_variants": ["mom","mum","mummy"],"hint": "M... — zkráceně se říká 'mum' nebo 'mom'."},{"id": "AJ4-01-02-002","type": "open","question": "Přelož do angličtiny: bratr","answer": "brother","hint": "Br... — začíná jako české 'bratr'."},{"id": "AJ4-01-02-003","type": "open","question": "Co znamená 'grandmother'?","answer": "babička","hint": "'Grand' = velký/hlavní + 'mother' = matka. Matka matky je...?"}]}]},{"id": "AJ4-02","name": "Jednoduché věty","order": 2,"skills": [{"id": "AJ4-02-01","name": "Sloveso 'to be' — jsem, jsi, je","difficulty": 2,"tasks": [{"id": "AJ4-02-01-001","type": "fill","question": "Doplň: I ___ a student.","answer": "am","hint": "I = já. S 'I' používáme 'am'. I am = Já jsem."},{"id": "AJ4-02-01-002","type": "fill","question": "Doplň: She ___ my sister.","answer": "is","hint": "She = ona. S 'she' (a 'he', 'it') používáme 'is'."},{"id": "AJ4-02-01-003","type": "fill","question": "Doplň: They ___ from Prague.","answer": "are","hint": "They = oni. S 'they' (a 'we', 'you') používáme 'are'."}]},{"id": "AJ4-02-02","name": "Jednoduché otázky a odpovědi","difficulty": 2,"tasks": [{"id": "AJ4-02-02-001","type": "open","question": "Přelož: 'Jak se jmenuješ?' do angličtiny.","answer": "What is your name?","answer_variants": ["What's your name?","What is your name"],"hint": "'What' = co/jaký, 'your' = tvůj, 'name' = jméno."},{"id": "AJ4-02-02-002","type": "open","question": "Odpověz anglicky: 'How old are you?' (je ti 10)","answer": "I am ten.","answer_variants": ["I am ten years old.","I'm ten.","I'm ten years old.","I am 10.","I'm 10."],"hint": "'I am' = já jsem, pak řekni kolik — 'ten' = deset."}]}]},{"id": "AJ4-03","name": "Škola a každodenní život","order": 3,"skills": [{"id": "AJ4-03-01","name": "Školní potřeby a předměty","difficulty": 1,"tasks": [{"id": "AJ4-03-01-001","type": "open","question": "Přelož do angličtiny: tužka","answer": "pencil","hint": "P... — jako 'pen' (pero), ale delší slovo."},{"id": "AJ4-03-01-002","type": "open","question": "Přelož do angličtiny: kniha","answer": "book","hint": "B... — velmi krátké slovo, 4 písmena."},{"id": "AJ4-03-01-003","type": "open","question": "Co znamená 'classroom'?","answer": "třída","answer_variants": ["učebna"],"hint": "'Class' = třída, 'room' = místnost. Dohromady?"}]}]}]},"agent_config": {"personality": {"name": "Učitel","tone": "přátelský, trpělivý, povzbuzující, ale upřímný","language": "čeština, tykání, jednoduchý jazyk pro 10leté dítě","rules": ["Nikdy neříkej odpověď přímo — veď dítě k ní otázkami","Po správné odpovědi pochval konkrétně (ne jen 'super')","Po špatné odpovědi NIKDY neříkej 'špatně' — řekni 'skoro' nebo 'zkus to jinak'","Maximálně 3 nápovědy, pak ukaž řešení s vysvětlením","Používej příklady z reálného života dítěte (škola, sport, jídlo)","Krátké věty, max 2 řádky najednou","Po každých 5 úlohách nabídni přestávku nebo změnu předmětu","Emoji používej střídmě — max 1 na zprávu"]},"diagnostics": {"track_per_skill": true,"scoring": {"correct_first_try": 3,"correct_with_hint": 2,"correct_after_explanation": 1,"incorrect": 0},"skill_levels": {"weak": "průměr pod 1.5 z posledních 5 úloh","ok": "průměr 1.5-2.5","strong": "průměr nad 2.5"},"adaptive_rules": ["Začni na střední obtížnosti","3× správně za sebou → zvyš obtížnost","2× špatně za sebou → sniž obtížnost","Slabé dovednosti opakuj každou 3. lekci","Silné dovednosti zařaď jednou za 2 týdny jako opakování"]},"session_flow": {"start": "Pozdrav → zeptej se co dělali ve škole NEBO navrhni procvičování slabých míst","during": "Úloha → odpověď → vyhodnocení → zpětná vazba → další úloha","end": "Shrnutí (co šlo, co trénovat) → pochvala za snahu → uložení pokroku","max_duration_minutes": 30,"break_reminder_after_minutes": 15},"rewards": {"theme": "Minecraft / Skibidi Toilet","trigger": "po každých 5 správných odpovědích","duration_minutes": 5,"types": ["kvíz na téma odměny","hádanka","mini příběh","vtipný fakt"]}}}</script>
+  <script type="text/babel">
+    const { useState, useRef, useEffect, useCallback } = React;
+    const DB = JSON.parse(document.getElementById('db-data').textContent);
+    const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
+    const COLORS = { matika:'var(--matika)', cestina:'var(--cestina)',
+      prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', anglictina:'var(--anglictina)' };
 
-// ===== SUPABASE =====
-const SUPA_URL = 'https://ydzlvkgrjkytalgcnsie.supabase.co';
-const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkemx2a2dyamt5dGFsZ2Nuc2llIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NTE0NzAsImV4cCI6MjA5MTEyNzQ3MH0.OvnBu_VaL6zBYDwyaUmvPQ4azPsof6O7zmnsTlrDgSw';
-const sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
-
-// ===== CONSTANTS =====
-const DB = JSON.parse(document.getElementById('db-data').textContent);
-const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
-const COLORS = {matika:'var(--matika)',cestina:'var(--cestina)',prirodoveda:'var(--prirodoveda)',vlastiveda:'var(--vlastiveda)',anglictina:'var(--anglictina)'};
-const AVATARS = ['🦊','🐱','🐶','🐸','🦁','🐼','🐨','🐰','🦄','🐲','🐵','🦋','🐧','🐙','🦖'];
-const GRADE_AVAILABLE = {4: true}; // only grade 4 has content now
-
-// ===== HELPERS =====
-function norm(s){return String(s).toLowerCase().replace(/\s+/g,'').replace(/[.,!?]/g,'');}
-function checkAns(task,ua){
-  const n=norm(ua), c=norm(task.answer);
-  if(n===c) return {ok:true};
-  if(task.answer_variants){for(const v of task.answer_variants){if(n===norm(v))return{ok:true};}}
-  if(Array.isArray(task.answer)){
-    const parts=ua.split(/[,;\s]+/).filter(Boolean);
-    if(parts.length===task.answer.length&&parts.every((a,i)=>norm(a)===norm(task.answer[i])))return{ok:true};
-  }
-  if(task.common_errors){
-    for(const ce of task.common_errors){
-      if(n===norm(ce)&&task.error_explanations?.[ce])return{ok:false,fb:task.error_explanations[ce]};
+    // ===== STATE MANAGEMENT =====
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem('du_state')) || {}; } catch { return {}; }
     }
-  }
-  return{ok:false,fb:null};
-}
+    function saveState(s) { localStorage.setItem('du_state', JSON.stringify(s)); }
+    function getApiKey() { return localStorage.getItem('du_api_key') || ''; }
+    function setApiKey(k) { localStorage.setItem('du_api_key', k); }
 
-async function aiTutor(msgs,task,key){
-  if(!key)return null;
-  const sys=`Jsi přátelský učitel pro žáka 4. třídy ZŠ. Tykáš, česky, jednoduše.
-- NIKDY neříkej odpověď přímo — veď dítě otázkami
-- Po chybě řekni "skoro" nebo "zkus to jinak", NIKDY "špatně"
-- Max 2 řádky, emoji max 1
-Úloha: ${task.question}
-${task.hint?'Nápověda: '+task.hint:''}
-${task.rule?'Pravidlo: '+task.rule:''}`;
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':key,
-        'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:msgs})});
-    if(!r.ok)return null;
-    const d=await r.json();return d.content[0].text;
-  }catch{return null;}
-}
-
-// ===== TOAST COMPONENT =====
-function useToast(){
-  const[t,setT]=useState(null);
-  const show=(msg,type='ok')=>{setT({msg,type});setTimeout(()=>setT(null),2500);};
-  const el=t?<div className={`toast toast-${t.type}`}>{t.msg}</div>:null;
-  return[show,el];
-}
-
-// ===== AUTH SCREEN =====
-function AuthScreen({onAuth}){
-  const[mode,setMode]=useState('login');
-  const[email,setEmail]=useState('');
-  const[pass,setPass]=useState('');
-  const[loading,setL]=useState(false);
-  const[err,setErr]=useState('');
-
-  async function go(e){
-    e.preventDefault(); setErr(''); setL(true);
-    try{
-      if(mode==='signup'){
-        const{data,error}=await sb.auth.signUp({email,password:pass});
-        if(error)throw error;
-        if(data.user&&!data.session){
-          setErr('✅ Registrace OK! Zkontroluj e-mail a potvrď účet.');
-          setMode('login');
-        }else if(data.session){onAuth(data.session,data.user);}
-      }else{
-        const{data,error}=await sb.auth.signInWithPassword({email,password:pass});
-        if(error)throw error;
-        onAuth(data.session,data.user);
-      }
-    }catch(e){
-      const m=e.message||'Chyba';
-      if(m.includes('Invalid login'))setErr('Špatný e-mail nebo heslo.');
-      else if(m.includes('already registered'))setErr('Tento e-mail už je registrovaný. Přihlaš se.');
-      else if(m.includes('Password'))setErr('Heslo musí mít aspoň 6 znaků.');
-      else if(m.includes('Email not confirmed'))setErr('Nejdřív potvrď e-mail (odkaz v mailu).');
-      else setErr(m);
+    // ===== ANSWER CHECKING (deterministic, no AI) =====
+    function normalize(s) {
+      return String(s).toLowerCase().replace(/\s+/g,' ').trim()
+        .replace(/[.,!?]/g,'').replace(/\s/g,'');
     }
-    setL(false);
-  }
-
-  return(
-    <div className="screen auth-screen">
-      <div className="slide-up" style={{textAlign:'center',width:'100%',maxWidth:380}}>
-        <div className="auth-logo">📚</div>
-        <div className="auth-title">Domácí Učitel</div>
-        <div className="auth-sub">{mode==='login'?'Přihlaš se':'Vytvoř si účet'}</div>
-        <form className="auth-form" onSubmit={go}>
-          {err&&<div className="auth-error">{err}</div>}
-          <input className="auth-input" type="email" placeholder="E-mail"
-            value={email} onChange={e=>setEmail(e.target.value)} required autoComplete="email"/>
-          <input className="auth-input" type="password" placeholder="Heslo (min. 6 znaků)"
-            value={pass} onChange={e=>setPass(e.target.value)} required minLength={6}
-            autoComplete={mode==='signup'?'new-password':'current-password'}/>
-          <button className="auth-btn" type="submit" disabled={loading||!email||pass.length<6}>
-            {loading?'⏳ Moment...':mode==='login'?'🔑 Přihlásit se':'✨ Vytvořit účet'}
-          </button>
-        </form>
-        <button className="auth-switch" onClick={()=>{setMode(m=>m==='login'?'signup':'login');setErr('');}}>
-          {mode==='login'?<>Nemáš účet? <b>Zaregistruj se</b></>:<>Už máš účet? <b>Přihlaš se</b></>}
-        </button>
-        <div className="auth-ver">v0.6 — Jaty</div>
-      </div>
-    </div>
-  );
-}
-
-// ===== ADD CHILD SCREEN =====
-function AddChildScreen({familyId,onDone,onBack}){
-  const[name,setName]=useState('');
-  const[avatar,setAva]=useState('🦊');
-  const[grade,setGrade]=useState(4);
-  const[saving,setSaving]=useState(false);
-  const[err,setErr]=useState('');
-
-  async function save(){
-    if(!name.trim())return;
-    setSaving(true); setErr('');
-    try{
-      const{error}=await sb.from('children').insert({
-        family_id:familyId, name:name.trim(), avatar, grade
-      });
-      if(error)throw error;
-      onDone();
-    }catch(e){
-      setErr(e.message||'Nepodařilo se uložit.');
-    }
-    setSaving(false);
-  }
-
-  return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span className="header-title">Přidat dítě</span>
-      </div>
-      <div className="onb-form fade-in">
-        {err&&<div className="auth-error">{err}</div>}
-        <div className="onb-label">Jméno</div>
-        <input className="onb-input" placeholder="Jak se jmenuje?" value={name}
-          onChange={e=>setName(e.target.value)} maxLength={30} autoFocus/>
-
-        <div className="onb-label">Avatar</div>
-        <div className="avatar-grid">
-          {AVATARS.map(a=>(
-            <button key={a} className={`avatar-opt${avatar===a?' sel':''}`}
-              onClick={()=>setAva(a)}>{a}</button>
-          ))}
-        </div>
-
-        <div className="onb-label">Ročník</div>
-        <div className="grade-grid">
-          {[1,2,3,4,5].map(g=>(
-            <button key={g} className={`grade-opt${grade===g?' sel':''}`}
-              onClick={()=>setGrade(g)}>
-              {g}. třída {!GRADE_AVAILABLE[g]&&'🔒'}
-            </button>
-          ))}
-        </div>
-        {!GRADE_AVAILABLE[grade]&&(
-          <div style={{color:'var(--text3)',fontSize:13,marginBottom:12,textAlign:'center'}}>
-            Obsah pro {grade}. třídu připravujeme. Zatím dostupná jen 4. třída.
-          </div>
-        )}
-
-        <button className="onb-btn" onClick={save} disabled={saving||!name.trim()}>
-          {saving?'Ukládám...':'✅ Přidat dítě'}
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// ===== HOME SCREEN (children picker) =====
-function HomeScreen({user,family,children,onSelectChild,onAddChild,onParent,onLogout,onSettings}){
-  return(
-    <div className="screen">
-      <div className="header">
-        <span className="header-title">📚 Domácí Učitel</span>
-        <button className="logout-btn" onClick={onSettings}>⚙️</button>
-        <button className="logout-btn" onClick={onLogout}>Odhlásit</button>
-      </div>
-      <div className="home-pad">
-        <div className="home-welcome fade-in">Ahoj! 👋</div>
-        <div className="home-sub fade-in">Kdo se dnes bude učit?</div>
-
-        <div className="child-grid">
-          {children.map((ch,i)=>(
-            <button key={ch.id} className="child-card fade-in"
-              style={{animationDelay:`${i*0.08}s`}}
-              onClick={()=>onSelectChild(ch)}>
-              <div className="child-avatar">{ch.avatar||'🦊'}</div>
-              <div className="child-name">{ch.name}</div>
-              <div className="child-grade">{ch.grade||4}. třída</div>
-            </button>
-          ))}
-          {children.length<3&&(
-            <button className="child-card add-child fade-in"
-              style={{animationDelay:`${children.length*0.08}s`}}
-              onClick={onAddChild}>
-              <div className="child-avatar">➕</div>
-              <div className="child-name">Přidat dítě</div>
-            </button>
-          )}
-        </div>
-
-        <div style={{marginTop:24}}>
-          <button className="child-card fade-in" style={{width:'100%',borderColor:'var(--blue)',
-            borderLeft:'4px solid var(--blue)'}} onClick={onParent}>
-            <div className="child-avatar">📊</div>
-            <div>
-              <div className="child-name">Rodičovský přehled</div>
-              <div className="child-grade">Výsledky a pokrok</div>
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ===== SUBJECT PICKER =====
-function SubjectPicker({child,onPick,onBack}){
-  const grade=child.grade||4;
-  const available=GRADE_AVAILABLE[grade];
-  return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span style={{fontSize:24}}>{child.avatar}</span>
-        <span className="header-title">{child.name} — {grade}. třída</span>
-      </div>
-      <div className="list-pad">
-        {!available&&(
-          <div className="auth-error" style={{marginBottom:8}}>
-            Obsah pro {grade}. třídu zatím připravujeme. Můžeš procvičovat 4. třídu.
-          </div>
-        )}
-        {SUBJECTS.map((k,i)=>{
-          const s=DB[k];
-          const tc=s.units.reduce((sum,u)=>sum+u.skills.reduce((s2,sk)=>s2+sk.tasks.length,0),0);
-          return(
-            <button key={k} className="subject-card fade-in"
-              style={{borderLeftColor:COLORS[k],animationDelay:`${i*0.06}s`,
-                opacity:available?1:0.5}}
-              onClick={()=>available&&onPick(k)} disabled={!available}>
-              <span className="subject-icon">{s.icon}</span>
-              <span className="subject-name">{s.name}</span>
-              <span className="subject-info">{tc} úloh</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ===== TOPIC PICKER =====
-function TopicPicker({subject,child,onPick,onBack,progress}){
-  const s=DB[subject];
-  return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span style={{fontSize:24}}>{s.icon}</span>
-        <span className="header-title">{s.name}</span>
-      </div>
-      <div className="list-pad">
-        {s.units.map((u,i)=>{
-          const tc=u.skills.reduce((s2,sk)=>s2+sk.tasks.length,0);
-          // Check progress for this unit
-          const unitSkillIds=u.skills.map(sk=>sk.id);
-          const unitProgress=progress.filter(p=>unitSkillIds.includes(p.skill_id));
-          const avgScore=unitProgress.length?
-            Math.round(unitProgress.reduce((sum,p)=>sum+p.avg_score,0)/unitProgress.length*10)/10:null;
-          const statusColor=avgScore===null?'var(--text3)':avgScore>=2.5?'var(--green)':avgScore>=1.5?'var(--accent)':'var(--red)';
-          const statusText=avgScore===null?'Nové':avgScore>=2.5?'💪 Jde ti':avgScore>=1.5?'📝 Procvičuj':'🔄 Opakuj';
-          return(
-            <button key={u.id} className="topic-card fade-in"
-              style={{animationDelay:`${i*0.05}s`,borderLeft:`3px solid ${statusColor}`}} onClick={()=>onPick(u)}>
-              <div style={{flex:1}}>
-                <span className="topic-name">{u.name}</span>
-                {avgScore!==null&&<div style={{fontSize:11,color:statusColor,marginTop:2}}>{statusText} ({avgScore}/3)</div>}
-              </div>
-              <span className="topic-badge">{tc} úloh</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ===== CHAT SCREEN =====
-function ChatScreen({subject,unit,child,onBack,apiKey}){
-  const[msgs,setMsgs]=useState([]);
-  const[inp,setInp]=useState('');
-  const[typing,setTyping]=useState(false);
-  const[taskIdx,setTaskIdx]=useState(0);
-  const[attempts,setAttempts]=useState(0);
-  const[score,setScore]=useState({ok:0,total:0});
-  const[aiHist,setAiHist]=useState([]);
-  const[choices,setChoices]=useState(null);
-  const[done,setDone]=useState(false);
-  const[sessionId,setSessionId]=useState(null);
-  const[rewardMode,setRewardMode]=useState(null);
-  const endRef=useRef(null);
-
-  const allTasks=unit.skills.flatMap(sk=>sk.tasks);
-  const task=allTasks[taskIdx]||null;
-
-  useEffect(()=>{endRef.current?.scrollIntoView({behavior:'smooth'});},[msgs,typing]);
-
-  // Create session + show first task
-  useEffect(()=>{
-    (async()=>{
-      try{
-        const{data}=await sb.from('sessions').insert({
-          child_id:child.id, subject, unit_id:unit.id
-        }).select('id').maybeSingle();
-        if(data)setSessionId(data.id);
-      }catch{}
-      if(allTasks.length>0){
-        const t=allTasks[0];
-        add('tutor',`Ahoj! Dnes procvičujeme: ${unit.name}. Jdeme na to! 💪`);
-        setTimeout(()=>{
-          add('tutor',fmtQ(t));
-          if(t.type==='choice')setChoices(t.options);
-        },600);
-      }
-    })();
-  },[]);
-
-  function fmtQ(t){
-    if(t.type==='reading'&&t.text)return`Přečti si:\n\n„${t.text}"\n\n${t.questions[0].question}`;
-    return t.question;
-  }
-  function add(from,text){setMsgs(p=>[...p,{from,text}]);}
-
-  async function saveAnswer(taskId,answer,correct,pts){
-    if(!sessionId||!task)return;
-    const skillId=taskId.split('-').slice(0,3).join('-');
-    try{
-      await sb.from('answers').insert({
-        session_id:sessionId, child_id:child.id, task_id:taskId,
-        skill_id:skillId, answer, is_correct:correct, score:pts,
-        attempts:attempts+1, used_hint:attempts>0
-      });
-      // Update skill_progress
-      const{data:existing}=await sb.from('skill_progress').select('*')
-        .eq('child_id',child.id).eq('skill_id',skillId).maybeSingle();
-      if(existing){
-        const newTotal=existing.total_attempts+1;
-        const newCorrect=existing.correct_answers+(correct?1:0);
-        const newScore=((existing.avg_score*(newTotal-1))+pts)/newTotal;
-        await sb.from('skill_progress').update({
-          total_attempts:newTotal, correct_answers:newCorrect,
-          avg_score:Math.round(newScore*100)/100,
-          last_practiced:new Date().toISOString()
-        }).eq('id',existing.id);
-      }else{
-        await sb.from('skill_progress').insert({
-          child_id:child.id, skill_id:skillId,
-          total_attempts:1, correct_answers:correct?1:0,
-          avg_score:pts, last_practiced:new Date().toISOString()
-        });
-      }
-    }catch(e){console.error('Save answer error:',e);}
-  }
-
-  async function handleAns(answer){
-    if(!task||typing||done)return;
-    // Handle reward quiz answer
-    if(rewardMode){
-      add('student',answer);
-      setChoices(null);
-      const isRight=answer===rewardMode.opts[rewardMode.opts.indexOf(rewardMode.a.split('!')[0])||1];
-      add('tutor',isRight?'Správně! Jsi expert! 🎉':'Dobrý pokus! 😄 Jedeme dál!');
-      setRewardMode(null);
-      setTimeout(()=>{
-        const next=taskIdx+1;
-        if(next<allTasks.length){
-          setTaskIdx(next);
-          const nt=allTasks[next];
-          add('tutor',fmtQ(nt));
-          if(nt.type==='choice')setChoices(nt.options);
-        }else{
-          setDone(true);
-          add('tutor',`🏁 Hotovo! Výsledek: ${score.ok}/${score.total}`);
+    function checkAnswer(task, userAnswer) {
+      const ua = normalize(userAnswer);
+      const correct = normalize(task.answer);
+      if (ua === correct) return { correct: true };
+      if (task.answer_variants) {
+        for (const v of task.answer_variants) {
+          if (ua === normalize(v)) return { correct: true };
         }
-      },800);
-      return;
-    }
-    add('student',answer);
-    setInp(''); setChoices(null); setTyping(true);
-
-    const res=checkAns(task,answer);
-
-    if(res.ok){
-      const pts=attempts===0?3:attempts===1?2:1;
-      await saveAnswer(task.id,answer,true,pts);
-
-      const praises=['Výborně, hned napoprvé! 🎯','Přesně tak!','Správně, jdeš na to skvěle!',
-        'Ano, to sedí!','Bomba! 💥','Tak to je správně.'];
-      const p2=['Správně! Vidíš, šlo to.','Ano, teď to sedí!','Přesně! 👍'];
-      const praise=attempts===0?praises[Math.floor(Math.random()*praises.length)]:p2[Math.floor(Math.random()*p2.length)];
-
-      setTimeout(()=>{
-        setTyping(false);
-        add('tutor',praise);
-        setScore(p=>({ok:p.ok+1,total:p.total+1}));
-        setAttempts(0); setAiHist([]);
-
-        setTimeout(()=>{
-          const next=taskIdx+1;
-          if(next<allTasks.length){
-            // Every 5 correct answers — reward!
-            if((score.ok+1)%5===0&&score.ok>0){
-              const rewards=[
-                {q:'🎮 Minecraft kvíz! Kolik srdíček má Steve na začátku?',a:'10 (20 half-hearts)',opts:['5','10','20']},
-                {q:'🎮 Víš, jaký mob v Minecraftu exploduje?',a:'Creeper!',opts:['Zombie','Creeper','Skeleton']},
-                {q:'🎮 Z čeho se v Minecraftu vyrobí pochodeň?',a:'Tyčka + uhlí',opts:['Tyčka + uhlí','Dřevo + kámen','Železo + dřevo']},
-                {q:'🚽 Skibidi kvíz! Kdo je hlavní nepřítel Skibidi Toilet?',a:'Cameraman!',opts:['Cameraman','Speakerman','TV Man']},
-                {q:'🚽 Jakou zbraň používá Titan Cameraman?',a:'Laser z oka',opts:['Meč','Laser z oka','Bazuku']},
-                {q:'🎮 Co dropne Ender Dragon v Minecraftu?',a:'XP a Dragon Egg',opts:['Diamanty','XP a Dragon Egg','Netherite']},
-              ];
-              const r=rewards[Math.floor(Math.random()*rewards.length)];
-              add('tutor',`🏆 Pět správně! Bonus otázka:\n\n${r.q}`);
-              setChoices(r.opts);
-              setRewardMode(r);
-              return;
-            }
-            setTaskIdx(next);
-            const nt=allTasks[next];
-            add('tutor',fmtQ(nt));
-            if(nt.type==='choice')setChoices(nt.options);
-          }else{
-            setDone(true);
-            // End session
-            if(sessionId){
-              sb.from('sessions').update({
-                ended_at:new Date().toISOString(),
-                correct_tasks:score.ok+1, total_tasks:score.total+1
-              }).eq('id',sessionId).then(()=>{});
-            }
-            add('tutor',`🏁 Hotovo! Výsledek: ${score.ok+1}/${score.total+1}\n\nSkvělá práce! Můžeš zavřít nebo zkusit další téma.`);
+      }
+      // Check for array answers (e.g. CJ4-01-07-002)
+      if (Array.isArray(task.answer)) {
+        const answers = userAnswer.split(/[,;\s]+/).filter(Boolean);
+        if (answers.length === task.answer.length &&
+            answers.every((a,i) => normalize(a) === normalize(task.answer[i]))) {
+          return { correct: true };
+        }
+      }
+      // Check common errors
+      if (task.common_errors) {
+        for (const ce of task.common_errors) {
+          if (ua === normalize(ce) && task.error_explanations && task.error_explanations[ce]) {
+            return { correct: false, feedback: task.error_explanations[ce] };
           }
-        },800);
-      },600);
-    }else{
-      const na=attempts+1; setAttempts(na);
-
-      if(na>=3){
-        await saveAnswer(task.id,answer,false,0);
-        setTimeout(()=>{
-          setTyping(false);
-          const ans=Array.isArray(task.answer)?task.answer.join(', '):task.answer;
-          add('tutor',`Nevadí! Správná odpověď je: ${ans}\n${task.hint||''}`);
-          setScore(p=>({...p,total:p.total+1}));
-          setAttempts(0); setAiHist([]);
-          setTimeout(()=>{
-            const next=taskIdx+1;
-            if(next<allTasks.length){
-              setTaskIdx(next);
-              const nt=allTasks[next];
-              add('tutor',fmtQ(nt));
-              if(nt.type==='choice')setChoices(nt.options);
-            }else{
-              setDone(true);
-              add('tutor',`🏁 Hotovo! Výsledek: ${score.ok}/${score.total+1}`);
-            }
-          },1200);
-        },600);
-      }else{
-        // Try AI, fallback to hints
-        if(apiKey){
-          const newH=[...aiHist,{role:'user',content:
-            `Žák odpověděl "${answer}" na "${task.question}". Špatně. ${res.fb?'Zpětná vazba: '+res.fb:''} Pokus ${na}/3. Pomoz, ale NEŘÍKEJ odpověď.`}];
-          const aiR=await aiTutor(newH,task,apiKey);
-          setTyping(false);
-          if(aiR){add('tutor',aiR);setAiHist([...newH,{role:'assistant',content:aiR}]);}
-          else{add('tutor',res.fb||task.hint||'Zkus to jinak.');}
-        }else{
-          setTimeout(()=>{
-            setTyping(false);
-            add('tutor',res.fb||task.hint||'Hmm, to není ono. Zkus to jinak.');
-          },500);
         }
-        if(task.type==='choice')setChoices(task.options);
+      }
+      return { correct: false, feedback: null };
+    }
+
+    // ===== AI TUTOR =====
+    async function askTutor(messages, task, apiKey) {
+      const systemPrompt = `Jsi přátelský učitel pro žáka 4. třídy ZŠ. Tykáš, mluvíš česky, jednoduše.
+Pravidla:
+- NIKDY neříkej správnou odpověď přímo
+- Veď dítě k odpovědi otázkami a nápovědami
+- Po špatné odpovědi NEŘÍKEJ "špatně" — řekni "skoro" nebo "zkus to jinak"
+- Krátké věty, max 2 řádky
+- Emoji max 1 na zprávu, střídmě
+- Používej příklady ze života (Minecraft, škola, jídlo)
+- Buď trpělivý a povzbuzující
+
+Aktuální úloha: ${task.question}
+Typ: ${task.type}
+${task.hint ? 'Nápověda k dispozici: ' + task.hint : ''}
+${task.rule ? 'Pravidlo: ' + task.rule : ''}`;
+
+      try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true'
+          },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 300,
+            system: systemPrompt,
+            messages: messages
+          })
+        });
+        if (!resp.ok) {
+          const err = await resp.text();
+          console.error('API error:', err);
+          return null;
+        }
+        const data = await resp.json();
+        return data.content[0].text;
+      } catch (e) {
+        console.error('API call failed:', e);
+        return null;
       }
     }
-  }
 
-  function send(){if(inp.trim()){handleAns(inp.trim());}}
+    // ===== COMPONENTS =====
 
-  return(
-    <div className="chat-screen">
-      <div className="chat-header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span style={{fontSize:22}}>{DB[subject].icon}</span>
-        <span style={{flex:1,fontWeight:700,fontSize:15}}>{unit.name}</span>
-        <span className="score-badge">{score.ok}/{score.total}</span>
-      </div>
-      <div className="chat-messages">
-        {msgs.map((m,i)=>(
-          <div key={i} className={`msg msg-${m.from==='tutor'?'tutor':'student'} fade-in`}>
-            {m.from==='tutor'&&<span className="msg-avatar">🤖</span>}
-            <div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div>
+    function SettingsScreen({ onSave, currentKey }) {
+      const [key, setKey] = useState(currentKey);
+      return (
+        <div className="screen" style={{padding:'60px 24px',justifyContent:'center'}}>
+          <div className="fade-in" style={{textAlign:'center'}}>
+            <div style={{fontSize:48,marginBottom:16}}>🔑</div>
+            <h2 style={{fontSize:22,fontWeight:800,marginBottom:8}}>API klíč</h2>
+            <p style={{color:'var(--text2)',fontSize:14,marginBottom:24}}>
+              Aby mohl učitel odpovídat, potřebuje Anthropic API klíč.
+            </p>
+            <input className="settings-input" type="password"
+              value={key} onChange={e=>setKey(e.target.value)}
+              placeholder="sk-ant-..." style={{marginBottom:16}} />
+            <button className="settings-btn" onClick={()=>onSave(key)}
+              disabled={!key.startsWith('sk-')}>
+              Uložit a pokračovat
+            </button>
+            <p style={{color:'var(--text3)',fontSize:11,marginTop:16}}>
+              Klíč se ukládá jen v tomto zařízení.
+            </p>
           </div>
-        ))}
-        {typing&&(
-          <div className="msg msg-tutor">
-            <span className="msg-avatar">🤖</span>
-            <div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div>
+        </div>
+      );
+    }
+
+    function LoginScreen({ onSelect }) {
+      return (
+        <div className="screen login">
+          <div className="slide-up" style={{textAlign:'center',width:'100%'}}>
+            <div className="login-logo">📚</div>
+            <div className="login-title">Domácí Učitel</div>
+            <div className="login-sub">4. třída ZŠ</div>
+            <button className="login-btn" style={{background:'var(--accent)'}}
+              onClick={()=>onSelect('student')}>🎒 Jsem žák</button>
+            <button className="login-btn" style={{background:'var(--blue)'}}
+              onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button>
+            <button className="login-btn" style={{background:'var(--card2)'}}
+              onClick={()=>onSelect('settings')}>⚙️ Nastavení</button>
+            <div className="login-ver">v0.2 — Jaty</div>
           </div>
-        )}
-        {choices&&!typing&&!done&&(
-          <div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>
-            {choices.map((o,i)=>(
-              <button key={i} className="choice-btn" onClick={()=>handleAns(o)}>{o}</button>
+        </div>
+      );
+    }
+
+    function SubjectPicker({ onPick, onBack }) {
+      return (
+        <div className="screen">
+          <div className="header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span className="header-title">Co budeme procvičovat?</span>
+          </div>
+          <div className="subjects">
+            {SUBJECTS.map((k,i) => {
+              const s = DB[k];
+              const taskCount = s.units.reduce((sum,u) =>
+                sum + u.skills.reduce((s2,sk) => s2 + sk.tasks.length, 0), 0);
+              return (
+                <button key={k} className="subject-card fade-in"
+                  style={{borderLeftColor:COLORS[k], animationDelay:`${i*0.06}s`}}
+                  onClick={()=>onPick(k)}>
+                  <span className="subject-icon">{s.icon}</span>
+                  <span className="subject-name">{s.name}</span>
+                  <span className="subject-info">{taskCount} úloh</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    function TopicPicker({ subject, onPick, onBack }) {
+      const s = DB[subject];
+      return (
+        <div className="screen">
+          <div className="header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span style={{fontSize:24}}>{s.icon}</span>
+            <span className="header-title">{s.name}</span>
+          </div>
+          <div className="topics">
+            {s.units.map((u,i) => {
+              const taskCount = u.skills.reduce((s,sk) => s + sk.tasks.length, 0);
+              return (
+                <button key={u.id} className="topic-card fade-in"
+                  style={{animationDelay:`${i*0.05}s`}}
+                  onClick={()=>onPick(u)}>
+                  <span className="topic-name">{u.name}</span>
+                  <span className="topic-count">{taskCount} úloh</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    function ChatScreen({ subject, unit, onBack, apiKey }) {
+      const [msgs, setMsgs] = useState([]);
+      const [inp, setInp] = useState('');
+      const [typing, setTyping] = useState(false);
+      const [taskIdx, setTaskIdx] = useState(0);
+      const [skillIdx, setSkillIdx] = useState(0);
+      const [attempts, setAttempts] = useState(0);
+      const [score, setScore] = useState({ correct: 0, total: 0 });
+      const [aiHistory, setAiHistory] = useState([]);
+      const [waitingChoice, setWaitingChoice] = useState(null);
+      const [readingQIdx, setReadingQIdx] = useState(0);
+      const endRef = useRef(null);
+      const inputRef = useRef(null);
+
+      const allTasks = unit.skills.flatMap(sk => sk.tasks);
+      const currentTask = allTasks[taskIdx] || null;
+
+      useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
+
+      // Start first task
+      useEffect(() => {
+        if (allTasks.length > 0) {
+          const t = allTasks[0];
+          const intro = `Ahoj! Dnes procvičujeme: ${unit.name}. Jdeme na to!`;
+          const q = formatQuestion(t);
+          setMsgs([{from:'tutor', text:intro}, {from:'tutor', text:q}]);
+          if (t.type === 'choice') {
+            setWaitingChoice(t.options);
+          } else if (t.type === 'reading' && t.questions && t.questions[0].type === 'choice') {
+            setWaitingChoice(t.questions[0].options);
+          }
+        }
+      }, []);
+
+      function formatQuestion(t) {
+        if (t.type === 'reading' && t.text) {
+          return `Přečti si text:\n\n"${t.text}"\n\n${t.questions[0].question}`;
+        }
+        return t.question;
+      }
+
+      function addMsg(from, text) {
+        setMsgs(p => [...p, {from, text}]);
+      }
+
+      function getEffectiveTask(task, rqIdx) {
+        // For reading tasks, create a virtual task from the current sub-question
+        if (task.type === 'reading' && task.questions) {
+          const q = task.questions[rqIdx] || task.questions[0];
+          return {
+            ...task,
+            type: q.type || 'open',
+            question: q.question,
+            answer: q.answer,
+            options: q.options || null,
+            answer_variants: q.answer_variants || [],
+            hint: q.hint || null,
+            common_errors: q.common_errors || null,
+            error_explanations: q.error_explanations || null
+          };
+        }
+        return task;
+      }
+
+      async function handleAnswer(answer) {
+        if (!currentTask || typing) return;
+        addMsg('student', answer);
+        setInp('');
+        setWaitingChoice(null);
+        setTyping(true);
+
+        const effectiveTask = getEffectiveTask(currentTask, readingQIdx);
+        const result = checkAnswer(effectiveTask, answer);
+
+        if (result.correct) {
+          // Správně!
+          const praise = attempts === 0
+            ? ['Výborně, hned napoprvé! 🎯','Přesně tak!','Správně, jdeš na to skvěle!'][Math.floor(Math.random()*3)]
+            : ['Správně! Vidíš, šlo to.','Ano, teď už to sedí!'][Math.floor(Math.random()*2)];
+
+          setTimeout(() => {
+            setTyping(false);
+            addMsg('tutor', praise);
+            setScore(p => ({correct: p.correct+1, total: p.total+1}));
+            setAttempts(0);
+
+            // Další úloha (nebo další reading sub-otázka)
+            setTimeout(() => {
+              // Reading task - check for more sub-questions
+              if (currentTask.type === 'reading' && currentTask.questions &&
+                  readingQIdx + 1 < currentTask.questions.length) {
+                const nextRQ = readingQIdx + 1;
+                setReadingQIdx(nextRQ);
+                addMsg('tutor', currentTask.questions[nextRQ].question);
+                const nextSubQ = currentTask.questions[nextRQ];
+                if (nextSubQ.type === 'choice' && nextSubQ.options) {
+                  setWaitingChoice(nextSubQ.options);
+                }
+              } else {
+                // Next task
+                setReadingQIdx(0);
+                const next = taskIdx + 1;
+                if (next < allTasks.length) {
+                  setTaskIdx(next);
+                  const nt = allTasks[next];
+                  addMsg('tutor', formatQuestion(nt));
+                  if (nt.type === 'choice') setWaitingChoice(nt.options);
+                } else {
+                  addMsg('tutor', `To je pro dnešek vše! Skóre: ${score.correct+1}/${score.total+1} ✨`);
+                }
+              }
+            }, 800);
+          }, 600);
+        } else {
+          // Špatně
+          const newAttempts = attempts + 1;
+          setAttempts(newAttempts);
+
+          if (newAttempts >= 3) {
+            // Po 3 pokusech ukázat řešení
+            setTimeout(() => {
+              setTyping(false);
+              const ans = Array.isArray(effectiveTask.answer)
+                ? effectiveTask.answer.join(', ') : effectiveTask.answer;
+              addMsg('tutor', `Nevadí! Správná odpověď je: ${ans}. ${effectiveTask.hint || ''}`);
+              setScore(p => ({...p, total: p.total+1}));
+              setAttempts(0);
+              setTimeout(() => {
+                // Reading task - check for more sub-questions
+                if (currentTask.type === 'reading' && currentTask.questions &&
+                    readingQIdx + 1 < currentTask.questions.length) {
+                  const nextRQ = readingQIdx + 1;
+                  setReadingQIdx(nextRQ);
+                  addMsg('tutor', currentTask.questions[nextRQ].question);
+                  const nextSubQ = currentTask.questions[nextRQ];
+                  if (nextSubQ.type === 'choice' && nextSubQ.options) {
+                    setWaitingChoice(nextSubQ.options);
+                  }
+                } else {
+                  setReadingQIdx(0);
+                  const next = taskIdx + 1;
+                  if (next < allTasks.length) {
+                    setTaskIdx(next);
+                    const nt = allTasks[next];
+                    addMsg('tutor', formatQuestion(nt));
+                    if (nt.type === 'choice') setWaitingChoice(nt.options);
+                  } else {
+                    addMsg('tutor', `Hotovo! Skóre: ${score.correct}/${score.total+1}`);
+                  }
+                }
+              }, 1200);
+            }, 600);
+          } else {
+            // Zkusit AI feedback, fallback na hint
+            if (apiKey) {
+              const newHistory = [...aiHistory,
+                {role:'user', content:`Žák odpověděl: "${answer}" na otázku: "${effectiveTask.question}". Odpověď je špatná. ${result.feedback ? 'Specifická zpětná vazba: '+result.feedback : ''} Pomoz mu najít správnou odpověď, ale NEŘÍKEJ ji. Pokus č.${newAttempts}/3.`}
+              ];
+              const aiResp = await askTutor(newHistory, effectiveTask, apiKey);
+              setTyping(false);
+              if (aiResp) {
+                addMsg('tutor', aiResp);
+                setAiHistory([...newHistory, {role:'assistant', content: aiResp}]);
+              } else {
+                const fb = result.feedback || effectiveTask.hint || 'Zkus to ještě jednou.';
+                addMsg('tutor', fb);
+              }
+            } else {
+              setTimeout(() => {
+                setTyping(false);
+                const fb = result.feedback || effectiveTask.hint || 'Hmm, to není ono. Zkus to jinak.';
+                addMsg('tutor', fb);
+              }, 500);
+            }
+            if (effectiveTask.type === 'choice' && effectiveTask.options) setWaitingChoice(effectiveTask.options);
+          }
+        }
+      }
+
+      const send = () => {
+        if (!inp.trim()) return;
+        handleAnswer(inp.trim());
+      };
+
+      return (
+        <div className="chat-screen">
+          <div className="chat-header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span style={{fontSize:22}}>{DB[subject].icon}</span>
+            <span style={{flex:1,fontWeight:700,fontSize:15}}>{unit.name}</span>
+            <span className="score-badge score-correct">
+              {score.correct}/{score.total}
+            </span>
+          </div>
+          <div className="chat-messages">
+            {msgs.map((m,i) => (
+              <div key={i} className={`msg msg-${m.from==='tutor'?'tutor':'student'} fade-in`}>
+                {m.from==='tutor' && <span className="msg-avatar">🤖</span>}
+                <div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div>
+              </div>
             ))}
+            {typing && (
+              <div className="msg msg-tutor">
+                <span className="msg-avatar">🤖</span>
+                <div className="msg-bubble">
+                  <div className="typing-dots"><span/><span/><span/></div>
+                </div>
+              </div>
+            )}
+            {waitingChoice && !typing && (
+              <div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>
+                {waitingChoice.map((opt,i) => (
+                  <button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div ref={endRef}/>
           </div>
-        )}
-        <div ref={endRef}/>
-      </div>
-      {!done&&(
-        <div className="chat-input">
-          <input value={inp} onChange={e=>setInp(e.target.value)}
-            onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}}
-            placeholder="Napiš odpověď..."/>
-          <button onClick={send}>➤</button>
+          <div className="chat-input">
+            <input ref={inputRef} value={inp}
+              onChange={e=>setInp(e.target.value)}
+              onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}}
+              placeholder="Napiš odpověď..." />
+            <button onClick={send}>➤</button>
+          </div>
         </div>
-      )}
-    </div>
-  );
-}
+      );
+    }
 
-// ===== PARENT DASHBOARD =====
-function ParentDash({children:kids,onBack}){
-  const[stats,setStats]=useState({});
-  const[loading,setL]=useState(true);
-
-  useEffect(()=>{
-    (async()=>{
-      const st={};
-      for(const ch of kids){
-        const{data:sessions}=await sb.from('sessions').select('*')
-          .eq('child_id',ch.id).order('created_at',{ascending:false}).limit(20);
-        const{data:answers}=await sb.from('answers').select('*')
-          .eq('child_id',ch.id).order('created_at',{ascending:false}).limit(200);
-        const{data:skillProg}=await sb.from('skill_progress').select('*')
-          .eq('child_id',ch.id);
-        st[ch.id]={
-          sessions:sessions||[],
-          answers:answers||[],
-          totalCorrect:(answers||[]).filter(a=>a.is_correct).length,
-          totalAnswers:(answers||[]).length,
-          skills:skillProg||[],
-        };
-      }
-      setStats(st); setL(false);
-    })();
-  },[kids]);
-
-  if(loading)return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span className="header-title">📊 Přehled</span>
-      </div>
-      <div className="spinner"/>
-    </div>
-  );
-
-  return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span className="header-title">📊 Rodičovský přehled</span>
-      </div>
-      <div className="dash-pad">
-        {kids.map(ch=>{
-          const s=stats[ch.id]||{totalCorrect:0,totalAnswers:0,sessions:[]};
-          const pct=s.totalAnswers?Math.round(s.totalCorrect/s.totalAnswers*100):0;
-          return(
-            <div key={ch.id} className="dash-card fade-in">
-              <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:12}}>
-                <span style={{fontSize:32}}>{ch.avatar}</span>
-                <div>
-                  <div style={{fontWeight:700,fontSize:16}}>{ch.name}</div>
-                  <div style={{fontSize:12,color:'var(--text3)'}}>{ch.grade||4}. třída</div>
-                </div>
+    function ParentDashboard({ onBack }) {
+      const state = loadState();
+      return (
+        <div className="screen">
+          <div className="header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span className="header-title">📊 Přehled</span>
+          </div>
+          <div style={{padding:'16px 18px'}} className="fade-in">
+            <div className="dash-card">
+              <div className="dash-label">Stav</div>
+              <div className="dash-value" style={{color:'var(--accent)'}}>
+                Aktivní
               </div>
-
-              <div style={{display:'flex',gap:12,marginBottom:12}}>
-                <div style={{flex:1,background:'var(--card2)',borderRadius:10,padding:'10px 12px',textAlign:'center'}}>
-                  <div style={{fontSize:11,color:'var(--text3)'}}>Celkem odpovědí</div>
-                  <div style={{fontSize:20,fontWeight:800}}>{s.totalAnswers}</div>
-                </div>
-                <div style={{flex:1,background:'var(--card2)',borderRadius:10,padding:'10px 12px',textAlign:'center'}}>
-                  <div style={{fontSize:11,color:'var(--text3)'}}>Správně</div>
-                  <div style={{fontSize:20,fontWeight:800,color:'var(--green)'}}>{pct}%</div>
-                </div>
-                <div style={{flex:1,background:'var(--card2)',borderRadius:10,padding:'10px 12px',textAlign:'center'}}>
-                  <div style={{fontSize:11,color:'var(--text3)'}}>Lekce</div>
-                  <div style={{fontSize:20,fontWeight:800}}>{s.sessions.length}</div>
-                </div>
-              </div>
-
-              <div className="progress-bar">
-                <div className="progress-fill" style={{width:`${pct}%`,background:'var(--green)'}}/>
-              </div>
-              <div style={{fontSize:11,color:'var(--text3)',textAlign:'right',marginTop:4}}>
-                {s.totalAnswers===0?'Zatím bez dat':`${s.totalCorrect} z ${s.totalAnswers} správně`}
-              </div>
-
-              {s.skills&&s.skills.length>0&&(
-                <div style={{marginTop:12,borderTop:'1px solid var(--card2)',paddingTop:10}}>
-                  <div style={{fontSize:12,fontWeight:700,color:'var(--text2)',marginBottom:6}}>Dovednosti:</div>
-                  {s.skills.sort((a,b)=>a.avg_score-b.avg_score).slice(0,8).map(sk=>{
-                    const col=sk.avg_score>=2.5?'var(--green)':sk.avg_score>=1.5?'var(--accent)':'var(--red)';
-                    const label=sk.avg_score>=2.5?'💪':sk.avg_score>=1.5?'📝':'🔄';
-                    return(
-                      <div key={sk.skill_id} style={{display:'flex',alignItems:'center',gap:8,marginBottom:4,fontSize:12}}>
-                        <span>{label}</span>
-                        <span style={{flex:1,color:'var(--text2)'}}>{sk.skill_id}</span>
-                        <span style={{color:col,fontWeight:700}}>{sk.avg_score}/3</span>
-                        <span style={{color:'var(--text3)',fontSize:10}}>({sk.total_attempts}×)</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+              <p style={{color:'var(--text3)',fontSize:13,marginTop:4}}>
+                Databáze: {SUBJECTS.reduce((s,k) =>
+                  s + DB[k].units.reduce((s2,u) =>
+                    s2 + u.skills.reduce((s3,sk) => s3+sk.tasks.length, 0), 0), 0)} úloh
+              </p>
+              <p style={{color:'var(--text3)',fontSize:13}}>
+                AI tutor: {getApiKey() ? '✅ připojen' : '❌ nepřipojen'}
+              </p>
             </div>
-          );
-        })}
-
-        {kids.length===0&&(
-          <div style={{textAlign:'center',color:'var(--text3)',padding:40}}>
-            Zatím žádné děti. Přidej dítě na hlavní obrazovce.
+            {SUBJECTS.map(k => {
+              const s = DB[k];
+              const taskCount = s.units.reduce((sum,u) =>
+                sum + u.skills.reduce((s2,sk) => s2 + sk.tasks.length, 0), 0);
+              return (
+                <div key={k} className="dash-card">
+                  <div style={{display:'flex',justifyContent:'space-between',marginBottom:6}}>
+                    <span style={{fontWeight:700,fontSize:14}}>{s.icon} {s.name}</span>
+                    <span style={{fontSize:12,color:'var(--text3)'}}>{taskCount} úloh</span>
+                  </div>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{width:'0%',background:COLORS[k]}}/>
+                  </div>
+                  <div style={{fontSize:11,color:'var(--text3)',textAlign:'right',marginTop:4}}>
+                    Zatím bez dat
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ===== SETTINGS SCREEN =====
-function SettingsScreen({onBack,apiKey,setApiKey}){
-  const[key,setKey]=useState(apiKey);
-  const[saved,setSaved]=useState(false);
-  function save(){
-    localStorage.setItem('du_api_key',key);
-    setApiKey(key); setSaved(true);
-    setTimeout(()=>setSaved(false),2000);
-  }
-  return(
-    <div className="screen">
-      <div className="header">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span className="header-title">⚙️ Nastavení</span>
-      </div>
-      <div className="onb-form fade-in">
-        <div className="onb-label">Anthropic API klíč (pro AI učitele)</div>
-        <input className="onb-input" type="password" placeholder="sk-ant-..."
-          value={key} onChange={e=>setKey(e.target.value)}/>
-        <div style={{color:'var(--text3)',fontSize:12,marginBottom:16}}>
-          Nepovinné. Bez klíče tutor používá nápovědy z databáze.
-          S klíčem odpovídá AI chytřeji a osobněji.
         </div>
-        <button className="onb-btn" onClick={save}>
-          {saved?'✅ Uloženo':'💾 Uložit klíč'}
-        </button>
-        <div style={{color:'var(--text3)',fontSize:11,marginTop:16,textAlign:'center'}}>
-          Klíč se ukládá jen v tomto zařízení (localStorage).
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ===== MAIN APP =====
-function App(){
-  const[authReady,setAuthReady]=useState(false);
-  const[user,setUser]=useState(null);
-  const[family,setFamily]=useState(null);
-  const[children,setChildren]=useState([]);
-  const[view,setView]=useState('home'); // home|addChild|subjects|topics|chat|parent|settings
-  const[selChild,setSelChild]=useState(null);
-  const[selSubject,setSelSubject]=useState(null);
-  const[selUnit,setSelUnit]=useState(null);
-  const[progress,setProgress]=useState([]);
-  const[apiKey,setApiKey]=useState(localStorage.getItem('du_api_key')||'');
-  const[toast,toastEl]=useToast();
-
-  // Check existing session on mount
-  useEffect(()=>{
-    sb.auth.getSession().then(({data:{session}})=>{
-      if(session){setUser(session.user);loadFamily(session.user.id);}
-      setAuthReady(true);
-    });
-    const{data:{subscription}}=sb.auth.onAuthStateChange((ev,session)=>{
-      if(ev==='SIGNED_IN'&&session){setUser(session.user);loadFamily(session.user.id);}
-      if(ev==='SIGNED_OUT'){setUser(null);setFamily(null);setChildren([]);}
-    });
-    return()=>subscription.unsubscribe();
-  },[]);
-
-  async function loadFamily(userId){
-    // Get or create family
-    let{data:fam}=await sb.from('families').select('*').eq('auth_id',userId).maybeSingle();
-    if(!fam){
-      const{data:newFam}=await sb.from('families').insert({auth_id:userId}).select('*').maybeSingle();
-      fam=newFam;
+      );
     }
-    setFamily(fam);
-    if(fam){
-      const{data:kids}=await sb.from('children').select('*').eq('family_id',fam.id).order('created_at');
-      setChildren(kids||[]);
+
+    function App() {
+      const [view, setView] = useState('login');
+      const [subject, setSubject] = useState(null);
+      const [unit, setUnit] = useState(null);
+      const [apiKey, setApiKeyState] = useState(getApiKey());
+
+      function handleApiSave(key) {
+        setApiKey(key);
+        setApiKeyState(key);
+        setView('login');
+      }
+
+      if (view === 'settings') return <SettingsScreen onSave={handleApiSave} currentKey={apiKey}/>;
+      if (view === 'login') return <LoginScreen onSelect={setView}/>;
+      if (view === 'student' && !subject) return <SubjectPicker onPick={s=>{setSubject(s);}} onBack={()=>setView('login')}/>;
+      if (view === 'student' && subject && !unit) return <TopicPicker subject={subject} onPick={u=>{setUnit(u);setView('chat');}} onBack={()=>setSubject(null)}/>;
+      if (view === 'chat') return <ChatScreen subject={subject} unit={unit} onBack={()=>{setUnit(null);setView('student');}} apiKey={apiKey}/>;
+      if (view === 'parent') return <ParentDashboard onBack={()=>setView('login')}/>;
+      return null;
     }
-  }
 
-  async function refreshChildren(){
-    if(!family)return;
-    const{data:kids}=await sb.from('children').select('*').eq('family_id',family.id).order('created_at');
-    setChildren(kids||[]);
-  }
-
-  function handleAuth(session,u){setUser(u);loadFamily(u.id);}
-  async function handleLogout(){await sb.auth.signOut();setView('home');}
-
-  function selectChild(ch){
-    setSelChild(ch); setView('subjects');
-  }
-
-  function selectSubject(subj){
-    setSelSubject(subj); setView('topics');
-    // Load progress for this child
-    if(selChild){
-      sb.from('skill_progress').select('*').eq('child_id',selChild.id)
-        .then(({data})=>setProgress(data||[]));
-    }
-  }
-
-  // RENDER
-  if(!authReady)return <div className="screen" style={{justifyContent:'center',alignItems:'center'}}><div className="spinner"/></div>;
-
-  if(!user)return <AuthScreen onAuth={handleAuth}/>;
-
-  if(view==='addChild')return(
-    <AddChildScreen familyId={family?.id}
-      onDone={()=>{refreshChildren();setView('home');toast('Dítě přidáno!');}}
-      onBack={()=>setView('home')}/>
-  );
-
-  if(view==='settings')return(
-    <SettingsScreen onBack={()=>setView('home')} apiKey={apiKey} setApiKey={setApiKey}/>
-  );
-
-  if(view==='parent')return(
-    <ParentDash children={children} onBack={()=>setView('home')}/>
-  );
-
-  if(view==='subjects'&&selChild)return(
-    <SubjectPicker child={selChild}
-      onPick={s=>selectSubject(s)}
-      onBack={()=>{setSelChild(null);setView('home');}}/>
-  );
-
-  if(view==='topics'&&selSubject)return(
-    <TopicPicker subject={selSubject} child={selChild} progress={progress}
-      onPick={u=>{setSelUnit(u);setView('chat');}}
-      onBack={()=>{setSelSubject(null);setView('subjects');}}/>
-  );
-
-  if(view==='chat'&&selUnit)return(
-    <ChatScreen subject={selSubject} unit={selUnit} child={selChild}
-      apiKey={apiKey}
-      onBack={()=>{setSelUnit(null);setView('topics');}}/>
-  );
-
-  // HOME
-  return(
-    <>
-      <HomeScreen user={user} family={family} children={children}
-        onSelectChild={selectChild}
-        onAddChild={()=>setView('addChild')}
-        onParent={()=>setView('parent')}
-        onLogout={handleLogout}
-        onSettings={()=>setView('settings')}/>
-      {toastEl}
-    </>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-</script>
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
 </body>
 </html>
