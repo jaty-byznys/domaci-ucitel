@@ -211,42 +211,107 @@
       );
     }
 
+    const GUIDE_WRONG_1 = [
+      'Hmm, to není ono. Zkus se podívat znovu! 🤔',
+      'Skoro! Ale ne tak docela. Ještě jednou? 🧐',
+      'To nesedí. Přemýšlej, máš to v hlavě! 💭',
+      'Jejda, vedle. Dej tomu ještě šanci! 🔄',
+      'Tentokrát ne. Ale nevzdávej se! 💪',
+    ];
+    const GUIDE_WRONG_2 = [
+      'Poslední pokus! Pozor, soustřeď se... 🎯',
+      'Ještě jedna šance. Hint: ',
+      'Už jen jeden pokus. Pomůžu ti: ',
+      'Třetí pokus! Zkus se zamyslet: ',
+      'Poslední šance! Malá nápověda: ',
+    ];
+    const GUIDE_CORRECT = [
+      'Výborně! To sedí! 🎯',
+      'Přesně tak! Máš to! ⭐',
+      'Správně! Jsi borec! 🏅',
+      'Ano! Takhle se to dělá! 💪',
+      'Bingo! Jedeme dál! 🚀',
+    ];
+    const GUIDE_CORRECT_AFTER_FAIL = [
+      'Vidíš, šlo to! Hlavně nevzdávat 💪',
+      'Nakonec správně! To se počítá ✨',
+      'Dalo to práci, ale zvládl/a jsi to! 👍',
+    ];
+    function rnd(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
     function QuizScreen({ skill, subject, onFinish, onBack }) {
       const [tasks] = useState(() => pickTasks(skill, QUESTIONS_PER_ROUND));
       const [current, setCurrent] = useState(0);
-      const [results, setResults] = useState([]);
+      const [results, setResults] = useState([]); // per-question: 'correct' | 'wrong'
+      const [attempts, setAttempts] = useState(0);
       const [selected, setSelected] = useState(null);
+      const [wrongPicks, setWrongPicks] = useState([]); // options already tried wrong
       const [feedback, setFeedback] = useState('');
-      const [phase, setPhase] = useState('answering');
+      const [guideMsg, setGuideMsg] = useState('');
+      const [phase, setPhase] = useState('answering'); // 'answering' | 'feedback' | 'revealed' | 'done'
 
       const task = tasks[current];
 
-      function handleChoice(opt) {
-        if (phase !== 'answering') return;
-        setSelected(opt);
-        const result = checkAnswer(task, opt);
-        const newResults = [...results, result.correct ? 'correct' : 'wrong'];
-        setResults(newResults);
-
-        if (result.correct) {
-          setFeedback('Správně! 🎯');
-        } else {
-          setFeedback('Správná odpověď: ' + task.answer + (task.hint ? ' — ' + task.hint : ''));
-        }
-        setPhase('feedback');
-
+      function advanceToNext(newResults) {
         setTimeout(() => {
           if (current + 1 < tasks.length) {
             setCurrent(c => c + 1);
             setSelected(null);
+            setWrongPicks([]);
             setFeedback('');
+            setGuideMsg('');
+            setAttempts(0);
             setPhase('answering');
           } else {
             const correctCount = newResults.filter(r => r === 'correct').length;
             if (correctCount >= 4) setSkillDone(skill.id);
             setPhase('done');
           }
-        }, result.correct ? 1200 : 2500);
+        }, 1500);
+      }
+
+      function handleChoice(opt) {
+        if (phase !== 'answering') return;
+        if (wrongPicks.includes(opt)) return; // already tried this one
+
+        const result = checkAnswer(task, opt);
+
+        if (result.correct) {
+          // CORRECT
+          setSelected(opt);
+          setPhase('feedback');
+          const newResults = [...results, 'correct'];
+          setResults(newResults);
+          setGuideMsg(attempts > 0 ? rnd(GUIDE_CORRECT_AFTER_FAIL) : rnd(GUIDE_CORRECT));
+          setFeedback('');
+          advanceToNext(newResults);
+        } else {
+          // WRONG
+          const newAttempts = attempts + 1;
+          setAttempts(newAttempts);
+          setWrongPicks(prev => [...prev, opt]);
+
+          if (newAttempts >= 3) {
+            // 3rd wrong = reveal answer, count as wrong
+            setSelected(opt);
+            setPhase('revealed');
+            const newResults = [...results, 'wrong'];
+            setResults(newResults);
+            setGuideMsg('Nevadí! Správná odpověď: ' + task.answer);
+            setFeedback(task.hint || '');
+            advanceToNext(newResults);
+          } else if (newAttempts === 1) {
+            // 1st wrong
+            setGuideMsg(rnd(GUIDE_WRONG_1));
+            setFeedback('');
+          } else {
+            // 2nd wrong — give hint
+            const hintMsg = rnd(GUIDE_WRONG_2);
+            const hasHintPrefix = hintMsg.endsWith(': ');
+            setGuideMsg(hasHintPrefix ? hintMsg + (task.hint || 'Přemýšlej...') : hintMsg);
+            setFeedback('');
+          }
+        }
       }
 
       if (phase === 'done') {
@@ -277,6 +342,8 @@
       }
 
       if (!task) return null;
+
+      const showCorrectAnswer = phase === 'revealed';
       return (
         <div className="quiz-screen">
           <div className="header">
@@ -284,26 +351,41 @@
             <span className="header-title" style={{fontSize:14}}>{skill.name}</span>
             <span className="score-badge score-correct">{current+1}/{tasks.length}</span>
           </div>
-          <div className="quiz-body" key={current}>
+          <div className="quiz-body" key={current + '-' + attempts}>
             <div className="quiz-progress">
               {tasks.map((_, i) => (
                 <div key={i} className={'quiz-pip' + (i < results.length ? (results[i]==='correct' ? ' done' : ' wrong') : (i === current ? ' active' : ''))} />
               ))}
             </div>
             <div className="quiz-question fade-in">{task.question}</div>
+            {guideMsg && (
+              <div className="fade-in" style={{display:'flex', gap:10, alignItems:'flex-start', maxWidth:400, width:'100%', padding:'0 4px'}}>
+                <span style={{fontSize:28, flexShrink:0}}>🧑‍🔬</span>
+                <div style={{background:'var(--card)', borderRadius:'4px 14px 14px 14px', padding:'10px 14px', fontSize:14, lineHeight:1.5, color:'var(--text)'}}>
+                  {guideMsg}
+                  {feedback && <div style={{color:'var(--text3)', fontSize:12, marginTop:4}}>{feedback}</div>}
+                </div>
+              </div>
+            )}
             <div className="quiz-choices fade-in">
               {(task.options || []).map((opt, i) => {
+                const isWrongPick = wrongPicks.includes(opt);
+                const isCorrectOpt = normalize(opt) === normalize(task.answer);
                 let cls = 'quiz-choice';
-                if (selected !== null) {
+                if (showCorrectAnswer || phase === 'feedback') {
                   cls += ' disabled';
-                  if (opt === selected && normalize(opt) === normalize(task.answer)) cls += ' correct';
-                  else if (opt === selected) cls += ' wrong';
-                  else if (normalize(opt) === normalize(task.answer)) cls += ' highlight';
+                  if (isCorrectOpt) cls += ' correct';
+                  if (opt === selected && !isCorrectOpt) cls += ' wrong';
+                } else if (isWrongPick) {
+                  cls += ' wrong disabled';
                 }
                 return <button key={i} className={cls} onClick={() => handleChoice(opt)}>{opt}</button>;
               })}
             </div>
-            <div className="quiz-feedback">{feedback}</div>
+            {!guideMsg && <div style={{height:20}} />}
+            {attempts > 0 && phase === 'answering' && (
+              <div style={{fontSize:11, color:'var(--text3)'}}>Pokus {attempts + 1} / 3</div>
+            )}
           </div>
         </div>
       );
