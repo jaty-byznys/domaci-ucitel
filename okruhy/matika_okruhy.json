@@ -5882,6 +5882,48 @@
         ],
         "answer": "1 111",
         "hint": "Dělení = opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+      },
+      {
+        "id": "MA4-04-09-008",
+        "type": "choice",
+        "question": "8 640 ÷ 8 =",
+        "options": [
+          "1 080",
+          "1 180",
+          "1 008",
+          "980",
+          "1 800"
+        ],
+        "answer": "1 080",
+        "hint": "Děl postupně: 86 ÷ 8 = 10 zb. 6, pak 64 ÷ 8..."
+      },
+      {
+        "id": "MA4-04-09-009",
+        "type": "choice",
+        "question": "7 203 ÷ 3 =",
+        "options": [
+          "2 401",
+          "2 301",
+          "2 411",
+          "2 101",
+          "2 431"
+        ],
+        "answer": "2 401",
+        "hint": "Děl po řádech: 7÷3=2 zb.1, 12÷3=4..."
+      },
+      {
+        "id": "MA4-04-09-010",
+        "type": "choice",
+        "question": "5 555 ÷ 5 =",
+        "options": [
+          "1 011",
+          "1 111",
+          "1 101",
+          "1 110",
+          "1 115"
+        ],
+        "answer": "1 111",
+        "hint": "Každá pětka dělená pěti..."
       }
     ]
   },
@@ -7374,6 +7416,34 @@
         ],
         "answer": "21",
         "hint": "Zlomek = čitatel/jmenovatel. Část z celku = celek ÷ jmenovatel × čitatel."
+      },
+      {
+        "id": "MA4-05-10-009",
+        "type": "choice",
+        "question": "Kolik je dvě pětiny z 45?",
+        "options": [
+          "18",
+          "9",
+          "15",
+          "20",
+          "12"
+        ],
+        "answer": "18",
+        "hint": "Nejdřív spočítej jednu pětinu z 45, pak vynásob dvěma."
+      },
+      {
+        "id": "MA4-05-10-010",
+        "type": "choice",
+        "question": "Pět osmin z 40 =",
+        "options": [
+          "25",
+          "20",
+          "30",
+          "24",
+          "32"
+        ],
+        "answer": "25",
+        "hint": "Jedna osmina z 40 = 5, a pět osmin?"
       }
     ]
   },
@@ -7760,6 +7830,76 @@
         ],
         "answer": "225 cm²",
         "hint": "Obvod = součet stran. Obsah = strana × strana (čtverec) nebo a × b (obdélník)."
+      },
+      {
+        "id": "MA4-06-03-006",
+        "type": "choice",
+        "question": "Jaký je obvod obdélníku se stranami 8 cm a 3 cm?",
+        "options": [
+          "22 cm",
+          "24 cm",
+          "11 cm",
+          "16 cm",
+          "26 cm"
+        ],
+        "answer": "22 cm",
+        "hint": "Obvod obdélníku = 2 × (a + b)."
+      },
+      {
+        "id": "MA4-06-03-007",
+        "type": "choice",
+        "question": "Jaký je obsah obdélníku se stranami 7 cm a 4 cm?",
+        "options": [
+          "28 cm²",
+          "22 cm²",
+          "11 cm²",
+          "24 cm²",
+          "32 cm²"
+        ],
+        "answer": "28 cm²",
+        "hint": "Obsah obdélníku = a × b."
+      },
+      {
+        "id": "MA4-06-03-008",
+        "type": "choice",
+        "question": "Čtverec má obvod 36 cm. Jaká je délka jeho strany?",
+        "options": [
+          "9 cm",
+          "6 cm",
+          "12 cm",
+          "8 cm",
+          "18 cm"
+        ],
+        "answer": "9 cm",
+        "hint": "Obvod čtverce = 4 × a. Kolik je 36 ÷ 4?"
+      },
+      {
+        "id": "MA4-06-03-009",
+        "type": "choice",
+        "question": "Kolik pravoúhlých rohů má obdélník?",
+        "options": [
+          "4",
+          "2",
+          "3",
+          "1",
+          "0"
+        ],
+        "answer": "4",
+        "hint": "Každý roh obdélníku je..."
+      },
+      {
+        "id": "MA4-06-03-010",
+        "type": "choice",
+        "question": "Dvě přímky, které se nikdy neprotnou, se nazývají:",
+        "options": [
+          "rovnoběžky",
+          "kolmice",
+          "různoběžky",
+          "sečny",
+          "úsečky"
+        ],
+        "answer": "rovnoběžky",
+        "hint": "Přímky jedou „vedle sebe\" — nikdy se nepotkají."
       }
     ]
   },
@@ -8146,6 +8286,76 @@
         ],
         "answer": "1 kg 500 g",
         "hint": "Km→m: ×1000. M→cm: ×100. Cm→mm: ×10. Kg→g: ×1000. L→ml: ×1000. Hod→min: ×60."
+      },
+      {
+        "id": "MA4-07-03-006",
+        "type": "choice",
+        "question": "3 km = ? m",
+        "options": [
+          "3 000 m",
+          "300 m",
+          "30 m",
+          "30 000 m",
+          "3 m"
+        ],
+        "answer": "3 000 m",
+        "hint": "1 km = 1 000 m."
+      },
+      {
+        "id": "MA4-07-03-007",
+        "type": "choice",
+        "question": "2 hodiny 15 minut = ? minut",
+        "options": [
+          "135",
+          "215",
+          "125",
+          "150",
+          "120"
+        ],
+        "answer": "135",
+        "hint": "2 hodiny = 120 minut + 15 minut."
+      },
+      {
+        "id": "MA4-07-03-008",
+        "type": "choice",
+        "question": "4 500 ml = ? l ? ml",
+        "options": [
+          "4 l 500 ml",
+          "45 l",
+          "4 l 50 ml",
+          "450 l",
+          "4 l 5 ml"
+        ],
+        "answer": "4 l 500 ml",
+        "hint": "1 000 ml = 1 l."
+      },
+      {
+        "id": "MA4-07-03-009",
+        "type": "choice",
+        "question": "Co je těžší: 2 kg nebo 1 500 g?",
+        "options": [
+          "2 kg",
+          "1 500 g",
+          "jsou stejné",
+          "nedá se říct",
+          "1 500 g je víc"
+        ],
+        "answer": "2 kg",
+        "hint": "Převeď 2 kg na gramy: 2 kg = ? g."
+      },
+      {
+        "id": "MA4-07-03-010",
+        "type": "choice",
+        "question": "250 cm = ? m ? cm",
+        "options": [
+          "2 m 50 cm",
+          "25 m",
+          "2 m 5 cm",
+          "0 m 250 cm",
+          "20 m 50 cm"
+        ],
+        "answer": "2 m 50 cm",
+        "hint": "100 cm = 1 m."
       }
     ]
   },

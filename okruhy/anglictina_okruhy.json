@@ -15182,6 +15182,20 @@
         ],
         "answer": "My friend and I are happy.",
         "hint": "My friend and I = we = are."
+      },
+      {
+        "id": "AJ4-10-10-010",
+        "type": "choice",
+        "question": "Oprav chybu: 'The children is playing outside.'",
+        "options": [
+          "The children are playing outside.",
+          "The children was playing outside.",
+          "The childrens is playing outside.",
+          "The child is playing outside.",
+          "The children been playing outside."
+        ],
+        "answer": "The children are playing outside.",
+        "hint": "'Children' je množné číslo — jaký tvar 'to be' použijeme?"
       }
     ]
   },
@@ -16688,6 +16702,20 @@
         ],
         "answer": "Ona má nové šaty.",
         "hint": "She's got = she has got = ona má."
+      },
+      {
+        "id": "AJ4-11-10-010",
+        "type": "choice",
+        "question": "Přelož: 'Nemáme žádné domácí zvíře.'",
+        "options": [
+          "We haven't got a pet.",
+          "We hasn't got a pet.",
+          "We don't has a pet.",
+          "We not have got a pet.",
+          "We got not a pet."
+        ],
+        "answer": "We haven't got a pet.",
+        "hint": "'We' se pojí s 'have', zápor je 'haven't got'."
       }
     ]
   },
@@ -18152,6 +18180,62 @@
         ],
         "answer": "do",
         "hint": "They = do."
+      },
+      {
+        "id": "AJ4-12-10-007",
+        "type": "choice",
+        "question": "Doplň: 'She ___ (not watch) TV in the morning.'",
+        "options": [
+          "doesn't watch",
+          "don't watch",
+          "not watches",
+          "doesn't watches",
+          "don't watches"
+        ],
+        "answer": "doesn't watch",
+        "hint": "3. osoba + zápor = doesn't + základní tvar."
+      },
+      {
+        "id": "AJ4-12-10-008",
+        "type": "choice",
+        "question": "Doplň: '___ your parents ___ English?' (speak)",
+        "options": [
+          "Do ... speak",
+          "Does ... speak",
+          "Do ... speaks",
+          "Are ... speak",
+          "Does ... speaks"
+        ],
+        "answer": "Do ... speak",
+        "hint": "'Parents' je množné číslo — použij 'Do'."
+      },
+      {
+        "id": "AJ4-12-10-009",
+        "type": "choice",
+        "question": "Vyber správnou větu:",
+        "options": [
+          "He goes to school every day.",
+          "He go to school every day.",
+          "He gos to school every day.",
+          "He does goes to school.",
+          "He going to school every day."
+        ],
+        "answer": "He goes to school every day.",
+        "hint": "3. osoba j.č. — 'go' se změní na 'goes'."
+      },
+      {
+        "id": "AJ4-12-10-010",
+        "type": "choice",
+        "question": "Co znamená: 'My cat doesn't like water.'?",
+        "options": [
+          "Moje kočka nemá ráda vodu.",
+          "Moje kočka má ráda vodu.",
+          "Moje kočky nemají rády vodu.",
+          "Moje kočka nepije vodu.",
+          "Moje kočka nechce vodu."
+        ],
+        "answer": "Moje kočka nemá ráda vodu.",
+        "hint": "\"doesn't like\" = nemá rád/ráda."
       }
     ]
   },
@@ -19616,6 +19700,62 @@
         ],
         "answer": "can",
         "hint": "How fast can...?"
+      },
+      {
+        "id": "AJ4-13-10-007",
+        "type": "choice",
+        "question": "Přelož: 'Umíš hrát na kytaru?'",
+        "options": [
+          "Can you play the guitar?",
+          "Do you can play guitar?",
+          "Are you can play the guitar?",
+          "Can you playing the guitar?",
+          "You can play the guitar?"
+        ],
+        "answer": "Can you play the guitar?",
+        "hint": "Otázka s 'can' — can jde na začátek."
+      },
+      {
+        "id": "AJ4-13-10-008",
+        "type": "choice",
+        "question": "Vyber správnou odpověď na: 'Can your sister cook?'",
+        "options": [
+          "Yes, she can.",
+          "Yes, she cans.",
+          "Yes, she do.",
+          "Yes, she is can.",
+          "Yes, can she."
+        ],
+        "answer": "Yes, she can.",
+        "hint": "Krátká odpověď: Yes, + zájmeno + can."
+      },
+      {
+        "id": "AJ4-13-10-009",
+        "type": "choice",
+        "question": "Co znamená: 'I can't find my keys.'?",
+        "options": [
+          "Nemůžu najít klíče.",
+          "Můžu najít klíče.",
+          "Nechci najít klíče.",
+          "Nemám klíče.",
+          "Nevidím klíče."
+        ],
+        "answer": "Nemůžu najít klíče.",
+        "hint": "\"can't find\" = nemůžu najít."
+      },
+      {
+        "id": "AJ4-13-10-010",
+        "type": "choice",
+        "question": "Doplň: 'Babies ___ walk when they are born.'",
+        "options": [
+          "can't",
+          "can",
+          "doesn't",
+          "aren't",
+          "don't"
+        ],
+        "answer": "can't",
+        "hint": "Miminka neumí chodit hned po narození — zápor schopnosti."
       }
     ]
   },
@@ -21066,6 +21206,76 @@
         ],
         "answer": "are",
         "hint": "365 days = víc = are."
+      },
+      {
+        "id": "AJ4-14-10-006",
+        "type": "choice",
+        "question": "Doplň: '___ there any milk in the fridge?'",
+        "options": [
+          "Is",
+          "Are",
+          "Do",
+          "Does",
+          "Has"
+        ],
+        "answer": "Is",
+        "hint": "'Milk' je nepočitatelné — jednotné číslo."
+      },
+      {
+        "id": "AJ4-14-10-007",
+        "type": "choice",
+        "question": "Přelož: 'Na stole nejsou žádné knihy.'",
+        "options": [
+          "There aren't any books on the table.",
+          "There isn't any books on the table.",
+          "There are no book on the table.",
+          "There don't any books on the table.",
+          "Books aren't there on the table."
+        ],
+        "answer": "There aren't any books on the table.",
+        "hint": "'Books' — množné číslo → 'aren't'."
+      },
+      {
+        "id": "AJ4-14-10-008",
+        "type": "choice",
+        "question": "Vyber správnou větu:",
+        "options": [
+          "There are thirty students in our class.",
+          "There is thirty students in our class.",
+          "There be thirty students in our class.",
+          "There has thirty students in our class.",
+          "It are thirty students in our class."
+        ],
+        "answer": "There are thirty students in our class.",
+        "hint": "'Thirty students' — množné číslo → 'are'."
+      },
+      {
+        "id": "AJ4-14-10-009",
+        "type": "choice",
+        "question": "Odpověz: 'Is there a park near your house?' — Ano.",
+        "options": [
+          "Yes, there is.",
+          "Yes, there are.",
+          "Yes, it is.",
+          "Yes, is there.",
+          "Yes, there has."
+        ],
+        "answer": "Yes, there is.",
+        "hint": "Krátká odpověď opakuje 'there is/are' podle otázky."
+      },
+      {
+        "id": "AJ4-14-10-010",
+        "type": "choice",
+        "question": "Co znamená: 'There isn't enough time.'?",
+        "options": [
+          "Není dost času.",
+          "Je dost času.",
+          "Čas není tady.",
+          "Nemáme hodiny.",
+          "Čas se zastavil."
+        ],
+        "answer": "Není dost času.",
+        "hint": "\"there isn't enough\" = není dost."
       }
     ]
   },
