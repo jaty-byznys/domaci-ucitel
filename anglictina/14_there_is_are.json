@@ -1,0 +1,151 @@
+{
+  "id": "AJ4-14",
+  "name": "There is / There are",
+  "order": 13,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "AJ4-14-01",
+      "name": "There is – jednotné číslo",
+      "difficulty": 1,
+      "theory": "There is = je tam / existuje (jedno). There is a cat on the table. There's a book on the desk. Zkráceně: There's.",
+      "tasks": [
+        {"id": "AJ4-14-01-001", "type": "choice", "question": "Doplň: 'There ___ a cat on the sofa.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A cat = jedno = is."},
+        {"id": "AJ4-14-01-002", "type": "choice", "question": "Doplň: 'There ___ a book on the table.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A book = jedno = is."},
+        {"id": "AJ4-14-01-003", "type": "choice", "question": "Doplň: 'There ___ a dog in the garden.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A dog = jedno = is."},
+        {"id": "AJ4-14-01-004", "type": "choice", "question": "Doplň: 'There ___ a window in the room.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A window = jedno = is."},
+        {"id": "AJ4-14-01-005", "type": "choice", "question": "Doplň: 'There ___ a picture on the wall.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A picture = jedno = is."},
+        {"id": "AJ4-14-01-006", "type": "choice", "question": "Co znamená 'There is a park near my house'?", "options": ["Tam je park vedle mého domu.", "Byl tam park.", "Bude tam park.", "Mám park.", "Park je můj dům."], "answer": "Tam je park vedle mého domu.", "hint": "There is = je tam / existuje."},
+        {"id": "AJ4-14-01-007", "type": "choice", "question": "Jak zkráceně napíšeš 'there is'?", "options": ["theres", "there,s", "there's", "their's", "thers"], "answer": "there's", "hint": "There's = there is."},
+        {"id": "AJ4-14-01-008", "type": "choice", "question": "Doplň: 'There ___ a lamp on the desk.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A lamp = jedno = is."},
+        {"id": "AJ4-14-01-009", "type": "choice", "question": "Doplň: 'There ___ a teacher in the classroom.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A teacher = jedno = is."},
+        {"id": "AJ4-14-01-010", "type": "choice", "question": "Doplň: 'There ___ an apple on the plate.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "An apple = jedno = is."},
+        {"id": "AJ4-14-01-011", "type": "choice", "question": "Doplň: 'There ___ a spider on the ceiling.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A spider = jedno = is."},
+        {"id": "AJ4-14-01-012", "type": "choice", "question": "Doplň: 'There ___ a bus stop near the school.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A bus stop = jedno = is."},
+        {"id": "AJ4-14-01-013", "type": "choice", "question": "Doplň: 'There ___ a new student in our class.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A student = jedno = is."},
+        {"id": "AJ4-14-01-014", "type": "choice", "question": "Vyber správnou větu:", "options": ["There are a ball.", "There is a ball.", "There am a ball.", "There have a ball.", "A ball there is."], "answer": "There is a ball.", "hint": "A ball = jedno = There is."},
+        {"id": "AJ4-14-01-015", "type": "choice", "question": "Doplň: 'There ___ a clock on the wall.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A clock = jedno = is."},
+        {"id": "AJ4-14-01-016", "type": "choice", "question": "Doplň: 'There ___ a cake in the kitchen.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A cake = jedno = is."}
+      ]
+    },
+    {
+      "id": "AJ4-14-02",
+      "name": "There are – množné číslo",
+      "difficulty": 1,
+      "theory": "There are = jsou tam (víc). There are two cats. There are many books. There are children in the park.",
+      "tasks": [
+        {"id": "AJ4-14-02-001", "type": "choice", "question": "Doplň: 'There ___ two cats on the sofa.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Two cats = víc = are."},
+        {"id": "AJ4-14-02-002", "type": "choice", "question": "Doplň: 'There ___ five books on the shelf.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Five books = are."},
+        {"id": "AJ4-14-02-003", "type": "choice", "question": "Doplň: 'There ___ many children in the park.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Many children = are."},
+        {"id": "AJ4-14-02-004", "type": "choice", "question": "Doplň: 'There ___ three windows in the room.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Three windows = are."},
+        {"id": "AJ4-14-02-005", "type": "choice", "question": "Doplň: 'There ___ some flowers in the garden.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Some flowers = are."},
+        {"id": "AJ4-14-02-006", "type": "choice", "question": "Doplň: 'There ___ ten students in the class.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Ten students = are."},
+        {"id": "AJ4-14-02-007", "type": "choice", "question": "Doplň: 'There ___ four chairs around the table.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Four chairs = are."},
+        {"id": "AJ4-14-02-008", "type": "choice", "question": "Doplň: 'There ___ a lot of cars on the road.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "A lot of cars = are."},
+        {"id": "AJ4-14-02-009", "type": "choice", "question": "Doplň: 'There ___ two dogs in the yard.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Two dogs = are."},
+        {"id": "AJ4-14-02-010", "type": "choice", "question": "Doplň: 'There ___ seven days in a week.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Seven days = are."},
+        {"id": "AJ4-14-02-011", "type": "choice", "question": "Doplň: 'There ___ some toys on the floor.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Some toys = are."},
+        {"id": "AJ4-14-02-012", "type": "choice", "question": "Vyber správnou větu:", "options": ["There is three apples.", "There are three apples.", "There am three apples.", "There have three apples.", "Three apples there are."], "answer": "There are three apples.", "hint": "Three apples = are."},
+        {"id": "AJ4-14-02-013", "type": "choice", "question": "Doplň: 'There ___ twelve months in a year.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Twelve months = are."},
+        {"id": "AJ4-14-02-014", "type": "choice", "question": "Doplň: 'There ___ birds on the tree.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Birds = množné číslo = are."},
+        {"id": "AJ4-14-02-015", "type": "choice", "question": "Doplň: 'There ___ many stars in the sky.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Many stars = are."},
+        {"id": "AJ4-14-02-016", "type": "choice", "question": "Doplň: 'There ___ some pencils in the box.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Some pencils = are."},
+        {"id": "AJ4-14-02-017", "type": "choice", "question": "Co znamená 'There are many shops in the city'?", "options": ["Ve městě je mnoho obchodů.", "Ve městě byl obchod.", "Ve městě bude obchod.", "Mám obchod ve městě.", "Obchod je město."], "answer": "Ve městě je mnoho obchodů.", "hint": "There are = jsou tam."}
+      ]
+    },
+    {
+      "id": "AJ4-14-03",
+      "name": "There is / There are – výběr",
+      "difficulty": 1,
+      "theory": "There is + jednotné číslo (a cat, one book). There are + množné číslo (two cats, many books).",
+      "tasks": [
+        {"id": "AJ4-14-03-001", "type": "choice", "question": "Doplň: 'There ___ a bird on the tree.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "A bird = jedno."},
+        {"id": "AJ4-14-03-002", "type": "choice", "question": "Doplň: 'There ___ three birds on the tree.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Three birds = víc."},
+        {"id": "AJ4-14-03-003", "type": "choice", "question": "Doplň: 'There ___ a school near my house.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "A school = jedno."},
+        {"id": "AJ4-14-03-004", "type": "choice", "question": "Doplň: 'There ___ some children outside.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Children = víc."},
+        {"id": "AJ4-14-03-005", "type": "choice", "question": "Doplň: 'There ___ a big park in our town.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "A park = jedno."},
+        {"id": "AJ4-14-03-006", "type": "choice", "question": "Doplň: 'There ___ two parks in our town.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Two parks = víc."},
+        {"id": "AJ4-14-03-007", "type": "choice", "question": "Doplň: 'There ___ milk in the fridge.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "Milk = nepočitatelné = is."},
+        {"id": "AJ4-14-03-008", "type": "choice", "question": "Doplň: 'There ___ water in the glass.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "Water = nepočitatelné = is."},
+        {"id": "AJ4-14-03-009", "type": "choice", "question": "Doplň: 'There ___ a phone on the table.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "A phone = jedno."},
+        {"id": "AJ4-14-03-010", "type": "choice", "question": "Doplň: 'There ___ four seasons in a year.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Four seasons = víc."},
+        {"id": "AJ4-14-03-011", "type": "choice", "question": "Doplň: 'There ___ an elephant at the zoo.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "An elephant = jedno."},
+        {"id": "AJ4-14-03-012", "type": "choice", "question": "Doplň: 'There ___ lots of people here.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Lots of people = víc."},
+        {"id": "AJ4-14-03-013", "type": "choice", "question": "Doplň: 'There ___ one door in the room.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "One door = jedno."},
+        {"id": "AJ4-14-03-014", "type": "choice", "question": "Doplň: 'There ___ some cheese in the fridge.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "Cheese = nepočitatelné = is."},
+        {"id": "AJ4-14-03-015", "type": "choice", "question": "Doplň: 'There ___ eggs in the basket.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Eggs = množné číslo."},
+        {"id": "AJ4-14-03-016", "type": "choice", "question": "Doplň: 'There ___ a supermarket on this street.'", "options": ["are", "is", "am", "be", "have"], "answer": "is", "hint": "A supermarket = jedno."},
+        {"id": "AJ4-14-03-017", "type": "choice", "question": "Doplň: 'There ___ 30 students in our class.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "30 students = víc."}
+      ]
+    },
+    {
+      "id": "AJ4-14-04",
+      "name": "Zápor a otázky",
+      "difficulty": 2,
+      "theory": "Zápor: There isn't a cat. There aren't any dogs. Otázky: Is there a cat? Are there any dogs? Yes, there is. / No, there aren't.",
+      "tasks": [
+        {"id": "AJ4-14-04-001", "type": "choice", "question": "Doplň: 'There ___ a shop near here.' (zápor)", "options": ["aren't", "am not", "don't", "isn't", "haven't"], "answer": "isn't", "hint": "A shop = jedno = isn't."},
+        {"id": "AJ4-14-04-002", "type": "choice", "question": "Doplň: 'There ___ any books on the shelf.' (zápor)", "options": ["isn't", "am not", "don't", "aren't", "haven't"], "answer": "aren't", "hint": "Books = víc = aren't."},
+        {"id": "AJ4-14-04-003", "type": "choice", "question": "Doplň otázku: '___ there a bathroom upstairs?'", "options": ["Are", "Am", "Do", "Is", "Has"], "answer": "Is", "hint": "A bathroom = jedno = Is there?"},
+        {"id": "AJ4-14-04-004", "type": "choice", "question": "Doplň otázku: '___ there any eggs in the fridge?'", "options": ["Is", "Am", "Do", "Are", "Has"], "answer": "Are", "hint": "Eggs = víc = Are there?"},
+        {"id": "AJ4-14-04-005", "type": "choice", "question": "Jak odpovíš kladně na 'Is there a park near here?'?", "options": ["Yes, there are.", "Yes, it is.", "Yes, there is.", "Yes, is there.", "Yes, there has."], "answer": "Yes, there is.", "hint": "Yes, there is."},
+        {"id": "AJ4-14-04-006", "type": "choice", "question": "Jak odpovíš záporně na 'Are there any cats?'?", "options": ["No, there isn't.", "No, there don't.", "No, there aren't.", "No, aren't there.", "No, there hasn't."], "answer": "No, there aren't.", "hint": "No, there aren't."},
+        {"id": "AJ4-14-04-007", "type": "choice", "question": "Doplň: 'There ___ any milk in the fridge.' (zápor)", "options": ["aren't", "am not", "don't", "isn't", "haven't"], "answer": "isn't", "hint": "Milk = nepočitatelné = isn't."},
+        {"id": "AJ4-14-04-008", "type": "choice", "question": "Doplň otázku: '___ there a cinema in your town?'", "options": ["Are", "Am", "Do", "Is", "Has"], "answer": "Is", "hint": "A cinema = jedno = Is there?"},
+        {"id": "AJ4-14-04-009", "type": "choice", "question": "Doplň: 'There ___ any children in the playground.' (zápor)", "options": ["isn't", "am not", "don't", "aren't", "haven't"], "answer": "aren't", "hint": "Children = víc = aren't."},
+        {"id": "AJ4-14-04-010", "type": "choice", "question": "Jak odpovíš záporně na 'Is there a garden?'?", "options": ["No, there aren't.", "No, there don't.", "No, there isn't.", "No, isn't there.", "No, there hasn't."], "answer": "No, there isn't.", "hint": "No, there isn't."},
+        {"id": "AJ4-14-04-011", "type": "choice", "question": "Jak odpovíš kladně na 'Are there any shops?'?", "options": ["Yes, there is.", "Yes, there do.", "Yes, there are.", "Yes, are there.", "Yes, there has."], "answer": "Yes, there are.", "hint": "Yes, there are."},
+        {"id": "AJ4-14-04-012", "type": "choice", "question": "Doplň: 'There ___ a TV in the bedroom.' (zápor)", "options": ["aren't", "am not", "don't", "isn't", "haven't"], "answer": "isn't", "hint": "A TV = jedno = isn't."},
+        {"id": "AJ4-14-04-013", "type": "choice", "question": "Doplň otázku: '___ there many people at the party?'", "options": ["Is", "Am", "Do", "Are", "Has"], "answer": "Are", "hint": "People = víc = Are there?"},
+        {"id": "AJ4-14-04-014", "type": "choice", "question": "Doplň: 'There ___ any sugar in my tea.' (zápor)", "options": ["aren't", "am not", "don't", "isn't", "haven't"], "answer": "isn't", "hint": "Sugar = nepočitatelné = isn't."},
+        {"id": "AJ4-14-04-015", "type": "choice", "question": "Vyber správnou otázku:", "options": ["Is there any chairs?", "Are there any chair?", "Are there any chairs?", "Is there any chair?", "Do there any chairs?"], "answer": "Are there any chairs?", "hint": "Chairs = víc = Are there?"},
+        {"id": "AJ4-14-04-016", "type": "choice", "question": "Doplň otázku: '___ there a hospital near here?'", "options": ["Are", "Am", "Do", "Is", "Has"], "answer": "Is", "hint": "A hospital = jedno = Is there?"},
+        {"id": "AJ4-14-04-017", "type": "choice", "question": "Doplň: 'There ___ any pencils in my bag.' (zápor)", "options": ["isn't", "am not", "don't", "aren't", "haven't"], "answer": "aren't", "hint": "Pencils = víc = aren't."}
+      ]
+    },
+    {
+      "id": "AJ4-14-05",
+      "name": "Překlad vět",
+      "difficulty": 2,
+      "theory": "Na stole je kniha = There is a book on the table. V parku jsou děti = There are children in the park.",
+      "tasks": [
+        {"id": "AJ4-14-05-001", "type": "choice", "question": "Přelož: 'Na stole je jablko.'", "options": ["There are an apple on the table.", "There is an apple on the table.", "An apple is there on the table.", "On the table an apple is.", "There have an apple on the table."], "answer": "There is an apple on the table.", "hint": "An apple = jedno = There is."},
+        {"id": "AJ4-14-05-002", "type": "choice", "question": "Přelož: 'V zahradě jsou dva psi.'", "options": ["There is two dogs in the garden.", "There are two dogs in the garden.", "Two dogs is in the garden.", "In the garden two dogs are.", "There have two dogs in the garden."], "answer": "There are two dogs in the garden.", "hint": "Two dogs = víc = There are."},
+        {"id": "AJ4-14-05-003", "type": "choice", "question": "Přelož: 'V lednici není mléko.'", "options": ["There aren't milk in the fridge.", "There isn't milk in the fridge.", "Milk isn't in the fridge there.", "There don't milk in the fridge.", "In fridge there no milk."], "answer": "There isn't milk in the fridge.", "hint": "Milk = nepočitatelné = isn't."},
+        {"id": "AJ4-14-05-004", "type": "choice", "question": "Přelož: 'Je tu nějaká nemocnice?'", "options": ["Are there a hospital?", "Is there a hospital?", "There is a hospital?", "Does there a hospital?", "Has there a hospital?"], "answer": "Is there a hospital?", "hint": "A hospital = jedno = Is there?"},
+        {"id": "AJ4-14-05-005", "type": "choice", "question": "Přelož: 'Ve třídě je 25 žáků.'", "options": ["There is 25 students in the class.", "There are 25 students in the class.", "25 students is in the class.", "In class there is 25 students.", "There have 25 students."], "answer": "There are 25 students in the class.", "hint": "25 students = víc = There are."},
+        {"id": "AJ4-14-05-006", "type": "choice", "question": "Přelož: 'Na zdi je obrázek.'", "options": ["There are a picture on the wall.", "There is a picture on the wall.", "A picture is on the wall there.", "On wall there picture is.", "There have a picture."], "answer": "There is a picture on the wall.", "hint": "A picture = jedno = There is."},
+        {"id": "AJ4-14-05-007", "type": "choice", "question": "Přelož: 'Nejsou tu žádné židle.'", "options": ["There isn't any chairs.", "There aren't any chairs.", "Chairs aren't there.", "There don't any chairs.", "No chairs there are."], "answer": "There aren't any chairs.", "hint": "Chairs = víc = aren't."},
+        {"id": "AJ4-14-05-008", "type": "choice", "question": "Přelož: 'Je v krabici nějaká hračka?'", "options": ["Are there a toy in the box?", "Is there a toy in the box?", "There is a toy in the box?", "Does there a toy in the box?", "Has there a toy?"], "answer": "Is there a toy in the box?", "hint": "A toy = jedno = Is there?"},
+        {"id": "AJ4-14-05-009", "type": "choice", "question": "Přelož: 'V pokoji je postel a skříň.'", "options": ["There are a bed and a wardrobe.", "There is a bed and a wardrobe in the room.", "A bed and wardrobe is in room.", "In room there bed and wardrobe.", "There have bed and wardrobe."], "answer": "There is a bed and a wardrobe in the room.", "hint": "Bed and wardrobe = dvě věci, ale 'there is' se často používá u výčtu."},
+        {"id": "AJ4-14-05-010", "type": "choice", "question": "Přelož: 'Jsou na stromě nějaké jablka?'", "options": ["Is there any apples on the tree?", "Are there any apples on the tree?", "There are any apples on the tree?", "Does there any apples?", "Has there apples on tree?"], "answer": "Are there any apples on the tree?", "hint": "Apples = víc = Are there?"},
+        {"id": "AJ4-14-05-011", "type": "choice", "question": "Přelož: 'Na podlaze není koberec.'", "options": ["There aren't a carpet on the floor.", "There isn't a carpet on the floor.", "A carpet isn't on floor there.", "There don't carpet.", "No carpet there is."], "answer": "There isn't a carpet on the floor.", "hint": "A carpet = jedno = isn't."},
+        {"id": "AJ4-14-05-012", "type": "choice", "question": "Přelož: 'V lednici je sýr.'", "options": ["There are cheese in the fridge.", "There is cheese in the fridge.", "Cheese there is in fridge.", "There have cheese.", "In fridge is cheese."], "answer": "There is cheese in the fridge.", "hint": "Cheese = nepočitatelné = is."}
+      ]
+    },
+    {
+      "id": "AJ4-14-06",
+      "name": "There is / There are – mix",
+      "difficulty": 2,
+      "theory": "Procvičuj is/are, zápor i otázky dohromady.",
+      "tasks": [
+        {"id": "AJ4-14-06-001", "type": "choice", "question": "Doplň: 'There ___ a cat under the table.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A cat = jedno = is."},
+        {"id": "AJ4-14-06-002", "type": "choice", "question": "Doplň: 'There ___ six chairs in the room.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "Six chairs = víc = are."},
+        {"id": "AJ4-14-06-003", "type": "choice", "question": "Doplň: 'There ___ any water in the bottle.' (zápor)", "options": ["aren't", "am not", "don't", "isn't", "haven't"], "answer": "isn't", "hint": "Water = nepočitatelné = isn't."},
+        {"id": "AJ4-14-06-004", "type": "choice", "question": "Doplň otázku: '___ there a swimming pool in your school?'", "options": ["Are", "Am", "Do", "Is", "Has"], "answer": "Is", "hint": "A pool = jedno = Is there?"},
+        {"id": "AJ4-14-06-005", "type": "choice", "question": "Vyber správnou větu:", "options": ["There is many books.", "There are many books.", "There am many books.", "There be many books.", "Many books is there."], "answer": "There are many books.", "hint": "Many books = are."},
+        {"id": "AJ4-14-06-006", "type": "choice", "question": "Doplň: 'There ___ any trees in the street.' (zápor)", "options": ["isn't", "am not", "don't", "aren't", "haven't"], "answer": "aren't", "hint": "Trees = víc = aren't."},
+        {"id": "AJ4-14-06-007", "type": "choice", "question": "Vyber správnou odpověď na 'Is there a park?': 'Yes, ___.'", "options": ["there are", "it is", "there is", "is there", "there has"], "answer": "there is", "hint": "Yes, there is."},
+        {"id": "AJ4-14-06-008", "type": "choice", "question": "Doplň: 'There ___ a spider in the bath!'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A spider = jedno = is."},
+        {"id": "AJ4-14-06-009", "type": "choice", "question": "Vyber CHYBNOU větu:", "options": ["There is a book.", "There are two books.", "There is three books.", "There is a pen.", "There are many pens."], "answer": "There is three books.", "hint": "Three books = víc = There ARE."},
+        {"id": "AJ4-14-06-010", "type": "choice", "question": "Doplň: 'There ___ some milk and some eggs in the fridge.'", "options": ["is", "are", "am", "be", "have"], "answer": "are", "hint": "Milk and eggs = víc věcí = are."},
+        {"id": "AJ4-14-06-011", "type": "choice", "question": "Doplň otázku: '___ there any homework today?'", "options": ["Are", "Am", "Do", "Is", "Has"], "answer": "Is", "hint": "Homework = nepočitatelné = Is there?"},
+        {"id": "AJ4-14-06-012", "type": "choice", "question": "Vyber správnou odpověď na 'Are there any shops?': 'No, ___.'", "options": ["there isn't", "there don't", "there aren't", "aren't there", "there hasn't"], "answer": "there aren't", "hint": "No, there aren't."},
+        {"id": "AJ4-14-06-013", "type": "choice", "question": "Doplň: 'There ___ a lot of snow outside.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "Snow = nepočitatelné = is."},
+        {"id": "AJ4-14-06-014", "type": "choice", "question": "Doplň: 'How many rooms ___ there in your house?'", "options": ["is", "am", "do", "are", "has"], "answer": "are", "hint": "How many rooms = are."},
+        {"id": "AJ4-14-06-015", "type": "choice", "question": "Doplň: 'There ___ a mouse behind the cupboard.'", "options": ["are", "am", "be", "is", "have"], "answer": "is", "hint": "A mouse = jedno = is."},
+        {"id": "AJ4-14-06-016", "type": "choice", "question": "Doplň: 'There ___ 365 days in a year.'", "options": ["is", "am", "be", "are", "have"], "answer": "are", "hint": "365 days = víc = are."}
+      ]
+    }
+  ]
+}
