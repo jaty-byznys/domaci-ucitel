@@ -1,0 +1,1160 @@
+{
+  "id": "CJ4-06",
+  "name": "Stavba věty",
+  "order": 12,
+  "prerequisite": "CJ4-05",
+  "skills": [
+    {
+      "id": "CJ4-06-01",
+      "name": "Podmět a přísudek",
+      "difficulty": 1,
+      "theory": "Podmět = o kom/čem věta je (Kdo? Co?). Přísudek = co podmět dělá (sloveso). Spolu tvoří základní skladební dvojici.",
+      "tasks": [
+        {
+          "id": "CJ4-06-01-001",
+          "type": "choice",
+          "question": "Co je podmět ve větě 'Pes běží.'?",
+          "options": [
+            "pes",
+            "pes běží",
+            "běží pes",
+            "běží",
+            "věta nemá podmět"
+          ],
+          "answer": "pes",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-002",
+          "type": "choice",
+          "question": "Co je přísudek ve větě 'Pes běží.'?",
+          "options": [
+            "běží",
+            "pes",
+            "běží pes",
+            "pes běží",
+            "věta nemá přísudek"
+          ],
+          "answer": "běží",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-003",
+          "type": "choice",
+          "question": "Co je podmět ve větě 'Maminka vaří oběd.'?",
+          "options": [
+            "oběd",
+            "vaří",
+            "vaří oběd",
+            "maminka vaří",
+            "maminka"
+          ],
+          "answer": "maminka",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-004",
+          "type": "choice",
+          "question": "Co je přísudek ve větě 'Maminka vaří oběd.'?",
+          "options": [
+            "vaří oběd",
+            "vaří",
+            "maminka vaří",
+            "oběd",
+            "maminka"
+          ],
+          "answer": "vaří",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-005",
+          "type": "choice",
+          "question": "Co je podmět ve větě 'Děti si hrají na zahradě.'?",
+          "options": [
+            "zahrada",
+            "si hrají",
+            "na zahradě",
+            "děti",
+            "hrají"
+          ],
+          "answer": "děti",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-006",
+          "type": "choice",
+          "question": "Co je přísudek ve větě 'Slunce svítí.'?",
+          "options": [
+            "věta nemá přísudek",
+            "slunce svítí",
+            "svítí",
+            "slunce",
+            "svítí slunce"
+          ],
+          "answer": "svítí",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-007",
+          "type": "choice",
+          "question": "Co je podmět ve větě 'Učitel vysvětluje látku.'?",
+          "options": [
+            "učitel",
+            "učitel vysvětluje",
+            "vysvětluje látku",
+            "látku",
+            "vysvětluje"
+          ],
+          "answer": "učitel",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-008",
+          "type": "choice",
+          "question": "Co je podmět ve větě 'Padá sníh.'?",
+          "options": [
+            "padá sníh",
+            "padá",
+            "sníh",
+            "věta nemá podmět",
+            "sníh padá"
+          ],
+          "answer": "sníh",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-009",
+          "type": "choice",
+          "question": "Jaký je podmět ve větě 'Zpívám písničku.'?",
+          "options": [
+            "zpívám písničku",
+            "věta nemá podmět",
+            "nevyjádřený podmět (já)",
+            "písničku",
+            "zpívám"
+          ],
+          "answer": "nevyjádřený podmět (já)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-010",
+          "type": "choice",
+          "question": "Co je podmět vyjádřený?",
+          "options": [
+            "podmět chybí úplně",
+            "podmět je sloveso",
+            "podmět je ve větě napsaný (Pes běží.)",
+            "podmět je příslovce",
+            "podmět je přísudek"
+          ],
+          "answer": "podmět je ve větě napsaný (Pes běží.)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-011",
+          "type": "choice",
+          "question": "Co je podmět nevyjádřený?",
+          "options": [
+            "podmět je přídavné jméno",
+            "podmět neexistuje",
+            "podmět je sloveso",
+            "podmět je přísudek",
+            "podmět není napsaný, ale víme kdo (Běžím. = já)"
+          ],
+          "answer": "podmět není napsaný, ale víme kdo (Běžím. = já)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-012",
+          "type": "choice",
+          "question": "Najdi podmět: 'Kočka a pes spí.'",
+          "options": [
+            "a",
+            "kočka a pes (podmět několikanásobný)",
+            "spí",
+            "pes",
+            "kočka"
+          ],
+          "answer": "kočka a pes (podmět několikanásobný)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-013",
+          "type": "choice",
+          "question": "Co je podmět několikanásobný?",
+          "options": [
+            "podmět ve 2. pádě",
+            "podmět v množném čísle",
+            "podmět, který chybí",
+            "dva nebo více podmětů ve větě (Máma a táta přišli.)",
+            "podmět, který je napsaný dvakrát"
+          ],
+          "answer": "dva nebo více podmětů ve větě (Máma a táta přišli.)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-014",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Bratr a sestra jedou na výlet.'",
+          "options": [
+            "bratr a sestra",
+            "sestra",
+            "bratr",
+            "výlet",
+            "jedou"
+          ],
+          "answer": "jedou",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-015",
+          "type": "choice",
+          "question": "Najdi podmět: 'Na stromě sedí ptáček.'",
+          "options": [
+            "na stromě sedí",
+            "na stromě",
+            "ptáček",
+            "stromě",
+            "sedí"
+          ],
+          "answer": "ptáček",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-016",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Tatínek čte noviny.'",
+          "options": [
+            "čte noviny",
+            "noviny",
+            "čte",
+            "tatínek",
+            "tatínek čte"
+          ],
+          "answer": "čte",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-017",
+          "type": "choice",
+          "question": "Najdi podmět: 'Prší.' (Kdo/co prší?)",
+          "options": [
+            "nevyjádřený / bezpodmětná věta",
+            "prší",
+            "věta nemá přísudek",
+            "déšť",
+            "voda"
+          ],
+          "answer": "nevyjádřený / bezpodmětná věta",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-018",
+          "type": "choice",
+          "question": "Podmět a přísudek tvoří:",
+          "options": [
+            "souvětí",
+            "pád",
+            "základní skladební dvojici",
+            "slovní druh",
+            "vedlejší skladební dvojici"
+          ],
+          "answer": "základní skladební dvojici",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-019",
+          "type": "choice",
+          "question": "Najdi podmět: 'Petr, Jana a Lucie zpívají.'",
+          "options": [
+            "Lucie",
+            "Petr, Jana a Lucie (podmět několikanásobný)",
+            "zpívají",
+            "Petr",
+            "Jana"
+          ],
+          "answer": "Petr, Jana a Lucie (podmět několikanásobný)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-020",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Vítr fouká a prší.'",
+          "options": [
+            "vítr fouká",
+            "vítr",
+            "fouká, prší",
+            "a",
+            "fouká"
+          ],
+          "answer": "fouká, prší",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-021",
+          "type": "choice",
+          "question": "Najdi podmět: 'Krásná zahrada voní.'",
+          "options": [
+            "voní",
+            "věta nemá podmět",
+            "krásná",
+            "krásná zahrada",
+            "zahrada"
+          ],
+          "answer": "zahrada",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-022",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Starý dědeček sedí na lavičce.'",
+          "options": [
+            "sedí",
+            "lavičce",
+            "na lavičce",
+            "dědeček",
+            "starý"
+          ],
+          "answer": "sedí",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-023",
+          "type": "choice",
+          "question": "Najdi podmět: 'Čteme knihu.'",
+          "options": [
+            "věta nemá podmět",
+            "nevyjádřený podmět (my)",
+            "čteme",
+            "čteme knihu",
+            "knihu"
+          ],
+          "answer": "nevyjádřený podmět (my)",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-024",
+          "type": "choice",
+          "question": "Najdi podmět: 'Auto stojí na parkovišti.'",
+          "options": [
+            "auto stojí",
+            "na parkovišti",
+            "auto",
+            "stojí",
+            "parkovišti"
+          ],
+          "answer": "auto",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        },
+        {
+          "id": "CJ4-06-01-025",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Hvězdy svítí na obloze.'",
+          "options": [
+            "hvězdy",
+            "obloze",
+            "svítí",
+            "hvězdy svítí",
+            "na obloze"
+          ],
+          "answer": "svítí",
+          "hint": "Podmět = kdo/co dělá děj. Přísudek = co podmět dělá (sloveso)."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-06-02",
+      "name": "Shoda přísudku s podmětem",
+      "difficulty": 2,
+      "theory": "V minulém čase: muž. životný → -i (chlapci běželi), muž. neživotný → -y (stromy rostly), ženský → -y (ženy čekaly), střední → -a (města rostla).",
+      "tasks": [
+        {
+          "id": "CJ4-06-02-001",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Chlapci běžel_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-a (rod střední)",
+            "-i (rod mužský životný)",
+            "-y (rod ženský)",
+            "-y (rod mužský neživotný)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-002",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Stromy rostl_.'",
+          "options": [
+            "-y (rod mužský neživotný)",
+            "-li (rod mužský životný)",
+            "-i (rod mužský životný)",
+            "-ly (rod ženský)",
+            "-a (rod střední)"
+          ],
+          "answer": "-y (rod mužský neživotný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-003",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Dívky zpíval_.'",
+          "options": [
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-ly (rod ženský)",
+            "-li (rod mužský životný)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-y (rod ženský)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-004",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Děti si hrál_.'",
+          "options": [
+            "-y (rod ženský)",
+            "-a (rod střední)",
+            "-i (rod mužský životný)",
+            "-ly (rod ženský)",
+            "-li (rod mužský životný)"
+          ],
+          "answer": "-y (rod ženský)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-005",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Města rostl_.'",
+          "options": [
+            "-a (rod střední)",
+            "-li (rod mužský životný)",
+            "-y (rod ženský)",
+            "-y (rod mužský neživotný)",
+            "-i (rod mužský životný)"
+          ],
+          "answer": "-a (rod střední)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-006",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Kluci skákal_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-a (rod střední)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-007",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Hrady stál_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-li (rod mužský životný)",
+            "-y (rod mužský neživotný)"
+          ],
+          "answer": "-y (rod mužský neživotný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-008",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Kočky spinkaj_ na gauči.'",
+          "options": [
+            "-ý (rod mužský neživotný)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-í (rod ženský)",
+            "-a (rod střední)"
+          ],
+          "answer": "-í (rod ženský)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-009",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Žáci psal_ test.'",
+          "options": [
+            "-y (rod ženský)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-a (rod střední)",
+            "-ly (rod ženský)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-010",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Auta jel_.'",
+          "options": [
+            "-a (rod střední)",
+            "-li (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-i (rod mužský životný)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-a (rod střední)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-011",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Koně běžel_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-y (rod ženský)",
+            "-a (rod střední)",
+            "-y (rod mužský neživotný)",
+            "-i (rod mužský životný)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-012",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Kameny ležel_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-y (rod mužský neživotný)",
+            "-li (rod mužský životný)"
+          ],
+          "answer": "-y (rod mužský neživotný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-013",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Ženy čekal_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-li (rod mužský životný)",
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-y (rod ženský)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-014",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Kuřata pískaj_.'",
+          "options": [
+            "-i (rod mužský životný)",
+            "-ý (rod mužský neživotný)",
+            "-y (rod mužský neživotný)",
+            "-í (rod střední)",
+            "-a (rod střední)"
+          ],
+          "answer": "-í (rod střední)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-015",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Psi štěkal_.'",
+          "options": [
+            "-y (rod mužský neživotný)",
+            "-ly (rod ženský)",
+            "-y (rod ženský)",
+            "-a (rod střední)",
+            "-i (rod mužský životný)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-016",
+          "type": "choice",
+          "question": "Jakou koncovku má přísudek v minulém čase u mužského rodu životného?",
+          "options": [
+            "-a (chlapci běžela)",
+            "-i (chlapci běželi)",
+            "-li (neexistuje)",
+            "-y (chlapci běžely)",
+            "-ly (chlapci běžely)"
+          ],
+          "answer": "-i (chlapci běželi)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-017",
+          "type": "choice",
+          "question": "Jakou koncovku má přísudek v minulém čase u mužského rodu neživotného?",
+          "options": [
+            "-i (stromy rostli)",
+            "-y (stromy rostly)",
+            "-a (stromy rostla)",
+            "-ly (neexistuje)",
+            "-li (stromy rostli)"
+          ],
+          "answer": "-y (stromy rostly)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-018",
+          "type": "choice",
+          "question": "Jakou koncovku má přísudek v minulém čase u rodu ženského?",
+          "options": [
+            "-li (ženy čekali)",
+            "-a (ženy čekala)",
+            "-i (ženy čekali)",
+            "-y (ženy čekaly)",
+            "-ly (neexistuje)"
+          ],
+          "answer": "-y (ženy čekaly)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-019",
+          "type": "choice",
+          "question": "Jakou koncovku má přísudek v minulém čase u rodu středního?",
+          "options": [
+            "-li (města rostli)",
+            "-y (města rostly)",
+            "-ly (neexistuje)",
+            "-a (města rostla)",
+            "-i (města rostli)"
+          ],
+          "answer": "-a (města rostla)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-020",
+          "type": "choice",
+          "question": "Doplň: 'Ptáci odletěl_ na jih.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-a (rod střední)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-021",
+          "type": "choice",
+          "question": "Doplň: 'Okna se rozbil_.'",
+          "options": [
+            "-li (rod mužský životný)",
+            "-a (rod střední)",
+            "-y (rod ženský)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)"
+          ],
+          "answer": "-a (rod střední)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-022",
+          "type": "choice",
+          "question": "Doplň: 'Listy opadal_.'",
+          "options": [
+            "-a (rod střední)",
+            "-i (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-ly (rod ženský)",
+            "-li (rod mužský životný)"
+          ],
+          "answer": "-y (rod mužský neživotný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-023",
+          "type": "choice",
+          "question": "Doplň: 'Babičky upekl_ koláč.'",
+          "options": [
+            "-a (rod střední)",
+            "-li (rod mužský životný)",
+            "-i (rod mužský životný)",
+            "-ly (rod ženský)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-y (rod ženský)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-024",
+          "type": "choice",
+          "question": "Doplň: 'Bratři přišl_.'",
+          "options": [
+            "-i (rod mužský životný)",
+            "-ly (rod ženský)",
+            "-y (rod ženský)",
+            "-a (rod střední)",
+            "-y (rod mužský neživotný)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        },
+        {
+          "id": "CJ4-06-02-025",
+          "type": "choice",
+          "question": "Doplň: 'Světla zhasl_.'",
+          "options": [
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-li (rod mužský životný)",
+            "-y (rod mužský neživotný)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-a (rod střední)",
+          "hint": "Mužský životný → -i, mužský neživotný → -y, ženský → -y, střední → -a."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-06-03",
+      "name": "Věta jednoduchá a souvětí",
+      "difficulty": 2,
+      "theory": "Věta jednoduchá má 1 přísudek. Souvětí má 2+ přísudky. Spojky: a (slučovací), ale (odporovací), nebo (vylučovací), protože (příčinná), když (časová), že (obsahová).",
+      "tasks": [
+        {
+          "id": "CJ4-06-03-001",
+          "type": "choice",
+          "question": "Je to věta jednoduchá, nebo souvětí? 'Pes běží po zahradě.'",
+          "options": [
+            "souvětí",
+            "není to věta",
+            "věta jednoduchá",
+            "přísudek",
+            "podmět"
+          ],
+          "answer": "věta jednoduchá",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-002",
+          "type": "choice",
+          "question": "Je to věta jednoduchá, nebo souvětí? 'Pes běží a kočka spí.'",
+          "options": [
+            "věta jednoduchá",
+            "není to věta",
+            "souvětí",
+            "podmět",
+            "přísudek"
+          ],
+          "answer": "souvětí",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-003",
+          "type": "choice",
+          "question": "Je to věta jednoduchá, nebo souvětí? 'Když prší, zůstáváme doma.'",
+          "options": [
+            "věta jednoduchá",
+            "přísudek",
+            "souvětí",
+            "podmět",
+            "není to věta"
+          ],
+          "answer": "souvětí",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-004",
+          "type": "choice",
+          "question": "Je to věta jednoduchá, nebo souvětí? 'Maminka uvaří oběd.'",
+          "options": [
+            "podmět",
+            "věta jednoduchá",
+            "přísudek",
+            "není to věta",
+            "souvětí"
+          ],
+          "answer": "věta jednoduchá",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-005",
+          "type": "choice",
+          "question": "Je to věta jednoduchá, nebo souvětí? 'Přišel domů, protože pršelo.'",
+          "options": [
+            "podmět",
+            "souvětí",
+            "přísudek",
+            "věta jednoduchá",
+            "není to věta"
+          ],
+          "answer": "souvětí",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-006",
+          "type": "choice",
+          "question": "Kolik přísudků má souvětí 'Pes běží a kočka spí.'?",
+          "options": [
+            "4 přísudky",
+            "2 přísudky (běží, spí)",
+            "1 přísudek",
+            "žádný přísudek",
+            "3 přísudky"
+          ],
+          "answer": "2 přísudky (běží, spí)",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-007",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Šel do školy a cestou potkal kamaráda.'?",
+          "options": [
+            "nebo",
+            "ale",
+            "protože",
+            "když",
+            "a"
+          ],
+          "answer": "a",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-008",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Chtěl jít ven, ale pršelo.'?",
+          "options": [
+            "že",
+            "protože",
+            "a",
+            "nebo",
+            "ale"
+          ],
+          "answer": "ale",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-009",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Zůstanu doma, nebo půjdu ven.'?",
+          "options": [
+            "když",
+            "ale",
+            "nebo",
+            "a",
+            "protože"
+          ],
+          "answer": "nebo",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-010",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Nepůjdu ven, protože prší.'?",
+          "options": [
+            "když",
+            "ale",
+            "a",
+            "nebo",
+            "protože"
+          ],
+          "answer": "protože",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-011",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Myslím, že to zvládneš.'?",
+          "options": [
+            "že",
+            "nebo",
+            "protože",
+            "ale",
+            "a"
+          ],
+          "answer": "že",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-012",
+          "type": "choice",
+          "question": "Jaká spojka spojuje věty v souvětí 'Když prší, nehraju venku.'?",
+          "options": [
+            "nebo",
+            "ale",
+            "protože",
+            "když",
+            "a"
+          ],
+          "answer": "když",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-013",
+          "type": "choice",
+          "question": "Věta jednoduchá má:",
+          "options": [
+            "vždy spojku",
+            "tři přísudky",
+            "dva přísudky",
+            "žádný přísudek",
+            "jeden přísudek"
+          ],
+          "answer": "jeden přísudek",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-014",
+          "type": "choice",
+          "question": "Souvětí má:",
+          "options": [
+            "jeden přísudek",
+            "žádný přísudek",
+            "vždy tři věty",
+            "dva nebo více přísudků",
+            "vždy spojku 'a'"
+          ],
+          "answer": "dva nebo více přísudků",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-015",
+          "type": "choice",
+          "question": "Spoj věty spojkou: 'Šel domů. Byl unavený.'",
+          "options": [
+            "Šel domů a byl unavený.",
+            "Šel domů, protože byl unavený.",
+            "Šel domů, nebo byl unavený.",
+            "Šel domů, když byl unavený.",
+            "Šel domů, ale byl unavený."
+          ],
+          "answer": "Šel domů, protože byl unavený.",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-016",
+          "type": "choice",
+          "question": "Je to souvětí? 'Velký pes rychle běží po zelené zahradě.'",
+          "options": [
+            "Ne, je to věta jednoduchá (jen 1 přísudek: běží)",
+            "Ano, má 2 přísudky",
+            "Ano, je to souvětí",
+            "Ano, má spojku",
+            "Ne, není to věta"
+          ],
+          "answer": "Ne, je to věta jednoduchá (jen 1 přísudek: běží)",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-017",
+          "type": "choice",
+          "question": "Kolik vět je v souvětí 'Přišel, viděl a zvítězil.'?",
+          "options": [
+            "1 věta",
+            "3 věty",
+            "2 věty",
+            "4 věty",
+            "5 vět"
+          ],
+          "answer": "3 věty",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-018",
+          "type": "choice",
+          "question": "Spoj věty: 'Chci si hrát. Nemám čas.'",
+          "options": [
+            "Chci si hrát a nemám čas.",
+            "Chci si hrát, když nemám čas.",
+            "Chci si hrát, nebo nemám čas.",
+            "Chci si hrát, ale nemám čas.",
+            "Chci si hrát, protože nemám čas."
+          ],
+          "answer": "Chci si hrát, ale nemám čas.",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-019",
+          "type": "choice",
+          "question": "Spojka 'aby' spojuje věty v:",
+          "options": [
+            "souvětí",
+            "slovní druh",
+            "podmět",
+            "přísudek",
+            "větu jednoduchou"
+          ],
+          "answer": "souvětí",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        },
+        {
+          "id": "CJ4-06-03-020",
+          "type": "choice",
+          "question": "Která spojka vyjadřuje rozpor/protiklad?",
+          "options": [
+            "nebo",
+            "protože",
+            "že",
+            "ale",
+            "a"
+          ],
+          "answer": "ale",
+          "hint": "Věta jednoduchá = 1 přísudek. Souvětí = 2+ přísudky spojené spojkou."
+        }
+      ]
+    },
+    {
+      "id": "CJ4-06-04",
+      "name": "Mix — stavba věty",
+      "difficulty": 3,
+      "theory": "Zopakujeme podmět, přísudek, shodu a souvětí.",
+      "tasks": [
+        {
+          "id": "CJ4-06-04-001",
+          "type": "choice",
+          "question": "Najdi podmět a přísudek: 'Dědeček čte noviny.'",
+          "options": [
+            "podmět: čte, přísudek: dědeček",
+            "věta nemá podmět",
+            "podmět: dědeček, přísudek: čte",
+            "podmět: dědeček, přísudek: noviny",
+            "podmět: noviny, přísudek: čte"
+          ],
+          "answer": "podmět: dědeček, přísudek: čte",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-002",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Vlci vyl_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-y (rod mužský neživotný)",
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-y (rod ženský)"
+          ],
+          "answer": "-i (rod mužský životný)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-003",
+          "type": "choice",
+          "question": "Je to souvětí? 'Maminka vaří a tatínek uklízí.'",
+          "options": [
+            "Ne, není to věta",
+            "Ne, věta jednoduchá",
+            "Ano, souvětí (2 přísudky: vaří, uklízí)",
+            "Ne, jen 1 přísudek",
+            "Ano, 3 přísudky"
+          ],
+          "answer": "Ano, souvětí (2 přísudky: vaří, uklízí)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-004",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Sestry odešl_.'",
+          "options": [
+            "-ly (rod ženský)",
+            "-a (rod střední)",
+            "-y (rod ženský)",
+            "-li (rod mužský životný)",
+            "-i (rod mužský životný)"
+          ],
+          "answer": "-y (rod ženský)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-005",
+          "type": "choice",
+          "question": "Najdi podmět: 'Venku prší a fouká vítr.'",
+          "options": [
+            "fouká",
+            "vítr",
+            "prší",
+            "1. věta: nevyjádřený, 2. věta: vítr",
+            "venku"
+          ],
+          "answer": "1. věta: nevyjádřený, 2. věta: vítr",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-006",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Motory se rozběhl_.'",
+          "options": [
+            "-a (rod střední)",
+            "-y (rod mužský neživotný)",
+            "-ly (rod ženský)",
+            "-li (rod mužský životný)",
+            "-i (rod mužský životný)"
+          ],
+          "answer": "-y (rod mužský neživotný)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-007",
+          "type": "choice",
+          "question": "Jaká spojka se hodí? 'Chtěl jít ven, ___ pršelo.'",
+          "options": [
+            "že",
+            "když",
+            "ale",
+            "nebo",
+            "a"
+          ],
+          "answer": "ale",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-008",
+          "type": "choice",
+          "question": "Najdi přísudek: 'Na zahradě kvetou růže.'",
+          "options": [
+            "na",
+            "zahradě",
+            "na zahradě",
+            "kvetou",
+            "růže"
+          ],
+          "answer": "kvetou",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-009",
+          "type": "choice",
+          "question": "Doplň koncovku: 'Zvířata utekl_.'",
+          "options": [
+            "-li (rod mužský životný)",
+            "-y (rod ženský)",
+            "-i (rod mužský životný)",
+            "-a (rod střední)",
+            "-y (rod mužský neživotný)"
+          ],
+          "answer": "-a (rod střední)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        },
+        {
+          "id": "CJ4-06-04-010",
+          "type": "choice",
+          "question": "Je podmět vyjádřený nebo nevyjádřený? 'Jedeme na výlet.'",
+          "options": [
+            "nevyjádřený (oni)",
+            "vyjádřený (my)",
+            "nemá podmět",
+            "vyjádřený (výlet)",
+            "nevyjádřený (my)"
+          ],
+          "answer": "nevyjádřený (my)",
+          "hint": "Podmět = kdo/co. Přísudek = co dělá. Shoda: muž.živ. → -i, muž.neživ. → -y, žen. → -y, stř. → -a."
+        }
+      ]
+    }
+  ]
+}
