@@ -942,50 +942,51 @@
             "tasks": [
               {
                 "id": "CJ4-02-01-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Urči pád podtrženého slova: Dárek je pro MAMINKU.",
                 "answer": "4. pád",
-                "answer_variants": [
-                  "4.",
-                  "4.pád",
-                  "čtvrtý pád",
-                  "akuzativ"
-                ],
                 "hint": "Pro koho? Pro maminku. Vidím KOHO/CO — to je otázka na 4. pád.",
-                "common_errors": [
+                "options": [
+                  "1. pád",
                   "2. pád",
-                  "3. pád"
-                ],
-                "error_explanations": {
-                  "2. pád": "2. pád je BEZ koho/čeho. Tady je PRO maminku — ptáme se 'pro koho?' = vidím KOHO = 4. pád.",
-                  "3. pád": "3. pád je KE komu/čemu. 'Pro maminku' — ptáme se 'pro koho?' = 4. pád."
-                }
+                  "3. pád",
+                  "4. pád",
+                  "5. pád",
+                  "6. pád",
+                  "7. pád"
+                ]
               },
               {
                 "id": "CJ4-02-01-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Urči pád podtrženého slova: Na STOLE leží kniha.",
                 "answer": "6. pád",
-                "answer_variants": [
-                  "6.",
-                  "6.pád",
-                  "šestý pád",
-                  "lokál"
-                ],
-                "hint": "NA čem? Na stole. O KOM/ČEM — to je 6. pád. Pomůcka: předložka 'na' + kde = 6. pád."
+                "hint": "NA čem? Na stole. O KOM/ČEM — to je 6. pád. Pomůcka: předložka 'na' + kde = 6. pád.",
+                "options": [
+                  "1. pád",
+                  "2. pád",
+                  "3. pád",
+                  "4. pád",
+                  "5. pád",
+                  "6. pád",
+                  "7. pád"
+                ]
               },
               {
                 "id": "CJ4-02-01-003",
-                "type": "open",
+                "type": "choice",
                 "question": "Urči pád podtrženého slova: Půjdu ke KAMARÁDOVI.",
                 "answer": "3. pád",
-                "answer_variants": [
-                  "3.",
-                  "3.pád",
-                  "třetí pád",
-                  "dativ"
-                ],
-                "hint": "KE komu? Ke kamarádovi. KOMU/ČEMU — to je 3. pád."
+                "hint": "KE komu? Ke kamarádovi. KOMU/ČEMU — to je 3. pád.",
+                "options": [
+                  "1. pád",
+                  "2. pád",
+                  "3. pád",
+                  "4. pád",
+                  "5. pád",
+                  "6. pád",
+                  "7. pád"
+                ]
               }
             ]
           },
@@ -1091,24 +1092,29 @@
             "tasks": [
               {
                 "id": "CJ4-03-01-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Urči osobu, číslo a čas slovesa: 'Pojedeme na výlet.'",
                 "answer": "1. osoba, množné číslo, budoucí čas",
-                "answer_variants": [
-                  "1.os., mn.č., budoucí čas",
-                  "1. os. mn. č. budoucí čas"
-                ],
-                "hint": "KDO pojede? MY pojedeme — to je 1. osoba množného čísla. A KDY? Teprve to bude."
+                "hint": "KDO pojede? MY pojedeme — to je 1. osoba množného čísla. A KDY? Teprve to bude.",
+                "options": [
+                  "1. osoba, množné číslo, budoucí čas",
+                  "3. osoba, množné číslo, přítomný čas",
+                  "1. osoba, jednotné číslo, budoucí čas",
+                  "3. osoba, jednotné číslo, minulý čas"
+                ]
               },
               {
                 "id": "CJ4-03-01-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Urči osobu, číslo a čas slovesa: 'Zpívala krásnou píseň.'",
                 "answer": "3. osoba, jednotné číslo, minulý čas",
-                "answer_variants": [
-                  "3.os., j.č., minulý čas"
-                ],
-                "hint": "KDO zpívala? ONA (3. osoba). Jedna — jednotné číslo. Už to bylo — minulý čas."
+                "hint": "KDO zpívala? ONA (3. osoba). Jedna — jednotné číslo. Už to bylo — minulý čas.",
+                "options": [
+                  "3. osoba, jednotné číslo, minulý čas",
+                  "1. osoba, jednotné číslo, přítomný čas",
+                  "3. osoba, množné číslo, minulý čas",
+                  "2. osoba, jednotné číslo, budoucí čas"
+                ]
               },
               {
                 "id": "CJ4-03-01-003",
@@ -1171,25 +1177,29 @@
             "tasks": [
               {
                 "id": "CJ4-04-01-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Najdi podmět a přísudek: 'Velký pes štěkal na pošťáka.'",
                 "answer": "podmět: pes, přísudek: štěkal",
-                "answer_variants": [
-                  "pes - štěkal",
-                  "pes, štěkal"
-                ],
-                "hint": "KDO štěkal? To je podmět. Co DĚLAL? To je přísudek."
+                "hint": "KDO štěkal? To je podmět. Co DĚLAL? To je přísudek.",
+                "options": [
+                  "podmět: pes, přísudek: štěkal",
+                  "podmět: velký, přísudek: štěkal",
+                  "podmět: pošťák, přísudek: štěkal",
+                  "podmět: pes, přísudek: velký"
+                ]
               },
               {
                 "id": "CJ4-04-01-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Najdi podmět a přísudek: 'Na jaře kvetou stromy.'",
                 "answer": "podmět: stromy, přísudek: kvetou",
-                "answer_variants": [
-                  "stromy - kvetou",
-                  "stromy, kvetou"
-                ],
-                "hint": "CO kvete? Stromy — to je podmět. Co dělají? Kvetou — to je přísudek."
+                "hint": "CO kvete? Stromy — to je podmět. Co dělají? Kvetou — to je přísudek.",
+                "options": [
+                  "podmět: stromy, přísudek: kvetou",
+                  "podmět: jaře, přísudek: kvetou",
+                  "podmět: stromy, přísudek: na jaře",
+                  "podmět: kvetou, přísudek: stromy"
+                ]
               }
             ]
           },
@@ -1244,42 +1254,54 @@
                 "questions": [
                   {
                     "question": "Co Tomáš uviděl z okna?",
-                    "answer": "sníh",
-                    "answer_variants": [
-                      "venku ležel sníh",
-                      "sníh venku"
+                    "answer": "Sníh",
+                    "type": "choice",
+                    "options": [
+                      "Sníh",
+                      "Déšť",
+                      "Slunce",
+                      "Mlhu",
+                      "Kamarády"
                     ]
                   },
                   {
                     "question": "Co Tomáš udělal jako první venku?",
-                    "answer": "postavil sněhuláka",
-                    "answer_variants": [
-                      "sněhuláka",
-                      "stavěl sněhuláka"
+                    "answer": "Postavil sněhuláka",
+                    "type": "choice",
+                    "options": [
+                      "Postavil sněhuláka",
+                      "Šel do školy",
+                      "Hrál si s kamarádem",
+                      "Udělal andílka ve sněhu"
                     ]
                   },
                   {
                     "question": "Proč se Tomáš vrátil domů?",
-                    "answer": "začalo sněžit",
-                    "answer_variants": [
-                      "protože začalo sněžit",
-                      "začalo sněžit znovu",
-                      "sněžilo"
+                    "answer": "Začalo sněžit znovu",
+                    "type": "choice",
+                    "options": [
+                      "Začalo sněžit znovu",
+                      "Měl hlad",
+                      "Volala ho maminka",
+                      "Byla mu zima",
+                      "Ztratil rukavice"
                     ]
                   }
                 ]
               },
               {
                 "id": "CJ4-05-01-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Přečti: 'Tomáš si ráno zabalil svačinu, ale zapomněl ji doma na stole. Ve škole měl hlad.' Proč měl Tomáš hlad?",
-                "answer": "zapomněl svačinu doma",
-                "answer_variants": [
-                  "nechal svačinu doma",
-                  "zapomněl si svačinu",
-                  "svačinu nechal na stole"
-                ],
-                "hint": "Co se stalo se svačinou?"
+                "answer": "Zapomněl svačinu doma",
+                "hint": "Co se stalo se svačinou?",
+                "options": [
+                  "Zapomněl svačinu doma",
+                  "Neměl na svačinu peníze",
+                  "Snědl svačinu cestou do školy",
+                  "Ve škole mu ji někdo sebral",
+                  "Svačinu dal kamarádovi"
+                ]
               }
             ]
           }
@@ -1329,17 +1351,16 @@
               },
               {
                 "id": "PR4-01-01-003",
-                "type": "open",
+                "type": "choice",
                 "question": "K čemu rostlina potřebuje květ?",
-                "answer": "k rozmnožování",
-                "answer_variants": [
-                  "rozmnožování",
-                  "aby se rozmnožila",
-                  "k opylení",
-                  "aby měla semena",
-                  "na rozmnožování"
-                ],
-                "hint": "Co vznikne z květu? Plod se semeny. A k čemu semena slouží?"
+                "answer": "K rozmnožování",
+                "hint": "Co vznikne z květu? Plod se semeny. A k čemu semena slouží?",
+                "options": [
+                  "K rozmnožování",
+                  "K dýchání",
+                  "K přijímání vody",
+                  "K ochraně před sluncem"
+                ]
               }
             ]
           },
@@ -1363,16 +1384,17 @@
               },
               {
                 "id": "PR4-01-02-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Co dělají listnaté stromy na podzim?",
-                "answer": "shazují listy",
-                "answer_variants": [
-                  "opadávají jim listy",
-                  "listy opadají",
-                  "ztrácí listy",
-                  "shazují listí"
-                ],
-                "hint": "Proč se říká 'listnaté'? A co se děje s těmi listy, když přijde zima?"
+                "answer": "Shazují listy",
+                "hint": "Proč se říká 'listnaté'? A co se děje s těmi listy, když přijde zima?",
+                "options": [
+                  "Shazují listy",
+                  "Rostou rychleji",
+                  "Kvetou",
+                  "Mění barvu kůry",
+                  "Rostou jim nové větve"
+                ]
               }
             ]
           }
@@ -1416,16 +1438,17 @@
               },
               {
                 "id": "PR4-02-01-003",
-                "type": "open",
+                "type": "choice",
                 "question": "Čím se liší plazi od obojživelníků?",
-                "answer": "mají šupiny",
-                "answer_variants": [
-                  "šupiny",
-                  "mají suchou kůži se šupinami",
-                  "plazi mají šupiny a obojživelníci vlhkou kůži",
-                  "suchou kůži"
-                ],
-                "hint": "Podívej se na kůži — žába je hladká a vlhká, had nebo ještěrka...?"
+                "answer": "Mají šupiny a suchou kůži",
+                "hint": "Podívej se na kůži — žába je hladká a vlhká, had nebo ještěrka...?",
+                "options": [
+                  "Mají šupiny a suchou kůži",
+                  "Žijí jen ve vodě",
+                  "Nemají páteř",
+                  "Mají křídla",
+                  "Kojí mláďata"
+                ]
               }
             ]
           },
@@ -1436,14 +1459,16 @@
             "tasks": [
               {
                 "id": "PR4-02-02-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Seřaď do potravního řetězce: liška, tráva, myš",
                 "answer": "tráva → myš → liška",
-                "answer_variants": [
-                  "tráva - myš - liška",
-                  "tráva, myš, liška"
-                ],
-                "hint": "Kdo koho jí? Začni tím, kdo nežere nic živého — roste ze země."
+                "hint": "Kdo koho jí? Začni tím, kdo nežere nic živého — roste ze země.",
+                "options": [
+                  "tráva → myš → liška",
+                  "myš → tráva → liška",
+                  "liška → myš → tráva",
+                  "tráva → liška → myš"
+                ]
               }
             ]
           }
@@ -1515,10 +1540,16 @@
               },
               {
                 "id": "PR4-04-01-002",
-                "type": "open",
+                "type": "choice",
                 "question": "Vyjmenuj 4 roční období v pořadí od jara.",
                 "answer": "jaro, léto, podzim, zima",
-                "hint": "Začni jarem..."
+                "hint": "Začni jarem...",
+                "options": [
+                  "jaro, léto, podzim, zima",
+                  "léto, podzim, zima, jaro",
+                  "jaro, podzim, léto, zima",
+                  "zima, jaro, léto, podzim"
+                ]
               }
             ]
           }
@@ -1542,14 +1573,16 @@
             "tasks": [
               {
                 "id": "VL4-01-01-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Vyjmenuj čtyři hlavní světové strany.",
-                "answer": "sever, jih, východ, západ",
-                "answer_variants": [
-                  "S, J, V, Z",
-                  "sever jih východ západ"
-                ],
-                "hint": "Na mapě: nahoře je S..., dole J..., vpravo V..., vlevo Z..."
+                "answer": "Sever, jih, východ, západ",
+                "hint": "Na mapě: nahoře je S..., dole J..., vpravo V..., vlevo Z...",
+                "options": [
+                  "Sever, jih, východ, západ",
+                  "Sever, jih, vlevo, vpravo",
+                  "Nahoře, dole, vlevo, vpravo",
+                  "Sever, západ, jih, nahoru"
+                ]
               },
               {
                 "id": "VL4-01-01-002",
@@ -1573,15 +1606,16 @@
             "tasks": [
               {
                 "id": "VL4-01-02-001",
-                "type": "open",
+                "type": "choice",
                 "question": "Co nám říká měřítko mapy?",
-                "answer": "kolikrát je mapa zmenšená oproti skutečnosti",
-                "answer_variants": [
-                  "poměr vzdálenosti na mapě a ve skutečnosti",
-                  "jak je mapa zmenšená",
-                  "kolik km je 1 cm na mapě"
-                ],
-                "hint": "Když na mapě je 1 cm a měřítko říká 1:100 000, kolik je to ve skutečnosti?"
+                "answer": "Kolikrát je mapa zmenšená oproti skutečnosti",
+                "hint": "Když na mapě je 1 cm a měřítko říká 1:100 000, kolik je to ve skutečnosti?",
+                "options": [
+                  "Kolikrát je mapa zmenšená oproti skutečnosti",
+                  "Jaké barvy se na mapě používají",
+                  "Kde je na mapě sever",
+                  "Kolik měst je na mapě"
+                ]
               }
             ]
           }
