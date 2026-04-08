@@ -1,0 +1,366 @@
+{
+  "id": "MA4-09",
+  "name": "Závorky a pořadí operací",
+  "order": 8,
+  "prerequisite": "MA4-03",
+  "skills": [
+    {
+      "id": "MA4-09-01",
+      "name": "Závorky a pořadí operací",
+      "difficulty": 2,
+      "theory": "Pořadí: 1) závorky, 2) násobení a dělení (zleva doprava), 3) sčítání a odčítání (zleva doprava).",
+      "tasks": [
+        {
+          "id": "MA4-09-01-001",
+          "type": "choice",
+          "question": "3 + 4 × 2 =",
+          "options": [
+            "14",
+            "11",
+            "9",
+            "10",
+            "12"
+          ],
+          "answer": "11",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-002",
+          "type": "choice",
+          "question": "(3 + 4) × 2 =",
+          "options": [
+            "14",
+            "9",
+            "11",
+            "12",
+            "10"
+          ],
+          "answer": "14",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-003",
+          "type": "choice",
+          "question": "10 - 2 × 3 =",
+          "options": [
+            "8",
+            "4",
+            "16",
+            "6",
+            "24"
+          ],
+          "answer": "4",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-004",
+          "type": "choice",
+          "question": "(10 - 2) × 3 =",
+          "options": [
+            "6",
+            "24",
+            "4",
+            "8",
+            "16"
+          ],
+          "answer": "24",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-005",
+          "type": "choice",
+          "question": "5 + 6 × 3 - 2 =",
+          "options": [
+            "11",
+            "23",
+            "31",
+            "21",
+            "19"
+          ],
+          "answer": "21",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-006",
+          "type": "choice",
+          "question": "(5 + 6) × 3 - 2 =",
+          "options": [
+            "11",
+            "29",
+            "21",
+            "31",
+            "33"
+          ],
+          "answer": "31",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-007",
+          "type": "choice",
+          "question": "20 ÷ 4 + 3 =",
+          "options": [
+            "2",
+            "23",
+            "8",
+            "7",
+            "5"
+          ],
+          "answer": "8",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-008",
+          "type": "choice",
+          "question": "20 ÷ (4 + 1) =",
+          "options": [
+            "3",
+            "5",
+            "24",
+            "4",
+            "8"
+          ],
+          "answer": "4",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-009",
+          "type": "choice",
+          "question": "2 × 3 + 4 × 5 =",
+          "options": [
+            "34",
+            "22",
+            "26",
+            "50",
+            "30"
+          ],
+          "answer": "26",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-010",
+          "type": "choice",
+          "question": "(2 + 3) × (4 + 1) =",
+          "options": [
+            "25",
+            "35",
+            "26",
+            "11",
+            "15"
+          ],
+          "answer": "25",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-011",
+          "type": "choice",
+          "question": "100 - 5 × 10 =",
+          "options": [
+            "55",
+            "45",
+            "500",
+            "950",
+            "50"
+          ],
+          "answer": "50",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-012",
+          "type": "choice",
+          "question": "(100 - 5) × 10 =",
+          "options": [
+            "45",
+            "955",
+            "500",
+            "50",
+            "950"
+          ],
+          "answer": "950",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-013",
+          "type": "choice",
+          "question": "8 + 12 ÷ 4 =",
+          "options": [
+            "5",
+            "11",
+            "8",
+            "12",
+            "20"
+          ],
+          "answer": "11",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-014",
+          "type": "choice",
+          "question": "(8 + 12) ÷ 4 =",
+          "options": [
+            "11",
+            "20",
+            "3",
+            "5",
+            "8"
+          ],
+          "answer": "5",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-015",
+          "type": "choice",
+          "question": "6 × 6 - 6 ÷ 6 =",
+          "options": [
+            "5",
+            "30",
+            "35",
+            "6",
+            "36"
+          ],
+          "answer": "35",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-016",
+          "type": "choice",
+          "question": "Co počítáme PRVNÍ — násobení nebo sčítání?",
+          "options": [
+            "je to jedno",
+            "sčítání (a odčítání)",
+            "násobení (a dělení)",
+            "co je první zleva",
+            "co je v závorce"
+          ],
+          "answer": "násobení (a dělení)",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-017",
+          "type": "choice",
+          "question": "Co počítáme úplně PRVNÍ?",
+          "options": [
+            "sčítání",
+            "co je první zleva",
+            "násobení",
+            "dělení",
+            "závorky"
+          ],
+          "answer": "závorky",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-018",
+          "type": "choice",
+          "question": "4 × (3 + 2) - 5 =",
+          "options": [
+            "25",
+            "19",
+            "13",
+            "15",
+            "10"
+          ],
+          "answer": "15",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-019",
+          "type": "choice",
+          "question": "30 - (10 + 5) × 2 =",
+          "options": [
+            "40",
+            "0",
+            "50",
+            "10",
+            "20"
+          ],
+          "answer": "0",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-020",
+          "type": "choice",
+          "question": "(12 - 4) × (3 + 2) =",
+          "options": [
+            "20",
+            "32",
+            "55",
+            "40",
+            "16"
+          ],
+          "answer": "40",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-021",
+          "type": "choice",
+          "question": "7 + 3 × 0 =",
+          "options": [
+            "10",
+            "7",
+            "21",
+            "0",
+            "30"
+          ],
+          "answer": "7",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-022",
+          "type": "choice",
+          "question": "(7 + 3) × 0 =",
+          "options": [
+            "0",
+            "21",
+            "7",
+            "10",
+            "30"
+          ],
+          "answer": "0",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-023",
+          "type": "choice",
+          "question": "15 + 5 × 4 - 10 =",
+          "options": [
+            "35",
+            "30",
+            "15",
+            "70",
+            "25"
+          ],
+          "answer": "25",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-024",
+          "type": "choice",
+          "question": "2 × 2 × 2 × 2 =",
+          "options": [
+            "8",
+            "12",
+            "16",
+            "10",
+            "32"
+          ],
+          "answer": "16",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        },
+        {
+          "id": "MA4-09-01-025",
+          "type": "choice",
+          "question": "100 ÷ 5 ÷ 4 =",
+          "options": [
+            "80",
+            "2",
+            "20",
+            "5",
+            "125"
+          ],
+          "answer": "5",
+          "hint": "Pořadí: 1) závorky, 2) násobení a dělení, 3) sčítání a odčítání."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "id": "MA4-03",
+  "name": "Násobení",
+  "order": 2,
+  "prerequisite": "MA4-02",
+  "skills": [
+    {
+      "id": "MA4-03-01",
+      "name": "Násobení",
+      "difficulty": 1,
+      "theory": "Malou násobilku musíš znát zpaměti. Víceciferná čísla násobíme po číslicích zprava a přenášíme.",
+      "tasks": [
+        {
+          "id": "MA4-03-01-001",
+          "type": "choice",
+          "question": "7 × 8 =",
+          "options": [
+            "48",
+            "56",
+            "63",
+            "54",
+            "58"
+          ],
+          "answer": "56",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-002",
+          "type": "choice",
+          "question": "9 × 6 =",
+          "options": [
+            "56",
+            "63",
+            "54",
+            "48",
+            "52"
+          ],
+          "answer": "54",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-003",
+          "type": "choice",
+          "question": "8 × 9 =",
+          "options": [
+            "72",
+            "81",
+            "63",
+            "64",
+            "74"
+          ],
+          "answer": "72",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-004",
+          "type": "choice",
+          "question": "6 × 7 =",
+          "options": [
+            "45",
+            "48",
+            "36",
+            "42",
+            "49"
+          ],
+          "answer": "42",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-005",
+          "type": "choice",
+          "question": "7 × 7 =",
+          "options": [
+            "45",
+            "42",
+            "56",
+            "48",
+            "49"
+          ],
+          "answer": "49",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-006",
+          "type": "choice",
+          "question": "9 × 9 =",
+          "options": [
+            "79",
+            "82",
+            "81",
+            "72",
+            "90"
+          ],
+          "answer": "81",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-007",
+          "type": "choice",
+          "question": "8 × 6 =",
+          "options": [
+            "54",
+            "48",
+            "50",
+            "42",
+            "46"
+          ],
+          "answer": "48",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-008",
+          "type": "choice",
+          "question": "4 × 9 =",
+          "options": [
+            "32",
+            "40",
+            "36",
+            "38",
+            "27"
+          ],
+          "answer": "36",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-009",
+          "type": "choice",
+          "question": "234 × 6 =",
+          "options": [
+            "1 394",
+            "1 414",
+            "1 504",
+            "1 404",
+            "1 304"
+          ],
+          "answer": "1 404",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-010",
+          "type": "choice",
+          "question": "456 × 3 =",
+          "options": [
+            "1 378",
+            "1 268",
+            "1 368",
+            "1 468",
+            "1 358"
+          ],
+          "answer": "1 368",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-011",
+          "type": "choice",
+          "question": "789 × 5 =",
+          "options": [
+            "3 935",
+            "3 955",
+            "3 945",
+            "3 845",
+            "4 045"
+          ],
+          "answer": "3 945",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-012",
+          "type": "choice",
+          "question": "1 234 × 4 =",
+          "options": [
+            "4 946",
+            "4 836",
+            "4 936",
+            "5 036",
+            "4 926"
+          ],
+          "answer": "4 936",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-013",
+          "type": "choice",
+          "question": "567 × 8 =",
+          "options": [
+            "4 526",
+            "4 436",
+            "4 536",
+            "4 546",
+            "4 636"
+          ],
+          "answer": "4 536",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-014",
+          "type": "choice",
+          "question": "345 × 7 =",
+          "options": [
+            "2 415",
+            "2 425",
+            "2 405",
+            "2 515",
+            "2 315"
+          ],
+          "answer": "2 415",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-015",
+          "type": "choice",
+          "question": "45 × 12 =",
+          "options": [
+            "640",
+            "540",
+            "550",
+            "440",
+            "530"
+          ],
+          "answer": "540",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-016",
+          "type": "choice",
+          "question": "67 × 15 =",
+          "options": [
+            "1 015",
+            "1 105",
+            "905",
+            "995",
+            "1 005"
+          ],
+          "answer": "1 005",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-017",
+          "type": "choice",
+          "question": "123 × 11 =",
+          "options": [
+            "1 453",
+            "1 343",
+            "1 353",
+            "1 363",
+            "1 253"
+          ],
+          "answer": "1 353",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-018",
+          "type": "choice",
+          "question": "25 × 40 =",
+          "options": [
+            "1 000",
+            "900",
+            "1 100",
+            "1 500",
+            "800"
+          ],
+          "answer": "1 000",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-019",
+          "type": "choice",
+          "question": "56 × 10 =",
+          "options": [
+            "560",
+            "506",
+            "56",
+            "600",
+            "5 600"
+          ],
+          "answer": "560",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-020",
+          "type": "choice",
+          "question": "34 × 100 =",
+          "options": [
+            "34 000",
+            "3 040",
+            "30 400",
+            "340",
+            "3 400"
+          ],
+          "answer": "3 400",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-021",
+          "type": "choice",
+          "question": "250 × 1 000 =",
+          "options": [
+            "25 000",
+            "2 500 000",
+            "250 000",
+            "250 100",
+            "2 500"
+          ],
+          "answer": "250 000",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-022",
+          "type": "choice",
+          "question": "78 × 10 =",
+          "options": [
+            "78",
+            "800",
+            "7 800",
+            "780",
+            "708"
+          ],
+          "answer": "780",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-023",
+          "type": "choice",
+          "question": "45 × 20 =",
+          "options": [
+            "850",
+            "1 000",
+            "950",
+            "800",
+            "900"
+          ],
+          "answer": "900",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-024",
+          "type": "choice",
+          "question": "36 × 25 =",
+          "options": [
+            "850",
+            "800",
+            "1 000",
+            "750",
+            "900"
+          ],
+          "answer": "900",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        },
+        {
+          "id": "MA4-03-01-025",
+          "type": "choice",
+          "question": "99 × 11 =",
+          "options": [
+            "1 189",
+            "1 079",
+            "989",
+            "1 099",
+            "1 089"
+          ],
+          "answer": "1 089",
+          "hint": "U násobilky si vzpomeň na tabulku. U víceciferného násobení násobíš po číslicích."
+        }
+      ]
+    }
+  ]
+}

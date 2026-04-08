@@ -1,0 +1,366 @@
+{
+  "id": "MA4-05",
+  "name": "Zlomky",
+  "order": 4,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "MA4-05-01",
+      "name": "Zlomky — úvod",
+      "difficulty": 1,
+      "theory": "Zlomek má čitatele (nahoře) a jmenovatele (dole). Zlomek vyjadřuje část celku.",
+      "tasks": [
+        {
+          "id": "MA4-05-01-001",
+          "type": "choice",
+          "question": "Co je čitatel ve zlomku 3/4?",
+          "options": [
+            "1",
+            "3/4",
+            "3",
+            "4",
+            "7"
+          ],
+          "answer": "3",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-002",
+          "type": "choice",
+          "question": "Co je jmenovatel ve zlomku 3/4?",
+          "options": [
+            "4",
+            "3",
+            "7",
+            "3/4",
+            "1"
+          ],
+          "answer": "4",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-003",
+          "type": "choice",
+          "question": "Kolik je polovina z 20?",
+          "options": [
+            "20",
+            "15",
+            "10",
+            "8",
+            "5"
+          ],
+          "answer": "10",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-004",
+          "type": "choice",
+          "question": "Kolik je třetina z 30?",
+          "options": [
+            "3",
+            "6",
+            "10",
+            "15",
+            "20"
+          ],
+          "answer": "10",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-005",
+          "type": "choice",
+          "question": "Kolik je čtvrtina z 20?",
+          "options": [
+            "4",
+            "5",
+            "10",
+            "8",
+            "15"
+          ],
+          "answer": "5",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-006",
+          "type": "choice",
+          "question": "Kolik je pětina z 50?",
+          "options": [
+            "15",
+            "10",
+            "50",
+            "5",
+            "25"
+          ],
+          "answer": "10",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-007",
+          "type": "choice",
+          "question": "Který zlomek je větší: 1/2 nebo 1/4?",
+          "options": [
+            "žádný",
+            "1/4",
+            "nelze určit",
+            "jsou stejné",
+            "1/2"
+          ],
+          "answer": "1/2",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-008",
+          "type": "choice",
+          "question": "Který zlomek je větší: 3/5 nebo 2/5?",
+          "options": [
+            "nelze určit",
+            "2/5",
+            "jsou stejné",
+            "3/5",
+            "žádný"
+          ],
+          "answer": "3/5",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-009",
+          "type": "choice",
+          "question": "Který zlomek je větší: 1/3 nebo 1/6?",
+          "options": [
+            "1/3",
+            "nelze určit",
+            "1/6",
+            "žádný",
+            "jsou stejné"
+          ],
+          "answer": "1/3",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-010",
+          "type": "choice",
+          "question": "Kolik je 2/4 koláče, když má 8 dílků?",
+          "options": [
+            "3 dílky",
+            "8 dílků",
+            "2 dílky",
+            "6 dílků",
+            "4 dílky"
+          ],
+          "answer": "4 dílky",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-011",
+          "type": "choice",
+          "question": "Kolik je 3/4 z 12?",
+          "options": [
+            "4",
+            "3",
+            "9",
+            "6",
+            "8"
+          ],
+          "answer": "9",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-012",
+          "type": "choice",
+          "question": "Kolik je 1/5 z 100?",
+          "options": [
+            "10",
+            "5",
+            "50",
+            "20",
+            "25"
+          ],
+          "answer": "20",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-013",
+          "type": "choice",
+          "question": "Kolik je 2/3 z 15?",
+          "options": [
+            "8",
+            "12",
+            "6",
+            "5",
+            "10"
+          ],
+          "answer": "10",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-014",
+          "type": "choice",
+          "question": "Kolik je 3/8 z 24?",
+          "options": [
+            "12",
+            "3",
+            "8",
+            "6",
+            "9"
+          ],
+          "answer": "9",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-015",
+          "type": "choice",
+          "question": "Pizza má 8 dílků, snědl jsem 3. Jaký zlomek jsem snědl?",
+          "options": [
+            "1/3",
+            "3/8",
+            "8/3",
+            "5/8",
+            "3/5"
+          ],
+          "answer": "3/8",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-016",
+          "type": "choice",
+          "question": "Koláč má 6 dílků, 2 zbývají. Jaký zlomek zbývá?",
+          "options": [
+            "2/6",
+            "1/3",
+            "6/2",
+            "4/6",
+            "2/4"
+          ],
+          "answer": "2/6",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-017",
+          "type": "choice",
+          "question": "Který zlomek je menší: 4/7 nebo 5/7?",
+          "options": [
+            "žádný",
+            "4/7",
+            "5/7",
+            "nelze určit",
+            "jsou stejné"
+          ],
+          "answer": "4/7",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-018",
+          "type": "choice",
+          "question": "Seřaď od nejmenšího: 1/4, 1/2, 3/4",
+          "options": [
+            "3/4, 1/2, 1/4",
+            "1/2, 3/4, 1/4",
+            "1/4, 3/4, 1/2",
+            "1/4, 1/2, 3/4",
+            "1/2, 1/4, 3/4"
+          ],
+          "answer": "1/4, 1/2, 3/4",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-019",
+          "type": "choice",
+          "question": "Kolik je 1/2 z 36?",
+          "options": [
+            "12",
+            "6",
+            "24",
+            "18",
+            "9"
+          ],
+          "answer": "18",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-020",
+          "type": "choice",
+          "question": "Kolik je 1/4 z 100?",
+          "options": [
+            "10",
+            "25",
+            "20",
+            "50",
+            "75"
+          ],
+          "answer": "25",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-021",
+          "type": "choice",
+          "question": "Co je zlomková čára?",
+          "options": [
+            "název zlomku",
+            "číslo nad zlomkem",
+            "číslo pod zlomkem",
+            "vodorovná čárka oddělující čitatele a jmenovatele",
+            "výsledek dělení"
+          ],
+          "answer": "vodorovná čárka oddělující čitatele a jmenovatele",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-022",
+          "type": "choice",
+          "question": "3/3 =",
+          "options": [
+            "1/3",
+            "9",
+            "3",
+            "1 (celý celek)",
+            "0"
+          ],
+          "answer": "1 (celý celek)",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-023",
+          "type": "choice",
+          "question": "Kolik je 5/10 z 40?",
+          "options": [
+            "8",
+            "10",
+            "20",
+            "30",
+            "5"
+          ],
+          "answer": "20",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-024",
+          "type": "choice",
+          "question": "Polovina z 50 =",
+          "options": [
+            "50",
+            "20",
+            "30",
+            "10",
+            "25"
+          ],
+          "answer": "25",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        },
+        {
+          "id": "MA4-05-01-025",
+          "type": "choice",
+          "question": "Čtvrtina z 80 =",
+          "options": [
+            "40",
+            "20",
+            "16",
+            "10",
+            "60"
+          ],
+          "answer": "20",
+          "hint": "Zlomek = čitatel/jmenovatel. Část celku = celek ÷ jmenovatel × čitatel."
+        }
+      ]
+    }
+  ]
+}

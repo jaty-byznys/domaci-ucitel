@@ -1,0 +1,296 @@
+{
+  "id": "MA4-08",
+  "name": "Slovní úlohy",
+  "order": 7,
+  "prerequisite": null,
+  "skills": [
+    {
+      "id": "MA4-08-01",
+      "name": "Slovní úlohy",
+      "difficulty": 2,
+      "theory": "U slovních úloh: 1) přečti si zadání, 2) zjisti co hledáš, 3) vyber operaci, 4) spočítej, 5) zkontroluj.",
+      "tasks": [
+        {
+          "id": "MA4-08-01-001",
+          "type": "choice",
+          "question": "Máma koupila 3 kg jablek po 35 Kč za kg. Kolik zaplatila?",
+          "options": [
+            "105 Kč",
+            "95 Kč",
+            "115 Kč",
+            "140 Kč",
+            "70 Kč"
+          ],
+          "answer": "105 Kč",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-002",
+          "type": "choice",
+          "question": "Ve třídě je 28 žáků, 15 je dívek. Kolik je chlapců?",
+          "options": [
+            "12",
+            "14",
+            "43",
+            "15",
+            "13"
+          ],
+          "answer": "13",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-003",
+          "type": "choice",
+          "question": "Vlak jede rychlostí 120 km/h. Kolik km ujede za 3 hodiny?",
+          "options": [
+            "400 km",
+            "480 km",
+            "240 km",
+            "360 km",
+            "320 km"
+          ],
+          "answer": "360 km",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-004",
+          "type": "choice",
+          "question": "Kniha má 240 stran. Tomáš přečetl 3/4. Kolik stran přečetl?",
+          "options": [
+            "180 stran",
+            "120 stran",
+            "60 stran",
+            "200 stran",
+            "160 stran"
+          ],
+          "answer": "180 stran",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-005",
+          "type": "choice",
+          "question": "Táta měl 500 Kč, koupil mléko za 32 Kč a chleba za 45 Kč. Kolik mu zbylo?",
+          "options": [
+            "413 Kč",
+            "523 Kč",
+            "77 Kč",
+            "433 Kč",
+            "423 Kč"
+          ],
+          "answer": "423 Kč",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-006",
+          "type": "choice",
+          "question": "Na jednu lavici se posadí 3 děti. Kolik lavic potřebujeme pro 24 dětí?",
+          "options": [
+            "8 lavic",
+            "7 lavic",
+            "6 lavic",
+            "9 lavic",
+            "12 lavic"
+          ],
+          "answer": "8 lavic",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-007",
+          "type": "choice",
+          "question": "Zahrada je 25 m dlouhá a 12 m široká. Jaký je obvod?",
+          "options": [
+            "74 m",
+            "148 m",
+            "300 m",
+            "37 m",
+            "50 m"
+          ],
+          "answer": "74 m",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-008",
+          "type": "choice",
+          "question": "Zahrada je 25 m dlouhá a 12 m široká. Jaký je obsah?",
+          "options": [
+            "74 m²",
+            "600 m²",
+            "300 m²",
+            "37 m²",
+            "150 m²"
+          ],
+          "answer": "300 m²",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-009",
+          "type": "choice",
+          "question": "Auto ujede 15 km za 1 litr benzínu. Kolik litrů spotřebuje na 90 km?",
+          "options": [
+            "9 litrů",
+            "5 litrů",
+            "7 litrů",
+            "15 litrů",
+            "6 litrů"
+          ],
+          "answer": "6 litrů",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-010",
+          "type": "choice",
+          "question": "5 kamarádů se rovným dílem složilo na dárek za 450 Kč. Kolik dal každý?",
+          "options": [
+            "50 Kč",
+            "45 Kč",
+            "100 Kč",
+            "80 Kč",
+            "90 Kč"
+          ],
+          "answer": "90 Kč",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-011",
+          "type": "choice",
+          "question": "Film začíná v 17:30 a trvá 1 hodinu 45 minut. V kolik končí?",
+          "options": [
+            "18:45",
+            "19:30",
+            "19:00",
+            "19:15",
+            "19:45"
+          ],
+          "answer": "19:15",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-012",
+          "type": "choice",
+          "question": "Petr má 156 Kč, Honza má o 38 Kč víc. Kolik mají dohromady?",
+          "options": [
+            "350 Kč",
+            "312 Kč",
+            "118 Kč",
+            "194 Kč",
+            "388 Kč"
+          ],
+          "answer": "350 Kč",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-013",
+          "type": "choice",
+          "question": "V obchodě koupila 7 sešitů po 18 Kč. Zaplatila 200 Kč. Kolik dostane zpět?",
+          "options": [
+            "26 Kč",
+            "126 Kč",
+            "74 Kč",
+            "84 Kč",
+            "64 Kč"
+          ],
+          "answer": "74 Kč",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-014",
+          "type": "choice",
+          "question": "Autobus vyjel v 8:15 a přijel v 10:00. Jak dlouho jel?",
+          "options": [
+            "1 hodinu 45 minut",
+            "1 hodinu 30 minut",
+            "1 hodinu 15 minut",
+            "2 hodiny 15 minut",
+            "2 hodiny"
+          ],
+          "answer": "1 hodinu 45 minut",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-015",
+          "type": "choice",
+          "question": "Na každý stůl dáme 6 talířů. Máme 42 talířů. Kolik stolů obsloužíme?",
+          "options": [
+            "36 stolů",
+            "6 stolů",
+            "7 stolů",
+            "8 stolů",
+            "48 stolů"
+          ],
+          "answer": "7 stolů",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-016",
+          "type": "choice",
+          "question": "Balení má 12 rohlíků. Potřebujeme 50 rohlíků. Kolik balení musíme koupit?",
+          "options": [
+            "3 balení",
+            "6 balení",
+            "4 balení",
+            "5 balení (4 nestačí — 48 < 50)",
+            "50 balení"
+          ],
+          "answer": "5 balení (4 nestačí — 48 < 50)",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-017",
+          "type": "choice",
+          "question": "Kamarádka ušla 2 km 400 m, já jsem ušla 3 km 100 m. O kolik víc jsem ušla já?",
+          "options": [
+            "500 m",
+            "700 m",
+            "1 300 m",
+            "5 500 m",
+            "600 m"
+          ],
+          "answer": "700 m",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-018",
+          "type": "choice",
+          "question": "Lahev má 1,5 l džusu. Nalijeme 4 skleničky po 250 ml. Kolik zůstane?",
+          "options": [
+            "500 ml",
+            "750 ml",
+            "250 ml",
+            "1 000 ml",
+            "1 250 ml"
+          ],
+          "answer": "500 ml",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-019",
+          "type": "choice",
+          "question": "Čtverec má obvod 36 cm. Jaká je délka jedné strany?",
+          "options": [
+            "6 cm",
+            "18 cm",
+            "4 cm",
+            "12 cm",
+            "9 cm"
+          ],
+          "answer": "9 cm",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        },
+        {
+          "id": "MA4-08-01-020",
+          "type": "choice",
+          "question": "Obdélník má strany 8 cm a 5 cm. O kolik je delší strana delší?",
+          "options": [
+            "o 2 cm",
+            "o 3 cm",
+            "o 4 cm",
+            "o 13 cm",
+            "o 5 cm"
+          ],
+          "answer": "o 3 cm",
+          "hint": "Přečti si úlohu pořádně. Co máš zjistit? Jakou operaci použiješ?"
+        }
+      ]
+    }
+  ]
+}

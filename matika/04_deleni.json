@@ -1,0 +1,366 @@
+{
+  "id": "MA4-04",
+  "name": "Dělení",
+  "order": 3,
+  "prerequisite": "MA4-03",
+  "skills": [
+    {
+      "id": "MA4-04-01",
+      "name": "Dělení",
+      "difficulty": 1,
+      "theory": "Dělení je opak násobení. U dělení se zbytkem platí: výsledek × dělitel + zbytek = dělenec.",
+      "tasks": [
+        {
+          "id": "MA4-04-01-001",
+          "type": "choice",
+          "question": "56 ÷ 8 =",
+          "options": [
+            "6",
+            "8",
+            "7",
+            "5",
+            "9"
+          ],
+          "answer": "7",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-002",
+          "type": "choice",
+          "question": "72 ÷ 9 =",
+          "options": [
+            "7",
+            "6",
+            "9",
+            "10",
+            "8"
+          ],
+          "answer": "8",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-003",
+          "type": "choice",
+          "question": "54 ÷ 6 =",
+          "options": [
+            "10",
+            "9",
+            "7",
+            "6",
+            "8"
+          ],
+          "answer": "9",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-004",
+          "type": "choice",
+          "question": "48 ÷ 8 =",
+          "options": [
+            "7",
+            "6",
+            "5",
+            "8",
+            "9"
+          ],
+          "answer": "6",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-005",
+          "type": "choice",
+          "question": "81 ÷ 9 =",
+          "options": [
+            "8",
+            "6",
+            "10",
+            "9",
+            "7"
+          ],
+          "answer": "9",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-006",
+          "type": "choice",
+          "question": "42 ÷ 7 =",
+          "options": [
+            "9",
+            "6",
+            "8",
+            "7",
+            "5"
+          ],
+          "answer": "6",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-007",
+          "type": "choice",
+          "question": "63 ÷ 7 =",
+          "options": [
+            "6",
+            "7",
+            "9",
+            "10",
+            "8"
+          ],
+          "answer": "9",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-008",
+          "type": "choice",
+          "question": "36 ÷ 4 =",
+          "options": [
+            "6",
+            "9",
+            "7",
+            "8",
+            "10"
+          ],
+          "answer": "9",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-009",
+          "type": "choice",
+          "question": "100 ÷ 5 =",
+          "options": [
+            "25",
+            "15",
+            "50",
+            "10",
+            "20"
+          ],
+          "answer": "20",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-010",
+          "type": "choice",
+          "question": "1 000 ÷ 4 =",
+          "options": [
+            "260",
+            "240",
+            "300",
+            "250",
+            "200"
+          ],
+          "answer": "250",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-011",
+          "type": "choice",
+          "question": "17 ÷ 5 =",
+          "options": [
+            "3 (zbytek 2)",
+            "2 (zbytek 2)",
+            "4 (zbytek 2)",
+            "3 (zbytek 1)",
+            "3 (zbytek 3)"
+          ],
+          "answer": "3 (zbytek 2)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-012",
+          "type": "choice",
+          "question": "23 ÷ 4 =",
+          "options": [
+            "5 (zbytek 2)",
+            "5 (zbytek 3)",
+            "4 (zbytek 3)",
+            "5 (zbytek 1)",
+            "6 (zbytek 3)"
+          ],
+          "answer": "5 (zbytek 3)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-013",
+          "type": "choice",
+          "question": "50 ÷ 7 =",
+          "options": [
+            "7 (zbytek 3)",
+            "6 (zbytek 1)",
+            "8 (zbytek 1)",
+            "7 (zbytek 2)",
+            "7 (zbytek 1)"
+          ],
+          "answer": "7 (zbytek 1)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-014",
+          "type": "choice",
+          "question": "29 ÷ 3 =",
+          "options": [
+            "10 (zbytek 2)",
+            "9 (zbytek 2)",
+            "8 (zbytek 2)",
+            "9 (zbytek 3)",
+            "9 (zbytek 1)"
+          ],
+          "answer": "9 (zbytek 2)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-015",
+          "type": "choice",
+          "question": "100 ÷ 7 =",
+          "options": [
+            "14 (zbytek 3)",
+            "13 (zbytek 2)",
+            "15 (zbytek 2)",
+            "14 (zbytek 2)",
+            "14 (zbytek 1)"
+          ],
+          "answer": "14 (zbytek 2)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-016",
+          "type": "choice",
+          "question": "846 ÷ 2 =",
+          "options": [
+            "423",
+            "424",
+            "422",
+            "413",
+            "433"
+          ],
+          "answer": "423",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-017",
+          "type": "choice",
+          "question": "963 ÷ 3 =",
+          "options": [
+            "331",
+            "311",
+            "321",
+            "322",
+            "320"
+          ],
+          "answer": "321",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-018",
+          "type": "choice",
+          "question": "4 848 ÷ 4 =",
+          "options": [
+            "1 202",
+            "1 222",
+            "1 112",
+            "1 212",
+            "1 312"
+          ],
+          "answer": "1 212",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-019",
+          "type": "choice",
+          "question": "5 555 ÷ 5 =",
+          "options": [
+            "1 101",
+            "1 011",
+            "1 111",
+            "1 211",
+            "1 121"
+          ],
+          "answer": "1 111",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-020",
+          "type": "choice",
+          "question": "7 203 ÷ 3 =",
+          "options": [
+            "2 391",
+            "2 411",
+            "2 301",
+            "2 401",
+            "2 501"
+          ],
+          "answer": "2 401",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-021",
+          "type": "choice",
+          "question": "Kontrola: 7 × 8 + 2 = 58. Co jsme dělili?",
+          "options": [
+            "58 ÷ 2 = 29",
+            "58 ÷ 7 = 8 (zbytek 2)",
+            "58 ÷ 8 = 7 (zbytek 2)",
+            "56 ÷ 8 = 7",
+            "58 ÷ 8 = 7 (zbytek 0)"
+          ],
+          "answer": "58 ÷ 8 = 7 (zbytek 2)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-022",
+          "type": "choice",
+          "question": "Kontrola dělení: 45 ÷ 6 = 7 (zbytek 3). Je to správně?",
+          "options": [
+            "Ano (6 × 7 + 3 = 45)",
+            "Ne, zbytek je 1",
+            "Ne, výsledek je 6",
+            "Ne, zbytek je 2",
+            "Ne, výsledek je 8"
+          ],
+          "answer": "Ano (6 × 7 + 3 = 45)",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-023",
+          "type": "choice",
+          "question": "1 200 ÷ 6 =",
+          "options": [
+            "150",
+            "300",
+            "200",
+            "100",
+            "250"
+          ],
+          "answer": "200",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-024",
+          "type": "choice",
+          "question": "9 000 ÷ 3 =",
+          "options": [
+            "3 000",
+            "4 000",
+            "2 000",
+            "2 500",
+            "3 500"
+          ],
+          "answer": "3 000",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        },
+        {
+          "id": "MA4-04-01-025",
+          "type": "choice",
+          "question": "8 400 ÷ 7 =",
+          "options": [
+            "1 300",
+            "1 150",
+            "1 250",
+            "1 200",
+            "1 100"
+          ],
+          "answer": "1 200",
+          "hint": "Dělení je opak násobení. Kontrola: výsledek × dělitel + zbytek = dělenec."
+        }
+      ]
+    }
+  ]
+}
