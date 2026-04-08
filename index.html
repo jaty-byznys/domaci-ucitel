@@ -6,414 +6,214 @@
   <title>Domácí Učitel</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0f1117; --card: #1a1d27; --card2: #242834;
-      --text: #e8e8ed; --text2: #9ca3af; --text3: #6b7280;
-      --accent: #f59e0b; --accent2: #fbbf24;
-      --green: #10b981; --red: #ef4444; --blue: #3b82f6;
-      --matika: #f97316; --cestina: #06b6d4; --prirodoveda: #22c55e;
-      --vlastiveda: #8b5cf6; --anglictina: #ec4899;
-      --radius: 14px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
-    button { font-family: 'Nunito', sans-serif; cursor: pointer; border: none; transition: transform 0.15s, box-shadow 0.15s; }
-    button:hover { transform: translateY(-1px); }
-    button:active { transform: scale(0.97); }
-    input, textarea { font-family: 'Nunito', sans-serif; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-    .fade-in { animation: fadeIn 0.35s ease-out; }
-    .slide-up { animation: slideUp 0.4s ease-out; }
-    .pop-in { animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
-    .screen { min-height: 100vh; display: flex; flex-direction: column; }
-    .login { justify-content: center; align-items: center; padding: 40px 24px; }
-    .login-logo { font-size: 72px; margin-bottom: 12px; filter: drop-shadow(0 4px 12px rgba(245,158,11,0.4)); }
-    .login-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .login-sub { color: var(--text2); font-size: 15px; margin: 6px 0 40px; }
-    .login-btn { display: block; width: 100%; padding: 18px; border-radius: var(--radius); color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 12px; box-shadow: var(--shadow); }
-    .login-ver { color: var(--text3); font-size: 12px; margin-top: 40px; }
-    .header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--card); border-bottom: 1px solid rgba(255,255,255,0.06); position: sticky; top: 0; z-index: 10; }
-    .back-btn { background: var(--card2); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--text2); }
-    .header-title { font-size: 17px; font-weight: 700; flex: 1; }
-    .subjects { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
-    .subject-card { display: flex; align-items: center; gap: 14px; padding: 18px 16px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; border-left: 4px solid var(--accent); }
-    .subject-icon { font-size: 32px; }
-    .subject-name { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
-    .subject-info { font-size: 12px; color: var(--text3); }
-    .topics { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
-    .topic-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--card); border-radius: 12px; text-align: left; border: 1px solid rgba(255,255,255,0.04); }
-    .topic-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
-
-    /* SKILL MAP */
-    .skill-map { position: relative; padding: 30px 10px 50px; overflow-y: auto; flex: 1; }
-    .skill-map svg.map-path { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    .map-node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 2; transform: translate(-50%, -50%); }
-    .map-dot { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 3px solid rgba(255,255,255,0.15); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
-    .map-dot:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
-    .map-dot.done { border-color: var(--green); }
-    .map-label { font-size: 11px; font-weight: 700; color: var(--text2); text-align: center; max-width: 120px; line-height: 1.3; }
-
-    /* QUIZ */
-    .quiz-screen { min-height: 100vh; display: flex; flex-direction: column; }
-    .quiz-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 18px; gap: 20px; }
-    .quiz-progress { display: flex; gap: 8px; margin-bottom: 8px; }
-    .quiz-pip { width: 32px; height: 6px; border-radius: 3px; background: var(--card2); transition: background 0.3s; }
-    .quiz-pip.done { background: var(--green); }
-    .quiz-pip.wrong { background: var(--red); }
-    .quiz-pip.active { background: var(--accent); }
-    .quiz-question { font-size: 18px; font-weight: 700; text-align: center; line-height: 1.5; padding: 0 8px; min-height: 54px; }
-    .quiz-choices { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 400px; }
-    .quiz-choice { padding: 14px 18px; background: var(--card); border-radius: 12px; color: var(--text); font-size: 15px; font-weight: 600; text-align: left; border: 2px solid rgba(255,255,255,0.06); transition: border-color 0.2s, background 0.2s; }
-    .quiz-choice:hover { border-color: var(--accent); }
-    .quiz-choice.correct { border-color: var(--green); background: rgba(16,185,129,0.15); }
-    .quiz-choice.wrong { border-color: var(--red); background: rgba(239,68,68,0.1); }
-    .quiz-choice.disabled { pointer-events: none; opacity: 0.7; }
-    .quiz-choice.highlight { border-color: var(--green); opacity: 1; }
-    .quiz-feedback { font-size: 14px; color: var(--text2); text-align: center; min-height: 20px; padding: 0 12px; }
-    .quiz-result { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 40px 24px; text-align: center; flex: 1; justify-content: center; }
-    .quiz-result-icon { font-size: 64px; }
-    .quiz-result-title { font-size: 24px; font-weight: 800; }
-    .quiz-result-score { font-size: 18px; color: var(--text2); }
-    .quiz-result-btn { padding: 16px 40px; border-radius: var(--radius); background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
-
-    .score-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-    .score-correct { background: rgba(16,185,129,0.15); color: var(--green); }
-    .dash-card { background: var(--card); border-radius: var(--radius); padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
-    .dash-label { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
-    .dash-value { font-size: 24px; font-weight: 800; }
-    .settings-input { width: 100%; padding: 12px 16px; background: var(--bg); border: 2px solid var(--card2); border-radius: 10px; color: var(--text); font-size: 15px; outline: none; }
-    .settings-input:focus { border-color: var(--accent); }
-    .settings-btn { width: 100%; padding: 14px; border-radius: var(--radius); background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
-    .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 16px; }
-    .loading-spinner { width: 40px; height: 40px; border: 4px solid var(--card2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0f1117;--card:#1a1d27;--card2:#242834;--text:#e8e8ed;--text2:#9ca3af;--text3:#6b7280;--accent:#f59e0b;--accent2:#fbbf24;--green:#10b981;--red:#ef4444;--blue:#3b82f6;--matika:#f97316;--cestina:#06b6d4;--prirodoveda:#22c55e;--vlastiveda:#8b5cf6;--anglictina:#ec4899;--radius:14px;--shadow:0 4px 20px rgba(0,0,0,0.3)}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    button{font-family:'Nunito',sans-serif;cursor:pointer;border:none;transition:transform .15s}
+    button:hover{transform:translateY(-1px)}button:active{transform:scale(.97)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .fade-in{animation:fadeIn .35s ease-out}.slide-up{animation:slideUp .4s ease-out}
+    .screen{min-height:100vh;display:flex;flex-direction:column;max-width:480px;margin:0 auto}
+    .login{justify-content:center;align-items:center;padding:40px 24px}
+    .login-logo{font-size:72px;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4))}
+    .login-title{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .login-sub{color:var(--text2);font-size:15px;margin:6px 0 40px}
+    .login-btn{display:block;width:100%;padding:18px;border-radius:var(--radius);color:#fff;font-size:17px;font-weight:700;margin-bottom:12px;box-shadow:var(--shadow)}
+    .header{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--card);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;z-index:10}
+    .back-btn{background:var(--card2);padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--text2)}
+    .header-title{font-size:17px;font-weight:700;flex:1}
+    .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px}
+    .loading-spinner{width:40px;height:40px;border:4px solid var(--card2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+    .day-grid{padding:16px 18px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .day-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;background:var(--card);border-radius:12px;border:2px solid transparent;transition:border-color .2s}
+    .day-card:hover{border-color:var(--accent)}.day-card.completed{border-color:var(--green);background:rgba(16,185,129,0.08)}
+    .day-num{font-size:22px;font-weight:800;color:var(--accent)}.day-label{font-size:10px;color:var(--text3);margin-top:2px}
+    .week-label{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--text2);padding:8px 0 2px}
+    .okruh-list{padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+    .okruh-card{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border-radius:12px;border-left:4px solid var(--accent);text-align:left;transition:border-color .2s}
+    .okruh-card:hover{border-left-color:var(--accent2)}
+    .okruh-card.chaos{border-left-color:var(--red);background:linear-gradient(135deg,var(--card),rgba(239,68,68,0.08))}
+    .okruh-card.completed{opacity:.6;border-left-color:var(--green)}
+    .quiz-screen{min-height:100vh;display:flex;flex-direction:column}
+    .quiz-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:20px}
+    .quiz-progress{display:flex;gap:6px;margin-bottom:8px}
+    .quiz-pip{width:24px;height:6px;border-radius:3px;background:var(--card2);transition:background .3s}
+    .quiz-pip.done{background:var(--green)}.quiz-pip.wrong{background:var(--red)}.quiz-pip.active{background:var(--accent)}
+    .quiz-question{font-size:18px;font-weight:700;text-align:center;line-height:1.5;padding:0 8px;min-height:54px}
+    .quiz-choices{display:flex;flex-direction:column;gap:8px;width:100%;max-width:400px}
+    .quiz-choice{padding:14px 18px;background:var(--card);border-radius:12px;color:var(--text);font-size:15px;font-weight:600;text-align:left;border:2px solid rgba(255,255,255,0.06);transition:border-color .2s,background .2s}
+    .quiz-choice:hover{border-color:var(--accent)}
+    .quiz-choice.correct{border-color:var(--green);background:rgba(16,185,129,0.15)}
+    .quiz-choice.wrong{border-color:var(--red);background:rgba(239,68,68,0.1)}
+    .quiz-choice.disabled{pointer-events:none;opacity:.7}
+    .quiz-result{display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 24px;text-align:center;flex:1;justify-content:center}
+    .quiz-result-btn{padding:16px 40px;border-radius:var(--radius);background:var(--accent);color:#000;font-size:16px;font-weight:700;margin-top:12px}
+    .score-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700}
+    .score-correct{background:rgba(16,185,129,0.15);color:var(--green)}
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-  <script type="text/babel">
-    const { useState, useRef, useEffect } = React;
-    const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
-    const COLORS = { matika:'var(--matika)', cestina:'var(--cestina)', prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', anglictina:'var(--anglictina)' };
-    const COLOR_HEX = { matika:'#f97316', cestina:'#06b6d4', prirodoveda:'#22c55e', vlastiveda:'#8b5cf6', anglictina:'#ec4899' };
-    const QUESTIONS_PER_ROUND = 5;
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const{useState,useEffect}=React;
+const PI={cestina:'📖',matika:'🔢',anglictina:'🇬🇧',prirodoveda:'🌿',vlastiveda:'🏰',mix:'🎲'};
+const PC={cestina:'var(--cestina)',matika:'var(--matika)',anglictina:'var(--anglictina)',prirodoveda:'var(--prirodoveda)',vlastiveda:'var(--vlastiveda)',mix:'var(--red)'};
+const PN={cestina:'Čeština',matika:'Matematika',anglictina:'Angličtina',prirodoveda:'Přírodověda',vlastiveda:'Vlastivěda',mix:'Chaos'};
+const norm=s=>String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');
+const getOD=id=>localStorage.getItem('od_'+id)==='1';
+const setOD=id=>localStorage.setItem('od_'+id,'1');
+const GW=['Hmm, to není ono 🤔','Skoro! Ještě jednou? 🧐','To nesedí, přemýšlej 💭'];
+const GC=['Výborně! 🎯','Přesně tak! ⭐','Správně! 🏅','Bingo! 🚀'];
+const GA=['Šlo to! 💪','Nakonec správně! ✨','Zvládl/a jsi to! 👍'];
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
 
-    function getApiKey() { return localStorage.getItem('du_api_key') || ''; }
-    function setApiKeyLS(k) { localStorage.setItem('du_api_key', k); }
-    function getSkillDone(skillId) { return localStorage.getItem('skill_done_'+skillId) === '1'; }
-    function setSkillDone(skillId) { localStorage.setItem('skill_done_'+skillId, '1'); }
+function Login({onSelect}){
+  return(<div className="screen login"><div className="slide-up" style={{textAlign:'center',width:'100%'}}>
+    <div className="login-logo">📚</div>
+    <div className="login-title">Domácí Učitel</div>
+    <div className="login-sub">4. třída ZŠ</div>
+    <button className="login-btn" style={{background:'linear-gradient(135deg,#f59e0b,#f97316)'}} onClick={()=>onSelect('mise')}>🗺️ Mise</button>
+    <button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button>
+    <div style={{color:'var(--text3)',fontSize:12,marginTop:40}}>v0.6 — Jaty</div>
+  </div></div>);
+}
 
-    function normalize(s) {
-      return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');
-    }
-    function checkAnswer(task, userAnswer) {
-      const ua = normalize(userAnswer);
-      const correct = normalize(task.answer);
-      if (ua === correct) return { correct: true };
-      if (task.answer_variants) { for (const v of task.answer_variants) { if (ua === normalize(v)) return { correct: true }; } }
-      return { correct: false, feedback: null };
-    }
-
-    function pickTasks(skill, n) {
-      const tasks = [...skill.tasks];
-      const picked = [];
-      while (picked.length < n && tasks.length > 0) {
-        const idx = Math.floor(Math.random() * tasks.length);
-        picked.push(tasks.splice(idx, 1)[0]);
-      }
-      return picked;
-    }
-
-    function mapPositions(count) {
-      const positions = [];
-      for (let i = 0; i < count; i++) {
-        const t = count <= 1 ? 0.5 : i / (count - 1);
-        const y = 10 + t * 80;
-        const x = 50 + Math.sin(i * 1.9 + 0.5) * 25;
-        positions.push({ x, y });
-      }
-      return positions;
-    }
-
-    function SettingsScreen({ onSave, currentKey }) {
-      const [key, setKey] = useState(currentKey);
-      return (<div className="screen" style={{padding:'60px 24px',justifyContent:'center'}}><div className="fade-in" style={{textAlign:'center'}}><div style={{fontSize:48,marginBottom:16}}>🔑</div><h2 style={{fontSize:22,fontWeight:800,marginBottom:8}}>API klíč</h2><p style={{color:'var(--text2)',fontSize:14,marginBottom:24}}>Aby mohl učitel odpovídat, potřebuje Anthropic API klíč.</p><input className="settings-input" type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="sk-ant-..." style={{marginBottom:16}} /><button className="settings-btn" onClick={()=>onSave(key)} disabled={!key.startsWith('sk-')}>Uložit</button><p style={{color:'var(--text3)',fontSize:11,marginTop:16}}>Klíč se ukládá jen v tomto zařízení.</p></div></div>);
-    }
-
-    function LoginScreen({ onSelect }) {
-      return (<div className="screen login"><div className="slide-up" style={{textAlign:'center',width:'100%'}}><div className="login-logo">📚</div><div className="login-title">Domácí Učitel</div><div className="login-sub">4. třída ZŠ</div><button className="login-btn" style={{background:'var(--accent)'}} onClick={()=>onSelect('student')}>🎒 Jsem žák</button><button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button><button className="login-btn" style={{background:'var(--card2)'}} onClick={()=>onSelect('settings')}>⚙️ Nastavení</button><div className="login-ver">v0.5 — Jaty</div></div></div>);
-    }
-
-    function SubjectPicker({ predmety, onPick, onBack }) {
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">Co budeme procvičovat?</span></div><div className="subjects">{SUBJECTS.map((k,i) => { const s = predmety[k]; if (!s) return null; return (<button key={k} className="subject-card fade-in" style={{borderLeftColor:COLORS[k], animationDelay: i*0.06+'s'}} onClick={()=>onPick(k)}><span className="subject-icon">{s.icon}</span><span className="subject-name">{s.name}</span><span className="subject-info">{s.temata.length} témat</span></button>);})}</div></div>);
-    }
-
-    function TopicPicker({ predmety, subject, onPick, onBack }) {
-      const s = predmety[subject];
-      const [loading, setLoading] = useState(null);
-      function handlePick(tema) {
-        setLoading(tema.nazev);
-        fetch(tema.soubor).then(r => { if (!r.ok) throw new Error('Nenalezeno'); return r.json(); })
-          .then(data => { setLoading(null); onPick(data, tema.nazev); })
-          .catch(e => { setLoading(null); alert('Toto téma ještě není připravené.'); });
-      }
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span style={{fontSize:24}}>{s.icon}</span><span className="header-title">{s.name}</span></div><div className="topics">{s.temata.map((tema,i) => (<button key={i} className="topic-card fade-in" style={{animationDelay: i*0.05+'s'}} onClick={()=>handlePick(tema)} disabled={loading!==null}><span className="topic-name">{loading===tema.nazev ? '⏳ ' : ''}{tema.nazev}</span></button>))}</div></div>);
-    }
-
-    function SkillMap({ unitData, unitName, subject, onPickSkill, onBack }) {
-      const skills = unitData.skills;
-      const positions = mapPositions(skills.length);
-      const color = COLOR_HEX[subject] || '#f59e0b';
-      const nodeSpacing = 120;
-      const mapHeight = Math.max(skills.length * nodeSpacing, 400);
-
-      return (
-        <div className="screen">
-          <div className="header">
-            <button className="back-btn" onClick={onBack}>←</button>
-            <span className="header-title">{unitName}</span>
-          </div>
-          <div className="skill-map" style={{height: mapHeight + 'px', position:'relative'}}>
-            <svg className="map-path" viewBox={'0 0 480 ' + mapHeight} style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:0}}>
-              {positions.map((pos, i) => {
-                if (i === 0) return null;
-                const prev = positions[i-1];
-                const x1 = prev.x / 100 * 480, y1 = prev.y / 100 * mapHeight;
-                const x2 = pos.x / 100 * 480, y2 = pos.y / 100 * mapHeight;
-                return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeWidth="3" strokeOpacity="0.2" strokeDasharray="8 6" />;
-              })}
-            </svg>
-            {skills.map((skill, i) => {
-              const pos = positions[i];
-              const done = getSkillDone(skill.id);
-              return (
-                <div key={skill.id} className="map-node pop-in" style={{left: pos.x+'%', top: pos.y+'%', animationDelay: i*0.08+'s'}}>
-                  <button
-                    className={'map-dot' + (done ? ' done' : '')}
-                    style={{background: done ? 'rgba(16,185,129,0.25)' : color}}
-                    onClick={() => onPickSkill(skill)}
-                  >
-                    {done ? '✓' : (i + 1)}
-                  </button>
-                  <span className="map-label">{skill.name}</span>
-                </div>
-              );
-            })}
-          </div>
+function MisePicker({onPick,onBack}){
+  const mises=[{id:1,mesic:'Září',soubor:'mise01_zari.json',icon:'🍂',color:'#f59e0b'}];
+  return(<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">Vyber misi</span></div>
+    <div style={{padding:'16px 18px',display:'flex',flexDirection:'column',gap:12}}>
+      {mises.map((m,i)=>(
+        <button key={m.id} className="fade-in" style={{display:'flex',alignItems:'center',gap:16,padding:'20px 18px',background:'var(--card)',borderRadius:'var(--radius)',borderLeft:'4px solid '+m.color,textAlign:'left',boxShadow:'var(--shadow)'}} onClick={()=>onPick(m)}>
+          <span style={{fontSize:40}}>{m.icon}</span>
+          <div style={{flex:1}}><div style={{fontSize:18,fontWeight:800}}>Mise {m.id} — {m.mesic}</div><div style={{fontSize:13,color:'var(--text3)',marginTop:2}}>20 dní • 800 otázek</div></div>
+          <span style={{fontSize:20,color:'var(--text3)'}}>→</span>
+        </button>
+      ))}
+      {[2,3,4,5,6,7,8,9,10].map(n=>(
+        <div key={n} style={{padding:'20px 18px',background:'var(--card)',borderRadius:'var(--radius)',borderLeft:'4px solid var(--card2)',opacity:.4,display:'flex',alignItems:'center',gap:16}}>
+          <span style={{fontSize:40}}>🔒</span><div><div style={{fontSize:16,fontWeight:700,color:'var(--text3)'}}>Mise {n}</div><div style={{fontSize:12,color:'var(--text3)'}}>Připravuje se...</div></div>
         </div>
-      );
+      ))}
+    </div></div>);
+}
+
+function DayPicker({data,name,onPick,onBack}){
+  const wk=[{l:'Týden 1 — Rozjezd',d:data.filter(d=>d.den>=1&&d.den<=5)},{l:'Týden 2 — Nová látka',d:data.filter(d=>d.den>=6&&d.den<=10)},{l:'Týden 3 — Prohlubování',d:data.filter(d=>d.den>=11&&d.den<=15)},{l:'Týden 4 — Upevnění',d:data.filter(d=>d.den>=16&&d.den<=20)}];
+  return(<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">{name}</span></div>
+    <div className="day-grid">
+      {wk.map((w,wi)=><React.Fragment key={wi}>
+        <div className="week-label">{w.l}</div>
+        {w.d.map(day=>{const c=day.okruhy.every(o=>getOD(o.okruh_id));const dc=day.okruhy.filter(o=>getOD(o.okruh_id)).length;
+          return(<button key={day.den} className={'day-card fade-in'+(c?' completed':'')} style={{animationDelay:day.den*.03+'s'}} onClick={()=>onPick(day)}>
+            <div className="day-num">{c?'✓':day.den}</div><div className="day-label">{dc}/4</div>
+          </button>);})}
+      </React.Fragment>)}
+    </div></div>);
+}
+
+function OkruhPicker({day,onPick,onBack}){
+  return(<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">Den {day.den}</span><span style={{fontSize:12,color:'var(--text3)'}}>40 otázek</span></div>
+    <div className="okruh-list">
+      {day.okruhy.map((o,i)=>{const done=getOD(o.okruh_id);const ch=o.typ==='chaos';const icon=ch?'🎲':(PI[o.predmet]||'📝');const color=ch?'var(--red)':(PC[o.predmet]||'var(--accent)');const nm=ch?'CHAOS — mix všeho!':(PN[o.predmet]||o.predmet);
+        return(<button key={i} className={'okruh-card fade-in'+(ch?' chaos':'')+(done?' completed':'')} style={{animationDelay:i*.08+'s',borderLeftColor:done?'var(--green)':color}} onClick={()=>onPick(o)}>
+          <span style={{fontSize:28}}>{icon}</span>
+          <div style={{flex:1}}><div style={{fontSize:15,fontWeight:700}}>{nm}</div><div style={{fontSize:12,color:'var(--text3)',marginTop:2}}>{o.tema} • 10 otázek</div></div>
+          {done?<span style={{fontSize:11,fontWeight:700,padding:'3px 8px',borderRadius:6,background:'rgba(16,185,129,0.15)',color:'var(--green)'}}>✓</span>:<span style={{fontSize:11,fontWeight:700,padding:'3px 8px',borderRadius:6,background:'rgba(245,158,11,0.15)',color:'var(--accent)'}}>→</span>}
+        </button>);})}
+    </div></div>);
+}
+
+function Quiz({okruh,onFinish,onBack}){
+  const[tasks]=useState(()=>okruh.otazky);
+  const[cur,setCur]=useState(0);const[res,setRes]=useState([]);const[att,setAtt]=useState(0);
+  const[sel,setSel]=useState(null);const[wrongs,setWrongs]=useState([]);
+  const[guide,setGuide]=useState('');const[fb,setFb]=useState('');const[phase,setPhase]=useState('go');
+  const t=tasks[cur];const ch=okruh.typ==='chaos';
+
+  function adv(nr){setTimeout(()=>{
+    if(cur+1<tasks.length){setCur(c=>c+1);setSel(null);setWrongs([]);setFb('');setGuide('');setAtt(0);setPhase('go');}
+    else{if(nr.filter(r=>r==='c').length>=7)setOD(okruh.okruh_id);setPhase('done');}
+  },1400);}
+
+  function pick(opt){
+    if(phase!=='go'||wrongs.includes(opt))return;
+    if(norm(opt)===norm(t.answer)){
+      setSel(opt);setPhase('fb');const nr=[...res,'c'];setRes(nr);
+      setGuide(att>0?rnd(GA):rnd(GC));setFb('');adv(nr);
+    }else{
+      const na=att+1;setAtt(na);setWrongs(p=>[...p,opt]);
+      if(na>=3){setSel(opt);setPhase('rev');const nr=[...res,'w'];setRes(nr);setGuide('Správná odpověď: '+t.answer);setFb(t.hint||'');adv(nr);}
+      else if(na===1){setGuide(rnd(GW));setFb('');}
+      else{setGuide('Poslední pokus! 💡 '+(t.hint||'Přemýšlej...'));setFb('');}
     }
+  }
 
-    const GUIDE_WRONG_1 = [
-      'Hmm, to není ono. Zkus se podívat znovu! 🤔',
-      'Skoro! Ale ne tak docela. Ještě jednou? 🧐',
-      'To nesedí. Přemýšlej, máš to v hlavě! 💭',
-      'Jejda, vedle. Dej tomu ještě šanci! 🔄',
-      'Tentokrát ne. Ale nevzdávej se! 💪',
-    ];
-    const GUIDE_CORRECT = [
-      'Výborně! To sedí! 🎯',
-      'Přesně tak! Máš to! ⭐',
-      'Správně! Jsi borec! 🏅',
-      'Ano! Takhle se to dělá! 💪',
-      'Bingo! Jedeme dál! 🚀',
-    ];
-    const GUIDE_CORRECT_AFTER_FAIL = [
-      'Vidíš, šlo to! Hlavně nevzdávat 💪',
-      'Nakonec správně! To se počítá ✨',
-      'Dalo to práci, ale zvládl/a jsi to! 👍',
-    ];
-    function rnd(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  if(phase==='done'){const cc=res.filter(r=>r==='c').length;const ok=cc>=7;
+    return(<div className="quiz-screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">{okruh.tema}</span></div>
+      <div className="quiz-result slide-up">
+        <div style={{fontSize:64}}>{ok?'🏆':'💪'}</div>
+        <div style={{fontSize:24,fontWeight:800,color:ok?'var(--green)':'var(--accent)'}}>{ok?'Výborně!':'Zkus to znovu'}</div>
+        <div style={{fontSize:18,color:'var(--text2)'}}>{cc} z {tasks.length} správně</div>
+        <div className="quiz-progress" style={{marginTop:8}}>{res.map((r,i)=><div key={i} className={'quiz-pip '+(r==='c'?'done':'wrong')}/>)}</div>
+        {!ok&&<p style={{color:'var(--text3)',fontSize:13,marginTop:8}}>Potřebuješ aspoň 7 z 10.</p>}
+        <button className="quiz-result-btn" onClick={onFinish}>← Zpět</button>
+      </div></div>);}
 
-    function QuizScreen({ skill, subject, onFinish, onBack }) {
-      const [tasks] = useState(() => pickTasks(skill, QUESTIONS_PER_ROUND));
-      const [current, setCurrent] = useState(0);
-      const [results, setResults] = useState([]); // per-question: 'correct' | 'wrong'
-      const [attempts, setAttempts] = useState(0);
-      const [selected, setSelected] = useState(null);
-      const [wrongPicks, setWrongPicks] = useState([]); // options already tried wrong
-      const [feedback, setFeedback] = useState('');
-      const [guideMsg, setGuideMsg] = useState('');
-      const [phase, setPhase] = useState('answering'); // 'answering' | 'feedback' | 'revealed' | 'done'
+  if(!t)return null;
+  return(<div className="quiz-screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button>
+    <span className="header-title" style={{fontSize:14}}>{ch&&t.predmet?(PI[t.predmet]||'')+' ':''}{okruh.tema}</span>
+    <span className="score-badge score-correct">{cur+1}/{tasks.length}</span></div>
+    <div className="quiz-body" key={cur+'-'+att}>
+      <div className="quiz-progress">{tasks.map((_,i)=><div key={i} className={'quiz-pip'+(i<res.length?(res[i]==='c'?' done':' wrong'):(i===cur?' active':''))}/>)}</div>
+      <div className="quiz-question fade-in">{t.question}</div>
+      <div className="quiz-choices fade-in">{(t.options||[]).map((opt,i)=>{
+        const wp=wrongs.includes(opt);const ic=norm(opt)===norm(t.answer);
+        let cls='quiz-choice';
+        if(phase==='rev'||phase==='fb'){cls+=' disabled';if(ic)cls+=' correct';if(opt===sel&&!ic)cls+=' wrong';}
+        else if(wp)cls+=' wrong disabled';
+        return<button key={i} className={cls} onClick={()=>pick(opt)}>{opt}</button>;
+      })}</div>
+      {guide&&<div className="fade-in" style={{display:'flex',gap:10,alignItems:'flex-start',maxWidth:400,width:'100%',padding:'0 4px'}}>
+        <span style={{fontSize:28,flexShrink:0}}>🧑‍🔬</span>
+        <div style={{background:'var(--card)',borderRadius:'4px 14px 14px 14px',padding:'10px 14px',fontSize:14,lineHeight:1.5}}>
+          {guide}{fb&&<div style={{color:'var(--text3)',fontSize:12,marginTop:4}}>{fb}</div>}
+        </div></div>}
+      {att>0&&phase==='go'&&<div style={{fontSize:11,color:'var(--text3)'}}>Pokus {att+1}/3</div>}
+    </div></div>);
+}
 
-      const task = tasks[current];
+function Parent({onBack}){
+  return(<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">📊 Přehled</span></div>
+    <div style={{padding:'16px 18px'}} className="fade-in"><div style={{background:'var(--card)',borderRadius:'var(--radius)',padding:18,boxShadow:'var(--shadow)'}}>
+      <div style={{fontSize:13,color:'var(--text2)'}}>Stav</div><div style={{fontSize:24,fontWeight:800,color:'var(--accent)'}}>Aktivní</div>
+      <p style={{color:'var(--text3)',fontSize:13,marginTop:4}}>Rodičovský přehled bude doplněn.</p>
+    </div></div></div>);
+}
 
-      function advanceToNext(newResults) {
-        setTimeout(() => {
-          if (current + 1 < tasks.length) {
-            setCurrent(c => c + 1);
-            setSelected(null);
-            setWrongPicks([]);
-            setFeedback('');
-            setGuideMsg('');
-            setAttempts(0);
-            setPhase('answering');
-          } else {
-            const correctCount = newResults.filter(r => r === 'correct').length;
-            if (correctCount >= 4) setSkillDone(skill.id);
-            setPhase('done');
-          }
-        }, 1500);
-      }
+function App(){
+  const[v,setV]=useState('login');const[md,setMd]=useState(null);const[mn,setMn]=useState('');
+  const[day,setDay]=useState(null);const[okr,setOkr]=useState(null);const[tick,setTick]=useState(0);
+  const[ld,setLd]=useState(false);const[err,setErr]=useState(null);
 
-      function handleChoice(opt) {
-        if (phase !== 'answering') return;
-        if (wrongPicks.includes(opt)) return; // already tried this one
+  function loadM(m){setLd(true);fetch(m.soubor).then(r=>{if(!r.ok)throw new Error();return r.json();}).then(d=>{setMd(d);setMn('Mise '+m.id+' — '+m.mesic);setV('days');setLd(false);}).catch(()=>{setErr('Nepodařilo se načíst misi.');setLd(false);});}
 
-        const result = checkAnswer(task, opt);
+  if(err)return<div className="loading"><div style={{fontSize:48}}>⚠️</div><div style={{color:'var(--red)'}}>{err}</div><button style={{marginTop:16,padding:'10px 24px',background:'var(--card)',color:'var(--text)',borderRadius:10}} onClick={()=>{setErr(null);setV('login');}}>Zpět</button></div>;
+  if(ld)return<div className="loading"><div className="loading-spinner"/><div style={{color:'var(--text2)'}}>Načítám misi...</div></div>;
+  if(v==='login')return<Login onSelect={setV}/>;
+  if(v==='mise')return<MisePicker onPick={loadM} onBack={()=>setV('login')}/>;
+  if(v==='days'&&md)return<DayPicker data={md} name={mn} onPick={d=>{setDay(d);setV('okruhy');}} onBack={()=>{setMd(null);setV('mise');}}/>;
+  if(v==='okruhy'&&day)return<OkruhPicker day={day} onPick={o=>{setOkr(o);setV('quiz');}} onBack={()=>{setDay(null);setV('days');}}/>;
+  if(v==='quiz'&&okr)return<Quiz key={okr.okruh_id+'-'+tick} okruh={okr} onFinish={()=>{setOkr(null);setV('okruhy');setTick(t=>t+1);}} onBack={()=>{setOkr(null);setV('okruhy');}}/>;
+  if(v==='parent')return<Parent onBack={()=>setV('login')}/>;
+  return null;
+}
 
-        if (result.correct) {
-          // CORRECT
-          setSelected(opt);
-          setPhase('feedback');
-          const newResults = [...results, 'correct'];
-          setResults(newResults);
-          setGuideMsg(attempts > 0 ? rnd(GUIDE_CORRECT_AFTER_FAIL) : rnd(GUIDE_CORRECT));
-          setFeedback('');
-          advanceToNext(newResults);
-        } else {
-          // WRONG
-          const newAttempts = attempts + 1;
-          setAttempts(newAttempts);
-          setWrongPicks(prev => [...prev, opt]);
-
-          if (newAttempts >= 3) {
-            // 3rd wrong = reveal answer, count as wrong
-            setSelected(opt);
-            setPhase('revealed');
-            const newResults = [...results, 'wrong'];
-            setResults(newResults);
-            setGuideMsg('Nevadí! Správná odpověď: ' + task.answer);
-            setFeedback(task.hint || '');
-            advanceToNext(newResults);
-          } else if (newAttempts === 1) {
-            // 1st wrong
-            setGuideMsg(rnd(GUIDE_WRONG_1));
-            setFeedback('');
-          } else {
-            // 2nd wrong — always give hint
-            setGuideMsg('Poslední pokus! Nápověda: ' + (task.hint || 'Přemýšlej, máš to v hlavě...'));
-            setFeedback('');
-          }
-        }
-      }
-
-      if (phase === 'done') {
-        const correctCount = results.filter(r => r === 'correct').length;
-        const passed = correctCount >= 4;
-        return (
-          <div className="quiz-screen">
-            <div className="header">
-              <button className="back-btn" onClick={onBack}>←</button>
-              <span className="header-title">{skill.name}</span>
-            </div>
-            <div className="quiz-result slide-up">
-              <div className="quiz-result-icon">{passed ? '🏆' : '💪'}</div>
-              <div className="quiz-result-title" style={{color: passed ? 'var(--green)' : 'var(--accent)'}}>
-                {passed ? 'Výborně!' : 'Zkus to znovu'}
-              </div>
-              <div className="quiz-result-score">{correctCount} z {tasks.length} správně</div>
-              <div className="quiz-progress" style={{marginTop: 8}}>
-                {results.map((r, i) => (
-                  <div key={i} className={'quiz-pip ' + (r === 'correct' ? 'done' : 'wrong')} style={{width: 40}} />
-                ))}
-              </div>
-              {!passed && <p style={{color:'var(--text3)', fontSize: 13, marginTop: 8}}>Potřebuješ aspoň 4 z 5.</p>}
-              <button className="quiz-result-btn" onClick={onFinish} style={{marginTop: 20}}>← Zpět na mapu</button>
-            </div>
-          </div>
-        );
-      }
-
-      if (!task) return null;
-
-      const showCorrectAnswer = phase === 'revealed';
-      return (
-        <div className="quiz-screen">
-          <div className="header">
-            <button className="back-btn" onClick={onBack}>←</button>
-            <span className="header-title" style={{fontSize:14}}>{skill.name}</span>
-            <span className="score-badge score-correct">{current+1}/{tasks.length}</span>
-          </div>
-          <div className="quiz-body" key={current + '-' + attempts}>
-            <div className="quiz-progress">
-              {tasks.map((_, i) => (
-                <div key={i} className={'quiz-pip' + (i < results.length ? (results[i]==='correct' ? ' done' : ' wrong') : (i === current ? ' active' : ''))} />
-              ))}
-            </div>
-            <div className="quiz-question fade-in">{task.question}</div>
-            <div className="quiz-choices fade-in">
-              {(task.options || []).map((opt, i) => {
-                const isWrongPick = wrongPicks.includes(opt);
-                const isCorrectOpt = normalize(opt) === normalize(task.answer);
-                let cls = 'quiz-choice';
-                if (showCorrectAnswer || phase === 'feedback') {
-                  cls += ' disabled';
-                  if (isCorrectOpt) cls += ' correct';
-                  if (opt === selected && !isCorrectOpt) cls += ' wrong';
-                } else if (isWrongPick) {
-                  cls += ' wrong disabled';
-                }
-                return <button key={i} className={cls} onClick={() => handleChoice(opt)}>{opt}</button>;
-              })}
-            </div>
-            {guideMsg && (
-              <div className="fade-in" style={{display:'flex', gap:10, alignItems:'flex-start', maxWidth:400, width:'100%', padding:'0 4px'}}>
-                <span style={{fontSize:28, flexShrink:0}}>🧑‍🔬</span>
-                <div style={{background:'var(--card)', borderRadius:'4px 14px 14px 14px', padding:'10px 14px', fontSize:14, lineHeight:1.5, color:'var(--text)'}}>
-                  {guideMsg}
-                  {feedback && <div style={{color:'var(--text3)', fontSize:12, marginTop:4}}>{feedback}</div>}
-                </div>
-              </div>
-            )}
-            {attempts > 0 && phase === 'answering' && (
-              <div style={{fontSize:11, color:'var(--text3)'}}>Pokus {attempts + 1} / 3</div>
-            )}
-          </div>
-        </div>
-      );
-    }
-
-    function ParentDashboard({ onBack }) {
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">📊 Přehled</span></div><div style={{padding:'16px 18px'}} className="fade-in"><div className="dash-card"><div className="dash-label">Stav</div><div className="dash-value" style={{color:'var(--accent)'}}>Aktivní</div><p style={{color:'var(--text3)',fontSize:13,marginTop:4}}>Rodičovský přehled bude doplněn.</p></div></div></div>);
-    }
-
-    function App() {
-      const [view, setView] = useState('login');
-      const [predmety, setPredmety] = useState(null);
-      const [subject, setSubject] = useState(null);
-      const [unitData, setUnitData] = useState(null);
-      const [unitName, setUnitName] = useState('');
-      const [activeSkill, setActiveSkill] = useState(null);
-      const [apiKey, setApiKeyState] = useState(getApiKey());
-      const [error, setError] = useState(null);
-      const [tick, setTick] = useState(0);
-
-      useEffect(() => {
-        fetch('predmety.json').then(r=>{if(!r.ok)throw new Error('nenalezen');return r.json();})
-          .then(d=>setPredmety(d)).catch(e=>setError('Nepodařilo se načíst předměty.'));
-      }, []);
-
-      if (error) return <div className="loading"><div style={{fontSize:48}}>⚠️</div><div style={{color:'var(--red)'}}>{error}</div></div>;
-      if (!predmety) return <div className="loading"><div className="loading-spinner"/><div style={{color:'var(--text2)'}}>Načítám...</div></div>;
-      if (view==='settings') return <SettingsScreen onSave={k=>{setApiKeyLS(k);setApiKeyState(k);setView('login');}} currentKey={apiKey}/>;
-      if (view==='login') return <LoginScreen onSelect={setView}/>;
-      if (view==='student'&&!subject) return <SubjectPicker predmety={predmety} onPick={s=>setSubject(s)} onBack={()=>setView('login')}/>;
-      if (view==='student'&&subject&&!unitData) return <TopicPicker predmety={predmety} subject={subject} onPick={(d,n)=>{setUnitData(d);setUnitName(n);setView('map');}} onBack={()=>setSubject(null)}/>;
-      if (view==='map'&&unitData&&!activeSkill) return <SkillMap unitData={unitData} unitName={unitName} subject={subject} onPickSkill={(sk)=>{ setActiveSkill(sk); setView('quiz'); }} onBack={()=>{setUnitData(null);setUnitName('');setView('student');}}/>;
-      if (view==='quiz'&&activeSkill) return <QuizScreen skill={activeSkill} subject={subject} onFinish={()=>{ setActiveSkill(null); setView('map'); setTick(t=>t+1); }} onBack={()=>{ setActiveSkill(null); setView('map'); }}/>;
-      if (view==='parent') return <ParentDashboard onBack={()=>setView('login')}/>;
-      return null;
-    }
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-  </script>
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>
