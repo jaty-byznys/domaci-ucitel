@@ -25,8 +25,10 @@
     @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
     @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
     .fade-in { animation: fadeIn 0.35s ease-out; }
     .slide-up { animation: slideUp 0.4s ease-out; }
+    .pop-in { animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
     .screen { min-height: 100vh; display: flex; flex-direction: column; }
     .login { justify-content: center; align-items: center; padding: 40px 24px; }
@@ -46,27 +48,39 @@
     .topics { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
     .topic-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--card); border-radius: 12px; text-align: left; border: 1px solid rgba(255,255,255,0.04); }
     .topic-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
-    .chat-screen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
-    .chat-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--card); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
-    .chat-messages { flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; }
-    .msg { display: flex; max-width: 88%; }
-    .msg-tutor { align-items: flex-start; gap: 8px; }
-    .msg-student { justify-content: flex-end; align-self: flex-end; }
-    .msg-avatar { font-size: 22px; margin-top: 4px; flex-shrink: 0; }
-    .msg-bubble { padding: 10px 14px; font-size: 15px; line-height: 1.55; }
-    .msg-tutor .msg-bubble { background: var(--card); color: var(--text); border-radius: 4px 16px 16px 16px; }
-    .msg-student .msg-bubble { background: var(--blue); color: #fff; border-radius: 16px 4px 16px 16px; }
-    .typing-dots { display: flex; gap: 4px; padding: 12px 16px; }
-    .typing-dots span { width: 8px; height: 8px; background: var(--text3); border-radius: 50%; animation: pulse 1.4s infinite; }
-    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    .chat-input { display: flex; gap: 8px; padding: 10px 12px; background: var(--card); border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
-    .chat-input input { flex: 1; padding: 12px 16px; border-radius: 24px; border: 2px solid var(--card2); background: var(--bg); color: var(--text); font-size: 15px; outline: none; }
-    .chat-input input:focus { border-color: var(--accent); }
-    .chat-input button { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; }
-    .choices { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-    .choice-btn { padding: 10px 14px; background: var(--card2); border-radius: 10px; color: var(--text); font-size: 14px; font-weight: 600; text-align: left; border: 1px solid rgba(255,255,255,0.08); }
-    .choice-btn:hover { border-color: var(--accent); }
+
+    /* SKILL MAP */
+    .skill-map { position: relative; padding: 30px 10px 50px; overflow-y: auto; flex: 1; }
+    .skill-map svg.map-path { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .map-node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 2; transform: translate(-50%, -50%); }
+    .map-dot { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 3px solid rgba(255,255,255,0.15); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .map-dot:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
+    .map-dot.done { border-color: var(--green); }
+    .map-label { font-size: 11px; font-weight: 700; color: var(--text2); text-align: center; max-width: 120px; line-height: 1.3; }
+
+    /* QUIZ */
+    .quiz-screen { min-height: 100vh; display: flex; flex-direction: column; }
+    .quiz-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 18px; gap: 20px; }
+    .quiz-progress { display: flex; gap: 8px; margin-bottom: 8px; }
+    .quiz-pip { width: 32px; height: 6px; border-radius: 3px; background: var(--card2); transition: background 0.3s; }
+    .quiz-pip.done { background: var(--green); }
+    .quiz-pip.wrong { background: var(--red); }
+    .quiz-pip.active { background: var(--accent); }
+    .quiz-question { font-size: 18px; font-weight: 700; text-align: center; line-height: 1.5; padding: 0 8px; min-height: 54px; }
+    .quiz-choices { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 400px; }
+    .quiz-choice { padding: 14px 18px; background: var(--card); border-radius: 12px; color: var(--text); font-size: 15px; font-weight: 600; text-align: left; border: 2px solid rgba(255,255,255,0.06); transition: border-color 0.2s, background 0.2s; }
+    .quiz-choice:hover { border-color: var(--accent); }
+    .quiz-choice.correct { border-color: var(--green); background: rgba(16,185,129,0.15); }
+    .quiz-choice.wrong { border-color: var(--red); background: rgba(239,68,68,0.1); }
+    .quiz-choice.disabled { pointer-events: none; opacity: 0.7; }
+    .quiz-choice.highlight { border-color: var(--green); opacity: 1; }
+    .quiz-feedback { font-size: 14px; color: var(--text2); text-align: center; min-height: 20px; padding: 0 12px; }
+    .quiz-result { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 40px 24px; text-align: center; flex: 1; justify-content: center; }
+    .quiz-result-icon { font-size: 64px; }
+    .quiz-result-title { font-size: 24px; font-weight: 800; }
+    .quiz-result-score { font-size: 18px; color: var(--text2); }
+    .quiz-result-btn { padding: 16px 40px; border-radius: var(--radius); background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
+
     .score-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
     .score-correct { background: rgba(16,185,129,0.15); color: var(--green); }
     .dash-card { background: var(--card); border-radius: var(--radius); padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
@@ -88,9 +102,13 @@
     const { useState, useRef, useEffect } = React;
     const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
     const COLORS = { matika:'var(--matika)', cestina:'var(--cestina)', prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', anglictina:'var(--anglictina)' };
+    const COLOR_HEX = { matika:'#f97316', cestina:'#06b6d4', prirodoveda:'#22c55e', vlastiveda:'#8b5cf6', anglictina:'#ec4899' };
+    const QUESTIONS_PER_ROUND = 5;
 
     function getApiKey() { return localStorage.getItem('du_api_key') || ''; }
     function setApiKeyLS(k) { localStorage.setItem('du_api_key', k); }
+    function getSkillDone(skillId) { return localStorage.getItem('skill_done_'+skillId) === '1'; }
+    function setSkillDone(skillId) { localStorage.setItem('skill_done_'+skillId, '1'); }
 
     function normalize(s) {
       return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');
@@ -100,22 +118,28 @@
       const correct = normalize(task.answer);
       if (ua === correct) return { correct: true };
       if (task.answer_variants) { for (const v of task.answer_variants) { if (ua === normalize(v)) return { correct: true }; } }
-      if (Array.isArray(task.answer)) {
-        const answers = userAnswer.split(/[,;\s]+/).filter(Boolean);
-        if (answers.length === task.answer.length && answers.every((a,i) => normalize(a) === normalize(task.answer[i]))) return { correct: true };
-      }
-      if (task.common_errors) { for (const ce of task.common_errors) { if (ua === normalize(ce) && task.error_explanations && task.error_explanations[ce]) return { correct: false, feedback: task.error_explanations[ce] }; } }
       return { correct: false, feedback: null };
     }
 
-    async function askTutor(messages, task, apiKey) {
-      const systemPrompt = 'Jsi přátelský učitel pro žáka 4. třídy ZŠ. Tykáš, mluvíš česky, jednoduše.\nNIKDY neříkej správnou odpověď přímo. Veď dítě otázkami. Po špatné odpovědi řekni "skoro" nebo "zkus to jinak". Krátké věty, max 2 řádky. Emoji max 1.\n\nÚloha: ' + task.question + '\n' + (task.hint ? 'Nápověda: ' + task.hint : '');
-      try {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 300, system: systemPrompt, messages }) });
-        if (!resp.ok) return null;
-        const data = await resp.json();
-        return data.content[0].text;
-      } catch (e) { return null; }
+    function pickTasks(skill, n) {
+      const tasks = [...skill.tasks];
+      const picked = [];
+      while (picked.length < n && tasks.length > 0) {
+        const idx = Math.floor(Math.random() * tasks.length);
+        picked.push(tasks.splice(idx, 1)[0]);
+      }
+      return picked;
+    }
+
+    function mapPositions(count) {
+      const positions = [];
+      for (let i = 0; i < count; i++) {
+        const t = count <= 1 ? 0.5 : i / (count - 1);
+        const y = 10 + t * 80;
+        const x = 50 + Math.sin(i * 1.9 + 0.5) * 25;
+        positions.push({ x, y });
+      }
+      return positions;
     }
 
     function SettingsScreen({ onSave, currentKey }) {
@@ -124,7 +148,7 @@
     }
 
     function LoginScreen({ onSelect }) {
-      return (<div className="screen login"><div className="slide-up" style={{textAlign:'center',width:'100%'}}><div className="login-logo">📚</div><div className="login-title">Domácí Učitel</div><div className="login-sub">4. třída ZŠ</div><button className="login-btn" style={{background:'var(--accent)'}} onClick={()=>onSelect('student')}>🎒 Jsem žák</button><button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button><button className="login-btn" style={{background:'var(--card2)'}} onClick={()=>onSelect('settings')}>⚙️ Nastavení</button><div className="login-ver">v0.4 — Jaty</div></div></div>);
+      return (<div className="screen login"><div className="slide-up" style={{textAlign:'center',width:'100%'}}><div className="login-logo">📚</div><div className="login-title">Domácí Učitel</div><div className="login-sub">4. třída ZŠ</div><button className="login-btn" style={{background:'var(--accent)'}} onClick={()=>onSelect('student')}>🎒 Jsem žák</button><button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button><button className="login-btn" style={{background:'var(--card2)'}} onClick={()=>onSelect('settings')}>⚙️ Nastavení</button><div className="login-ver">v0.5 — Jaty</div></div></div>);
     }
 
     function SubjectPicker({ predmety, onPick, onBack }) {
@@ -143,70 +167,146 @@
       return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span style={{fontSize:24}}>{s.icon}</span><span className="header-title">{s.name}</span></div><div className="topics">{s.temata.map((tema,i) => (<button key={i} className="topic-card fade-in" style={{animationDelay: i*0.05+'s'}} onClick={()=>handlePick(tema)} disabled={loading!==null}><span className="topic-name">{loading===tema.nazev ? '⏳ ' : ''}{tema.nazev}</span></button>))}</div></div>);
     }
 
-    function ChatScreen({ unitData, unitName, onBack, apiKey }) {
-      const [msgs, setMsgs] = useState([]);
-      const [inp, setInp] = useState('');
-      const [typing, setTyping] = useState(false);
-      const [taskIdx, setTaskIdx] = useState(0);
-      const [attempts, setAttempts] = useState(0);
-      const [score, setScore] = useState({ correct: 0, total: 0 });
-      const [aiHistory, setAiHistory] = useState([]);
-      const [waitingChoice, setWaitingChoice] = useState(null);
-      const [readingQIdx, setReadingQIdx] = useState(0);
-      const endRef = useRef(null);
-      const inputRef = useRef(null);
-      const allTasks = unitData.skills.flatMap(sk => sk.tasks);
-      const currentTask = allTasks[taskIdx] || null;
+    function SkillMap({ unitData, unitName, subject, onPickSkill, onBack }) {
+      const skills = unitData.skills;
+      const positions = mapPositions(skills.length);
+      const color = COLOR_HEX[subject] || '#f59e0b';
+      const nodeSpacing = 120;
+      const mapHeight = Math.max(skills.length * nodeSpacing, 400);
 
-      useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
-      useEffect(() => {
-        if (allTasks.length > 0) {
-          const t = allTasks[0];
-          setMsgs([{from:'tutor', text:'Ahoj! Dnes procvičujeme: '+unitName+'. Jdeme na to! 💪'}, {from:'tutor', text: t.type==='reading'&&t.text ? 'Přečti si text:\n\n"'+t.text+'"\n\n'+t.questions[0].question : t.question}]);
-          if (t.type==='choice') setWaitingChoice(t.options);
-          else if (t.type==='reading'&&t.questions&&t.questions[0].type==='choice') setWaitingChoice(t.questions[0].options);
-        }
-      }, []);
+      return (
+        <div className="screen">
+          <div className="header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span className="header-title">{unitName}</span>
+          </div>
+          <div className="skill-map" style={{height: mapHeight + 'px', position:'relative'}}>
+            <svg className="map-path" viewBox={'0 0 480 ' + mapHeight} style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:0}}>
+              {positions.map((pos, i) => {
+                if (i === 0) return null;
+                const prev = positions[i-1];
+                const x1 = prev.x / 100 * 480, y1 = prev.y / 100 * mapHeight;
+                const x2 = pos.x / 100 * 480, y2 = pos.y / 100 * mapHeight;
+                return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeWidth="3" strokeOpacity="0.2" strokeDasharray="8 6" />;
+              })}
+            </svg>
+            {skills.map((skill, i) => {
+              const pos = positions[i];
+              const done = getSkillDone(skill.id);
+              return (
+                <div key={skill.id} className="map-node pop-in" style={{left: pos.x+'%', top: pos.y+'%', animationDelay: i*0.08+'s'}}>
+                  <button
+                    className={'map-dot' + (done ? ' done' : '')}
+                    style={{background: done ? 'rgba(16,185,129,0.25)' : color}}
+                    onClick={() => onPickSkill(skill)}
+                  >
+                    {done ? '✓' : (i + 1)}
+                  </button>
+                  <span className="map-label">{skill.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
 
-      function addMsg(from, text) { setMsgs(p => [...p, {from, text}]); }
-      function getEffectiveTask(task, rqIdx) {
-        if (task.type==='reading'&&task.questions) { const q=task.questions[rqIdx]||task.questions[0]; return {...task, type:q.type||'open', question:q.question, answer:q.answer, options:q.options||null, answer_variants:q.answer_variants||[], hint:q.hint||null, common_errors:q.common_errors||null, error_explanations:q.error_explanations||null}; }
-        return task;
-      }
-      function nextTask() {
-        if (currentTask.type==='reading'&&currentTask.questions&&readingQIdx+1<currentTask.questions.length) {
-          const nrq=readingQIdx+1; setReadingQIdx(nrq); addMsg('tutor',currentTask.questions[nrq].question);
-          const nsq=currentTask.questions[nrq]; if(nsq.type==='choice'&&nsq.options) setWaitingChoice(nsq.options);
-        } else {
-          setReadingQIdx(0); const next=taskIdx+1;
-          if (next<allTasks.length) { setTaskIdx(next); const nt=allTasks[next]; addMsg('tutor', nt.type==='reading'&&nt.text ? 'Přečti si text:\n\n"'+nt.text+'"\n\n'+nt.questions[0].question : nt.question); if(nt.type==='choice') setWaitingChoice(nt.options); }
-          else addMsg('tutor','Hotovo! Skóre: '+score.correct+'/'+score.total+' ✨');
-        }
-      }
-      async function handleAnswer(answer) {
-        if (!currentTask||typing) return;
-        addMsg('student', answer); setInp(''); setWaitingChoice(null); setTyping(true);
-        const et = getEffectiveTask(currentTask, readingQIdx);
-        const result = checkAnswer(et, answer);
+    function QuizScreen({ skill, subject, onFinish, onBack }) {
+      const [tasks] = useState(() => pickTasks(skill, QUESTIONS_PER_ROUND));
+      const [current, setCurrent] = useState(0);
+      const [results, setResults] = useState([]);
+      const [selected, setSelected] = useState(null);
+      const [feedback, setFeedback] = useState('');
+      const [phase, setPhase] = useState('answering');
+
+      const task = tasks[current];
+
+      function handleChoice(opt) {
+        if (phase !== 'answering') return;
+        setSelected(opt);
+        const result = checkAnswer(task, opt);
+        const newResults = [...results, result.correct ? 'correct' : 'wrong'];
+        setResults(newResults);
+
         if (result.correct) {
-          const praise = attempts===0 ? ['Výborně! 🎯','Přesně tak!','Správně!'][Math.floor(Math.random()*3)] : ['Správně! Šlo to.','Ano, sedí!'][Math.floor(Math.random()*2)];
-          setTimeout(()=>{ setTyping(false); addMsg('tutor',praise); setScore(p=>({correct:p.correct+1,total:p.total+1})); setAttempts(0); setTimeout(()=>nextTask(),800); },600);
+          setFeedback('Správně! 🎯');
         } else {
-          const na=attempts+1; setAttempts(na);
-          if (na>=3) {
-            setTimeout(()=>{ setTyping(false); const ans=Array.isArray(et.answer)?et.answer.join(', '):et.answer; addMsg('tutor','Nevadí! Správná odpověď: '+ans+'. '+(et.hint||'')); setScore(p=>({...p,total:p.total+1})); setAttempts(0); setTimeout(()=>nextTask(),1200); },600);
-          } else {
-            if (apiKey) {
-              const nh=[...aiHistory,{role:'user',content:'Žák odpověděl: "'+answer+'" na: "'+et.question+'". Špatně. '+(result.feedback?result.feedback:'')+' Pokus '+na+'/3.'}];
-              const ai=await askTutor(nh,et,apiKey); setTyping(false);
-              if(ai){addMsg('tutor',ai);setAiHistory([...nh,{role:'assistant',content:ai}]);}else{addMsg('tutor',result.feedback||et.hint||'Zkus to jinak.');}
-            } else { setTimeout(()=>{setTyping(false);addMsg('tutor',result.feedback||et.hint||'Zkus to jinak.');},500); }
-            if(et.type==='choice'&&et.options) setWaitingChoice(et.options);
-          }
+          setFeedback('Správná odpověď: ' + task.answer + (task.hint ? ' — ' + task.hint : ''));
         }
+        setPhase('feedback');
+
+        setTimeout(() => {
+          if (current + 1 < tasks.length) {
+            setCurrent(c => c + 1);
+            setSelected(null);
+            setFeedback('');
+            setPhase('answering');
+          } else {
+            const correctCount = newResults.filter(r => r === 'correct').length;
+            if (correctCount >= 4) setSkillDone(skill.id);
+            setPhase('done');
+          }
+        }, result.correct ? 1200 : 2500);
       }
-      const send=()=>{if(!inp.trim())return;handleAnswer(inp.trim());};
-      return (<div className="chat-screen"><div className="chat-header"><button className="back-btn" onClick={onBack}>←</button><span style={{flex:1,fontWeight:700,fontSize:15}}>{unitName}</span><span className="score-badge score-correct">{score.correct}/{score.total}</span></div><div className="chat-messages">{msgs.map((m,i)=>(<div key={i} className={'msg msg-'+(m.from==='tutor'?'tutor':'student')+' fade-in'}>{m.from==='tutor'&&<span className="msg-avatar">🤖</span>}<div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div></div>))}{typing&&<div className="msg msg-tutor"><span className="msg-avatar">🤖</span><div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}{waitingChoice&&!typing&&<div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>{waitingChoice.map((opt,i)=>(<button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>{opt}</button>))}</div>}<div ref={endRef}/></div><div className="chat-input"><input ref={inputRef} value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Napiš odpověď..." /><button onClick={send}>➤</button></div></div>);
+
+      if (phase === 'done') {
+        const correctCount = results.filter(r => r === 'correct').length;
+        const passed = correctCount >= 4;
+        return (
+          <div className="quiz-screen">
+            <div className="header">
+              <button className="back-btn" onClick={onBack}>←</button>
+              <span className="header-title">{skill.name}</span>
+            </div>
+            <div className="quiz-result slide-up">
+              <div className="quiz-result-icon">{passed ? '🏆' : '💪'}</div>
+              <div className="quiz-result-title" style={{color: passed ? 'var(--green)' : 'var(--accent)'}}>
+                {passed ? 'Výborně!' : 'Zkus to znovu'}
+              </div>
+              <div className="quiz-result-score">{correctCount} z {tasks.length} správně</div>
+              <div className="quiz-progress" style={{marginTop: 8}}>
+                {results.map((r, i) => (
+                  <div key={i} className={'quiz-pip ' + (r === 'correct' ? 'done' : 'wrong')} style={{width: 40}} />
+                ))}
+              </div>
+              {!passed && <p style={{color:'var(--text3)', fontSize: 13, marginTop: 8}}>Potřebuješ aspoň 4 z 5.</p>}
+              <button className="quiz-result-btn" onClick={onFinish} style={{marginTop: 20}}>← Zpět na mapu</button>
+            </div>
+          </div>
+        );
+      }
+
+      if (!task) return null;
+      return (
+        <div className="quiz-screen">
+          <div className="header">
+            <button className="back-btn" onClick={onBack}>←</button>
+            <span className="header-title" style={{fontSize:14}}>{skill.name}</span>
+            <span className="score-badge score-correct">{current+1}/{tasks.length}</span>
+          </div>
+          <div className="quiz-body" key={current}>
+            <div className="quiz-progress">
+              {tasks.map((_, i) => (
+                <div key={i} className={'quiz-pip' + (i < results.length ? (results[i]==='correct' ? ' done' : ' wrong') : (i === current ? ' active' : ''))} />
+              ))}
+            </div>
+            <div className="quiz-question fade-in">{task.question}</div>
+            <div className="quiz-choices fade-in">
+              {(task.options || []).map((opt, i) => {
+                let cls = 'quiz-choice';
+                if (selected !== null) {
+                  cls += ' disabled';
+                  if (opt === selected && normalize(opt) === normalize(task.answer)) cls += ' correct';
+                  else if (opt === selected) cls += ' wrong';
+                  else if (normalize(opt) === normalize(task.answer)) cls += ' highlight';
+                }
+                return <button key={i} className={cls} onClick={() => handleChoice(opt)}>{opt}</button>;
+              })}
+            </div>
+            <div className="quiz-feedback">{feedback}</div>
+          </div>
+        </div>
+      );
     }
 
     function ParentDashboard({ onBack }) {
@@ -219,8 +319,10 @@
       const [subject, setSubject] = useState(null);
       const [unitData, setUnitData] = useState(null);
       const [unitName, setUnitName] = useState('');
+      const [activeSkill, setActiveSkill] = useState(null);
       const [apiKey, setApiKeyState] = useState(getApiKey());
       const [error, setError] = useState(null);
+      const [tick, setTick] = useState(0);
 
       useEffect(() => {
         fetch('predmety.json').then(r=>{if(!r.ok)throw new Error('nenalezen');return r.json();})
@@ -232,8 +334,9 @@
       if (view==='settings') return <SettingsScreen onSave={k=>{setApiKeyLS(k);setApiKeyState(k);setView('login');}} currentKey={apiKey}/>;
       if (view==='login') return <LoginScreen onSelect={setView}/>;
       if (view==='student'&&!subject) return <SubjectPicker predmety={predmety} onPick={s=>setSubject(s)} onBack={()=>setView('login')}/>;
-      if (view==='student'&&subject&&!unitData) return <TopicPicker predmety={predmety} subject={subject} onPick={(d,n)=>{setUnitData(d);setUnitName(n);setView('chat');}} onBack={()=>setSubject(null)}/>;
-      if (view==='chat'&&unitData) return <ChatScreen unitData={unitData} unitName={unitName} onBack={()=>{setUnitData(null);setUnitName('');setView('student');}} apiKey={apiKey}/>;
+      if (view==='student'&&subject&&!unitData) return <TopicPicker predmety={predmety} subject={subject} onPick={(d,n)=>{setUnitData(d);setUnitName(n);setView('map');}} onBack={()=>setSubject(null)}/>;
+      if (view==='map'&&unitData&&!activeSkill) return <SkillMap unitData={unitData} unitName={unitName} subject={subject} onPickSkill={(sk)=>{ setActiveSkill(sk); setView('quiz'); }} onBack={()=>{setUnitData(null);setUnitName('');setView('student');}}/>;
+      if (view==='quiz'&&activeSkill) return <QuizScreen skill={activeSkill} subject={subject} onFinish={()=>{ setActiveSkill(null); setView('map'); setTick(t=>t+1); }} onBack={()=>{ setActiveSkill(null); setView('map'); }}/>;
       if (view==='parent') return <ParentDashboard onBack={()=>setView('login')}/>;
       return null;
     }
