@@ -2,7 +2,40 @@
   {
     "den": 1,
     "nazev": "PRVNÍ DEN V LABORATOŘI",
-    "intro": [],
+    "intro": [
+      {
+        "p": "volta",
+        "t": "Agente! Konečně! Víš co je horší než když ti piráti ukradnou laboratoř?"
+      },
+      {
+        "p": "agent",
+        "t": "Co?"
+      },
+      {
+        "p": "volta",
+        "t": "Když ti rozstříhají poznámky! Podívej se na to — mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku."
+      },
+      {
+        "p": "volta",
+        "t": "Byla to moje nejlepší práce! Roky výzkumu!"
+      },
+      {
+        "p": "volta",
+        "t": "...Dobře, psal jsem to včera večer. Ale to je detail."
+      },
+      {
+        "p": "agent",
+        "t": "A co ti piráti, co slyším za dveřmi?"
+      },
+      {
+        "p": "volta",
+        "t": "Krivák tu nechal hlídky. Ale neboj — jsou to piráti. Hoď po nich správnou odpověď a složí se jak domečky z karet. Já to vím — zkoušel jsem to."
+      },
+      {
+        "p": "volta",
+        "t": "Začneme od základu. Každé slovo má srdce — KOŘEN. Bez něj je to jen hromádka písmen, co se tváří důležitě. Jako kapitán Krivák — samá pozlátka, žádný obsah."
+      }
+    ],
     "zaver": [
       {
         "p": "volta",
@@ -45,7 +78,23 @@
         "t": "Řepák je citoslovce. Občas vykřikne, nikdo neví proč, ale svět by bez něj byl nudnější."
       }
     ],
-    "predmety_sberu": [],
+    "predmety_sberu": [
+      {
+        "nazev": "Krivákův rozkaz (s mapou na rubu)"
+      },
+      {
+        "nazev": "Voltova květina"
+      },
+      {
+        "nazev": "Kbelík s mapou"
+      },
+      {
+        "nazev": "Krivákova anténa"
+      },
+      {
+        "nazev": "Papouščí peříčko"
+      }
+    ],
     "okruhy": [
       {
         "okruh": 1,
@@ -240,7 +289,6 @@
               "t": "Krásné. Porazil jsi piráta gramatikou. To se nevidí každý den."
             }
           ],
-          "sber": "Agent sebere Skřípkův rozkaz. Na rubu je kus náčrtku.",
           "zprava": "Sebral jsi KRIVÁKŮV ROZKAZ — na rubu je něco nakreslené!"
         },
         "scenka": [
@@ -249,7 +297,7 @@
             "t": "Deset slov, deset kořenů. Víš co? Kořen je jako DNA slova. Změníš příponu — změní se funkce. Změníš předponu — změní se směr. Ale kořen zůstává."
           },
           {
-            "p": "řepák",
+            "p": "repak",
             "t": "KDE JE TEN AGENT?! Kapitán řekl, že tu je agent! Já ho nevidím!"
           },
           {
@@ -257,7 +305,7 @@
             "t": "...Stojí tři metry od tebe, Řepáku."
           },
           {
-            "p": "řepák",
+            "p": "repak",
             "t": "KDE?!"
           },
           {
@@ -265,7 +313,7 @@
             "t": "Za dveřmi. Kde stojíš TY."
           },
           {
-            "p": "řepák",
+            "p": "repak",
             "t": "...Aha. A KTERÉ dveře?"
           },
           {
@@ -487,7 +535,6 @@
               "t": "Matematici. Před tisíci lety. A od tý doby to funguje. Na rozdíl od Krivákova počítání."
             }
           ],
-          "sber": "Řepák při přemýšlení upustil kbelík. Na dně kbelíku je vyškrábaná mapa okolí.",
           "zprava": "Sebral jsi KBELÍK S MAPOU — Řepák v něm měl hlavou celou dobu!"
         },
         "scenka": [
@@ -512,7 +559,7 @@
             "t": "PŘESNĚ. V češtině je 'bydlí' s tvrdým Y ale 'bidlo' s měkkým I a oba se tváří úplně stejně. Ale to je na jindy."
           },
           {
-            "p": "krivák",
+            "p": "krivak",
             "t": "HLÁSÍ SE KAPITÁN! KDO MI TAM PŘEROVNÁVÁ PAPÍRY?!"
           },
           {
@@ -722,7 +769,6 @@
               "t": "Za jeden keksík. Loajalita pirátů v kostce."
             }
           ],
-          "sber": "Papoušek upustil z drápku peříčko — zelené, červené a modré.",
           "zprava": "Dostal jsi PAPOUŠČI PEŘÍČKO — green, red and blue!"
         },
         "scenka": [
@@ -739,7 +785,7 @@
             "t": "To je v podstatě celá ekonomie. Dáš někomu keksík, získáš spojence. Krivák dává pirátům zlato a oni ho STEJNĚ zrazují. Protože zlato se nedá jíst. Ale keksík jo."
           },
           {
-            "p": "papoušek",
+            "p": "papousek",
             "t": "KEKSÍK!"
           },
           {
@@ -963,7 +1009,6 @@
               "t": "Myslím, že jsme právě demoralizovali nepřítele. A to jsme jenom odpovídali na otázky."
             }
           ],
-          "sber": "",
           "zprava": ""
         }
       }
@@ -972,7 +1017,28 @@
   {
     "den": 2,
     "nazev": "MAPA, KTERÁ NIKAM NEVEDE",
-    "intro": [],
+    "intro": [
+      {
+        "p": "volta",
+        "t": "Agente! Pojď sem. Dívám se na tu mapu z Řepákova kbelíku a na ten kus z Krivákova rozkazu. Víš co mají společného?"
+      },
+      {
+        "p": "agent",
+        "t": "Že oba pocházejí od pirátů, co neumí číst?"
+      },
+      {
+        "p": "volta",
+        "t": "Přesně. ALE — když je dám k sobě..."
+      },
+      {
+        "p": "volta",
+        "t": "...tak to dohromady vypadá jako... mapa. Teda — KOUSEK mapy. Chybí minimálně dva další díly. A tady v rohu je písmeno."
+      },
+      {
+        "p": "volta",
+        "t": "Jedno písmeno. D. Co to znamená? Nevím. Ale vím, že ta mapa vede k něčemu, co Krivák schoval. A my to najdeme. Ale nejdřív — musíme pokračovat v práci. Piráti tu včera nechali další bordel."
+      }
+    ],
     "zaver": [
       {
         "p": "volta",
@@ -1011,7 +1077,20 @@
         "t": "Papoušek je spolehlivý. Dokud máme keksíky, máme spojence. A keksíky máme."
       }
     ],
-    "predmety_sberu": [],
+    "predmety_sberu": [
+      {
+        "nazev": "Skřípkův tajný vzkaz (s plánem ventilace)"
+      },
+      {
+        "nazev": "Řepákova rozbitá kalkulačka (ukazuje 8888)"
+      },
+      {
+        "nazev": "Kus mapy — písmeno O (na kartičce ORANGE)"
+      },
+      {
+        "nazev": "Odposlech Krivákova rádiového přenosu"
+      }
+    ],
     "okruhy": [
       {
         "okruh": 1,
@@ -1206,7 +1285,6 @@
               "t": "Věříme datům. A data říkají, že Skřípek je příliš nekompetentní na to, aby lhal. To je v podstatě důvěryhodnost."
             }
           ],
-          "sber": "Skřípkův tajný vzkaz. Na rubu je nákres ventilačního systému laboratoře.",
           "zprava": "Sebral jsi SKŘÍPKŮV VZKAZ — na rubu je plán ventilace!"
         },
         "scenka": [
@@ -1441,7 +1519,6 @@
               "t": "To je v podstatě filozofická otázka, Řepáku."
             }
           ],
-          "sber": "Řepákova rozbitá kalkulačka — na displeji navždy svítí 8888888.",
           "zprava": "Sebral jsi ŘEPÁKOVU KALKULAČKU — ukazuje jen osmičky, ale je to suvenýr!"
         },
         "scenka": [
@@ -1458,7 +1535,7 @@
             "t": "Řepák sedí na chodbě a přemýšlí, jestli osm plus osm je osm. Nech ho. Přemýšlení mu svědčí. Je to pro něj nová zkušenost."
           },
           {
-            "p": "skřípek",
+            "p": "skripek",
             "t": "Agente? Slyšíš mě? Nesměju volat... Kapitán spí. Chtěl jsem říct... ta mapa... hledej písmena. Jsou čtyři. D-O-K-Y. Doky. Tam to schoval."
           },
           {
@@ -1660,7 +1737,6 @@
               "t": "...keksík."
             }
           ],
-          "sber": "Kartička s písmenem O a anglickým slovem ORANGE.",
           "zprava": "Dostal jsi KUS MAPY — písmeno O! Máš už D-O z D-O-K-Y!"
         },
         "scenka": [
@@ -1677,7 +1753,7 @@
             "t": "Přinesl nám přesně to písmeno, co potřebujeme. A přistál přesně na mapě. Buď je to náhoda, nebo..."
           },
           {
-            "p": "papoušek",
+            "p": "papousek",
             "t": "KEKSÍK!"
           },
           {
@@ -1909,7 +1985,6 @@
               "t": "Myslím, že Skřípek to dělá zadarmo. A to je buď statečnost, nebo zoufalství. Obojí funguje."
             }
           ],
-          "sber": "",
           "zprava": ""
         }
       }
@@ -1918,7 +1993,40 @@
   {
     "den": 3,
     "nazev": "ŽIVÉ A NEŽIVÉ",
-    "intro": [],
+    "intro": [
+      {
+        "p": "volta",
+        "t": "Agente. Pojď sem. Vidíš tamhle tu budovu za stromy?"
+      },
+      {
+        "p": "agent",
+        "t": "Doky?"
+      },
+      {
+        "p": "volta",
+        "t": "Doky. D-O-K-Y. Skřípek měl pravdu. Krivák tam má sklad. A v tom skladu..."
+      },
+      {
+        "p": "agent",
+        "t": "Vaše vynálezy."
+      },
+      {
+        "p": "volta",
+        "t": "MOJE VYNÁLEZY. Roky práce. Ale nemůžeme tam jít poslepu — potřebujeme celou mapu. Máme D a O. Chybí K a Y."
+      },
+      {
+        "p": "volta",
+        "t": "Ale dneska jsem si všiml něčeho jiného. Podívej se ven — kolem laboratoře roste nová tráva. Květina kvete. A včera jsem viděl ještěrku na zdi. Příroda se vrací. Piráti odtáhli a příroda zabírá zpátky."
+      },
+      {
+        "p": "agent",
+        "t": "To je dobře, ne?"
+      },
+      {
+        "p": "volta",
+        "t": "To je VÝBORNĚ. Protože dneska se budeme učit o přírodě. A příroda je všude kolem nás — stačí se dívat."
+      }
+    ],
     "zaver": [
       {
         "p": "volta",
@@ -1957,7 +2065,20 @@
         "t": "To zjistíme. Ty a já. A ještěrka. Ještěrka je teď součást týmu."
       }
     ],
-    "predmety_sberu": [],
+    "predmety_sberu": [
+      {
+        "nazev": "Skřípkův druhý vzkaz (varování před Kotvou)"
+      },
+      {
+        "nazev": "Kotevní lano s okousaným hákem"
+      },
+      {
+        "nazev": "Laboratorní ještěrka"
+      },
+      {
+        "nazev": "Krivákův odposlech — výhrůžka přes rádio"
+      }
+    ],
     "okruhy": [
       {
         "okruh": 1,
@@ -2152,7 +2273,6 @@
               "t": "Chytřejší než Řepák. Což je jako říct, že je vyšší než trpaslík — technicky pravda, ale ne moc imponující."
             }
           ],
-          "sber": "Skřípkův druhý vzkaz zabalený v Řepákově šátku.",
           "zprava": "Sebral jsi SKŘÍPKŮV DRUHÝ VZKAZ — varování před Kotvou!"
         },
         "scenka": [
@@ -2391,7 +2511,6 @@
               "t": "Spadla. Do křoví. Které přežilo. Což je víc, než se dá říct o tom okně."
             }
           ],
-          "sber": "Kotevní lano s pirátským hákem (ohnutý, se stopami zubů — Řepákových).",
           "zprava": "Sebral jsi KOTEVNÍ LANO — s hákem, co Řepák pokusil sníst!"
         },
         "scenka": [
@@ -2606,7 +2725,6 @@
               "t": "Přesně! Živá příroda se vrací. To je dobrý znak."
             }
           ],
-          "sber": "Ještěrka se usadila v laboratoři — zůstává jako laboratorní mazlíček.",
           "zprava": "Získal jsi LABORATORNÍ JEŠTĚRKU — živý důkaz, že příroda se vrací!"
         },
         "scenka": [
@@ -2843,7 +2961,6 @@
               "t": "Plechovku otevřel. A TAKY vypnul elektřinu v celém přístavu. Takže — ano, blafuje. Nemůže je zničit, protože neví, co dělají."
             }
           ],
-          "sber": "",
           "zprava": ""
         }
       }
