@@ -30,7 +30,7 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 
 /* SCÉNA */
 .scene{position:fixed;inset:0;background:#000;overflow:hidden}
-.scene>img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center}
+.scene>img{position:absolute;width:100%;height:100%;object-fit:contain;object-position:center top}
 .topbar{position:fixed;top:8px;left:12px;right:12px;z-index:40;display:flex;justify-content:space-between;pointer-events:none}
 .topbar>*{pointer-events:auto}
 .pill{background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:6px 14px;color:#fff;font-size:13px;font-weight:700}
@@ -57,7 +57,7 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
   border-radius:28px;
   box-shadow:3px 4px 0 rgba(0,0,0,0.22);
   position:relative;
-  max-width:min(40vw,340px);min-width:100px;
+  max-width:min(50vw,380px);min-width:100px;
 }
 .bub-egg.short{padding:10px 22px 8px;border-radius:24px}
 .bub-egg.medium{padding:14px 26px 12px}
@@ -135,14 +135,21 @@ const HEADS = {
 /* ═══ COVER MATH ═══
    Obrázek 16:9, object-fit:cover.
    Vrátí px pozici na obrazovce pro daný % bod na orig. obrázku.
+   object-fit:contain + object-position:center top
+   → obrázek se vejde celý, zachová poměr, zarovnaný nahoru
 */
 const IR=16/9;
 function headPx(pctX,pctY){
   const vw=window.innerWidth, vh=window.innerHeight;
   const sr=vw/vh;
   let iw,ih,ox,oy;
-  if(sr>IR){iw=vw;ih=vw/IR;ox=0;oy=(vh-ih)/2;} // landscape: šířka řídí
-  else     {ih=vh;iw=vh*IR;oy=0;ox=(vw-iw)/2;} // portrait: výška řídí
+  if(sr>IR){
+    // landscape/wide: obrázek na celou šířku, výška menší, zarovnaný nahoru
+    iw=vw; ih=vw/IR; ox=0; oy=0; // top aligned
+  } else {
+    // portrait/mobil: obrázek na celou šířku, výška = šířka/poměr, zarovnaný nahoru
+    iw=vw; ih=vw/IR; ox=0; oy=0; // top aligned
+  }
   return {x: ox + iw*pctX/100, y: oy + ih*pctY/100};
 }
 
