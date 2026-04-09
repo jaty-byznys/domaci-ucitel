@@ -231,11 +231,11 @@
         "dialog": [
           {
             "p": "popis",
-            "t": "Zpoza převráceného stolu VYSKOČÍ pirát Skřípek — malý, nervózní, na hlavě obrovský klobouk, drží v ruce papír vzhůru nohama."
+            "t": "Zpoza převráceného stolu VYSKOČÍ pirát Skřípek — obrovský klobouk, v ruce papír vzhůru nohama."
           },
           {
             "p": "skripek",
-            "t": "Stůj! Nikam nepůjdeš! Mám tu rozkaz od kapitána! ...Ehm... Počkej, je to vzhůru nohama."
+            "t": "Stůj! To je mega SUS co tu děláte! ...Ehm. Mám tu rozkaz od kapitána! Počkej, je to vzhůru nohama."
           },
           {
             "p": "agent",
@@ -243,7 +243,7 @@
           },
           {
             "p": "skripek",
-            "t": "Co? Ehm... rozka? ...Roz?"
+            "t": "Co? Ehm... rozka? ...Roz? No cap, to je těžký!"
           },
           {
             "p": "agent",
@@ -258,11 +258,11 @@
       "scenka": [
         {
           "p": "volta",
-          "t": "Deset slov, deset kořenů. Víš co? Kořen je jako DNA slova. Změníš příponu — změní se funkce. Změníš předponu — změní se směr. Ale kořen zůstává."
+          "t": "Deset slov, deset kořenů. Kořen je jako DNA slova. Změníš příponu — změní se funkce. Ale kořen zůstává."
         },
         {
           "p": "repak",
-          "t": "KDE JE TEN AGENT?! Kapitán řekl, že tu je agent! Já ho nevidím!"
+          "t": "KDE JE TEN AGENT?! Skibidi! Kapitán řekl, že tu je agent!"
         },
         {
           "p": "volta",
@@ -278,11 +278,19 @@
         },
         {
           "p": "repak",
-          "t": "...Aha. A KTERÉ dveře?"
+          "t": "...Aha. A KTERÉ dveře? To je fakt Ohio moment."
         },
         {
           "p": "volta",
-          "t": "Ten chlap nenajde dveře a chce najít TEBE. Myslím, že jsi v bezpečí. Jdeme na další okruh."
+          "t": "Řepáku, co je Ohio moment?"
+        },
+        {
+          "p": "repak",
+          "t": "Nevím. Mladí piráti to říkají. Prý je to šílený."
+        },
+        {
+          "p": "volta",
+          "t": "Vzdělání pirátů v kostce. Jdeme na další okruh."
         }
       ]
     },
@@ -447,11 +455,11 @@
         "dialog": [
           {
             "p": "popis",
-            "t": "Dveře se otevřou — a dovnitř vpadne Řepák. Obrovský, kulatý, s kbelíkem na hlavě místo přilby."
+            "t": "Dveře se otevřou kopnutím. Vletí Řepák — obrovský, kulatý, na hlavě kbelík místo přilby."
           },
           {
             "p": "repak",
-            "t": "STŮJTE! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
+            "t": "SKIBIDI! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
           },
           {
             "p": "agent",
@@ -459,7 +467,7 @@
           },
           {
             "p": "repak",
-            "t": "To je PŘILBA! Taktická!"
+            "t": "To je PŘILBA! Taktická! Mega rizz!"
           },
           {
             "p": "volta",
@@ -475,11 +483,19 @@
           },
           {
             "p": "repak",
-            "t": "...Aháá. Tak to si NECHÁM!"
+            "t": "...Aháá. Tak to si NECHÁM! ...Moment. Kam to šlo?"
           },
           {
             "p": "volta",
-            "t": "Agent mu sundal kbelík, než stačil mrknout."
+            "t": "Agent mu sundal kbelík, než stačil mrknout. Řepáku, co je ten 'rizz' co pořád říkáš?"
+          },
+          {
+            "p": "repak",
+            "t": "To je... no... když jsi fakt cool. Jako JÁ."
+          },
+          {
+            "p": "volta",
+            "t": "Ty jsi cool asi jako můj rozbořený kávovar. Ale jdeme dál."
           }
         ]
       },
@@ -653,16 +669,32 @@
             "t": "Oknem vletí papoušek. Zeleno-červeno-modrý. Přistane na stole a sežere sušenku."
           },
           {
+            "p": "keksik",
+            "t": "KEKSÍK! RIZZ! KEKSÍK!"
+          },
+          {
             "p": "volta",
-            "t": "KEKSÍK! Ten papoušek patří pirátům! Ale myslím, že právě dezertoval. Za sušenku."
+            "t": "Krivákův papoušek! A umí víc slov než Řepák."
+          },
+          {
+            "p": "agent",
+            "t": "Asi hledá keksík."
           },
           {
             "p": "keksik",
-            "t": "KEKSÍK! KEKSÍK!"
+            "t": "SKIBIDI! KEKSÍK!"
           },
           {
             "p": "volta",
-            "t": "Vidíš? Umí jedno slovo. Ale umí ho SKVĚLE."
+            "t": "Ten pták mluví jako pirátský teenager. Gratuluju — právě jsi ZÍSKAL spojence. Krivákův papoušek teď pracuje pro nás. Za jeden keksík."
+          },
+          {
+            "p": "agent",
+            "t": "Loajalita pirátů v kostce."
+          },
+          {
+            "p": "volta",
+            "t": "Za jeden keksík. To je celá ekonomie."
           }
         ]
       },
