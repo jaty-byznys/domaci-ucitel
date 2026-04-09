@@ -127,12 +127,13 @@ function norm(s){return String(s).toLowerCase().replace(/\s+/g,' ').trim().repla
    x% = horizontální pozice hlavy, y% = vertikální pozice hlavy (horní okraj čela)
 */
 const HEADS = {
-  S1: {volta:[35,15], agent:[82,18]},                       // intro + okruh 1 (Volta se zkumavkou na nose)
-  S2: {volta:[85,15], agent:[18,18], skripek:[52,20]},       // okruh 2 (Skřípek utíká)
-  S3: {volta:[30,16], agent:[60,18], keksik:[90,24]},       // okruh 3 (papoušek)
-  S4: {volta:[40,12], agent:[75,10]},                       // okruh 4 (chaos)
-  S5: {volta:[38,12], agent:[65,14]},                       // závěr
-  S6: {volta:[35,15], agent:[80,18]},                       // extra
+  S1: {volta:[35,15], agent:[82,18]},                       // intro + okruh 1 čeština (Volta zkumavka na nose)
+  S2: {volta:[85,15], agent:[18,18], skripek:[52,20]},       // akce 1 — Skřípek utíká
+  S3: {volta:[28,15], agent:[72,18]},                       // scénka ok1 / intro ok2 (Volta smutný u stolu, Agent vchází)
+  S4: {volta:[28,14], agent:[78,16]},                       // okruh 2 matika (Volta s výpočty)
+  S5: {volta:[25,14], agent:[55,16], keksik:[88,20]},       // okruh 3 angličtina (kartičky RED BLUE, papoušek)
+  S6: {volta:[88,14], agent:[42,14], keksik:[38,10]},       // akce 3 — Keksík vletí oknem
+  S7: {volta:[35,14], agent:[72,16]},                       // okruh 4 chaos (skříň, houby, mapy)
 };
 
 /* ═══ COVER MATH ═══
@@ -228,12 +229,25 @@ function Mission({day,onBack}){
   const aV=i=>vb+'D'+dn+'-S'+(i+3)+'.mp4';
   const zV=vb+'D'+dn+'-S6.mp4';
 
-  // Aktuální scéna klíč pro HEADS lookup
+  // Mapování fází na obrázky (S číslo)
+  // Intro → S1, okruh otázky → podle okruhu, akce → specifický, závěr → S3
+  const SCENE_MAP = {
+    // [okruhIdx]: {q: otázky, ad: akce dialog, sk: scénka}
+    0: {q:1, ad:2, sk:3},   // okruh 1: otázky S1, akce Skřípek S2, scénka S3
+    1: {q:4, ad:3, sk:4},   // okruh 2: otázky S4, akce Řepák S3, scénka S4
+    2: {q:5, ad:6, sk:5},   // okruh 3: otázky S5, akce Keksík S6, scénka S5
+    3: {q:7, ad:7, sk:7},   // okruh 4: otázky S7 chaos, vše S7
+  };
   function sk(){
-    if(phase==='sum'||phase==='zd') return 'S5';
-    return 'S'+(Math.min(oi+1,6));
+    if(phase==='id') return 'S1';
+    if(phase==='sum'||phase==='zd') return 'S3';
+    const m=SCENE_MAP[oi]||{q:1,ad:1,sk:1};
+    if(phase==='q') return 'S'+m.q;
+    if(phase==='ad') return 'S'+m.ad;
+    if(phase==='sk') return 'S'+m.sk;
+    return 'S1';
   }
-  function bg(){return sI(phase==='sum'||phase==='zd'?5:Math.min(oi+1,6));}
+  function bg(){return sI(parseInt(sk().replace('S','')));}
 
   const ok=day.okruhy?.[oi];
   const q=ok?.otazky?.[qi];
