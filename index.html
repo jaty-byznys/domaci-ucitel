@@ -372,7 +372,7 @@
         return null;
       }
 
-      // === KOMIKSOVÁ BUBLINA — zaoblený obdélník, bílá, černý obrys 3px, ostrá špička k postavě ===
+      // === KOMIKSOVÁ BUBLINA — bílý ovál, černý obrys, ostrá špička k postavě ===
       function Bublina({who, text, side}) {
         const w=(who||'volta').toLowerCase();
         const name=POSTAVA_NAME[w]||who;
@@ -387,25 +387,27 @@
           </div>
         );
         return (
-          <div style={{position:'absolute',top:'3%',[isRight?'right':'left']:'2%',zIndex:10,
-            maxWidth:'46%',minWidth:160,animation:'fadeIn 0.25s ease'}}>
+          <div style={{position:'absolute',top:'2%',[isRight?'right':'left']:'2%',zIndex:10,
+            maxWidth:'50%',minWidth:200,animation:'fadeIn 0.25s ease'}}>
             <div style={{position:'relative',background:'#fff',color:'#1a1a1a',
-              border:'3px solid #111',
-              borderRadius:30,
-              padding:'18px 24px 16px 24px',
+              border:'4px solid #111',
+              borderRadius:'50%',
+              padding:'30px 48px 26px 48px',
               fontSize:20,fontWeight:600,lineHeight:1.5,
-              boxShadow:'3px 4px 0 rgba(0,0,0,0.2)'}}>
+              boxShadow:'4px 5px 0 rgba(0,0,0,0.25)',
+              textAlign:'center',
+              overflow:'visible'}}>
               <div style={{fontFamily:"'Bangers',cursive",fontSize:16,letterSpacing:1.5,
                 textTransform:'uppercase',marginBottom:4,
                 color:w==='agent'?'#2E7D32':['skripek','repak','krivak','kotva','piratka'].includes(w)?'#C62828':'#1565C0'}}>
                 {name}
               </div>
-              <div>{text}</div>
+              <div style={{textAlign:'left'}}>{text}</div>
             </div>
-            {/* Špička — SVG, ostrá, směřuje dolů k postavě */}
-            <svg style={{position:'absolute',bottom:-20,[isRight?'right':'left']:30,width:28,height:22}} viewBox="0 0 28 22" fill="none">
-              <path d={isRight?"M26 0 L16 22 L2 0":"M2 0 L12 22 L26 0"} fill="#111"/>
-              <path d={isRight?"M24 0 L15.5 17 L5 0":"M4 0 L12.5 17 L23 0"} fill="#fff"/>
+            {/* Špička — SVG, ostrá protáhlá, směřuje dolů k postavě */}
+            <svg style={{position:'absolute',bottom:-28,[isRight?'right':'left']:36,width:32,height:30}} viewBox="0 0 32 30" fill="none">
+              <path d={isRight?"M30 0 L18 30 L4 0":"M2 0 L14 30 L28 0"} fill="#111"/>
+              <path d={isRight?"M28 0 L17.5 24 L7 0":"M4 0 L14.5 24 L25 0"} fill="#fff"/>
             </svg>
           </div>
         );
