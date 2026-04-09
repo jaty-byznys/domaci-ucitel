@@ -127,12 +127,12 @@ function norm(s){return String(s).toLowerCase().replace(/\s+/g,' ').trim().repla
    x% = horizontální pozice hlavy, y% = vertikální pozice hlavy (horní okraj čela)
 */
 const HEADS = {
-  S1: {volta:[33,30], agent:[85,34]},
-  S2: {volta:[35,28], agent:[85,30]},
-  S3: {volta:[30,28], agent:[60,30], keksik:[90,34]},
-  S4: {volta:[40,26], agent:[75,24]},
-  S5: {volta:[38,26], agent:[65,28]},
-  S6: {volta:[35,28], agent:[80,30]},
+  S1: {volta:[35,18], agent:[68,22]},                       // intro + okruh 1 (nový obrázek)
+  S2: {volta:[35,14], agent:[85,18]},                       // okruh 2
+  S3: {volta:[30,16], agent:[60,18], keksik:[90,24]},       // okruh 3 (papoušek)
+  S4: {volta:[40,12], agent:[75,10]},                       // okruh 4 (chaos)
+  S5: {volta:[38,12], agent:[65,14]},                       // závěr
+  S6: {volta:[35,15], agent:[80,18]},                       // extra
 };
 
 /* ═══ COVER MATH ═══
