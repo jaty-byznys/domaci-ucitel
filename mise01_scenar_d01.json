@@ -47,40 +47,6 @@
       "barva": "#EF4444"
     }
   },
-  "uvod": [
-    {
-      "postava": "popis",
-      "text": "Černá obrazovka. Zvuk kroků na štěrku. Pomalu se rozsvítí — pohled na budovu zvenku. Vyvrácené dveře, prasklá okna, z jednoho okna se kouří."
-    },
-    {
-      "postava": "popis",
-      "text": "Uvnitř chaos. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce je lepenkou přilepená předpona VY-. Na tabuli je napůl smazaný nákres stromu."
-    },
-    {
-      "postava": "volta",
-      "text": "Agente! Konečně! Víš co je horší než když ti piráti ukradnou laboratoř?"
-    },
-    {
-      "postava": "agent",
-      "text": "Co?"
-    },
-    {
-      "postava": "volta",
-      "text": "Když ti rozstříhají poznámky! Podívej se na to — mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku."
-    },
-    {
-      "postava": "volta",
-      "text": "Byla to moje nejlepší práce! Roky výzkumu!"
-    },
-    {
-      "postava": "volta",
-      "text": "...Dobře, psal jsem to včera večer. Ale to je detail."
-    },
-    {
-      "postava": "volta",
-      "text": "Začneme od základu. Každé slovo má srdce — KOŘEN. Bez něj je to jen hromádka písmen, co se tváří důležitě. Jako kapitán Krivák — samá pozlátka, žádný obsah."
-    }
-  ],
   "okruhy": [
     {
       "okruh": 1,
@@ -88,8 +54,8 @@
       "tema": "Stavba slova",
       "intro": [
         {
-          "postava": "volta",
-          "text": "Hele — tenhle se ještě drží pohromadě. Podívej se na ta slova a najdi jejich srdce — kořen."
+          "p": "volta",
+          "t": "Hele — tenhle se ještě drží pohromadě. Podívej se na ta slova a najdi jejich srdce — kořen."
         }
       ],
       "otazky": [
@@ -254,78 +220,71 @@
           "vn": "Květ-ina. Přípona -ina. Kořen je to, co zbyde — a nese význam květu."
         }
       ],
-      "akce_po_5": {
+      "akce": {
         "obrazek": "img/m01/d01/skripek_vyskoci.png",
-        "dialogy": [
-          {
-            "postava": "popis",
-            "text": "Zpoza převráceného stolu VYSKOČÍ pirát Skřípek — malý, nervózní, na hlavě obrovský klobouk, drží v ruce papír vzhůru nohama."
-          },
-          {
-            "postava": "skripek",
-            "text": "Stůj! Nikam nepůjdeš! Mám tu rozkaz od kapitána! ...Ehm... Počkej, je to vzhůru nohama."
-          },
-          {
-            "postava": "agent",
-            "text": "Hele, Skřípku. Jaký je kořen slova ROZKAZ?"
-          },
-          {
-            "postava": "skripek",
-            "text": "Co? Ehm... rozka? ...Roz?"
-          },
-          {
-            "postava": "agent",
-            "text": "KAZ. Jako v KAZIT. A to je přesně to, co Krivák umí nejlíp."
-          },
-          {
-            "postava": "volta",
-            "text": "Krásné. Porazil jsi piráta gramatikou. To se nevidí každý den."
-          }
-        ],
         "sber": {
           "nazev": "Krivákův rozkaz",
           "popis": "Na rubu je kus náčrtku mapy!",
           "ikona": "📜"
         },
-        "video": "video/m01/d01/D1-S3.mp4"
-      },
-      "scenka_po": {
-        "dialogy": [
+        "video": "video/m01/d01/D1-S3.mp4",
+        "dialog": [
           {
-            "postava": "volta",
-            "text": "Deset slov, deset kořenů. Víš co? Kořen je jako DNA slova. Změníš příponu — změní se funkce. Změníš předponu — změní se směr. Ale kořen zůstává."
+            "p": "popis",
+            "t": "Zpoza převráceného stolu VYSKOČÍ pirát Skřípek — malý, nervózní, na hlavě obrovský klobouk, drží v ruce papír vzhůru nohama."
           },
           {
-            "postava": "repak",
-            "text": "KDE JE TEN AGENT?! Kapitán řekl, že tu je agent! Já ho nevidím!"
+            "p": "skripek",
+            "t": "Stůj! Nikam nepůjdeš! Mám tu rozkaz od kapitána! ...Ehm... Počkej, je to vzhůru nohama."
           },
           {
-            "postava": "volta",
-            "text": "...Stojí tři metry od tebe, Řepáku."
+            "p": "agent",
+            "t": "Hele, Skřípku. Jaký je kořen slova ROZKAZ?"
           },
           {
-            "postava": "repak",
-            "text": "KDE?!"
+            "p": "skripek",
+            "t": "Co? Ehm... rozka? ...Roz?"
           },
           {
-            "postava": "volta",
-            "text": "Za dveřmi. Kde stojíš TY."
+            "p": "agent",
+            "t": "KAZ. Jako v KAZIT. A to je přesně to, co Krivák umí nejlíp."
           },
           {
-            "postava": "repak",
-            "text": "...Aha. A KTERÉ dveře?"
-          },
-          {
-            "postava": "volta",
-            "text": "Ten chlap nenajde dveře a chce najít TEBE. Myslím, že jsi v bezpečí. Jdeme na další okruh."
+            "p": "volta",
+            "t": "Krásné. Porazil jsi piráta gramatikou. To se nevidí každý den."
           }
-        ],
-        "sber": {
-          "nazev": "Voltova květina",
-          "popis": "Jediná přeživší z laboratoře!",
-          "ikona": "🌸"
+        ]
+      },
+      "scenka": [
+        {
+          "p": "volta",
+          "t": "Deset slov, deset kořenů. Víš co? Kořen je jako DNA slova. Změníš příponu — změní se funkce. Změníš předponu — změní se směr. Ale kořen zůstává."
+        },
+        {
+          "p": "repak",
+          "t": "KDE JE TEN AGENT?! Kapitán řekl, že tu je agent! Já ho nevidím!"
+        },
+        {
+          "p": "volta",
+          "t": "...Stojí tři metry od tebe, Řepáku."
+        },
+        {
+          "p": "repak",
+          "t": "KDE?!"
+        },
+        {
+          "p": "volta",
+          "t": "Za dveřmi. Kde stojíš TY."
+        },
+        {
+          "p": "repak",
+          "t": "...Aha. A KTERÉ dveře?"
+        },
+        {
+          "p": "volta",
+          "t": "Ten chlap nenajde dveře a chce najít TEBE. Myslím, že jsi v bezpečí. Jdeme na další okruh."
         }
-      }
+      ]
     },
     {
       "okruh": 2,
@@ -333,16 +292,16 @@
       "tema": "Číselný obor do 1 000 000",
       "intro": [
         {
-          "postava": "volta",
-          "text": "Moje výpočty! Piráti je naházeli do skříně! Potřebuju je roztřídit."
+          "p": "volta",
+          "t": "Moje výpočty! Piráti je naházeli do skříně! Potřebuju je roztřídit."
         },
         {
-          "postava": "agent",
-          "text": "Vy jste vědec."
+          "p": "agent",
+          "t": "Vy jste vědec."
         },
         {
-          "postava": "volta",
-          "text": "Já jsem TEORETICKÝ vědec. To znamená, že mám teorie. Čísla počítá kalkulačka. Jenže ta spadla ze stolu a od tý doby ukazuje jen osmičky."
+          "p": "volta",
+          "t": "Já jsem TEORETICKÝ vědec. To znamená, že mám teorie. Čísla počítá kalkulačka. Jenže ta spadla ze stolu a od tý doby ukazuje jen osmičky."
         }
       ],
       "otazky": [
@@ -477,70 +436,63 @@
           "hint": "Šest tisíc = 6 000. Čtyřicet = 40. Sečti."
         }
       ],
-      "akce_po_5": {
+      "akce": {
         "obrazek": "img/m01/d01/repak_kbelik.png",
-        "dialogy": [
-          {
-            "postava": "popis",
-            "text": "Dveře se otevřou — a dovnitř vpadne Řepák. Obrovský, kulatý, s kbelíkem na hlavě místo přilby."
-          },
-          {
-            "postava": "repak",
-            "text": "STŮJTE! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
-          },
-          {
-            "postava": "agent",
-            "text": "Řepáku... máš na hlavě kbelík."
-          },
-          {
-            "postava": "repak",
-            "text": "To je PŘILBA! Taktická!"
-          },
-          {
-            "postava": "volta",
-            "text": "V tom kbelíku je mapa. Dáš mi ji?"
-          },
-          {
-            "postava": "repak",
-            "text": "...Jaká mapa?"
-          },
-          {
-            "postava": "volta",
-            "text": "Ta co ti trčí z kbelíku."
-          },
-          {
-            "postava": "repak",
-            "text": "...Aháá. Tak to si NECHÁM!"
-          },
-          {
-            "postava": "volta",
-            "text": "Agent mu sundal kbelík, než stačil mrknout."
-          }
-        ],
         "sber": {
           "nazev": "Kbelík s mapou",
           "popis": "Uvnitř kbelíku je kus mapy okolí!",
           "ikona": "🪣"
         },
-        "video": "video/m01/d01/D1-S4.mp4"
-      },
-      "scenka_po": {
-        "dialogy": [
+        "video": "video/m01/d01/D1-S4.mp4",
+        "dialog": [
           {
-            "postava": "volta",
-            "text": "Čísla mají řád. Jednotky, desítky, stovky, tisíce. Každé číslo ví, kde stojí. Na rozdíl od Řepáka."
+            "p": "popis",
+            "t": "Dveře se otevřou — a dovnitř vpadne Řepák. Obrovský, kulatý, s kbelíkem na hlavě místo přilby."
           },
           {
-            "postava": "volta",
-            "text": "A na tom rádiu z antény — slyším Kriváka. Říká, že má plán. Nemá plán. Ale MYSLÍ si, že má. A to je nebezpečnější."
+            "p": "repak",
+            "t": "STŮJTE! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
+          },
+          {
+            "p": "agent",
+            "t": "Řepáku... máš na hlavě kbelík."
+          },
+          {
+            "p": "repak",
+            "t": "To je PŘILBA! Taktická!"
+          },
+          {
+            "p": "volta",
+            "t": "V tom kbelíku je mapa. Dáš mi ji?"
+          },
+          {
+            "p": "repak",
+            "t": "...Jaká mapa?"
+          },
+          {
+            "p": "volta",
+            "t": "Ta co ti trčí z kbelíku."
+          },
+          {
+            "p": "repak",
+            "t": "...Aháá. Tak to si NECHÁM!"
+          },
+          {
+            "p": "volta",
+            "t": "Agent mu sundal kbelík, než stačil mrknout."
           }
-        ],
-        "sber": {
-          "nazev": "Krivákova anténa",
-          "popis": "Odposlech pirátského rádia!",
-          "ikona": "📡"
+        ]
+      },
+      "scenka": [
+        {
+          "p": "volta",
+          "t": "Čísla mají řád. Jednotky, desítky, stovky, tisíce. Každé číslo ví, kde stojí. Na rozdíl od Řepáka."
+        },
+        {
+          "p": "volta",
+          "t": "A na tom rádiu z antény — slyším Kriváka. Říká, že má plán. Nemá plán. Ale MYSLÍ si, že má. A to je nebezpečnější."
         }
-      }
+      ]
     },
     {
       "okruh": 3,
@@ -548,12 +500,12 @@
       "tema": "Barvy a čísla",
       "intro": [
         {
-          "postava": "volta",
-          "text": "Hele — tady na stole jsou kartičky. Angličtina! Barvy a čísla. Krivák nechal kartičky — asi se chtěl učit, ale vzdal to po 'red'."
+          "p": "volta",
+          "t": "Hele — tady na stole jsou kartičky. Angličtina! Barvy a čísla. Krivák nechal kartičky — asi se chtěl učit, ale vzdal to po 'red'."
         },
         {
-          "postava": "volta",
-          "text": "Barvy jsou jak pirátská vlajka — buď ji znáš, nebo jsi v problémech."
+          "p": "volta",
+          "t": "Barvy jsou jak pirátská vlajka — buď ji znáš, nebo jsi v problémech."
         }
       ],
       "otazky": [
@@ -688,48 +640,46 @@
           "hint": "Je to o jedno méně než ten (10)."
         }
       ],
-      "akce_po_5": {
-        "dialogy": [
-          {
-            "postava": "popis",
-            "text": "Oknem vletí papoušek. Zeleno-červeno-modrý. Přistane na stole a sežere sušenku."
-          },
-          {
-            "postava": "volta",
-            "text": "KEKSÍK! Ten papoušek patří pirátům! Ale myslím, že právě dezertoval. Za sušenku."
-          },
-          {
-            "postava": "keksik",
-            "text": "KEKSÍK! KEKSÍK!"
-          },
-          {
-            "postava": "volta",
-            "text": "Vidíš? Umí jedno slovo. Ale umí ho SKVĚLE."
-          }
-        ],
+      "akce": {
         "sber": {
           "nazev": "Papouščí peříčko",
           "popis": "Symbol nového spojenectví!",
           "ikona": "🪶"
         },
-        "video": "video/m01/d01/D1-S5.mp4"
-      },
-      "scenka_po": {
-        "dialogy": [
+        "video": "video/m01/d01/D1-S5.mp4",
+        "dialog": [
           {
-            "postava": "volta",
-            "text": "RED, BLUE, GREEN... anglické barvy. A víš co? Papoušek Keksík je všechny najednou."
+            "p": "popis",
+            "t": "Oknem vletí papoušek. Zeleno-červeno-modrý. Přistane na stole a sežere sušenku."
           },
           {
-            "postava": "keksik",
-            "text": "KEKSÍK!"
+            "p": "volta",
+            "t": "KEKSÍK! Ten papoušek patří pirátům! Ale myslím, že právě dezertoval. Za sušenku."
           },
           {
-            "postava": "volta",
-            "text": "...A umí konverzaci na úrovni některých pirátů, co znám."
+            "p": "keksik",
+            "t": "KEKSÍK! KEKSÍK!"
+          },
+          {
+            "p": "volta",
+            "t": "Vidíš? Umí jedno slovo. Ale umí ho SKVĚLE."
           }
         ]
-      }
+      },
+      "scenka": [
+        {
+          "p": "volta",
+          "t": "RED, BLUE, GREEN... anglické barvy. A víš co? Papoušek Keksík je všechny najednou."
+        },
+        {
+          "p": "keksik",
+          "t": "KEKSÍK!"
+        },
+        {
+          "p": "volta",
+          "t": "...A umí konverzaci na úrovni některých pirátů, co znám."
+        }
+      ]
     },
     {
       "okruh": 4,
@@ -737,12 +687,12 @@
       "tema": "Chaos — mix všech předmětů",
       "intro": [
         {
-          "postava": "volta",
-          "text": "Poslední okruh! Krivák sem naházel hromadu harampádí — všechno namíchané. Čeština, matika, angličtina, přírodověda, vlastivěda. Roztřiď to!"
+          "p": "volta",
+          "t": "Poslední okruh! Krivák sem naházel hromadu harampádí — všechno namíchané. Čeština, matika, angličtina, přírodověda, vlastivěda. Roztřiď to!"
         },
         {
-          "postava": "volta",
-          "text": "Piráti říkají chaos. Já říkám příležitost."
+          "p": "volta",
+          "t": "Piráti říkají chaos. Já říkám příležitost."
         }
       ],
       "otazky": [
@@ -887,52 +837,95 @@
           "hint": "Střelka kompasu ukazuje vždy na sever."
         }
       ],
-      "scenka_po": null
+      "scenka": []
     }
   ],
   "zaver": [
     {
-      "postava": "volta",
-      "text": "Agente. Zastav se na chvilku."
+      "p": "volta",
+      "t": "Agente. Zastav se na chvilku."
     },
     {
-      "postava": "agent",
-      "text": "Co je?"
+      "p": "agent",
+      "t": "Co je?"
     },
     {
-      "postava": "volta",
-      "text": "Ty to nevíš, ale... já měl dneska obavy. Piráti mi vzali všechno. Laboratoř, vynálezy, poznámky. A pak jsi přišel ty."
+      "p": "volta",
+      "t": "Ty to nevíš, ale... já měl dneska obavy. Piráti mi vzali všechno. Laboratoř, vynálezy, poznámky. A pak jsi přišel ty."
     },
     {
-      "postava": "volta",
-      "text": "Za pár hodin jsme poskládali víc, než jsem čekal za týden. Slova mají kořeny. Čísla mají řád. A barvy mají jména. I v angličtině."
+      "p": "volta",
+      "t": "Za pár hodin jsme poskládali víc, než jsem čekal za týden. Slova mají kořeny. Čísla mají řád. A barvy mají jména. I v angličtině."
     },
     {
-      "postava": "agent",
-      "text": "To je práce agenta."
+      "p": "agent",
+      "t": "To je práce agenta."
     },
     {
-      "postava": "volta",
-      "text": "Ne. To je práce DOBRÉHO agenta. A dobrých agentů není moc."
+      "p": "volta",
+      "t": "Ne. To je práce DOBRÉHO agenta. A dobrých agentů není moc."
     },
     {
-      "postava": "volta",
-      "text": "Zítra pokračujeme. Ten rozkaz co jsi sebral Skřípkovi — na rubu je kus mapy. A ta mapa vede..."
+      "p": "volta",
+      "t": "Zítra pokračujeme. Ten rozkaz co jsi sebral Skřípkovi — na rubu je kus mapy. A ta mapa vede..."
     },
     {
-      "postava": "volta",
-      "text": "...někam. Zatím nevím kam. Ale zjistíme to. Ty a já. Jako kořen a přípona — každý sám je k ničemu, ale dohromady dáváme smysl."
+      "p": "volta",
+      "t": "...někam. Zatím nevím kam. Ale zjistíme to. Ty a já. Jako kořen a přípona — každý sám je k ničemu, ale dohromady dáváme smysl."
     },
     {
-      "postava": "agent",
-      "text": "A Řepák?"
+      "p": "agent",
+      "t": "A Řepák?"
     },
     {
-      "postava": "volta",
-      "text": "Řepák je citoslovce. Občas vykřikne, nikdo neví proč, ale svět by bez něj byl nudnější."
+      "p": "volta",
+      "t": "Řepák je citoslovce. Občas vykřikne, nikdo neví proč, ale svět by bez něj byl nudnější."
     }
   ],
-  "sber_dne": [
+  "videa": {
+    "uvod_externi": "video/m01/d01/D1-S1.mp4",
+    "uvod_laborator": "video/m01/d01/D1-S2.mp4",
+    "akce_ok1_skripek": "video/m01/d01/D1-S3.mp4",
+    "akce_ok2_repak": "video/m01/d01/D1-S4.mp4",
+    "akce_ok3_keksik": "video/m01/d01/D1-S5.mp4",
+    "zaver": "video/m01/d01/D1-S6.mp4",
+    "predmety": "video/m01/d01/D1-P.mp4"
+  },
+  "intro": [
+    {
+      "p": "popis",
+      "t": "Černá obrazovka. Zvuk kroků na štěrku. Pomalu se rozsvítí — pohled na budovu zvenku. Vyvrácené dveře, prasklá okna, z jednoho okna se kouří."
+    },
+    {
+      "p": "popis",
+      "t": "Uvnitř chaos. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce je lepenkou přilepená předpona VY-. Na tabuli je napůl smazaný nákres stromu."
+    },
+    {
+      "p": "volta",
+      "t": "Agente! Konečně! Víš co je horší než když ti piráti ukradnou laboratoř?"
+    },
+    {
+      "p": "agent",
+      "t": "Co?"
+    },
+    {
+      "p": "volta",
+      "t": "Když ti rozstříhají poznámky! Podívej se na to — mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku."
+    },
+    {
+      "p": "volta",
+      "t": "Byla to moje nejlepší práce! Roky výzkumu!"
+    },
+    {
+      "p": "volta",
+      "t": "...Dobře, psal jsem to včera večer. Ale to je detail."
+    },
+    {
+      "p": "volta",
+      "t": "Začneme od základu. Každé slovo má srdce — KOŘEN. Bez něj je to jen hromádka písmen, co se tváří důležitě. Jako kapitán Krivák — samá pozlátka, žádný obsah."
+    }
+  ],
+  "predmety_sberu": [
     {
       "nazev": "Krivákův rozkaz",
       "popis": "Na rubu je kus náčrtku mapy!",
@@ -958,14 +951,5 @@
       "popis": "Symbol nového spojenectví!",
       "ikona": "🪶"
     }
-  ],
-  "videa": {
-    "uvod_externi": "video/m01/d01/D1-S1.mp4",
-    "uvod_laborator": "video/m01/d01/D1-S2.mp4",
-    "akce_ok1_skripek": "video/m01/d01/D1-S3.mp4",
-    "akce_ok2_repak": "video/m01/d01/D1-S4.mp4",
-    "akce_ok3_keksik": "video/m01/d01/D1-S5.mp4",
-    "zaver": "video/m01/d01/D1-S6.mp4",
-    "predmety": "video/m01/d01/D1-P.mp4"
-  }
+  ]
 }
