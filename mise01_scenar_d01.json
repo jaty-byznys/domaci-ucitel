@@ -1344,10 +1344,10 @@
       "D1S1": {
         "volta": [
           35,
-          15
+          18
         ],
         "agent": [
-          78,
+          72,
           18
         ]
       },
@@ -1490,6 +1490,6 @@
       "img/m01/d01/D1S5.png",
       "img/m01/d01/D1S7.png"
     ],
-    "obr_intro": "img/m01/d01/D1S1b.png"
+    "obr_intro": "img/m01/d01/D1S1.png"
   }
 }
