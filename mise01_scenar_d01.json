@@ -229,7 +229,19 @@
           },
           {
             "p": "skripek",
-            "t": "Stůj! To je mega SUS co tu děláte! ...Ehm. Mám tu rozkaz od kapitána! Počkej, je to vzhůru nohama."
+            "t": "STŮJ! Nikam nepůjdeš! Mám tu rozkaz od kapitána!"
+          },
+          {
+            "p": "skripek",
+            "t": "...Ehm. Počkej. Je to vzhůru nohama."
+          },
+          {
+            "p": "skripek",
+            "t": "...Moment. Já neumím číst."
+          },
+          {
+            "p": "volta",
+            "t": "To je asi problém."
           },
           {
             "p": "agent",
@@ -242,6 +254,22 @@
           {
             "p": "agent",
             "t": "KAZ. Jako v KAZIT. A to je přesně to, co Krivák umí nejlíp."
+          },
+          {
+            "p": "skripek",
+            "t": "...On by se teď zlobil, kdybych tu stál a nic nedělal, že jo?"
+          },
+          {
+            "p": "volta",
+            "t": "On se zlobí vždycky. To je jeho základní nastavení."
+          },
+          {
+            "p": "skripek",
+            "t": "Fakt... fakt se ho bojím. On jednou hodil po mně SLOVNÍKEM."
+          },
+          {
+            "p": "volta",
+            "t": "SLOVNÍKEM? To je nejkulturnější věc, co Krivák kdy udělal."
           },
           {
             "p": "volta",
@@ -479,58 +507,122 @@
         "dialog": [
           {
             "p": "popis",
-            "t": "Dveře se otevřou kopnutím. Vletí Řepák — obrovský, kulatý, na hlavě kbelík místo přilby."
+            "t": "BUCH! Dveře se otevřou kopnutím. Vletí Řepák — obrovský, kulatý, na hlavě kbelík místo přilby."
           },
           {
             "p": "repak",
-            "t": "SKIBIDI! Jsem tu na kontrolu! Kapitán Krivák mě posílá!"
+            "t": "TADY JSI! ...Počkej. Já nic nevidím."
           },
           {
             "p": "agent",
-            "t": "Řepáku... máš na hlavě kbelík."
+            "t": "Máš na hlavě kbelík."
           },
           {
             "p": "repak",
-            "t": "To je PŘILBA! Taktická! Mega rizz!"
+            "t": "To je TAKTICKÁ PŘILBA! RIZZ PŘILBA!"
           },
           {
             "p": "volta",
-            "t": "V tom kbelíku je mapa. Dáš mi ji?"
+            "t": "...Rizz přilba."
           },
           {
             "p": "repak",
-            "t": "...Jaká mapa?"
+            "t": "Jo! Prostě nasadíš kbelík a máš RIZZ!"
           },
           {
             "p": "volta",
-            "t": "Ta co ti trčí z kbelíku."
+            "t": "Řepáku, kolik stovek je v čísle 8 356?"
           },
           {
             "p": "repak",
-            "t": "...Aháá. Tak to si NECHÁM! ...Moment. Kam to šlo?"
+            "t": "Ehm... sundá si botu, počítá na prstech u nohy... osm? Šest? SEDMDESÁT?!"
           },
           {
-            "p": "volta",
-            "t": "Agent mu sundal kbelík, než stačil mrknout. Řepáku, co je ten 'rizz' co pořád říkáš?"
+            "p": "agent",
+            "t": "Tři. Stovky jsou třetí zprava."
           },
           {
             "p": "repak",
-            "t": "To je... no... když jsi fakt cool. Jako JÁ."
+            "t": "TŘETÍ ZPRAVA? A ČEHO ZPRAVA?! Já stojím tady, tak je to ZLEVA!"
           },
           {
             "p": "volta",
-            "t": "Ty jsi cool asi jako můj rozbořený kávovar. Ale jdeme dál."
+            "t": "...To je vlastně legitimní filozofická otázka. Ale špatná odpověď."
+          },
+          {
+            "p": "repak",
+            "t": "Kapitan Krivák říkal, že matika je SCAM!"
+          },
+          {
+            "p": "volta",
+            "t": "Krivák taky říkal, že Země je placatá, protože z jeho lodi to tak vypadá."
+          },
+          {
+            "p": "repak",
+            "t": "A NENÍ?!"
+          },
+          {
+            "p": "volta",
+            "t": "...Jdeme dál. Prosím."
           }
         ]
       },
       "scenka": [
         {
           "p": "volta",
-          "t": "Čísla mají řád. Jednotky, desítky, stovky, tisíce. Každé číslo ví, kde stojí. Na rozdíl od Řepáka."
+          "t": "Čísla sedí. Výpočty zachráněny. Víš co mě na matice baví?"
+        },
+        {
+          "p": "agent",
+          "t": "Co?"
         },
         {
           "p": "volta",
-          "t": "A na tom rádiu z antény — slyším Kriváka. Říká, že má plán. Nemá plán. Ale MYSLÍ si, že má. A to je nebezpečnější."
+          "t": "Že buď to je správně, nebo to není. Žádné 'možná'. Prostě 7 090 má devět desítek. HOTOVO."
+        },
+        {
+          "p": "agent",
+          "t": "Na rozdíl od češtiny."
+        },
+        {
+          "p": "volta",
+          "t": "PŘESNĚ. V češtině je 'bydlí' s tvrdým Y ale 'bidlo' s měkkým I a oba se tváří úplně stejně. Ale to je na jindy."
+        },
+        {
+          "p": "popis",
+          "t": "Z dálky se ozve rádio — zachrčí."
+        },
+        {
+          "p": "krivak",
+          "t": "HLÁSÍ SE KAPITÁN! KDO MI TAM PŘEROVNÁVÁ PAPÍRY?!"
+        },
+        {
+          "p": "volta",
+          "t": "Odposlouchává. Ale copak mu řekneme? NIC. Ať se trápí."
+        },
+        {
+          "p": "repak",
+          "t": "SKIBIDI TOILET! SKIBIDI TOILET!"
+        },
+        {
+          "p": "volta",
+          "t": "...Řepáku, proč řveš 'skibidi toilet'?"
+        },
+        {
+          "p": "repak",
+          "t": "Protože to je VTIPNÝ! Všichni na lodi to říkají!"
+        },
+        {
+          "p": "volta",
+          "t": "Kdo je 'všichni'?"
+        },
+        {
+          "p": "repak",
+          "t": "No... já a papoušek."
+        },
+        {
+          "p": "volta",
+          "t": "Takže pirát a pták. Elita. Jdeme dál."
         }
       ]
     },
@@ -756,7 +848,7 @@
       "scenka": [
         {
           "p": "volta",
-          "t": "RED, BLUE, GREEN... anglické barvy. A víš co? Papoušek Keksík je všechny najednou."
+          "t": "RED, BLUE, GREEN... anglické barvy. A víš co? Keksík je všechny najednou."
         },
         {
           "p": "keksik",
@@ -764,7 +856,35 @@
         },
         {
           "p": "volta",
-          "t": "...A umí konverzaci na úrovni některých pirátů, co znám."
+          "t": "Umí konverzaci na úrovni některých pirátů, co znám."
+        },
+        {
+          "p": "volta",
+          "t": "Papoušek odletěl. Ale vrátí se. VŽDYCKY se vrátí. Kvůli keksíkům."
+        },
+        {
+          "p": "agent",
+          "t": "Jako Řepák."
+        },
+        {
+          "p": "volta",
+          "t": "Řepák se nevrací. Řepák NEODCHÁZÍ. To je horší."
+        },
+        {
+          "p": "repak",
+          "t": "JÁ JSEM TADY! SIGMA! SIGMA REPÁK!"
+        },
+        {
+          "p": "volta",
+          "t": "...Co je sigma?"
+        },
+        {
+          "p": "agent",
+          "t": "Lepší nevědět."
+        },
+        {
+          "p": "volta",
+          "t": "Správná odpověď. Jdeme na poslední okruh."
         }
       ]
     },
@@ -954,7 +1074,106 @@
           "vs": "K určení světových stran! Střelka ukazuje na sever. VŽDYCKY. Jediná spolehlivá věc v téhle laboratoři. Kromě tebe."
         }
       ],
-      "scenka": []
+      "scenka": [
+        {
+          "p": "volta",
+          "t": "Agente. Čtyřicet otázek. Čtyři okruhy. A piráti se z toho zblázní."
+        },
+        {
+          "p": "volta",
+          "t": "Víš co? Kořen je jako DNA slova. Čísla mají řád. Barvy mají jména. A piráti nemají ponětí o ničem z toho."
+        },
+        {
+          "p": "keksik",
+          "t": "KEKSÍK!"
+        },
+        {
+          "p": "volta",
+          "t": "A papoušek chce keksík. To je jediná konstanta v tomhle vesmíru."
+        }
+      ],
+      "akce": {
+        "dialog": [
+          {
+            "p": "popis",
+            "t": "Rádio zachrčí. Krivákův hlas — rozzuřený."
+          },
+          {
+            "p": "krivak",
+            "t": "KDO MI TAM ODPOSLOUCHÁVÁ?! SKŘÍPKU! JDI TO ZJISTIT!"
+          },
+          {
+            "p": "skripek",
+            "t": "Kapitáne... to je ten agent. On je v laboratoři. A umí PŘEDPONY."
+          },
+          {
+            "p": "krivak",
+            "t": "TAK HO VYHOĎ!"
+          },
+          {
+            "p": "skripek",
+            "t": "Já... já se ho bojím."
+          },
+          {
+            "p": "krivak",
+            "t": "BOJÍŠ SE DÍTĚTE?!"
+          },
+          {
+            "p": "skripek",
+            "t": "On umí kořeny slov, kapitáne. A PŘEDPONY. A ví kolik stovek je v čísle!"
+          },
+          {
+            "p": "krivak",
+            "t": "...Co jsou předpony?"
+          },
+          {
+            "p": "krivak",
+            "t": "...A co jsou stovky?"
+          },
+          {
+            "p": "volta",
+            "t": "Právě jsme demoralizovali nepřítele. A to jsme jenom odpovídali na otázky."
+          },
+          {
+            "p": "repak",
+            "t": "SIX-SEVEN! SIX-SEVEN! SIX-SEVEN!"
+          },
+          {
+            "p": "volta",
+            "t": "...Řepáku, co to znamená?"
+          },
+          {
+            "p": "repak",
+            "t": "Nevím! Ale zní to COOL! SIX-SEVEN!"
+          },
+          {
+            "p": "agent",
+            "t": "To je šest a sedm."
+          },
+          {
+            "p": "repak",
+            "t": "...A to je kolik dohromady?"
+          },
+          {
+            "p": "volta",
+            "t": "Třináct, Řepáku. Třináct."
+          },
+          {
+            "p": "repak",
+            "t": "TŘINÁCT! To je moje nový bojový pokřik! TŘINÁÁÁCT!"
+          },
+          {
+            "p": "volta",
+            "t": "...Já se s tebou normálně bavit nedá."
+          }
+        ],
+        "zprava": "Krivák neví co jsou předpony a Řepák má nový bojový pokřik.",
+        "sber": {
+          "nazev": "Krivákovo rádio",
+          "popis": "Odposlech pirátského vysílání — teď slyšíme každé slovo!",
+          "ikona": "📻"
+        }
+      }
     }
   ],
   "zaver": [
@@ -1006,7 +1225,15 @@
     },
     {
       "p": "volta",
-      "t": "Agente! KONEČNĚ! Čekám tři hodiny! ...Dobře, čekám dvacet minut. Ale v tomhle bordelu to jsou tři hodiny."
+      "t": "Agente! KONEČNĚ! Víš co je horší než když ti piráti ukradnou laboratoř?"
+    },
+    {
+      "p": "agent",
+      "t": "Co?"
+    },
+    {
+      "p": "volta",
+      "t": "Když ti rozstříhají POZNÁMKY! Podívej se na to — kořen BEZ přípony, přípona BEZ kořene, a předpona se přilepila na ledničku!"
     },
     {
       "p": "agent",
@@ -1014,15 +1241,11 @@
     },
     {
       "p": "volta",
-      "t": "Piráti. Krivák a jeho banda. Vykradli mi laboratoř, ukradli vynálezy a rozstříhali poznámky. A víš proč? Protože jim VADILO, že vymýšlím věci co FUNGUJÍ. Na rozdíl od Krivákovy lodi, která funguje hlavně jako plovoucí ostuda."
-    },
-    {
-      "p": "agent",
-      "t": "Co přesně ukradli?"
+      "t": "Piráti. Kapitán Krivák a jeho banda. Vykradli mi laboratoř, ukradli vynálezy, rozstříhali poznámky a UKRADLI MI KÁVOVAR!"
     },
     {
       "p": "volta",
-      "t": "Všechno! Roky práce! Teda — ukradli i kávovar. To mě bolí nejvíc."
+      "t": "...Ten kávovar mě bolí nejvíc."
     },
     {
       "p": "agent",
@@ -1030,27 +1253,39 @@
     },
     {
       "p": "volta",
-      "t": "Pomoct mi to dostat zpátky. Kousek po kousku. Postup je jednoduchý — já kladu otázky, ty odpovídáš, a pokaždé když odpovíš správně, piráti ztratí kousek kontroly. Doslova se složí. Já to vím — ZKOUŠEL jsem to."
+      "t": "Pomoct mi to dostat zpátky. Kousek po kousku. Já budu klást otázky — ty odpovídáš. Každá správná odpověď je úder pirátům."
+    },
+    {
+      "p": "volta",
+      "t": "Jsou to piráti. Hoď po nich správnou odpověď a složí se jak domečky z karet. Já to vím — zkoušel jsem to."
     },
     {
       "p": "agent",
-      "t": "Porazit piráty správnými odpověďmi."
+      "t": "Porazit piráty správnými odpověďmi. To zní... neobvykle."
     },
     {
       "p": "volta",
-      "t": "PŘESNĚ. A cestou najdeš věci, co pirátům vypadaly z kapes. Seber VŠECHNO. Každý papír, každý klíč, každé peříčko. Vypadá to jako harampádí, ale mám pocit, že na konci z toho bude něco VELKÉHO."
+      "t": "Neobvyklé problémy vyžadují neobvyklá řešení! A hlavně — cestou jim bude vypadávat věci z kapes. Seber VŠECHNO. Každý papír, každý šroub, každé peříčko."
     },
     {
       "p": "agent",
-      "t": "Žádný plán, ale sbíráme všechno."
+      "t": "Proč?"
     },
     {
       "p": "volta",
-      "t": "To je celá věda, agente. Děláš bordel, dokud z toho nevznikne objev. Tak — podívej se na to!"
+      "t": "Protože NEVÍME co budeme potřebovat! To je celá věda — sbíráš bordel, dokud z toho nevznikne objev."
     },
     {
       "p": "volta",
-      "t": "Mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku. Začneme od základu — každé slovo má srdce, KOŘEN. Bez něj je to jen hromádka písmen co se tváří důležitě. Jako kapitán Krivák."
+      "t": "A ještě jedna věc — Krivák tu nechal hlídky. Za regálem se něco hýbe. Ale neboj. Jsou to piráti. Piráti, co neumí ČÍST."
+    },
+    {
+      "p": "popis",
+      "t": "Za regálem se ozve šramot a tlumené 'pššt!'"
+    },
+    {
+      "p": "volta",
+      "t": "Slyšíš? To je budoucnost. A budoucnost neumí být potichu. Tak — jdeme na to! Začneme od základu. Každé slovo má srdce — KOŘEN."
     }
   ],
   "predmety_sberu": [
@@ -1078,6 +1313,11 @@
       "nazev": "Papouščí peříčko",
       "popis": "Symbol nového spojenectví!",
       "ikona": "🪶"
+    },
+    {
+      "nazev": "Krivákovo rádio",
+      "popis": "Teď slyšíme každé pirátské slovo!",
+      "ikona": "📻"
     }
   ],
   "vizualy": {
