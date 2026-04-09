@@ -1446,6 +1446,20 @@
           25,
           35
         ]
+      },
+      "D1S3b": {
+        "volta": [
+          82,
+          14
+        ],
+        "agent": [
+          52,
+          16
+        ],
+        "repak": [
+          18,
+          18
+        ]
       }
     },
     "heads_zaver": {
@@ -1466,7 +1480,7 @@
     ],
     "obr_akce": [
       "img/m01/d01/D1S2b.png",
-      "img/m01/d01/D1S3.png",
+      "img/m01/d01/D1S3b.png",
       "img/m01/d01/D1S6.png",
       "img/m01/d01/D1S7.png"
     ],
