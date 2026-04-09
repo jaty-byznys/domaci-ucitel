@@ -219,6 +219,11 @@ function Mission({day,onBack}){
       if(ivi+1<ivids.length)setIvi(ivi+1);
       else{setDi(0);setPhase('id');}
     }
+    else if(phase==='ov'){
+      // Video před okruhem skončilo → intro dialog okruhu
+      if(ok?.intro?.length>0){setDi(0);setPhase('oi');}
+      else{resetQ();setPhase('q');}
+    }
     else if(phase==='av'){
       if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}
       else doSber();
@@ -259,12 +264,16 @@ function Mission({day,onBack}){
       setPhase('pick');
     }
   }
-  // Vybrat okruh z pick obrazovky → intro dialog okruhu → otázky
+  // Vybrat okruh z pick obrazovky → video → intro dialog → otázky
+  const ovids=viz.video_okruhy||[];
   function pickOk(idx){
     setOi(idx);resetQ();
-    const okr=day.okruhy?.[idx];
-    if(okr?.intro?.length>0){setDi(0);setPhase('oi');}
-    else setPhase('q');
+    if(ovids[idx]){setPhase('ov');}  // video před okruhem
+    else{
+      const okr=day.okruhy?.[idx];
+      if(okr?.intro?.length>0){setDi(0);setPhase('oi');}
+      else setPhase('q');
+    }
   }
 
   // Odpověď
@@ -312,6 +321,7 @@ function Mission({day,onBack}){
 
   // RENDER
   if(phase==='iv')return<Vid src={GH+ivids[ivi]} onEnd={vEnd}/>;
+  if(phase==='ov')return<Vid src={GH+(ovids[oi]||'')} onEnd={vEnd}/>;
   if(phase==='av')return<Vid src={GH+(avids[oi]||'')} onEnd={vEnd}/>;
   if(phase==='zv')return<Vid src={GH+zvid} onEnd={vEnd}/>;
 
