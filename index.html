@@ -12,7 +12,7 @@ html,body{height:100%;overflow:hidden}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text)}
 button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes bubPop{0%{opacity:0;transform:translate(-50%,-100%) scale(0.5)}60%{transform:translate(-50%,-100%) scale(1.04)}100%{opacity:1;transform:translate(-50%,-100%) scale(1)}}
+@keyframes bubPop{0%{opacity:0;transform:translateX(-50%) scale(0.5)}60%{transform:translateX(-50%) scale(1.04)}100%{opacity:1;transform:translateX(-50%) scale(1)}}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes cpop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -48,7 +48,7 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
    - border-radius:28px = funguje jako vajíčko pro jakýkoli rozměr
 */
 .bub{position:fixed;z-index:15;animation:bubPop 0.35s ease-out;
-  transform:translate(-50%,-100%);pointer-events:none;
+  transform:translateX(-50%);pointer-events:none;
   display:flex;flex-direction:column;align-items:center}
 .bub-egg{
   display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
@@ -111,7 +111,7 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <script type="text/babel">
-const {useState,useEffect,useCallback}=React;
+const {useState,useEffect,useCallback,useRef}=React;
 const GH='https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
 const LBL=['A','B','C','D','E'];
 const NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák',piratka:'Pirátka',kotva:'Kotva'};
@@ -161,24 +161,32 @@ function Bub({who,text,sceneKey}){
   const isA=w==='agent';
   const isP=PIR.includes(w);
   const [pos,setPos]=useState({x:0,y:0});
+  const [bubH,setBubH]=useState(0);
+  const ref=useRef(null);
 
-  // Najdi pozici hlavy ze HEADS pro tuto scénu a postavu
   const heads=HEADS[sceneKey]||HEADS.S1;
-  const h=heads[w]||heads.volta||[33,18];
+  const h=heads[w]||heads.volta||[33,30];
 
   const calc=useCallback(()=>{
     setPos(headPx(h[0],h[1]));
   },[h[0],h[1]]);
   useEffect(()=>{calc();window.addEventListener('resize',calc);return()=>window.removeEventListener('resize',calc);},[calc]);
+  // Měření výšky bubliny po renderování
+  useEffect(()=>{
+    if(ref.current) setBubH(ref.current.offsetHeight);
+  },[text]);
 
   const nc=isA?'ca':isP?'cp':'cv';
-  // Auto-size: short (<15 znaků), medium (15-60), long (60+)
   const len=text.length;
   const sz=len<15?'short':len<60?'medium':'long';
-  const ta=len<25?'tc':'tl'; // text-align: center pro krátké, left pro dlouhé
+  const ta=len<25?'tc':'tl';
+
+  // top = anchor Y - výška bubliny, minimum 5px
+  const finalTop = Math.max(5, pos.y - bubH);
+  const finalLeft = Math.max(60, Math.min(pos.x, window.innerWidth-60));
 
   return(
-    <div className="bub" style={{left:Math.max(60,Math.min(pos.x,window.innerWidth-60))+'px',top:Math.max(5,pos.y)+'px'}} key={w+text.slice(0,12)}>
+    <div className="bub" ref={ref} style={{left:finalLeft+'px',top:finalTop+'px'}} key={w+text.slice(0,12)}>
       <div className={'bub-egg '+sz}>
         <div className={'bub-who '+nc}>{name}</div>
         <div className={'bub-txt '+ta}>{text}</div>
