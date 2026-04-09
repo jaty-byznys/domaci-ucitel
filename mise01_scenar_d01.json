@@ -324,7 +324,10 @@
             "čtyři tisíce pětadvacet šest"
           ],
           "answer": "čtyři tisíce pět set dvacet šest",
-          "hint": "Rozlož si číslo na řády: tisíce, stovky, desítky, jednotky."
+          "hint": "Rozlož si číslo na řády: tisíce, stovky, desítky, jednotky.",
+          "vn": "Hmm, to není ono. Rozlož si to číslo na řády — tisíce, stovky, desítky, jednotky. Jako patra budovy. Krivák bydlí v přízemí.",
+          "vi": "Tady. Čtyři pět dva šest. Ale jak se to ŘEKNE celé?",
+          "vs": "Čtyři tisíce pět set dvacet šest! Řády — tisíce, stovky, desítky, jednotky. Jako patra budovy. Krivák bydlí v přízemí. My jsme nahoře."
         },
         {
           "id": "MA4-01-01-02",
@@ -337,7 +340,10 @@
             "8 910"
           ],
           "answer": "9 801",
-          "hint": "Porovnávej od nejvyššího řádu — od tisíců."
+          "hint": "Porovnávej od nejvyššího řádu — od tisíců.",
+          "vn": "Skoro! Porovnávej od tisíců. Kdo má víc tisíců, je boss. Jako Volta v laboratoři. Teda — v tom co z ní zbylo.",
+          "vi": "Piráti tu nechali lístek s čísly. Které je král?",
+          "vs": "9 801! Devět tisíc je víc než osm tisíc. Porovnávej VŽDYCKY od nejvyššího řádu. Jako hledání nejdůležitější osoby v místnosti."
         },
         {
           "id": "MA4-01-01-03",
@@ -350,7 +356,10 @@
             "42"
           ],
           "answer": "7",
-          "hint": "Podívej se na číslici na místě stovek (třetí zprava)."
+          "hint": "Podívej se na číslici na místě stovek (třetí zprava).",
+          "vn": "Stovky jsou třetí pozice zprava. Přečti číslo pozpátku — jednotky, desítky, STOVKY. Řepák by počítal na prstech u nohy.",
+          "vi": "3 742. Kolik stovek se tu schovává?",
+          "vs": "Sedm! Třetí cifra zprava. Každá cifra má svoje místo. Jako piráti na lodi — každý ví kde stojí. Teda Řepák neví."
         },
         {
           "id": "MA4-01-01-04",
@@ -363,7 +372,10 @@
             "6 400"
           ],
           "answer": "6 000",
-          "hint": "Podívej se na číslici stovek (4). Je menší než 5? Zaokrouhluj dolů."
+          "hint": "Podívej se na číslici stovek (4). Je menší než 5? Zaokrouhluj dolů.",
+          "vn": "Podívej se na stovky — je ta cifra menší než 5? Pak dolů. Jako Řepákovo IQ. Dolů.",
+          "vi": "Zaokrouhlování! Je to číslo blíž k 6 000 nebo k 7 000?",
+          "vs": "6 000! Stovky jsou 4 — to je méně než 5, takže dolů. Jednoduché pravidlo. Jako výtah."
         },
         {
           "id": "MA4-01-01-05",
@@ -376,7 +388,10 @@
             "5 000 + 203"
           ],
           "answer": "5 000 + 200 + 3",
-          "hint": "Rozlož na tisíce + stovky + desítky + jednotky. Pozor — kolik je desítek?"
+          "hint": "Rozlož na tisíce + stovky + desítky + jednotky. Pozor — kolik je desítek?",
+          "vn": "Pozor na ty nuly! Kolik je tu desítek? Podívej se pořádně. Nula desítek je past — jako Krivákovy sliby.",
+          "vi": "Rozeber mi tohle číslo na součástky!",
+          "vs": "5 000 + 200 + 3! Pozor — NULA desítek! To je past. Jako Krivák nemá žádné manýry."
         },
         {
           "id": "MA4-01-01-06",
@@ -389,7 +404,10 @@
             "2 305"
           ],
           "answer": "2 305",
-          "hint": "Hledáš číslo, které je MÉNĚ než 2 350."
+          "hint": "Hledáš číslo, které je MÉNĚ než 2 350.",
+          "vn": "Porovnej cifru po cifře od tisíců. Která se první liší? Tam je odpověď. Detektivní práce!",
+          "vi": "Hledáme číslo, co se schovává POD 2 350.",
+          "vs": "2 305! Tisíce stejné, stovky stejné — ale 0 desítek je méně než 5. Detailní práce!"
         },
         {
           "id": "MA4-01-01-07",
@@ -402,7 +420,10 @@
             "70"
           ],
           "answer": "9",
-          "hint": "Místo desítek je druhé zprava."
+          "hint": "Místo desítek je druhé zprava.",
+          "vn": "Druhá pozice zprava = desítky. Přečti číslo: 7-0-9-0. Která cifra sedí na židli desítek?",
+          "vi": "7 090. Desítky. Kde se schovávají?",
+          "vs": "Devítka! 7 tisíc, 0 stovek, 9 desítek, 0 jednotek. To číslo má díry — ale desítky drží."
         },
         {
           "id": "MA4-01-01-08",
@@ -415,7 +436,10 @@
             "1 502, 1 520, 1 250"
           ],
           "answer": "1 250, 1 502, 1 520",
-          "hint": "Všechna čísla začínají na 1 tisíc — porovnej stovky."
+          "hint": "Všechna čísla začínají na 1 tisíc — porovnej stovky.",
+          "vn": "Všechna začínají na 1 tisíc. Tak porovnej stovky — kdo jich má nejmíň, je nejmenší. Jako Skřípek v pirátské bandě.",
+          "vi": "Tři čísla, jedno pořadí. Od nejmenšího!",
+          "vs": "1 250, pak 1 502, pak 1 520! Tisíce stejné — stovky rozhodují. 2 stovek je míň než 5."
         },
         {
           "id": "MA4-01-01-09",
@@ -428,7 +452,10 @@
             "3 860"
           ],
           "answer": "3 900",
-          "hint": "Desítky jsou 5 — zaokrouhluj nahoru."
+          "hint": "Desítky jsou 5 — zaokrouhluj nahoru.",
+          "vn": "Desítky jsou 5 — a pětka zaokrouhluje NAHORU. Vždycky. Bez výjimky. Jako Volta — nahoru a vpřed!",
+          "vi": "3 850 na stovky. Nahoru nebo dolů?",
+          "vs": "3 900! Desítky jsou 5 — přesně na hraně. A pravidlo říká: 5 = nahoru. Vždycky. Bez diskuze."
         },
         {
           "id": "MA4-01-01-10",
@@ -441,7 +468,10 @@
             "60 040"
           ],
           "answer": "6 040",
-          "hint": "Šest tisíc = 6 000. Čtyřicet = 40. Sečti."
+          "hint": "Šest tisíc = 6 000. Čtyřicet = 40. Sečti.",
+          "vn": "Šest tisíc = 6 000. Čtyřicet = 40. Sečti. A kolik stovek? NULA stovek! To je ta past.",
+          "vi": "Poslední! Šest tisíc čtyřicet. Napiš to číslicemi.",
+          "vs": "6 040! Šest tisíc = 6 000. Čtyřicet = 40. Pozor na tu nulu ve stovkách — žádné stovky!"
         }
       ],
       "akce": {
@@ -536,7 +566,10 @@
             "brown"
           ],
           "answer": "blue",
-          "hint": "Začíná na B a má 4 písmena."
+          "hint": "Začíná na B a má 4 písmena.",
+          "vn": "Začíná na B, má 4 písmena, barva oblohy. Krivákův obličej když zuří je spíš purple, ale tohle je jednodušší.",
+          "vi": "Tahle kartička. Modrá. Anglicky?",
+          "vs": "BLUE! Jako obloha. Jako moře. Jako Krivákův obličej když zuří. Ne, ten je spíš purple."
         },
         {
           "id": "AJ4-01-01-02",
@@ -549,7 +582,10 @@
             "osm"
           ],
           "answer": "sedm",
-          "hint": "Je to číslo mezi six (6) a eight (8)."
+          "hint": "Je to číslo mezi six (6) a eight (8).",
+          "vn": "Je to číslo mezi six a eight. Šest, ???, osm. Co chybí uprostřed?",
+          "vi": "Seven. Kolik je to?",
+          "vs": "Sedm! Between six and eight. Jako já — mezi géniem a katastrofou."
         },
         {
           "id": "AJ4-01-01-03",
@@ -562,7 +598,10 @@
             "červená"
           ],
           "answer": "žlutá",
-          "hint": "Barva slunce a banánu."
+          "hint": "Barva slunce a banánu.",
+          "vn": "Barva slunce a banánů. Začíná na Y. A ne — yellow submarine nepočítáme.",
+          "vi": "Yellow! Barva...",
+          "vs": "Žlutá! Barva slunce, banánu, a Krivákových zlatých zubů. Teda ty jsou spíš gold."
         },
         {
           "id": "AJ4-01-01-04",
@@ -575,7 +614,10 @@
             "ten"
           ],
           "answer": "twelve",
-          "hint": "Začíná na TW- a je o jedno víc než eleven."
+          "hint": "Začíná na TW- a je o jedno víc než eleven.",
+          "vn": "Je o jedno víc než eleven. Začíná na TW-. Angličtina je záludná — nemá 'twoteen'!",
+          "vi": "Dvanáct. Anglicky?",
+          "vs": "TWELVE! Jedno z těch záludných — není 'twoteen.' Angličtina má pro 11 a 12 speciální slova."
         },
         {
           "id": "AJ4-01-01-05",
@@ -588,7 +630,10 @@
             "černá"
           ],
           "answer": "zelená",
-          "hint": "Barva trávy a stromů."
+          "hint": "Barva trávy a stromů.",
+          "vn": "Barva trávy a stromů. Začíná na GR-. A Voltova květina co přežila piráty? Ta je taky takhle.",
+          "vi": "Green!",
+          "vs": "Zelená! Barva trávy, stromů, a Voltovy květiny co přežila piráty."
         },
         {
           "id": "AJ4-01-01-06",
@@ -601,7 +646,10 @@
             "sixteen"
           ],
           "answer": "fifteen",
-          "hint": "Five + teen = ?"
+          "hint": "Five + teen = ?",
+          "vn": "Five + teen. Pět-náct. Angličtina a čeština to dělají stejně — základ plus přípona!",
+          "vi": "Fifteen! ...Teda, to jsem prozradil. Zkusíme jinak — patnáct anglicky?",
+          "vs": "FIFTEEN! Five + teen. Pět-náct. Angličtina i čeština dělají teen čísla stejně!"
         },
         {
           "id": "AJ4-01-01-07",
@@ -614,7 +662,10 @@
             "modrá"
           ],
           "answer": "bílá",
-          "hint": "Barva sněhu."
+          "hint": "Barva sněhu.",
+          "vn": "Barva sněhu. Opak black. Začíná na WH-. Voltův plášť BYL takhle. Teď je spíš hnědý. Od exploze.",
+          "vi": "White. Barva sněhu.",
+          "vs": "Bílá! Barva sněhu, papíru, a Voltova pláště. Teda MŮJ plášť BYL bílý. Teď je spíš hnědý."
         },
         {
           "id": "AJ4-01-01-08",
@@ -627,7 +678,10 @@
             "10"
           ],
           "answer": "20",
-          "hint": "Twen-ty = dvacet. Jsou tam dvě desítky."
+          "hint": "Twen-ty = dvacet. Jsou tam dvě desítky.",
+          "vn": "Dvacet. Twen-ty. Dvě desítky. Jako dvacet pirátů — ale tihle neumí počítat.",
+          "vi": "Twenty!",
+          "vs": "Dvacet! Twen-ty. Jako 'twenty questions' — dvacet otázek. My jich máme čtyřicet. Ale kdo počítá."
         },
         {
           "id": "AJ4-01-01-09",
@@ -640,7 +694,10 @@
             "blue"
           ],
           "answer": "black",
-          "hint": "Začíná na BL- a má 5 písmen."
+          "hint": "Začíná na BL- a má 5 písmen.",
+          "vn": "Začíná na BL-, má 5 písmen, a NENÍ to blue! Barva noci. A Řepákových ponožek. Kdyby nějaké měl.",
+          "vi": "Černá. Barva noci.",
+          "vs": "BLACK! Barva noci, Krivákovy vlajky, a Řepákových ponožek. Teda — Řepák ponožky nemá."
         },
         {
           "id": "AJ4-01-01-10",
@@ -653,7 +710,10 @@
             "osm"
           ],
           "answer": "devět",
-          "hint": "Je to o jedno méně než ten (10)."
+          "hint": "Je to o jedno méně než ten (10).",
+          "vn": "O jedno míň než ten. Ten = 10. Tak co je 9? Začíná na N.",
+          "vi": "Nine! Poslední číslo!",
+          "vs": "Devět! Nine. O jedno míň než ten. A deset otázek je přesně to, co jsi právě zvládl!"
         }
       ],
       "akce": {
@@ -740,7 +800,10 @@
             "grad"
           ],
           "answer": "hrad",
-          "hint": "Ohrada, hradba, zahrada — co mají společného?"
+          "hint": "Ohrada, hradba, zahrada — co mají společného?",
+          "vn": "Za-HRAD-a. Předpona ZA-, koncovka -A. Co je uprostřed? Hint — uprostřed se schovává opevnění!",
+          "vi": "Čeština! Kořen slova ZAHRADA?",
+          "vs": "HRAD! Za-HRAD-a! Uprostřed se schovává hrad. Zahrada = ohrazené místo. Čeština je poetická. A taky zákeřná."
         },
         {
           "id": "CH4-M01-D01-02",
@@ -754,7 +817,10 @@
             "nelze určit"
           ],
           "answer": "5 001",
-          "hint": "Tisíce jsou stejné — porovnej stovky."
+          "hint": "Tisíce jsou stejné — porovnej stovky.",
+          "vn": "Tisíce jsou stejné u všech. Jdi na stovky, pak desítky. Kdo má nejméně, je nejmenší. Jako Skřípkovo sebevědomí.",
+          "vi": "Matika! Tři čísla, jeden trpaslík. Který je nejmenší?",
+          "vs": "5 001! Nula stovek a nula desítek. Nejmenší! Jako Skřípkovo sebevědomí."
         },
         {
           "id": "CH4-M01-D01-03",
@@ -768,7 +834,10 @@
             "purple"
           ],
           "answer": "red",
-          "hint": "Má jen 3 písmena."
+          "hint": "Má jen 3 písmena.",
+          "vn": "Tři písmena, začíná na R, barva ohně. A Krivákova vlajka. A stop značky. Všechno nebezpečné!",
+          "vi": "Angličtina! Červená!",
+          "vs": "RED! Tři písmena. Nejkratší barva. A nejdůležitější — red flag znamená varování. Jako když vidíš Kriváka."
         },
         {
           "id": "CH4-M01-D01-04",
@@ -782,7 +851,10 @@
             "vzduch"
           ],
           "answer": "strom",
-          "hint": "Živé organismy rostou, dýchají a rozmnožují se."
+          "hint": "Živé organismy rostou, dýchají a rozmnožují se.",
+          "vn": "Živé organismy rostou, dýchají a rozmnožují se. Kámen to nedělá. Voda to nedělá. Co z toho ROSTE?",
+          "vi": "Přírodověda! Co z toho je ŽIVÉ?",
+          "vs": "STROM! Roste, dýchá, rozmnožuje se. Kámen to nedělá. A písek jen leží. Jako Řepák po obědě."
         },
         {
           "id": "CH4-M01-D01-05",
@@ -796,7 +868,10 @@
             "severozápad"
           ],
           "answer": "jih",
-          "hint": "Na kompasu je naproti S vždy..."
+          "hint": "Na kompasu je naproti S vždy...",
+          "vn": "Na kompasu naproti S je vždy... podívej se na kompas v hlavě. Sever nahoře, co je dole?",
+          "vi": "Vlastivěda! Naproti severu je...",
+          "vs": "JIH! Sever nahoře, jih dole. A Krivák? Krivák je vždycky tam, kde ho NECHCEŠ."
         },
         {
           "id": "CH4-M01-D01-06",
@@ -810,7 +885,10 @@
             "2 750"
           ],
           "answer": "3 000",
-          "hint": "Stovky jsou 7 — je to víc než 5? Zaokrouhluj nahoru."
+          "hint": "Stovky jsou 7 — je to víc než 5? Zaokrouhluj nahoru.",
+          "vn": "Stovky jsou 7 — to je víc než 5. Pravidlo říká nahoru! 2 740 → nahoru na tisíce.",
+          "vi": "Zpátky k matice! 2 740 na tisíce!",
+          "vs": "3 000! Stovky jsou 7 — víc než 5. Nahoru! Krivák by řekl 'asi tři tisíce.' My VÍME že tři tisíce."
         },
         {
           "id": "CH4-M01-D01-07",
@@ -824,7 +902,10 @@
             "kočka"
           ],
           "answer": "výlet",
-          "hint": "Předpona stojí před kořenem — vy-let."
+          "hint": "Předpona stojí před kořenem — vy-let.",
+          "vn": "Předpona stojí PŘED kořenem. Jedno z těch slov má něco navíc na začátku. VÝ-let. Vidíš to VÝ-?",
+          "vi": "Čeština! Jedno z těchto slov má předponu. Které?",
+          "vs": "VÝLET! VÝ-let. Předpona VÝ-, kořen LET. Město, stůl, okno, kočka — čisté kořeny. Jako lidé bez klobouků."
         },
         {
           "id": "CH4-M01-D01-08",
@@ -838,7 +919,10 @@
             "nine"
           ],
           "answer": "seven",
-          "hint": "3 + 4 = ?"
+          "hint": "3 + 4 = ?",
+          "vn": "Three = 3. Four = 4. Sečti a řekni anglicky. Tři plus čtyři. Kolik prstů to je?",
+          "vi": "Matika v angličtině! Three plus four!",
+          "vs": "SEVEN! 3 + 4 = 7. Dvě řeči, jeden výsledek. Matika je univerzální jazyk. Na rozdíl od Krivákova."
         },
         {
           "id": "CH4-M01-D01-09",
@@ -852,7 +936,10 @@
             "výživa"
           ],
           "answer": "svícení",
-          "hint": "Živé organismy rostou, dýchají, rozmnožují se a přijímají potravu. Co tam nepatří?"
+          "hint": "Živé organismy rostou, dýchají, rozmnožují se a přijímají potravu. Co tam nepatří?",
+          "vn": "Živé organismy: růst, dýchání, rozmnožování, výživa. Co tam NEPATŘÍ? Lampička to nedělá!",
+          "vi": "Přírodověda! Co živé NEDĚLÁ?",
+          "vs": "SVÍCENÍ! Živé organismy nesvítí. Teda — světlušky. Ale to je výjimka. Jako já mezi vědci."
         },
         {
           "id": "CH4-M01-D01-10",
@@ -866,7 +953,10 @@
             "k určení výšky"
           ],
           "answer": "k určení světových stran",
-          "hint": "Střelka kompasu ukazuje vždy na sever."
+          "hint": "Střelka kompasu ukazuje vždy na sever.",
+          "vn": "Střelka kompasu ukazuje vždy na SEVER. A díky tomu víš kde jsou všechny ostatní strany. K čemu je to dobré?",
+          "vi": "K čemu TENHLE slouží?",
+          "vs": "K určení světových stran! Střelka ukazuje na sever. VŽDYCKY. Jediná spolehlivá věc v téhle laboratoři. Kromě tebe."
         }
       ],
       "scenka": []
