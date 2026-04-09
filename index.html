@@ -185,7 +185,7 @@ function Mission({day,onBack}){
   function curImg(){
     if(phase==='zd'||phase==='sum') return zimg;
     if(phase==='id'||phase==='pick') return obrIntro;
-    if(phase==='q') return obrQ[oi]||obrIntro;
+    if(phase==='oi'||phase==='q') return obrQ[oi]||obrIntro;
     if(phase==='ad') return obrA[oi]||obrQ[oi]||obrIntro;
     if(phase==='sk') return obrS[oi]||obrQ[oi]||obrIntro;
     return obrIntro;
@@ -203,6 +203,7 @@ function Mission({day,onBack}){
   // Dialogy
   function dlgs(){
     if(phase==='id') return day.intro||[];
+    if(phase==='oi') return ok?.intro||[];
     if(phase==='ad') return ok?.akce?.dialog||[];
     if(phase==='sk') return ok?.scenka||[];
     if(phase==='zd') return day.zaver||[];
@@ -232,6 +233,7 @@ function Mission({day,onBack}){
     if(di<ds.length-1)setDi(di+1);
     else{setDi(0);
       if(phase==='id'){setPhase('pick');}
+      else if(phase==='oi'){resetQ();setPhase('q');}
       else if(phase==='ad')doSber();
       else if(phase==='sk')finishOk();
       else if(phase==='zd')setPhase('sum');
@@ -257,8 +259,13 @@ function Mission({day,onBack}){
       setPhase('pick');
     }
   }
-  // Vybrat okruh z pick obrazovky
-  function pickOk(idx){setOi(idx);resetQ();setPhase('q');}
+  // Vybrat okruh z pick obrazovky → intro dialog okruhu → otázky
+  function pickOk(idx){
+    setOi(idx);resetQ();
+    const okr=day.okruhy?.[idx];
+    if(okr?.intro?.length>0){setDi(0);setPhase('oi');}
+    else setPhase('q');
+  }
 
   // Odpověď
   function pick(opt){
@@ -296,6 +303,7 @@ function Mission({day,onBack}){
   function stepBack(){
     if(phase==='q'&&qi>0){setQi(qi-1);setAtt(0);setAns(null);setSel(null);setWrongOpts([]);}
     else if(phase==='q'&&qi===0){setPhase('pick');}
+    else if(phase==='oi'){setPhase('pick');}
     else if(phase==='ad'||phase==='sk'){resetQ();setPhase('q');}
     else if(phase==='id'){onBack();}
     else if(phase==='pick'){onBack();}
@@ -307,7 +315,7 @@ function Mission({day,onBack}){
   if(phase==='av')return<Vid src={GH+(avids[oi]||'')} onEnd={vEnd}/>;
   if(phase==='zv')return<Vid src={GH+zvid} onEnd={vEnd}/>;
 
-  if(['id','ad','sk','zd'].includes(phase)){
+  if(['id','oi','ad','sk','zd'].includes(phase)){
     if(!cd){advD();return null;}
     return(
       <div className="scene" onClick={advD} style={{cursor:'pointer'}}>
