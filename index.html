@@ -140,7 +140,7 @@ function Mission({day,onBack}){
   const obrQ=viz.obr_okruhy||viz.obr||[];   // obrázky pro otázky
   const obrA=viz.obr_akce||viz.obr||[];      // obrázky pro akce
   const obrS=viz.obr_scenky||viz.obr||[];    // obrázky pro scénky
-  const obrIntro=obrQ[0]||'';                // intro = stejný jako okruh 0
+  const obrIntro=viz.obr_intro||obrQ[0]||''; // intro = vlastní nebo okruh 0
 
   const [phase,setPhase]=useState(ivids.length>0?'iv':'id');
   const [oi,setOi]=useState(0);

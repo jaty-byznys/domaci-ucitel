@@ -1422,6 +1422,30 @@
           72,
           16
         ]
+      },
+      "D1S1b": {
+        "volta": [
+          48,
+          12
+        ],
+        "agent": [
+          15,
+          22
+        ]
+      },
+      "D1S2b": {
+        "volta": [
+          55,
+          10
+        ],
+        "agent": [
+          82,
+          14
+        ],
+        "skripek": [
+          25,
+          35
+        ]
       }
     },
     "heads_zaver": {
@@ -1435,13 +1459,13 @@
       ]
     },
     "obr_okruhy": [
-      "img/m01/d01/D1S1.png",
+      "img/m01/d01/D1S1b.png",
       "img/m01/d01/D1S4.png",
       "img/m01/d01/D1S5.png",
       "img/m01/d01/D1S7.png"
     ],
     "obr_akce": [
-      "img/m01/d01/D1S2.png",
+      "img/m01/d01/D1S2b.png",
       "img/m01/d01/D1S3.png",
       "img/m01/d01/D1S6.png",
       "img/m01/d01/D1S7.png"
@@ -1451,6 +1475,7 @@
       "img/m01/d01/D1S4.png",
       "img/m01/d01/D1S5.png",
       "img/m01/d01/D1S7.png"
-    ]
+    ],
+    "obr_intro": "img/m01/d01/D1S1.png"
   }
 }
