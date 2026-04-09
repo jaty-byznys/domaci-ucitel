@@ -176,6 +176,7 @@ function Mission({day,onBack}){
   const [coll,setColl]=useState(null);
   const [ivi,setIvi]=useState(0);
   const [wrongOpts,setWrongOpts]=useState([]);
+  const [done,setDone]=useState([]);  // hotové okruhy (indexy)
 
   const ok=day.okruhy?.[oi];
   const q=ok?.otazky?.[qi];
@@ -183,7 +184,7 @@ function Mission({day,onBack}){
   // Obrázek pozadí podle fáze
   function curImg(){
     if(phase==='zd'||phase==='sum') return zimg;
-    if(phase==='id') return obrIntro;
+    if(phase==='id'||phase==='pick') return obrIntro;
     if(phase==='q') return obrQ[oi]||obrIntro;
     if(phase==='ad') return obrA[oi]||obrQ[oi]||obrIntro;
     if(phase==='sk') return obrS[oi]||obrQ[oi]||obrIntro;
@@ -230,9 +231,9 @@ function Mission({day,onBack}){
   function advD(){
     if(di<ds.length-1)setDi(di+1);
     else{setDi(0);
-      if(phase==='id'){resetQ();setPhase('q');}
+      if(phase==='id'){setPhase('pick');}
       else if(phase==='ad')doSber();
-      else if(phase==='sk')nxtOk();
+      else if(phase==='sk')finishOk();
       else if(phase==='zd')setPhase('sum');
     }
   }
@@ -241,14 +242,23 @@ function Mission({day,onBack}){
   function clSber(){setColl(null);afterSber();}
   function afterSber(){
     if(ok?.scenka?.length>0){setDi(0);setPhase('sk');}
-    else nxtOk();
+    else finishOk();
   }
-  // Další okruh
-  function nxtOk(){
-    const n=oi+1;
-    if(n<day.okruhy.length){setOi(n);resetQ();setPhase('q');}
-    else{if(zvid)setPhase('zv');else if(day.zaver?.length>0){setDi(0);setPhase('zd');}else setPhase('sum');}
+  // Okruh dokončen → označit jako hotový → zpět na výběr nebo závěr
+  function finishOk(){
+    const nd=[...done,oi];
+    setDone(nd);
+    if(nd.length>=day.okruhy.length){
+      // Všechny hotové → závěr
+      if(zvid)setPhase('zv');
+      else if(day.zaver?.length>0){setDi(0);setPhase('zd');}
+      else setPhase('sum');
+    } else {
+      setPhase('pick');
+    }
   }
+  // Vybrat okruh z pick obrazovky
+  function pickOk(idx){setOi(idx);resetQ();setPhase('q');}
 
   // Odpověď
   function pick(opt){
@@ -267,18 +277,10 @@ function Mission({day,onBack}){
     setAns(null);setSel(null);setAtt(0);setWrongOpts([]);
     const n=qi+1;
     if(n>=(ok?.otazky?.length||10)){
-      // Okruh hotový
-      if(oi<day.okruhy.length-1){
-        // Akční video (pokud existuje)
-        if(avids[oi])setPhase('av');
-        else if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}
-        else doSber();
-      }else{
-        // Poslední okruh
-        if(zvid)setPhase('zv');
-        else if(day.zaver?.length>0){setDi(0);setPhase('zd');}
-        else setPhase('sum');
-      }
+      // Okruh hotový — akce video → akce dialogy → sběr → scénka → pick/závěr
+      if(avids[oi])setPhase('av');
+      else if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}
+      else doSber();
     }else setQi(n);
   }
   // Volta text
@@ -293,10 +295,11 @@ function Mission({day,onBack}){
   // Krok zpět
   function stepBack(){
     if(phase==='q'&&qi>0){setQi(qi-1);setAtt(0);setAns(null);setSel(null);setWrongOpts([]);}
-    else if(phase==='q'&&qi===0){setDi(0);setPhase('id');}
+    else if(phase==='q'&&qi===0){setPhase('pick');}
     else if(phase==='ad'||phase==='sk'){resetQ();setPhase('q');}
     else if(phase==='id'){onBack();}
-    else if(phase==='zd'){setPhase('q');}
+    else if(phase==='pick'){onBack();}
+    else if(phase==='zd'){setPhase('pick');}
   }
 
   // RENDER
@@ -321,6 +324,47 @@ function Mission({day,onBack}){
             <div style={{color:'#555',fontSize:13,marginTop:20}}>Klikni</div>
           </div>
         </div>}
+      </div>
+    );
+  }
+
+  if(phase==='pick'){
+    const ico=['🧪','🧪','🧪','🧪'];
+    const clr=['#3B82F6','#F59E0B','#10B981','#EF4444'];
+    const lbl=['Čeština','Matika','Angličtina','Chaos'];
+    return(
+      <div className="scene">
+        <img src={bg()} alt=""/>
+        <div className="topbar"><button className="pill" onClick={onBack}>✕ Menu</button></div>
+        <div style={{position:'fixed',inset:0,display:'flex',alignItems:'center',justifyContent:'center',zIndex:20}}>
+          <div style={{textAlign:'center',maxWidth:500,width:'92%'}}>
+            <div style={{fontFamily:"'Bangers',cursive",fontSize:28,color:'#FFD700',marginBottom:6,textShadow:'2px 2px 8px rgba(0,0,0,0.7)'}}>
+              {done.length===0?'Vyber si okruh!':'Co dál?'}
+            </div>
+            <div style={{fontSize:14,color:'rgba(255,255,255,0.6)',marginBottom:20,textShadow:'1px 1px 4px rgba(0,0,0,0.7)'}}>
+              {done.length}/{day.okruhy.length} hotovo
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+              {day.okruhy.map((o,i)=>{
+                const isDone=done.includes(i);
+                return(<button key={i} disabled={isDone} onClick={()=>pickOk(i)} style={{
+                  padding:'18px 14px',borderRadius:16,border:'2.5px solid '+(isDone?'rgba(255,255,255,0.1)':clr[i%4]),
+                  background:isDone?'rgba(255,255,255,0.04)':'rgba(12,12,24,0.88)',
+                  backdropFilter:'blur(8px)',cursor:isDone?'default':'pointer',
+                  opacity:isDone?0.45:1,transition:'all 0.15s',textAlign:'center'
+                }}>
+                  <div style={{fontSize:32,marginBottom:4}}>{isDone?'✅':ico[i%4]}</div>
+                  <div style={{fontFamily:"'Bangers',cursive",fontSize:16,color:isDone?'#6B7280':clr[i%4],letterSpacing:1}}>
+                    {o.tema||lbl[i%4]}
+                  </div>
+                  <div style={{fontSize:11,color:'rgba(255,255,255,0.4)',marginTop:2}}>
+                    {isDone?'Hotovo':'10 otázek'}
+                  </div>
+                </button>);
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
