@@ -7,128 +7,100 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
---bg:#0f1117;--card:#1a1d27;--card2:#242834;
---text:#e8e8ed;--text2:#9ca3af;--text3:#6b7280;
---accent:#f59e0b;--accent2:#fbbf24;
---green:#10b981;--red:#ef4444;--blue:#3b82f6;
-}
+:root{--bg:#0f1117;--card:#1a1d27;--card2:#242834;--text:#e8e8ed;--text2:#9ca3af;--text3:#6b7280;--accent:#f59e0b;--green:#10b981;--red:#ef4444;--blue:#3b82f6}
 html,body{height:100%;overflow:hidden}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);width:100vw;height:100vh;height:100dvh}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text)}
 button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
-
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-@keyframes bubblePop{0%{opacity:0;transform:scale(0.6)}60%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes collectPop{0%{transform:scale(0) rotate(-8deg);opacity:0}50%{transform:scale(1.12) rotate(2deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bubPop{0%{opacity:0;transform:translate(-50%,-100%) scale(0.5)}60%{transform:translate(-50%,-100%) scale(1.04)}100%{opacity:1;transform:translate(-50%,-100%) scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cpop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* LOGIN */
-.login-screen{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 24px;text-align:center}
-.login-logo{font-size:72px;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4))}
-.login-title{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.login-sub{color:var(--text2);font-size:15px;margin:6px 0 40px}
-.login-btn{display:block;width:100%;max-width:400px;padding:18px;border-radius:14px;color:#fff;font-size:17px;font-weight:700;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
-
-/* DAY PICKER */
-.dp-screen{height:100%;display:flex;flex-direction:column}
+.login{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 24px;text-align:center}
+.ltitle{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lbtn{display:block;width:100%;max-width:400px;padding:18px;border-radius:14px;color:#fff;font-size:17px;font-weight:700;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.dp{height:100%;display:flex;flex-direction:column}
 .hdr{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--card);border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.back-btn{background:var(--card2);padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--text2)}
-.hdr-title{font-size:17px;font-weight:700;flex:1}
-.day-list{flex:1;overflow-y:auto;padding:16px 18px}
-.day-card{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:left;border-left:4px solid var(--accent);margin-bottom:8px;width:100%}
-.day-card.locked{opacity:0.4;border-left-color:var(--text3)}
-.day-num{font-size:28px;font-weight:800;color:var(--accent);min-width:40px;text-align:center;font-family:'Bangers',cursive}
+.bbtn{background:var(--card2);padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--text2)}
+.dl{flex:1;overflow-y:auto;padding:16px 18px}
+.dc{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:left;border-left:4px solid var(--accent);margin-bottom:8px;width:100%}
+.dc.lk{opacity:0.4;border-left-color:var(--text3)}
+.dn{font-size:28px;font-weight:800;color:var(--accent);min-width:40px;text-align:center;font-family:'Bangers',cursive}
 
-/* SCENE — fullscreen černá, uvnitř img-box s poměrem 16:9, bubliny relativní k obrázku */
-.scene{position:fixed;inset:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
-/* img-box: drží 16:9, maximálně vyplní viewport, obrázek = pozadí cover uvnitř */
-.img-box{
-  position:relative;
-  width:100vw;height:calc(100vw * 9 / 16);
-  max-height:100vh;max-height:100dvh;
-  max-width:calc(100vh * 16 / 9);
-  background-size:cover;background-position:center;background-repeat:no-repeat;
-}
-.scene-dim{position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:linear-gradient(to top,rgba(0,0,0,0.2) 0%,transparent 20%,transparent 80%,rgba(0,0,0,0.1) 100%)}
-.top-bar{position:fixed;top:8px;left:12px;right:12px;z-index:40;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
-.top-bar>*{pointer-events:auto}
+/* SCÉNA */
+.scene{position:fixed;inset:0;background:#000;overflow:hidden}
+.scene>img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center}
+.topbar{position:fixed;top:8px;left:12px;right:12px;z-index:40;display:flex;justify-content:space-between;pointer-events:none}
+.topbar>*{pointer-events:auto}
 .pill{background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:6px 14px;color:#fff;font-size:13px;font-weight:700}
 
-/* BUBLINA — vajíčko, špička dolů k ústům
-   position:absolute uvnitř .img-box → procenta = procenta obrázku
-   transform:translateY(-100%) → spodek bubliny (špička) = na anchor pozici
-   Volta ústa D1S1: left:30%, top:22%
-   Agent ústa D1S1: left:82%, top:27%
+/* ═══ BUBLINA ═══
+   position:fixed — JS počítá left/top v px
+   transform:translate(-50%,-100%) — střed X na hlavu, spodek na hlavu
+   
+   AUTO-SIZE + CENTROVANÝ TEXT:
+   - display:flex + flex-direction:column + align-items:center na wrapperu
+   - bub-egg: display:inline-flex, flex-direction:column, align-items:center
+   - text: text-align:center pro krátké, text-align:left pro dlouhé (JS přepne)
+   - min-width:100px, max-width:min(40vw, 340px)
+   - padding škáluje: 12px 20px pro krátké, 16px 28px pro dlouhé
+   - border-radius:28px = funguje jako vajíčko pro jakýkoli rozměr
 */
-.bub-wrap{position:absolute;z-index:15;animation:bubblePop 0.3s ease-out;
-  transform:translateY(-100%)}
+.bub{position:fixed;z-index:15;animation:bubPop 0.35s ease-out;
+  transform:translate(-50%,-100%);pointer-events:none;
+  display:flex;flex-direction:column;align-items:center}
 .bub-egg{
-  position:relative;background:#fff;color:#1a1a1a;
-  border:3px solid #222;
-  border-radius:48% 48% 48% 48% / 52% 52% 52% 52%;
-  padding:14px 28px 12px;
-  min-width:170px;max-width:280px;
-  box-shadow:3px 4px 0 rgba(0,0,0,0.2);
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  background:#fff;color:#1a1a1a;
+  border:3.5px solid #222;
+  border-radius:28px;
+  box-shadow:3px 4px 0 rgba(0,0,0,0.22);
+  position:relative;
+  max-width:min(40vw,340px);min-width:100px;
 }
-.bub-name{font-family:'Bangers',cursive;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:2px;text-align:center}
-.bub-name.cv{color:#1565C0}
-.bub-name.ca{color:#2E7D32}
-.bub-name.cp{color:#C62828}
-.bub-txt{font-size:15px;font-weight:600;line-height:1.4;text-align:left}
-.bub-tail{position:absolute;bottom:-20px;width:20px;height:22px}
-.bub-tail.tl{left:40%}
-.bub-tail.tr{right:40%}
+.bub-egg.short{padding:10px 22px 8px;border-radius:24px}
+.bub-egg.medium{padding:14px 26px 12px}
+.bub-egg.long{padding:16px 28px 14px}
+.bub-who{font-family:'Bangers',cursive;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px;text-align:center;width:100%}
+.bub-who.cv{color:#1565C0}.bub-who.ca{color:#2E7D32}.bub-who.cp{color:#C62828}
+.bub-txt{font-size:17px;font-weight:600;line-height:1.4;width:100%}
+.bub-txt.tc{text-align:center}
+.bub-txt.tl{text-align:left}
+.bub-tail{width:20px;height:24px;flex-shrink:0;margin-top:-2px}
 
-.scene-desc{
-  position:absolute;z-index:15;top:45%;left:50%;transform:translate(-50%,-50%);
+.sdesc{position:fixed;z-index:15;top:40%;left:50%;transform:translate(-50%,-50%);
   background:rgba(0,0,0,0.78);border-radius:20px;padding:14px 24px;
-  color:#ddd;font-size:16px;font-style:italic;text-align:center;
-  max-width:75%;backdrop-filter:blur(4px);animation:fadeIn 0.3s
-}
-
-.tap-hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:30;
+  color:#ddd;font-size:18px;font-style:italic;text-align:center;
+  max-width:75%;backdrop-filter:blur(4px);animation:fadeIn 0.3s;pointer-events:none}
+.thint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:30;
   background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);border-radius:20px;padding:7px 18px;
   font-size:13px;color:rgba(255,255,255,0.45);pointer-events:none}
 
-/* OTÁZKOVÝ PANEL */
-.q-panel{position:absolute;bottom:0;left:0;right:0;z-index:20;
+.qp{position:fixed;bottom:0;left:0;right:0;z-index:20;
   background:rgba(12,12,24,0.93);backdrop-filter:blur(12px);
-  border-top:2px solid rgba(255,255,255,0.08);padding:10px 14px 14px;
-  animation:slideUp 0.25s ease-out}
-.q-text{font-size:17px;font-weight:700;color:#E8E8ED;line-height:1.4;margin-bottom:8px;text-align:center}
-.q-opts{display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto}
-.q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:11px;
+  border-top:2px solid rgba(255,255,255,0.08);padding:10px 14px 14px;animation:slideUp 0.25s}
+.qt{font-size:17px;font-weight:700;color:#E8E8ED;line-height:1.4;margin-bottom:8px;text-align:center}
+.qo{display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto}
+.qb{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:11px;
   background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);
   color:#fff;font-size:16px;font-weight:600;text-align:left;transition:all 0.12s}
-.q-opt:hover:not(.lk){border-color:var(--accent);background:rgba(255,255,255,0.1)}
-.q-opt:active:not(.lk){transform:scale(0.98)}
-.q-opt.lk{pointer-events:none}
-.q-lbl{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+.qb:hover:not(.lk){border-color:var(--accent);background:rgba(255,255,255,0.1)}
+.qb.lk{pointer-events:none}
+.ql{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,0.1);font-family:'Bangers',cursive;font-size:14px}
-.q-opt.ok{background:rgba(16,185,129,0.2);border-color:#10B981;color:#A7F3D0}
-.q-opt.ok .q-lbl{background:#10B981;color:#fff}
-.q-opt.bad{background:rgba(239,68,68,0.15);border-color:#EF4444;color:#FECACA}
-.q-opt.bad .q-lbl{background:#EF4444;color:#fff}
-.q-opt.dim{opacity:0.3}
-.q-info{text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px}
+.qb.ok{background:rgba(16,185,129,0.2);border-color:#10B981;color:#A7F3D0}.qb.ok .ql{background:#10B981;color:#fff}
+.qb.bad{background:rgba(239,68,68,0.15);border-color:#EF4444;color:#FECACA}.qb.bad .ql{background:#EF4444;color:#fff}
+.qb.dim{opacity:0.3}
+.qi{text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px}
 
-/* SBĚR */
-.col-ov{position:absolute;inset:0;z-index:60;background:rgba(0,0,0,0.87);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;cursor:pointer}
-.col-box{text-align:center;padding:30px;animation:collectPop 0.5s ease-out}
-
-/* SHRNUTÍ */
-.sum-ov{position:absolute;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:50}
-.sum-box{background:rgba(18,18,35,0.95);border:2px solid rgba(255,255,255,0.12);border-radius:22px;padding:32px;max-width:420px;width:90%;text-align:center;animation:collectPop 0.4s}
-
-/* VIDEO */
-.vid-wrap{position:fixed;inset:0;background:#000;z-index:100}
-.vid-wrap video{width:100%;height:100%;object-fit:cover}
-.skip-btn{position:absolute;bottom:24px;right:24px;background:rgba(0,0,0,0.6);color:#fff;border:none;
-  border-radius:12px;padding:10px 20px;font-size:15px;font-weight:700;backdrop-filter:blur(4px);z-index:10}
-
+.cov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,0.87);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.cbox{text-align:center;padding:30px;animation:cpop 0.5s}
+.sov{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:50}
+.sbox{background:rgba(18,18,35,0.95);border:2px solid rgba(255,255,255,0.12);border-radius:22px;padding:32px;max-width:420px;width:90%;text-align:center;animation:cpop 0.4s}
+.vw{position:fixed;inset:0;background:#000;z-index:100}
+.vw video{width:100%;height:100%;object-fit:cover}
+.skip{position:absolute;bottom:24px;right:24px;background:rgba(0,0,0,0.6);color:#fff;border:none;border-radius:12px;padding:10px 20px;font-size:15px;font-weight:700;backdrop-filter:blur(4px);z-index:10}
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px}
 .spinner{width:40px;height:40px;border:4px solid var(--card2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
 </style>
@@ -139,406 +111,277 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <script type="text/babel">
-const {useState,useRef,useEffect} = React;
-
-const GH = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
-const LABELS = ['A','B','C','D','E'];
-const NAMES = {volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák',piratka:'Pirátka',kotva:'Kotva'};
-const PIRATES = ['skripek','repak','krivak','piratka','kotva'];
+const {useState,useEffect,useCallback}=React;
+const GH='https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
+const LBL=['A','B','C','D','E'];
+const NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák',piratka:'Pirátka',kotva:'Kotva'};
+const PIR=['skripek','repak','krivak','piratka','kotva'];
 function norm(s){return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');}
 
-/* ═══ BUBLINA — vajíčko, špička dolů k ústům ═══
-   Anchor = pozice úst postavy v % obrázku (cover).
-   CSS translateY(-100%) posune bublinu NAD anchor.
-   Na D1S1: Volta ústa ~33% zleva, ~30% shora. Agent ústa ~84% zleva, ~33% shora.
+/* ═══ POZICE HLAV — per scéna, per postava ═══
+   Klíč: "S{číslo}" = obrázek scény
+   Hodnoty: {postava: [x%, y%]} na ORIGINÁLNÍM obrázku (2000×1116)
+   x% = horizontální pozice hlavy, y% = vertikální pozice hlavy (horní okraj čela)
 */
-function Bubble({who,text}){
-  const w = (who||'volta').toLowerCase();
-  if(w==='popis') return <div className="scene-desc">{text}</div>;
-  
-  const name = NAMES[w]||who;
-  const isAgent = w==='agent';
-  const isPirat = PIRATES.includes(w);
-  
-  // Anchor = pozice úst v % obrázku. Bublina se vykreslí NAD.
-  let style;
-  if(isAgent){
-    // Agent K ústa: ~84% zleva, ~33% shora
-    style = {left:'74%',top:'18%'};
-  } else if(isPirat){
-    // Piráti — střed, trochu vlevo
-    style = {left:'30%',top:'20%'};
-  } else {
-    // Volta ústa: ~33% zleva, ~30% shora
-    style = {left:'20%',top:'10%'};
-  }
-  
-  const nc = isAgent?'ca':isPirat?'cp':'cv';
-  const tc = isAgent?'tr':'tl';
-  
+const HEADS = {
+  S1: {volta:[33,18], agent:[85,24]},                       // intro + okruh 1
+  S2: {volta:[35,14], agent:[85,18]},                       // okruh 2
+  S3: {volta:[30,16], agent:[60,18], keksik:[90,24]},       // okruh 3 (papoušek)
+  S4: {volta:[40,12], agent:[75,10]},                       // okruh 4 (chaos)
+  S5: {volta:[38,12], agent:[65,14]},                       // závěr
+  S6: {volta:[35,15], agent:[80,18]},                       // extra
+};
+
+/* ═══ COVER MATH ═══
+   Obrázek 16:9, object-fit:cover.
+   Vrátí px pozici na obrazovce pro daný % bod na orig. obrázku.
+*/
+const IR=16/9;
+function headPx(pctX,pctY){
+  const vw=window.innerWidth, vh=window.innerHeight;
+  const sr=vw/vh;
+  let iw,ih,ox,oy;
+  if(sr>IR){iw=vw;ih=vw/IR;ox=0;oy=(vh-ih)/2;} // landscape: šířka řídí
+  else     {ih=vh;iw=vh*IR;oy=0;ox=(vw-iw)/2;} // portrait: výška řídí
+  return {x: ox + iw*pctX/100, y: oy + ih*pctY/100};
+}
+
+/* ═══ BUBLINA ═══ */
+function Bub({who,text,sceneKey}){
+  const w=(who||'volta').toLowerCase();
+  if(w==='popis') return <div className="sdesc">{text}</div>;
+  const name=NAMES[w]||who;
+  const isA=w==='agent';
+  const isP=PIR.includes(w);
+  const [pos,setPos]=useState({x:0,y:0});
+
+  // Najdi pozici hlavy ze HEADS pro tuto scénu a postavu
+  const heads=HEADS[sceneKey]||HEADS.S1;
+  const h=heads[w]||heads.volta||[33,18];
+
+  const calc=useCallback(()=>{
+    setPos(headPx(h[0],h[1]));
+  },[h[0],h[1]]);
+  useEffect(()=>{calc();window.addEventListener('resize',calc);return()=>window.removeEventListener('resize',calc);},[calc]);
+
+  const nc=isA?'ca':isP?'cp':'cv';
+  // Auto-size: short (<15 znaků), medium (15-60), long (60+)
+  const len=text.length;
+  const sz=len<15?'short':len<60?'medium':'long';
+  const ta=len<25?'tc':'tl'; // text-align: center pro krátké, left pro dlouhé
+
   return(
-    <div className="bub-wrap" style={style} key={w+text.substring(0,20)}>
-      <div className="bub-egg">
-        <div className={'bub-name '+nc}>{name}</div>
-        <div className="bub-txt">{text}</div>
+    <div className="bub" style={{left:pos.x+'px',top:pos.y+'px'}} key={w+text.slice(0,12)}>
+      <div className={'bub-egg '+sz}>
+        <div className={'bub-who '+nc}>{name}</div>
+        <div className={'bub-txt '+ta}>{text}</div>
       </div>
-      <svg className={'bub-tail '+tc} viewBox="0 0 20 22" fill="none">
-        <path d="M2 0 L10 20 L18 0" fill="#222"/>
-        <path d="M4 0 L10 15 L16 0" fill="#fff"/>
+      <svg className="bub-tail" viewBox="0 0 20 24" fill="none">
+        <path d="M2 0 L10 22 L18 0" fill="#222"/>
+        <path d="M4.5 0 L10 16 L15.5 0" fill="#fff"/>
       </svg>
     </div>
   );
 }
 
 /* ═══ VIDEO ═══ */
-function VideoPlayer({src,onEnd}){
-  return(
-    <div className="vid-wrap">
-      <video key={src} src={src} autoPlay muted playsInline onEnded={onEnd} onError={onEnd}/>
-      <button className="skip-btn" onClick={onEnd}>Přeskočit ▸</button>
-    </div>
-  );
+function Vid({src,onEnd}){
+  return(<div className="vw"><video key={src} src={src} autoPlay muted playsInline onEnded={onEnd} onError={onEnd}/><button className="skip" onClick={onEnd}>Přeskočit ▸</button></div>);
 }
 
-/* ═══ MISSION SCREEN ═══ */
-function MissionScreen({dayData,onBack}){
-  const [phase,setPhase] = useState('intro_video');
-  const [okruhIdx,setOkruhIdx] = useState(0);
-  const [qIdx,setQIdx] = useState(0);
-  const [dialogIdx,setDialogIdx] = useState(0);
-  const [score,setScore] = useState({correct:0,total:0});
-  const [attempts,setAttempts] = useState(0);
-  const [answered,setAnswered] = useState(null); // null|'correct'|'wrong'|'giveup'
-  const [selectedOpt,setSelectedOpt] = useState(null);
-  const [collectItem,setCollectItem] = useState(null);
-  const [introVidIdx,setIntroVidIdx] = useState(0);
-  
-  const dn = dayData.den;
-  const imgBase = GH+'img/m01/d'+String(dn).padStart(2,'0')+'/';
-  const vidBase = GH+'video/m01/d'+String(dn).padStart(2,'0')+'/';
-  
-  const sImg = n => imgBase+'D'+dn+'S'+n+'.png';
-  const introVids = [vidBase+'D'+dn+'-S1.mp4', vidBase+'D'+dn+'-S2.mp4'];
-  const akceVid = oi => vidBase+'D'+dn+'-S'+(oi+3)+'.mp4';
-  const zaverVid = vidBase+'D'+dn+'-S6.mp4';
-  
-  function curBg(){
-    if(phase==='summary'||phase==='zaver_dialog') return sImg(5);
-    return sImg(Math.min(okruhIdx+1,6));
+/* ═══ MISSION ═══ */
+function Mission({day,onBack}){
+  const [phase,setPhase]=useState('iv');
+  const [oi,setOi]=useState(0);
+  const [qi,setQi]=useState(0);
+  const [di,setDi]=useState(0);
+  const [sc,setSc]=useState({c:0,t:0});
+  const [att,setAtt]=useState(0);
+  const [ans,setAns]=useState(null);
+  const [sel,setSel]=useState(null);
+  const [coll,setColl]=useState(null);
+  const [ivi,setIvi]=useState(0);
+
+  const dn=day.den;
+  const ib=GH+'img/m01/d'+String(dn).padStart(2,'0')+'/';
+  const vb=GH+'video/m01/d'+String(dn).padStart(2,'0')+'/';
+  const sI=n=>ib+'D'+dn+'S'+n+'.png';
+  const iV=[vb+'D'+dn+'-S1.mp4',vb+'D'+dn+'-S2.mp4'];
+  const aV=i=>vb+'D'+dn+'-S'+(i+3)+'.mp4';
+  const zV=vb+'D'+dn+'-S6.mp4';
+
+  // Aktuální scéna klíč pro HEADS lookup
+  function sk(){
+    if(phase==='sum'||phase==='zd') return 'S5';
+    return 'S'+(Math.min(oi+1,6));
   }
-  
-  const okruh = dayData.okruhy?.[okruhIdx];
-  const question = okruh?.otazky?.[qIdx];
-  
-  function getDialogs(){
-    if(phase==='intro_dialog') return dayData.intro||[];
-    if(phase==='akce_dialog') return okruh?.akce?.dialog||[];
-    if(phase==='scenka') return okruh?.scenka||[];
-    if(phase==='zaver_dialog') return dayData.zaver||[];
+  function bg(){return sI(phase==='sum'||phase==='zd'?5:Math.min(oi+1,6));}
+
+  const ok=day.okruhy?.[oi];
+  const q=ok?.otazky?.[qi];
+  function dlgs(){
+    if(phase==='id') return day.intro||[];
+    if(phase==='ad') return ok?.akce?.dialog||[];
+    if(phase==='sk') return ok?.scenka||[];
+    if(phase==='zd') return day.zaver||[];
     return [];
   }
-  const dialogs = getDialogs();
-  const curDlg = dialogs[dialogIdx];
-  
-  // ─── Navigace ───
-  function videoEnd(){
-    if(phase==='intro_video'){
-      if(introVidIdx+1 < introVids.length){setIntroVidIdx(introVidIdx+1);}
-      else{setDialogIdx(0);setPhase('intro_dialog');}
-    } else if(phase==='akce_video'){
-      if(okruh?.akce?.dialog?.length>0){setDialogIdx(0);setPhase('akce_dialog');}
-      else doSber();
-    } else if(phase==='zaver_video'){
-      if(dayData.zaver?.length>0){setDialogIdx(0);setPhase('zaver_dialog');}
-      else setPhase('summary');
+  const ds=dlgs(), cd=ds[di];
+
+  function vEnd(){
+    if(phase==='iv'){if(ivi+1<iV.length)setIvi(ivi+1);else{setDi(0);setPhase('id');}}
+    else if(phase==='av'){if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}else doC();}
+    else if(phase==='zv'){if(day.zaver?.length>0){setDi(0);setPhase('zd');}else setPhase('sum');}
+  }
+  function advD(){
+    if(di<ds.length-1){setDi(di+1);}
+    else{setDi(0);
+      if(phase==='id'){setQi(0);setAtt(0);setAns(null);setSel(null);setPhase('q');}
+      else if(phase==='ad')doC();
+      else if(phase==='sk')nxtO();
+      else if(phase==='zd')setPhase('sum');
     }
   }
-  
-  function advDlg(){
-    if(dialogIdx < dialogs.length-1){setDialogIdx(dialogIdx+1);}
-    else{
-      setDialogIdx(0);
-      if(phase==='intro_dialog'){setQIdx(0);setAttempts(0);setAnswered(null);setSelectedOpt(null);setPhase('questions');}
-      else if(phase==='akce_dialog') doSber();
-      else if(phase==='scenka') nextOkruh();
-      else if(phase==='zaver_dialog') setPhase('summary');
-    }
+  function doC(){const s=ok?.akce?.sber;if(s)setColl(s);else aftC();}
+  function clC(){setColl(null);aftC();}
+  function aftC(){if(ok?.scenka?.length>0){setDi(0);setPhase('sk');}else nxtO();}
+  function nxtO(){
+    const n=oi+1;
+    if(n<day.okruhy.length){setOi(n);setQi(0);setAtt(0);setAns(null);setSel(null);setDi(0);setPhase('q');}
+    else setPhase('zv');
   }
-  
-  function doSber(){
-    const s = okruh?.akce?.sber;
-    if(s){setCollectItem(s);} else afterSber();
-  }
-  function closeSber(){setCollectItem(null);afterSber();}
-  function afterSber(){
-    if(okruh?.scenka?.length>0){setDialogIdx(0);setPhase('scenka');}
-    else nextOkruh();
-  }
-  
-  function nextOkruh(){
-    const nx = okruhIdx+1;
-    if(nx < dayData.okruhy.length){
-      setOkruhIdx(nx);setQIdx(0);setAttempts(0);setAnswered(null);setSelectedOpt(null);setDialogIdx(0);
-      setPhase('questions');
-    } else setPhase('zaver_video');
-  }
-  
-  // ─── OTÁZKY: 3 pokusy, Volta pomáhá po každé špatné ───
-  function handleSelect(opt){
-    if(answered==='correct'||answered==='giveup') return;
-    const isCorrect = norm(opt)===norm(question.answer);
-    setSelectedOpt(opt);
-    
-    if(isCorrect){
-      setAnswered('correct');
-      setScore(p=>({correct:p.correct+1,total:p.total+1}));
-      setTimeout(()=>{goNextQ();},2200);
+  // 3 pokusy
+  function pick(opt){
+    if(ans==='ok'||ans==='out')return;
+    setSel(opt);
+    if(norm(opt)===norm(q.answer)){
+      setAns('ok');setSc(p=>({c:p.c+1,t:p.t+1}));setTimeout(nxtQ,2200);
     } else {
-      const na = attempts+1;
-      setAttempts(na);
-      if(na>=3){
-        setAnswered('giveup');
-        setScore(p=>({...p,total:p.total+1}));
-        setTimeout(()=>{goNextQ();},3000);
-      } else {
-        setAnswered('wrong');
-        // Volta pomůže — po 2.5s reset pro další pokus
-        setTimeout(()=>{setAnswered(null);setSelectedOpt(null);},2500);
-      }
+      const na=att+1;setAtt(na);
+      if(na>=3){setAns('out');setSc(p=>({...p,t:p.t+1}));setTimeout(nxtQ,3000);}
+      else{setAns('bad');setTimeout(()=>{setAns(null);setSel(null);},2500);}
     }
   }
-  
-  function goNextQ(){
-    setAnswered(null);setSelectedOpt(null);setAttempts(0);
-    const nq = qIdx+1;
-    if(nq >= (okruh?.otazky?.length||10)){
-      // Po 10 otázkách → akce video (nebo závěr pro poslední okruh)
-      if(okruhIdx < dayData.okruhy.length-1) setPhase('akce_video');
-      else setPhase('zaver_video');
-    } else setQIdx(nq);
+  function nxtQ(){
+    setAns(null);setSel(null);setAtt(0);
+    const n=qi+1;
+    if(n>=(ok?.otazky?.length||10)){if(oi<day.okruhy.length-1)setPhase('av');else setPhase('zv');}
+    else setQi(n);
   }
-  
-  // Volta text
-  function voltaText(){
-    if(!question) return '';
-    if(answered==='correct') return question.vs||'Správně! 🎯';
-    if(answered==='giveup') return 'Správná odpověď: '+question.answer;
-    if(answered==='wrong') return question.vn||question.hint||'Zkus to jinak!';
-    return question.vi||question.question;
+  function vTxt(){
+    if(!q)return '';
+    if(ans==='ok')return q.vs||'Správně! 🎯';
+    if(ans==='out')return 'Správná odpověď: '+q.answer;
+    if(ans==='bad')return q.vn||q.hint||'Zkus to jinak!';
+    return q.vi||q.question;
   }
-  
-  // ═══ RENDER ═══
-  
-  // VIDEO
-  if(phase==='intro_video') return <VideoPlayer src={introVids[introVidIdx]} onEnd={videoEnd}/>;
-  if(phase==='akce_video') return <VideoPlayer src={akceVid(okruhIdx)} onEnd={videoEnd}/>;
-  if(phase==='zaver_video') return <VideoPlayer src={zaverVid} onEnd={videoEnd}/>;
-  
-  // DIALOGY
-  if(['intro_dialog','akce_dialog','scenka','zaver_dialog'].includes(phase)){
-    const d = curDlg;
-    if(!d){advDlg();return null;}
+
+  // RENDER
+  if(phase==='iv')return <Vid src={iV[ivi]} onEnd={vEnd}/>;
+  if(phase==='av')return <Vid src={aV(oi)} onEnd={vEnd}/>;
+  if(phase==='zv')return <Vid src={zV} onEnd={vEnd}/>;
+
+  if(['id','ad','sk','zd'].includes(phase)){
+    if(!cd){advD();return null;}
     return(
-      <div className="scene" onClick={advDlg} style={{cursor:'pointer'}}>
-        <div className="img-box" style={{backgroundImage:'url('+curBg()+')'}}>
-          <div className="scene-dim"/>
-          <Bubble who={d.p} text={d.t}/>
-        </div>
-        <div className="top-bar">
-          <button className="pill" onClick={e=>{e.stopPropagation();onBack();}}>← Zpět</button>
-        </div>
-        <div className="tap-hint">{dialogIdx+1}/{dialogs.length} — Klikni ▸</div>
-        {collectItem && (
-          <div className="col-ov" onClick={e=>{e.stopPropagation();closeSber();}}>
-            <div className="col-box">
-              <div style={{fontSize:14,color:'#FFD700',fontWeight:700,letterSpacing:2,marginBottom:16}}>✦ NOVÝ PŘEDMĚT ✦</div>
-              <div style={{fontSize:56,marginBottom:12}}>{collectItem.ikona||'📦'}</div>
-              <div style={{fontSize:24,fontWeight:700,color:'#FFD700'}}>{collectItem.nazev}</div>
-              {collectItem.popis && <div style={{color:'#aaa',fontSize:15,marginTop:6}}>{collectItem.popis}</div>}
-              <div style={{color:'#555',fontSize:13,marginTop:20}}>Klikni pro pokračování</div>
-            </div>
+      <div className="scene" onClick={advD} style={{cursor:'pointer'}}>
+        <img src={bg()} alt=""/>
+        <div className="topbar"><button className="pill" onClick={e=>{e.stopPropagation();onBack();}}>← Zpět</button></div>
+        <Bub who={cd.p} text={cd.t} sceneKey={sk()}/>
+        <div className="thint">{di+1}/{ds.length} — Klikni ▸</div>
+        {coll&&<div className="cov" onClick={e=>{e.stopPropagation();clC();}}>
+          <div className="cbox">
+            <div style={{fontSize:14,color:'#FFD700',fontWeight:700,letterSpacing:2,marginBottom:16}}>✦ NOVÝ PŘEDMĚT ✦</div>
+            <div style={{fontSize:56,marginBottom:12}}>{coll.ikona||'📦'}</div>
+            <div style={{fontSize:24,fontWeight:700,color:'#FFD700'}}>{coll.nazev}</div>
+            {coll.popis&&<div style={{color:'#aaa',fontSize:15,marginTop:6}}>{coll.popis}</div>}
+            <div style={{color:'#555',fontSize:13,marginTop:20}}>Klikni</div>
           </div>
-        )}
+        </div>}
       </div>
     );
   }
-  
-  // OTÁZKY
-  if(phase==='questions' && question){
-    const vt = voltaText();
-    const agentTxt = selectedOpt;
-    const locked = answered==='correct'||answered==='giveup';
-    const okIcons = ['📝','🔢','🌍','🌀'];
-    
+
+  if(phase==='q'&&q){
+    const lk=ans==='ok'||ans==='out';
+    const ico=['📝','🔢','🌍','🌀'];
     return(
       <div className="scene">
-        <div className="img-box" style={{backgroundImage:'url('+curBg()+')'}}>
-          <div className="scene-dim"/>
-          <Bubble who="volta" text={vt}/>
-          {agentTxt && <Bubble who="agent" text={agentTxt}/>}
-        </div>
-        <div className="top-bar">
+        <img src={bg()} alt=""/>
+        <div className="topbar">
           <div style={{display:'flex',gap:8}}>
             <button className="pill" onClick={onBack}>← Zpět</button>
-            <span className="pill">{okIcons[okruhIdx]||'📚'} {okruh?.tema} — {qIdx+1}/{okruh?.otazky?.length}</span>
+            <span className="pill">{ico[oi]||'📚'} {ok?.tema} — {qi+1}/{ok?.otazky?.length}</span>
           </div>
-          <span className="pill">⭐ {score.correct}/{score.total}</span>
+          <span className="pill">⭐ {sc.c}/{sc.t}</span>
         </div>
-        
-        {/* Panel otázek dole */}
-        <div className="q-panel">
-          <div className="q-text">{question.question}</div>
-          <div className="q-opts">
-            {(question.options||[]).map((opt,i)=>{
-              let c = 'q-opt';
-              if(locked){
-                if(norm(opt)===norm(question.answer)) c+=' ok';
-                else if(opt===selectedOpt) c+=' bad';
-                else c+=' dim';
-                c+=' lk';
-              } else if(answered==='wrong' && opt===selectedOpt){
-                c+=' bad';
-              }
-              return(
-                <button key={i} className={c} onClick={()=>handleSelect(opt)}>
-                  <span className="q-lbl">
-                    {locked && norm(opt)===norm(question.answer)?'✓':
-                     (opt===selectedOpt && (answered==='wrong'||answered==='giveup'))?'✗':
-                     LABELS[i]}
-                  </span>
-                  <span>{opt}</span>
-                </button>
-              );
+        <Bub who="volta" text={vTxt()} sceneKey={sk()}/>
+        {sel&&<Bub who="agent" text={sel} sceneKey={sk()}/>}
+        <div className="qp">
+          <div className="qt">{q.question}</div>
+          <div className="qo">
+            {(q.options||[]).map((o,i)=>{
+              let c='qb';
+              if(lk){if(norm(o)===norm(q.answer))c+=' ok';else if(o===sel)c+=' bad';else c+=' dim';c+=' lk';}
+              else if(ans==='bad'&&o===sel)c+=' bad';
+              return(<button key={i} className={c} onClick={()=>pick(o)}>
+                <span className="ql">{lk&&norm(o)===norm(q.answer)?'✓':(o===sel&&(ans==='bad'||ans==='out'))?'✗':LBL[i]}</span>
+                <span>{o}</span>
+              </button>);
             })}
           </div>
-          {!locked && attempts>0 && <div className="q-info">Pokus {attempts+1}/3 — Volta ti pomáhá ☝️</div>}
+          {!lk&&att>0&&<div className="qi">Pokus {att+1}/3 — Volta pomáhá ☝️</div>}
         </div>
       </div>
     );
   }
-  
-  // SHRNUTÍ
-  if(phase==='summary'){
+
+  if(phase==='sum'){
     return(
       <div className="scene">
-        <div className="img-box" style={{backgroundImage:'url('+sImg(5)+')'}}>
-          <div className="scene-dim"/>
-        </div>
-        <div className="sum-ov">
-          <div className="sum-box">
-            <div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FFD700',marginBottom:18}}>🎉 Den {dn} hotový!</div>
-            <div style={{display:'flex',justifyContent:'center',gap:28,marginBottom:20}}>
-              <div>
-                <div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#4CAF50'}}>{score.correct}</div>
-                <div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Správně</div>
-              </div>
-              <div>
-                <div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#fff'}}>{score.total}</div>
-                <div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Otázek</div>
-              </div>
-            </div>
-            {dayData.predmety_sberu?.length>0 && <div>
-              <div style={{fontFamily:"'Bangers',cursive",fontSize:18,color:'#fff',marginBottom:10}}>Sebrané předměty</div>
-              <div style={{display:'flex',justifyContent:'center',gap:8,flexWrap:'wrap'}}>
-                {dayData.predmety_sberu.map((p,i)=>(
-                  <div key={i} style={{background:'rgba(255,255,255,0.06)',borderRadius:12,padding:'8px 12px',fontSize:14,border:'1px solid rgba(245,158,11,0.3)'}}>
-                    <span style={{marginRight:5}}>{p.ikona}</span>{p.nazev}
-                  </div>
-                ))}
-              </div>
-            </div>}
-            <button onClick={onBack} style={{marginTop:24,background:'#f59e0b',border:'none',borderRadius:14,padding:'14px 32px',color:'#000',fontSize:18,fontWeight:700,cursor:'pointer'}}>
-              Zpět na mise
-            </button>
+        <img src={sI(5)} alt=""/>
+        <div className="sov"><div className="sbox">
+          <div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FFD700',marginBottom:18}}>🎉 Den {dn} hotový!</div>
+          <div style={{display:'flex',justifyContent:'center',gap:28,marginBottom:20}}>
+            <div><div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#4CAF50'}}>{sc.c}</div><div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Správně</div></div>
+            <div><div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#fff'}}>{sc.t}</div><div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Otázek</div></div>
           </div>
-        </div>
+          {day.predmety_sberu?.length>0&&<div>
+            <div style={{fontFamily:"'Bangers',cursive",fontSize:18,color:'#fff',marginBottom:10}}>Sebrané předměty</div>
+            <div style={{display:'flex',justifyContent:'center',gap:8,flexWrap:'wrap'}}>
+              {day.predmety_sberu.map((p,i)=>(<div key={i} style={{background:'rgba(255,255,255,0.06)',borderRadius:12,padding:'8px 12px',fontSize:14,border:'1px solid rgba(245,158,11,0.3)'}}><span style={{marginRight:5}}>{p.ikona}</span>{p.nazev}</div>))}
+            </div>
+          </div>}
+          <button onClick={onBack} style={{marginTop:24,background:'#f59e0b',border:'none',borderRadius:14,padding:'14px 32px',color:'#000',fontSize:18,fontWeight:700,cursor:'pointer'}}>Zpět na mise</button>
+        </div></div>
       </div>
     );
   }
   return null;
 }
 
-/* ═══ DAY PICKER ═══ */
-function DayPicker({miseData,onPick,onBack}){
-  return(
-    <div className="dp-screen">
-      <div className="hdr">
-        <button className="back-btn" onClick={onBack}>←</button>
-        <span style={{fontSize:24}}>🏴‍☠️</span>
-        <span className="hdr-title">Mise 1 — Září</span>
-      </div>
-      <div className="day-list">
-        {miseData.map((den,i)=>{
-          const ok = den.intro?.length>0;
-          return(
-            <button key={i} className={'day-card'+(ok?'':' locked')} onClick={()=>ok&&onPick(den)} disabled={!ok}>
-              <span className="day-num">{den.den}</span>
-              <div style={{flex:1}}>
-                <div style={{fontSize:15,fontWeight:700}}>{den.nazev||'Den '+den.den}</div>
-                <div style={{fontSize:12,color:'var(--text3)',marginTop:2}}>{ok?den.okruhy?.map(o=>o.tema).join(' • '):'🔒 Připravuje se'}</div>
-              </div>
-              {ok && <span style={{fontSize:20}}>▶</span>}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
+function DayPick({data,onPick,onBack}){
+  return(<div className="dp"><div className="hdr"><button className="bbtn" onClick={onBack}>←</button><span style={{fontSize:24}}>🏴‍☠️</span><span style={{fontSize:17,fontWeight:700,flex:1}}>Mise 1 — Září</span></div>
+    <div className="dl">{data.map((d,i)=>{const ok=d.intro?.length>0;return(<button key={i} className={'dc'+(ok?'':' lk')} onClick={()=>ok&&onPick(d)} disabled={!ok}><span className="dn">{d.den}</span><div style={{flex:1}}><div style={{fontSize:15,fontWeight:700}}>{d.nazev||'Den '+d.den}</div><div style={{fontSize:12,color:'var(--text3)',marginTop:2}}>{ok?d.okruhy?.map(o=>o.tema).join(' • '):'🔒 Připravuje se'}</div></div>{ok&&<span style={{fontSize:20}}>▶</span>}</button>);})}</div></div>);
 }
 
-/* ═══ APP ═══ */
 function App(){
-  const [view,setView] = useState('login');
-  const [miseData,setMiseData] = useState(null);
-  const [miseDay,setMiseDay] = useState(null);
-  const [loading,setLoading] = useState(false);
-  
-  function loadMise(){
-    setLoading(true);
-    fetch('mise01_scenar.json').then(r=>r.json())
-      .then(d=>{setMiseData(d);setLoading(false);setView('dayPicker');})
-      .catch(()=>{setLoading(false);alert('Chyba načítání mise.');});
+  const [v,setV]=useState('login');
+  const [md,setMd]=useState(null);
+  const [dy,setDy]=useState(null);
+  const [ld,setLd]=useState(false);
+  function loadM(){setLd(true);fetch('mise01_scenar.json').then(r=>r.json()).then(d=>{setMd(d);setLd(false);setV('dp');}).catch(()=>{setLd(false);alert('Chyba');});}
+  function pickD(d){
+    if(d.okruhy?.[0]?.otazky?.length>0&&d.intro?.length>0){setDy(d);setV('m');return;}
+    fetch('mise01_scenar_d'+String(d.den).padStart(2,'0')+'.json').then(r=>{if(!r.ok)throw 0;return r.json();}).then(x=>{setDy(x);setV('m');}).catch(()=>{setDy(d);setV('m');});
   }
-  
-  function pickDay(den){
-    // Zkus načíst detailní scénář pro den
-    if(den.okruhy?.[0]?.otazky?.length>0 && den.intro?.length>0){
-      setMiseDay(den);setView('mission');return;
-    }
-    const dNum = String(den.den).padStart(2,'0');
-    fetch('mise01_scenar_d'+dNum+'.json').then(r=>{if(!r.ok)throw 0;return r.json();})
-      .then(d=>{setMiseDay(d);setView('mission');})
-      .catch(()=>{setMiseDay(den);setView('mission');});
-  }
-  
-  if(loading) return <div className="loading"><div className="spinner"/><div style={{color:'var(--text2)'}}>Načítám...</div></div>;
-  
-  if(view==='login') return(
-    <div className="login-screen">
-      <div className="login-logo">📚</div>
-      <div className="login-title">Domácí Učitel</div>
-      <div className="login-sub">4. třída ZŠ</div>
-      <button className="login-btn" style={{background:'linear-gradient(135deg,#dc2626,#f59e0b)',fontSize:18}} onClick={loadMise}>
-        🎮 Mise — Zachraň Dr. Voltu!
-      </button>
-      <button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>setView('parent')}>
-        👨‍👩‍👧 Jsem rodič
-      </button>
-      <div style={{color:'var(--text3)',fontSize:12,marginTop:40}}>v1.0 — Jaty</div>
-    </div>
-  );
-  
-  if(view==='dayPicker'&&miseData) return <DayPicker miseData={miseData} onPick={pickDay} onBack={()=>setView('login')}/>;
-  if(view==='mission'&&miseDay) return <MissionScreen dayData={miseDay} onBack={()=>{setMiseDay(null);setView('dayPicker');}}/>;
-  if(view==='parent') return(
-    <div style={{height:'100%',display:'flex',flexDirection:'column'}}>
-      <div className="hdr"><button className="back-btn" onClick={()=>setView('login')}>←</button><span className="hdr-title">📊 Rodičovský přehled</span></div>
-      <div style={{padding:24,textAlign:'center',color:'var(--text2)'}}>Připravuje se</div>
-    </div>
-  );
+  if(ld)return<div className="loading"><div className="spinner"/></div>;
+  if(v==='login')return(<div className="login"><div style={{fontSize:72,marginBottom:12}}>📚</div><div className="ltitle">Domácí Učitel</div><div style={{color:'var(--text2)',fontSize:15,margin:'6px 0 40px'}}>4. třída ZŠ</div><button className="lbtn" style={{background:'linear-gradient(135deg,#dc2626,#f59e0b)',fontSize:18}} onClick={loadM}>🎮 Mise — Zachraň Dr. Voltu!</button><button className="lbtn" style={{background:'var(--blue)'}} onClick={()=>setV('par')}>👨‍👩‍👧 Jsem rodič</button><div style={{color:'var(--text3)',fontSize:12,marginTop:40}}>v1.0 — Jaty</div></div>);
+  if(v==='dp'&&md)return<DayPick data={md} onPick={pickD} onBack={()=>setV('login')}/>;
+  if(v==='m'&&dy)return<Mission day={dy} onBack={()=>{setDy(null);setV('dp');}}/>;
+  if(v==='par')return(<div style={{height:'100%',display:'flex',flexDirection:'column'}}><div className="hdr"><button className="bbtn" onClick={()=>setV('login')}>←</button><span style={{fontSize:17,fontWeight:700,flex:1}}>📊 Rodičovský přehled</span></div><div style={{padding:24,textAlign:'center',color:'var(--text2)'}}>Připravuje se</div></div>);
   return null;
 }
-
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
