@@ -88,8 +88,7 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
   background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);
   color:#fff;font-size:16px;font-weight:600;text-align:left;transition:all 0.12s;
   -webkit-tap-highlight-color:transparent;outline:none}
-@media(hover:hover)and(pointer:fine){.qb:hover:not(.lk){border-color:var(--accent);background:rgba(255,255,255,0.1)}}
-.qb:active:not(.lk){background:rgba(255,255,255,0.12)}
+.qb:active:not(.lk){background:rgba(255,255,255,0.15)}
 .qb.lk{pointer-events:none}
 .ql{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,0.1);font-family:'Bangers',cursive;font-size:14px}
@@ -255,7 +254,7 @@ function Mission({day,onBack}){
   function advD(){
     if(di<ds.length-1){setDi(di+1);}
     else{setDi(0);
-      if(phase==='id'){setQi(0);setAtt(0);setAns(null);setSel(null);setPhase('q');}
+      if(phase==='id'){setQi(0);setAtt(0);setAns(null);setSel(null);setWrongOpts([]);setPhase('q');}
       else if(phase==='ad')doC();
       else if(phase==='sk')nxtO();
       else if(phase==='zd')setPhase('sum');
@@ -266,23 +265,34 @@ function Mission({day,onBack}){
   function aftC(){if(ok?.scenka?.length>0){setDi(0);setPhase('sk');}else nxtO();}
   function nxtO(){
     const n=oi+1;
-    if(n<day.okruhy.length){setOi(n);setQi(0);setAtt(0);setAns(null);setSel(null);setDi(0);setPhase('q');}
+    if(n<day.okruhy.length){setOi(n);setQi(0);setAtt(0);setAns(null);setSel(null);setWrongOpts([]);setDi(0);setPhase('q');}
     else setPhase('zv');
   }
-  // 3 pokusy
+  // 3 pokusy — špatné odpovědi zůstanou červeně, dítě vybírá znovu ihned
+  const [wrongOpts,setWrongOpts]=useState([]);
+  
   function pick(opt){
     if(ans==='ok'||ans==='out')return;
+    if(wrongOpts.includes(opt))return; // už byla špatná, nedá se znovu
+    
     setSel(opt);
     if(norm(opt)===norm(q.answer)){
-      setAns('ok');setSc(p=>({c:p.c+1,t:p.t+1}));setTimeout(nxtQ,2200);
+      setAns('ok');setSc(p=>({c:p.c+1,t:p.t+1}));
+      setTimeout(()=>{nxtQ();},2000);
     } else {
       const na=att+1;setAtt(na);
-      if(na>=3){setAns('out');setSc(p=>({...p,t:p.t+1}));setTimeout(nxtQ,3000);}
-      else{setAns('bad');setTimeout(()=>{setAns(null);setSel(null);},2500);}
+      setWrongOpts(p=>[...p,opt]);
+      if(na>=3){
+        setAns('out');setSc(p=>({...p,t:p.t+1}));
+        setTimeout(()=>{nxtQ();},2500);
+      } else {
+        setAns('bad');
+        // Dítě může ihned kliknout na jinou odpověď
+      }
     }
   }
   function nxtQ(){
-    setAns(null);setSel(null);setAtt(0);
+    setAns(null);setSel(null);setAtt(0);setWrongOpts([]);
     const n=qi+1;
     if(n>=(ok?.otazky?.length||10)){if(oi<day.okruhy.length-1)setPhase('av');else setPhase('zv');}
     else setQi(n);
@@ -339,10 +349,18 @@ function Mission({day,onBack}){
           <div className="qo">
             {(q.options||[]).map((o,i)=>{
               let c='qb';
-              if(lk){if(norm(o)===norm(q.answer))c+=' ok';else if(o===sel)c+=' bad';else c+=' dim';c+=' lk';}
-              else if(ans==='bad'&&o===sel)c+=' bad';
+              const isWrong=wrongOpts.includes(o);
+              const isCorrect=norm(o)===norm(q.answer);
+              if(lk){
+                if(isCorrect)c+=' ok';
+                else if(isWrong)c+=' bad';
+                else c+=' dim';
+                c+=' lk';
+              } else if(isWrong){
+                c+=' bad lk'; // špatná a disabled
+              }
               return(<button key={i} className={c} onClick={()=>pick(o)}>
-                <span className="ql">{lk&&norm(o)===norm(q.answer)?'✓':(o===sel&&(ans==='bad'||ans==='out'))?'✗':LBL[i]}</span>
+                <span className="ql">{lk&&isCorrect?'✓':isWrong?'✗':LBL[i]}</span>
                 <span>{o}</span>
               </button>);
             })}
