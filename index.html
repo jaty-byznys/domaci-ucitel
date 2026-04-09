@@ -293,9 +293,8 @@ function Mission({day,onBack}){
     setAns(null);setSel(null);setAtt(0);setWrongOpts([]);
     const n=qi+1;
     if(n>=(ok?.otazky?.length||10)){
-      // Okruh hotový — akce video → akce dialogy → sběr → scénka → pick/závěr
-      if(avids[oi])setPhase('av');
-      else if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}
+      // Po 10. otázce — akce dialogy → sběr → scénka → pick
+      if(ok?.akce?.dialog?.length>0){setDi(0);setPhase('ad');}
       else doSber();
     }else setQi(n);
   }
