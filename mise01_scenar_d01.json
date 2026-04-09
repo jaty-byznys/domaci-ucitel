@@ -129,7 +129,7 @@
           ],
           "answer": "hora",
           "hint": "Předpona je část přidaná před kořen — hledej slovo, kde nic takového není.",
-          "vi": "Jedna z těchto slov je čisté. Žádná předpona. Které?",
+          "vi": "Jedno z těchto slov je čisté. Žádná předpona. Které?",
           "vs": "HORA! Přelet má PŘE-, záhon má ZÁ-, výlet má VÝ-, nákup má NÁ-. Ale hora? Hora je prostě hora. Žádné ozdoby.",
           "vn": "Předpona je část PŘIDANÁ před kořen. U jednoho z těch slov nic takového není — je to rovnou kořen."
         },
@@ -1341,7 +1341,7 @@
     "obr_zaver": "img/m01/d01/D1S3.png",
     "predmety": "video/m01/d01/D1-P.mp4",
     "heads": {
-      "0": {
+      "D1S1": {
         "volta": [
           35,
           15
@@ -1351,7 +1351,7 @@
           18
         ]
       },
-      "1": {
+      "D1S2": {
         "volta": [
           85,
           15
@@ -1365,7 +1365,17 @@
           20
         ]
       },
-      "2": {
+      "D1S3": {
+        "volta": [
+          50,
+          14
+        ],
+        "agent": [
+          72,
+          16
+        ]
+      },
+      "D1S4": {
         "volta": [
           28,
           14
@@ -1375,7 +1385,7 @@
           16
         ]
       },
-      "3": {
+      "D1S5": {
         "volta": [
           25,
           14
@@ -1389,7 +1399,7 @@
           20
         ]
       },
-      "4": {
+      "D1S6": {
         "volta": [
           88,
           14
@@ -1402,6 +1412,16 @@
           38,
           10
         ]
+      },
+      "D1S7": {
+        "volta": [
+          35,
+          14
+        ],
+        "agent": [
+          72,
+          16
+        ]
       }
     },
     "heads_zaver": {
@@ -1413,6 +1433,24 @@
         72,
         16
       ]
-    }
+    },
+    "obr_okruhy": [
+      "img/m01/d01/D1S1.png",
+      "img/m01/d01/D1S4.png",
+      "img/m01/d01/D1S5.png",
+      "img/m01/d01/D1S7.png"
+    ],
+    "obr_akce": [
+      "img/m01/d01/D1S2.png",
+      "img/m01/d01/D1S3.png",
+      "img/m01/d01/D1S6.png",
+      "img/m01/d01/D1S7.png"
+    ],
+    "obr_scenky": [
+      "img/m01/d01/D1S3.png",
+      "img/m01/d01/D1S4.png",
+      "img/m01/d01/D1S5.png",
+      "img/m01/d01/D1S7.png"
+    ]
   }
 }

@@ -131,12 +131,16 @@ function Vid({src,onEnd}){
 function Mission({day,onBack}){
   const viz=day.vizualy||{};
   const ivids=viz.video_uvod||[];
-  const imgs=viz.obr||[];
   const avids=viz.video_akce||[];
   const zvid=viz.video_zaver||'';
   const zimg=viz.obr_zaver||'';
   const hmap=viz.heads||{};
   const hzav=viz.heads_zaver||{};
+  // Per-okruh obrázky (nové mapování)
+  const obrQ=viz.obr_okruhy||viz.obr||[];   // obrázky pro otázky
+  const obrA=viz.obr_akce||viz.obr||[];      // obrázky pro akce
+  const obrS=viz.obr_scenky||viz.obr||[];    // obrázky pro scénky
+  const obrIntro=obrQ[0]||'';                // intro = stejný jako okruh 0
 
   const [phase,setPhase]=useState(ivids.length>0?'iv':'id');
   const [oi,setOi]=useState(0);
@@ -154,26 +158,29 @@ function Mission({day,onBack}){
   const q=ok?.otazky?.[qi];
 
   // Obrázek pozadí podle fáze
-  function bg(){
-    if(phase==='zd'||phase==='sum') return GH+zimg;
-    if(phase==='id') return GH+(imgs[0]||'');
-    if(phase==='q') return GH+(imgs[oi]||imgs[0]||'');
-    if(phase==='ad') return GH+(imgs[Math.min(oi+1,imgs.length-1)]||imgs[0]||'');
-    return GH+(imgs[0]||'');
+  function curImg(){
+    if(phase==='zd'||phase==='sum') return zimg;
+    if(phase==='id') return obrIntro;
+    if(phase==='q') return obrQ[oi]||obrIntro;
+    if(phase==='ad') return obrA[oi]||obrQ[oi]||obrIntro;
+    if(phase==='sk') return obrS[oi]||obrQ[oi]||obrIntro;
+    return obrIntro;
   }
-  // Heads podle fáze
+  function bg(){return GH+curImg();}
+  // Heads — hledáme podle jména souboru obrázku
   function hds(){
     if(phase==='zd'||phase==='sum') return hzav;
-    if(phase==='id') return hmap['0']||{};
-    if(phase==='q') return hmap[String(oi)]||{};
-    if(phase==='ad') return hmap[String(Math.min(oi+1,Object.keys(hmap).length-1))]||{};
-    return hmap['0']||{};
+    const img=curImg();
+    // Vytáhni klíč z cesty: "img/m01/d01/D1S4.png" → "D1S4"
+    const key=img.replace(/.*\//,'').replace(/\.png$/i,'');
+    return hmap[key]||hzav||{};
   }
 
   // Dialogy
   function dlgs(){
     if(phase==='id') return day.intro||[];
     if(phase==='ad') return ok?.akce?.dialog||[];
+    if(phase==='sk') return ok?.scenka||[];
     if(phase==='zd') return day.zaver||[];
     return [];
   }
@@ -202,12 +209,17 @@ function Mission({day,onBack}){
     else{setDi(0);
       if(phase==='id'){resetQ();setPhase('q');}
       else if(phase==='ad')doSber();
+      else if(phase==='sk')nxtOk();
       else if(phase==='zd')setPhase('sum');
     }
   }
-  // Sběr předmětu
-  function doSber(){const s=ok?.akce?.sber;if(s&&s.nazev)setColl(s);else nxtOk();}
-  function clSber(){setColl(null);nxtOk();}
+  // Sběr předmětu → pak scénka (pokud existuje) → pak další okruh
+  function doSber(){const s=ok?.akce?.sber;if(s&&s.nazev)setColl(s);else afterSber();}
+  function clSber(){setColl(null);afterSber();}
+  function afterSber(){
+    if(ok?.scenka?.length>0){setDi(0);setPhase('sk');}
+    else nxtOk();
+  }
   // Další okruh
   function nxtOk(){
     const n=oi+1;
@@ -255,17 +267,26 @@ function Mission({day,onBack}){
     return q.vi||q.question;
   }
 
+  // Krok zpět
+  function stepBack(){
+    if(phase==='q'&&qi>0){setQi(qi-1);setAtt(0);setAns(null);setSel(null);setWrongOpts([]);}
+    else if(phase==='q'&&qi===0){setDi(0);setPhase('id');}
+    else if(phase==='ad'||phase==='sk'){resetQ();setPhase('q');}
+    else if(phase==='id'){onBack();}
+    else if(phase==='zd'){setPhase('q');}
+  }
+
   // RENDER
   if(phase==='iv')return<Vid src={GH+ivids[ivi]} onEnd={vEnd}/>;
   if(phase==='av')return<Vid src={GH+(avids[oi]||'')} onEnd={vEnd}/>;
   if(phase==='zv')return<Vid src={GH+zvid} onEnd={vEnd}/>;
 
-  if(['id','ad','zd'].includes(phase)){
+  if(['id','ad','sk','zd'].includes(phase)){
     if(!cd){advD();return null;}
     return(
       <div className="scene" onClick={advD} style={{cursor:'pointer'}}>
         <img src={bg()} alt=""/>
-        <div className="topbar"><button className="pill" onClick={e=>{e.stopPropagation();onBack();}}>← Zpět</button></div>
+        <div className="topbar"><button className="pill" onClick={e=>{e.stopPropagation();stepBack();}}>← Krok</button><button className="pill" style={{marginLeft:6}} onClick={e=>{e.stopPropagation();onBack();}}>✕ Menu</button></div>
         <Bub who={cd.p} text={cd.t} heads={hds()}/>
         <div className="thint">{di+1}/{ds.length} — Klikni ▸</div>
         {coll&&<div className="cov" onClick={e=>{e.stopPropagation();clSber();}}>
@@ -287,7 +308,7 @@ function Mission({day,onBack}){
     return(
       <div className="scene">
         <img src={bg()} alt=""/>
-        <div className="topbar"><button className="pill" onClick={onBack}>← Zpět</button></div>
+        <div className="topbar"><button className="pill" onClick={stepBack}>← Krok</button><button className="pill" style={{marginLeft:6}} onClick={onBack}>✕ Menu</button></div>
         <div className="topbar-top">
           <span className="pill">{ico[oi]||'📚'} {ok?.tema} — {qi+1}/{ok?.otazky?.length}</span>
           <span className="pill">⭐ {sc.c}/{sc.t}</span>
