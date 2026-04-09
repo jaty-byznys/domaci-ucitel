@@ -92,16 +92,20 @@ function Bub({who,text,heads}){
   const name=NAMES[w]||who;
   const isA=w==='agent';const isP=PIR.includes(w);
   const [pos,setPos]=useState({x:0,y:0});
+  const [bubW,setBubW]=useState(200);
   const [bubH,setBubH]=useState(0);
   const ref=useRef(null);
   const hd=heads||{};const h=hd[w]||hd.volta||[33,30];
   const calc=useCallback(()=>setPos(headPx(h[0],h[1])),[h[0],h[1]]);
   useEffect(()=>{calc();window.addEventListener('resize',calc);return()=>window.removeEventListener('resize',calc);},[calc]);
-  useEffect(()=>{if(ref.current)setBubH(ref.current.offsetHeight);},[text]);
+  useEffect(()=>{if(ref.current){setBubH(ref.current.offsetHeight);setBubW(ref.current.offsetWidth);}},[text]);
   const nc=isA?'ca':isP?'cp':'cv';
   const len=text.length;const sz=len<15?'short':len<60?'medium':'long';const ta=len<25?'tc':'tl';
+  const vw=window.innerWidth;
+  const half=bubW/2;
+  const pad=Math.min(20,vw*0.03);
+  const finalLeft=Math.max(half+pad,Math.min(pos.x,vw-half-pad));
   const finalTop=Math.max(5,pos.y-bubH);
-  const finalLeft=Math.max(100,Math.min(pos.x,window.innerWidth-100));
   return(
     <div className="bub" ref={ref} style={{left:finalLeft+'px',top:finalTop+'px'}} key={w+text.slice(0,12)}>
       <div className={'bub-egg '+sz}><div className={'bub-who '+nc}>{name}</div><div className={'bub-txt '+ta}>{text}</div></div>
