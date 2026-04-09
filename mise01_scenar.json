@@ -289,7 +289,8 @@
               "t": "Krásné. Porazil jsi piráta gramatikou. To se nevidí každý den."
             }
           ],
-          "zprava": "Sebral jsi KRIVÁKŮV ROZKAZ — na rubu je něco nakreslené!"
+          "zprava": "Sebral jsi KRIVÁKŮV ROZKAZ — na rubu je něco nakreslené!",
+          "video": "video/m01/d01/D1-S3.mp4"
         },
         "scenka": [
           {
@@ -535,7 +536,8 @@
               "t": "Matematici. Před tisíci lety. A od tý doby to funguje. Na rozdíl od Krivákova počítání."
             }
           ],
-          "zprava": "Sebral jsi KBELÍK S MAPOU — Řepák v něm měl hlavou celou dobu!"
+          "zprava": "Sebral jsi KBELÍK S MAPOU — Řepák v něm měl hlavou celou dobu!",
+          "video": "video/m01/d01/D1-S4.mp4"
         },
         "scenka": [
           {
@@ -769,7 +771,8 @@
               "t": "Za jeden keksík. Loajalita pirátů v kostce."
             }
           ],
-          "zprava": "Dostal jsi PAPOUŠČI PEŘÍČKO — green, red and blue!"
+          "zprava": "Dostal jsi PAPOUŠČI PEŘÍČKO — green, red and blue!",
+          "video": "video/m01/d01/D1-S5.mp4"
         },
         "scenka": [
           {
@@ -1012,7 +1015,19 @@
           "zprava": ""
         }
       }
-    ]
+    ],
+    "videa": {
+      "uvod": [
+        "video/m01/d01/D1-S1.mp4",
+        "video/m01/d01/D1-S2.mp4"
+      ],
+      "akce": [
+        "video/m01/d01/D1-S3.mp4",
+        "video/m01/d01/D1-S4.mp4",
+        "video/m01/d01/D1-S5.mp4"
+      ],
+      "zaver": "video/m01/d01/D1-S6.mp4"
+    }
   },
   {
     "den": 2,

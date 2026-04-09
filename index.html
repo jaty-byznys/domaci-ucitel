@@ -243,8 +243,10 @@
 
     function MissionScreen({ dayData, onBack }) {
       // Flow podle POSTUP_TVORBY_DNE.md:
-      // intro_dialog → questions → akce_dialog → sber → scenka → (další okruh) → zaver_dialog → summary
-      const [phase, setPhase] = useState('intro_dialog');
+      // intro_video (2 videa) → intro_dialog → questions → akce_video → akce_dialog → sber → scenka → ... → zaver_video → zaver_dialog → summary
+      const hasVideos = dayData.videa && dayData.videa.uvod;
+      const [phase, setPhase] = useState(hasVideos ? 'intro_video' : 'intro_dialog');
+      const [videoIdx, setVideoIdx] = useState(0);
       const [okruhIdx, setOkruhIdx] = useState(0);
       const [qIdx, setQIdx] = useState(0);
       const [dialogIdx, setDialogIdx] = useState(0);
@@ -253,6 +255,11 @@
       const [answered, setAnswered] = useState(null);
       const [selectedOpt, setSelectedOpt] = useState(null);
       const [collectItem, setCollectItem] = useState(null);
+      const videoRef = useRef(null);
+
+      // Video URL helper
+      const GH_VIDEO = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
+      function getVideoUrl(path) { return GH_VIDEO + path; }
 
       // Obrázky: S1=intro+okruh1, S2=akce1+okruh2, S3=akce2+okruh3, S4=akce3+okruh4, S5+=závěr
       const dd = String(dayData.den).padStart(2,'0');
@@ -313,7 +320,10 @@
         setAnswered(null); setSelectedOpt(null);
         const nq=qIdx+1;
         if (nq>=okruh.otazky.length) {
-          if (okruh.akce?.dialog?.length>0) { setDialogIdx(0); setPhase('akce_dialog'); }
+          // Po 10 otázkách → VIDEO akce (pokud existuje), pak dialog
+          const akceVideo = okruh.akce?.video;
+          if (akceVideo) { setPhase('akce_video'); }
+          else if (okruh.akce?.dialog?.length>0) { setDialogIdx(0); setPhase('akce_dialog'); }
           else if (okruh.scenka?.length>0) { setDialogIdx(0); setPhase('scenka'); }
           else goNextOkruh();
         } else { setQIdx(nq); }
@@ -324,8 +334,42 @@
       function goNextOkruh() {
         const next=okruhIdx+1;
         if (next<dayData.okruhy.length) { setOkruhIdx(next); setQIdx(0); setDialogIdx(0); setPhase('questions'); }
-        else if (dayData.zaver?.length>0) { setDialogIdx(0); setPhase('zaver_dialog'); }
-        else setPhase('summary');
+        else {
+          // Po posledním okruhu → závěrečné video
+          const zaverVideo = dayData.videa?.zaver;
+          if (zaverVideo) { setPhase('zaver_video'); }
+          else if (dayData.zaver?.length>0) { setDialogIdx(0); setPhase('zaver_dialog'); }
+          else setPhase('summary');
+        }
+      }
+
+      // === VIDEO HANDLER ===
+      function handleVideoEnd() {
+        if (phase==='intro_video') {
+          const uvodVidea = dayData.videa?.uvod || [];
+          const nextV = videoIdx+1;
+          if (nextV < uvodVidea.length) { setVideoIdx(nextV); }
+          else { setVideoIdx(0); setDialogIdx(0); setPhase('intro_dialog'); }
+        }
+        else if (phase==='akce_video') {
+          if (okruh.akce?.dialog?.length>0) { setDialogIdx(0); setPhase('akce_dialog'); }
+          else if (okruh.scenka?.length>0) { setDialogIdx(0); setPhase('scenka'); }
+          else goNextOkruh();
+        }
+        else if (phase==='zaver_video') {
+          if (dayData.zaver?.length>0) { setDialogIdx(0); setPhase('zaver_dialog'); }
+          else setPhase('summary');
+        }
+      }
+
+      function getCurrentVideoUrl() {
+        if (phase==='intro_video') {
+          const uvodVidea = dayData.videa?.uvod || [];
+          return uvodVidea[videoIdx] ? getVideoUrl(uvodVidea[videoIdx]) : null;
+        }
+        if (phase==='akce_video') return okruh.akce?.video ? getVideoUrl(okruh.akce.video) : null;
+        if (phase==='zaver_video') return dayData.videa?.zaver ? getVideoUrl(dayData.videa.zaver) : null;
+        return null;
       }
 
       // === OVÁLNÁ BUBLINA — bílá, černý obrys, ostrá špička k postavě ===
@@ -369,6 +413,27 @@
 
       const bgUrl=getCurrentBg();
       const bgStyle={backgroundImage:'url('+bgUrl+')',backgroundSize:'cover',backgroundPosition:'center'};
+
+      // === VIDEO FÁZE ===
+      if (phase==='intro_video'||phase==='akce_video'||phase==='zaver_video') {
+        const vUrl = getCurrentVideoUrl();
+        if (!vUrl) { handleVideoEnd(); return null; }
+        return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000'}}>
+          <video ref={videoRef} key={vUrl} src={vUrl}
+            style={{width:'100%',height:'100%',objectFit:'cover'}}
+            autoPlay muted playsInline
+            onEnded={handleVideoEnd}
+            onError={handleVideoEnd}
+          />
+          <button onClick={handleVideoEnd} style={{
+            position:'absolute',bottom:24,right:24,
+            background:'rgba(0,0,0,0.6)',color:'#fff',border:'none',
+            borderRadius:12,padding:'10px 20px',fontSize:15,fontWeight:700,
+            cursor:'pointer',backdropFilter:'blur(4px)',zIndex:10}}>
+            Přeskočit ▸
+          </button>
+        </div>);
+      }
 
       // === DIALOGOVÉ FÁZE ===
       if (phase==='intro_dialog'||phase==='akce_dialog'||phase==='scenka'||phase==='zaver_dialog') {
