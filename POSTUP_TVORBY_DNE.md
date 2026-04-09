@@ -168,14 +168,14 @@ Předměty: `D{den}-P.png`
 
 - Celá obrazovka = scénový obrázek na pozadí, 16:9
 - Bubliny: bílé oválné, černý obrys, ostrá špička směrem k postavě
-- Volta vlevo, Agent vpravo — bublina vždy u hlavy
+- Bublina vždy u hlavy postavy která mluví — pozice závisí na obrázku, postavy NEJSOU fixně vlevo/vpravo
 - Otázkový panel: vždy dole přes scénu, možnosti A–E, vždy stejné místo, vždy stejný vzhled
 
 ### Flow otázky:
-1. Volta řekne otázku ve své bublině (u jeho hlavy, vlevo)
+1. Volta řekne otázku ve své bublině (u jeho hlavy)
 2. Dole se zobrazí otázkový panel s možnostmi A–E
 3. Dítě klikne na odpověď
-4. Odpověď se propíše do bubliny Agenta (u jeho hlavy, vpravo) — jako by ji Agent řekl nahlas
+4. Odpověď se propíše do bubliny Agenta (u jeho hlavy) — jako by ji Agent řekl nahlas
 5. Volta reaguje ve své bublině (vtipná hláška / nápověda)
 
 ### Otázkový panel:
@@ -186,5 +186,5 @@ Předměty: `D{den}-P.png`
 - Pohyb/videa JEN mezi okruhy, NIKDY během otázek
 
 ### Obrázky pro otázky:
-- Volta vždy VLEVO, Agent vždy VPRAVO — prompty na obrázky musí toto dodržovat
+- Volta a Agent mohou být kdekoli na scéně — záleží na situaci a obrázku
 - Prostor nad hlavami pro bubliny
