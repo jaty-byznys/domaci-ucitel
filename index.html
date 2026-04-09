@@ -115,7 +115,25 @@ function Bub({who,text,heads}){
 }
 
 function Vid({src,onEnd}){
-  return(<div className="vw"><video key={src} src={src} autoPlay muted playsInline onEnded={onEnd} onError={onEnd}/><button className="skip" onClick={onEnd}>Přeskočit ▸</button></div>);
+  const [ready,setReady]=useState(false);
+  const [err,setErr]=useState(false);
+  const vRef=useRef(null);
+  const fullSrc=src.startsWith('http')?src:GH+src;
+  useEffect(()=>{setReady(false);setErr(false);},[src]);
+  function onReady(){setReady(true);if(vRef.current)vRef.current.play().catch(()=>{});}
+  function onFail(){
+    // Retry once
+    if(!err&&vRef.current){setErr(true);vRef.current.load();}
+    else onEnd();
+  }
+  return(<div className="vw">
+    <video ref={vRef} key={fullSrc} src={fullSrc} preload="auto" autoPlay muted playsInline
+      onCanPlay={onReady} onEnded={onEnd} onError={onFail}
+      style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+    {!ready&&<div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',background:'#000'}}>
+      <div className="spinner" style={{borderTopColor:'#f59e0b'}}/></div>}
+    <button className="skip" onClick={onEnd}>Přeskočit ▸</button>
+  </div>);
 }
 
 /*
