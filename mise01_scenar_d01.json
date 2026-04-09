@@ -4,12 +4,6 @@
   "nazev": "První den v laboratoři",
   "mesic": "září",
   "obtiznost": 1,
-  "obrazky": {
-    "uvod": "img/m01/d01/volta_laborator.png",
-    "akce_ok1": "img/m01/d01/skripek_vyskoci.png",
-    "akce_ok2": "img/m01/d01/repak_kbelik.png",
-    "predmety": "img/predmety/den01_sber.png"
-  },
   "postavy": {
     "volta": {
       "avatar": "img/postavy/volta.png",
@@ -221,7 +215,7 @@
         }
       ],
       "akce": {
-        "obrazek": "img/m01/d01/skripek_vyskoci.png",
+        "obrazek": "img/m01/d01/D1S2.png",
         "sber": {
           "nazev": "Krivákův rozkaz",
           "popis": "Na rubu je kus náčrtku mapy!",
@@ -475,7 +469,7 @@
         }
       ],
       "akce": {
-        "obrazek": "img/m01/d01/repak_kbelik.png",
+        "obrazek": "img/m01/d01/D1S3.png",
         "sber": {
           "nazev": "Kbelík s mapou",
           "popis": "Uvnitř kbelíku je kus mapy okolí!",
@@ -756,7 +750,8 @@
             "p": "volta",
             "t": "Za jeden keksík. To je celá ekonomie."
           }
-        ]
+        ],
+        "obrazek": "img/m01/d01/D1S6.png"
       },
       "scenka": [
         {
@@ -1004,15 +999,6 @@
       "t": "Řepák je citoslovce. Občas vykřikne, nikdo neví proč, ale svět by bez něj byl nudnější."
     }
   ],
-  "videa": {
-    "uvod_externi": "video/m01/d01/D1-S1.mp4",
-    "uvod_laborator": "video/m01/d01/D1-S2.mp4",
-    "akce_ok1_skripek": "video/m01/d01/D1-S3.mp4",
-    "akce_ok2_repak": "video/m01/d01/D1-S4.mp4",
-    "akce_ok3_keksik": "video/m01/d01/D1-S5.mp4",
-    "zaver": "video/m01/d01/D1-S6.mp4",
-    "predmety": "video/m01/d01/D1-P.mp4"
-  },
   "intro": [
     {
       "p": "popis",
@@ -1093,5 +1079,100 @@
       "popis": "Symbol nového spojenectví!",
       "ikona": "🪶"
     }
-  ]
+  ],
+  "vizualy": {
+    "video_uvod": [
+      "video/m01/d01/D1-S1.mp4",
+      "video/m01/d01/D1-S2.mp4"
+    ],
+    "obr": [
+      "img/m01/d01/D1S1.png",
+      "img/m01/d01/D1S2.png",
+      "img/m01/d01/D1S4.png",
+      "img/m01/d01/D1S5.png",
+      "img/m01/d01/D1S7.png"
+    ],
+    "video_akce": [
+      "video/m01/d01/D1-S3.mp4",
+      "video/m01/d01/D1-S4.mp4",
+      "video/m01/d01/D1-S5.mp4"
+    ],
+    "video_zaver": "video/m01/d01/D1-S6.mp4",
+    "obr_zaver": "img/m01/d01/D1S3.png",
+    "predmety": "video/m01/d01/D1-P.mp4",
+    "heads": {
+      "0": {
+        "volta": [
+          35,
+          15
+        ],
+        "agent": [
+          82,
+          18
+        ]
+      },
+      "1": {
+        "volta": [
+          85,
+          15
+        ],
+        "agent": [
+          18,
+          18
+        ],
+        "skripek": [
+          52,
+          20
+        ]
+      },
+      "2": {
+        "volta": [
+          28,
+          14
+        ],
+        "agent": [
+          78,
+          16
+        ]
+      },
+      "3": {
+        "volta": [
+          25,
+          14
+        ],
+        "agent": [
+          55,
+          16
+        ],
+        "keksik": [
+          88,
+          20
+        ]
+      },
+      "4": {
+        "volta": [
+          88,
+          14
+        ],
+        "agent": [
+          42,
+          14
+        ],
+        "keksik": [
+          38,
+          10
+        ]
+      }
+    },
+    "heads_zaver": {
+      "volta": [
+        50,
+        14
+      ],
+      "agent": [
+        72,
+        16
+      ]
+    }
+  }
 }
