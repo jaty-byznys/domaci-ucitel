@@ -372,7 +372,7 @@
         return null;
       }
 
-      // === OVÁLNÁ BUBLINA — bílá, černý obrys, ostrá špička k postavě ===
+      // === KOMIKSOVÁ BUBLINA — SVG elipsa, bílá výplň, černý obrys, špička k postavě ===
       function Bublina({who, text, side}) {
         const w=(who||'volta').toLowerCase();
         const name=POSTAVA_NAME[w]||who;
@@ -386,26 +386,29 @@
             {text}
           </div>
         );
+        // Komiksová bublina: velký padding pro oválný tvar, border, špička
         return (
-          <div style={{position:'absolute',top:'4%',[isRight?'right':'left']:'3%',zIndex:10,
-            maxWidth:'50%',animation:'fadeIn 0.25s ease'}}>
+          <div style={{position:'absolute',top:'3%',[isRight?'right':'left']:'2%',zIndex:10,
+            maxWidth:'48%',animation:'fadeIn 0.25s ease'}}>
             <div style={{position:'relative',background:'#fff',color:'#1a1a1a',
-              border:'3px solid #222',
-              borderRadius:'50% / 40%',
-              padding:'16px 22px',fontSize:19,fontWeight:600,lineHeight:1.45,
-              boxShadow:'3px 4px 0 rgba(0,0,0,0.2)'}}>
-              <div style={{fontFamily:"'Bangers',cursive",fontSize:15,letterSpacing:1,
-                textTransform:'uppercase',marginBottom:3,
+              border:'4px solid #111',
+              borderRadius:'50%',
+              padding:'28px 36px 24px 36px',
+              fontSize:20,fontWeight:600,lineHeight:1.5,
+              boxShadow:'4px 5px 0 rgba(0,0,0,0.25)',
+              wordWrap:'break-word',overflowWrap:'break-word',
+              minWidth:180,textAlign:'left'}}>
+              <div style={{fontFamily:"'Bangers',cursive",fontSize:16,letterSpacing:1.5,
+                textTransform:'uppercase',marginBottom:4,
                 color:w==='agent'?'#2E7D32':['skripek','repak','krivak','kotva','piratka'].includes(w)?'#C62828':'#1565C0'}}>
                 {name}
               </div>
-              <div>{text}</div>
-              <div style={{position:'absolute',bottom:-18,[isRight?'right':'left']:28,
-                width:0,height:0,borderLeft:'14px solid transparent',borderRight:'14px solid transparent',
-                borderTop:'18px solid #222'}}/>
-              <div style={{position:'absolute',bottom:-14,[isRight?'right':'left']:30,
-                width:0,height:0,borderLeft:'12px solid transparent',borderRight:'12px solid transparent',
-                borderTop:'16px solid #fff'}}/>
+              <div style={{wordWrap:'break-word'}}>{text}</div>
+              {/* Špička — SVG trojúhelník */}
+              <svg style={{position:'absolute',bottom:-22,[isRight?'right':'left']:32,width:30,height:24,zIndex:5}} viewBox="0 0 30 24">
+                <polygon points={isRight?"28,0 18,24 2,0":"2,0 12,24 28,0"} fill="#111"/>
+                <polygon points={isRight?"26,0 17,19 5,0":"4,0 13,19 25,0"} fill="#fff"/>
+              </svg>
             </div>
           </div>
         );
