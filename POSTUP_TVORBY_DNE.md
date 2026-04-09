@@ -167,9 +167,22 @@ Předměty: `D{den}-P.png`
 ## BUBLINY A UI
 
 - Celá obrazovka = scénový obrázek na pozadí, 16:9
-- Bubliny: bílé oválné, černý obrys, ostrá špička směrem k postavě
-- Volta se ptá vlevo, Agent odpovídá vpravo
-- Otázková karta: panel dole přes scénu, možnosti A–E
-- Text velký a čitelný
-- Po kliknutí odpovědi → odpověď se propíše do bubliny Agenta → Volta reaguje
-- Žádný pohyb/video během otázek — klid na práci
+- Bubliny: bílé oválné, černý obrys, ostrá špička směrem k HLAVĚ postavy
+- Bublina je vždy u hlavy postavy která mluví — postavy mohou stát, sedět, být kdekoli na scéně, pozice bublin se mění podle situace
+- Velký a čitelný text v bublinách
+
+### Flow otázky:
+1. Volta řekne otázku ve své bublině (u jeho hlavy)
+2. Dole se zobrazí OTÁZKOVÝ PANEL s možnostmi A–E
+3. Dítě klikne na odpověď
+4. Odpověď se propíše do bubliny AGENTA (u jeho hlavy) — jako by ji Agent řekl nahlas
+5. Volta reaguje ve své bublině (vtipná hláška při správné / nápověda při špatné)
+→ Vypadá to jako dialog mezi Voltou a Agentem, ne jako telepatie
+
+### Otázkový panel:
+- VŽDY na stejném místě (dole přes scénu)
+- VŽDY stejný vzhled — dítě nemusí hledat očima
+- Jednoduché barvy, výrazné ale NEvýkřiklavé — je to fáze zklidnění a soustředění
+- Písmo klidné, čitelné, dostatečně velké
+- Žádné blikání, animace, rozptylování během odpovídání
+- Pohyb/videa JEN mezi okruhy, NIKDY během otázek
