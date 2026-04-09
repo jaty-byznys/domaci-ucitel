@@ -40,26 +40,30 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 .day-card.locked{opacity:0.4;border-left-color:var(--text3)}
 .day-num{font-size:28px;font-weight:800;color:var(--accent);min-width:40px;text-align:center;font-family:'Bangers',cursive}
 
-/* FULLSCREEN SCENE — obrázek cover přes celou plochu, bubliny v % pozice */
-.scene{position:fixed;inset:0;overflow:hidden;background:#000}
-.scene-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
-.scene-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 20%,transparent 80%,rgba(0,0,0,0.15) 100%);pointer-events:none;z-index:1}
+/* SCENE — fullscreen černá, uvnitř img-box s poměrem 16:9, bubliny relativní k obrázku */
+.scene{position:fixed;inset:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
+/* img-box: drží 16:9, maximálně vyplní viewport, obrázek = pozadí cover uvnitř */
+.img-box{
+  position:relative;
+  width:100vw;height:calc(100vw * 9 / 16);
+  max-height:100vh;max-height:100dvh;
+  max-width:calc(100vh * 16 / 9);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.scene-dim{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,0.2) 0%,transparent 20%,transparent 80%,rgba(0,0,0,0.1) 100%)}
 .top-bar{position:fixed;top:8px;left:12px;right:12px;z-index:40;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
 .top-bar>*{pointer-events:auto}
 .pill{background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:6px 14px;color:#fff;font-size:13px;font-weight:700}
 
-/* BUBLINA — vajíčko na ležato, špička dolů k ústům
-   Pozice v % = relativně k celé obrazovce, ale protože obrázek je cover,
-   procenta obrázku ≈ procenta obrazovky.
-   Voltova hlava: ~33% zleva, ~24% shora → bublina NAD: bottom-of-bubble = tam
-   Agent hlava: ~84% zleva, ~28% shora → bublina NAD
-   Používáme BOTTOM pozicování — bottom:X% říká "spodek bubliny je X% od spodu"
-   Volta bottom: 100%-24% = 76%, ale s bublinou 80px+ raději použijeme top
-   → bublina transformovaná tak, že její SPODEK (špička) sedí NAD hlavou
+/* BUBLINA — vajíčko, špička dolů k ústům
+   position:absolute uvnitř .img-box → procenta = procenta obrázku
+   transform:translateY(-100%) → spodek bubliny (špička) = na anchor pozici
+   Volta ústa D1S1: left:30%, top:22%
+   Agent ústa D1S1: left:82%, top:27%
 */
 .bub-wrap{position:absolute;z-index:15;animation:bubblePop 0.3s ease-out;
-  transform:translateY(-100%); /* spodek bubliny (špička) = pozice anchoru */
-}
+  transform:translateY(-100%)}
 .bub-egg{
   position:relative;background:#fff;color:#1a1a1a;
   border:3px solid #222;
@@ -73,12 +77,10 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
 .bub-name.ca{color:#2E7D32}
 .bub-name.cp{color:#C62828}
 .bub-txt{font-size:15px;font-weight:600;line-height:1.4;text-align:left}
-/* Špička — dlouhá ostrá, dolů k ústům */
 .bub-tail{position:absolute;bottom:-20px;width:20px;height:22px}
 .bub-tail.tl{left:40%}
 .bub-tail.tr{right:40%}
 
-/* Popisný text scény */
 .scene-desc{
   position:absolute;z-index:15;top:45%;left:50%;transform:translate(-50%,-50%);
   background:rgba(0,0,0,0.78);border-radius:20px;padding:14px 24px;
@@ -86,7 +88,6 @@ button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
   max-width:75%;backdrop-filter:blur(4px);animation:fadeIn 0.3s
 }
 
-/* Dialog hint */
 .tap-hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:30;
   background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);border-radius:20px;padding:7px 18px;
   font-size:13px;color:rgba(255,255,255,0.45);pointer-events:none}
@@ -339,12 +340,13 @@ function MissionScreen({dayData,onBack}){
     if(!d){advDlg();return null;}
     return(
       <div className="scene" onClick={advDlg} style={{cursor:'pointer'}}>
-        <div className="scene-bg" style={{backgroundImage:'url('+curBg()+')'}}/>
-        <div className="scene-dim"/>
+        <div className="img-box" style={{backgroundImage:'url('+curBg()+')'}}>
+          <div className="scene-dim"/>
+          <Bubble who={d.p} text={d.t}/>
+        </div>
         <div className="top-bar">
           <button className="pill" onClick={e=>{e.stopPropagation();onBack();}}>← Zpět</button>
         </div>
-        <Bubble who={d.p} text={d.t}/>
         <div className="tap-hint">{dialogIdx+1}/{dialogs.length} — Klikni ▸</div>
         {collectItem && (
           <div className="col-ov" onClick={e=>{e.stopPropagation();closeSber();}}>
@@ -370,8 +372,11 @@ function MissionScreen({dayData,onBack}){
     
     return(
       <div className="scene">
-        <div className="scene-bg" style={{backgroundImage:'url('+curBg()+')'}}/>
-        <div className="scene-dim"/>
+        <div className="img-box" style={{backgroundImage:'url('+curBg()+')'}}>
+          <div className="scene-dim"/>
+          <Bubble who="volta" text={vt}/>
+          {agentTxt && <Bubble who="agent" text={agentTxt}/>}
+        </div>
         <div className="top-bar">
           <div style={{display:'flex',gap:8}}>
             <button className="pill" onClick={onBack}>← Zpět</button>
@@ -379,12 +384,6 @@ function MissionScreen({dayData,onBack}){
           </div>
           <span className="pill">⭐ {score.correct}/{score.total}</span>
         </div>
-        
-        {/* Volta bublina — nad jeho hlavou vlevo */}
-        <Bubble who="volta" text={vt}/>
-        
-        {/* Agent bublina — co dítě vybralo */}
-        {agentTxt && <Bubble who="agent" text={agentTxt}/>}
         
         {/* Panel otázek dole */}
         <div className="q-panel">
@@ -422,7 +421,9 @@ function MissionScreen({dayData,onBack}){
   if(phase==='summary'){
     return(
       <div className="scene">
-        <div className="scene-bg" style={{backgroundImage:'url('+sImg(5)+')'}}/>
+        <div className="img-box" style={{backgroundImage:'url('+sImg(5)+')'}}>
+          <div className="scene-dim"/>
+        </div>
         <div className="sum-ov">
           <div className="sum-box">
             <div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FFD700',marginBottom:18}}>🎉 Den {dn} hotový!</div>
