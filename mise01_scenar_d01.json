@@ -1343,12 +1343,12 @@
     "heads": {
       "D1S1": {
         "volta": [
-          35,
-          18
+          40,
+          5
         ],
         "agent": [
-          72,
-          18
+          65,
+          5
         ]
       },
       "D1S2": {
@@ -1368,112 +1368,112 @@
       "D1S3": {
         "volta": [
           50,
-          14
+          6
         ],
         "agent": [
           72,
-          16
+          8
         ]
       },
       "D1S4": {
         "volta": [
           28,
-          14
+          6
         ],
         "agent": [
           78,
-          16
+          8
         ]
       },
       "D1S5": {
         "volta": [
           25,
-          14
+          6
         ],
         "agent": [
           55,
-          16
+          8
         ],
         "keksik": [
           88,
-          20
+          12
         ]
       },
       "D1S6": {
         "volta": [
           88,
-          14
+          6
         ],
         "agent": [
           42,
-          14
+          6
         ],
         "keksik": [
           38,
-          10
+          4
         ]
       },
       "D1S7": {
         "volta": [
           35,
-          14
+          6
         ],
         "agent": [
           72,
-          16
+          8
         ]
       },
       "D1S1b": {
         "volta": [
-          58,
-          22
+          55,
+          5
         ],
         "agent": [
-          18,
-          38
+          22,
+          25
         ]
       },
       "D1S2b": {
         "volta": [
           55,
-          10
+          4
         ],
         "agent": [
           82,
-          14
+          6
         ],
         "skripek": [
           25,
-          35
+          28
         ]
       },
       "D1S3b": {
         "volta": [
           82,
-          14
+          6
         ],
         "agent": [
           52,
-          16
+          8
         ],
         "repak": [
           18,
-          18
+          10
         ]
       }
     },
     "heads_zaver": {
       "volta": [
         50,
-        14
+        6
       ],
       "agent": [
         72,
-        16
+        8
       ]
     },
     "obr_okruhy": [
-      "img/m01/d01/D1S1b.png",
+      "img/m01/d01/D1S1.png",
       "img/m01/d01/D1S4.png",
       "img/m01/d01/D1S5.png",
       "img/m01/d01/D1S7.png"
@@ -1490,6 +1490,6 @@
       "img/m01/d01/D1S5.png",
       "img/m01/d01/D1S7.png"
     ],
-    "obr_intro": "img/m01/d01/D1S1.png"
+    "obr_intro": "img/m01/d01/D1S1b.png"
   }
 }
