@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Domácí Učitel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -233,181 +233,236 @@
       return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span style={{fontSize:24}}>🏴‍☠️</span><span className="header-title">Mise 1 — Září</span></div><div style={{padding:'16px 18px'}}>{miseData.map((den,i) => { const hasStory = den.intro && den.intro.length > 0; return (<button key={i} className={'day-card fade-in' + (hasStory ? '' : ' locked')} style={{animationDelay: i*0.04+'s'}} onClick={()=>hasStory && onPick(den)} disabled={!hasStory}><span className="day-num">{den.den}</span><div className="day-info"><div className="day-title">{den.nazev || 'Den ' + den.den}</div><div className="day-meta">{hasStory ? den.okruhy.map(o=>o.tema).join(' • ') : '🔒 Scénář se připravuje'}</div></div>{hasStory && <span style={{fontSize:20}}>▶</span>}</button>);})}</div></div>);
     }
 
-    const AVATAR = {volta:'🧪', agent:'🕵️', skripek:'😰', repak:'🍖', kotva:'⚓', krivak:'☠️', papousek:'🦜'};
-    const POSTAVA_NAME = {volta:'Dr. Volta', agent:'Agent K', skripek:'Skřípek', repak:'Řepák', kotva:'Kotva', krivak:'Krivák', papousek:'Papoušek'};
+    const AVATAR = {volta:'🧪', agent:'🕵️', skripek:'😰', repak:'🍖', kotva:'⚓', krivak:'☠️', papousek:'🦜', keksik:'🦜', piratka:'⚓'};
+    const POSTAVA_NAME = {volta:'Dr. Volta', agent:'Agent K', skripek:'Skřípek', repak:'Řepák', kotva:'Kotva', krivak:'Krivák', papousek:'Papoušek', keksik:'Keksík', piratka:'Pirátka'};
+    const GH_IMG = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/img/';
+    const AVATAR_IMG = {volta:GH_IMG+'postavy/volta.png', agent:GH_IMG+'postavy/agent.png', skripek:GH_IMG+'postavy/skripek.png', repak:GH_IMG+'postavy/repak.png', keksik:GH_IMG+'postavy/keksik.png', krivak:GH_IMG+'postavy/krivak.png', piratka:GH_IMG+'postavy/piratka.png'};
+    const ROUND_ICONS = ['📝','🔢','🌍','🌀'];
+    const LABELS = ['A','B','C','D','E'];
 
     function MissionScreen({ dayData, onBack }) {
-      const [msgs, setMsgs] = useState([]);
+      const [bubble, setBubble] = useState(null);
       const [waitingChoice, setWaitingChoice] = useState(null);
       const [typing, setTyping] = useState(false);
-      const [inp, setInp] = useState('');
       const [score, setScore] = useState({correct:0, total:0});
+      const [streak, setStreak] = useState(0);
+      const [maxStreak, setMaxStreak] = useState(0);
       const [showContinue, setShowContinue] = useState(false);
-      const endRef = useRef(null);
-      const posRef = useRef({okruh:0, q:0, attempts:0, phase:'intro', continueAction:null});
+      const [roundLabel, setRoundLabel] = useState('');
+      const [showSummary, setShowSummary] = useState(false);
+      const [collectItem, setCollectItem] = useState(null);
+      const [bgScene, setBgScene] = useState('lab');
+      const posRef = useRef({okruh:0, q:0, attempts:0, continueAction:null});
+      const totalQ = dayData.okruhy.reduce((s,o)=>s+o.otazky.length,0);
+      const sceneBgs = {
+        lab: 'linear-gradient(160deg, #1a2240 0%, #2a3460 40%, #1e2845 100%)',
+        intro: 'linear-gradient(160deg, #2d1b4e 0%, #1a2240 50%, #0d1117 100%)',
+        action: 'linear-gradient(160deg, #3a1a1a 0%, #2a1030 50%, #1a1a2e 100%)',
+        final: 'linear-gradient(160deg, #1a3020 0%, #1e2845 50%, #2a3460 100%)'
+      };
+      const sceneImgs = {
+        intro: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S1.png',
+        lab: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S2.png',
+        action1: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S3.png',
+        action2: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S4.png',
+        action3: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S5.png',
+        final: GH_IMG+'m01/d'+(String(dayData.den).padStart(2,'0'))+'/D'+dayData.den+'S6.png',
+      };
 
-      useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
-
-      function add(type, text, avatar) { setMsgs(p=>[...p,{type,text,avatar}]); }
-      function dialog(who, text) {
-        const w=who.toLowerCase();
-        const t=w==='agent'?'agent':['skripek','repak','kotva','krivak'].includes(w)?'pirat':'volta';
-        add(t,(POSTAVA_NAME[w]||who)+': '+text, AVATAR[w]||'❓');
+      function showBubble(who, text) {
+        const w = (who||'volta').toLowerCase();
+        setBubble({who:w, name:POSTAVA_NAME[w]||who, text, avatar:AVATAR_IMG[w], emoji:AVATAR[w]||'❓', side:w==='agent'?'right':'left'});
       }
 
-      useEffect(() => {
-        if (!dayData||!dayData.intro||dayData.intro.length===0) {
-          startQuestion(0,0);
-          return;
-        }
-        let d=0; const tt=[];
-        dayData.intro.forEach(item => {
-          d+=400+(item.t||item.text||'').length*12;
-          tt.push(setTimeout(()=>dialog(item.p||item.postava,item.t||item.text),d));
+      useEffect(()=>{
+        if(!dayData||!dayData.intro||dayData.intro.length===0){startQuestion(0,0);return;}
+        setBgScene('intro');
+        let d=200;const tt=[];
+        dayData.intro.forEach((item,idx)=>{
+          d+=300;
+          tt.push(setTimeout(()=>{
+            showBubble(item.p||item.postava, item.t||item.text);
+          },d));
+          d+=Math.min((item.t||item.text||'').length*40+800, 4000);
+          tt.push(setTimeout(()=>setBubble(null),d));
         });
-        d+=1000;
-        tt.push(setTimeout(()=>startQuestion(0,0),d));
+        d+=400;
+        tt.push(setTimeout(()=>{setBgScene('lab');startQuestion(0,0);},d));
         return ()=>tt.forEach(clearTimeout);
-      }, []);
+      },[]);
 
-      function startQuestion(oI,qI) {
+      function startQuestion(oI,qI){
         const ok=dayData.okruhy[oI];
         if(!ok){finishDay();return;}
         const q=ok.otazky[qI];
         if(!q){finishOkruh(oI);return;}
-        posRef.current={...posRef.current,okruh:oI,q:qI,attempts:0,phase:'question'};
-        if(qI===0) add('scenka','━━━ '+(ok.tema||'Okruh '+(oI+1))+' ━━━');
-        if(q.vi) dialog('volta',q.vi); else dialog('volta',q.question);
+        posRef.current={...posRef.current,okruh:oI,q:qI,attempts:0};
+        setRoundLabel((ROUND_ICONS[oI]||'📚')+' '+(ok.tema||'Okruh '+(oI+1))+' — '+(qI+1)+'/'+ok.otazky.length);
+        showBubble('volta', q.vi||q.question);
         if(q.options) setWaitingChoice(q.options);
       }
 
-      function handleAnswer(answer) {
-        if(typing||showContinue) return;
+      function handleAnswer(answer){
+        if(typing||showContinue||collectItem) return;
         const pos=posRef.current;
         const ok=dayData.okruhy[pos.okruh];
         const q=ok.otazky[pos.q];
-        add('student',answer,'🕵️');
         setWaitingChoice(null);
         setTyping(true);
         const correct=normalize(answer)===normalize(q.answer);
         setTimeout(()=>{
           setTyping(false);
           if(correct){
-            dialog('volta',q.vs||['Správně!','Výborně!','Přesně tak!'][Math.floor(Math.random()*3)]);
+            const ns=streak+1;setStreak(ns);if(ns>maxStreak)setMaxStreak(ns);
             setScore(p=>({correct:p.correct+1,total:p.total+1}));
+            showBubble('volta',q.vs||'Správně!');
             posRef.current.attempts=0;
-            setTimeout(()=>advance(pos.okruh,pos.q),700);
+            setTimeout(()=>{setBubble(null);advance(pos.okruh,pos.q);},1800);
           } else {
-            pos.attempts++;
-            posRef.current.attempts=pos.attempts;
+            setStreak(0);
+            pos.attempts++;posRef.current.attempts=pos.attempts;
             if(pos.attempts>=3){
-              dialog('volta','Správná odpověď: '+q.answer);
+              showBubble('volta','Správná odpověď: '+q.answer);
               setScore(p=>({...p,total:p.total+1}));
               posRef.current.attempts=0;
-              setTimeout(()=>advance(pos.okruh,pos.q),900);
+              setTimeout(()=>{setBubble(null);advance(pos.okruh,pos.q);},1800);
             } else {
-              dialog('volta',q.vn||q.hint||'Zkus to jinak.');
-              if(q.options) setWaitingChoice(q.options);
+              showBubble('volta',q.vn||q.hint||'Zkus to jinak.');
+              setTimeout(()=>{if(q.options)setWaitingChoice(q.options);},800);
             }
           }
         },500);
       }
 
-      function advance(oI,qI) {
-        const ok=dayData.okruhy[oI];
-        const nq=qI+1;
-        if(nq===5&&ok.akce){
-          playAkce(ok.akce,()=>startQuestion(oI,nq));
-          return;
-        }
-        if(nq>=ok.otazky.length){
-          finishOkruh(oI);
-          return;
-        }
+      function advance(oI,qI){
+        const ok=dayData.okruhy[oI];const nq=qI+1;
+        if(nq===5&&ok.akce){setBgScene('action');playAkce(ok.akce,()=>{setBgScene('lab');startQuestion(oI,nq);});return;}
+        if(nq>=ok.otazky.length){finishOkruh(oI);return;}
         startQuestion(oI,nq);
       }
 
-      function playAkce(akce,cb) {
-        let d=0; const tt=[];
+      function playAkce(akce,cb){
+        let d=200;const tt=[];
         (akce.dialog||[]).forEach(item=>{
-          d+=400+(item.t||'').length*10;
-          tt.push(setTimeout(()=>dialog(item.p,item.t),d));
+          tt.push(setTimeout(()=>showBubble(item.p,item.t),d));
+          d+=Math.min((item.t||'').length*40+800,3500);
+          tt.push(setTimeout(()=>setBubble(null),d));d+=200;
         });
-        if(akce.zprava){d+=500;tt.push(setTimeout(()=>add('sber','🎁 '+akce.zprava),d));}
-        d+=800;
-        tt.push(setTimeout(()=>{
-          posRef.current.continueAction=cb;
-          setShowContinue(true);
-        },d));
+        if(akce.zprava){d+=300;tt.push(setTimeout(()=>setCollectItem({icon:'🎁',title:akce.zprava,desc:''}),d));return;}
+        d+=500;
+        tt.push(setTimeout(()=>{posRef.current.continueAction=cb;setShowContinue(true);},d));
       }
 
-      function finishOkruh(oI) {
-        const ok=dayData.okruhy[oI];
-        let d=0; const tt=[];
+      function finishOkruh(oI){
+        const ok=dayData.okruhy[oI];let d=200;const tt=[];
         (ok.scenka||[]).forEach(item=>{
-          d+=400+(item.t||'').length*10;
-          tt.push(setTimeout(()=>dialog(item.p,item.t),d));
+          tt.push(setTimeout(()=>showBubble(item.p,item.t),d));
+          d+=Math.min((item.t||'').length*40+800,3500);
+          tt.push(setTimeout(()=>setBubble(null),d));d+=200;
         });
-        d+=800;
-        const nextO=oI+1;
+        d+=500;const nextO=oI+1;
         if(nextO<dayData.okruhy.length){
-          tt.push(setTimeout(()=>{
-            posRef.current.continueAction=()=>startQuestion(nextO,0);
-            setShowContinue(true);
-          },d));
-        } else {
-          tt.push(setTimeout(()=>finishDay(),d));
-        }
+          tt.push(setTimeout(()=>{posRef.current.continueAction=()=>startQuestion(nextO,0);setShowContinue(true);},d));
+        } else {tt.push(setTimeout(()=>finishDay(),d));}
       }
 
-      function finishDay() {
-        let d=0; const tt=[];
+      function finishDay(){
+        setBgScene('final');let d=200;const tt=[];
         (dayData.zaver||[]).forEach(item=>{
-          d+=400+(item.t||item.text||'').length*10;
-          tt.push(setTimeout(()=>dialog(item.p||item.postava,item.t||item.text),d));
+          tt.push(setTimeout(()=>showBubble(item.p||item.postava,item.t||item.text),d));
+          d+=Math.min((item.t||item.text||'').length*40+800,4000);
+          tt.push(setTimeout(()=>setBubble(null),d));d+=200;
         });
-        d+=600;
-        tt.push(setTimeout(()=>{
-          add('sber','📊 Den dokončen! Skóre: '+score.correct+'/'+score.total);
-          if(dayData.predmety_sberu&&dayData.predmety_sberu.length>0){
-            setTimeout(()=>add('sber','🎒 Sebrané předměty: '+dayData.predmety_sberu.map(p=>p.nazev).join(', ')),400);
-          }
-        },d));
+        d+=600;tt.push(setTimeout(()=>setShowSummary(true),d));
       }
 
-      function handleContinue() {
-        setShowContinue(false);
+      function handleContinue(){
+        setShowContinue(false);setBubble(null);
+        const cb=posRef.current.continueAction;posRef.current.continueAction=null;
+        if(cb)cb();
+      }
+
+      function closeCollect(){
         const cb=posRef.current.continueAction;
-        posRef.current.continueAction=null;
-        if(cb) cb();
+        setCollectItem(null);posRef.current.continueAction=null;
+        if(cb)cb();else{const p=posRef.current;advance(p.okruh,p.q);}
       }
 
-      const send=()=>{if(!inp.trim())return;handleAnswer(inp.trim());setInp('');};
+      const pct = (score.total/totalQ)*100;
+      const bgStyle = sceneImgs[bgScene] ? {backgroundImage:`url(${sceneImgs[bgScene]})`,backgroundSize:'cover',backgroundPosition:'center'} : {background:sceneBgs[bgScene]||sceneBgs.lab};
 
-      return (<div className="chat-screen">
-        <div className="chat-header">
-          <button className="back-btn" onClick={onBack}>←</button>
-          <span style={{fontSize:20}}>🏴‍☠️</span>
-          <span style={{flex:1,fontWeight:700,fontSize:14}}>Den {dayData.den}: {dayData.nazev}</span>
-          <span className="score-badge score-correct">{score.correct}/{score.total}</span>
+      return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000'}}>
+        {/* Scene BG */}
+        <div style={{...bgStyle,position:'absolute',inset:0,transition:'all 0.5s'}}/>
+        <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.3) 100%)'}}/>
+
+        {/* Progress */}
+        <div style={{position:'absolute',top:0,left:0,right:0,height:4,background:'rgba(255,255,255,0.08)',zIndex:50}}>
+          <div style={{height:'100%',width:pct+'%',background:'linear-gradient(90deg,#4A90D9,#4CAF50)',transition:'width 0.5s',borderRadius:'0 2px 2px 0'}}/>
         </div>
-        <div className="chat-messages">
-          {msgs.map((m,i)=>{
-            if(m.type==='student') return (<div key={i} className="msg msg-student fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            if(m.type==='scenka') return (<div key={i} className="msg msg-scenka fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            if(m.type==='sber') return (<div key={i} className="msg msg-sber fade-in"><div className="msg-bubble">{m.text}</div></div>);
-            const cls=m.type==='pirat'?'msg-pirat':m.type==='agent'?'msg-agent':'msg-volta';
-            return (<div key={i} className={'msg msg-tutor '+cls+' fade-in'}><span className="msg-avatar">{m.avatar}</span><div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div></div>);
-          })}
-          {typing&&<div className="msg msg-tutor msg-volta"><span className="msg-avatar">🧪</span><div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}
-          {waitingChoice&&!typing&&!showContinue&&<div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>{waitingChoice.map((opt,i)=>(<button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>{opt}</button>))}</div>}
-          {showContinue&&<button className="continue-btn fade-in" onClick={handleContinue}>Pokračovat ▶</button>}
-          <div ref={endRef}/>
+
+        {/* HUD */}
+        <div style={{position:'absolute',top:8,left:12,zIndex:40,display:'flex',gap:8,alignItems:'center'}}>
+          <button onClick={onBack} style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'5px 12px',color:'#fff',fontSize:13,fontWeight:700}}>← Zpět</button>
+          <span style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'5px 12px',color:'#fff',fontSize:12,fontWeight:700}}>{roundLabel}</span>
         </div>
-        <div className="chat-input">
-          <input value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();send();}}} placeholder="Napiš odpověď..."/>
-          <button onClick={send}>➤</button>
+        <div style={{position:'absolute',top:8,right:12,zIndex:40,display:'flex',gap:8}}>
+          <span style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'5px 10px',color:'#fff',fontSize:13,fontWeight:700}}>⭐ {score.correct}/{score.total}</span>
+          {streak>1&&<span style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'5px 10px',color:'#FF9800',fontSize:13,fontWeight:700}}>🔥 {streak}</span>}
         </div>
+
+        {/* Bubble */}
+        {bubble&&<div style={{position:'absolute',top:'8%',left:0,right:0,display:'flex',justifyContent:bubble.side==='right'?'flex-end':'flex-start',padding:'0 5%',zIndex:10,animation:'fadeIn 0.25s ease'}}>
+          <div style={{display:'flex',alignItems:'flex-start',gap:10,maxWidth:560,flexDirection:bubble.side==='right'?'row-reverse':'row'}}>
+            <div style={{width:52,height:52,borderRadius:'50%',border:'3px solid #222',overflow:'hidden',flexShrink:0,background:'#333',boxShadow:'0 3px 10px rgba(0,0,0,0.5)'}}>
+              {bubble.avatar?<img src={bubble.avatar} style={{width:'100%',height:'100%',objectFit:'cover'}} onError={e=>{e.target.style.display='none';e.target.parentNode.innerHTML='<span style="font-size:28px;display:flex;align-items:center;justify-content:center;height:100%">'+bubble.emoji+'</span>';}}/>:<span style={{fontSize:28,display:'flex',alignItems:'center',justifyContent:'center',height:'100%'}}>{bubble.emoji}</span>}
+            </div>
+            <div style={{position:'relative',background:'#fff',color:'#1a1a1a',border:'3px solid #222',borderRadius:18,padding:'10px 16px',fontSize:15,fontWeight:600,lineHeight:1.4,boxShadow:'3px 3px 0 rgba(0,0,0,0.18)',maxWidth:440}}>
+              <div style={{fontFamily:"'Bangers',cursive",fontSize:12,letterSpacing:1,textTransform:'uppercase',marginBottom:1,color:bubble.who==='agent'?'#4CAF50':['skripek','repak','krivak','kotva','piratka'].includes(bubble.who)?'#E53935':'#4A90D9'}}>{bubble.name}</div>
+              <div>{bubble.text}</div>
+            </div>
+          </div>
+        </div>}
+
+        {/* Question card */}
+        {waitingChoice&&!typing&&!showContinue&&!collectItem&&!showSummary&&<div style={{position:'absolute',bottom:0,left:0,right:0,zIndex:20,background:'rgba(18,18,35,0.94)',backdropFilter:'blur(14px)',borderTop:'2px solid rgba(255,255,255,0.08)',padding:'16px 20px 20px',animation:'slideUp 0.3s ease'}}>
+          <div style={{textAlign:'center',fontSize:11,color:'rgba(255,255,255,0.35)',marginBottom:4,letterSpacing:1,textTransform:'uppercase'}}>Vyber odpověď</div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(160px, 1fr))',gap:8,maxWidth:700,margin:'0 auto'}}>
+            {waitingChoice.map((opt,i)=>(<button key={i} onClick={()=>handleAnswer(opt)} style={{background:'rgba(255,255,255,0.06)',border:'2px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'10px 14px',color:'#fff',fontFamily:"'Nunito',sans-serif",fontSize:14,fontWeight:700,cursor:'pointer',textAlign:'center',transition:'all 0.15s'}} onMouseOver={e=>{e.target.style.borderColor='#4A90D9';e.target.style.background='rgba(255,255,255,0.12)';}} onMouseOut={e=>{e.target.style.borderColor='rgba(255,255,255,0.15)';e.target.style.background='rgba(255,255,255,0.06)';}}><span style={{display:'inline-block',width:22,height:22,lineHeight:'22px',borderRadius:'50%',background:'rgba(255,255,255,0.1)',fontFamily:"'Bangers',cursive",fontSize:12,marginRight:8,textAlign:'center',verticalAlign:'middle'}}>{LABELS[i]}</span>{opt}</button>))}
+          </div>
+        </div>}
+
+        {/* Continue */}
+        {showContinue&&<div style={{position:'absolute',bottom:30,left:'50%',transform:'translateX(-50%)',zIndex:30}}>
+          <button onClick={handleContinue} style={{background:'rgba(245,158,11,0.9)',backdropFilter:'blur(6px)',borderRadius:24,padding:'12px 32px',color:'#000',fontSize:16,fontWeight:700,boxShadow:'0 4px 20px rgba(245,158,11,0.4)',border:'none',cursor:'pointer',animation:'pulse 2s infinite'}}>Pokračovat ▶</button>
+        </div>}
+
+        {/* Collect */}
+        {collectItem&&<div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)',zIndex:60,background:'rgba(18,18,35,0.95)',backdropFilter:'blur(14px)',border:'2px solid rgba(255,255,255,0.15)',borderRadius:20,padding:'28px 36px',textAlign:'center',maxWidth:360,width:'85%',animation:'fadeIn 0.3s ease'}}>
+          <div style={{fontSize:44,marginBottom:8}}>{collectItem.icon}</div>
+          <div style={{fontFamily:"'Bangers',cursive",fontSize:20,color:'#FFD700',marginBottom:6}}>{collectItem.title}</div>
+          {collectItem.desc&&<div style={{fontSize:13,color:'rgba(255,255,255,0.6)',marginBottom:14}}>{collectItem.desc}</div>}
+          <button onClick={closeCollect} style={{background:'#4A90D9',border:'none',borderRadius:10,padding:'9px 24px',color:'#fff',fontFamily:"'Nunito',sans-serif",fontWeight:700,fontSize:13,cursor:'pointer'}}>Sebrat!</button>
+        </div>}
+
+        {/* Summary */}
+        {showSummary&&<div style={{position:'absolute',inset:0,zIndex:80,background:'rgba(0,0,0,0.85)',backdropFilter:'blur(10px)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <div style={{background:'rgba(18,18,35,0.95)',border:'2px solid rgba(255,255,255,0.12)',borderRadius:22,padding:36,maxWidth:420,width:'90%',textAlign:'center'}}>
+            <div style={{fontFamily:"'Bangers',cursive",fontSize:28,color:'#FFD700',marginBottom:18}}>🎉 Den {dayData.den} hotový!</div>
+            <div style={{display:'flex',justifyContent:'center',gap:28,marginBottom:20}}>
+              <div><div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#4CAF50'}}>{score.correct}</div><div style={{fontSize:11,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Správně</div></div>
+              <div><div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#fff'}}>{score.total}</div><div style={{fontSize:11,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Otázek</div></div>
+              <div><div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FF9800'}}>{maxStreak}</div><div style={{fontSize:11,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Série</div></div>
+            </div>
+            {dayData.predmety_sberu&&dayData.predmety_sberu.length>0&&<div>
+              <div style={{fontFamily:"'Bangers',cursive",fontSize:16,color:'#fff',marginBottom:8}}>Sebrané předměty</div>
+              <div style={{display:'flex',justifyContent:'center',gap:10,flexWrap:'wrap'}}>
+                {dayData.predmety_sberu.map((p,i)=>(<div key={i} style={{background:'rgba(255,255,255,0.06)',borderRadius:10,padding:'6px 10px',fontSize:12,border:'1px solid rgba(255,255,255,0.08)'}}>{p.nazev}</div>))}
+              </div>
+            </div>}
+            <button onClick={onBack} style={{marginTop:20,background:'#f59e0b',border:'none',borderRadius:14,padding:'12px 28px',color:'#000',fontSize:15,fontWeight:700,cursor:'pointer'}}>Zpět na mise</button>
+          </div>
+        </div>}
       </div>);
     }
 
