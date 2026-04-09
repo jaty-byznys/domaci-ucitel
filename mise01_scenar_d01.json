@@ -894,35 +894,55 @@
   "intro": [
     {
       "p": "popis",
-      "t": "Černá obrazovka. Zvuk kroků na štěrku. Pomalu se rozsvítí — pohled na budovu zvenku. Vyvrácené dveře, prasklá okna, z jednoho okna se kouří."
-    },
-    {
-      "p": "popis",
-      "t": "Uvnitř chaos. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce je lepenkou přilepená předpona VY-. Na tabuli je napůl smazaný nákres stromu."
+      "t": "Zničená laboratoř. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce přilepená předpona VY-. Na tabuli napůl smazaný strom."
     },
     {
       "p": "volta",
-      "t": "Agente! Konečně! Víš co je horší než když ti piráti ukradnou laboratoř?"
+      "t": "Agente! KONEČNĚ! Čekám tři hodiny! ...Dobře, čekám dvacet minut. Ale v tomhle bordelu to jsou tři hodiny."
     },
     {
       "p": "agent",
-      "t": "Co?"
+      "t": "Co se tu stalo?"
     },
     {
       "p": "volta",
-      "t": "Když ti rozstříhají poznámky! Podívej se na to — mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku."
+      "t": "Piráti. Krivák a jeho banda. Vykradli mi laboratoř, ukradli vynálezy a rozstříhali poznámky. A víš proč? Protože jim VADILO, že vymýšlím věci co FUNGUJÍ. Na rozdíl od Krivákovy lodi, která funguje hlavně jako plovoucí ostuda."
+    },
+    {
+      "p": "agent",
+      "t": "Co přesně ukradli?"
     },
     {
       "p": "volta",
-      "t": "Byla to moje nejlepší práce! Roky výzkumu!"
+      "t": "Všechno! Roky práce! Teda — ukradli i kávovar. To mě bolí nejvíc."
+    },
+    {
+      "p": "agent",
+      "t": "A co ode mě potřebujete?"
     },
     {
       "p": "volta",
-      "t": "...Dobře, psal jsem to včera večer. Ale to je detail."
+      "t": "Pomoct mi to dostat zpátky. Kousek po kousku. Postup je jednoduchý — já kladu otázky, ty odpovídáš, a pokaždé když odpovíš správně, piráti ztratí kousek kontroly. Doslova se složí. Já to vím — ZKOUŠEL jsem to."
+    },
+    {
+      "p": "agent",
+      "t": "Porazit piráty správnými odpověďmi."
     },
     {
       "p": "volta",
-      "t": "Začneme od základu. Každé slovo má srdce — KOŘEN. Bez něj je to jen hromádka písmen, co se tváří důležitě. Jako kapitán Krivák — samá pozlátka, žádný obsah."
+      "t": "PŘESNĚ. A cestou najdeš věci, co pirátům vypadaly z kapes. Seber VŠECHNO. Každý papír, každý klíč, každé peříčko. Vypadá to jako harampádí, ale mám pocit, že na konci z toho bude něco VELKÉHO."
+    },
+    {
+      "p": "agent",
+      "t": "Žádný plán, ale sbíráme všechno."
+    },
+    {
+      "p": "volta",
+      "t": "To je celá věda, agente. Děláš bordel, dokud z toho nevznikne objev. Tak — podívej se na to!"
+    },
+    {
+      "p": "volta",
+      "t": "Mám tady kořen BEZ přípony, příponu BEZ kořene, a předponu, která se přilepila na ledničku. Začneme od základu — každé slovo má srdce, KOŘEN. Bez něj je to jen hromádka písmen co se tváří důležitě. Jako kapitán Krivák."
     }
   ],
   "predmety_sberu": [
