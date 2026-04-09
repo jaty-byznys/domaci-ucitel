@@ -127,9 +127,10 @@ function norm(s){return String(s).toLowerCase().replace(/\s+/g,' ').trim().repla
    x% = horizontální pozice hlavy, y% = vertikální pozice hlavy (horní okraj čela)
 */
 const HEADS = {
+  S0: {volta:[68,10], agent:[48,55]},                       // exteriér — Volta řve z okna, Agent dole
   S1: {volta:[35,15], agent:[82,18]},                       // intro + okruh 1 čeština (Volta zkumavka na nose)
   S2: {volta:[85,15], agent:[18,18], skripek:[52,20]},       // akce 1 — Skřípek utíká
-  S3: {volta:[28,15], agent:[72,18]},                       // scénka ok1 / intro ok2 (Volta smutný u stolu, Agent vchází)
+  S3: {volta:[50,14], agent:[72,16]},                       // scénka ok1 — Řepák za dveřmi (stín vlevo)
   S4: {volta:[28,14], agent:[78,16]},                       // okruh 2 matika (Volta s výpočty)
   S5: {volta:[25,14], agent:[55,16], keksik:[88,20]},       // okruh 3 angličtina (kartičky RED BLUE, papoušek)
   S6: {volta:[88,14], agent:[42,14], keksik:[38,10]},       // akce 3 — Keksík vletí oknem
