@@ -1,597 +1,529 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Domácí Učitel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0f1117; --card: #1a1d27; --card2: #242834;
-      --text: #e8e8ed; --text2: #9ca3af; --text3: #6b7280;
-      --accent: #f59e0b; --accent2: #fbbf24;
-      --green: #10b981; --red: #ef4444; --blue: #3b82f6;
-      --matika: #f97316; --cestina: #06b6d4; --prirodoveda: #22c55e;
-      --vlastiveda: #8b5cf6; --anglictina: #ec4899;
-      --radius: 14px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
-    button { font-family: 'Nunito', sans-serif; cursor: pointer; border: none; transition: transform 0.15s, box-shadow 0.15s; }
-    button:hover { transform: translateY(-1px); }
-    button:active { transform: scale(0.97); }
-    input, textarea { font-family: 'Nunito', sans-serif; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .fade-in { animation: fadeIn 0.35s ease-out; }
-    .slide-up { animation: slideUp 0.4s ease-out; }
-    .app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; }
-    .screen { min-height: 100vh; display: flex; flex-direction: column; }
-    .login { justify-content: center; align-items: center; padding: 40px 24px; }
-    .login-logo { font-size: 72px; margin-bottom: 12px; filter: drop-shadow(0 4px 12px rgba(245,158,11,0.4)); }
-    .login-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .login-sub { color: var(--text2); font-size: 15px; margin: 6px 0 40px; }
-    .login-btn { display: block; width: 100%; padding: 18px; border-radius: var(--radius); color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 12px; box-shadow: var(--shadow); }
-    .login-ver { color: var(--text3); font-size: 12px; margin-top: 40px; }
-    .header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--card); border-bottom: 1px solid rgba(255,255,255,0.06); position: sticky; top: 0; z-index: 10; }
-    .back-btn { background: var(--card2); padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--text2); }
-    .header-title { font-size: 17px; font-weight: 700; flex: 1; }
-    .subjects { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
-    .subject-card { display: flex; align-items: center; gap: 14px; padding: 18px 16px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; border-left: 4px solid var(--accent); }
-    .subject-icon { font-size: 32px; }
-    .subject-name { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
-    .subject-info { font-size: 12px; color: var(--text3); }
-    .topics { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
-    .topic-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--card); border-radius: 12px; text-align: left; border: 1px solid rgba(255,255,255,0.04); }
-    .topic-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
-    .chat-screen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
-    .chat-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--card); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
-    .chat-messages { flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; }
-    .msg { display: flex; max-width: 88%; }
-    .msg-tutor { align-items: flex-start; gap: 8px; }
-    .msg-student { justify-content: flex-end; align-self: flex-end; }
-    .msg-avatar { font-size: 22px; margin-top: 4px; flex-shrink: 0; }
-    .msg-bubble { padding: 10px 14px; font-size: 15px; line-height: 1.55; }
-    .msg-tutor .msg-bubble { background: var(--card); color: var(--text); border-radius: 4px 16px 16px 16px; }
-    .msg-student .msg-bubble { background: var(--blue); color: #fff; border-radius: 16px 4px 16px 16px; }
-    .typing-dots { display: flex; gap: 4px; padding: 12px 16px; }
-    .typing-dots span { width: 8px; height: 8px; background: var(--text3); border-radius: 50%; animation: pulse 1.4s infinite; }
-    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    .chat-input { display: flex; gap: 8px; padding: 10px 12px; background: var(--card); border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
-    .chat-input input { flex: 1; padding: 12px 16px; border-radius: 24px; border: 2px solid var(--card2); background: var(--bg); color: var(--text); font-size: 15px; outline: none; }
-    .chat-input input:focus { border-color: var(--accent); }
-    .chat-input button { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; }
-    .choices { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-    .choice-btn { padding: 10px 14px; background: var(--card2); border-radius: 10px; color: var(--text); font-size: 14px; font-weight: 600; text-align: left; border: 1px solid rgba(255,255,255,0.08); }
-    .choice-btn:hover { border-color: var(--accent); }
-    .score-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-    .score-correct { background: rgba(16,185,129,0.15); color: var(--green); }
-    .dash-card { background: var(--card); border-radius: var(--radius); padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
-    .dash-label { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
-    .dash-value { font-size: 24px; font-weight: 800; }
-    .settings-input { width: 100%; padding: 12px 16px; background: var(--bg); border: 2px solid var(--card2); border-radius: 10px; color: var(--text); font-size: 15px; outline: none; }
-    .settings-input:focus { border-color: var(--accent); }
-    .settings-btn { width: 100%; padding: 14px; border-radius: var(--radius); background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
-    .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 16px; }
-    .loading-spinner { width: 40px; height: 40px; border: 4px solid var(--card2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
-    .msg-volta .msg-bubble { background: linear-gradient(135deg, #1e3a5f, #1a2d47); border: 1px solid rgba(59,130,246,0.2); }
-    .msg-volta .msg-avatar { font-size: 26px; }
-    .msg-agent .msg-bubble { background: linear-gradient(135deg, #1e4d3a, #1a3d2f); border: 1px solid rgba(16,185,129,0.2); }
-    .msg-pirat .msg-bubble { background: linear-gradient(135deg, #4a1e1e, #3d1a1a); border: 1px solid rgba(239,68,68,0.2); }
-    .msg-scenka { max-width: 95% !important; }
-    .msg-scenka .msg-bubble { background: var(--card2); color: var(--text2); font-style: italic; font-size: 13px; border: 1px solid rgba(255,255,255,0.04); }
-    .msg-sber { max-width: 95% !important; }
-    .msg-sber .msg-bubble { background: linear-gradient(135deg, #3d3510, #2d2808); border: 1px solid rgba(245,158,11,0.3); color: var(--accent2); }
-    .day-card { display: flex; align-items: center; gap: 14px; padding: 16px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; border-left: 4px solid var(--accent); margin-bottom: 8px; }
-    .day-card.locked { opacity: 0.4; border-left-color: var(--text3); }
-    .day-num { font-size: 28px; font-weight: 800; color: var(--accent); min-width: 40px; text-align: center; }
-    .day-info { flex: 1; }
-    .day-title { font-size: 15px; font-weight: 700; color: var(--text); }
-    .day-meta { font-size: 12px; color: var(--text3); margin-top: 2px; }
-    .okruh-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin: 12px 0 4px 36px; }
-    .continue-btn { display: block; margin: 16px auto; padding: 14px 32px; border-radius: 30px; background: var(--accent); color: #000; font-size: 16px; font-weight: 700; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Domácí Učitel</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0f1117;--card:#1a1d27;--card2:#242834;
+--text:#e8e8ed;--text2:#9ca3af;--text3:#6b7280;
+--accent:#f59e0b;--accent2:#fbbf24;
+--green:#10b981;--red:#ef4444;--blue:#3b82f6;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);width:100vw;height:100vh;height:100dvh}
+button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bubblePop{0%{opacity:0;transform:scale(0.6)}60%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes collectPop{0%{transform:scale(0) rotate(-8deg);opacity:0}50%{transform:scale(1.12) rotate(2deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* LOGIN */
+.login-screen{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 24px;text-align:center}
+.login-logo{font-size:72px;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4))}
+.login-title{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.login-sub{color:var(--text2);font-size:15px;margin:6px 0 40px}
+.login-btn{display:block;width:100%;max-width:400px;padding:18px;border-radius:14px;color:#fff;font-size:17px;font-weight:700;margin-bottom:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+
+/* DAY PICKER */
+.dp-screen{height:100%;display:flex;flex-direction:column}
+.hdr{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--card);border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
+.back-btn{background:var(--card2);padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--text2)}
+.hdr-title{font-size:17px;font-weight:700;flex:1}
+.day-list{flex:1;overflow-y:auto;padding:16px 18px}
+.day-card{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:left;border-left:4px solid var(--accent);margin-bottom:8px;width:100%}
+.day-card.locked{opacity:0.4;border-left-color:var(--text3)}
+.day-num{font-size:28px;font-weight:800;color:var(--accent);min-width:40px;text-align:center;font-family:'Bangers',cursive}
+
+/* FULLSCREEN SCENE */
+.scene{position:fixed;inset:0;overflow:hidden;background:#000}
+.scene-bg{position:absolute;inset:0;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#000}
+.scene-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.35) 0%,transparent 25%,transparent 75%,rgba(0,0,0,0.2) 100%)}
+.top-bar{position:absolute;top:8px;left:12px;right:12px;z-index:40;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
+.top-bar>*{pointer-events:auto}
+.pill{background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:6px 14px;color:#fff;font-size:13px;font-weight:700}
+
+/* BUBLINA — vajíčko na ležato, špička dolů k ústům */
+.bub-wrap{position:absolute;z-index:15;animation:bubblePop 0.3s ease-out}
+.bub-egg{
+  position:relative;background:#fff;color:#1a1a1a;
+  border:3px solid #222;
+  /* vajíčko na ležato = hodně border-radius, víc široké než vysoké */
+  border-radius:48% 48% 48% 48% / 52% 52% 52% 52%;
+  padding:14px 32px 12px;
+  min-width:180px;max-width:320px;
+  box-shadow:3px 4px 0 rgba(0,0,0,0.2);
+}
+.bub-name{font-family:'Bangers',cursive;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:2px;text-align:center}
+.bub-name.cv{color:#1565C0}
+.bub-name.ca{color:#2E7D32}
+.bub-name.cp{color:#C62828}
+.bub-txt{font-size:15px;font-weight:600;line-height:1.4;text-align:left}
+/* Špička — dlouhá ostrá, dolů k ústům */
+.bub-tail{position:absolute;bottom:-20px;width:20px;height:22px}
+.bub-tail.tl{left:35%}
+.bub-tail.tr{right:35%}
+
+/* Popisný text scény */
+.scene-desc{
+  position:absolute;z-index:15;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:rgba(0,0,0,0.78);border-radius:20px;padding:14px 24px;
+  color:#ddd;font-size:16px;font-style:italic;text-align:center;
+  max-width:75%;backdrop-filter:blur(4px);animation:fadeIn 0.3s
+}
+
+/* Dialog hint */
+.tap-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:30;
+  background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);border-radius:20px;padding:7px 18px;
+  font-size:13px;color:rgba(255,255,255,0.45);pointer-events:none}
+
+/* OTÁZKOVÝ PANEL */
+.q-panel{position:absolute;bottom:0;left:0;right:0;z-index:20;
+  background:rgba(12,12,24,0.93);backdrop-filter:blur(12px);
+  border-top:2px solid rgba(255,255,255,0.08);padding:10px 14px 14px;
+  animation:slideUp 0.25s ease-out}
+.q-text{font-size:17px;font-weight:700;color:#E8E8ED;line-height:1.4;margin-bottom:8px;text-align:center}
+.q-opts{display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto}
+.q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:11px;
+  background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);
+  color:#fff;font-size:16px;font-weight:600;text-align:left;transition:all 0.12s}
+.q-opt:hover:not(.lk){border-color:var(--accent);background:rgba(255,255,255,0.1)}
+.q-opt:active:not(.lk){transform:scale(0.98)}
+.q-opt.lk{pointer-events:none}
+.q-lbl{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.1);font-family:'Bangers',cursive;font-size:14px}
+.q-opt.ok{background:rgba(16,185,129,0.2);border-color:#10B981;color:#A7F3D0}
+.q-opt.ok .q-lbl{background:#10B981;color:#fff}
+.q-opt.bad{background:rgba(239,68,68,0.15);border-color:#EF4444;color:#FECACA}
+.q-opt.bad .q-lbl{background:#EF4444;color:#fff}
+.q-opt.dim{opacity:0.3}
+.q-info{text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px}
+
+/* SBĚR */
+.col-ov{position:absolute;inset:0;z-index:60;background:rgba(0,0,0,0.87);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;cursor:pointer}
+.col-box{text-align:center;padding:30px;animation:collectPop 0.5s ease-out}
+
+/* SHRNUTÍ */
+.sum-ov{position:absolute;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:50}
+.sum-box{background:rgba(18,18,35,0.95);border:2px solid rgba(255,255,255,0.12);border-radius:22px;padding:32px;max-width:420px;width:90%;text-align:center;animation:collectPop 0.4s}
+
+/* VIDEO */
+.vid-wrap{position:fixed;inset:0;background:#000;z-index:100}
+.vid-wrap video{width:100%;height:100%;object-fit:cover}
+.skip-btn{position:absolute;bottom:24px;right:24px;background:rgba(0,0,0,0.6);color:#fff;border:none;
+  border-radius:12px;padding:10px 20px;font-size:15px;font-weight:700;backdrop-filter:blur(4px);z-index:10}
+
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px}
+.spinner{width:40px;height:40px;border:4px solid var(--card2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-  <script type="text/babel">
-    const { useState, useRef, useEffect } = React;
-    const SUBJECTS = ['matika','cestina','prirodoveda','vlastiveda','anglictina'];
-    const COLORS = { matika:'var(--matika)', cestina:'var(--cestina)', prirodoveda:'var(--prirodoveda)', vlastiveda:'var(--vlastiveda)', anglictina:'var(--anglictina)' };
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useRef,useEffect} = React;
 
-    function getApiKey() { try { return localStorage.getItem('du_api_key') || ''; } catch(e) { return ''; } }
-    function setApiKeyLS(k) { try { localStorage.setItem('du_api_key', k); } catch(e) {} }
+const GH = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
+const LABELS = ['A','B','C','D','E'];
+const NAMES = {volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák',piratka:'Pirátka',kotva:'Kotva'};
+const PIRATES = ['skripek','repak','krivak','piratka','kotva'];
+function norm(s){return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');}
 
-    function normalize(s) {
-      return String(s).toLowerCase().replace(/\s+/g,' ').trim().replace(/[.,!?]/g,'').replace(/\s/g,'');
+/* ═══ BUBLINA — vajíčko na ležato, špička dolů k ústům ═══ */
+function Bubble({who,text}){
+  const w = (who||'volta').toLowerCase();
+  if(w==='popis') return <div className="scene-desc">{text}</div>;
+  
+  const name = NAMES[w]||who;
+  const isAgent = w==='agent';
+  const isPirat = PIRATES.includes(w);
+  
+  // Pozice: NAD hlavou postavy, mírně před obličejem
+  // Volta hlava ~ 28% zleva na obrázku → bublina tam
+  // Agent hlava ~ 82% zleva → bublina tam
+  // Piráti — záleží, defaultně vlevo-střed
+  let style;
+  if(isAgent){
+    style = {right:'6%',top:'8%'};
+  } else {
+    style = {left:'3%',top:'5%'};
+  }
+  
+  const nc = isAgent?'ca':isPirat?'cp':'cv';
+  const tc = isAgent?'tr':'tl';
+  
+  return(
+    <div className="bub-wrap" style={style} key={w+text.substring(0,20)}>
+      <div className="bub-egg">
+        <div className={'bub-name '+nc}>{name}</div>
+        <div className="bub-txt">{text}</div>
+      </div>
+      <svg className={'bub-tail '+tc} viewBox="0 0 20 22" fill="none">
+        <path d="M2 0 L10 20 L18 0" fill="#222"/>
+        <path d="M4 0 L10 15 L16 0" fill="#fff"/>
+      </svg>
+    </div>
+  );
+}
+
+/* ═══ VIDEO ═══ */
+function VideoPlayer({src,onEnd}){
+  return(
+    <div className="vid-wrap">
+      <video key={src} src={src} autoPlay muted playsInline onEnded={onEnd} onError={onEnd}/>
+      <button className="skip-btn" onClick={onEnd}>Přeskočit ▸</button>
+    </div>
+  );
+}
+
+/* ═══ MISSION SCREEN ═══ */
+function MissionScreen({dayData,onBack}){
+  const [phase,setPhase] = useState('intro_video');
+  const [okruhIdx,setOkruhIdx] = useState(0);
+  const [qIdx,setQIdx] = useState(0);
+  const [dialogIdx,setDialogIdx] = useState(0);
+  const [score,setScore] = useState({correct:0,total:0});
+  const [attempts,setAttempts] = useState(0);
+  const [answered,setAnswered] = useState(null); // null|'correct'|'wrong'|'giveup'
+  const [selectedOpt,setSelectedOpt] = useState(null);
+  const [collectItem,setCollectItem] = useState(null);
+  const [introVidIdx,setIntroVidIdx] = useState(0);
+  
+  const dn = dayData.den;
+  const imgBase = GH+'img/m01/d'+String(dn).padStart(2,'0')+'/';
+  const vidBase = GH+'video/m01/d'+String(dn).padStart(2,'0')+'/';
+  
+  const sImg = n => imgBase+'D'+dn+'S'+n+'.png';
+  const introVids = [vidBase+'D'+dn+'-S1.mp4', vidBase+'D'+dn+'-S2.mp4'];
+  const akceVid = oi => vidBase+'D'+dn+'-S'+(oi+3)+'.mp4';
+  const zaverVid = vidBase+'D'+dn+'-S6.mp4';
+  
+  function curBg(){
+    if(phase==='summary'||phase==='zaver_dialog') return sImg(5);
+    return sImg(Math.min(okruhIdx+1,6));
+  }
+  
+  const okruh = dayData.okruhy?.[okruhIdx];
+  const question = okruh?.otazky?.[qIdx];
+  
+  function getDialogs(){
+    if(phase==='intro_dialog') return dayData.intro||[];
+    if(phase==='akce_dialog') return okruh?.akce?.dialog||[];
+    if(phase==='scenka') return okruh?.scenka||[];
+    if(phase==='zaver_dialog') return dayData.zaver||[];
+    return [];
+  }
+  const dialogs = getDialogs();
+  const curDlg = dialogs[dialogIdx];
+  
+  // ─── Navigace ───
+  function videoEnd(){
+    if(phase==='intro_video'){
+      if(introVidIdx+1 < introVids.length){setIntroVidIdx(introVidIdx+1);}
+      else{setDialogIdx(0);setPhase('intro_dialog');}
+    } else if(phase==='akce_video'){
+      if(okruh?.akce?.dialog?.length>0){setDialogIdx(0);setPhase('akce_dialog');}
+      else doSber();
+    } else if(phase==='zaver_video'){
+      if(dayData.zaver?.length>0){setDialogIdx(0);setPhase('zaver_dialog');}
+      else setPhase('summary');
     }
-    function checkAnswer(task, userAnswer) {
-      const ua = normalize(userAnswer);
-      const correct = normalize(task.answer);
-      if (ua === correct) return { correct: true };
-      if (task.answer_variants) { for (const v of task.answer_variants) { if (ua === normalize(v)) return { correct: true }; } }
-      if (Array.isArray(task.answer)) {
-        const answers = userAnswer.split(/[,;\s]+/).filter(Boolean);
-        if (answers.length === task.answer.length && answers.every((a,i) => normalize(a) === normalize(task.answer[i]))) return { correct: true };
-      }
-      if (task.common_errors) { for (const ce of task.common_errors) { if (ua === normalize(ce) && task.error_explanations && task.error_explanations[ce]) return { correct: false, feedback: task.error_explanations[ce] }; } }
-      return { correct: false, feedback: null };
+  }
+  
+  function advDlg(){
+    if(dialogIdx < dialogs.length-1){setDialogIdx(dialogIdx+1);}
+    else{
+      setDialogIdx(0);
+      if(phase==='intro_dialog'){setQIdx(0);setAttempts(0);setAnswered(null);setSelectedOpt(null);setPhase('questions');}
+      else if(phase==='akce_dialog') doSber();
+      else if(phase==='scenka') nextOkruh();
+      else if(phase==='zaver_dialog') setPhase('summary');
     }
-
-    async function askTutor(messages, task, apiKey) {
-      const systemPrompt = 'Jsi přátelský učitel pro žáka 4. třídy ZŠ. Tykáš, mluvíš česky, jednoduše.\nNIKDY neříkej správnou odpověď přímo. Veď dítě otázkami. Po špatné odpovědi řekni "skoro" nebo "zkus to jinak". Krátké věty, max 2 řádky. Emoji max 1.\n\nÚloha: ' + task.question + '\n' + (task.hint ? 'Nápověda: ' + task.hint : '');
-      try {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 300, system: systemPrompt, messages }) });
-        if (!resp.ok) return null;
-        const data = await resp.json();
-        return data.content[0].text;
-      } catch (e) { return null; }
+  }
+  
+  function doSber(){
+    const s = okruh?.akce?.sber;
+    if(s){setCollectItem(s);} else afterSber();
+  }
+  function closeSber(){setCollectItem(null);afterSber();}
+  function afterSber(){
+    if(okruh?.scenka?.length>0){setDialogIdx(0);setPhase('scenka');}
+    else nextOkruh();
+  }
+  
+  function nextOkruh(){
+    const nx = okruhIdx+1;
+    if(nx < dayData.okruhy.length){
+      setOkruhIdx(nx);setQIdx(0);setAttempts(0);setAnswered(null);setSelectedOpt(null);setDialogIdx(0);
+      setPhase('questions');
+    } else setPhase('zaver_video');
+  }
+  
+  // ─── OTÁZKY: 3 pokusy, Volta pomáhá po každé špatné ───
+  function handleSelect(opt){
+    if(answered==='correct'||answered==='giveup') return;
+    const isCorrect = norm(opt)===norm(question.answer);
+    setSelectedOpt(opt);
+    
+    if(isCorrect){
+      setAnswered('correct');
+      setScore(p=>({correct:p.correct+1,total:p.total+1}));
+      setTimeout(()=>{goNextQ();},2200);
+    } else {
+      const na = attempts+1;
+      setAttempts(na);
+      if(na>=3){
+        setAnswered('giveup');
+        setScore(p=>({...p,total:p.total+1}));
+        setTimeout(()=>{goNextQ();},3000);
+      } else {
+        setAnswered('wrong');
+        // Volta pomůže — po 2.5s reset pro další pokus
+        setTimeout(()=>{setAnswered(null);setSelectedOpt(null);},2500);
+      }
     }
-
-    function SettingsScreen({ onSave, currentKey }) {
-      const [key, setKey] = useState(currentKey);
-      return (<div className="screen" style={{padding:'60px 24px',justifyContent:'center'}}><div className="fade-in" style={{textAlign:'center'}}><div style={{fontSize:48,marginBottom:16}}>🔑</div><h2 style={{fontSize:22,fontWeight:800,marginBottom:8}}>API klíč</h2><p style={{color:'var(--text2)',fontSize:14,marginBottom:24}}>Aby mohl učitel odpovídat, potřebuje Anthropic API klíč.</p><input className="settings-input" type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="sk-ant-..." style={{marginBottom:16}} /><button className="settings-btn" onClick={()=>onSave(key)} disabled={!key.startsWith('sk-')}>Uložit</button><p style={{color:'var(--text3)',fontSize:11,marginTop:16}}>Klíč se ukládá jen v tomto zařízení.</p></div></div>);
-    }
-
-    function LoginScreen({ onSelect }) {
-      return (<div className="screen login"><div className="slide-up" style={{textAlign:'center',width:'100%'}}><div className="login-logo">📚</div><div className="login-title">Domácí Učitel</div><div className="login-sub">4. třída ZŠ</div><button className="login-btn" style={{background:'linear-gradient(135deg, #dc2626, #f59e0b)', fontSize:18}} onClick={()=>onSelect('mise')}>🎮 Mise — Zachraň Dr. Voltu!</button><button className="login-btn" style={{background:'var(--accent)'}} onClick={()=>onSelect('student')}>🎒 Procvičování</button><button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>onSelect('parent')}>👨‍👩‍👧 Jsem rodič</button><button className="login-btn" style={{background:'var(--card2)'}} onClick={()=>onSelect('settings')}>⚙️ Nastavení</button><div className="login-ver">v0.5 — Jaty</div></div></div>);
-    }
-
-    function SubjectPicker({ predmety, onPick, onBack }) {
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">Co budeme procvičovat?</span></div><div className="subjects">{SUBJECTS.map((k,i) => { const s = predmety[k]; if (!s) return null; return (<button key={k} className="subject-card fade-in" style={{borderLeftColor:COLORS[k], animationDelay: i*0.06+'s'}} onClick={()=>onPick(k)}><span className="subject-icon">{s.icon}</span><span className="subject-name">{s.name}</span><span className="subject-info">{s.temata.length} témat</span></button>);})}</div></div>);
-    }
-
-    function TopicPicker({ predmety, subject, onPick, onBack }) {
-      const s = predmety[subject];
-      const [loading, setLoading] = useState(null);
-      function handlePick(tema) {
-        setLoading(tema.nazev);
-        fetch(tema.soubor).then(r => { if (!r.ok) throw new Error('Nenalezeno'); return r.json(); })
-          .then(data => { setLoading(null); onPick(data, tema.nazev); })
-          .catch(e => { setLoading(null); alert('Toto téma ještě není připravené.'); });
-      }
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span style={{fontSize:24}}>{s.icon}</span><span className="header-title">{s.name}</span></div><div className="topics">{s.temata.map((tema,i) => (<button key={i} className="topic-card fade-in" style={{animationDelay: i*0.05+'s'}} onClick={()=>handlePick(tema)} disabled={loading!==null}><span className="topic-name">{loading===tema.nazev ? '⏳ ' : ''}{tema.nazev}</span></button>))}</div></div>);
-    }
-
-    function ChatScreen({ unitData, unitName, onBack, apiKey }) {
-      const [msgs, setMsgs] = useState([]);
-      const [inp, setInp] = useState('');
-      const [typing, setTyping] = useState(false);
-      const [taskIdx, setTaskIdx] = useState(0);
-      const [attempts, setAttempts] = useState(0);
-      const [score, setScore] = useState({ correct: 0, total: 0 });
-      const [aiHistory, setAiHistory] = useState([]);
-      const [waitingChoice, setWaitingChoice] = useState(null);
-      const [readingQIdx, setReadingQIdx] = useState(0);
-      const endRef = useRef(null);
-      const inputRef = useRef(null);
-      const allTasks = unitData.skills.flatMap(sk => sk.tasks);
-      const currentTask = allTasks[taskIdx] || null;
-
-      useEffect(() => { endRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
-      useEffect(() => {
-        if (allTasks.length > 0) {
-          const t = allTasks[0];
-          setMsgs([{from:'tutor', text:'Ahoj! Dnes procvičujeme: '+unitName+'. Jdeme na to! 💪'}, {from:'tutor', text: t.type==='reading'&&t.text ? 'Přečti si text:\n\n"'+t.text+'"\n\n'+t.questions[0].question : t.question}]);
-          if (t.type==='choice') setWaitingChoice(t.options);
-          else if (t.type==='reading'&&t.questions&&t.questions[0].type==='choice') setWaitingChoice(t.questions[0].options);
-        }
-      }, []);
-
-      function addMsg(from, text) { setMsgs(p => [...p, {from, text}]); }
-      function getEffectiveTask(task, rqIdx) {
-        if (task.type==='reading'&&task.questions) { const q=task.questions[rqIdx]||task.questions[0]; return {...task, type:q.type||'open', question:q.question, answer:q.answer, options:q.options||null, answer_variants:q.answer_variants||[], hint:q.hint||null, common_errors:q.common_errors||null, error_explanations:q.error_explanations||null}; }
-        return task;
-      }
-      function nextTask() {
-        if (currentTask.type==='reading'&&currentTask.questions&&readingQIdx+1<currentTask.questions.length) {
-          const nrq=readingQIdx+1; setReadingQIdx(nrq); addMsg('tutor',currentTask.questions[nrq].question);
-          const nsq=currentTask.questions[nrq]; if(nsq.type==='choice'&&nsq.options) setWaitingChoice(nsq.options);
-        } else {
-          setReadingQIdx(0); const next=taskIdx+1;
-          if (next<allTasks.length) { setTaskIdx(next); const nt=allTasks[next]; addMsg('tutor', nt.type==='reading'&&nt.text ? 'Přečti si text:\n\n"'+nt.text+'"\n\n'+nt.questions[0].question : nt.question); if(nt.type==='choice') setWaitingChoice(nt.options); }
-          else addMsg('tutor','Hotovo! Skóre: '+score.correct+'/'+score.total+' ✨');
-        }
-      }
-      async function handleAnswer(answer) {
-        if (!currentTask||typing) return;
-        addMsg('student', answer); setInp(''); setWaitingChoice(null); setTyping(true);
-        const et = getEffectiveTask(currentTask, readingQIdx);
-        const result = checkAnswer(et, answer);
-        if (result.correct) {
-          const praise = attempts===0 ? ['Výborně! 🎯','Přesně tak!','Správně!'][Math.floor(Math.random()*3)] : ['Správně! Šlo to.','Ano, sedí!'][Math.floor(Math.random()*2)];
-          setTimeout(()=>{ setTyping(false); addMsg('tutor',praise); setScore(p=>({correct:p.correct+1,total:p.total+1})); setAttempts(0); setTimeout(()=>nextTask(),800); },600);
-        } else {
-          const na=attempts+1; setAttempts(na);
-          if (na>=3) {
-            setTimeout(()=>{ setTyping(false); const ans=Array.isArray(et.answer)?et.answer.join(', '):et.answer; addMsg('tutor','Nevadí! Správná odpověď: '+ans+'. '+(et.hint||'')); setScore(p=>({...p,total:p.total+1})); setAttempts(0); setTimeout(()=>nextTask(),1200); },600);
-          } else {
-            if (apiKey) {
-              const nh=[...aiHistory,{role:'user',content:'Žák odpověděl: "'+answer+'" na: "'+et.question+'". Špatně. '+(result.feedback?result.feedback:'')+' Pokus '+na+'/3.'}];
-              const ai=await askTutor(nh,et,apiKey); setTyping(false);
-              if(ai){addMsg('tutor',ai);setAiHistory([...nh,{role:'assistant',content:ai}]);}else{addMsg('tutor',result.feedback||et.hint||'Zkus to jinak.');}
-            } else { setTimeout(()=>{setTyping(false);addMsg('tutor',result.feedback||et.hint||'Zkus to jinak.');},500); }
-            if(et.type==='choice'&&et.options) setWaitingChoice(et.options);
-          }
-        }
-      }
-      const send=()=>{if(!inp.trim())return;handleAnswer(inp.trim());};
-      return (<div className="chat-screen"><div className="chat-header"><button className="back-btn" onClick={onBack}>←</button><span style={{flex:1,fontWeight:700,fontSize:15}}>{unitName}</span><span className="score-badge score-correct">{score.correct}/{score.total}</span></div><div className="chat-messages">{msgs.map((m,i)=>(<div key={i} className={'msg msg-'+(m.from==='tutor'?'tutor':'student')+' fade-in'}>{m.from==='tutor'&&<span className="msg-avatar">🤖</span>}<div className="msg-bubble" style={{whiteSpace:'pre-wrap'}}>{m.text}</div></div>))}{typing&&<div className="msg msg-tutor"><span className="msg-avatar">🤖</span><div className="msg-bubble"><div className="typing-dots"><span/><span/><span/></div></div></div>}{waitingChoice&&!typing&&<div className="choices fade-in" style={{marginLeft:36,maxWidth:'85%'}}>{waitingChoice.map((opt,i)=>(<button key={i} className="choice-btn" onClick={()=>handleAnswer(opt)}>{opt}</button>))}</div>}<div ref={endRef}/></div><div className="chat-input"><input ref={inputRef} value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Napiš odpověď..." /><button onClick={send}>➤</button></div></div>);
-    }
-
-    function ParentDashboard({ onBack }) {
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span className="header-title">📊 Přehled</span></div><div style={{padding:'16px 18px'}} className="fade-in"><div className="dash-card"><div className="dash-label">Stav</div><div className="dash-value" style={{color:'var(--accent)'}}>Aktivní</div><p style={{color:'var(--text3)',fontSize:13,marginTop:4}}>Rodičovský přehled bude doplněn.</p></div></div></div>);
-    }
-
-    function DayPicker({ miseData, onPick, onBack }) {
-      return (<div className="screen"><div className="header"><button className="back-btn" onClick={onBack}>←</button><span style={{fontSize:24}}>🏴‍☠️</span><span className="header-title">Mise 1 — Září</span></div><div style={{padding:'16px 18px'}}>{miseData.map((den,i) => { const hasStory = den.intro && den.intro.length > 0; return (<button key={i} className={'day-card fade-in' + (hasStory ? '' : ' locked')} style={{animationDelay: i*0.04+'s'}} onClick={()=>hasStory && onPick(den)} disabled={!hasStory}><span className="day-num">{den.den}</span><div className="day-info"><div className="day-title">{den.nazev || 'Den ' + den.den}</div><div className="day-meta">{hasStory ? den.okruhy.map(o=>o.tema).join(' • ') : '🔒 Scénář se připravuje'}</div></div>{hasStory && <span style={{fontSize:20}}>▶</span>}</button>);})}</div></div>);
-    }
-
-    const AVATAR = {volta:'🧪', agent:'🕵️', skripek:'😰', repak:'🍖', kotva:'⚓', krivak:'☠️', papousek:'🦜', keksik:'🦜', piratka:'⚓'};
-    const POSTAVA_NAME = {volta:'Dr. Volta', agent:'Agent K', skripek:'Skřípek', repak:'Řepák', kotva:'Kotva', krivak:'Krivák', papousek:'Papoušek', keksik:'Keksík', piratka:'Pirátka'};
-    const GH_IMG = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/img/';
-    const AVATAR_IMG = {volta:GH_IMG+'postavy/volta.png', agent:GH_IMG+'postavy/agent.png', skripek:GH_IMG+'postavy/skripek.png', repak:GH_IMG+'postavy/repak.png', keksik:GH_IMG+'postavy/keksik.png', krivak:GH_IMG+'postavy/krivak.png', piratka:GH_IMG+'postavy/piratka.png'};
-    const ROUND_ICONS = ['📝','🔢','🌍','🌀'];
-    const LABELS = ['A','B','C','D','E'];
-
-
-    function MissionScreen({ dayData, onBack }) {
-      // Flow podle POSTUP_TVORBY_DNE.md:
-      // intro_video (2 videa) → intro_dialog → questions → akce_video → akce_dialog → sber → scenka → ... → zaver_video → zaver_dialog → summary
-      const hasVideos = dayData.videa && dayData.videa.uvod;
-      const [phase, setPhase] = useState(hasVideos ? 'intro_video' : 'intro_dialog');
-      const [videoIdx, setVideoIdx] = useState(0);
-      const [okruhIdx, setOkruhIdx] = useState(0);
-      const [qIdx, setQIdx] = useState(0);
-      const [dialogIdx, setDialogIdx] = useState(0);
-      const [score, setScore] = useState({correct:0, total:0});
-      const [attempts, setAttempts] = useState(0);
-      const [answered, setAnswered] = useState(null);
-      const [selectedOpt, setSelectedOpt] = useState(null);
-      const [collectItem, setCollectItem] = useState(null);
-      const videoRef = useRef(null);
-
-      // Video URL helper
-      const GH_VIDEO = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
-      function getVideoUrl(path) { return GH_VIDEO + path; }
-
-      // Obrázky: S1=intro+okruh1, S2=akce1+okruh2, S3=akce2+okruh3, S4=akce3+okruh4, S5+=závěr
-      const dd = String(dayData.den).padStart(2,'0');
-      const sceneImg = (n) => GH_IMG+'m01/d'+dd+'/D'+dayData.den+'S'+n+'.png';
-      function getCurrentBg() {
-        if (phase==='summary'||phase==='zaver_dialog') return sceneImg(dayData.okruhy.length+1);
-        return sceneImg(okruhIdx+1);
-      }
-
-      // Dialogy pro aktuální fázi
-      function getDialogs() {
-        if (phase==='intro_dialog') return dayData.intro||[];
-        if (phase==='akce_dialog') return dayData.okruhy[okruhIdx]?.akce?.dialog||[];
-        if (phase==='scenka') return dayData.okruhy[okruhIdx]?.scenka||[];
-        if (phase==='zaver_dialog') return dayData.zaver||[];
-        return [];
-      }
-      const dialogs = getDialogs();
-      const currentDialog = dialogs[dialogIdx];
-      const okruh = dayData.okruhy[okruhIdx];
-      const question = okruh?.otazky?.[qIdx];
-
-      function advanceDialog() {
-        if (dialogIdx < dialogs.length - 1) { setDialogIdx(dialogIdx+1); }
-        else {
-          setDialogIdx(0);
-          if (phase==='intro_dialog') { setPhase('questions'); }
-          else if (phase==='akce_dialog') {
-            const sber = okruh?.akce?.sber;
-            if (sber) setCollectItem(sber);
-            else if (okruh?.scenka?.length>0) setPhase('scenka');
-            else goNextOkruh();
-          }
-          else if (phase==='scenka') { goNextOkruh(); }
-          else if (phase==='zaver_dialog') { setPhase('summary'); }
-        }
-      }
-
-      function closeSber() {
-        setCollectItem(null);
-        if (okruh?.scenka?.length>0) setPhase('scenka');
-        else goNextOkruh();
-      }
-
-      function handleSelect(opt) {
-        if (answered) return;
-        setSelectedOpt(opt);
-        const correct = normalize(opt)===normalize(question.answer);
-        if (correct) { setAnswered('correct'); setScore(p=>({correct:p.correct+1,total:p.total+1})); setAttempts(0); }
-        else {
-          const na=attempts+1; setAttempts(na);
-          if (na>=3) { setAnswered('giveup'); setScore(p=>({...p,total:p.total+1})); setAttempts(0); }
-          else { setAnswered('wrong'); }
-        }
-      }
-
-      function nextQuestion() {
-        setAnswered(null); setSelectedOpt(null);
-        const nq=qIdx+1;
-        if (nq>=okruh.otazky.length) {
-          // Po 10 otázkách → VIDEO akce (pokud existuje), pak dialog
-          const akceVideo = okruh.akce?.video;
-          if (akceVideo) { setPhase('akce_video'); }
-          else if (okruh.akce?.dialog?.length>0) { setDialogIdx(0); setPhase('akce_dialog'); }
-          else if (okruh.scenka?.length>0) { setDialogIdx(0); setPhase('scenka'); }
-          else goNextOkruh();
-        } else { setQIdx(nq); }
-      }
-
-      function retryQuestion() { setAnswered(null); setSelectedOpt(null); }
-
-      function goNextOkruh() {
-        const next=okruhIdx+1;
-        if (next<dayData.okruhy.length) { setOkruhIdx(next); setQIdx(0); setDialogIdx(0); setPhase('questions'); }
-        else {
-          // Po posledním okruhu → závěrečné video
-          const zaverVideo = dayData.videa?.zaver;
-          if (zaverVideo) { setPhase('zaver_video'); }
-          else if (dayData.zaver?.length>0) { setDialogIdx(0); setPhase('zaver_dialog'); }
-          else setPhase('summary');
-        }
-      }
-
-      // === VIDEO HANDLER ===
-      function handleVideoEnd() {
-        if (phase==='intro_video') {
-          const uvodVidea = dayData.videa?.uvod || [];
-          const nextV = videoIdx+1;
-          if (nextV < uvodVidea.length) { setVideoIdx(nextV); }
-          else { setVideoIdx(0); setDialogIdx(0); setPhase('intro_dialog'); }
-        }
-        else if (phase==='akce_video') {
-          if (okruh.akce?.dialog?.length>0) { setDialogIdx(0); setPhase('akce_dialog'); }
-          else if (okruh.scenka?.length>0) { setDialogIdx(0); setPhase('scenka'); }
-          else goNextOkruh();
-        }
-        else if (phase==='zaver_video') {
-          if (dayData.zaver?.length>0) { setDialogIdx(0); setPhase('zaver_dialog'); }
-          else setPhase('summary');
-        }
-      }
-
-      function getCurrentVideoUrl() {
-        if (phase==='intro_video') {
-          const uvodVidea = dayData.videa?.uvod || [];
-          return uvodVidea[videoIdx] ? getVideoUrl(uvodVidea[videoIdx]) : null;
-        }
-        if (phase==='akce_video') return okruh.akce?.video ? getVideoUrl(okruh.akce.video) : null;
-        if (phase==='zaver_video') return dayData.videa?.zaver ? getVideoUrl(dayData.videa.zaver) : null;
-        return null;
-      }
-
-      // === KOMIKSOVÁ BUBLINA — bílý ovál, černý obrys, ostrá špička k postavě ===
-      function Bublina({who, text, side}) {
-        const w=(who||'volta').toLowerCase();
-        const name=POSTAVA_NAME[w]||who;
-        const isRight=side==='right'||w==='agent';
-        const isPopis=w==='popis';
-        if (isPopis) return (
-          <div style={{position:'absolute',top:'38%',left:'50%',transform:'translateX(-50%)',
-            background:'rgba(0,0,0,0.75)',borderRadius:24,padding:'14px 24px',
-            color:'#ddd',fontSize:18,fontStyle:'italic',textAlign:'center',
-            maxWidth:'80%',backdropFilter:'blur(4px)',zIndex:10}}>
-            {text}
-          </div>
-        );
-        return (
-          <div style={{position:'absolute',top:'2%',[isRight?'right':'left']:'2%',zIndex:10,
-            maxWidth:'50%',minWidth:200,animation:'fadeIn 0.25s ease'}}>
-            <div style={{position:'relative',background:'#fff',color:'#1a1a1a',
-              border:'4px solid #111',
-              borderRadius:'50%',
-              padding:'30px 48px 26px 48px',
-              fontSize:20,fontWeight:600,lineHeight:1.5,
-              boxShadow:'4px 5px 0 rgba(0,0,0,0.25)',
-              textAlign:'center',
-              overflow:'visible'}}>
-              <div style={{fontFamily:"'Bangers',cursive",fontSize:16,letterSpacing:1.5,
-                textTransform:'uppercase',marginBottom:4,
-                color:w==='agent'?'#2E7D32':['skripek','repak','krivak','kotva','piratka'].includes(w)?'#C62828':'#1565C0'}}>
-                {name}
-              </div>
-              <div style={{textAlign:'left'}}>{text}</div>
-            </div>
-            {/* Špička — SVG, ostrá protáhlá, směřuje dolů k postavě */}
-            <svg style={{position:'absolute',bottom:-28,[isRight?'right':'left']:36,width:32,height:30}} viewBox="0 0 32 30" fill="none">
-              <path d={isRight?"M30 0 L18 30 L4 0":"M2 0 L14 30 L28 0"} fill="#111"/>
-              <path d={isRight?"M28 0 L17.5 24 L7 0":"M4 0 L14.5 24 L25 0"} fill="#fff"/>
-            </svg>
-          </div>
-        );
-      }
-
-      const bgUrl=getCurrentBg();
-      const bgStyle={backgroundImage:'url('+bgUrl+')',backgroundSize:'cover',backgroundPosition:'center'};
-
-      // === VIDEO FÁZE ===
-      if (phase==='intro_video'||phase==='akce_video'||phase==='zaver_video') {
-        const vUrl = getCurrentVideoUrl();
-        if (!vUrl) { handleVideoEnd(); return null; }
-        return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000'}}>
-          <video ref={videoRef} key={vUrl} src={vUrl}
-            style={{width:'100%',height:'100%',objectFit:'cover'}}
-            autoPlay muted playsInline
-            onEnded={handleVideoEnd}
-            onError={handleVideoEnd}
-          />
-          <button onClick={handleVideoEnd} style={{
-            position:'absolute',bottom:24,right:24,
-            background:'rgba(0,0,0,0.6)',color:'#fff',border:'none',
-            borderRadius:12,padding:'10px 20px',fontSize:15,fontWeight:700,
-            cursor:'pointer',backdropFilter:'blur(4px)',zIndex:10}}>
-            Přeskočit ▸
-          </button>
-        </div>);
-      }
-
-      // === DIALOGOVÉ FÁZE ===
-      if (phase==='intro_dialog'||phase==='akce_dialog'||phase==='scenka'||phase==='zaver_dialog') {
-        const d=currentDialog;
-        if (!d) { advanceDialog(); return null; }
-        return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000',cursor:'pointer'}} onClick={advanceDialog}>
-          <div style={{...bgStyle,position:'absolute',inset:0}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.25) 100%)'}}/>
-          <div style={{position:'absolute',top:8,left:12,zIndex:40}}>
-            <button onClick={e=>{e.stopPropagation();onBack();}} style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'6px 14px',color:'#fff',fontSize:14,fontWeight:700}}>← Zpět</button>
-          </div>
-          <Bublina who={d.p} text={d.t} />
-          <div style={{position:'absolute',bottom:20,left:'50%',transform:'translateX(-50%)',zIndex:30,
-            background:'rgba(0,0,0,0.4)',backdropFilter:'blur(4px)',borderRadius:20,padding:'8px 20px',
-            fontSize:15,color:'rgba(255,255,255,0.5)',pointerEvents:'none'}}>
-            {dialogIdx+1}/{dialogs.length} — Klikni kamkoli ▸
-          </div>
-          {collectItem&&<div style={{position:'absolute',inset:0,zIndex:60,background:'rgba(0,0,0,0.85)',backdropFilter:'blur(8px)',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={e=>{e.stopPropagation();closeSber();}}>
-            <div style={{textAlign:'center',padding:30}}>
-              <div style={{fontSize:15,color:'#FFD700',fontWeight:700,letterSpacing:2,marginBottom:16}}>✦ NOVÝ PŘEDMĚT ✦</div>
+  }
+  
+  function goNextQ(){
+    setAnswered(null);setSelectedOpt(null);setAttempts(0);
+    const nq = qIdx+1;
+    if(nq >= (okruh?.otazky?.length||10)){
+      // Po 10 otázkách → akce video (nebo závěr pro poslední okruh)
+      if(okruhIdx < dayData.okruhy.length-1) setPhase('akce_video');
+      else setPhase('zaver_video');
+    } else setQIdx(nq);
+  }
+  
+  // Volta text
+  function voltaText(){
+    if(!question) return '';
+    if(answered==='correct') return question.vs||'Správně! 🎯';
+    if(answered==='giveup') return 'Správná odpověď: '+question.answer;
+    if(answered==='wrong') return question.vn||question.hint||'Zkus to jinak!';
+    return question.vi||question.question;
+  }
+  
+  // ═══ RENDER ═══
+  
+  // VIDEO
+  if(phase==='intro_video') return <VideoPlayer src={introVids[introVidIdx]} onEnd={videoEnd}/>;
+  if(phase==='akce_video') return <VideoPlayer src={akceVid(okruhIdx)} onEnd={videoEnd}/>;
+  if(phase==='zaver_video') return <VideoPlayer src={zaverVid} onEnd={videoEnd}/>;
+  
+  // DIALOGY
+  if(['intro_dialog','akce_dialog','scenka','zaver_dialog'].includes(phase)){
+    const d = curDlg;
+    if(!d){advDlg();return null;}
+    return(
+      <div className="scene" onClick={advDlg} style={{cursor:'pointer'}}>
+        <div className="scene-bg" style={{backgroundImage:'url('+curBg()+')'}}/>
+        <div className="scene-dim"/>
+        <div className="top-bar">
+          <button className="pill" onClick={e=>{e.stopPropagation();onBack();}}>← Zpět</button>
+        </div>
+        <Bubble who={d.p} text={d.t}/>
+        <div className="tap-hint">{dialogIdx+1}/{dialogs.length} — Klikni ▸</div>
+        {collectItem && (
+          <div className="col-ov" onClick={e=>{e.stopPropagation();closeSber();}}>
+            <div className="col-box">
+              <div style={{fontSize:14,color:'#FFD700',fontWeight:700,letterSpacing:2,marginBottom:16}}>✦ NOVÝ PŘEDMĚT ✦</div>
               <div style={{fontSize:56,marginBottom:12}}>{collectItem.ikona||'📦'}</div>
               <div style={{fontSize:24,fontWeight:700,color:'#FFD700'}}>{collectItem.nazev}</div>
-              {collectItem.popis&&<div style={{color:'#aaa',fontSize:16,marginTop:6}}>{collectItem.popis}</div>}
-              <div style={{color:'#555',fontSize:14,marginTop:20}}>Klikni pro pokračování</div>
+              {collectItem.popis && <div style={{color:'#aaa',fontSize:15,marginTop:6}}>{collectItem.popis}</div>}
+              <div style={{color:'#555',fontSize:13,marginTop:20}}>Klikni pro pokračování</div>
             </div>
-          </div>}
-        </div>);
-      }
-
-      // === OTÁZKY ===
-      if (phase==='questions'&&question) {
-        return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000'}}>
-          <div style={{...bgStyle,position:'absolute',inset:0}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.25) 100%)'}}/>
-          <div style={{position:'absolute',top:8,left:12,zIndex:40,display:'flex',gap:8,alignItems:'center'}}>
-            <button onClick={onBack} style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'6px 14px',color:'#fff',fontSize:14,fontWeight:700}}>← Zpět</button>
-            <span style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'6px 14px',color:'#fff',fontSize:13,fontWeight:700}}>
-              {(ROUND_ICONS[okruhIdx]||'📚')+' '+(okruh.tema||'Okruh')+' — '+(qIdx+1)+'/'+okruh.otazky.length}
-            </span>
           </div>
-          <div style={{position:'absolute',top:8,right:12,zIndex:40}}>
-            <span style={{background:'rgba(0,0,0,0.5)',backdropFilter:'blur(6px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'6px 12px',color:'#fff',fontSize:14,fontWeight:700}}>⭐ {score.correct}/{score.total}</span>
+        )}
+      </div>
+    );
+  }
+  
+  // OTÁZKY
+  if(phase==='questions' && question){
+    const vt = voltaText();
+    const agentTxt = selectedOpt;
+    const locked = answered==='correct'||answered==='giveup';
+    const okIcons = ['📝','🔢','🌍','🌀'];
+    
+    return(
+      <div className="scene">
+        <div className="scene-bg" style={{backgroundImage:'url('+curBg()+')'}}/>
+        <div className="scene-dim"/>
+        <div className="top-bar">
+          <div style={{display:'flex',gap:8}}>
+            <button className="pill" onClick={onBack}>← Zpět</button>
+            <span className="pill">{okIcons[okruhIdx]||'📚'} {okruh?.tema} — {qIdx+1}/{okruh?.otazky?.length}</span>
           </div>
-
-          <Bublina who="volta" text={!answered?(question.vi||question.question):(answered==='correct'?(question.vs||'Správně!'):answered==='giveup'?('Správná odpověď: '+question.answer):(question.vn||question.hint||'Zkus to jinak.'))} />
-          {answered&&selectedOpt&&<Bublina who="agent" text={selectedOpt} side="right"/>}
-
-          <div style={{position:'absolute',bottom:0,left:0,right:0,zIndex:20,
-            background:'rgba(15,15,25,0.92)',backdropFilter:'blur(12px)',
-            borderTop:'2px solid rgba(255,255,255,0.08)',padding:'14px 16px 18px'}}>
-            <div style={{fontSize:19,fontWeight:700,color:'#E8E8ED',lineHeight:1.4,marginBottom:12,textAlign:'center'}}>
-              {question.question||question.q}
-            </div>
-            {!answered&&<div style={{display:'flex',flexDirection:'column',gap:8,maxWidth:600,margin:'0 auto'}}>
-              {(question.options||[]).map((opt,i)=>(
-                <button key={i} onClick={()=>handleSelect(opt)} style={{
-                  display:'flex',alignItems:'center',gap:12,padding:'12px 16px',borderRadius:12,
-                  background:'rgba(255,255,255,0.06)',border:'2px solid rgba(255,255,255,0.15)',
-                  color:'#fff',fontSize:18,fontWeight:600,cursor:'pointer',textAlign:'left'}}>
-                  <span style={{width:32,height:32,borderRadius:'50%',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',
-                    background:'rgba(255,255,255,0.1)',fontFamily:"'Bangers',cursive",fontSize:16}}>{LABELS[i]}</span>
+          <span className="pill">⭐ {score.correct}/{score.total}</span>
+        </div>
+        
+        {/* Volta bublina — nad jeho hlavou vlevo */}
+        <Bubble who="volta" text={vt}/>
+        
+        {/* Agent bublina — co dítě vybralo */}
+        {agentTxt && <Bubble who="agent" text={agentTxt}/>}
+        
+        {/* Panel otázek dole */}
+        <div className="q-panel">
+          <div className="q-text">{question.question}</div>
+          <div className="q-opts">
+            {(question.options||[]).map((opt,i)=>{
+              let c = 'q-opt';
+              if(locked){
+                if(norm(opt)===norm(question.answer)) c+=' ok';
+                else if(opt===selectedOpt) c+=' bad';
+                else c+=' dim';
+                c+=' lk';
+              } else if(answered==='wrong' && opt===selectedOpt){
+                c+=' bad';
+              }
+              return(
+                <button key={i} className={c} onClick={()=>handleSelect(opt)}>
+                  <span className="q-lbl">
+                    {locked && norm(opt)===norm(question.answer)?'✓':
+                     (opt===selectedOpt && (answered==='wrong'||answered==='giveup'))?'✗':
+                     LABELS[i]}
+                  </span>
                   <span>{opt}</span>
                 </button>
-              ))}
-            </div>}
-            {answered&&<div style={{display:'flex',flexDirection:'column',gap:8,maxWidth:600,margin:'0 auto'}}>
-              {(question.options||[]).map((opt,i)=>{
-                let bg='rgba(255,255,255,0.04)',brd='rgba(255,255,255,0.08)',clr='rgba(255,255,255,0.3)';
-                if(normalize(opt)===normalize(question.answer)){bg='rgba(16,185,129,0.2)';brd='#10B981';clr='#A7F3D0';}
-                else if(opt===selectedOpt&&answered!=='correct'){bg='rgba(239,68,68,0.2)';brd='#EF4444';clr='#FECACA';}
-                return(<div key={i} style={{display:'flex',alignItems:'center',gap:12,padding:'12px 16px',borderRadius:12,background:bg,border:'2px solid '+brd,color:clr,fontSize:18,fontWeight:600}}>
-                  <span style={{width:32,height:32,borderRadius:'50%',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',
-                    background:normalize(opt)===normalize(question.answer)?'#10B981':opt===selectedOpt&&answered!=='correct'?'#EF4444':'rgba(255,255,255,0.05)',
-                    color:normalize(opt)===normalize(question.answer)||opt===selectedOpt?'#fff':'rgba(255,255,255,0.2)',
-                    fontFamily:"'Bangers',cursive",fontSize:16}}>
-                    {normalize(opt)===normalize(question.answer)?'✓':opt===selectedOpt&&answered!=='correct'?'✗':LABELS[i]}
-                  </span><span>{opt}</span>
-                </div>);
-              })}
-              <button onClick={answered==='wrong'?retryQuestion:nextQuestion} style={{
-                marginTop:6,padding:'14px',borderRadius:14,border:'none',
-                background:answered==='wrong'?'#F59E0B':'#10B981',
-                color:'#000',fontSize:18,fontWeight:700,cursor:'pointer'}}>
-                {answered==='wrong'?'Zkusit znovu':'Další ▸'}
-              </button>
-            </div>}
+              );
+            })}
           </div>
-        </div>);
-      }
-
-      // === SHRNUTÍ ===
-      if (phase==='summary') {
-        return (<div style={{position:'fixed',inset:0,overflow:'hidden',background:'#000'}}>
-          <div style={{...bgStyle,position:'absolute',inset:0}}/>
-          <div style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.75)',backdropFilter:'blur(6px)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <div style={{background:'rgba(18,18,35,0.95)',border:'2px solid rgba(255,255,255,0.12)',borderRadius:22,padding:36,maxWidth:420,width:'90%',textAlign:'center'}}>
-              <div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FFD700',marginBottom:18}}>🎉 Den {dayData.den} hotový!</div>
-              <div style={{display:'flex',justifyContent:'center',gap:28,marginBottom:20}}>
-                <div><div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#4CAF50'}}>{score.correct}</div><div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Správně</div></div>
-                <div><div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#fff'}}>{score.total}</div><div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Otázek</div></div>
+          {!locked && attempts>0 && <div className="q-info">Pokus {attempts+1}/3 — Volta ti pomáhá ☝️</div>}
+        </div>
+      </div>
+    );
+  }
+  
+  // SHRNUTÍ
+  if(phase==='summary'){
+    return(
+      <div className="scene">
+        <div className="scene-bg" style={{backgroundImage:'url('+sImg(5)+')'}}/>
+        <div className="sum-ov">
+          <div className="sum-box">
+            <div style={{fontFamily:"'Bangers',cursive",fontSize:32,color:'#FFD700',marginBottom:18}}>🎉 Den {dn} hotový!</div>
+            <div style={{display:'flex',justifyContent:'center',gap:28,marginBottom:20}}>
+              <div>
+                <div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#4CAF50'}}>{score.correct}</div>
+                <div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Správně</div>
               </div>
-              {dayData.predmety_sberu&&dayData.predmety_sberu.length>0&&<div>
-                <div style={{fontFamily:"'Bangers',cursive",fontSize:18,color:'#fff',marginBottom:10}}>Sebrané předměty</div>
-                <div style={{display:'flex',justifyContent:'center',gap:10,flexWrap:'wrap'}}>
-                  {dayData.predmety_sberu.map((p,i)=>(<div key={i} style={{background:'rgba(255,255,255,0.06)',borderRadius:12,padding:'8px 12px',fontSize:15,border:'1px solid rgba(245,158,11,0.3)'}}>
-                    <span style={{marginRight:6}}>{p.ikona||'📦'}</span>{p.nazev}
-                  </div>))}
-                </div>
-              </div>}
-              <button onClick={onBack} style={{marginTop:24,background:'#f59e0b',border:'none',borderRadius:14,padding:'14px 32px',color:'#000',fontSize:18,fontWeight:700,cursor:'pointer'}}>Zpět na mise</button>
+              <div>
+                <div style={{fontFamily:"'Bangers',cursive",fontSize:36,color:'#fff'}}>{score.total}</div>
+                <div style={{fontSize:13,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:1}}>Otázek</div>
+              </div>
             </div>
+            {dayData.predmety_sberu?.length>0 && <div>
+              <div style={{fontFamily:"'Bangers',cursive",fontSize:18,color:'#fff',marginBottom:10}}>Sebrané předměty</div>
+              <div style={{display:'flex',justifyContent:'center',gap:8,flexWrap:'wrap'}}>
+                {dayData.predmety_sberu.map((p,i)=>(
+                  <div key={i} style={{background:'rgba(255,255,255,0.06)',borderRadius:12,padding:'8px 12px',fontSize:14,border:'1px solid rgba(245,158,11,0.3)'}}>
+                    <span style={{marginRight:5}}>{p.ikona}</span>{p.nazev}
+                  </div>
+                ))}
+              </div>
+            </div>}
+            <button onClick={onBack} style={{marginTop:24,background:'#f59e0b',border:'none',borderRadius:14,padding:'14px 32px',color:'#000',fontSize:18,fontWeight:700,cursor:'pointer'}}>
+              Zpět na mise
+            </button>
           </div>
-        </div>);
-      }
-      return null;
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
+/* ═══ DAY PICKER ═══ */
+function DayPicker({miseData,onPick,onBack}){
+  return(
+    <div className="dp-screen">
+      <div className="hdr">
+        <button className="back-btn" onClick={onBack}>←</button>
+        <span style={{fontSize:24}}>🏴‍☠️</span>
+        <span className="hdr-title">Mise 1 — Září</span>
+      </div>
+      <div className="day-list">
+        {miseData.map((den,i)=>{
+          const ok = den.intro?.length>0;
+          return(
+            <button key={i} className={'day-card'+(ok?'':' locked')} onClick={()=>ok&&onPick(den)} disabled={!ok}>
+              <span className="day-num">{den.den}</span>
+              <div style={{flex:1}}>
+                <div style={{fontSize:15,fontWeight:700}}>{den.nazev||'Den '+den.den}</div>
+                <div style={{fontSize:12,color:'var(--text3)',marginTop:2}}>{ok?den.okruhy?.map(o=>o.tema).join(' • '):'🔒 Připravuje se'}</div>
+              </div>
+              {ok && <span style={{fontSize:20}}>▶</span>}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ═══ APP ═══ */
+function App(){
+  const [view,setView] = useState('login');
+  const [miseData,setMiseData] = useState(null);
+  const [miseDay,setMiseDay] = useState(null);
+  const [loading,setLoading] = useState(false);
+  
+  function loadMise(){
+    setLoading(true);
+    fetch('mise01_scenar.json').then(r=>r.json())
+      .then(d=>{setMiseData(d);setLoading(false);setView('dayPicker');})
+      .catch(()=>{setLoading(false);alert('Chyba načítání mise.');});
+  }
+  
+  function pickDay(den){
+    // Zkus načíst detailní scénář pro den
+    if(den.okruhy?.[0]?.otazky?.length>0 && den.intro?.length>0){
+      setMiseDay(den);setView('mission');return;
     }
+    const dNum = String(den.den).padStart(2,'0');
+    fetch('mise01_scenar_d'+dNum+'.json').then(r=>{if(!r.ok)throw 0;return r.json();})
+      .then(d=>{setMiseDay(d);setView('mission');})
+      .catch(()=>{setMiseDay(den);setView('mission');});
+  }
+  
+  if(loading) return <div className="loading"><div className="spinner"/><div style={{color:'var(--text2)'}}>Načítám...</div></div>;
+  
+  if(view==='login') return(
+    <div className="login-screen">
+      <div className="login-logo">📚</div>
+      <div className="login-title">Domácí Učitel</div>
+      <div className="login-sub">4. třída ZŠ</div>
+      <button className="login-btn" style={{background:'linear-gradient(135deg,#dc2626,#f59e0b)',fontSize:18}} onClick={loadMise}>
+        🎮 Mise — Zachraň Dr. Voltu!
+      </button>
+      <button className="login-btn" style={{background:'var(--blue)'}} onClick={()=>setView('parent')}>
+        👨‍👩‍👧 Jsem rodič
+      </button>
+      <div style={{color:'var(--text3)',fontSize:12,marginTop:40}}>v1.0 — Jaty</div>
+    </div>
+  );
+  
+  if(view==='dayPicker'&&miseData) return <DayPicker miseData={miseData} onPick={pickDay} onBack={()=>setView('login')}/>;
+  if(view==='mission'&&miseDay) return <MissionScreen dayData={miseDay} onBack={()=>{setMiseDay(null);setView('dayPicker');}}/>;
+  if(view==='parent') return(
+    <div style={{height:'100%',display:'flex',flexDirection:'column'}}>
+      <div className="hdr"><button className="back-btn" onClick={()=>setView('login')}>←</button><span className="hdr-title">📊 Rodičovský přehled</span></div>
+      <div style={{padding:24,textAlign:'center',color:'var(--text2)'}}>Připravuje se</div>
+    </div>
+  );
+  return null;
+}
 
-
-    function App() {
-      const [view, setView] = useState('login');
-      const [predmety, setPredmety] = useState(null);
-      const [subject, setSubject] = useState(null);
-      const [unitData, setUnitData] = useState(null);
-      const [unitName, setUnitName] = useState('');
-      const [apiKey, setApiKeyState] = useState(getApiKey());
-      const [error, setError] = useState(null);
-      const [miseData, setMiseData] = useState(null);
-      const [miseDay, setMiseDay] = useState(null);
-
-      useEffect(() => {
-        fetch('predmety.json').then(r=>{if(!r.ok)throw new Error('nenalezen');return r.json();})
-          .then(d=>setPredmety(d)).catch(e=>setError('Nepodařilo se načíst předměty.'));
-      }, []);
-
-      useEffect(() => {
-        if (view === 'mise' && !miseData) {
-          fetch('mise01_scenar.json').then(r=>{if(!r.ok)throw new Error('nenalezen');return r.json();})
-            .then(d=>setMiseData(d)).catch(e=>setError('Nepodařilo se načíst misi.'));
-        }
-      }, [view]);
-
-      if (error) return <div className="loading"><div style={{fontSize:48}}>⚠️</div><div style={{color:'var(--red)'}}>{error}</div></div>;
-      if (!predmety) return <div className="loading"><div className="loading-spinner"/><div style={{color:'var(--text2)'}}>Načítám...</div></div>;
-      if (view==='settings') return <SettingsScreen onSave={k=>{setApiKeyLS(k);setApiKeyState(k);setView('login');}} currentKey={apiKey}/>;
-      if (view==='login') return <LoginScreen onSelect={setView}/>;
-      if (view==='mise'&&!miseData) return <div className="loading"><div className="loading-spinner"/><div style={{color:'var(--text2)'}}>Načítám misi...</div></div>;
-      if (view==='mise'&&miseData&&!miseDay) return <DayPicker miseData={miseData} onPick={d=>setMiseDay(d)} onBack={()=>{setView('login');setMiseData(null);}}/>;
-      if (view==='mise'&&miseDay) return <MissionScreen dayData={miseDay} onBack={()=>setMiseDay(null)}/>;
-      if (view==='student'&&!subject) return <SubjectPicker predmety={predmety} onPick={s=>setSubject(s)} onBack={()=>setView('login')}/>;
-      if (view==='student'&&subject&&!unitData) return <TopicPicker predmety={predmety} subject={subject} onPick={(d,n)=>{setUnitData(d);setUnitName(n);setView('chat');}} onBack={()=>setSubject(null)}/>;
-      if (view==='chat'&&unitData) return <ChatScreen unitData={unitData} unitName={unitName} onBack={()=>{setUnitData(null);setUnitName('');setView('student');}} apiKey={apiKey}/>;
-      if (view==='parent') return <ParentDashboard onBack={()=>setView('login')}/>;
-      return null;
-    }
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-  </script>
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>
