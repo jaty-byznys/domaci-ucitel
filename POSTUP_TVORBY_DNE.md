@@ -168,7 +168,7 @@ Předměty: `D{den}-P.png`
 
 - Celá obrazovka = scénový obrázek na pozadí, 16:9
 - Bubliny: bílé oválné, černý obrys, ostrá špička směrem k HLAVĚ postavy
-- Bublina je vždy u hlavy postavy která mluví — postavy mohou stát, sedět, být kdekoli na scéně, pozice bublin se mění podle situace
+- Bublina je vždy u hlavy postavy která mluví — pozice bubliny závisí na tom, kde postava stojí NA OBRÁZKU
 - Velký a čitelný text v bublinách
 
 ### Flow otázky:
