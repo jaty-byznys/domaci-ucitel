@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domácí učitel — Obchod & Stavění</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Comic+Neue:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-panel: #16213e;
+  --bg-shop: #0f3460;
+  --accent-gold: #f5c842;
+  --accent-orange: #e94560;
+  --accent-green: #4ecca3;
+  --accent-blue: #3498db;
+  --text-light: #eee;
+  --text-dim: #8899aa;
+  --coin-glow: #ffd700;
+}
+
+body {
+  font-family: 'Fredoka', 'Comic Neue', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--bg-panel);
+  border-bottom: 3px solid var(--accent-gold);
+}
+.top-bar .day-info {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.top-bar .coins {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.top-bar .coins .coin-icon {
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle, #ffd700, #daa520);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+
+/* ===== SCREENS ===== */
+.screen {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== INTRO SCREEN ===== */
+.intro-screen {
+  text-align: center;
+  padding: 40px 20px;
+}
+.intro-screen h1 {
+  font-size: 2rem;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+.intro-screen .subtitle {
+  color: var(--text-dim);
+  margin-bottom: 30px;
+}
+.intro-screen .earned-today {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin: 20px 0;
+  text-shadow: 0 0 20px rgba(255,215,0,0.4);
+}
+.intro-screen .earned-label {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* Volta bubble */
+.volta-bubble {
+  background: var(--bg-panel);
+  border: 2px solid var(--accent-green);
+  border-radius: 16px;
+  padding: 16px 20px;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  position: relative;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.volta-bubble .volta-name {
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 4px;
+}
+.volta-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--accent-green);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-gold), #e6a800);
+  color: #1a1a2e;
+  box-shadow: 0 4px 15px rgba(245,200,66,0.3);
+}
+.btn-secondary {
+  background: var(--bg-shop);
+  color: var(--text-light);
+  border: 2px solid var(--accent-blue);
+}
+.btn-danger {
+  background: linear-gradient(135deg, var(--accent-orange), #c0392b);
+  color: white;
+}
+.btn-green {
+  background: linear-gradient(135deg, var(--accent-green), #27ae60);
+  color: #1a1a2e;
+}
+
+/* ===== SHOP SCREEN ===== */
+.shop-screen { padding: 15px; }
+.shop-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.shop-header h2 {
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+}
+.shop-header .shop-hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.shop-categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+.cat-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid var(--bg-shop);
+  background: var(--bg-panel);
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.cat-btn.active, .cat-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: var(--bg-shop);
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.shop-item {
+  background: var(--bg-panel);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.shop-item:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+.shop-item.owned {
+  opacity: 0.4;
+  cursor: default;
+  border-color: var(--accent-green);
+}
+.shop-item.owned::after {
+  content: '✓';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: var(--accent-green);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.shop-item.too-expensive {
+  opacity: 0.5;
+}
+.shop-item .item-icon {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+  display: block;
+}
+.shop-item .item-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.shop-item .item-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.shop-item .item-price .mini-coin {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #ffd700, #daa520);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.shop-bottom {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Cart */
+.cart-bar {
+  background: var(--bg-shop);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-bar .cart-items {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+.cart-bar .cart-total {
+  font-weight: 700;
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+}
+
+/* ===== JOURNEY SCREEN (překážky cestou) ===== */
+.journey-screen {
+  padding: 20px;
+  text-align: center;
+}
+.journey-scene {
+  background: var(--bg-panel);
+  border-radius: 16px;
+  padding: 30px 20px;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+.journey-scene .scene-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+.journey-scene .scene-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--accent-orange);
+}
+.journey-scene .scene-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+.journey-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.journey-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-shop);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+.journey-choice:hover {
+  border-color: var(--accent-blue);
+  background: #1a3a6e;
+}
+.journey-choice .choice-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+.journey-result {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== LAB SCREEN ===== */
+.lab-screen { padding: 15px; }
+.lab-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.lab-header h2 {
+  font-size: 1.5rem;
+  color: var(--accent-green);
+}
+
+.lab-room {
+  background: linear-gradient(180deg, #1a2744 0%, #0d1b2a 100%);
+  border: 3px solid #2a3a5e;
+  border-radius: 16px;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+/* Floor */
+.lab-room .floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, #2d2d44, #1e1e30);
+  border-top: 2px solid #3a3a5a;
+}
+/* Wall */
+.lab-room .wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(255,255,255,0.02) 80px,
+    rgba(255,255,255,0.02) 82px
+  );
+}
+
+/* Placed items */
+.lab-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+  animation: placeItem 0.5s ease;
+}
+@keyframes placeItem {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.lab-item .lab-item-icon {
+  font-size: 2rem;
+}
+.lab-item .lab-item-name {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Items on floor (wrong order) */
+.lab-item.on-floor {
+  bottom: 15px !important;
+  opacity: 0.6;
+  animation: shake 0.5s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px) rotate(-3deg); }
+  40% { transform: translateX(5px) rotate(3deg); }
+  60% { transform: translateX(-3px) rotate(-1deg); }
+  80% { transform: translateX(3px) rotate(1deg); }
+}
+
+.lab-stats {
+  display: flex;
+  justify-content: space-around;
+  background: var(--bg-panel);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+.lab-stat {
+  text-align: center;
+}
+.lab-stat .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.lab-stat .stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.lab-bottom {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ===== DAILY SUMMARY ===== */
+.summary-screen {
+  text-align: center;
+  padding: 30px 20px;
+}
+.summary-screen h2 {
+  color: var(--accent-gold);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+.summary-list {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem;
+}
+.summary-item .sum-icon { font-size: 1.4rem; }
+
+/* ===== DAY SELECTOR (debug) ===== */
+.day-selector {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-blue);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  z-index: 100;
+}
+.day-selector button {
+  background: var(--bg-shop);
+  border: 1px solid var(--accent-blue);
+  color: var(--text-light);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+/* ===== PURCHASE CONFIRM MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--bg-panel);
+  border: 2px solid var(--accent-gold);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+}
+.modal-box .modal-icon { font-size: 3rem; margin-bottom: 10px; }
+.modal-box .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+.modal-box .modal-price { color: var(--accent-gold); font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; }
+.modal-box .modal-buttons { display: flex; gap: 10px; justify-content: center; }
+.modal-box .modal-buttons .btn { padding: 10px 24px; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="day-info">Den <span id="dayNum">1</span> / 20 — Mise 1</div>
+  <div class="coins">
+    <div class="coin-icon">M</div>
+    <span id="coinDisplay">0</span>
+  </div>
+</div>
+
+<!-- SCREEN: INTRO -->
+<div class="screen active" id="introScreen">
+  <div class="intro-screen">
+    <h1>Učení hotovo!</h1>
+    <div class="subtitle">Dnes ses fakt snažil/a.</div>
+    <div class="earned-today" id="earnedToday">42</div>
+    <div class="earned-label">mincí za dnešní učení</div>
+    <div class="volta-bubble" id="introVolta">
+      <div class="volta-name">🧪 Dr. Volta</div>
+      <div id="introVoltaText">Skvělá práce! Máme mince, tak hurá do obchodu. Ta laboratoř se sama nepostaví!</div>
+    </div>
+    <button class="btn btn-primary" onclick="goToShop()">🛒 Jdu nakupovat!</button>
+  </div>
+</div>
+
+<!-- SCREEN: SHOP -->
+<div class="screen" id="shopScreen">
+  <div class="shop-screen">
+    <div class="shop-header">
+      <h2>🏪 Voltův obchod</h2>
+      <div class="shop-hint">Vyber díly pro laboratoř. Pozor — některé potřebují něco jiného první!</div>
+    </div>
+
+    <div class="cart-bar">
+      <div class="cart-items">V košíku: <span id="cartCount">0</span> dílů</div>
+      <div class="cart-total"><span id="cartTotal">0</span> mincí</div>
+    </div>
+
+    <div class="shop-categories" id="shopCategories"></div>
+    <div class="shop-grid" id="shopGrid"></div>
+
+    <div class="shop-bottom">
+      <button class="btn btn-secondary" onclick="goToLab()">🔬 Zpět do laby</button>
+      <button class="btn btn-primary" id="buyBtn" onclick="buyCart()">💰 Koupit a jít!</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: JOURNEY -->
+<div class="screen" id="journeyScreen">
+  <div class="journey-screen">
+    <div class="journey-scene" id="journeyScene"></div>
+    <div id="journeyActions"></div>
+  </div>
+</div>
+
+<!-- SCREEN: LAB -->
+<div class="screen" id="labScreen">
+  <div class="lab-screen">
+    <div class="lab-header">
+      <h2>🔬 Voltova laboratoř</h2>
+    </div>
+
+    <div class="lab-stats">
+      <div class="lab-stat">
+        <div class="stat-value" id="labItemCount">0</div>
+        <div class="stat-label">dílů postaveno</div>
+      </div>
+      <div class="lab-stat">
+        <div class="stat-value" id="labFloorCount">0</div>
+        <div class="stat-label">leží na zemi</div>
+      </div>
+      <div class="lab-stat">
+        <div class="stat-value" id="labTotalValue">0</div>
+        <div class="stat-label">hodnota laby</div>
+      </div>
+    </div>
+
+    <div class="lab-room" id="labRoom">
+      <div class="wall"></div>
+      <div class="floor"></div>
+    </div>
+
+    <div class="volta-bubble" id="labVolta" style="display:none">
+      <div class="volta-name">🧪 Dr. Volta</div>
+      <div id="labVoltaText"></div>
+    </div>
+
+    <div class="lab-bottom">
+      <button class="btn btn-secondary" onclick="goToShop()">🛒 Zpět do obchodu</button>
+      <button class="btn btn-green" onclick="endDay()">✅ Končím den</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: SUMMARY -->
+<div class="screen" id="summaryScreen">
+  <div class="summary-screen">
+    <h2>📋 Shrnutí dne <span id="summaryDay">1</span></h2>
+    <div id="summaryContent"></div>
+    <button class="btn btn-primary" onclick="nextDay()" style="margin-top:20px">▶ Další den</button>
+  </div>
+</div>
+
+<!-- PURCHASE MODAL -->
+<div class="modal-overlay" id="purchaseModal">
+  <div class="modal-box">
+    <div class="modal-icon" id="modalIcon"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-price" id="modalPrice"></div>
+    <div id="modalDeps" style="font-size:0.8rem;color:var(--text-dim);margin-bottom:12px"></div>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" onclick="closeModal()">Ne</button>
+      <button class="btn btn-primary" onclick="confirmPurchase()">Koupím!</button>
+    </div>
+  </div>
+</div>
+
+<!-- DAY SELECTOR (debug) -->
+<div class="day-selector">
+  <span>Debug:</span>
+  <button onclick="addCoins(50)">+50 mincí</button>
+  <button onclick="resetGame()">Reset</button>
+</div>
+
+<script>
+// ===== GAME DATA =====
+
+const LAB_ITEMS = [
+  // category, id, name, icon, price, requires (ids), position {x%, bottom px}
+  // ZÁKLAD (podlaha, stěny, dveře)
+  { cat: 'základ', id: 'podlaha', name: 'Podlahové dlaždice', icon: '🟫', price: 5, requires: [], pos: {x:50, b:62}, size:'big' },
+  { cat: 'základ', id: 'dvere', name: 'Dveře do laby', icon: '🚪', price: 8, requires: ['podlaha'], pos: {x:5, b:65}, size:'big' },
+  { cat: 'základ', id: 'okno', name: 'Okno', icon: '🪟', price: 6, requires: ['podlaha'], pos: {x:75, b:200} },
+  { cat: 'základ', id: 'svetlo', name: 'Stropní lampa', icon: '💡', price: 4, requires: ['podlaha'], pos: {x:50, b:320} },
+  { cat: 'základ', id: 'zasuvky', name: 'Zásuvky', icon: '🔌', price: 3, requires: ['podlaha'], pos: {x:30, b:120} },
+
+  // NÁBYTEK
+  { cat: 'nábytek', id: 'stul_velky', name: 'Velký laboratorní stůl', icon: '🪑', price: 25, requires: ['podlaha'], pos: {x:40, b:80}, size:'big' },
+  { cat: 'nábytek', id: 'stul_maly', name: 'Malý stůl', icon: '🪑', price: 12, requires: ['podlaha'], pos: {x:70, b:80} },
+  { cat: 'nábytek', id: 'zidle', name: 'Židle', icon: '🪑', price: 8, requires: ['podlaha'], pos: {x:35, b:75} },
+  { cat: 'nábytek', id: 'regal', name: 'Regál na chemikálie', icon: '🗄️', price: 18, requires: ['podlaha'], pos: {x:88, b:80}, size:'big' },
+  { cat: 'nábytek', id: 'skrinka', name: 'Skříňka na nářadí', icon: '🗃️', price: 10, requires: ['podlaha'], pos: {x:15, b:75} },
+
+  // VYBAVENÍ
+  { cat: 'vybavení', id: 'zkumavky', name: 'Sada zkumavek', icon: '🧪', price: 15, requires: ['stul_velky'], pos: {x:38, b:115} },
+  { cat: 'vybavení', id: 'mikroskop', name: 'Mikroskop', icon: '🔬', price: 35, requires: ['stul_velky'], pos: {x:48, b:115} },
+  { cat: 'vybavení', id: 'kahan', name: 'Plynový kahan', icon: '🔥', price: 12, requires: ['stul_velky', 'zasuvky'], pos: {x:44, b:115} },
+  { cat: 'vybavení', id: 'vaha', name: 'Laboratorní váha', icon: '⚖️', price: 20, requires: ['stul_maly'], pos: {x:68, b:110} },
+  { cat: 'vybavení', id: 'pipeta', name: 'Pipeta', icon: '💉', price: 5, requires: ['stul_velky'], pos: {x:42, b:110} },
+  { cat: 'vybavení', id: 'banky', name: 'Erlenmeyerovy baňky', icon: '⚗️', price: 10, requires: ['regal'], pos: {x:86, b:180} },
+  { cat: 'vybavení', id: 'chemikalie', name: 'Chemikálie', icon: '🧴', price: 8, requires: ['regal'], pos: {x:90, b:180} },
+
+  // DOPLŇKY
+  { cat: 'doplňky', id: 'plast', name: 'Laboratorní plášť', icon: '🥼', price: 6, requires: [], pos: {x:10, b:200} },
+  { cat: 'doplňky', id: 'bryle', name: 'Ochranné brýle', icon: '🥽', price: 3, requires: [], pos: {x:12, b:170} },
+  { cat: 'doplňky', id: 'rukavice', name: 'Rukavice', icon: '🧤', price: 2, requires: [], pos: {x:14, b:145} },
+  { cat: 'doplňky', id: 'lzicka', name: 'Odměřovací lžička', icon: '🥄', price: 1, requires: ['stul_velky'], pos: {x:36, b:108} },
+  { cat: 'doplňky', id: 'hodiny', name: 'Nástěnné hodiny', icon: '🕐', price: 4, requires: ['podlaha'], pos: {x:60, b:280} },
+  { cat: 'doplňky', id: 'tabule', name: 'Tabule na vzorce', icon: '📋', price: 10, requires: ['podlaha'], pos: {x:25, b:250} },
+  { cat: 'doplňky', id: 'poster', name: 'Periodická tabulka', icon: '📊', price: 7, requires: ['podlaha'], pos: {x:55, b:260} },
+  { cat: 'doplňky', id: 'kvetina', name: 'Rostlinka na stůl', icon: '🌱', price: 2, requires: ['stul_maly'], pos: {x:72, b:110} },
+  { cat: 'doplňky', id: 'hasak', name: 'Hasicí přístroj', icon: '🧯', price: 5, requires: ['podlaha'], pos: {x:3, b:75} },
+
+  // LUXUS (vylepšení)
+  { cat: 'luxus', id: 'pocitac', name: 'Laboratorní PC', icon: '💻', price: 40, requires: ['stul_maly', 'zasuvky'], pos: {x:66, b:110} },
+  { cat: 'luxus', id: 'aquarium', name: 'Akvárium s rybkou', icon: '🐠', price: 15, requires: ['podlaha'], pos: {x:80, b:75} },
+  { cat: 'luxus', id: 'robot', name: 'Mini robot asistent', icon: '🤖', price: 50, requires: ['pocitac'], pos: {x:62, b:80} },
+  { cat: 'luxus', id: 'teleskop', name: 'Hvězdářský dalekohled', icon: '🔭', price: 30, requires: ['podlaha','okno'], pos: {x:78, b:75} },
+  { cat: 'luxus', id: 'neon', name: 'Neonový nápis LABA', icon: '✨', price: 20, requires: ['podlaha','svetlo'], pos: {x:45, b:310} },
+];
+
+const CATEGORIES = ['vše', 'základ', 'nábytek', 'vybavení', 'doplňky', 'luxus'];
+
+// Journey events (random encounters)
+const JOURNEY_EVENTS = [
+  {
+    icon: '🏴‍☠️',
+    title: 'Křivák blokuje cestu!',
+    text: 'Pirátský kapitán Křivák stojí uprostřed ulice a ukazuje na tvůj nákup. "Hezký věci máš, mladej! Co kdybys mi dal pár mincí a já tě pustím?"',
+    choices: [
+      { icon: '🏃', text: 'Obejít ho přes park', result: 'ok', msg: 'Proběhneš parkem a Křivák tě nedoběhne. Má moc krátké nohy na ten břich!' },
+      { icon: '💰', text: 'Dát mu 5 mincí', result: 'lose5', msg: 'Křivák si bere 5 mincí a ušklíbne se. "Příště to bude dražší!"' },
+      { icon: '🗣️', text: 'Zavolat o pomoc', result: 'ok', msg: 'Kolem jde babička s deštníkem. Křivák se lekne a utíká. Babičky jsou jeho slabina.' },
+    ]
+  },
+  {
+    icon: '🦜',
+    title: 'Keksík útočí!',
+    text: 'Papoušek Keksík se snáší z nebe přímo na tvůj batoh. "KEKSÍK! KEKSÍK!" Chce ti ukrást minci!',
+    choices: [
+      { icon: '🍪', text: 'Hodit mu sušenku', result: 'ok', msg: 'Keksík chytí sušenku a spokojeně odletí. Jako vždycky — je uplácitelný.' },
+      { icon: '🙈', text: 'Schovat batoh pod bundu', result: 'ok', msg: 'Keksík krouží kolem, ale nic nevidí. Nakonec odletí s prázdnou.' },
+      { icon: '😱', text: 'Nechat ho, ať si vezme', result: 'lose3', msg: 'Keksík si bere 3 mince a odletí. "KEKSÍÍÍK!" řve spokojeně.' },
+    ]
+  },
+  {
+    icon: '👮',
+    title: 'Policejní kontrola!',
+    text: 'Strážník Novák tě zastavuje. "Mladíku, to je pěkný mikroskop. Máte na to doklad?" Nevěří, že jsi to koupil.',
+    choices: [
+      { icon: '🏪', text: 'Utíkej zpátky do obchodu pro účtenku', result: 'ok', msg: 'Doběhneš do obchodu, prodavač ti dá účtenku. Strážník Novák salutuje a pouští tě.' },
+      { icon: '📱', text: 'Zavolej Dr. Voltovi', result: 'ok', msg: 'Volta přijde a vysvětlí to. Strážník se omluví. "Tak to promiňte, pane doktore!"' },
+      { icon: '🏃', text: 'Utéct', result: 'lose8', msg: 'Strážník tě dohoní na kole. Dostáváš pokutu 8 mincí. Utíkat od policie nikdy není dobrý nápad.' },
+    ]
+  },
+  {
+    icon: '🌧️',
+    title: 'Průtrž mračen!',
+    text: 'Začalo strašně pršet a ty nemáš deštník. Tvůj nákup by mohl zmoknout!',
+    choices: [
+      { icon: '🏠', text: 'Schovat se pod stříšku', result: 'ok', msg: 'Počkáš 5 minut pod stříškou obchodu. Přeháňka přejde a jdeš dál v suchu.' },
+      { icon: '🏃', text: 'Prostě běžet!', result: 'ok', msg: 'Proběhneš deštěm jako sprinter. Trochu mokrej, ale nákup je v pytlíku, tak OK.' },
+      { icon: '☂️', text: 'Koupit deštník (3 mince)', result: 'lose3', msg: 'Koupíš si deštník za 3 mince. Je růžový s jednorožci, ale účel to splní.' },
+    ]
+  },
+  {
+    icon: '😋',
+    title: 'Řepák s nabídkou!',
+    text: 'Tlustý pirát Řepák sedí u cesty a jí koláč. "Hej, kluku! Nechceš ochutnat? Ale bude to stát... pár mincí, hehe."',
+    choices: [
+      { icon: '🚶', text: 'Ignorovat a jít dál', result: 'ok', msg: 'Řepák na tebe volá, ale je moc línej se zvednout. Jdeš v klidu dál.' },
+      { icon: '🍰', text: 'Ochutnat za 4 mince', result: 'lose4', msg: 'Koláč je fakt dobrý. Ale 4 mince jsou 4 mince. Řepák se chechtá.' },
+      { icon: '🤝', text: 'Nabídnout mu výměnu — koláč za pomoc s nesením', result: 'ok', msg: 'Řepák ti pomůže donést nákup až k laboratoři. Za koláč udělá cokoliv!' },
+    ]
+  },
+  {
+    icon: '⚡',
+    title: 'Pirátka na motorce!',
+    text: 'Pirátka projíždí na staré motorce a skoro tě srazí! "Z cesty, zelenáči!" Její motorka ale naskočí a přestane jet.',
+    choices: [
+      { icon: '🔧', text: 'Pomoct jí opravit motorku', result: 'bonus3', msg: 'Opravíš jí hadičku. Pirátka je překvapená. "Hmm, nejseš úplnej trouba." Dá ti 3 mince na dobrou vůli.' },
+      { icon: '😂', text: 'Zasmát se a jít', result: 'ok', msg: 'Pirátka na tebe řve, ale ty jsi už daleko. Někdy je nejlepší prostě odejít.' },
+      { icon: '🏃', text: 'Utéct, než ji opraví', result: 'ok', msg: 'Raději odejdeš rychle. S Pirátkou nejsou žerty.' },
+    ]
+  },
+];
+
+const VOLTA_INTRO_MESSAGES = [
+  "Skvělá práce! Máme mince, tak hurá do obchodu. Ta laboratoř se sama nepostaví!",
+  "Výborně! Dneska to šlo dobře. Pojď, nakoupíme něco pěkného do laby!",
+  "Hmm, mincí není zrovna halda, ale i malej nákup je nákup. Jdem!",
+  "Perfektní! S takovým počtem mincí můžeme pořídit něco opravdu užitečného!",
+  "No teda, dneska ses fakt snažil/a! Jdem utratit ty krásný mince!",
+];
+
+const VOLTA_PLACE_OK = [
+  "Přesně tam to patří! Vidíš, logika funguje.",
+  "Výborně! Takhle se staví laboratoř!",
+  "Jo, to sedí. Jsem na tebe pyšnej.",
+  "Dokonalé umístění! Z tebe bude inženýr.",
+  "Ano ano ano! Přesně takhle!",
+];
+
+const VOLTA_PLACE_WRONG = [
+  "Ehm... a kam to jako dáš? Na podlahu? Chybí ti {dep}.",
+  "Hezký pokus, ale bez {dep} to nikam nedáš. Leží to na zemi.",
+  "No jo, no... {dep} bys potřeboval/a první. Ale nezoufej!",
+  "Hmm, tohle takhle nefunguje. Nejdřív sežeň {dep}.",
+  "Vidíš, to je ta logika — bez {dep} nemůžeš mít {item}.",
+];
+
+
+// ===== GAME STATE =====
+let state = {
+  day: 1,
+  coins: 0,
+  totalCoinsEarned: 0,
+  ownedItems: [],    // ids of items placed in lab
+  floorItems: [],    // ids of items on the floor (wrong order)
+  cart: [],          // ids in current cart
+  currentScreen: 'intro',
+  dailyEarned: 0,
+};
+
+// Load state from localStorage substitute (in-memory for prototype)
+function initGame() {
+  // Simulate day's earnings
+  state.dailyEarned = 30 + Math.floor(Math.random() * 30); // 30-60
+  state.coins += state.dailyEarned;
+  state.totalCoinsEarned += state.dailyEarned;
+  
+  document.getElementById('earnedToday').textContent = state.dailyEarned;
+  document.getElementById('introVoltaText').textContent = 
+    VOLTA_INTRO_MESSAGES[Math.floor(Math.random() * VOLTA_INTRO_MESSAGES.length)];
+  
+  updateCoinDisplay();
+  showScreen('intro');
+}
+
+function updateCoinDisplay() {
+  document.getElementById('coinDisplay').textContent = state.coins;
+  document.getElementById('dayNum').textContent = state.day;
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(name + 'Screen').classList.add('active');
+  state.currentScreen = name;
+}
+
+// ===== SHOP =====
+let selectedCategory = 'vše';
+let pendingItem = null;
+
+function goToShop() {
+  state.cart = [];
+  renderShop();
+  showScreen('shop');
+}
+
+function renderShop() {
+  // Categories
+  const catContainer = document.getElementById('shopCategories');
+  catContainer.innerHTML = CATEGORIES.map(c => 
+    `<button class="cat-btn ${c === selectedCategory ? 'active' : ''}" onclick="selectCategory('${c}')">${c === 'vše' ? '📦 Vše' : c}</button>`
+  ).join('');
+
+  // Items
+  const grid = document.getElementById('shopGrid');
+  const items = selectedCategory === 'vše' ? LAB_ITEMS : LAB_ITEMS.filter(i => i.cat === selectedCategory);
+  
+  grid.innerHTML = items.map(item => {
+    const owned = state.ownedItems.includes(item.id) || state.floorItems.includes(item.id);
+    const inCart = state.cart.includes(item.id);
+    const tooExpensive = item.price > state.coins && !owned;
+    
+    let classes = 'shop-item';
+    if (owned) classes += ' owned';
+    else if (inCart) classes += ' in-cart';
+    if (tooExpensive && !owned) classes += ' too-expensive';
+    
+    return `<div class="${classes}" onclick="${owned ? '' : `toggleCart('${item.id}')`}" style="${inCart ? 'border-color:var(--accent-gold);background:#1a2a4e;' : ''}">
+      <span class="item-icon">${item.icon}</span>
+      <div class="item-name">${item.name}</div>
+      <div class="item-price">
+        ${owned ? '✅ máš' : `<span class="mini-coin"></span>${item.price}`}
+      </div>
+    </div>`;
+  }).join('');
+
+  updateCartBar();
+}
+
+function selectCategory(cat) {
+  selectedCategory = cat;
+  renderShop();
+}
+
+function toggleCart(itemId) {
+  const item = LAB_ITEMS.find(i => i.id === itemId);
+  if (!item) return;
+  if (state.ownedItems.includes(itemId) || state.floorItems.includes(itemId)) return;
+  
+  if (state.cart.includes(itemId)) {
+    state.cart = state.cart.filter(id => id !== itemId);
+  } else {
+    // Check if enough coins
+    const cartCost = state.cart.reduce((sum, id) => sum + LAB_ITEMS.find(i => i.id === id).price, 0);
+    if (cartCost + item.price > state.coins) {
+      showVoltaBubble('labVolta', 'Na tohle nemáš dost mincí. Zkus se víc snažit zítra v učení!');
+      return;
+    }
+    // Show confirm modal
+    pendingItem = itemId;
+    showPurchaseModal(item);
+    return;
+  }
+  renderShop();
+}
+
+function showPurchaseModal(item) {
+  document.getElementById('modalIcon').textContent = item.icon;
+  document.getElementById('modalTitle').textContent = item.name;
+  document.getElementById('modalPrice').textContent = item.price + ' mincí';
+  
+  // Show dependencies
+  const deps = item.requires.filter(r => !state.ownedItems.includes(r));
+  if (deps.length > 0) {
+    const depNames = deps.map(d => LAB_ITEMS.find(i => i.id === d)?.name || d).join(', ');
+    document.getElementById('modalDeps').textContent = '⚠️ Potřebuje: ' + depNames;
+    document.getElementById('modalDeps').style.color = 'var(--accent-orange)';
+  } else {
+    document.getElementById('modalDeps').textContent = '✅ Můžeš rovnou postavit';
+    document.getElementById('modalDeps').style.color = 'var(--accent-green)';
+  }
+  
+  document.getElementById('purchaseModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('purchaseModal').classList.remove('active');
+  pendingItem = null;
+}
+
+function confirmPurchase() {
+  if (pendingItem && !state.cart.includes(pendingItem)) {
+    state.cart.push(pendingItem);
+  }
+  closeModal();
+  renderShop();
+}
+
+function updateCartBar() {
+  const count = state.cart.length;
+  const total = state.cart.reduce((sum, id) => sum + LAB_ITEMS.find(i => i.id === id).price, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = total;
+  
+  const buyBtn = document.getElementById('buyBtn');
+  buyBtn.disabled = count === 0;
+  buyBtn.style.opacity = count === 0 ? '0.5' : '1';
+}
+
+function buyCart() {
+  if (state.cart.length === 0) return;
+  
+  const total = state.cart.reduce((sum, id) => sum + LAB_ITEMS.find(i => i.id === id).price, 0);
+  if (total > state.coins) return;
+  
+  state.coins -= total;
+  updateCoinDisplay();
+  
+  // Random journey event (70% chance)
+  if (Math.random() < 0.7) {
+    startJourney();
+  } else {
+    arriveAtLab();
+  }
+}
+
+// ===== JOURNEY =====
+function startJourney() {
+  const event = JOURNEY_EVENTS[Math.floor(Math.random() * JOURNEY_EVENTS.length)];
+  
+  const scene = document.getElementById('journeyScene');
+  scene.innerHTML = `
+    <div class="scene-icon">${event.icon}</div>
+    <div class="scene-title">${event.title}</div>
+    <div class="scene-text">${event.text}</div>
+  `;
+  
+  const actions = document.getElementById('journeyActions');
+  actions.innerHTML = `<div class="journey-choices">
+    ${event.choices.map((c, i) => `
+      <button class="journey-choice" onclick="resolveJourney(${i})">
+        <span class="choice-icon">${c.icon}</span>
+        <span>${c.text}</span>
+      </button>
+    `).join('')}
+  </div>`;
+  
+  // Store current event
+  window._currentEvent = event;
+  showScreen('journey');
+}
+
+function resolveJourney(choiceIndex) {
+  const event = window._currentEvent;
+  const choice = event.choices[choiceIndex];
+  
+  let resultMsg = choice.msg;
+  let coinChange = 0;
+  
+  if (choice.result === 'lose3') coinChange = -3;
+  if (choice.result === 'lose4') coinChange = -4;
+  if (choice.result === 'lose5') coinChange = -5;
+  if (choice.result === 'lose8') coinChange = -8;
+  if (choice.result === 'bonus3') coinChange = 3;
+  
+  state.coins = Math.max(0, state.coins + coinChange);
+  updateCoinDisplay();
+  
+  let coinMsg = '';
+  if (coinChange < 0) coinMsg = `<br><span style="color:var(--accent-orange)">−${Math.abs(coinChange)} mincí</span>`;
+  if (coinChange > 0) coinMsg = `<br><span style="color:var(--accent-green)">+${coinChange} mincí!</span>`;
+  
+  const scene = document.getElementById('journeyScene');
+  scene.innerHTML = `
+    <div class="scene-icon">${choice.result === 'ok' || choice.result.startsWith('bonus') ? '✅' : '😅'}</div>
+    <div class="scene-text">${resultMsg}${coinMsg}</div>
+  `;
+  
+  const actions = document.getElementById('journeyActions');
+  actions.innerHTML = `<button class="btn btn-primary" onclick="arriveAtLab()">🔬 Pokračovat do laby</button>`;
+}
+
+// ===== LAB =====
+function arriveAtLab() {
+  // Place cart items
+  placeItems(state.cart);
+  state.cart = [];
+  renderLab();
+  showScreen('lab');
+}
+
+function goToLab() {
+  renderLab();
+  showScreen('lab');
+}
+
+function placeItems(itemIds) {
+  let voltaMessages = [];
+  
+  for (const id of itemIds) {
+    const item = LAB_ITEMS.find(i => i.id === id);
+    if (!item) continue;
+    
+    // Check dependencies
+    const missingDeps = item.requires.filter(r => !state.ownedItems.includes(r));
+    
+    if (missingDeps.length === 0) {
+      // Can place!
+      state.ownedItems.push(id);
+      // If any floor items now have deps met, auto-place them
+      checkFloorItems();
+      const msg = VOLTA_PLACE_OK[Math.floor(Math.random() * VOLTA_PLACE_OK.length)];
+      voltaMessages.push(`${item.icon} ${item.name}: ${msg}`);
+    } else {
+      // Goes to floor
+      state.floorItems.push(id);
+      const depName = LAB_ITEMS.find(i => i.id === missingDeps[0])?.name || missingDeps[0];
+      let msg = VOLTA_PLACE_WRONG[Math.floor(Math.random() * VOLTA_PLACE_WRONG.length)];
+      msg = msg.replace('{dep}', depName).replace('{item}', item.name);
+      voltaMessages.push(`${item.icon} ${item.name}: ${msg}`);
+    }
+  }
+  
+  if (voltaMessages.length > 0) {
+    showVoltaBubble('labVolta', voltaMessages.join('<br><br>'));
+  }
+}
+
+function checkFloorItems() {
+  let moved = true;
+  while (moved) {
+    moved = false;
+    for (let i = state.floorItems.length - 1; i >= 0; i--) {
+      const id = state.floorItems[i];
+      const item = LAB_ITEMS.find(it => it.id === id);
+      const missingDeps = item.requires.filter(r => !state.ownedItems.includes(r));
+      if (missingDeps.length === 0) {
+        state.floorItems.splice(i, 1);
+        state.ownedItems.push(id);
+        moved = true;
+      }
+    }
+  }
+}
+
+function renderLab() {
+  const room = document.getElementById('labRoom');
+  // Keep wall and floor, remove items
+  room.querySelectorAll('.lab-item').forEach(el => el.remove());
+  
+  // Render placed items
+  for (const id of state.ownedItems) {
+    const item = LAB_ITEMS.find(i => i.id === id);
+    if (!item) continue;
+    
+    const el = document.createElement('div');
+    el.className = 'lab-item';
+    el.style.left = item.pos.x + '%';
+    el.style.bottom = item.pos.b + 'px';
+    el.innerHTML = `<span class="lab-item-icon" style="font-size:${item.size === 'big' ? '2.5rem' : '1.8rem'}">${item.icon}</span>
+      <span class="lab-item-name">${item.name}</span>`;
+    room.appendChild(el);
+  }
+  
+  // Render floor items
+  let floorX = 20;
+  for (const id of state.floorItems) {
+    const item = LAB_ITEMS.find(i => i.id === id);
+    if (!item) continue;
+    
+    const el = document.createElement('div');
+    el.className = 'lab-item on-floor';
+    el.style.left = floorX + '%';
+    el.innerHTML = `<span class="lab-item-icon">${item.icon}</span>
+      <span class="lab-item-name">${item.name} ⚠️</span>`;
+    room.appendChild(el);
+    floorX += 8;
+  }
+  
+  // Stats
+  document.getElementById('labItemCount').textContent = state.ownedItems.length;
+  document.getElementById('labFloorCount').textContent = state.floorItems.length;
+  const totalValue = [...state.ownedItems, ...state.floorItems]
+    .reduce((sum, id) => sum + (LAB_ITEMS.find(i => i.id === id)?.price || 0), 0);
+  document.getElementById('labTotalValue').textContent = totalValue;
+}
+
+function showVoltaBubble(elementId, html) {
+  const el = document.getElementById(elementId);
+  const textEl = el.querySelector('[id$="Text"]') || el.querySelector('div:last-child');
+  if (textEl) textEl.innerHTML = html;
+  el.style.display = 'block';
+}
+
+// ===== DAY END =====
+function endDay() {
+  document.getElementById('summaryDay').textContent = state.day;
+  
+  const content = document.getElementById('summaryContent');
+  const totalItems = state.ownedItems.length;
+  const floorItems = state.floorItems.length;
+  const totalValue = [...state.ownedItems, ...state.floorItems]
+    .reduce((sum, id) => sum + (LAB_ITEMS.find(i => i.id === id)?.price || 0), 0);
+  
+  content.innerHTML = `
+    <div class="summary-list">
+      <div class="summary-item"><span class="sum-icon">💰</span> Dnes vydělal/a: ${state.dailyEarned} mincí</div>
+      <div class="summary-item"><span class="sum-icon">🏗️</span> Dílů v laboratoři: ${totalItems}</div>
+      ${floorItems > 0 ? `<div class="summary-item"><span class="sum-icon">⚠️</span> Leží na zemi: ${floorItems} (chybí závislosti)</div>` : ''}
+      <div class="summary-item"><span class="sum-icon">💎</span> Celková hodnota laby: ${totalValue} mincí</div>
+      <div class="summary-item"><span class="sum-icon">🪙</span> Zbývá mincí: ${state.coins}</div>
+    </div>
+    <div class="volta-bubble">
+      <div class="volta-name">🧪 Dr. Volta</div>
+      <div>${getDailySummaryVolta(totalItems, floorItems)}</div>
+    </div>
+  `;
+  
+  showScreen('summary');
+}
+
+function getDailySummaryVolta(placed, onFloor) {
+  if (onFloor > 0) {
+    return `Na zemi ti leží ${onFloor} ${onFloor === 1 ? 'věc' : 'věci'}. Zítra nakup to, co chybí, a automaticky se to postaví. Logika, kamaráde!`;
+  }
+  if (placed === 0) {
+    return 'Dneska jsi nic nekoupil/a? No nic, zítra to doženeš!';
+  }
+  if (placed > 20) {
+    return 'Ta laboratoř vypadá úžasně! Ještě pár dní a budeme dělat opravdické experimenty!';
+  }
+  if (placed > 10) {
+    return 'Hezky to roste! Už to začíná vypadat jako opravdová laboratoř!';
+  }
+  return 'Dobrý začátek! Zítra pokračujeme. Každý den kousek a bude z toho něco velkého!';
+}
+
+function nextDay() {
+  if (state.day >= 20) {
+    alert('Mise 1 dokončena! Laboratoř je hotová!');
+    return;
+  }
+  state.day++;
+  initGame();
+}
+
+// ===== DEBUG =====
+function addCoins(n) {
+  state.coins += n;
+  updateCoinDisplay();
+}
+
+function resetGame() {
+  state = {
+    day: 1, coins: 0, totalCoinsEarned: 0,
+    ownedItems: [], floorItems: [], cart: [],
+    currentScreen: 'intro', dailyEarned: 0,
+  };
+  initGame();
+}
+
+// ===== START =====
+initGame();
+</script>
+</body>
+</html>
