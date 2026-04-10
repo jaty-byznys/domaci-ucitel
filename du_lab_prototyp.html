@@ -31,11 +31,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',sans-ser
 #phone-btn:active{transform:scale(.95);}
 
 /* Hotspots on street */
-.hotspot{position:absolute;cursor:pointer;z-index:10;border:none;background:transparent;padding:0;}
-.hotspot.sparkle::after{content:'';position:absolute;inset:-4px;border-radius:50%;animation:sparkle 1.5s infinite;pointer-events:none;}
-@keyframes sparkle{0%,100%{box-shadow:0 0 4px 2px rgba(255,215,0,.3);}50%{box-shadow:0 0 10px 5px rgba(255,215,0,.7);}}
-.hotspot.glow::after{content:'';position:absolute;inset:-2px;border-radius:4px;animation:glow 2s infinite;pointer-events:none;}
-@keyframes glow{0%,100%{box-shadow:0 0 3px 1px rgba(100,200,255,.2);}50%{box-shadow:0 0 6px 3px rgba(100,200,255,.5);}}
+.hotspot{position:absolute;cursor:pointer;z-index:10;border:2px dashed rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);padding:0;border-radius:8px;min-width:40px;min-height:40px;transition:all 0.2s;}
+.hotspot:hover{background:rgba(255,215,0,0.15);border-color:rgba(255,215,0,0.5);transform:scale(1.05);}
+.hotspot.sparkle{border:2px solid rgba(255,215,0,0.4);background:rgba(255,215,0,0.08);animation:sparkle 1.5s infinite;}
+@keyframes sparkle{0%,100%{box-shadow:0 0 6px 3px rgba(255,215,0,.2);border-color:rgba(255,215,0,0.3);}50%{box-shadow:0 0 16px 6px rgba(255,215,0,.6);border-color:rgba(255,215,0,0.7);}}
+.hotspot.glow{border:2px dashed rgba(100,200,255,0.3);background:rgba(100,200,255,0.06);animation:glow 2s infinite;}
+@keyframes glow{0%,100%{box-shadow:0 0 4px 2px rgba(100,200,255,.15);}50%{box-shadow:0 0 10px 4px rgba(100,200,255,.4);}}
 
 /* Shop */
 #shop-panel{position:absolute;inset:0;display:none;z-index:40;}
@@ -171,9 +172,9 @@ const ITEM_DATA = {
 
 const STREET_HOTSPOTS = [
   // Round 1
-  [{id:'wall',x:10,y:30,w:12,h:20,coins:3,cls:'sparkle',msg:'Mince schované v cihlách!'},
-   {id:'cat',x:70,y:50,w:10,h:15,coins:1,cls:'sparkle',msg:'Kocka mela minci na obojku!'},
-   {id:'keksik1',x:50,y:20,w:12,h:12,coins:0,cls:'',msg:'Keksik: "KRAAA!" ...a zmizel.',isKeksik:true}],
+  [{id:'wall',x:8,y:25,w:15,h:22,coins:3,cls:'sparkle',msg:'Mince schovane v cihlach!'},
+   {id:'cat',x:68,y:45,w:14,h:18,coins:1,cls:'sparkle',msg:'Kocka mela minci na obojku!'},
+   {id:'keksik1',x:45,y:15,w:14,h:15,coins:0,cls:'sparkle',msg:'Keksik: "KRAAA!" ...a zmizel.',isKeksik:true}],
   // Round 2
   [{id:'newspaper',x:30,y:70,w:14,h:10,coins:2,cls:'glow',msg:'Piratske noviny! A mezi strankami mince!'},
    {id:'sewer',x:65,y:80,w:10,h:8,coins:0,cls:'glow',msg:'Jen smradlavy kanal. Nic tu neni.'}],
@@ -333,7 +334,9 @@ function goStreet() {
   $('phone-btn').style.display = 'block';
   clearHotspots();
   renderHotspots();
-  addStreetNavBtn('Do obchodu', () => { GS.phase = 'shop'; goShop(); });
+  // Always show nav button - it stays even after dialogs
+  addStreetNavBtn('Do obchodu >', () => { GS.phase = 'shop'; goShop(); });
+  showDialog('img/agent_k.png','Agent K',['Ulice... podivam se, jestli tu neco nenajdu.'],null);
 }
 
 function goStreetReturn() {
@@ -423,7 +426,7 @@ function openRiddle(s) {
       updateHUD();
       $('riddle-feedback').textContent = `Spravne! +${s.riddle.reward} minci!` + (s.riddle.bonusSmoke ? ' +Dymovnice!' : '');
       $('riddle-feedback').style.color = '#4CAF50';
-      setTimeout(() => { r.style.display = 'none'; document.querySelector(`.hotspot`)?.remove(); renderHotspots(); }, 1500);
+      setTimeout(() => { r.style.display = 'none'; clearHotspots(); renderHotspots(); addStreetNavBtn('Do obchodu >', () => { GS.phase = 'shop'; goShop(); }); }, 1500);
     } else {
       $('riddle-feedback').textContent = 'Spatne... zkus to znovu!';
       $('riddle-feedback').style.color = '#ff5722';
