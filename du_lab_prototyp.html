@@ -439,7 +439,7 @@ function addStreetNavBtn(text, cb) {
   const btn = document.createElement('button');
   btn.className = 'street-nav-btn';
   btn.textContent = text;
-  btn.style.cssText = 'position:absolute;bottom:12px;left:50%;transform:translateX(-50%);padding:10px 24px;background:#ff9800;color:#fff;border:none;border-radius:8px;font-size:1em;cursor:pointer;z-index:15;font-weight:bold;';
+  btn.style.cssText = 'position:absolute;bottom:80px;left:50%;transform:translateX(-50%);padding:12px 28px;background:#ff9800;color:#fff;border:none;border-radius:10px;font-size:1.1em;cursor:pointer;z-index:65;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.5);';
   btn.onmouseenter = () => btn.style.background = '#e68900';
   btn.onmouseleave = () => btn.style.background = '#ff9800';
   btn.onclick = cb;
