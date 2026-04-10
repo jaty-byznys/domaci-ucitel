@@ -1,990 +1,206 @@
 <!DOCTYPE html>
-<html lang="cs">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Domácí Učitel — Mise 1, Den 1</title>
+<html lang="cs"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Domácí Učitel — Den 1</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap');
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-:root {
-  --volta-blue: #4A90D9;
-  --agent-green: #4CAF50;
-  --pirat-red: #E53935;
-  --keksik-orange: #FF9800;
-  --bg-dark: #1a1a2e;
-  --bubble-white: #fff;
-  --bubble-border: #222;
-  --card-bg: rgba(20, 20, 40, 0.92);
-  --accent-glow: rgba(74, 144, 217, 0.3);
-}
-
-html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
-  font-family: 'Nunito', sans-serif;
-  background: #000;
-  color: #fff;
-  user-select: none;
-}
-
-/* ===== MAIN SCENE ===== */
-#game {
-  width: 100vw; height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-#scene-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.6s ease;
-  z-index: 0;
-}
-
-#scene-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%, transparent 70%, rgba(0,0,0,0.3) 100%);
-  z-index: 1;
-}
-
-/* ===== VIDEO OVERLAY ===== */
-#video-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 100;
-  background: #000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-#video-overlay video {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-#video-overlay .skip-btn {
-  position: absolute;
-  top: 20px; right: 20px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  transition: all 0.2s;
-}
-
-#video-overlay .skip-btn:hover {
-  background: rgba(255,255,255,0.3);
-}
-
-/* ===== DIALOG BUBBLES ===== */
-#dialog-area {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 45%;
-  z-index: 10;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 30px 40px;
-  pointer-events: none;
-}
-
-.bubble-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  max-width: 65%;
-  animation: bubblePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  pointer-events: auto;
-}
-
-.bubble-container.left { align-self: flex-start; }
-.bubble-container.right { align-self: flex-end; flex-direction: row-reverse; margin-left: auto; }
-
-@keyframes bubblePop {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.bubble-avatar {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  border: 3px solid #222;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-.bubble-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.speech-bubble {
-  position: relative;
-  background: var(--bubble-white);
-  color: #1a1a1a;
-  border: 3px solid var(--bubble-border);
-  border-radius: 20px;
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.45;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
-  max-width: 500px;
-}
-
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  width: 0; height: 0;
-}
-
-.bubble-container.left .speech-bubble::after {
-  left: -14px; top: 18px; bottom: auto;
-  border-right: 16px solid var(--bubble-border);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-
-.bubble-container.left .speech-bubble::before {
-  content: '';
-  position: absolute;
-  left: -10px; top: 20px;
-  border-right: 12px solid var(--bubble-white);
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  z-index: 1;
-}
-
-.bubble-container.right .speech-bubble::after {
-  right: -14px; top: 18px; bottom: auto; left: auto;
-  border-left: 16px solid var(--bubble-border);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-
-.bubble-container.right .speech-bubble::before {
-  content: '';
-  position: absolute;
-  right: -10px; top: 20px; left: auto;
-  border-left: 12px solid var(--bubble-white);
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  z-index: 1;
-}
-
-.bubble-name {
-  font-family: 'Bangers', cursive;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.bubble-name.volta { color: var(--volta-blue); }
-.bubble-name.agent { color: var(--agent-green); }
-.bubble-name.skripek, .bubble-name.repak, .bubble-name.krivak, .bubble-name.piratka { color: var(--pirat-red); }
-.bubble-name.keksik { color: var(--keksik-orange); }
-.bubble-name.popis { color: #666; font-style: italic; }
-
-/* ===== QUESTION CARD ===== */
-#question-card {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 20;
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  border-top: 2px solid rgba(255,255,255,0.1);
-  padding: 20px 30px 24px;
-  display: none;
-  animation: slideUp 0.4s ease;
-}
-
-@keyframes slideUp {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(0); }
-}
-
-#question-text {
-  font-family: 'Bangers', cursive;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-
-#options-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.option-btn {
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(255,255,255,0.2);
-  border-radius: 14px;
-  padding: 12px 18px;
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.option-btn:hover {
-  background: rgba(255,255,255,0.15);
-  border-color: var(--volta-blue);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74,144,217,0.3);
-}
-
-.option-btn.correct {
-  background: rgba(76, 175, 80, 0.3) !important;
-  border-color: #4CAF50 !important;
-  animation: correctPulse 0.5s ease;
-}
-
-.option-btn.wrong {
-  background: rgba(229, 57, 53, 0.3) !important;
-  border-color: #E53935 !important;
-  animation: shake 0.4s ease;
-}
-
-@keyframes correctPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
-}
-
-.option-label {
-  display: inline-block;
-  width: 26px; height: 26px;
-  line-height: 26px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  font-family: 'Bangers', cursive;
-  font-size: 14px;
-  margin-right: 10px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* ===== PROGRESS BAR ===== */
-#progress-bar {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  z-index: 50;
-  background: rgba(255,255,255,0.1);
-}
-
-#progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--volta-blue), var(--agent-green));
-  transition: width 0.5s ease;
-  width: 0%;
-  border-radius: 0 2px 2px 0;
-}
-
-/* ===== HUD ===== */
-#hud {
-  position: absolute;
-  top: 12px; right: 16px;
-  z-index: 40;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.hud-item {
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(255,255,255,0.15);
-}
-
-#round-label {
-  position: absolute;
-  top: 12px; left: 16px;
-  z-index: 40;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.15);
-}
-
-/* ===== CLICK TO CONTINUE ===== */
-#continue-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  padding: 8px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  animation: pulse 2s infinite;
-  border: 1px solid rgba(255,255,255,0.2);
-  display: none;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-/* ===== COLLECT ITEM ===== */
-#collect-popup {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 60;
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  border: 2px solid rgba(255,255,255,0.2);
-  border-radius: 20px;
-  padding: 30px 40px;
-  text-align: center;
-  display: none;
-  animation: bubblePop 0.4s ease;
-  max-width: 400px;
-}
-
-#collect-popup .collect-icon {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-#collect-popup .collect-title {
-  font-family: 'Bangers', cursive;
-  font-size: 22px;
-  color: #FFD700;
-  margin-bottom: 6px;
-}
-
-#collect-popup .collect-desc {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 16px;
-}
-
-#collect-popup .collect-btn {
-  background: var(--volta-blue);
-  border: none;
-  border-radius: 12px;
-  padding: 10px 28px;
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-#collect-popup .collect-btn:hover {
-  background: #3a7bc8;
-  transform: scale(1.05);
-}
-
-/* ===== DAY SUMMARY ===== */
-#day-summary {
-  position: absolute;
-  inset: 0;
-  z-index: 80;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(12px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-#day-summary .summary-card {
-  background: var(--card-bg);
-  border: 2px solid rgba(255,255,255,0.15);
-  border-radius: 24px;
-  padding: 40px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-}
-
-#day-summary .summary-title {
-  font-family: 'Bangers', cursive;
-  font-size: 32px;
-  color: #FFD700;
-  margin-bottom: 20px;
-}
-
-#day-summary .summary-stats {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 24px;
-}
-
-#day-summary .stat {
-  text-align: center;
-}
-
-#day-summary .stat-num {
-  font-family: 'Bangers', cursive;
-  font-size: 36px;
-  color: var(--agent-green);
-}
-
-#day-summary .stat-label {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-#day-summary .collected-items {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
-#day-summary .collected-item {
-  background: rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 13px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-#day-summary .collected-item .item-icon {
-  font-size: 24px;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .speech-bubble { font-size: 14px; padding: 10px 14px; max-width: 280px; }
-  .bubble-avatar { width: 48px; height: 48px; }
-  #question-text { font-size: 18px; }
-  .option-btn { font-size: 13px; padding: 10px 14px; }
-  #dialog-area { padding: 20px; }
-  .bubble-container { max-width: 80%; }
-}
-</style>
-</head>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif;background:#000;color:#fff;user-select:none}
+#game{width:100vw;height:100vh;position:relative;overflow:hidden}
+#bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:background-image .5s;z-index:0}
+#bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 40%,transparent 70%,rgba(0,0,0,.4) 100%);z-index:1}
+#ui{position:relative;z-index:10;height:100%;display:flex;flex-direction:column}
+#topbar{padding:10px 16px;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px)}
+#round-label{font-size:14px;font-weight:700;flex:1}
+#stars-count{font-size:14px;font-weight:700;color:#f59e0b}
+#q-progress{font-size:13px;color:#aaa}
+#dialog-area{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:8px 16px;overflow-y:auto}
+.bubble{max-width:85%;padding:12px 16px;border-radius:16px;margin-bottom:8px;animation:pop .25s ease-out}
+.bubble.left{align-self:flex-start;border-bottom-left-radius:4px}
+.bubble.right{align-self:flex-end;border-bottom-right-radius:4px}
+.bubble .name{font-size:12px;font-weight:700;margin-bottom:2px}
+.bubble .text{font-size:15px;line-height:1.45}
+.b-volta{background:rgba(26,39,68,.92);border:1.5px solid #3b6cf5}
+.b-volta .name{color:#8bb4ff}
+.b-volta .text{color:#d0dfff}
+.b-agent{background:rgba(21,46,31,.92);border:1.5px solid #22c55e}
+.b-agent .name{color:#6ee7a0}
+.b-agent .text{color:#d1fae5}
+.b-pirat{background:rgba(45,18,25,.92);border:1.5px solid #e11d48}
+.b-pirat .name{color:#fb7185}
+.b-pirat .text{color:#fecdd3}
+.b-popis{background:rgba(26,26,34,.85);border:1px solid #555}
+.b-popis .text{color:#aaa;font-style:italic;font-size:14px}
+#answer-area{padding:8px 16px 16px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px)}
+#question-text{font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;min-height:24px}
+#options{display:flex;flex-direction:column;gap:7px}
+.opt-btn{width:100%;padding:12px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:15px;font-weight:600;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s;display:flex;align-items:center;gap:10px}
+.opt-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)}
+.opt-btn:active{transform:scale(.98)}
+.opt-btn.correct{background:rgba(34,197,94,.2);border-color:#22c55e;color:#6ee7a0}
+.opt-btn.wrong{background:rgba(239,68,68,.2);border-color:#ef4444;color:#fca5a5}
+.opt-btn.disabled{pointer-events:none;opacity:.4}
+.opt-letter{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:rgba(255,255,255,.08);color:#999;flex-shrink:0}
+#continue-btn{display:none;width:100%;padding:14px;border-radius:12px;border:none;background:#f59e0b;color:#000;font-size:15px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:8px}
+#continue-btn:hover{filter:brightness(1.1)}
+.star-fly{position:fixed;font-size:28px;z-index:999;animation:starUp .8s ease-out forwards;pointer-events:none}
+@keyframes starUp{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-60px) scale(1.5)}}
+#collect{display:none;position:absolute;inset:0;z-index:50;background:rgba(0,0,0,.8);align-items:center;justify-content:center}
+#collect-card{background:rgba(20,20,40,.95);border:2px solid #f59e0b;border-radius:20px;padding:24px;text-align:center;max-width:300px;animation:pop .3s ease-out}
+.c-icon{font-size:48px;margin-bottom:8px}
+.c-title{font-size:17px;font-weight:800;color:#fbbf24}
+.c-desc{font-size:14px;color:#ccc;margin-top:4px}
+.c-btn{margin-top:16px;padding:12px 28px;border-radius:12px;border:none;background:#f59e0b;color:#000;font-size:15px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
+#summary{display:none;position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
+#summary-card{background:rgba(20,20,40,.95);border:2px solid #3b6cf5;border-radius:20px;padding:28px;text-align:center;max-width:340px}
+#video-box{display:none;position:absolute;inset:0;z-index:100;background:#000;align-items:center;justify-content:center}
+#video-box video{max-width:100%;max-height:100%}
+#skip-btn{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 18px;border-radius:16px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+</style></head>
 <body>
-
 <div id="game">
-  <div id="progress-bar"><div id="progress-fill"></div></div>
-  
-  <div id="round-label"></div>
-  
-  <div id="hud">
-    <div class="hud-item" id="score-display">⭐ <span id="score">0</span>/40</div>
-    <div class="hud-item" id="streak-display">🔥 <span id="streak">0</span></div>
-  </div>
-
-  <div id="scene-bg"></div>
-  
-  <div id="dialog-area"></div>
-  
-  <div id="continue-hint">▶ Klikni pro pokračování</div>
-  
-  <div id="question-card">
-    <div id="question-text"></div>
-    <div id="options-grid"></div>
-  </div>
-
-  <div id="video-overlay">
-    <video id="scene-video" playsinline></video>
-    <button class="skip-btn" onclick="skipVideo()">Přeskočit ▶</button>
-  </div>
-
-  <div id="collect-popup">
-    <div class="collect-icon"></div>
-    <div class="collect-title"></div>
-    <div class="collect-desc"></div>
-    <button class="collect-btn" onclick="closeCollect()">Sebrat!</button>
-  </div>
-
-  <div id="day-summary">
-    <div class="summary-card">
-      <div class="summary-title">🎉 Den 1 hotový!</div>
-      <div class="summary-stats">
-        <div class="stat">
-          <div class="stat-num" id="final-score">0</div>
-          <div class="stat-label">Správně</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" id="final-total">40</div>
-          <div class="stat-label">Otázek</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" id="final-streak">0</div>
-          <div class="stat-label">Nejdelší série</div>
-        </div>
-      </div>
-      <div class="summary-title" style="font-size:20px; color:#fff; margin-bottom:12px;">Sebrané předměty</div>
-      <div class="collected-items" id="collected-items-list"></div>
-    </div>
-  </div>
+<div id="bg"></div>
+<div id="ui">
+<div id="topbar"><div id="round-label"></div><div id="stars-count"></div><div id="q-progress"></div></div>
+<div id="dialog-area"></div>
+<div id="answer-area"><div id="question-text"></div><div id="options"></div><button id="continue-btn"></button></div>
 </div>
-
+<div id="collect"><div id="collect-card"><div class="c-icon"></div><div class="c-title"></div><div class="c-desc"></div><button class="c-btn" onclick="closeCollect()">Sebrat!</button></div></div>
+<div id="summary"><div id="summary-card"></div></div>
+<div id="video-box"><video id="vid" playsinline></video><button id="skip-btn" onclick="skipVideo()">Přeskočit</button></div>
+</div>
 <script>
-// === GITHUB RAW BASE ===
-const GH = 'https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
+var GH='https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
+var IMG={intro:GH+'img/m01/d01/D1S1.png',lab:GH+'img/m01/d01/D1S2.png',skripek:GH+'img/m01/d01/D1S3.png',repak:GH+'img/m01/d01/D1S4.png',keksik:GH+'img/m01/d01/D1S5.png',zaver:GH+'img/m01/d01/D1S6.png'};
+var VID={intro:GH+'video/m01/d01/D1-S1.mp4',skripek:GH+'video/m01/d01/D1-S3.mp4',repak:GH+'video/m01/d01/D1-S4.mp4',keksik:GH+'video/m01/d01/D1-S5.mp4',zaver:GH+'video/m01/d01/D1-S6.mp4'};
+var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
+var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
+var SIDES={volta:'left',agent:'right',skripek:'left',repak:'left',keksik:'left',krivak:'left',popis:'left'};
+var RICOS=['📖','🔢','🇬🇧','🌀'],RNAMES=['Čeština','Matika','Angličtina','Chaos'];
+var data,stars=0,totalQ=0,correctFirst=0,collected=[];
+var $bg=document.getElementById('bg'),$dlg=document.getElementById('dialog-area'),$qt=document.getElementById('question-text'),$opts=document.getElementById('options'),$cont=document.getElementById('continue-btn'),$rl=document.getElementById('round-label'),$sc=document.getElementById('stars-count'),$qp=document.getElementById('q-progress'),$ans=document.getElementById('answer-area');
 
-// === IMAGE MAPPING ===
-const IMG = {
-  intro: GH + 'img/m01/d01/D1S1.png',
-  lab: GH + 'img/m01/d01/D1S2.png',
-  skripek: GH + 'img/m01/d01/D1S3.png',
-  repak: GH + 'img/m01/d01/D1S4.png',
-  keksik: GH + 'img/m01/d01/D1S5.png',
-  zaver: GH + 'img/m01/d01/D1S6.png',
-};
+function setBg(k){$bg.style.backgroundImage='url('+(IMG[k]||k)+')';}
+function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){res();return;}var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.src=u;v.onended=function(){b.style.display='none';v.src='';res();};v.onerror=function(){b.style.display='none';v.src='';res();};v.play().catch(function(){b.style.display='none';v.src='';res();});window._skR=res;});}
+function skipVideo(){var b=document.getElementById('video-box'),v=document.getElementById('vid');v.pause();b.style.display='none';v.src='';if(window._skR){window._skR();window._skR=null;}}
 
-const AVATAR = {
-  volta: GH + 'img/postavy/volta.png',
-  agent: GH + 'img/postavy/agent.png',
-  skripek: GH + 'img/postavy/skripek.png',
-  repak: GH + 'img/postavy/repak.png',
-  keksik: GH + 'img/postavy/keksik.png',
-  krivak: GH + 'img/postavy/krivak.png',
-  piratka: GH + 'img/postavy/piratka.png',
-};
+function addB(who,text){var d=document.createElement('div');d.className='bubble '+(SIDES[who]||'left')+' '+(BCLS[who]||'b-popis');var nm=NAMES[who];if(nm)d.innerHTML='<div class="name">'+nm+'</div><div class="text">'+text+'</div>';else d.innerHTML='<div class="text">'+text+'</div>';$dlg.appendChild(d);d.scrollIntoView({behavior:'smooth'});}
+function clrD(){$dlg.innerHTML='';}
+function waitC(label){return new Promise(function(res){$cont.style.display='block';$cont.textContent=label||'Pokračovat →';$cont.onclick=function(){$cont.style.display='none';res();};});}
+async function playD(arr,bg){if(bg)setBg(bg);for(var i=0;i<arr.length;i++){addB(arr[i].postava||arr[i].p,arr[i].text||arr[i].t);await waitC();}}
 
-const VIDEO = {
-  intro: GH + 'video/m01/d01/D1-S1.mp4',
-  lab: GH + 'video/m01/d01/D1-S2.mp4',
-  skripek: GH + 'video/m01/d01/D1-S3.mp4',
-  repak: GH + 'video/m01/d01/D1-S4.mp4',
-  keksik: GH + 'video/m01/d01/D1-S5.mp4',
-  zaver: GH + 'video/m01/d01/D1-S6.mp4',
-};
+function showStar(){var s=document.createElement('div');s.className='star-fly';s.textContent='⭐';s.style.left=(window.innerWidth/2-14)+'px';s.style.top=(window.innerHeight/2)+'px';document.body.appendChild(s);setTimeout(function(){s.remove();},900);}
 
-const NAMES = {
-  volta: 'Dr. Volta',
-  agent: 'Agent K',
-  skripek: 'Skřípek',
-  repak: 'Řepák',
-  keksik: 'Keksík',
-  krivak: 'Krivák',
-  piratka: 'Pirátka',
-  popis: '',
-};
+function askQ(q,num,tot){
+return new Promise(function(resolve){
+clrD();
+addB('volta',q.vi||q.question);
+$qt.textContent=q.question;
+$qp.textContent=num+'/'+tot;
+var correct=q.answer;
+var wrongs=q.options.filter(function(o){return o!==correct;});
+for(var i=wrongs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=wrongs[i];wrongs[i]=wrongs[j];wrongs[j]=t;}
+var opts=[correct,wrongs[0],wrongs[1]];
+for(var i=opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=opts[i];opts[i]=opts[j];opts[j]=t;}
+var attempts=0,letters=['A','B','C'];
 
-const ROUND_NAMES = ['Čeština', 'Matika', 'Angličtina', 'Chaos'];
-const ROUND_ICONS = ['📝', '🔢', '🇬🇧', '🌀'];
-const LABELS = ['A', 'B', 'C', 'D', 'E'];
+function render(){
+$opts.innerHTML='';
+for(var i=0;i<opts.length;i++){
+var btn=document.createElement('button');btn.className='opt-btn';
+btn.innerHTML='<span class="opt-letter">'+letters[i]+'</span>'+opts[i];
+btn.dataset.val=opts[i];
+(function(val,el){el.onclick=function(){handle(val,el);};})(opts[i],btn);
+$opts.appendChild(btn);
+}}
 
-// === GAME STATE ===
-let scenarData = null;
-let score = 0;
-let streak = 0;
-let maxStreak = 0;
-let currentRound = 0;
-let currentQuestion = 0;
-let totalAnswered = 0;
-let collectedItems = [];
-let dialogQueue = [];
-let phase = 'loading'; // loading, video, dialog, question, action, scenka, summary
+function disableAll(){var all=$opts.querySelectorAll('.opt-btn');for(var k=0;k<all.length;k++)all[k].style.pointerEvents='none';}
+function markCorrect(){var all=$opts.querySelectorAll('.opt-btn');for(var k=0;k<all.length;k++){if(all[k].dataset.val===correct)all[k].className='opt-btn correct';else if(all[k].className.indexOf('wrong')===-1)all[k].className='opt-btn disabled';}}
 
-// === ELEMENTS ===
-const $bg = document.getElementById('scene-bg');
-const $dialog = document.getElementById('dialog-area');
-const $question = document.getElementById('question-card');
-const $qtext = document.getElementById('question-text');
-const $options = document.getElementById('options-grid');
-const $continue = document.getElementById('continue-hint');
-const $progress = document.getElementById('progress-fill');
-const $video = document.getElementById('video-overlay');
-const $videoEl = document.getElementById('scene-video');
-const $collect = document.getElementById('collect-popup');
-const $roundLabel = document.getElementById('round-label');
+function handle(val,el){
+attempts++;
+if(val===correct){
+el.className='opt-btn correct';disableAll();
+addB('volta',q.vs||'Správně!');
+if(attempts===1){stars++;correctFirst++;$sc.textContent='⭐ '+stars;showStar();}
+totalQ++;
+waitC('Další →').then(function(){$qt.textContent='';$opts.innerHTML='';resolve({ok:true,att:attempts});});
+}else{
+el.className='opt-btn wrong';el.style.pointerEvents='none';
+if(attempts<3){
+addB('volta',attempts===1?(q.hint||q.vn||'Zkus znovu.'):(q.vn||'Poslední pokus!'));
+}else{
+markCorrect();disableAll();
+addB('volta',q.vn||'Správná odpověď: '+correct);
+totalQ++;
+waitC('Další →').then(function(){$qt.textContent='';$opts.innerHTML='';resolve({ok:false,att:3});});
+}}}
+render();
+});}
 
-// === INIT ===
-async function init() {
-  try {
-    const resp = await fetch(GH + 'mise01_scenar_d01.json');
-    scenarData = await resp.json();
-    preloadImages();
-    startDay();
-  } catch(e) {
-    console.error('Failed to load scenario:', e);
-    document.body.innerHTML = '<div style="padding:40px;text-align:center;color:#fff;">Chyba při načítání dat. Zkus obnovit stránku.</div>';
-  }
+function showCollect(item){return new Promise(function(res){collected.push(item);var c=document.getElementById('collect');c.querySelector('.c-icon').textContent=item.ikona;c.querySelector('.c-title').textContent=item.nazev;c.querySelector('.c-desc').textContent=item.popis;c.style.display='flex';window._cR=res;});}
+function closeCollect(){document.getElementById('collect').style.display='none';if(window._cR){window._cR();window._cR=null;}}
+
+function showSum(){
+var c=document.getElementById('summary-card');
+c.innerHTML='<h2 style="font-size:22px;color:#f59e0b;margin-bottom:12px">🎉 Den 1 hotový!</h2>'+
+'<div style="display:flex;gap:20px;justify-content:center;margin:16px 0">'+
+'<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#f59e0b">⭐ '+stars+'</div><div style="font-size:12px;color:#999">hvězd</div></div>'+
+'<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#22c55e">'+correctFirst+'</div><div style="font-size:12px;color:#999">napoprvé</div></div>'+
+'<div style="text-align:center"><div style="font-size:28px;font-weight:800">'+totalQ+'</div><div style="font-size:12px;color:#999">otázek</div></div></div>'+
+'<div style="margin-top:16px"><div style="font-size:14px;color:#f59e0b;font-weight:700;margin-bottom:8px">Sebrané předměty</div>'+
+collected.map(function(it){return '<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:6px 12px;border-radius:8px;margin:3px;font-size:13px">'+it.ikona+' '+it.nazev+'</div>';}).join('')+'</div>';
+document.getElementById('summary').style.display='flex';
 }
 
-function preloadImages() {
-  Object.values(IMG).forEach(src => { new Image().src = src; });
-  Object.values(AVATAR).forEach(src => { new Image().src = src; });
+async function run(){
+try{var r=await fetch(GH+'mise01_scenar_d01.json');data=await r.json();}
+catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center">Chyba. Obnov stránku.</div>';return;}
+Object.values(IMG).forEach(function(s){new Image().src=s;});
+$sc.textContent='⭐ 0';
+
+setBg('intro');
+await playVideo('intro');
+setBg('lab');
+await playD(data.intro,'lab');
+clrD();
+
+var bgMap=['lab','lab','lab','lab'];
+var vidMap=[null,'skripek','repak','keksik'];
+
+for(var ri=0;ri<data.okruhy.length;ri++){
+var ok=data.okruhy[ri];
+setBg(bgMap[ri]);
+$rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
+
+if(ok.intro&&ok.intro.length>0){await playD(ok.intro);clrD();}
+
+for(var qi=0;qi<ok.otazky.length;qi++){
+await askQ(ok.otazky[qi],qi+1,ok.otazky.length);
+clrD();
 }
 
-// === BACKGROUND ===
-function setBg(key) {
-  $bg.style.backgroundImage = `url(${IMG[key] || key})`;
+if(vidMap[ri])await playVideo(vidMap[ri]);
+
+if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){
+if(vidMap[ri])setBg(vidMap[ri]);
+await playD(ok.akce.dialog);clrD();
+}
+if(ok.akce&&ok.akce.sber)await showCollect(ok.akce.sber);
+
+if(ok.scenka&&ok.scenka.length>0){
+setBg(bgMap[ri]);
+await playD(ok.scenka);clrD();
+}
 }
 
-// === VIDEO ===
-function playVideo(key) {
-  return new Promise(resolve => {
-    const url = VIDEO[key];
-    if (!url) { resolve(); return; }
-    $video.style.display = 'flex';
-    $videoEl.src = url;
-    $videoEl.onended = () => { hideVideo(); resolve(); };
-    $videoEl.onerror = () => { hideVideo(); resolve(); };
-    $videoEl.play().catch(() => { hideVideo(); resolve(); });
-    window._skipVideoResolve = resolve;
-  });
-}
+setBg('zaver');await playVideo('zaver');
+if(data.zaver&&data.zaver.length>0)await playD(data.zaver,'zaver');
 
-function skipVideo() {
-  $videoEl.pause();
-  hideVideo();
-  if (window._skipVideoResolve) { window._skipVideoResolve(); window._skipVideoResolve = null; }
+$rl.textContent='';$qt.textContent='';$opts.innerHTML='';$cont.style.display='none';$ans.style.display='none';
+showSum();
 }
-
-function hideVideo() {
-  $video.style.display = 'none';
-  $videoEl.src = '';
-}
-
-// === DIALOG ===
-function showBubble(postava, text) {
-  const isRight = (postava === 'agent');
-  const isPopis = (postava === 'popis');
-  
-  $dialog.innerHTML = '';
-  
-  const container = document.createElement('div');
-  container.className = `bubble-container ${isRight ? 'right' : 'left'}`;
-  
-  if (!isPopis) {
-    const avatar = document.createElement('div');
-    avatar.className = 'bubble-avatar';
-    const img = document.createElement('img');
-    img.src = AVATAR[postava] || AVATAR.volta;
-    img.alt = NAMES[postava] || postava;
-    avatar.appendChild(img);
-    container.appendChild(avatar);
-  }
-  
-  const bubble = document.createElement('div');
-  bubble.className = 'speech-bubble';
-  
-  if (!isPopis) {
-    const name = document.createElement('div');
-    name.className = `bubble-name ${postava}`;
-    name.textContent = NAMES[postava] || postava;
-    bubble.appendChild(name);
-  }
-  
-  const textEl = document.createElement('div');
-  textEl.textContent = text;
-  if (isPopis) textEl.style.fontStyle = 'italic';
-  bubble.appendChild(textEl);
-  
-  container.appendChild(bubble);
-  $dialog.appendChild(container);
-}
-
-function clearDialog() {
-  $dialog.innerHTML = '';
-}
-
-function showContinue() {
-  $continue.style.display = 'block';
-}
-
-function hideContinue() {
-  $continue.style.display = 'none';
-}
-
-function waitForClick() {
-  return new Promise(resolve => {
-    showContinue();
-    function handler() {
-      document.removeEventListener('click', handler);
-      hideContinue();
-      resolve();
-    }
-    document.addEventListener('click', handler);
-  });
-}
-
-async function playDialogSequence(dialogs, bgKey) {
-  if (bgKey) setBg(bgKey);
-  for (const d of dialogs) {
-    showBubble(d.postava || d.p, d.text || d.t);
-    await waitForClick();
-  }
-  clearDialog();
-}
-
-// === QUESTIONS ===
-function showQuestion(q) {
-  $question.style.display = 'block';
-  $qtext.textContent = q.question;
-  $options.innerHTML = '';
-  
-  const answered = false;
-  
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.innerHTML = `<span class="option-label">${LABELS[i]}</span>${opt}`;
-    btn.onclick = () => {
-      if (btn.dataset.answered) return;
-      // Mark all as answered
-      document.querySelectorAll('.option-btn').forEach(b => b.dataset.answered = 'true');
-      
-      const isCorrect = (opt === q.answer);
-      if (isCorrect) {
-        btn.classList.add('correct');
-        score++;
-        streak++;
-        if (streak > maxStreak) maxStreak = streak;
-        document.getElementById('score').textContent = score;
-        document.getElementById('streak').textContent = streak;
-      } else {
-        btn.classList.add('wrong');
-        streak = 0;
-        document.getElementById('streak').textContent = streak;
-        // Highlight correct
-        document.querySelectorAll('.option-btn').forEach(b => {
-          if (b.textContent.includes(q.answer)) b.classList.add('correct');
-        });
-      }
-      
-      totalAnswered++;
-      updateProgress();
-      
-      // Show Volta reaction in bubble
-      setTimeout(() => {
-        $question.style.display = 'none';
-        const reaction = isCorrect ? q.vs : q.vn;
-        if (reaction) {
-          showBubble('volta', reaction);
-          waitForClick().then(() => {
-            clearDialog();
-            advanceQuestion();
-          });
-        } else {
-          advanceQuestion();
-        }
-      }, 800);
-    };
-    $options.appendChild(btn);
-  });
-}
-
-function updateProgress() {
-  const pct = (totalAnswered / 40) * 100;
-  $progress.style.width = pct + '%';
-}
-
-// === COLLECT ITEM ===
-function showCollectItem(item) {
-  return new Promise(resolve => {
-    collectedItems.push(item);
-    $collect.querySelector('.collect-icon').textContent = item.ikona;
-    $collect.querySelector('.collect-title').textContent = item.nazev;
-    $collect.querySelector('.collect-desc').textContent = item.popis;
-    $collect.style.display = 'block';
-    window._collectResolve = resolve;
-  });
-}
-
-function closeCollect() {
-  $collect.style.display = 'none';
-  if (window._collectResolve) { window._collectResolve(); window._collectResolve = null; }
-}
-
-// === SUMMARY ===
-function showSummary() {
-  document.getElementById('final-score').textContent = score;
-  document.getElementById('final-streak').textContent = maxStreak;
-  
-  const list = document.getElementById('collected-items-list');
-  list.innerHTML = '';
-  collectedItems.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'collected-item';
-    div.innerHTML = `<span class="item-icon">${item.ikona}</span>${item.nazev}`;
-    list.appendChild(div);
-  });
-  
-  document.getElementById('day-summary').style.display = 'flex';
-}
-
-// === MAIN FLOW ===
-async function startDay() {
-  // 1. Video intro
-  setBg('intro');
-  await playVideo('intro');
-  
-  // 2. Dialog intro
-  setBg('lab');
-  await playDialogSequence(scenarData.intro, 'lab');
-  
-  // 3. Run all 4 rounds
-  for (let r = 0; r < scenarData.okruhy.length; r++) {
-    currentRound = r;
-    currentQuestion = 0;
-    const okruh = scenarData.okruhy[r];
-    
-    // Set background
-    const bgMap = ['lab', 'lab', 'lab', 'lab'];
-    setBg(bgMap[r]);
-    
-    // Round label
-    $roundLabel.textContent = `${ROUND_ICONS[r]} ${ROUND_NAMES[r]} — Okruh ${r + 1}`;
-    
-    // Round intro dialog
-    if (okruh.intro && okruh.intro.length > 0) {
-      await playDialogSequence(okruh.intro);
-    }
-    
-    // Questions 1-5
-    for (let q = 0; q < 5 && q < okruh.otazky.length; q++) {
-      const otazka = okruh.otazky[q];
-      // Volta asks
-      showBubble('volta', otazka.vi || otazka.question);
-      await waitForClick();
-      clearDialog();
-      
-      // Show question card
-      await new Promise(resolve => {
-        window._advanceResolve = resolve;
-        showQuestion(otazka);
-      });
-    }
-    
-    // Action after Q5
-    if (okruh.akce) {
-      const akce = okruh.akce;
-      const actionBgMap = [null, 'skripek', 'repak', 'keksik', null];
-      const actionVideoMap = [null, 'skripek', 'repak', 'keksik', null];
-      
-      if (actionVideoMap[r]) {
-        await playVideo(actionVideoMap[r]);
-      }
-      if (actionBgMap[r]) {
-        setBg(actionBgMap[r]);
-      }
-      if (akce.dialog) {
-        await playDialogSequence(akce.dialog);
-      }
-      if (akce.sber) {
-        await showCollectItem(akce.sber);
-      }
-    }
-    
-    // Reset bg
-    setBg(bgMap[r]);
-    
-    // Questions 6-10
-    for (let q = 5; q < 10 && q < okruh.otazky.length; q++) {
-      const otazka = okruh.otazky[q];
-      showBubble('volta', otazka.vi || otazka.question);
-      await waitForClick();
-      clearDialog();
-      
-      await new Promise(resolve => {
-        window._advanceResolve = resolve;
-        showQuestion(otazka);
-      });
-    }
-    
-    // Scene after round
-    if (okruh.scenka && okruh.scenka.length > 0) {
-      const sceneBgMap = ['lab', 'lab', 'lab', 'lab'];
-      const sceneVideoMap = [null, null, null, null];
-      
-      setBg(sceneBgMap[r]);
-      if (okruh.scenka) {
-        await playDialogSequence(okruh.scenka);
-      }
-      
-      // Collect item from scenka if available
-      if (null) {
-        const sberIndex = r < scenarData.sber_dne.length ? r : null;
-        // Already collected from akce_po_5, check for secondary items
-      }
-    }
-  }
-  
-  // 4. Day ending
-  setBg('zaver');
-  await playVideo('zaver');
-  setBg('zaver');
-  
-  if (scenarData.zaver) {
-    await playDialogSequence(scenarData.zaver, 'zaver');
-  }
-  
-  // Collect items already handled per-round
-  
-  // 5. Summary
-  $roundLabel.textContent = '';
-  showSummary();
-}
-
-function advanceQuestion() {
-  if (window._advanceResolve) {
-    window._advanceResolve();
-    window._advanceResolve = null;
-  }
-}
-
-// Preload and start
-window.addEventListener('load', init);
+window.addEventListener('load',run);
 </script>
-
-</body>
-</html>
+</body></html>
