@@ -108,30 +108,44 @@ const LEVELS = [
 ];
 
 // --- ITEMS ---
+const MAX_BACKPACK = 3; // max items per trip
+
 const ITEMS = [
-  {id:'A1',name:'Stul',price:5,img:'img/A1.png'},
-  {id:'A2',name:'Stolicka',price:3,img:'img/A2.png'},
-  {id:'A3',name:'Policka',price:4,img:'img/A3.png'},
-  {id:'A4',name:'Zkumavky',price:4,img:'img/A4.png'},
-  {id:'A5',name:'Mikroskop',price:8,img:'img/A5.png'},
-  {id:'A6',name:'Kahan',price:4,img:'img/A6.png'},
-  {id:'A7',name:'Vahy',price:6,img:'img/A7.png'},
-  {id:'A8',name:'Period. tabulka',price:3,img:'img/A8.png'},
-  {id:'A9',name:'Bezpecnost',price:2,img:'img/A9.png'},
-  {id:'A10',name:'Obvod',price:3,img:'img/A10.png'},
-  {id:'A11',name:'Banky',price:5,img:'img/A11.png'},
-  {id:'A12',name:'Lampa',price:3,img:'img/A12.png'},
-  {id:'A13',name:'Knihy',price:3,img:'img/A13.png'},
-  {id:'A14',name:'Plast',price:2,img:'img/A14.png'},
-  {id:'A15',name:'Chemikalie',price:7,img:'img/A15.png'},
-  {id:'L1',name:'Koberec',price:8,img:null,emoji:'\u{1F7EB}'},
-  {id:'L2',name:'Kreslo',price:10,img:null,emoji:'\u{1FA91}'},
-  {id:'L3',name:'Houpaci sit',price:12,img:null,emoji:'\u{1F3D6}'},
-  {id:'L4',name:'Obraz',price:5,img:null,emoji:'\u{1F5BC}'},
-  {id:'L5',name:'Kvetina',price:3,img:null,emoji:'\u{1F33A}'},
-  {id:'L6',name:'Hodiny',price:4,img:null,emoji:'\u{1F550}'},
-  {id:'L7',name:'Radio',price:6,img:null,emoji:'\u{1F4FB}'},
-  {id:'L8',name:'Zaclony',price:4,img:null,emoji:'\u{1FA9F}'},
+  // Lab essentials - prices based on size/importance
+  {id:'A1',name:'Pracovni stul',price:15,img:'img/A1.png'},
+  {id:'A2',name:'Stolicka',price:8,img:'img/A2.png'},
+  {id:'A3',name:'Policka',price:10,img:'img/A3.png'},
+  {id:'A4',name:'Zkumavky',price:12,img:'img/A4.png'},
+  {id:'A5',name:'Mikroskop',price:25,img:'img/A5.png'},
+  {id:'A6',name:'Kahan',price:14,img:'img/A6.png'},
+  {id:'A7',name:'Vahy',price:18,img:'img/A7.png'},
+  {id:'A8',name:'Period. tabulka',price:8,img:'img/A8.png'},
+  {id:'A9',name:'Bezpecnost. tabule',price:6,img:'img/A9.png'},
+  {id:'A10',name:'Elektr. obvod',price:10,img:'img/A10.png'},
+  {id:'A11',name:'Banky a kolby',price:16,img:'img/A11.png'},
+  {id:'A12',name:'Stolni lampa',price:10,img:'img/A12.png'},
+  {id:'A13',name:'Knihy',price:8,img:'img/A13.png'},
+  {id:'A14',name:'Labor. plast',price:6,img:'img/A14.png'},
+  {id:'A15',name:'Chemikalie',price:20,img:'img/A15.png'},
+  // Luxury / decoration
+  {id:'L1',name:'Koberec',price:18,img:null,emoji:'\u{1F7EB}'},
+  {id:'L2',name:'Kreslo pro Voltu',price:22,img:null,emoji:'\u{1FA91}'},
+  {id:'L3',name:'Houpaci sit',price:30,img:null,emoji:'\u{1F3D6}'},
+  {id:'L4',name:'Obraz na zed',price:12,img:null,emoji:'\u{1F5BC}'},
+  {id:'L5',name:'Kvetina',price:7,img:null,emoji:'\u{1F33A}'},
+  {id:'L6',name:'Nastenne hodiny',price:10,img:null,emoji:'\u{1F550}'},
+  {id:'L7',name:'Radio',price:14,img:null,emoji:'\u{1F4FB}'},
+  {id:'L8',name:'Zaclony',price:10,img:null,emoji:'\u{1FA9F}'},
+  {id:'L9',name:'Akvarium',price:35,img:null,emoji:'\u{1F41F}'},
+  {id:'L10',name:'Pohovka',price:28,img:null,emoji:'\u{1F6CB}'},
+  {id:'L11',name:'Lednicka',price:25,img:null,emoji:'\u{1F9CA}'},
+  {id:'L12',name:'Konvice na caj',price:8,img:null,emoji:'\u{2615}'},
+  {id:'L13',name:'Dalekohled',price:20,img:null,emoji:'\u{1F52D}'},
+  {id:'L14',name:'Globus',price:15,img:null,emoji:'\u{1F30D}'},
+  {id:'L15',name:'Agentova postel',price:22,img:null,emoji:'\u{1F6CF}'},
+  {id:'L16',name:'Nocni lampicka',price:9,img:null,emoji:'\u{1F4A1}'},
+  {id:'L17',name:'Skrin na obleceni',price:20,img:null,emoji:'\u{1F6AA}'},
+  {id:'L18',name:'Plakat na zed',price:5,img:null,emoji:'\u{1F3A8}'},
 ];
 
 // --- VOLTA QUOTES ---
@@ -144,7 +158,7 @@ const VOLTA_QUOTES = [
 
 // --- GAME STATE ---
 const S = {
-  coins: 40, round: 0, maxRounds: 5,
+  coins: 15, round: 0, maxRounds: 5,
   placedItems: JSON.parse(localStorage.getItem('labPlaced') || '[]'),
   boughtItems: JSON.parse(localStorage.getItem('labBought') || '[]'),
   backpack: [],
@@ -258,22 +272,27 @@ function spawnObstacle() {
 
 function spawnCoins() {
   const gy = S.groundY;
-  const pattern = Math.floor(Math.random() * 3);
+  const pattern = Math.floor(Math.random() * 4);
   const baseX = S.W + 60;
   if (pattern === 0) {
-    for (let i = 0; i < 5; i++) {
-      const cx = baseX + i * 35;
-      const cy = gy - 40 - Math.sin(i/4*Math.PI) * 70;
+    // Small arc - 3 coins
+    for (let i = 0; i < 3; i++) {
+      const cx = baseX + i * 40;
+      const cy = gy - 40 - Math.sin(i/2*Math.PI) * 60;
       S.coinPickups.push({ x: cx, y: cy, r: 10, collected: false, flash: 0 });
     }
   } else if (pattern === 1) {
-    for (let i = 0; i < 4; i++)
-      S.coinPickups.push({ x: baseX + i*30, y: gy - 90, r: 10, collected: false, flash: 0 });
+    // Single high coin (risky jump)
+    S.coinPickups.push({ x: baseX, y: gy - 110, r: 12, collected: false, flash: 0 });
+  } else if (pattern === 2) {
+    // Two low coins
+    S.coinPickups.push({ x: baseX, y: gy - 15, r: 10, collected: false, flash: 0 });
+    S.coinPickups.push({ x: baseX + 35, y: gy - 15, r: 10, collected: false, flash: 0 });
   } else {
-    for (let i = 0; i < 4; i++)
-      S.coinPickups.push({ x: baseX + i*30, y: gy - 20, r: 10, collected: false, flash: 0 });
+    // Single mid-height coin
+    S.coinPickups.push({ x: baseX, y: gy - 50, r: 10, collected: false, flash: 0 });
   }
-  lastCoinX = baseX + 150;
+  lastCoinX = baseX + 120;
 }
 
 // --- PARTICLES ---
@@ -1035,7 +1054,7 @@ function updateStreet(dt) {
   }
 
   // Spawn coins
-  if (S.coinPickups.filter(c=>!c.collected).length < 3 && Math.random() < 0.02 * dt) {
+  if (S.coinPickups.filter(c=>!c.collected).length < 2 && Math.random() < 0.012 * dt) {
     spawnCoins();
   }
 
@@ -1219,7 +1238,7 @@ function openShop() {
 }
 
 function renderShop() {
-  document.getElementById('shop-coins').textContent = 'Mince: ' + S.coins;
+  document.getElementById('shop-coins').textContent = 'Mince: ' + S.coins + '  |  Batoh: ' + S.backpack.length + '/' + MAX_BACKPACK;
   const grid = document.getElementById('shop-grid');
   grid.innerHTML = '';
   for (const item of ITEMS) {
@@ -1241,6 +1260,12 @@ function renderShop() {
 function buyItem(item) {
   if (S.coins < item.price) return;
   if (S.boughtItems.includes(item.id)) return;
+  if (S.backpack.length >= MAX_BACKPACK) {
+    document.getElementById('shop-coins').textContent = 'Batoh je plny! Max ' + MAX_BACKPACK + ' veci.';
+    document.getElementById('shop-coins').style.color = '#ff5722';
+    setTimeout(() => { document.getElementById('shop-coins').style.color = ''; renderShop(); }, 1500);
+    return;
+  }
   S.coins -= item.price;
   S.boughtItems.push(item.id);
   S.backpack.push(item.id);
