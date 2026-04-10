@@ -344,46 +344,67 @@ function drawAgentK(x, y, frame, ducking) {
 }
 
 function drawSkripek(x, y) {
-  // Dark silhouette pirate - scared, small
-  ctx.fillStyle = '#1a1a1a';
+  // Scared pirate - brown coat, red bandana
+  ctx.fillStyle = '#4A2A15'; // dark brown coat
   ctx.fillRect(x-10, y-35, 20, 35);
+  // Skin head
+  ctx.fillStyle = '#D4A574';
   ctx.beginPath(); ctx.arc(x, y-42, 10, 0, Math.PI*2); ctx.fill();
   // Red bandana
-  ctx.fillStyle = '#AA0000';
-  ctx.fillRect(x-12, y-50, 24, 5);
-  // Scared white eyes
+  ctx.fillStyle = '#CC2200';
+  ctx.fillRect(x-12, y-50, 24, 6);
+  // Bandana tail
+  ctx.fillRect(x+10, y-48, 8, 3);
+  // Scared white eyes (big, round)
   ctx.fillStyle = '#FFF';
-  ctx.beginPath(); ctx.arc(x-4, y-44, 3, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x+5, y-44, 3, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x-4, y-44, 4, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5, y-44, 4, 0, Math.PI*2); ctx.fill();
   ctx.fillStyle = '#000';
-  ctx.beginPath(); ctx.arc(x-4, y-44, 1.5, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x+5, y-44, 1.5, 0, Math.PI*2); ctx.fill();
-  // Open scared mouth
-  ctx.fillStyle='#400';
-  ctx.beginPath(); ctx.arc(x, y-36, 3, 0, Math.PI*2); ctx.fill();
-  // Dark legs
+  ctx.beginPath(); ctx.arc(x-4, y-44, 2, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5, y-44, 2, 0, Math.PI*2); ctx.fill();
+  // Scared open mouth
+  ctx.fillStyle='#600';
+  ctx.beginPath(); ctx.arc(x, y-35, 4, 0, Math.PI*2); ctx.fill();
+  // Brown pants + boots
+  ctx.fillStyle = '#3A2010';
   ctx.fillRect(x-8, y, 6, 14);
   ctx.fillRect(x+2, y, 6, 14);
+  ctx.fillStyle = '#222';
+  ctx.fillRect(x-9, y+12, 8, 4);
+  ctx.fillRect(x+1, y+12, 8, 4);
 }
 
 function drawRepak(x, y) {
-  // Dark silhouette pirate - big, dumb
-  ctx.fillStyle = '#1a1a1a';
+  // Big dumb pirate - green vest, orange bandana
+  ctx.fillStyle = '#1B5E20'; // dark green vest
   ctx.fillRect(x-14, y-40, 28, 40);
-  ctx.beginPath(); ctx.arc(x, y-48, 13, 0, Math.PI*2); ctx.fill();
+  // Striped undershirt
+  ctx.fillStyle = '#333';
+  ctx.fillRect(x-10, y-35, 20, 30);
+  ctx.fillStyle = '#1B5E20';
+  ctx.fillRect(x-14, y-40, 28, 10);
+  // Big head
+  ctx.fillStyle = '#C8956B';
+  ctx.beginPath(); ctx.arc(x, y-48, 14, 0, Math.PI*2); ctx.fill();
   // Orange bandana
-  ctx.fillStyle = '#CC5500';
-  ctx.fillRect(x-15, y-58, 30, 6);
-  // Dumb grin - white teeth
+  ctx.fillStyle = '#E65100';
+  ctx.fillRect(x-16, y-60, 32, 7);
+  // Dumb grin
   ctx.fillStyle = '#FFF';
-  ctx.beginPath(); ctx.arc(x, y-42, 5, 0, Math.PI); ctx.fill();
-  // Small eyes
-  ctx.fillStyle = '#FFF';
-  ctx.beginPath(); ctx.arc(x-5,y-50,2,0,Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x+5,y-50,2,0,Math.PI*2); ctx.fill();
-  // Dark legs
+  ctx.beginPath(); ctx.arc(x, y-42, 6, 0, Math.PI); ctx.fill();
+  ctx.fillStyle = '#400';
+  ctx.fillRect(x-4, y-42, 2, 3); // missing tooth gap
+  // Small dumb eyes
+  ctx.fillStyle = '#000';
+  ctx.beginPath(); ctx.arc(x-5,y-52,2.5,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5,y-52,2.5,0,Math.PI*2); ctx.fill();
+  // Thick legs + boots
+  ctx.fillStyle = '#2A1A0A';
   ctx.fillRect(x-10, y, 8, 16);
   ctx.fillRect(x+2, y, 8, 16);
+  ctx.fillStyle = '#111';
+  ctx.fillRect(x-11, y+14, 10, 4);
+  ctx.fillRect(x+1, y+14, 10, 4);
 }
 
 function drawPiratka(x, y, frame) {
@@ -1003,12 +1024,14 @@ function updateStreet(dt) {
     }
   }
 
-  // Spawn obstacles
-  const rate = (S.level ? S.level.obstacleRate : 0.025);
-  const minGap = Math.max(180, 280 - S.round * 20);
-  if (S.obstacles.length === 0 ||
-      (S.W + 50 - S.obstacles[S.obstacles.length-1].x > minGap && Math.random() < rate * dt)) {
-    spawnObstacle();
+  // Spawn obstacles (not during finish)
+  if (!S.finishing) {
+    const rate = (S.level ? S.level.obstacleRate : 0.025);
+    const minGap = Math.max(180, 280 - S.round * 20);
+    if (S.obstacles.length === 0 ||
+        (S.W + 50 - S.obstacles[S.obstacles.length-1].x > minGap && Math.random() < rate * dt)) {
+      spawnObstacle();
+    }
   }
 
   // Spawn coins
@@ -1108,8 +1131,11 @@ function updateStreet(dt) {
   S.particles = S.particles.filter(p => p.life > 0);
 
   // Smooth finish
-  if (S.distance >= S.maxDistance * 0.9 && !S.finishing) S.finishing = true;
-  if (S.finishing) S.scrollSpeed = Math.max(0.5, S.scrollSpeed * 0.98);
+  if (S.distance >= S.maxDistance * 0.95 && !S.finishing) S.finishing = true;
+  if (S.finishing) {
+    S.scrollSpeed = Math.max(0.3, S.scrollSpeed * 0.95); // faster deceleration
+    S.obstacles = S.obstacles.filter(ob => ob.x < S.px); // remove obstacles ahead
+  }
   if (S.distance >= S.maxDistance && S.scrollSpeed < 1) {
     if (S.onGround) {
       if (S.streetDir === 'to_shop') openShop();
