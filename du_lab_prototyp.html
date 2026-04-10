@@ -5,341 +5,1009 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Domaci Ucitel - Laborator Dr. Volty</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Fredoka',sans-serif; background:#1a1a2e; color:#eee; overflow:hidden; height:100vh; user-select:none; -webkit-user-select:none; }
-.screen { display:none; width:100vw; height:100vh; position:absolute; top:0; left:0; flex-direction:column; }
-.screen.active { display:flex; }
-.coin-display { display:flex; align-items:center; gap:6px; font-size:18px; font-weight:700; color:#ffd700; }
-.coin-icon { width:24px; height:24px; object-fit:contain; }
-#shopScreen { background-size:cover; background-position:center; }
-.shop-header { padding:10px 16px; display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); z-index:10; }
-.shop-header h2 { font-size:20px; color:#ffd700; text-shadow:1px 1px 3px #000; }
-.shop-grid { flex:1; display:grid; grid-template-columns:repeat(5,1fr); gap:8px; padding:12px; overflow-y:auto; align-content:start; }
-.shop-item { background:rgba(255,248,220,0.92); border-radius:10px; padding:8px; text-align:center; cursor:pointer; border:3px solid #6b4423; transition:all 0.2s; position:relative; }
-.shop-item:hover { transform:scale(1.05); box-shadow:0 4px 15px rgba(255,215,0,0.3); }
-.shop-item.bought { opacity:0.35; cursor:default; border-color:#555; }
-.shop-item.bought::after { content:"\2713"; position:absolute; top:3px; right:6px; font-size:18px; color:#2d8a4e; font-weight:900; }
-.shop-item.locked { opacity:0.5; cursor:not-allowed; }
-.shop-item img.item-img { width:70px; height:70px; object-fit:contain; }
-.shop-item .item-name { font-size:11px; font-weight:600; color:#333; margin-top:3px; line-height:1.2; }
-.shop-item .item-price { display:flex; align-items:center; justify-content:center; gap:3px; font-size:13px; font-weight:700; color:#8B6914; margin-top:2px; }
-.shop-item .item-price img { width:16px; height:16px; }
-.shop-footer { padding:8px 16px; background:rgba(0,0,0,0.8); display:flex; justify-content:space-between; align-items:center; }
-.btn { padding:8px 20px; border:none; border-radius:8px; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:all 0.2s; }
-.btn-build { background:linear-gradient(135deg,#2d8a4e,#1a6b35); color:white; }
-.btn-build:hover { transform:scale(1.05); }
-.btn-build:disabled { background:#444; cursor:default; transform:none; }
-.lab-header { padding:8px 16px; display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.75); z-index:10; }
-.lab-header h2 { font-size:18px; color:#7ec8e3; text-shadow:1px 1px 3px #000; }
-.lab-area { flex:1; position:relative; background-size:cover; background-position:center; overflow:hidden; }
-.drop-zone { position:absolute; border:2px dashed rgba(255,255,255,0.2); border-radius:6px; transition:all 0.3s; }
-.drop-zone.highlight { border-color:#ffd700; background:rgba(255,215,0,0.12); box-shadow:0 0 12px rgba(255,215,0,0.25); }
-.placed-item { position:absolute; pointer-events:none; }
-.placed-item.plop { animation:plop 0.4s ease-out; }
-@keyframes plop { 0%{transform:scale(1.5)} 50%{transform:scale(0.85)} 100%{transform:scale(1)} }
-.ground-item { position:absolute; animation:wobble 0.5s ease-out; filter:drop-shadow(2px 4px 3px rgba(0,0,0,0.5)); }
-@keyframes wobble { 0%{transform:rotate(0)} 25%{transform:rotate(-15deg)} 50%{transform:rotate(10deg)} 75%{transform:rotate(-5deg)} 100%{transform:rotate(0)} }
-.inventory-bar { display:flex; gap:6px; padding:8px 12px; background:rgba(0,0,0,0.85); overflow-x:auto; min-height:90px; align-items:center; }
-.inv-item { width:72px; height:72px; background:rgba(255,248,220,0.9); border-radius:8px; border:2px solid #6b4423; display:flex; align-items:center; justify-content:center; cursor:grab; flex-shrink:0; transition:all 0.2s; }
-.inv-item:active { cursor:grabbing; }
-.inv-item.dragging { opacity:0.4; transform:scale(0.85); }
-.inv-item img { width:58px; height:58px; object-fit:contain; pointer-events:none; }
-.volta-dialog { position:absolute; bottom:100px; left:50%; transform:translateX(-50%); display:flex; align-items:flex-end; gap:8px; z-index:20; pointer-events:none; max-width:85%; }
-.volta-dialog.hidden { display:none; }
-.volta-dialog img { width:80px; object-fit:contain; filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.5)); }
-.volta-bubble { background:rgba(255,248,220,0.95); color:#333; padding:10px 14px; border-radius:10px; border:2px solid #6b4423; font-size:13px; max-width:320px; box-shadow:2px 4px 8px rgba(0,0,0,0.3); }
-#completeScreen { align-items:center; justify-content:center; background-size:cover; background-position:center; }
-#completeScreen::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.35); }
-.complete-content { position:relative; z-index:1; text-align:center; }
-.complete-content h1 { font-size:32px; color:#ffd700; text-shadow:2px 2px 8px #000; margin-bottom:16px; }
-.complete-content p { font-size:16px; margin-bottom:24px; text-shadow:1px 1px 4px #000; }
-.debug-bar { position:fixed; top:4px; right:4px; z-index:999; display:flex; gap:4px; }
-.debug-bar button { padding:3px 8px; background:#222; color:#ffd700; border:1px solid #444; border-radius:3px; font-size:10px; cursor:pointer; font-family:inherit; }
-.video-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:500; display:flex; align-items:center; justify-content:center; flex-direction:column; }
-.video-overlay.hidden { display:none; }
-.video-overlay video { max-width:90vw; max-height:75vh; border-radius:12px; border:3px solid #ffd700; }
-.video-overlay .btn-skip { margin-top:16px; background:#6b4423; color:#ffd700; padding:8px 24px; border:none; border-radius:8px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; }
-.guide-selector { position:absolute; top:8px; left:8px; z-index:30; display:flex; gap:4px; }
-.guide-btn { width:40px; height:40px; border-radius:50%; border:2px solid #555; cursor:pointer; object-fit:cover; transition:all 0.2s; background:#222; padding:2px; }
-.guide-btn.active { border-color:#ffd700; box-shadow:0 0 8px rgba(255,215,0,0.5); }
-.guide-btn:hover { transform:scale(1.1); }
-.pirate-encounter { position:absolute; inset:0; background:rgba(0,0,0,0.85); z-index:40; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
-.pirate-encounter.hidden { display:none; }
-.pirate-encounter img { width:120px; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.7)); }
-.pirate-encounter .pirate-text { background:rgba(255,248,220,0.95); color:#333; padding:14px 20px; border-radius:12px; border:3px solid #8b0000; font-size:15px; max-width:80%; text-align:center; }
-.pirate-encounter .btn-pirate { background:linear-gradient(135deg,#8b0000,#cc0000); color:white; padding:10px 24px; border:none; border-radius:8px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; }
-@media (max-width:768px) { .shop-grid { grid-template-columns:repeat(3,1fr); gap:6px; padding:8px; } .shop-item img.item-img { width:55px; height:55px; } }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',sans-serif;background:#111;}
+#game{position:relative;width:100%;height:100%;max-width:900px;margin:0 auto;overflow:hidden;}
+#bg{width:100%;height:100%;object-fit:cover;display:block;}
+#ui{position:absolute;inset:0;pointer-events:none;}
+#ui>*{pointer-events:auto;}
+
+/* Coin HUD */
+#hud{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);color:#ffd700;padding:6px 14px;border-radius:20px;font-size:1.1em;font-weight:bold;z-index:50;display:flex;align-items:center;gap:6px;}
+#hud img{width:24px;height:24px;}
+
+/* Dialog */
+#dialog{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);color:#fff;padding:10px;display:none;z-index:60;min-height:100px;}
+#dialog-inner{display:flex;align-items:flex-start;gap:10px;}
+#dialog-portrait{width:70px;height:70px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,.1);flex-shrink:0;}
+#dialog-text{flex:1;font-size:.95em;line-height:1.4;padding:6px 0;min-height:50px;}
+#dialog-name{font-weight:bold;color:#ffd700;margin-bottom:4px;font-size:.85em;}
+#dialog-continue{position:absolute;bottom:8px;right:14px;font-size:.75em;color:#aaa;animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* Phone button */
+#phone-btn{position:absolute;bottom:12px;right:12px;width:50px;height:50px;background:#2196F3;border:none;border-radius:50%;cursor:pointer;z-index:55;display:none;box-shadow:0 2px 8px rgba(0,0,0,.4);font-size:1.4em;color:#fff;transition:transform .15s;}
+#phone-btn:hover{transform:scale(1.1);}
+#phone-btn:active{transform:scale(.95);}
+
+/* Hotspots on street */
+.hotspot{position:absolute;cursor:pointer;z-index:10;border:none;background:transparent;padding:0;}
+.hotspot.sparkle::after{content:'';position:absolute;inset:-4px;border-radius:50%;animation:sparkle 1.5s infinite;pointer-events:none;}
+@keyframes sparkle{0%,100%{box-shadow:0 0 4px 2px rgba(255,215,0,.3);}50%{box-shadow:0 0 10px 5px rgba(255,215,0,.7);}}
+.hotspot.glow::after{content:'';position:absolute;inset:-2px;border-radius:4px;animation:glow 2s infinite;pointer-events:none;}
+@keyframes glow{0%,100%{box-shadow:0 0 3px 1px rgba(100,200,255,.2);}50%{box-shadow:0 0 6px 3px rgba(100,200,255,.5);}}
+
+/* Shop */
+#shop-panel{position:absolute;inset:0;display:none;z-index:40;}
+#shop-grid{position:absolute;top:15%;left:5%;right:5%;bottom:18%;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;align-items:center;}
+.shop-item{width:130px;background:rgba(255,255,255,.92);border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 6px rgba(0,0,0,.2);}
+.shop-item:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.3);}
+.shop-item img{width:70px;height:70px;object-fit:contain;}
+.shop-item .name{font-size:.8em;font-weight:bold;margin:4px 0 2px;}
+.shop-item .price{font-size:.85em;color:#e65100;font-weight:bold;}
+.shop-item.bought{opacity:.4;pointer-events:none;}
+#shop-done{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);padding:10px 30px;background:#4CAF50;color:#fff;border:none;border-radius:8px;font-size:1em;cursor:pointer;display:none;}
+#shop-done:hover{background:#388E3C;}
+
+/* Ambush overlay */
+#ambush{position:absolute;inset:0;background:rgba(0,0,0,.8);display:none;z-index:70;flex-direction:column;align-items:center;justify-content:center;color:#fff;}
+#ambush-title{font-size:1.3em;margin-bottom:10px;color:#ff9800;font-weight:bold;text-align:center;padding:0 10px;}
+#ambush-area{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:center;margin:10px;}
+.ambush-choice{width:120px;height:120px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1em;text-align:center;padding:8px;transition:transform .1s,border-color .2s;color:#fff;}
+.ambush-choice:hover{border-color:#ff9800;transform:scale(1.05);}
+#ambush-timer{font-size:2em;color:#ff5722;font-weight:bold;margin-bottom:6px;}
+#ambush-msg{text-align:center;max-width:350px;margin-top:10px;font-size:.9em;line-height:1.4;padding:0 10px;}
+
+/* Lab build - drag & drop */
+#lab-items{position:absolute;bottom:0;left:0;right:0;height:90px;background:rgba(0,0,0,.7);display:none;z-index:30;overflow-x:auto;white-space:nowrap;padding:8px;display:none;}
+#lab-items .lab-item{display:inline-block;width:70px;height:70px;margin:0 4px;cursor:grab;border:2px solid transparent;border-radius:8px;background:rgba(255,255,255,.1);padding:2px;}
+#lab-items .lab-item img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
+#lab-items .lab-item.dragging{opacity:.5;}
+.drop-zone{position:absolute;border:2px dashed rgba(255,255,0,.5);border-radius:6px;z-index:20;background:rgba(255,255,0,.05);transition:border-color .2s;}
+.drop-zone.highlight{border-color:#ffd700;background:rgba(255,215,0,.15);}
+.placed-item{position:absolute;z-index:25;pointer-events:none;}
+.placed-item img{width:100%;height:100%;object-fit:contain;}
+
+/* Video overlay */
+#video-overlay{position:absolute;inset:0;background:#000;z-index:100;display:none;align-items:center;justify-content:center;}
+#video-overlay video{max-width:100%;max-height:100%;}
+#skip-video{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 16px;border-radius:4px;cursor:pointer;font-size:.85em;}
+
+/* Riddle modal */
+#riddle{position:absolute;inset:0;background:rgba(0,0,0,.85);display:none;z-index:65;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;}
+#riddle-text{font-size:1.1em;text-align:center;max-width:400px;margin-bottom:16px;line-height:1.5;}
+#riddle-input{padding:8px 14px;font-size:1em;border-radius:6px;border:2px solid #555;background:#222;color:#fff;width:220px;text-align:center;}
+#riddle-submit{margin-top:10px;padding:8px 24px;background:#ff9800;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1em;}
+#riddle-feedback{margin-top:8px;font-size:.9em;min-height:20px;}
+
+/* Completion screen */
+#completion{position:absolute;inset:0;background:rgba(0,0,0,.9);display:none;z-index:90;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;}
+#completion h2{color:#ffd700;font-size:1.5em;margin-bottom:12px;}
+#completion .stat{margin:4px 0;font-size:1em;}
+#completion button{margin-top:16px;padding:10px 30px;background:#4CAF50;color:#fff;border:none;border-radius:8px;font-size:1em;cursor:pointer;}
+
+/* Debug bar */
+#debug{position:absolute;top:0;left:0;background:rgba(0,0,0,.8);color:#0f0;font-size:.7em;padding:4px 8px;z-index:200;display:none;}
+#debug button{font-size:.7em;margin:0 2px;cursor:pointer;background:#333;color:#0f0;border:1px solid #0f0;padding:1px 6px;border-radius:3px;}
+
+/* Floating text */
+.float-text{position:absolute;color:#ffd700;font-weight:bold;font-size:1.2em;pointer-events:none;z-index:80;animation:floatUp 1.2s forwards;text-shadow:0 1px 3px #000;}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-50px);}}
+
+/* Responsive */
+@media(max-width:600px){
+  .shop-item{width:100px;padding:6px;}
+  .shop-item img{width:50px;height:50px;}
+  .ambush-choice{width:90px;height:90px;font-size:.85em;}
+  #dialog-portrait{width:50px;height:50px;}
+}
 </style>
 </head>
 <body>
-<div class="debug-bar"><button onclick="addCoins(50)">M +50</button><button onclick="resetGame()">R Reset</button><button onclick="playVideo('ulice')">V1</button><button onclick="playVideo('prodej')">V2</button><button onclick="playVideo('lab')">V3</button></div>
-<div class="video-overlay hidden" id="videoOverlay"><video id="videoPlayer" controls></video><button class="btn-skip" onclick="closeVideo()">Preskocit / Zavrit</button></div>
-<div id="shopScreen" class="screen active">
-  <div class="shop-header"><h2>Vyzkumne pomucky</h2><div style="display:flex;align-items:center;gap:12px;"><div class="coin-display"><img class="coin-icon" id="coinIconShop" src="" alt=""><span id="shopCoins">40</span></div><select id="guideSelect" onchange="switchGuide(this.value)" style="background:#333;color:#ffd700;border:1px solid #555;border-radius:6px;padding:4px 8px;font-family:inherit;font-size:12px;font-weight:600;"><option value="volta">Dr. Volta</option><option value="agent_k">Agent K</option><option value="skripek">Skripek</option><option value="repak">Repak</option><option value="keksik">Keksik</option><option value="piratka">Piratka</option><option value="krivak">Krivak</option></select></div></div>
-  <div class="shop-grid" id="shopGrid"></div>
-  <div class="shop-footer"><span style="color:#aaa;font-size:12px" id="boughtCount">Koupeno: 0/15</span><button class="btn btn-build" id="btnBuild" onclick="goToLab()">Jit stavet!</button></div>
+<div id="game">
+  <img id="bg" src="img/L1.jpg" alt="scene">
+  <div id="ui">
+    <div id="hud"><img src="img/C23.png" alt="coin"> <span id="coin-count">40</span></div>
+    <button id="phone-btn" onclick="phoneHint()">&#128222;</button>
+    <div id="dialog" onclick="advanceDialog()">
+      <div id="dialog-inner">
+        <img id="dialog-portrait" src="img/volta.png" alt="">
+        <div><div id="dialog-name"></div><div id="dialog-text"></div></div>
+      </div>
+      <div id="dialog-continue">Klikni pro pokracovani...</div>
+    </div>
+    <div id="shop-panel"><div id="shop-grid"></div><button id="shop-done" onclick="leaveShop()">Hotovo - zpet do ulice!</button></div>
+    <div id="lab-items"></div>
+    <div id="ambush"></div>
+    <div id="riddle">
+      <div id="riddle-text"></div>
+      <input id="riddle-input" placeholder="Tvoje odpoved..." autocomplete="off">
+      <button id="riddle-submit">Odpovedet</button>
+      <div id="riddle-feedback"></div>
+    </div>
+    <div id="video-overlay"><video id="game-video" playsinline></video><button id="skip-video" onclick="skipVideo()">Preskocit</button></div>
+    <div id="completion">
+      <h2>Laborator je obnovena!</h2>
+      <div id="comp-stats"></div>
+      <button onclick="playLabVideo()">Podivat se na laborator</button>
+    </div>
+    <div id="debug">
+      DEBUG:
+      <button onclick="GS.coins+=10;updateHUD()">+10 coins</button>
+      <button onclick="nextPhase()">Skip phase</button>
+      <button onclick="GS.currentRound++;startRound()">Skip round</button>
+      <span id="debug-info"></span>
+    </div>
+  </div>
 </div>
-<div id="labScreen" class="screen">
-  <div class="lab-header"><h2>Laborator Dr. Volty</h2><div style="display:flex;gap:12px;align-items:center"><div class="coin-display"><img class="coin-icon" id="coinIconLab" src="" alt=""><span id="labCoins">40</span></div><button class="btn" style="background:#6b4423;color:white;font-size:12px;padding:5px 12px" onclick="goToShop()">Obchod</button></div></div>
-  <div class="lab-area" id="labArea"><div class="volta-dialog hidden" id="voltaDialog"><img id="voltaImg" src="" alt="Volta"><div class="volta-bubble" id="voltaText"></div></div><div class="guide-selector" id="guideSelector"></div><div class="pirate-encounter hidden" id="pirateEncounter"><img id="pirateImg" src=""><div class="pirate-text" id="pirateText"></div><button class="btn-pirate" onclick="dismissPirate()">Utect!</button></div></div>
-  <div class="inventory-bar" id="inventoryBar"></div>
-</div>
-<div id="completeScreen" class="screen"><div class="complete-content"><h1>Laborator opravena!</h1><p>Dr. Volta je nadseny! Mise 1 splnena.</p><button class="btn btn-build" onclick="resetGame()" style="font-size:18px;padding:12px 28px">Hrat znovu</button></div></div>
+
 <script>
-var IMG = 'img/';
-var ASSETS = {
-  L1: IMG+'L1.jpg', L2: IMG+'L2.jpg', U: IMG+'U.jpg', O: IMG+'O.jpg',
-  A1: IMG+'A1.png', A2: IMG+'A2.png', A3: IMG+'A3.png', A4: IMG+'A4.png',
-  A5: IMG+'A5.png', A6: IMG+'A6.png', A7: IMG+'A7.png', A8: IMG+'A8.png',
-  A9: IMG+'A9.png', A10: IMG+'A10.png', A11: IMG+'A11.png', A12: IMG+'A12.png',
-  A13: IMG+'A13.png', A14: IMG+'A14.png', A15: IMG+'A15.png',
-  V_point: IMG+'V_point.png', V_shock: IMG+'V_shock.png',
-  V_happy: IMG+'V_happy.png', V_worried: IMG+'V_worried.png',
-  C23: IMG+'C23.png', C24: IMG+'C24.png', C25: IMG+'C25.png', C26: IMG+'C26.png',
-  volta: IMG+'volta.png', agent_k: IMG+'agent_k.png',
-  skripek: IMG+'skripek.png', repak: IMG+'repak.png',
-  keksik: IMG+'keksik.png', piratka: IMG+'piratka.png', krivak: IMG+'krivak.png'
-};
-var VIDEOS = {
-  ulice: 'https://ydzlvkgrjkytalgcnsie.supabase.co/storage/v1/object/public/media/minihra1-ulice.mp4',
-  prodej: 'https://ydzlvkgrjkytalgcnsie.supabase.co/storage/v1/object/public/media/minihra2-prodej.mp4',
-  lab: 'https://ydzlvkgrjkytalgcnsie.supabase.co/storage/v1/object/public/media/minihra13-lab.mp4'
-};
-var GUIDES = {
-  volta:   { name:'Dr. Volta', img:ASSETS.volta, pose:{point:ASSETS.V_point,shock:ASSETS.V_shock,happy:ASSETS.V_happy,worried:ASSETS.V_worried}, isPirate:false },
-  agent_k: { name:'Agent K',   img:ASSETS.agent_k, pose:null, isPirate:false },
-  skripek: { name:'Skripek',   img:ASSETS.skripek, pose:null, isPirate:false },
-  repak:   { name:'Repak',     img:ASSETS.repak,   pose:null, isPirate:false },
-  keksik:  { name:'Keksik',    img:ASSETS.keksik,  pose:null, isPirate:false },
-  piratka: { name:'Piratka',   img:ASSETS.piratka, pose:null, isPirate:true },
-  krivak:  { name:'Krivak',    img:ASSETS.krivak,  pose:null, isPirate:true }
-};
-var currentGuide = 'volta';
-var PIRATE_EVENTS = [
-  {who:'piratka',text:'Ahoj! Piratka ti sebere 3 mince!',coins:-3},
-  {who:'piratka',text:'Piratka nasla poklad! +5 minci!',coins:5},
-  {who:'krivak',text:'Krivak se pokusil ukrast zkumavky...',coins:-2},
-  {who:'krivak',text:'Krivak nasel starou mapu! +4 mince!',coins:4},
-  {who:'piratka',text:'Piratka: Pekna laborator... skoda ze neni na lodi.',coins:0},
-  {who:'krivak',text:'Krivak se leka vlastniho stinu. -1 mince.',coins:-1}
-];
-var ITEMS = [
-  { id:'A1', name:'Pracovni stul', price:5, img:ASSETS.A1, zone:{x:25,y:55,w:35,h:25}, deps:[],
-    vOk:'Vyborne! Stul je zaklad.', vFail:null },
-  { id:'A2', name:'Stolicka', price:2, img:ASSETS.A2, zone:{x:45,y:70,w:10,h:15}, deps:['A1'],
-    vOk:'Sednout a premyslet. Dobra strategie!', vFail:'Sednout? Kam? Nejdriv stul.' },
-  { id:'A3', name:'Policka', price:3, img:ASSETS.A3, zone:{x:70,y:25,w:25,h:12}, deps:[],
-    vOk:'Policka na zdi. Konecne kam dat chemikalie.', vFail:null },
-  { id:'A12', name:'Stolni lampa', price:3, img:ASSETS.A12, zone:{x:12,y:42,w:10,h:18}, deps:['A1'],
-    vOk:'At je videt na praci!', vFail:'Lampa bez stolu? Svitit na podlahu?' },
-  { id:'A5', name:'Mikroskop', price:8, img:ASSETS.A5, zone:{x:30,y:42,w:10,h:18}, deps:['A1'],
-    vOk:'Mikroskop! Ted uvidime i to, co neexistuje!', vFail:'Mikroskop na podlahu? Pasteur by plakal.' },
-  { id:'A6', name:'Kahan', price:4, img:ASSETS.A6, zone:{x:42,y:45,w:8,h:15}, deps:['A1'],
-    vOk:'Ohen! Zdroj vsech dobrych i spatnych napadu.', vFail:'Kahan na holou zem? Chces pozar?' },
-  { id:'A7', name:'Vahy', price:6, img:ASSETS.A7, zone:{x:52,y:45,w:12,h:15}, deps:['A1'],
-    vOk:'Presnost je zaklad vedy. A vareni.', vFail:'Vahy potrebuji rovnou plochu. Stul!' },
-  { id:'A4', name:'Zkumavky', price:4, img:ASSETS.A4, zone:{x:22,y:42,w:10,h:15}, deps:['A1'],
-    vOk:'Zkumavky! Konecne budu michat veci!', vFail:'Zkumavky bez stolu spadnou.' },
-  { id:'A11', name:'Banky a kolby', price:5, img:ASSETS.A11, zone:{x:38,y:42,w:10,h:15}, deps:['A1'],
-    vOk:'Erlenmeyerky! To zni jako kouzlo.', vFail:'Sklo na zem? Optimista.' },
-  { id:'A15', name:'Chemikalie', price:7, img:ASSETS.A15, zone:{x:72,y:32,w:20,h:15}, deps:['A3'],
-    vOk:'Lahvicky na policce. Jako v lekarne.', vFail:'Chemikalie musi na policku!' },
-  { id:'A13', name:'Knihy', price:3, img:ASSETS.A13, zone:{x:5,y:48,w:12,h:15}, deps:['A1'],
-    vOk:'Vedeni! Nejnebezpecnejsi zbran.', vFail:'Knihy patri na stul nebo vedle nej.' },
-  { id:'A8', name:'Periodicka tabulka', price:3, img:ASSETS.A8, zone:{x:55,y:15,w:18,h:18}, deps:[],
-    vOk:'Mendelejev by plakal stestim!', vFail:null },
-  { id:'A9', name:'Bezpecnostni tabule', price:2, img:ASSETS.A9, zone:{x:35,y:12,w:15,h:18}, deps:[],
-    vOk:'Bezpecnost! To rikam nez neco vybuchne.', vFail:null },
-  { id:'A10', name:'Elektricky obvod', price:3, img:ASSETS.A10, zone:{x:2,y:12,w:16,h:18}, deps:[],
-    vOk:'Schema obvodu na zdi. Profesionalni!', vFail:null },
-  { id:'A14', name:'Laboratorni plast', price:2, img:ASSETS.A14, zone:{x:88,y:20,w:8,h:22}, deps:[],
-    vOk:'Plast! Ted jsem opravdovy vedec.', vFail:null },
+// ===================== DATA =====================
+const ROUNDS = [
+  { items:['A1','A3','A14'], costs:[5,3,2], pirate:null },
+  { items:['A2','A12','A8'], costs:[2,3,3], pirate:'skripek' },
+  { items:['A4','A6','A9'], costs:[4,4,2], pirate:'repak' },
+  { items:['A5','A13','A10'], costs:[8,3,3], pirate:'piratka' },
+  { items:['A7','A11','A15'], costs:[6,5,7], pirate:'krivak' }
 ];
 
-var coins=40, bought=new Set(), placed=new Set(), inventory=[], dragItem=null, dragClone=null, voltaTimeout=null, pirateChance=0;
+const ITEM_DATA = {
+  A1:{name:'Stul',img:'img/A1.png',zone:{x:25,y:55,w:18,h:20},deps:[],vOk:'Pevny stul! Zaklad laboratore.',vFail:'Tohle sem nepatri...'},
+  A2:{name:'Stolicka',img:'img/A2.png',zone:{x:26,y:65,w:10,h:15},deps:['A1'],vOk:'Tady se bude dobre sedet!',vFail:'Stolicka patri ke stolu.'},
+  A3:{name:'Policka',img:'img/A3.png',zone:{x:5,y:20,w:15,h:18},deps:[],vOk:'Policka drzi pevne.',vFail:'To neni spravne misto.'},
+  A4:{name:'Zkumavky',img:'img/A4.png',zone:{x:7,y:22,w:10,h:12},deps:['A3'],vOk:'Zkumavky na policce, perfektni!',vFail:'Zkumavky potrebuji policku.'},
+  A5:{name:'Mikroskop',img:'img/A5.png',zone:{x:28,y:48,w:12,h:18},deps:['A1'],vOk:'Mikroskop na stole! Ted muzeme zkoumat.',vFail:'Mikroskop patri na stul.'},
+  A6:{name:'Kahan',img:'img/A6.png',zone:{x:60,y:55,w:10,h:14},deps:[],vOk:'Kahan je pripraven.',vFail:'Kahan sem nedavej.'},
+  A7:{name:'Vahy',img:'img/A7.png',zone:{x:72,y:55,w:12,h:14},deps:['A1'],vOk:'Presne vahy! Dulezite pro experimenty.',vFail:'Vahy patri na pracovni plochu.'},
+  A8:{name:'Period. tabulka',img:'img/A8.png',zone:{x:45,y:10,w:20,h:18},deps:[],vOk:'Tabulka prvku na zdi!',vFail:'To neni spravna zed.'},
+  A9:{name:'Bezpecnost',img:'img/A9.png',zone:{x:75,y:10,w:12,h:16},deps:[],vOk:'Bezpecnostni pokyny na miste.',vFail:'Zkus to jinam.'},
+  A10:{name:'Obvod',img:'img/A10.png',zone:{x:55,y:45,w:14,h:14},deps:['A6'],vOk:'Elektricky obvod funguje!',vFail:'Obvod potrebuje zdroj energie.'},
+  A11:{name:'Banky',img:'img/A11.png',zone:{x:8,y:38,w:10,h:14},deps:['A3'],vOk:'Banky jsou v bezpeci na policce.',vFail:'Banky patri na policku.'},
+  A12:{name:'Lampa',img:'img/A12.png',zone:{x:40,y:40,w:8,h:20},deps:[],vOk:'Svetlo! Ted vidime co delame.',vFail:'Lampa sem nepatri.'},
+  A13:{name:'Knihy',img:'img/A13.png',zone:{x:6,y:25,w:10,h:10},deps:['A3'],vOk:'Vedecke knihy na policce.',vFail:'Knihy patri na policku.'},
+  A14:{name:'Plast',img:'img/A14.png',zone:{x:82,y:40,w:10,h:25},deps:[],vOk:'Laboratorni plast na vesaku!',vFail:'Plast patri k vesaku.'},
+  A15:{name:'Chemikalie',img:'img/A15.png',zone:{x:62,y:25,w:12,h:14},deps:['A9'],vOk:'Chemikalie ulozeny bezpecne!',vFail:'Nejdriv bezpecnostni pokyny!'}
+};
 
-function playVideo(key) {
-  var url=VIDEOS[key]; if(!url) return;
-  var o=document.getElementById('videoOverlay'), p=document.getElementById('videoPlayer');
-  p.src=url; o.classList.remove('hidden'); p.play().catch(function(){});
+const STREET_HOTSPOTS = [
+  // Round 1
+  [{id:'wall',x:10,y:30,w:12,h:20,coins:3,cls:'sparkle',msg:'Mince schované v cihlách!'},
+   {id:'cat',x:70,y:50,w:10,h:15,coins:1,cls:'sparkle',msg:'Kocka mela minci na obojku!'},
+   {id:'keksik1',x:50,y:20,w:12,h:12,coins:0,cls:'',msg:'Keksik: "KRAAA!" ...a zmizel.',isKeksik:true}],
+  // Round 2
+  [{id:'newspaper',x:30,y:70,w:14,h:10,coins:2,cls:'glow',msg:'Piratske noviny! A mezi strankami mince!'},
+   {id:'sewer',x:65,y:80,w:10,h:8,coins:0,cls:'glow',msg:'Jen smradlavy kanal. Nic tu neni.'}],
+  // Round 3
+  [{id:'chest3',x:20,y:60,w:14,h:14,coins:5,cls:'',msg:'Truhla! Ale je zamcena...',riddle:{q:'Hadanka: Mam nohy ale nechodim, mam desku ale nejsem kniha. Co jsem?',a:'stul',reward:5,bonusSmoke:true}},
+   {id:'sleepkek',x:75,y:35,w:10,h:12,coins:1,cls:'',msg:'Keksik spi... opatrne! Mince pod kridlem.'}],
+  // Round 4
+  [{id:'cobble',x:40,y:75,w:16,h:10,coins:4,cls:'',msg:'Dlazebni kameny ve spravnem poradi! 4 mince!',sequence:true},
+   {id:'citizen',x:60,y:15,w:10,h:12,coins:0,cls:'',msg:'Obcan: "Podivej se do modreho kontejneru!"',reveals:'bluebin'},
+   {id:'bluebin',x:15,y:70,w:10,h:12,coins:3,cls:'',msg:'V kontejneru - 3 mince! Dekuji, obcane!',hidden:true}],
+  // Round 5
+  [{id:'graffiti',x:80,y:25,w:12,h:12,coins:1,cls:'',msg:'Piratske graffiti... a za nim mince!'},
+   {id:'chest5',x:25,y:55,w:14,h:14,coins:5,cls:'',msg:'Posledni truhla!',riddle:{q:'Hadanka: Cim vic me beres, tim vic zbyva. Co jsem?',a:'dira',reward:5}}]
+];
+
+const VOLTA_BRIEFINGS = [
+  'Agente K! Laborator je znicena. Potrebuju stul, policku a plast. Melo by to byt bezpecne.',
+  'Pozor, Skripek te videl. Neumi cist ani jidelni listek, ale umi kricet.',
+  'Zachytil jsem piratskou frekvenci. Repak rikal neco o "sigma pasti". Nevim co to je.',
+  'Piratka je jina liga. Chytra, klidna, nebezpecna. Jako ja, ale na spatne strane.',
+  'Krivak jde po tobe osobne. Tohle je posledni sance. Dej do toho vsechno.'
+];
+
+const PHONE_HINTS = [
+  'Zkus se podivat na tu zed... neni tam neco divneho?',
+  'Na zemi lezi noviny. Piratske!',
+  'V ulicce jsem zahledl truhlu. Ale bude zamcena...',
+  'Nekdo te pozoruje z okna. Zkus se podivat nahoru.',
+  'Tenhle vylet bude tezky. Seber vsechno co muzes.'
+];
+
+// ===================== STATE =====================
+const GS = {
+  currentRound: 0,
+  phase: 'init', // lab_briefing, street_out, shop, street_return, ambush, lab_build
+  coins: 40,
+  bought: new Set(),
+  placed: new Set(),
+  inventory: [],
+  discoveries: new Set(),
+  smokebomb: false,
+  piratesDefeated: 0,
+  lostItems: [],
+  roundBought: new Set()
+};
+
+let dialogQueue = [];
+let dialogCallback = null;
+let dragItem = null;
+let dragOffX = 0, dragOffY = 0;
+let activeDropZones = [];
+
+// ===================== HELPERS =====================
+const $ = id => document.getElementById(id);
+const game = $('game');
+const bg = $('bg');
+
+function updateHUD() {
+  $('coin-count').textContent = GS.coins;
+  if ($('debug').style.display !== 'none') {
+    $('debug-info').textContent = ` R${GS.currentRound+1} ${GS.phase} inv:[${GS.inventory}]`;
+  }
 }
-function closeVideo() {
-  var o=document.getElementById('videoOverlay'), p=document.getElementById('videoPlayer');
-  p.pause(); p.src=''; o.classList.add('hidden');
+
+function showBg(src) { bg.src = src; }
+
+function floatText(text, x, y) {
+  const el = document.createElement('div');
+  el.className = 'float-text';
+  el.textContent = text;
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  $('ui').appendChild(el);
+  setTimeout(() => el.remove(), 1300);
 }
-function switchGuide(k) {
-  if(!GUIDES[k]) return; currentGuide=k;
-  document.getElementById('guideSelect').value=k; renderGuideSelector();
-  var g=GUIDES[k];
-  if(g.isPirate) showGuideMessage(g.img, g.name+' je tvuj pruvodce! Pozor na piraty...');
-  else showGuideMessage(g.img, g.name+' te provazi laboratori!');
+
+function showDialog(portrait, name, lines, cb) {
+  dialogQueue = Array.isArray(lines) ? [...lines] : [lines];
+  dialogCallback = cb || null;
+  const d = $('dialog');
+  $('dialog-portrait').src = portrait;
+  $('dialog-name').textContent = name;
+  d.style.display = 'block';
+  typeNextLine();
 }
-function renderGuideSelector() {
-  var c=document.getElementById('guideSelector'); c.innerHTML='';
-  Object.keys(GUIDES).forEach(function(k){
-    var g=GUIDES[k], img=document.createElement('img');
-    img.className='guide-btn'+(k===currentGuide?' active':'');
-    img.src=g.img; img.alt=g.name; img.title=g.name;
-    img.onclick=function(){switchGuide(k);}; c.appendChild(img);
+
+let typeTimer = null;
+let fullLine = '';
+function typeNextLine() {
+  if (dialogQueue.length === 0) {
+    $('dialog').style.display = 'none';
+    if (dialogCallback) { const cb = dialogCallback; dialogCallback = null; cb(); }
+    return;
+  }
+  fullLine = dialogQueue.shift();
+  const el = $('dialog-text');
+  el.textContent = '';
+  let i = 0;
+  clearInterval(typeTimer);
+  typeTimer = setInterval(() => {
+    if (i < fullLine.length) { el.textContent += fullLine[i]; i++; }
+    else clearInterval(typeTimer);
+  }, 25);
+}
+
+function advanceDialog() {
+  const el = $('dialog-text');
+  if (el.textContent.length < fullLine.length) {
+    clearInterval(typeTimer);
+    el.textContent = fullLine;
+  } else {
+    typeNextLine();
+  }
+}
+
+// ===================== PHASE MACHINE =====================
+function startGame() {
+  // Check debug mode
+  if (location.hash === '#debug') $('debug').style.display = 'block';
+  startRound();
+}
+
+function startRound() {
+  if (GS.currentRound >= 5) { showCompletion(); return; }
+  GS.phase = 'lab_briefing';
+  GS.roundBought = new Set();
+  showBg('img/L1.jpg');
+  clearHotspots();
+  hideShop();
+  hideLab();
+  $('phone-btn').style.display = 'none';
+  updateHUD();
+
+  const briefing = VOLTA_BRIEFINGS[GS.currentRound];
+  const r = GS.currentRound;
+  const itemNames = ROUNDS[r].items.map(id => ITEM_DATA[id].name).join(', ');
+  showDialog('img/V_point.png', 'Dr. Volta', [briefing, `Potrebujes koupit: ${itemNames}`], () => {
+    GS.phase = 'street_out';
+    goStreet();
   });
 }
-function showGuideMessage(src,txt) {
-  var d=document.getElementById('voltaDialog');
-  document.getElementById('voltaImg').src=src;
-  document.getElementById('voltaText').textContent=txt;
-  d.classList.remove('hidden');
-  if(voltaTimeout) clearTimeout(voltaTimeout);
-  voltaTimeout=setTimeout(function(){d.classList.add('hidden');},4000);
-}
-function maybePirateEncounter() {
-  var g=GUIDES[currentGuide]; if(!g||!g.isPirate) return;
-  pirateChance+=0.25; if(Math.random()>pirateChance) return; pirateChance=0;
-  var ev=PIRATE_EVENTS[Math.floor(Math.random()*PIRATE_EVENTS.length)];
-  document.getElementById('pirateImg').src=ASSETS[ev.who];
-  document.getElementById('pirateText').textContent=ev.text;
-  document.getElementById('pirateEncounter').classList.remove('hidden');
-  if(ev.coins!==0) addCoins(ev.coins);
-}
-function dismissPirate(){document.getElementById('pirateEncounter').classList.add('hidden');}
 
-function renderShop() {
-  var grid=document.getElementById('shopGrid'); grid.innerHTML='';
-  ITEMS.forEach(function(item){
-    var div=document.createElement('div');
-    div.className='shop-item'+(bought.has(item.id)?' bought':'')+(item.price>coins&&!bought.has(item.id)?' locked':'');
-    var ph=bought.has(item.id)?'<span style="color:#2d8a4e;font-weight:900">Koupeno</span>':'<img src="'+ASSETS.C23+'" style="width:16px;height:16px"> '+item.price;
-    div.innerHTML='<img class="item-img" src="'+item.img+'" alt="'+item.name+'"><div class="item-name">'+item.name+'</div><div class="item-price">'+ph+'</div>';
-    if(!bought.has(item.id)&&item.price<=coins) div.onclick=function(){buyItem(item);};
+function nextPhase() {
+  switch (GS.phase) {
+    case 'lab_briefing': GS.phase = 'street_out'; goStreet(); break;
+    case 'street_out': GS.phase = 'shop'; goShop(); break;
+    case 'shop': GS.phase = 'street_return'; goStreetReturn(); break;
+    case 'street_return': GS.phase = 'ambush'; startAmbush(); break;
+    case 'ambush': GS.phase = 'lab_build'; goLab(); break;
+    case 'lab_build': GS.currentRound++; startRound(); break;
+  }
+}
+
+// ===================== STREET =====================
+function goStreet() {
+  showBg('img/U.jpg');
+  $('phone-btn').style.display = 'block';
+  clearHotspots();
+  renderHotspots();
+  addStreetNavBtn('Do obchodu', () => { GS.phase = 'shop'; goShop(); });
+}
+
+function goStreetReturn() {
+  showBg('img/U.jpg');
+  $('phone-btn').style.display = 'block';
+  clearHotspots();
+  renderHotspots();
+
+  const pirate = ROUNDS[GS.currentRound].pirate;
+  if (GS.currentRound === 0) {
+    // Tutorial: Skripek peeks
+    setTimeout(() => {
+      showDialog('img/skripek.png', 'Skripek', ['*vykukne zpoza rohu*','...a utek!'], () => {
+        addStreetNavBtn('Zpet do laboratore', () => { GS.phase = 'lab_build'; goLab(); });
+      });
+    }, 800);
+  } else {
+    addStreetNavBtn('Zpet do laboratore', () => {
+      GS.phase = 'ambush';
+      startAmbush();
+    });
+  }
+}
+
+function clearHotspots() {
+  document.querySelectorAll('.hotspot,.street-nav-btn').forEach(el => el.remove());
+}
+
+function renderHotspots() {
+  const spots = STREET_HOTSPOTS[GS.currentRound];
+  if (!spots) return;
+  spots.forEach(s => {
+    if (GS.discoveries.has(s.id)) return;
+    if (s.hidden) return; // revealed by chain
+    const btn = document.createElement('button');
+    btn.className = 'hotspot' + (s.cls ? ' ' + s.cls : '');
+    btn.style.cssText = `left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;`;
+    if (!s.cls) btn.style.cursor = 'help';
+    btn.onclick = (e) => clickHotspot(s, e, btn);
+    $('ui').appendChild(btn);
+  });
+}
+
+function clickHotspot(s, e, btn) {
+  if (GS.discoveries.has(s.id)) return;
+  if (s.riddle) {
+    openRiddle(s);
+    return;
+  }
+  GS.discoveries.add(s.id);
+  btn.remove();
+  if (s.coins > 0) {
+    GS.coins += s.coins;
+    updateHUD();
+    const rect = game.getBoundingClientRect();
+    floatText('+' + s.coins, e.clientX - rect.left, e.clientY - rect.top);
+  }
+  showDialog(s.isKeksik ? 'img/keksik.png' : 'img/agent_k.png', s.isKeksik ? 'Keksik' : 'Agent K', [s.msg], () => {
+    // Chain discovery?
+    if (s.reveals) revealHotspot(s.reveals);
+  });
+}
+
+function revealHotspot(id) {
+  const spots = STREET_HOTSPOTS[GS.currentRound];
+  const s = spots.find(h => h.id === id);
+  if (!s || GS.discoveries.has(id)) return;
+  const btn = document.createElement('button');
+  btn.className = 'hotspot glow';
+  btn.style.cssText = `left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;`;
+  btn.onclick = (e) => clickHotspot(s, e, btn);
+  $('ui').appendChild(btn);
+}
+
+function openRiddle(s) {
+  const r = $('riddle');
+  r.style.display = 'flex';
+  $('riddle-text').textContent = s.riddle.q;
+  $('riddle-input').value = '';
+  $('riddle-feedback').textContent = '';
+  $('riddle-submit').onclick = () => {
+    const ans = $('riddle-input').value.trim().toLowerCase();
+    if (ans === s.riddle.a) {
+      GS.discoveries.add(s.id);
+      GS.coins += s.riddle.reward;
+      if (s.riddle.bonusSmoke) GS.smokebomb = true;
+      updateHUD();
+      $('riddle-feedback').textContent = `Spravne! +${s.riddle.reward} minci!` + (s.riddle.bonusSmoke ? ' +Dymovnice!' : '');
+      $('riddle-feedback').style.color = '#4CAF50';
+      setTimeout(() => { r.style.display = 'none'; document.querySelector(`.hotspot`)?.remove(); renderHotspots(); }, 1500);
+    } else {
+      $('riddle-feedback').textContent = 'Spatne... zkus to znovu!';
+      $('riddle-feedback').style.color = '#ff5722';
+    }
+  };
+  $('riddle-input').onkeydown = (e) => { if (e.key === 'Enter') $('riddle-submit').click(); };
+}
+
+function addStreetNavBtn(text, cb) {
+  const btn = document.createElement('button');
+  btn.className = 'street-nav-btn';
+  btn.textContent = text;
+  btn.style.cssText = 'position:absolute;bottom:12px;left:50%;transform:translateX(-50%);padding:10px 24px;background:#ff9800;color:#fff;border:none;border-radius:8px;font-size:1em;cursor:pointer;z-index:15;font-weight:bold;';
+  btn.onmouseenter = () => btn.style.background = '#e68900';
+  btn.onmouseleave = () => btn.style.background = '#ff9800';
+  btn.onclick = cb;
+  $('ui').appendChild(btn);
+}
+
+function phoneHint() {
+  const hint = PHONE_HINTS[GS.currentRound];
+  showDialog('img/V_worried.png', 'Dr. Volta (telefon)', [hint]);
+}
+
+// ===================== SHOP =====================
+function goShop() {
+  showBg('img/O.jpg');
+  $('phone-btn').style.display = 'block';
+  clearHotspots();
+  const panel = $('shop-panel');
+  const grid = $('shop-grid');
+  grid.innerHTML = '';
+  panel.style.display = 'block';
+
+  const r = ROUNDS[GS.currentRound];
+  const itemsToShow = [...r.items, ...GS.lostItems.filter(id => !GS.bought.has(id))];
+
+  itemsToShow.forEach((id, i) => {
+    const data = ITEM_DATA[id];
+    const cost = r.items.includes(id) ? r.costs[r.items.indexOf(id)] : ITEM_DATA[id]._rebuyPrice || 3;
+    const div = document.createElement('div');
+    div.className = 'shop-item' + (GS.bought.has(id) ? ' bought' : '');
+    div.innerHTML = `<img src="${data.img}" alt="${data.name}"><div class="name">${data.name}</div><div class="price">${cost} minci</div>`;
+    div.onclick = () => buyItem(id, cost, div);
     grid.appendChild(div);
   });
-  document.getElementById('shopCoins').textContent=coins;
-  document.getElementById('boughtCount').textContent='Koupeno: '+bought.size+'/15';
-  document.getElementById('btnBuild').disabled=bought.size===0&&inventory.length===0;
+
+  checkShopDone();
 }
-function buyItem(item) {
-  if(bought.has(item.id)||item.price>coins) return;
-  coins-=item.price; bought.add(item.id); inventory.push(item.id); renderShop();
+
+function buyItem(id, cost, div) {
+  if (GS.bought.has(id)) return;
+  if (GS.coins < cost) {
+    showDialog('img/V_shock.png', 'Prodavac', ['Nemas dost minci! Jdi hledat dal.']);
+    return;
+  }
+  GS.coins -= cost;
+  GS.bought.add(id);
+  GS.roundBought.add(id);
+  GS.inventory.push(id);
+  if (GS.lostItems.includes(id)) GS.lostItems = GS.lostItems.filter(x => x !== id);
+  div.classList.add('bought');
+  updateHUD();
+  floatText('-' + cost, 200, 200);
+  checkShopDone();
 }
-function goToLab() {
-  document.getElementById('shopScreen').classList.remove('active');
-  document.getElementById('labScreen').classList.add('active');
-  document.getElementById('labArea').style.backgroundImage='url('+ASSETS.L1+')';
-  renderLab(); renderInventory(); renderGuideSelector();
-  document.getElementById('labCoins').textContent=coins;
-  if(inventory.length>0&&placed.size===0) showVolta('V_point','Vitej v me znicene laboratori! Poloz veci tam, kam patri.');
+
+function checkShopDone() {
+  const r = ROUNDS[GS.currentRound];
+  const allBought = r.items.every(id => GS.bought.has(id));
+  $('shop-done').style.display = allBought ? 'block' : 'none';
 }
-function goToShop() {
-  document.getElementById('labScreen').classList.remove('active');
-  document.getElementById('shopScreen').classList.add('active'); renderShop();
+
+function hideShop() {
+  $('shop-panel').style.display = 'none';
 }
-function renderLab() {
-  var la=document.getElementById('labArea');
-  la.querySelectorAll('.drop-zone,.placed-item,.ground-item').forEach(function(el){el.remove();});
-  ITEMS.forEach(function(item){
-    if(placed.has(item.id)){
-      var img=document.createElement('img'); img.className='placed-item'; img.src=item.img;
-      img.style.left=item.zone.x+'%'; img.style.top=item.zone.y+'%';
-      img.style.width=item.zone.w+'%'; img.style.height='auto';
-      img.style.maxHeight=item.zone.h+'%'; img.style.objectFit='contain';
-      la.appendChild(img);
-    } else if(inventory.includes(item.id)){
-      var z=document.createElement('div'); z.className='drop-zone'; z.dataset.itemId=item.id;
-      z.style.left=item.zone.x+'%'; z.style.top=item.zone.y+'%';
-      z.style.width=item.zone.w+'%'; z.style.height=item.zone.h+'%';
-      la.appendChild(z);
+
+function leaveShop() {
+  hideShop();
+  GS.phase = 'street_return';
+  goStreetReturn();
+}
+
+// ===================== AMBUSH =====================
+function startAmbush() {
+  const pirate = ROUNDS[GS.currentRound].pirate;
+  if (!pirate) { GS.phase = 'lab_build'; goLab(); return; }
+
+  const amb = $('ambush');
+  amb.style.display = 'flex';
+  amb.innerHTML = '<div id="ambush-title"></div><div id="ambush-timer"></div><div id="ambush-area"></div><div id="ambush-msg"></div>';
+
+  switch (pirate) {
+    case 'skripek': ambushDodge(); break;
+    case 'repak': ambushTrick(); break;
+    case 'piratka': ambushMemory(); break;
+    case 'krivak': ambushBoss(); break;
+  }
+}
+
+function endAmbush(won, msg, portraitFile, name) {
+  const portrait = 'img/' + portraitFile;
+  $('ambush').style.display = 'none';
+  if (won) GS.piratesDefeated++;
+  showDialog(portrait, name, [msg], () => {
+    GS.phase = 'lab_build';
+    goLab();
+  });
+}
+
+// --- DODGE (Skripek) ---
+function ambushDodge() {
+  $('ambush-title').textContent = 'Skripek: "S-stuj! Dej mi... co to neses?"';
+  const area = $('ambush-area');
+  const safe = Math.floor(Math.random() * 3);
+  let timeLeft = 3;
+  $('ambush-timer').textContent = timeLeft;
+  const timer = setInterval(() => {
+    timeLeft--;
+    $('ambush-timer').textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      GS.coins = Math.max(0, GS.coins - 2);
+      updateHUD();
+      endAmbush(false, 'Skripek chytil 2 mince a utekl!', 'skripek.png', 'Skripek');
+    }
+  }, 1000);
+
+  for (let i = 0; i < 3; i++) {
+    const div = document.createElement('div');
+    div.className = 'ambush-choice';
+    div.textContent = 'Sud ' + (i + 1);
+    div.style.fontSize = '1.2em';
+    if (i !== safe) div.style.animation = 'shake .3s infinite';
+    div.onclick = () => {
+      clearInterval(timer);
+      if (i === safe) {
+        endAmbush(true, 'To neni fer! Ja se te bal PRVNI!', 'skripek.png', 'Skripek');
+      } else {
+        GS.coins = Math.max(0, GS.coins - 2);
+        updateHUD();
+        endAmbush(false, 'Skripek chytil 2 mince a utekl!', 'skripek.png', 'Skripek');
+      }
+    };
+    area.appendChild(div);
+  }
+  // Add shake animation
+  const style = document.createElement('style');
+  style.textContent = '@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}';
+  area.appendChild(style);
+}
+
+// --- TRICK (Repak) ---
+function ambushTrick() {
+  $('ambush-title').innerHTML = 'Repak: "Yo no cap, poloz ten loot<br>nebo bude Ohio moment fr fr"';
+  $('ambush-timer').textContent = '';
+  const area = $('ambush-area');
+  $('ambush-msg').textContent = 'Zvol SPATNY napis a zmat Repaka! (Repak neumi cist)';
+
+  if (GS.smokebomb) {
+    const sb = document.createElement('div');
+    sb.className = 'ambush-choice';
+    sb.textContent = 'Pouzit dymovnici!';
+    sb.style.background = 'rgba(100,0,200,.3)';
+    sb.onclick = () => {
+      GS.smokebomb = false;
+      endAmbush(true, 'Dymovnice! Repak nevidel nic. +3 mince!', 'repak.png', 'Repak');
+      GS.coins += 3; updateHUD();
+    };
+    area.appendChild(sb);
+  }
+
+  const options = [{text:'STOP',correct:false},{text:'SOTP',correct:true},{text:'TPOS',correct:true}];
+  options.sort(() => Math.random() - .5);
+  options.forEach(o => {
+    const div = document.createElement('div');
+    div.className = 'ambush-choice';
+    div.textContent = o.text;
+    div.style.fontSize = '1.5em';
+    div.onclick = () => {
+      if (o.correct) {
+        GS.coins += 3; updateHUD();
+        endAmbush(true, 'Repak: "Co... co to je za slovo?!" *zmatek* Upustil 3 mince!', 'repak.png', 'Repak');
+      } else {
+        endAmbush(false, 'Repak: "Yo! Ja to precetl! Jsem sigma!" *tanci* Agent se proklouznul.', 'repak.png', 'Repak');
+      }
+    };
+    area.appendChild(div);
+  });
+}
+
+// --- MEMORY (Piratka) ---
+function ambushMemory() {
+  $('ambush-title').textContent = 'Piratka: "Zahrajeme si hru. Vyhras - projdes."';
+  $('ambush-timer').textContent = '';
+  const area = $('ambush-area');
+  $('ambush-msg').textContent = 'Zapamatuj si obrazky...';
+
+  const myItems = [...GS.roundBought];
+  const missing = myItems[Math.floor(Math.random() * myItems.length)];
+  const shown = myItems.filter(x => x !== missing);
+  // Add pirate items
+  const pirateImgs = ['skripek','repak'];
+  shown.push(...pirateImgs.map(p => '_pirate_' + p));
+  // Show phase
+  shown.forEach(id => {
+    const div = document.createElement('div');
+    div.className = 'ambush-choice';
+    if (id.startsWith('_pirate_')) {
+      div.innerHTML = `<img src="img/${id.replace('_pirate_','')}.png" style="width:60px;height:60px;object-fit:contain;">`;
+    } else {
+      div.innerHTML = `<img src="${ITEM_DATA[id].img}" style="width:60px;height:60px;object-fit:contain;">`;
+    }
+    area.appendChild(div);
+  });
+
+  setTimeout(() => {
+    area.innerHTML = '';
+    $('ambush-msg').textContent = 'Ktery z TVYCH predmetu NEBYL zobrazen?';
+    // Show 3 options: all myItems
+    myItems.forEach(id => {
+      const div = document.createElement('div');
+      div.className = 'ambush-choice';
+      div.innerHTML = `<img src="${ITEM_DATA[id].img}" style="width:50px;height:50px;object-fit:contain;"><br><span style="font-size:.8em">${ITEM_DATA[id].name}</span>`;
+      div.onclick = () => {
+        area.querySelectorAll('.ambush-choice').forEach(c => c.style.pointerEvents = 'none');
+        if (id === missing) {
+          GS.coins += 2; updateHUD();
+          endAmbush(true, 'Piratka: "Hmm... jsi dobry. +2 mince jako respekt."', 'piratka.png', 'Piratka');
+        } else {
+          // Lose cheapest unbought item
+          const cheapest = myItems.reduce((a, b) => {
+            const r = ROUNDS[GS.currentRound];
+            const ca = r.costs[r.items.indexOf(a)] || 99;
+            const cb = r.costs[r.items.indexOf(b)] || 99;
+            return ca < cb ? a : b;
+          });
+          GS.inventory = GS.inventory.filter(x => x !== cheapest);
+          GS.bought.delete(cheapest);
+          GS.lostItems.push(cheapest);
+          endAmbush(false, `Piratka vzala ${ITEM_DATA[cheapest].name}! Musis ho znovu koupit.`, 'piratka.png', 'Piratka');
+        }
+      };
+      area.appendChild(div);
+    });
+  }, 4000);
+}
+
+// --- BOSS (Krivak) ---
+function ambushBoss() {
+  $('ambush-title').textContent = 'Krivak: "Moji lide jsou NESCHOPNI. Tak to udelam SAM."';
+  $('ambush-timer').textContent = '';
+  $('ambush-msg').textContent = '';
+  const area = $('ambush-area');
+
+  // Keksik interruption
+  setTimeout(() => {
+    $('ambush-msg').innerHTML = 'Keksik: "SAM! SAM! SAAAAM!"<br>Krivak: "TICHO, ptaku!"';
+    setTimeout(() => bossPhase1(), 2000);
+  }, 1500);
+
+  function bossPhase1() {
+    $('ambush-title').textContent = 'Faze 1: Uhni sitime!';
+    $('ambush-msg').textContent = 'Klikni na OPACNOU stranu nez leti sit! (3 site)';
+    area.innerHTML = '';
+    let nets = 0;
+    function throwNet() {
+      if (nets >= 3) { bossPhase2(); return; }
+      nets++;
+      area.innerHTML = '';
+      const dirs = ['Vlevo','Stred','Vpravo'];
+      const netFrom = Math.floor(Math.random() * 3);
+      $('ambush-timer').textContent = 'Sit leti z: ' + dirs[netFrom] + '!';
+      let answered = false;
+      const tmr = setTimeout(() => {
+        if (!answered) { answered = true; GS.coins = Math.max(0, GS.coins - 1); updateHUD(); throwNet(); }
+      }, 2500);
+      dirs.forEach((d, i) => {
+        const div = document.createElement('div');
+        div.className = 'ambush-choice';
+        div.textContent = d;
+        div.onclick = () => {
+          if (answered) return;
+          answered = true;
+          clearTimeout(tmr);
+          if (i !== netFrom) {
+            div.style.borderColor = '#4CAF50';
+          } else {
+            div.style.borderColor = '#f44336';
+            GS.coins = Math.max(0, GS.coins - 1); updateHUD();
+          }
+          setTimeout(throwNet, 600);
+        };
+        area.appendChild(div);
+      });
+    }
+    throwNet();
+  }
+
+  function bossPhase2() {
+    area.innerHTML = '';
+    $('ambush-title').textContent = 'Faze 2: Matematicky kviz!';
+    $('ambush-timer').textContent = '';
+    $('ambush-msg').textContent = 'Kolik je 7 x 8?';
+    const opts = [54, 56, 58];
+    opts.forEach(n => {
+      const div = document.createElement('div');
+      div.className = 'ambush-choice';
+      div.textContent = n;
+      div.style.fontSize = '1.5em';
+      div.onclick = () => {
+        area.querySelectorAll('.ambush-choice').forEach(c => c.style.pointerEvents = 'none');
+        if (n === 56) {
+          div.style.borderColor = '#4CAF50';
+          $('ambush-msg').textContent = 'Spravne!';
+          setTimeout(bossPhase3, 1200);
+        } else {
+          div.style.borderColor = '#f44336';
+          $('ambush-msg').textContent = 'Skripek krice: "PADESATSEST!" Krivak se otoci... vyuzij to!';
+          setTimeout(bossPhase3, 2000);
+        }
+      };
+      area.appendChild(div);
+    });
+  }
+
+  function bossPhase3() {
+    area.innerHTML = '';
+    $('ambush-title').textContent = 'Faze 3: Tri cesty!';
+    $('ambush-timer').textContent = '';
+    $('ambush-msg').textContent = 'Kazdou cestou stoji pirat. Klikni na nej a projdi!';
+    const paths = [
+      {name:'Skripek',img:'img/skripek.png',msg:'Skripek uvidel tvuj stin a utekl!',coins:0},
+      {name:'Repak',img:'img/repak.png',msg:'Repakovi zvonil telefon - rozptyleny!',coins:0},
+      {name:'Piratka',img:'img/piratka.png',msg:'Piratka: "Dnes te pustim." +3 mince!',coins:3}
+    ];
+    paths.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'ambush-choice';
+      div.innerHTML = `<img src="${p.img}" style="width:50px;height:50px;object-fit:contain;"><br><span style="font-size:.75em">${p.name}</span>`;
+      div.onclick = () => {
+        GS.coins += p.coins; updateHUD();
+        endAmbush(true, p.msg, 'krivak.png', 'Krivak (porazen)');
+      };
+      area.appendChild(div);
+    });
+  }
+}
+
+// ===================== LAB BUILD =====================
+function goLab() {
+  showBg('img/L1.jpg');
+  $('phone-btn').style.display = 'none';
+  clearHotspots();
+  hideShop();
+
+  // Show lab items tray
+  const tray = $('lab-items');
+  tray.innerHTML = '';
+  tray.style.display = 'block';
+  activeDropZones = [];
+
+  // Remove old drop zones
+  document.querySelectorAll('.drop-zone,.placed-item').forEach(el => {
+    if (!el.dataset.placed) el.remove();
+  });
+
+  // Show items to place this round
+  const roundItems = GS.inventory.filter(id => !GS.placed.has(id));
+  if (roundItems.length === 0) { finishRound(); return; }
+
+  roundItems.forEach(id => {
+    const data = ITEM_DATA[id];
+    // Drop zone
+    const zone = document.createElement('div');
+    zone.className = 'drop-zone';
+    zone.style.cssText = `left:${data.zone.x}%;top:${data.zone.y}%;width:${data.zone.w}%;height:${data.zone.h}%;`;
+    zone.dataset.itemId = id;
+    $('ui').appendChild(zone);
+    activeDropZones.push(zone);
+
+    // Tray item
+    const el = document.createElement('div');
+    el.className = 'lab-item';
+    el.dataset.itemId = id;
+    el.innerHTML = `<img src="${data.img}" alt="${data.name}">`;
+    el.setAttribute('draggable', 'true');
+    setupDrag(el, id);
+    tray.appendChild(el);
+  });
+
+  // Also re-show already placed items
+  GS.placed.forEach(id => {
+    const data = ITEM_DATA[id];
+    if (!document.querySelector(`.placed-item[data-id="${id}"]`)) {
+      const pi = document.createElement('div');
+      pi.className = 'placed-item';
+      pi.dataset.id = id;
+      pi.dataset.placed = '1';
+      pi.style.cssText = `left:${data.zone.x}%;top:${data.zone.y}%;width:${data.zone.w}%;height:${data.zone.h}%;`;
+      pi.innerHTML = `<img src="${data.img}">`;
+      $('ui').appendChild(pi);
+    }
+  });
+
+  showDialog('img/V_point.png', 'Dr. Volta', ['Skvele! Ted umisti predmety na spravna mista. Tahni a pust!']);
+}
+
+function setupDrag(el, id) {
+  // Mouse
+  el.addEventListener('mousedown', e => startDragItem(e, el, id));
+  // Touch
+  el.addEventListener('touchstart', e => { e.preventDefault(); startDragItem(e.touches[0], el, id); }, {passive:false});
+}
+
+function startDragItem(e, el, id) {
+  dragItem = {el, id};
+  el.classList.add('dragging');
+  const clone = el.cloneNode(true);
+  clone.id = 'drag-clone';
+  clone.style.cssText = 'position:absolute;width:70px;height:70px;z-index:100;pointer-events:none;opacity:.8;';
+  clone.style.left = (e.clientX - game.getBoundingClientRect().left - 35) + 'px';
+  clone.style.top = (e.clientY - game.getBoundingClientRect().top - 35) + 'px';
+  $('ui').appendChild(clone);
+
+  function onMove(ev) {
+    const pt = ev.touches ? ev.touches[0] : ev;
+    const rect = game.getBoundingClientRect();
+    clone.style.left = (pt.clientX - rect.left - 35) + 'px';
+    clone.style.top = (pt.clientY - rect.top - 35) + 'px';
+    // Highlight zones
+    activeDropZones.forEach(z => {
+      const zr = z.getBoundingClientRect();
+      const inside = pt.clientX >= zr.left && pt.clientX <= zr.right && pt.clientY >= zr.top && pt.clientY <= zr.bottom;
+      z.classList.toggle('highlight', inside);
+    });
+  }
+
+  function onEnd(ev) {
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onEnd);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend', onEnd);
+    clone.remove();
+    el.classList.remove('dragging');
+
+    const pt = ev.changedTouches ? ev.changedTouches[0] : ev;
+    let dropped = null;
+    activeDropZones.forEach(z => {
+      const zr = z.getBoundingClientRect();
+      if (pt.clientX >= zr.left && pt.clientX <= zr.right && pt.clientY >= zr.top && pt.clientY <= zr.bottom) {
+        dropped = z;
+      }
+      z.classList.remove('highlight');
+    });
+
+    if (dropped) {
+      const targetId = dropped.dataset.itemId;
+      if (targetId === id) {
+        // Check deps
+        const deps = ITEM_DATA[id].deps;
+        const depsOk = deps.every(d => GS.placed.has(d));
+        if (!depsOk) {
+          showDialog('img/V_shock.png', 'Dr. Volta', [ITEM_DATA[id].vFail + ' Nejdriv umisti: ' + deps.map(d => ITEM_DATA[d].name).join(', ')]);
+          return;
+        }
+        placeItem(id, dropped);
+      } else {
+        showDialog('img/V_shock.png', 'Dr. Volta', [ITEM_DATA[targetId]?.vFail || 'Tohle sem nepatri...']);
+      }
+    }
+    dragItem = null;
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchmove', onMove, {passive:false});
+  document.addEventListener('touchend', onEnd);
+}
+
+function placeItem(id, zone) {
+  GS.placed.add(id);
+  const data = ITEM_DATA[id];
+
+  // Visual
+  const pi = document.createElement('div');
+  pi.className = 'placed-item';
+  pi.dataset.id = id;
+  pi.dataset.placed = '1';
+  pi.style.cssText = `left:${data.zone.x}%;top:${data.zone.y}%;width:${data.zone.w}%;height:${data.zone.h}%;`;
+  pi.innerHTML = `<img src="${data.img}">`;
+  $('ui').appendChild(pi);
+
+  // Remove from tray and zones
+  zone.remove();
+  activeDropZones = activeDropZones.filter(z => z !== zone);
+  const trayItem = document.querySelector(`#lab-items .lab-item[data-item-id="${id}"]`);
+  if (trayItem) trayItem.remove();
+
+  // Success dialog
+  showDialog('img/V_happy.png', 'Dr. Volta', [data.vOk], () => {
+    // Check if all done this round
+    const remaining = GS.inventory.filter(i => !GS.placed.has(i));
+    if (remaining.length === 0 || activeDropZones.length === 0) {
+      finishRound();
     }
   });
 }
-function renderInventory() {
-  var bar=document.getElementById('inventoryBar'); bar.innerHTML='';
-  inventory.filter(function(id){return !placed.has(id);}).forEach(function(id){
-    var item=ITEMS.find(function(i){return i.id===id;});
-    var div=document.createElement('div'); div.className='inv-item'; div.dataset.itemId=id;
-    div.innerHTML='<img src="'+item.img+'" alt="'+item.name+'">';
-    div.addEventListener('touchstart',function(e){e.preventDefault();startDrag(e.touches[0].clientX,e.touches[0].clientY,id);},{passive:false});
-    div.addEventListener('mousedown',function(e){e.preventDefault();startDrag(e.clientX,e.clientY,id);});
-    bar.appendChild(div);
+
+function finishRound() {
+  $('lab-items').style.display = 'none';
+  document.querySelectorAll('.drop-zone').forEach(z => z.remove());
+  GS.currentRound++;
+
+  if (GS.currentRound >= 5) {
+    showCompletion();
+  } else {
+    showDialog('img/V_happy.png', 'Dr. Volta', ['Vyborne! Jdeme na dalsi kolo.'], () => {
+      startRound();
+    });
+  }
+}
+
+function hideLab() {
+  $('lab-items').style.display = 'none';
+  document.querySelectorAll('.drop-zone').forEach(z => z.remove());
+}
+
+// ===================== COMPLETION =====================
+function showCompletion() {
+  showBg('img/L2.jpg');
+  // Show all placed items
+  GS.placed.forEach(id => {
+    const data = ITEM_DATA[id];
+    if (!document.querySelector(`.placed-item[data-id="${id}"]`)) {
+      const pi = document.createElement('div');
+      pi.className = 'placed-item';
+      pi.dataset.id = id;
+      pi.style.cssText = `left:${data.zone.x}%;top:${data.zone.y}%;width:${data.zone.w}%;height:${data.zone.h}%;`;
+      pi.innerHTML = `<img src="${data.img}">`;
+      $('ui').appendChild(pi);
+    }
+  });
+
+  showDialog('img/V_happy.png', 'Dr. Volta', ['Agente K... zvladl jsi to. Laborator je zpet!'], () => {
+    const comp = $('completion');
+    comp.style.display = 'flex';
+    const totalDisc = STREET_HOTSPOTS.flat().filter(h => !h.hidden).length;
+    const found = GS.discoveries.size;
+    $('comp-stats').innerHTML = `
+      <div class="stat">Zbyvajici mince: ${GS.coins}</div>
+      <div class="stat">Objevy: ${found} / ${totalDisc}</div>
+      <div class="stat">Porazeni pirati: ${GS.piratesDefeated} / 4</div>
+      <div class="stat" style="margin-top:10px;color:#ffd700;font-weight:bold;">Laborator Dr. Volty je kompletni!</div>
+    `;
   });
 }
 
-function startDrag(cx,cy,itemId) {
-  dragItem=itemId; var item=ITEMS.find(function(i){return i.id===itemId;});
-  dragClone=document.createElement('img'); dragClone.src=item.img;
-  dragClone.style.cssText='position:fixed;width:80px;height:80px;object-fit:contain;pointer-events:none;z-index:100;opacity:0.85;filter:drop-shadow(3px 5px 5px rgba(0,0,0,0.5))';
-  document.body.appendChild(dragClone); moveDrag(cx,cy);
-  var el=document.querySelector('.inv-item[data-item-id="'+itemId+'"]');
-  if(el) el.classList.add('dragging');
-  highlightZones(itemId);
-  document.addEventListener('mousemove',onMM); document.addEventListener('mouseup',onMU);
-  document.addEventListener('touchmove',onTM,{passive:false}); document.addEventListener('touchend',onTE);
-}
-function moveDrag(cx,cy){if(dragClone){dragClone.style.left=(cx-40)+'px';dragClone.style.top=(cy-40)+'px';}}
-function onMM(e){moveDrag(e.clientX,e.clientY);}
-function onTM(e){e.preventDefault();moveDrag(e.touches[0].clientX,e.touches[0].clientY);}
-function endDrag(cx,cy) {
-  document.removeEventListener('mousemove',onMM); document.removeEventListener('mouseup',onMU);
-  document.removeEventListener('touchmove',onTM); document.removeEventListener('touchend',onTE);
-  if(dragClone){dragClone.remove();dragClone=null;}
-  var el=document.querySelector('.inv-item.dragging'); if(el) el.classList.remove('dragging');
-  clearHighlights(); if(!dragItem) return;
-  var la=document.getElementById('labArea'), rect=la.getBoundingClientRect();
-  var x=((cx-rect.left)/rect.width)*100, y=((cy-rect.top)/rect.height)*100;
-  tryPlace(dragItem,x,y); dragItem=null;
-}
-function onMU(e){endDrag(e.clientX,e.clientY);}
-function onTE(e){endDrag(e.changedTouches[0].clientX,e.changedTouches[0].clientY);}
-function highlightZones(id){document.querySelectorAll('.drop-zone').forEach(function(z){if(z.dataset.itemId===id)z.classList.add('highlight');});}
-function clearHighlights(){document.querySelectorAll('.drop-zone.highlight').forEach(function(z){z.classList.remove('highlight');});}
-
-function tryPlace(itemId,dropX,dropY) {
-  var item=ITEMS.find(function(i){return i.id===itemId;}); if(!item) return;
-  var z=item.zone;
-  var inZone=dropX>=z.x-5&&dropX<=z.x+z.w+5&&dropY>=z.y-5&&dropY<=z.y+z.h+5;
-  if(!inZone) return;
-  var depsOk=item.deps.every(function(d){return placed.has(d);});
-  if(!depsOk){ showVolta('V_shock',item.vFail||'Tohle jeste ne. Nejdriv neco jineho.'); showGroundItem(item,dropX,dropY); return; }
-  placed.add(itemId); showVolta('V_happy',item.vOk);
-  renderLab(); renderInventory();
-  var els=document.querySelectorAll('.placed-item'); if(els.length) els[els.length-1].classList.add('plop');
-  maybePirateEncounter();
-  if(placed.size===ITEMS.length) setTimeout(showComplete,2000);
-}
-function showGroundItem(item,x,y) {
-  var la=document.getElementById('labArea'), img=document.createElement('img');
-  img.className='ground-item'; img.src=item.img;
-  img.style.left=(x-5)+'%'; img.style.bottom='5%'; img.style.width='8%'; img.style.objectFit='contain';
-  la.appendChild(img); setTimeout(function(){img.remove();},2000);
-}
-function showVolta(pose,text) {
-  var g=GUIDES[currentGuide], src;
-  if(g&&g.pose&&g.pose[pose.replace('V_','')]) src=g.pose[pose.replace('V_','')];
-  else if(g) src=g.img;
-  else src=ASSETS.V_point;
-  showGuideMessage(src,text);
-}
-function showComplete() {
-  document.getElementById('labScreen').classList.remove('active');
-  var cs=document.getElementById('completeScreen');
-  cs.style.backgroundImage='url('+ASSETS.L2+')'; cs.classList.add('active');
-  playVideo('lab');
-}
-function addCoins(n){coins+=n;if(coins<0)coins=0;document.getElementById('shopCoins').textContent=coins;document.getElementById('labCoins').textContent=coins;renderShop();}
-function resetGame() {
-  coins=40; bought.clear(); placed.clear(); inventory=[]; pirateChance=0;
-  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
-  document.getElementById('shopScreen').classList.add('active');
-  document.getElementById('pirateEncounter').classList.add('hidden');
-  renderShop();
+function playLabVideo() {
+  $('completion').style.display = 'none';
+  const overlay = $('video-overlay');
+  overlay.style.display = 'flex';
+  const vid = $('game-video');
+  vid.src = 'https://ydzlvkgrjkytalgcnsie.supabase.co/storage/v1/object/public/media/minihra13-lab.mp4';
+  vid.play().catch(() => {});
+  vid.onended = () => { overlay.style.display = 'none'; };
 }
 
-// INIT
-document.getElementById('shopScreen').style.backgroundImage='url('+ASSETS.O+')';
-document.getElementById('coinIconShop').src=ASSETS.C23;
-document.getElementById('coinIconLab').src=ASSETS.C23;
-renderShop();
-playVideo('ulice');
-document.addEventListener('keydown',function(e){if(e.key==='m'||e.key==='M')addCoins(50);if(e.key==='r'||e.key==='R')resetGame();});
+function skipVideo() {
+  $('game-video').pause();
+  $('video-overlay').style.display = 'none';
+}
+
+// ===================== INIT =====================
+window.addEventListener('load', () => {
+  updateHUD();
+  // Intro video then start
+  const overlay = $('video-overlay');
+  overlay.style.display = 'flex';
+  const vid = $('game-video');
+  vid.src = 'https://ydzlvkgrjkytalgcnsie.supabase.co/storage/v1/object/public/media/minihra1-ulice.mp4';
+  vid.play().catch(() => { overlay.style.display = 'none'; startGame(); });
+  vid.onended = () => { overlay.style.display = 'none'; startGame(); };
+});
 </script>
 </body>
 </html>
