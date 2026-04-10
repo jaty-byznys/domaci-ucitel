@@ -329,10 +329,20 @@ function nextPhase() {
 }
 
 // ===================== STREET =====================
+function hidePlacedItems() {
+  document.querySelectorAll('.placed-item').forEach(el => el.style.display = 'none');
+}
+function showPlacedItems() {
+  document.querySelectorAll('.placed-item').forEach(el => el.style.display = '');
+}
+
 function goStreet() {
   showBg('img/U.jpg');
   $('phone-btn').style.display = 'block';
   clearHotspots();
+  hidePlacedItems();
+  hideLab();
+  hideShop();
   renderHotspots();
   // Always show nav button - it stays even after dialogs
   addStreetNavBtn('Do obchodu >', () => { GS.phase = 'shop'; goShop(); });
@@ -343,6 +353,9 @@ function goStreetReturn() {
   showBg('img/U.jpg');
   $('phone-btn').style.display = 'block';
   clearHotspots();
+  hidePlacedItems();
+  hideLab();
+  hideShop();
   renderHotspots();
 
   const pirate = ROUNDS[GS.currentRound].pirate;
@@ -457,6 +470,8 @@ function goShop() {
   showBg('img/O.jpg');
   $('phone-btn').style.display = 'block';
   clearHotspots();
+  hidePlacedItems();
+  hideLab();
   const panel = $('shop-panel');
   const grid = $('shop-grid');
   grid.innerHTML = '';
@@ -791,6 +806,7 @@ function goLab() {
   $('phone-btn').style.display = 'none';
   clearHotspots();
   hideShop();
+  showPlacedItems();
 
   // Show lab items tray
   const tray = $('lab-items');
