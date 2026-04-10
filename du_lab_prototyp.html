@@ -17,12 +17,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',sans-ser
 #hud img{width:24px;height:24px;}
 
 /* Dialog */
-#dialog{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);color:#fff;padding:10px;display:none;z-index:60;min-height:100px;}
+#dialog{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);color:#fff;padding:14px;display:none;z-index:60;min-height:100px;cursor:pointer;}
 #dialog-inner{display:flex;align-items:flex-start;gap:10px;}
 #dialog-portrait{width:70px;height:70px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,.1);flex-shrink:0;}
 #dialog-text{flex:1;font-size:.95em;line-height:1.4;padding:6px 0;min-height:50px;}
 #dialog-name{font-weight:bold;color:#ffd700;margin-bottom:4px;font-size:.85em;}
-#dialog-continue{position:absolute;bottom:8px;right:14px;font-size:.75em;color:#aaa;animation:blink 1s infinite;}
+#dialog-continue{position:absolute;bottom:8px;right:14px;font-size:1.1em;color:#ffd700;animation:blink 1s infinite;cursor:pointer;padding:8px 16px;background:rgba(255,215,0,0.15);border-radius:6px;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 
 /* Phone button */
@@ -347,14 +347,13 @@ function goStreetReturn() {
 
   const pirate = ROUNDS[GS.currentRound].pirate;
   if (GS.currentRound === 0) {
-    // Tutorial: Skripek peeks
+    // Tutorial: Skripek peeks then nav button appears
+    addStreetNavBtn('Zpet do laboratore >', () => { GS.phase = 'lab_build'; goLab(); });
     setTimeout(() => {
-      showDialog('img/skripek.png', 'Skripek', ['*vykukne zpoza rohu*','...a utek!'], () => {
-        addStreetNavBtn('Zpet do laboratore', () => { GS.phase = 'lab_build'; goLab(); });
-      });
+      showDialog('img/skripek.png', 'Skripek', ['*vykukne zpoza rohu*','AAAA! ...to je ten agent!','...utek!'], null);
     }, 800);
   } else {
-    addStreetNavBtn('Zpet do laboratore', () => {
+    addStreetNavBtn('Zpet do laboratore >', () => {
       GS.phase = 'ambush';
       startAmbush();
     });
@@ -370,11 +369,13 @@ function renderHotspots() {
   if (!spots) return;
   spots.forEach(s => {
     if (GS.discoveries.has(s.id)) return;
-    if (s.hidden) return; // revealed by chain
+    if (s.hidden) return;
     const btn = document.createElement('button');
     btn.className = 'hotspot' + (s.cls ? ' ' + s.cls : '');
     btn.style.cssText = `left:${s.x}%;top:${s.y}%;width:${s.w}%;height:${s.h}%;`;
-    if (!s.cls) btn.style.cursor = 'help';
+    // Add label so player sees something
+    const label = s.riddle ? '?' : s.coins > 0 ? '!' : '...';
+    btn.innerHTML = `<span style="font-size:1.5em;color:#ffd700;text-shadow:0 0 6px rgba(0,0,0,.8)">${label}</span>`;
     btn.onclick = (e) => clickHotspot(s, e, btn);
     $('ui').appendChild(btn);
   });
