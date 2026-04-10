@@ -461,7 +461,8 @@ function startStreetRun(dir) {
   S.streetDir = dir;
   S.phase = dir === 'to_shop' ? 'street_to_shop' : 'street_to_lab';
   S.distance = 0;
-  S.maxDistance = 600 + S.round * 50;
+  S.maxDistance = 3000 + S.round * 500; // ~3 minutes per run, longer each round
+  S.finishing = false; // smooth finish flag
   S.obstacles = [];
   S.coinPickups = [];
   S.particles = [];
@@ -472,7 +473,7 @@ function startStreetRun(dir) {
   S.onGround = true;
   S.hitFlash = 0;
   S.invincible = 0;
-  S.scrollSpeed = 3.5 + S.round * 0.7 + (dir === 'to_lab' ? 0.5 : 0);
+  S.scrollSpeed = 4 + S.round * 0.5 + (dir === 'to_lab' ? 0.8 : 0);
   S.frame = 0;
   lastObstacleX = S.W + 200;
   lastCoinX = S.W;
@@ -599,10 +600,20 @@ function updateStreet(dt) {
   }
   S.particles = S.particles.filter(p => p.life > 0);
 
-  // Check if reached end
-  if (S.distance >= S.maxDistance) {
-    if (S.streetDir === 'to_shop') openShop();
-    else openLab();
+  // Smooth finish: slow down near end
+  if (S.distance >= S.maxDistance * 0.9 && !S.finishing) {
+    S.finishing = true;
+  }
+  if (S.finishing) {
+    S.scrollSpeed = Math.max(0.5, S.scrollSpeed * 0.98); // decelerate
+  }
+  // Finish when nearly stopped
+  if (S.distance >= S.maxDistance && S.scrollSpeed < 1) {
+    // Wait until Agent K lands
+    if (S.onGround) {
+      if (S.streetDir === 'to_shop') openShop();
+      else openLab();
+    }
   }
 }
 
