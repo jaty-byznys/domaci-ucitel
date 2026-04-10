@@ -73,10 +73,39 @@ canvas{display:block;width:100%;height:100%;}
 </div>
 <script>
 // ============================================================
-// AGENT K - STREET RUNNER + LAB BUILDER
+// AGENT K - STREET RUNNER + LAB BUILDER (5 LEVEL TYPES)
 // ============================================================
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
+
+// --- LEVEL DEFINITIONS ---
+const LEVELS = [
+  { name:'UTEK!', intro:'Musim vypadnout, nez me chyti!',
+    skyColors:['#1a1a3e','#2d1b69','#0d0d2b'], groundColor:'#3a3a4a',
+    buildingColors:['#222','#333','#2a2a3a'], hasChaser:true,
+    scrollSpeed:4, obstacleRate:0.025, types:['barrel','crate','clothesline'],
+    hasStars:true, hasMoon:false },
+  { name:'KLICKOVANI', intro:'Tolik piratu... musim proklouznut jako stin.',
+    skyColors:['#87CEEB','#FFD700','#FF8C00'], groundColor:'#8B7355',
+    buildingColors:['#D2B48C','#DEB887','#C4A882'], hasChaser:false,
+    scrollSpeed:3, obstacleRate:0.035, types:['standing_pirate','walking_pirate','sign'],
+    hasStars:false, hasMoon:false },
+  { name:'STRECHY', intro:'Pujdu po strechach. Tam me necekaji.',
+    skyColors:['#FF6B35','#FF4500','#8B0000'], groundColor:'#8B4513',
+    buildingColors:['#A0522D','#8B4513','#654321'], hasChaser:false,
+    scrollSpeed:3.5, obstacleRate:0.022, hasPlatforms:true,
+    types:['chimney','pigeon'], hasStars:false, hasMoon:false },
+  { name:'PRISTAV', intro:'Pres pristav to bude kratsi... snad.',
+    skyColors:['#0a0a2e','#1a1a4e','#000020'], groundColor:'#4a6fa5',
+    buildingColors:['#5C4033','#3E2723','#4E342E'], hasChaser:false,
+    scrollSpeed:3.5, obstacleRate:0.022, hasPlatforms:true, hasWater:true,
+    types:['barrel','seagull','anchor'], hasStars:true, hasMoon:true },
+  { name:'KRIVAK', intro:'Vsechno nebo nic.',
+    skyColors:['#2c2c2c','#1a1a1a','#3d3d3d'], groundColor:'#555',
+    buildingColors:['#333','#222','#444'], hasChaser:true,
+    scrollSpeed:5, obstacleRate:0.03, hasLightning:true,
+    types:['barrel','skripek','parrot','net'], hasStars:false, hasMoon:false },
+];
 
 // --- ITEMS ---
 const ITEMS = [
@@ -115,7 +144,7 @@ const VOLTA_QUOTES = [
 
 // --- GAME STATE ---
 const S = {
-  coins: 40, round: 0, maxRounds: 4,
+  coins: 40, round: 0, maxRounds: 5,
   placedItems: JSON.parse(localStorage.getItem('labPlaced') || '[]'),
   boughtItems: JSON.parse(localStorage.getItem('labBought') || '[]'),
   backpack: [],
@@ -124,14 +153,16 @@ const S = {
   onGround: true, frame: 0,
   scrollSpeed: 3.5, distance: 0, maxDistance: 800,
   obstacles: [], coinPickups: [], particles: [],
-  phase: 'title', // title, street_to_shop, shop, street_to_lab, lab, complete
+  phase: 'title',
   hitFlash: 0, invincible: 0,
   // background
   bgOffset1: 0, bgOffset2: 0, bgOffset3: 0,
-  // buildings
   buildings: [],
-  // street goal
   streetDir: 'to_shop',
+  // level-specific
+  level: null, platforms: [], lastPlatformIdx: 0,
+  chaserX: -100, introTimer: 0, introAlpha: 0,
+  lightningTimer: 0, lightningFlash: 0,
   // canvas
   W: 800, H: 500, groundY: 0, scale: 1,
 };
@@ -140,8 +171,7 @@ const S = {
 function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  S.W = canvas.width;
-  S.H = canvas.height;
+  S.W = canvas.width; S.H = canvas.height;
   S.groundY = S.H * 0.75;
   S.scale = Math.min(S.W / 800, S.H / 500);
 }
@@ -151,33 +181,76 @@ resize();
 // --- GENERATE BUILDINGS ---
 function generateBuildings() {
   S.buildings = [];
+  const lvl = S.level || LEVELS[0];
   let x = 0;
   while (x < S.W * 3) {
     const w = 60 + Math.random() * 100;
     const h = 80 + Math.random() * 150;
-    const hue = Math.floor(Math.random() * 360);
-    S.buildings.push({ x, w, h, color: `hsl(${hue},30%,25%)`, windows: Math.floor(Math.random()*6)+2 });
+    const ci = Math.floor(Math.random() * lvl.buildingColors.length);
+    S.buildings.push({ x, w, h, color: lvl.buildingColors[ci],
+      windows: Math.floor(Math.random()*6)+2 });
     x += w + 10 + Math.random() * 40;
   }
 }
 generateBuildings();
 
+// --- GENERATE PLATFORMS (levels 3 & 4) ---
+function generatePlatforms() {
+  S.platforms = [];
+  let x = 0;
+  const isHarbor = S.level && S.level.hasWater;
+  const maxX = S.maxDistance * 8;
+  // Start with a wide starting platform
+  S.platforms.push({ x: 0, w: 200, y: S.groundY });
+  x = 200;
+  while (x < maxX) {
+    const w = 80 + Math.random() * 120;
+    const gap = isHarbor ? (50 + Math.random() * 30) : (60 + Math.random() * 40);
+    const yOff = isHarbor ? (Math.random() * 10 - 5) : (Math.random() * 15 - 7);
+    S.platforms.push({ x, w, y: S.groundY + yOff });
+    x += w + gap;
+  }
+  S.lastPlatformIdx = 0;
+}
+
 // --- SPAWN ---
-let lastObstacleX = S.W + 300;
-let lastCoinX = S.W;
+let lastObstacleX = 0;
+let lastCoinX = 0;
 
 function spawnObstacle() {
-  const types = ['skripek','barrel','parrot','net'];
-  const weights = S.round < 2 ? [3,3,2,1] : [2,2,3,2];
-  const total = weights.reduce((a,b)=>a+b,0);
-  let r = Math.random() * total, type = types[0];
-  for (let i = 0; i < types.length; i++) { r -= weights[i]; if (r <= 0) { type = types[i]; break; } }
+  const lvl = S.level || LEVELS[0];
+  const types = lvl.types;
+  const type = types[Math.floor(Math.random() * types.length)];
   const gy = S.groundY;
   let ob = { type, x: S.W + 50, y: gy, w: 30, h: 40, frame: 0 };
-  if (type === 'skripek') { ob.w = 24; ob.h = 45; ob.y = gy; }
-  if (type === 'barrel') { ob.w = 30; ob.h = 30; ob.y = gy; }
-  if (type === 'parrot') { ob.w = 24; ob.h = 24; ob.y = gy - 80 - Math.random()*40; ob.flying = true; }
-  if (type === 'net') { ob.w = 50; ob.h = 20; ob.y = gy; }
+
+  if (type === 'barrel') { ob.w = 30; ob.h = 30; }
+  else if (type === 'crate') { ob.w = 36; ob.h = 40; }
+  else if (type === 'clothesline') { ob.w = 60; ob.h = 20; ob.y = gy - 80; ob.flying = true; }
+  else if (type === 'standing_pirate') { ob.w = 24; ob.h = 50; }
+  else if (type === 'walking_pirate') { ob.w = 24; ob.h = 45; ob.walkDir = 1; ob.walkRange = 60; ob.startX = S.W + 50; }
+  else if (type === 'sign') { ob.w = 40; ob.h = 20; ob.y = gy - 75; ob.flying = true; }
+  else if (type === 'chimney') { ob.w = 20; ob.h = 35; }
+  else if (type === 'pigeon') { ob.w = 20; ob.h = 16; ob.y = gy - 70 - Math.random()*30; ob.flying = true; }
+  else if (type === 'seagull') { ob.w = 24; ob.h = 16; ob.y = gy - 75 - Math.random()*25; ob.flying = true; }
+  else if (type === 'anchor') { ob.w = 20; ob.h = 50; ob.y = gy - 60; ob.flying = true; }
+  else if (type === 'skripek') { ob.w = 24; ob.h = 45; }
+  else if (type === 'parrot') { ob.w = 24; ob.h = 24; ob.y = gy - 80 - Math.random()*40; ob.flying = true; }
+  else if (type === 'net') { ob.w = 50; ob.h = 20; }
+
+  // For platform levels, place ground obstacles on platforms
+  if (lvl.hasPlatforms && !ob.flying) {
+    const visPlats = S.platforms.filter(p => {
+      const px = p.x - S.bgOffset3;
+      return px > S.W * 0.5 && px < S.W + 200;
+    });
+    if (visPlats.length > 0) {
+      const plat = visPlats[Math.floor(Math.random() * visPlats.length)];
+      ob.x = plat.x - S.bgOffset3 + plat.w * 0.3 + Math.random() * plat.w * 0.4;
+      ob.y = plat.y;
+    }
+  }
+
   S.obstacles.push(ob);
   lastObstacleX = S.W + 50;
 }
@@ -186,20 +259,18 @@ function spawnCoins() {
   const gy = S.groundY;
   const pattern = Math.floor(Math.random() * 3);
   const baseX = S.W + 60;
-  if (pattern === 0) { // arc
+  if (pattern === 0) {
     for (let i = 0; i < 5; i++) {
       const cx = baseX + i * 35;
       const cy = gy - 40 - Math.sin(i/4*Math.PI) * 70;
       S.coinPickups.push({ x: cx, y: cy, r: 10, collected: false, flash: 0 });
     }
-  } else if (pattern === 1) { // line high
-    for (let i = 0; i < 4; i++) {
+  } else if (pattern === 1) {
+    for (let i = 0; i < 4; i++)
       S.coinPickups.push({ x: baseX + i*30, y: gy - 90, r: 10, collected: false, flash: 0 });
-    }
-  } else { // line low
-    for (let i = 0; i < 4; i++) {
+  } else {
+    for (let i = 0; i < 4; i++)
       S.coinPickups.push({ x: baseX + i*30, y: gy - 20, r: 10, collected: false, flash: 0 });
-    }
   }
   lastCoinX = baseX + 150;
 }
@@ -207,41 +278,33 @@ function spawnCoins() {
 // --- PARTICLES ---
 function addParticles(x, y, color, count) {
   for (let i = 0; i < count; i++) {
-    S.particles.push({
-      x, y, vx: (Math.random()-0.5)*6, vy: -Math.random()*5-1,
-      life: 30 + Math.random()*20, maxLife: 50, color, size: 2+Math.random()*3
-    });
+    S.particles.push({ x, y, vx: (Math.random()-0.5)*6, vy: -Math.random()*5-1,
+      life: 30+Math.random()*20, maxLife: 50, color, size: 2+Math.random()*3 });
   }
 }
 
 // --- DRAW CHARACTERS ---
 function drawAgentK(x, y, frame, ducking) {
   ctx.save();
-  if (S.hitFlash > 0) { ctx.globalAlpha = 0.5 + Math.sin(S.hitFlash*0.5)*0.5; }
+  if (S.hitFlash > 0) ctx.globalAlpha = 0.5 + Math.sin(S.hitFlash*0.5)*0.5;
   const dy = ducking ? 15 : 0;
   const bodyH = ducking ? 20 : 35;
-  // Body (dark coat)
   ctx.fillStyle = '#2a2a3a';
   ctx.fillRect(x-12, y-30+dy, 24, bodyH);
-  // Head
   ctx.fillStyle = '#FFD1A4';
   ctx.beginPath(); ctx.arc(x, y-38+dy, 11, 0, Math.PI*2); ctx.fill();
-  // Sunglasses
   ctx.fillStyle = '#000';
   ctx.fillRect(x-9, y-42+dy, 7, 4);
   ctx.fillRect(x+2, y-42+dy, 7, 4);
-  ctx.fillRect(x-2, y-41+dy, 4, 2); // bridge
-  // Hat
+  ctx.fillRect(x-2, y-41+dy, 4, 2);
   ctx.fillStyle = '#2a2a3a';
   ctx.fillRect(x-13, y-50+dy, 26, 5);
   ctx.fillRect(x-9, y-58+dy, 18, 10);
   if (!ducking) {
-    // Legs
     ctx.fillStyle = '#444';
     const lo = Math.sin(frame * 0.25) * 8;
     ctx.fillRect(x-7, y+5, 5, 16+lo);
     ctx.fillRect(x+2, y+5, 5, 16-lo);
-    // Shoes
     ctx.fillStyle = '#222';
     ctx.fillRect(x-9, y+20+lo, 9, 4);
     ctx.fillRect(x+1, y+20-lo, 9, 4);
@@ -256,14 +319,12 @@ function drawSkripek(x, y) {
   ctx.beginPath(); ctx.arc(x, y-42, 10, 0, Math.PI*2); ctx.fill();
   ctx.fillStyle = '#FF0000';
   ctx.fillRect(x-12, y-50, 24, 6);
-  // Scared eyes
   ctx.fillStyle = '#FFF';
   ctx.beginPath(); ctx.arc(x-4, y-44, 4, 0, Math.PI*2); ctx.fill();
   ctx.beginPath(); ctx.arc(x+5, y-44, 4, 0, Math.PI*2); ctx.fill();
   ctx.fillStyle = '#000';
   ctx.beginPath(); ctx.arc(x-4, y-44, 2, 0, Math.PI*2); ctx.fill();
   ctx.beginPath(); ctx.arc(x+5, y-44, 2, 0, Math.PI*2); ctx.fill();
-  // Open mouth
   ctx.beginPath(); ctx.arc(x, y-36, 3, 0, Math.PI*2);
   ctx.fillStyle='#600'; ctx.fill();
 }
@@ -277,7 +338,6 @@ function drawRepak(x, y) {
   ctx.fillRect(x-15, y-58, 30, 7);
   ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.arc(x, y-42, 6, 0, Math.PI); ctx.stroke();
-  // Eyes
   ctx.fillStyle='#000';
   ctx.beginPath(); ctx.arc(x-5,y-50,2,0,Math.PI*2); ctx.fill();
   ctx.beginPath(); ctx.arc(x+5,y-50,2,0,Math.PI*2); ctx.fill();
@@ -299,13 +359,12 @@ function drawKeksik(x, y, frame) {
 
 function drawBarrel(x, y) {
   ctx.fillStyle = '#8B4513';
-  const bx = x-15, by = y-30;
-  ctx.fillRect(bx, by, 30, 30);
+  ctx.fillRect(x-15, y-30, 30, 30);
   ctx.strokeStyle = '#5C3010'; ctx.lineWidth = 2;
-  ctx.strokeRect(bx, by, 30, 30);
+  ctx.strokeRect(x-15, y-30, 30, 30);
   ctx.fillStyle = '#777';
-  ctx.fillRect(bx-1, by+5, 32, 3);
-  ctx.fillRect(bx-1, by+20, 32, 3);
+  ctx.fillRect(x-16, y-25, 32, 3);
+  ctx.fillRect(x-16, y-10, 32, 3);
 }
 
 function drawNet(x, y) {
@@ -317,6 +376,145 @@ function drawNet(x, y) {
   ctx.fillRect(nx, ny, 54, 18);
 }
 
+// --- NEW OBSTACLE DRAWINGS ---
+function drawCrate(x, y) {
+  ctx.fillStyle = '#A0522D';
+  ctx.fillRect(x-18, y-40, 36, 40);
+  ctx.strokeStyle = '#5C3317'; ctx.lineWidth = 2;
+  ctx.strokeRect(x-18, y-40, 36, 40);
+  ctx.beginPath(); ctx.moveTo(x-18,y-40); ctx.lineTo(x+18,y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x+18,y-40); ctx.lineTo(x-18,y); ctx.stroke();
+}
+
+function drawClothesline(x, y) {
+  ctx.strokeStyle = '#888'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x-30, y); ctx.lineTo(x+30, y); ctx.stroke();
+  ctx.fillStyle = '#FFF';
+  ctx.fillRect(x-15, y, 12, 20);
+  ctx.fillStyle = '#4169E1';
+  ctx.fillRect(x+5, y, 10, 25);
+}
+
+function drawStandingPirate(x, y) {
+  // Body
+  ctx.fillStyle = '#4a2020';
+  ctx.fillRect(x-12, y-45, 24, 45);
+  // Head
+  ctx.fillStyle = '#FFD1A4';
+  ctx.beginPath(); ctx.arc(x, y-52, 10, 0, Math.PI*2); ctx.fill();
+  // Bandana
+  ctx.fillStyle = '#CC0000';
+  ctx.fillRect(x-11, y-60, 22, 6);
+  // Eye patch
+  ctx.fillStyle = '#000';
+  ctx.fillRect(x-6, y-54, 8, 4);
+  // Sword
+  ctx.fillStyle = '#C0C0C0';
+  ctx.fillRect(x+14, y-35, 3, 30);
+  ctx.fillStyle = '#8B6914';
+  ctx.fillRect(x+12, y-35, 7, 5);
+}
+
+function drawWalkingPirate(x, y, frame) {
+  ctx.fillStyle = '#3a1a1a';
+  ctx.fillRect(x-10, y-40, 20, 40);
+  ctx.fillStyle = '#FFD1A4';
+  ctx.beginPath(); ctx.arc(x, y-47, 9, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#222';
+  ctx.fillRect(x-10, y-55, 20, 5);
+  // Walking legs
+  const lo = Math.sin(frame * 0.2) * 8;
+  ctx.fillStyle = '#3a1a1a';
+  ctx.fillRect(x-6, y, 5, 14+lo);
+  ctx.fillRect(x+1, y, 5, 14-lo);
+  // Angry eyes
+  ctx.fillStyle = '#FF0';
+  ctx.beginPath(); ctx.arc(x-3, y-49, 2, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+3, y-49, 2, 0, Math.PI*2); ctx.fill();
+}
+
+function drawSign(x, y) {
+  ctx.fillStyle = '#666';
+  ctx.fillRect(x-2, y-30, 4, 30);
+  ctx.fillStyle = '#DEB887';
+  ctx.fillRect(x-20, y, 40, 20);
+  ctx.strokeStyle = '#8B4513'; ctx.lineWidth = 2;
+  ctx.strokeRect(x-20, y, 40, 20);
+}
+
+function drawChimney(x, y) {
+  ctx.fillStyle = '#8B0000';
+  ctx.fillRect(x-10, y-35, 20, 35);
+  ctx.fillStyle = '#666';
+  ctx.fillRect(x-13, y-38, 26, 5);
+  ctx.fillStyle = 'rgba(150,150,150,0.4)';
+  ctx.beginPath(); ctx.arc(x, y-50, 8, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+8, y-60, 6, 0, Math.PI*2); ctx.fill();
+}
+
+function drawSeagull(x, y, frame) {
+  ctx.fillStyle = '#FFF';
+  const wingY = Math.sin(frame * 0.4) * 10;
+  ctx.beginPath();
+  ctx.moveTo(x, y); ctx.lineTo(x-15, y-8+wingY); ctx.lineTo(x-5, y-3);
+  ctx.lineTo(x+5, y-3); ctx.lineTo(x+15, y-8-wingY);
+  ctx.fill();
+  ctx.beginPath(); ctx.ellipse(x, y+2, 6, 4, 0, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#FF6600';
+  ctx.beginPath(); ctx.moveTo(x+6,y); ctx.lineTo(x+12,y+2); ctx.lineTo(x+6,y+4); ctx.fill();
+}
+
+function drawPigeon(x, y, frame) {
+  ctx.fillStyle = '#888';
+  const wingY = Math.sin(frame * 0.5) * 8;
+  ctx.beginPath(); ctx.ellipse(x, y, 8, 10, 0, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#666';
+  ctx.beginPath(); ctx.ellipse(x-6, y-5+wingY, 10, 4, -0.2, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#999';
+  ctx.beginPath(); ctx.arc(x+6, y-8, 5, 0, Math.PI*2); ctx.fill();
+}
+
+function drawAnchor(x, y) {
+  ctx.strokeStyle = '#888'; ctx.lineWidth = 3;
+  // Chain
+  for (let i = 0; i < 4; i++) {
+    ctx.beginPath(); ctx.ellipse(x, y - 50 + i*12, 4, 6, 0, 0, Math.PI*2); ctx.stroke();
+  }
+  // Anchor body
+  ctx.fillStyle = '#555';
+  ctx.fillRect(x-2, y-10, 4, 20);
+  ctx.beginPath(); ctx.arc(x, y+10, 8, 0, Math.PI); ctx.stroke();
+  ctx.fillRect(x-12, y-10, 24, 4);
+}
+
+function drawChaserPirates(baseX, y, frame) {
+  for (let i = 0; i < 3; i++) {
+    const px = baseX - 60 - i*40;
+    const py = y;
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(px-12, py-30, 24, 35);
+    ctx.beginPath(); ctx.arc(px, py-40, 12, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#FF0000';
+    ctx.beginPath(); ctx.arc(px-4, py-42, 2, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(px+4, py-42, 2, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    const lo = Math.sin((frame + i*20) * 0.3) * 8;
+    ctx.fillRect(px-8, py+5, 6, 15+lo);
+    ctx.fillRect(px+2, py+5, 6, 15-lo);
+  }
+}
+
+function drawWater(w, y, frame) {
+  ctx.fillStyle = '#1a5276';
+  ctx.fillRect(0, y, w, 200);
+  ctx.strokeStyle = '#2980b9'; ctx.lineWidth = 2;
+  for (let wx = 0; wx < w; wx += 30) {
+    ctx.beginPath();
+    ctx.arc(wx + Math.sin(frame*0.03 + wx*0.02)*10, y+5, 12, Math.PI, 0);
+    ctx.stroke();
+  }
+}
+
 // --- DRAW COIN ---
 function drawCoin(x, y, r, flash) {
   ctx.save();
@@ -325,42 +523,51 @@ function drawCoin(x, y, r, flash) {
   ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
   ctx.strokeStyle = '#b8860b'; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.stroke();
-  ctx.fillStyle = '#b8860b'; ctx.font = `bold ${r}px sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#b8860b'; ctx.font = `bold ${r}px sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText('$', x, y+1);
   ctx.restore();
 }
 
 // --- DRAW BACKGROUND ---
 function drawBackground() {
+  const lvl = S.level || LEVELS[0];
+  const cols = lvl.skyColors;
+
   // Sky gradient
   const grad = ctx.createLinearGradient(0, 0, 0, S.groundY);
-  grad.addColorStop(0, '#1a0a2e');
-  grad.addColorStop(0.5, '#2d1b69');
-  grad.addColorStop(1, '#4a2c8a');
+  grad.addColorStop(0, cols[0]);
+  grad.addColorStop(0.5, cols[1]);
+  grad.addColorStop(1, cols[2] || cols[1]);
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, S.W, S.groundY);
 
-  // Stars
-  ctx.fillStyle = 'rgba(255,255,255,0.5)';
-  for (let i = 0; i < 30; i++) {
-    const sx = ((i * 137 + S.bgOffset1 * 0.1) % S.W + S.W) % S.W;
-    const sy = (i * 73) % (S.groundY * 0.6);
-    ctx.fillRect(sx, sy, 2, 2);
+  // Stars (levels 0, 3)
+  if (lvl.hasStars) {
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    for (let i = 0; i < 30; i++) {
+      const sx = ((i * 137 + S.bgOffset1 * 0.1) % S.W + S.W) % S.W;
+      const sy = (i * 73) % (S.groundY * 0.6);
+      ctx.fillRect(sx, sy, 2, 2);
+    }
   }
 
-  // Moon
-  ctx.fillStyle = '#ffe8a0';
-  ctx.beginPath(); ctx.arc(S.W*0.8 - S.bgOffset1*0.05 % 200, 60, 25, 0, Math.PI*2); ctx.fill();
+  // Moon (level 3-harbor)
+  if (lvl.hasMoon) {
+    ctx.fillStyle = '#ffe8a0';
+    ctx.beginPath();
+    ctx.arc(S.W*0.8 - S.bgOffset1*0.05 % 200, 60, 25, 0, Math.PI*2);
+    ctx.fill();
+  }
 
   // Buildings (back layer)
-  ctx.fillStyle = '#1a1a2e';
   for (let b of S.buildings) {
     const bx = ((b.x - S.bgOffset2 * 0.3) % (S.W*3) + S.W*3) % (S.W*3) - S.W*0.5;
     if (bx > -b.w && bx < S.W + b.w) {
       ctx.fillStyle = b.color;
       ctx.fillRect(bx, S.groundY - b.h, b.w, b.h);
-      // Windows
-      ctx.fillStyle = 'rgba(255,220,100,0.3)';
+      const winColor = lvl === LEVELS[1] ? 'rgba(255,255,255,0.4)' : 'rgba(255,220,100,0.3)';
+      ctx.fillStyle = winColor;
       for (let wi = 0; wi < b.windows; wi++) {
         const wx = bx + 8 + (wi % 3) * (b.w/3);
         const wy = S.groundY - b.h + 15 + Math.floor(wi/3) * 30;
@@ -369,30 +576,93 @@ function drawBackground() {
     }
   }
 
-  // Ground
-  ctx.fillStyle = '#3a3a4a';
-  ctx.fillRect(0, S.groundY, S.W, S.H - S.groundY);
-  // Road lines
-  ctx.fillStyle = '#555';
-  const roadY = S.groundY + (S.H - S.groundY) * 0.5;
-  for (let i = -1; i < S.W/80 + 2; i++) {
-    const lx = ((i * 80 - S.bgOffset3) % S.W + S.W) % S.W;
-    ctx.fillRect(lx, roadY, 40, 3);
+  // Platform or flat ground
+  if (lvl.hasPlatforms) {
+    // Water below for harbor
+    if (lvl.hasWater) {
+      drawWater(S.W, S.groundY + 20, S.frame);
+    } else {
+      // Distant ground far below for rooftops
+      ctx.fillStyle = '#1a1a1a';
+      ctx.fillRect(0, S.groundY + 40, S.W, S.H);
+    }
+    // Draw platforms
+    const platColor = lvl.hasWater ? '#5C4033' : '#8B4513';
+    const platTop = lvl.hasWater ? '#4E342E' : '#A0522D';
+    for (let p of S.platforms) {
+      const px = p.x - S.bgOffset3;
+      if (px + p.w < -50 || px > S.W + 50) continue;
+      ctx.fillStyle = platColor;
+      ctx.fillRect(px, p.y, p.w, 20);
+      ctx.fillStyle = platTop;
+      ctx.fillRect(px, p.y, p.w, 5);
+      // Sway animation for harbor boats
+      if (lvl.hasWater) {
+        ctx.fillStyle = '#3E2723';
+        ctx.fillRect(px + 5, p.y + 5, p.w - 10, 12);
+      }
+    }
+  } else {
+    // Flat ground
+    ctx.fillStyle = lvl.groundColor;
+    ctx.fillRect(0, S.groundY, S.W, S.H - S.groundY);
+    // Road lines
+    ctx.fillStyle = '#555';
+    const roadY = S.groundY + (S.H - S.groundY) * 0.5;
+    for (let i = -1; i < S.W/80 + 2; i++) {
+      const lx = ((i * 80 - S.bgOffset3) % S.W + S.W) % S.W;
+      ctx.fillRect(lx, roadY, 40, 3);
+    }
+    ctx.fillStyle = '#666';
+    ctx.fillRect(0, S.groundY, S.W, 4);
   }
-  // Sidewalk edge
-  ctx.fillStyle = '#666';
-  ctx.fillRect(0, S.groundY, S.W, 4);
+
+  // Lightning flash (level 5)
+  if (lvl.hasLightning && S.lightningFlash > 0) {
+    ctx.fillStyle = `rgba(255,255,255,${S.lightningFlash * 0.1})`;
+    ctx.fillRect(0, 0, S.W, S.H);
+    S.lightningFlash--;
+  }
+
+  // Destination building (appears when finishing)
+  if (S.finishing) {
+    const bldgX = S.W - 80 + (1 - Math.min(1, (S.distance - S.maxDistance*0.9) / (S.maxDistance*0.1))) * 200;
+    const bldgW = 100, bldgH = S.groundY - 30;
+    const isShop = S.streetDir === 'to_shop';
+    // Building
+    ctx.fillStyle = isShop ? '#DEB887' : '#7B9EA8';
+    ctx.fillRect(bldgX, S.groundY - bldgH, bldgW, bldgH);
+    // Roof
+    ctx.fillStyle = isShop ? '#8B4513' : '#4A6670';
+    ctx.beginPath();
+    ctx.moveTo(bldgX - 10, S.groundY - bldgH);
+    ctx.lineTo(bldgX + bldgW/2, S.groundY - bldgH - 30);
+    ctx.lineTo(bldgX + bldgW + 10, S.groundY - bldgH);
+    ctx.fill();
+    // Door
+    ctx.fillStyle = '#4A2A0A';
+    ctx.fillRect(bldgX + bldgW/2 - 15, S.groundY - 50, 30, 50);
+    // Sign
+    ctx.fillStyle = '#FFF';
+    ctx.font = 'bold 14px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(isShop ? 'OBCHOD' : 'LABORATOR', bldgX + bldgW/2, S.groundY - bldgH - 35);
+    // Windows
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(bldgX + 15, S.groundY - bldgH + 20, 18, 14);
+    ctx.fillRect(bldgX + bldgW - 33, S.groundY - bldgH + 20, 18, 14);
+  }
 }
 
 // --- DRAW HUD ---
 function drawHUD() {
   const s = S.scale;
-  // Coins
   ctx.save();
   ctx.fillStyle = 'rgba(0,0,0,0.6)';
   roundRect(ctx, 10, 10, 100*s, 32*s, 16*s); ctx.fill();
   drawCoin(28*s+10, 10+16*s, 10*s, 0);
-  ctx.fillStyle = '#ffd700'; ctx.font = `bold ${16*s}px sans-serif`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#ffd700'; ctx.font = `bold ${16*s}px sans-serif`;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
   ctx.fillText(S.coins, 44*s+10, 10+16*s);
 
   // Distance bar
@@ -409,14 +679,12 @@ function drawHUD() {
   grd.addColorStop(0, '#4CAF50'); grd.addColorStop(1, '#8BC34A');
   ctx.fillStyle = grd;
   ctx.fillRect(barX, barY, barW * prog, barH);
-  // Label
   ctx.fillStyle = '#fff'; ctx.font = `bold ${10*s}px sans-serif`; ctx.textAlign = 'center';
   ctx.fillText(S.streetDir === 'to_shop' ? 'Do obchodu' : 'Do laboratore', S.W/2, barY + barH - 2);
-  // Agent icon on bar
   ctx.fillStyle = '#ffd700';
   ctx.beginPath(); ctx.arc(barX + barW * prog, barY + barH/2, 5*s, 0, Math.PI*2); ctx.fill();
 
-  // Backpack items (top right)
+  // Backpack items
   if (S.backpack.length > 0) {
     const startX = S.W - 16 - S.backpack.length * 36;
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
@@ -432,13 +700,13 @@ function drawHUD() {
     }
   }
 
-  // Round indicator
+  // Round indicator + level name
+  const lvl = S.level || LEVELS[0];
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  const riW = 90*s;
+  const riW = 140*s;
   roundRect(ctx, S.W - riW - 10, S.H - 30*s, riW, 24*s, 8); ctx.fill();
-  ctx.fillStyle = '#aaa'; ctx.font = `${11*s}px sans-serif`; ctx.textAlign = 'center';
-  ctx.fillText(`Kolo ${S.round+1}/${S.maxRounds}`, S.W - riW/2 - 10, S.H - 14*s);
-
+  ctx.fillStyle = '#ffd700'; ctx.font = `bold ${11*s}px sans-serif`; ctx.textAlign = 'center';
+  ctx.fillText(`${lvl.name} (${S.round+1}/${S.maxRounds})`, S.W - riW/2 - 10, S.H - 14*s);
   ctx.restore();
 }
 
@@ -460,9 +728,11 @@ function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
 function startStreetRun(dir) {
   S.streetDir = dir;
   S.phase = dir === 'to_shop' ? 'street_to_shop' : 'street_to_lab';
+  const lvlIdx = Math.min(S.round, LEVELS.length - 1);
+  S.level = LEVELS[lvlIdx];
   S.distance = 0;
-  S.maxDistance = 3000 + S.round * 500; // ~3 minutes per run, longer each round
-  S.finishing = false; // smooth finish flag
+  S.maxDistance = 3000 + S.round * 500;
+  S.finishing = false;
   S.obstacles = [];
   S.coinPickups = [];
   S.particles = [];
@@ -473,43 +743,124 @@ function startStreetRun(dir) {
   S.onGround = true;
   S.hitFlash = 0;
   S.invincible = 0;
-  S.scrollSpeed = 4 + S.round * 0.5 + (dir === 'to_lab' ? 0.8 : 0);
   S.frame = 0;
+  S.bgOffset1 = 0; S.bgOffset2 = 0; S.bgOffset3 = 0;
   lastObstacleX = S.W + 200;
   lastCoinX = S.W;
+
+  // Apply level scroll speed (return trip is harder)
+  S.scrollSpeed = S.level.scrollSpeed + (dir === 'to_lab' ? 0.8 : 0);
+
+  // Chaser state
+  S.chaserX = -100;
+
+  // Lightning state
+  S.lightningTimer = 180 + Math.random() * 120;
+  S.lightningFlash = 0;
+
+  // Intro timer (120 frames ~ 2 seconds)
+  S.introTimer = 120;
+  S.introAlpha = 1;
+
+  // Platform generation
+  if (S.level.hasPlatforms) {
+    generatePlatforms();
+  } else {
+    S.platforms = [];
+  }
+
   generateBuildings();
   document.getElementById('shop').style.display = 'none';
   document.getElementById('lab').style.display = 'none';
 }
 
+// --- DRAW INTRO TEXT ---
+function drawIntro() {
+  if (S.introTimer <= 0) return;
+  const lvl = S.level || LEVELS[0];
+  const alpha = S.introTimer < 30 ? S.introTimer / 30 : 1;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  // Dark backdrop
+  ctx.fillStyle = 'rgba(0,0,0,0.5)';
+  ctx.fillRect(0, S.H*0.25, S.W, S.H*0.35);
+  // Level name
+  ctx.fillStyle = '#ffd700';
+  ctx.font = `bold ${48*S.scale}px sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.shadowColor = '#000'; ctx.shadowBlur = 10;
+  ctx.fillText(lvl.name, S.W/2, S.H*0.37);
+  // Intro text
+  ctx.fillStyle = '#fff';
+  ctx.font = `${20*S.scale}px sans-serif`;
+  ctx.fillText(lvl.intro, S.W/2, S.H*0.50);
+  ctx.shadowBlur = 0;
+  ctx.restore();
+}
+
 // --- TITLE SCREEN ---
 function drawTitle() {
+  S.level = LEVELS[0];
   drawBackground();
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
   ctx.fillRect(0, 0, S.W, S.H);
-
   const cx = S.W/2, cy = S.H * 0.35;
   ctx.fillStyle = '#ffd700'; ctx.font = `bold ${40*S.scale}px sans-serif`; ctx.textAlign = 'center';
   ctx.fillText('AGENT K', cx, cy);
   ctx.fillStyle = '#aaa'; ctx.font = `${18*S.scale}px sans-serif`;
   ctx.fillText('Street Runner', cx, cy + 36*S.scale);
-
-  // Draw Agent K
   drawAgentK(cx, cy + 110*S.scale, S.frame, false);
-
   ctx.fillStyle = '#fff'; ctx.font = `bold ${20*S.scale}px sans-serif`;
   const pulse = 0.7 + Math.sin(S.frame * 0.08) * 0.3;
   ctx.globalAlpha = pulse;
   ctx.fillText('Klikni pro start!', cx, S.H * 0.75);
   ctx.globalAlpha = 1;
-
   ctx.fillStyle = '#888'; ctx.font = `${13*S.scale}px sans-serif`;
   ctx.fillText('NAHORU = skok   |   DOLU = skrz', cx, S.H * 0.85);
   ctx.fillText('Na mobilu: klikni nahoru/dolu', cx, S.H * 0.90);
 }
 
+// --- PLATFORM PHYSICS ---
+function getGroundYAtX(px) {
+  if (!S.level || !S.level.hasPlatforms) return S.groundY;
+  for (let i = 0; i < S.platforms.length; i++) {
+    const p = S.platforms[i];
+    const platLeft = p.x - S.bgOffset3;
+    const platRight = platLeft + p.w;
+    if (px >= platLeft && px <= platRight) {
+      S.lastPlatformIdx = i;
+      return p.y;
+    }
+  }
+  return -1; // In a gap
+}
+
+function respawnOnPlatform() {
+  const p = S.platforms[S.lastPlatformIdx];
+  if (!p) return;
+  // Teleport agent back to last safe platform
+  S.bgOffset3 = p.x + p.w * 0.5 - S.px;
+  S.py = p.y;
+  S.vy = 0;
+  S.onGround = true;
+  S.jumping = false;
+  S.hitFlash = 20;
+  S.invincible = 60;
+  // Lose coins
+  const lose = Math.min(3, S.coins);
+  S.coins -= lose;
+  addParticles(S.px, S.py - 20, '#ff4444', 12);
+}
+
 // --- UPDATE STREET ---
 function updateStreet(dt) {
+  // During intro, just count down
+  if (S.introTimer > 0) {
+    S.introTimer -= dt;
+    S.frame++;
+    return;
+  }
+
   S.frame++;
   const spd = S.scrollSpeed * dt;
   S.distance += spd * 0.15;
@@ -517,19 +868,58 @@ function updateStreet(dt) {
   S.bgOffset2 += spd * 0.7;
   S.bgOffset3 += spd;
 
-  // Gradually increase speed
   S.scrollSpeed += 0.0008 * dt;
+
+  // Lightning timer (level 5)
+  if (S.level && S.level.hasLightning) {
+    S.lightningTimer -= dt;
+    if (S.lightningTimer <= 0) {
+      S.lightningFlash = 3;
+      S.lightningTimer = 180 + Math.random() * 120;
+    }
+  }
+
+  // Chaser movement (levels 1 & 5)
+  if (S.level && S.level.hasChaser) {
+    // Chasers slowly gain on agent
+    S.chaserX += 0.02 * dt;
+    if (S.chaserX > S.px - 80) S.chaserX = S.px - 80;
+    if (S.chaserX < 0) S.chaserX = Math.min(S.chaserX + 0.5, S.px - 120);
+  }
 
   // Player physics
   if (!S.onGround) {
     S.vy += 0.55 * dt;
     S.py += S.vy * dt;
-    if (S.py >= S.groundY) { S.py = S.groundY; S.vy = 0; S.onGround = true; S.jumping = false; }
+
+    if (S.level && S.level.hasPlatforms) {
+      // Check if landed on a platform
+      const gy = getGroundYAtX(S.px);
+      if (gy > 0 && S.py >= gy && S.vy > 0) {
+        S.py = gy; S.vy = 0; S.onGround = true; S.jumping = false;
+      } else if (S.py > S.groundY + 60) {
+        // Fell through gap
+        respawnOnPlatform();
+      }
+    } else {
+      if (S.py >= S.groundY) {
+        S.py = S.groundY; S.vy = 0; S.onGround = true; S.jumping = false;
+      }
+    }
+  } else if (S.level && S.level.hasPlatforms) {
+    // Check if walked off platform edge
+    const gy = getGroundYAtX(S.px);
+    if (gy < 0) {
+      S.onGround = false;
+      S.vy = 0;
+    }
   }
 
   // Spawn obstacles
+  const rate = (S.level ? S.level.obstacleRate : 0.025);
   const minGap = Math.max(180, 280 - S.round * 20);
-  if (S.obstacles.length === 0 || (S.W + 50 - S.obstacles[S.obstacles.length-1].x > minGap && Math.random() < 0.025 * dt)) {
+  if (S.obstacles.length === 0 ||
+      (S.W + 50 - S.obstacles[S.obstacles.length-1].x > minGap && Math.random() < rate * dt)) {
     spawnObstacle();
   }
 
@@ -543,6 +933,10 @@ function updateStreet(dt) {
     ob.x -= spd;
     ob.frame = S.frame;
     if (ob.flying) ob.y += Math.sin(S.frame * 0.05) * 0.5;
+    // Walking pirate oscillation
+    if (ob.type === 'walking_pirate') {
+      ob.x += Math.sin(S.frame * 0.03) * 1.5;
+    }
   }
   S.obstacles = S.obstacles.filter(ob => ob.x > -80);
 
@@ -559,7 +953,7 @@ function updateStreet(dt) {
   // Coin collision
   for (let c of S.coinPickups) {
     if (c.collected) continue;
-    const dx = (S.px) - c.x, dy = (S.py - ph/2) - c.y;
+    const dx = S.px - c.x, dy = (S.py - ph/2) - c.y;
     if (Math.sqrt(dx*dx+dy*dy) < c.r + 18) {
       c.collected = true; c.flash = 15;
       S.coins++;
@@ -572,16 +966,21 @@ function updateStreet(dt) {
     for (let ob of S.obstacles) {
       if (ob.hit) continue;
       let ox = ob.x - ob.w/2, oy = ob.y - ob.h, ow = ob.w, oh = ob.h;
-      if (ob.type === 'parrot') { oy = ob.y - 12; oh = 24; ox = ob.x - 12; ow = 24; }
+      if (ob.flying) { oy = ob.y - ob.h/2; }
+      if (ob.type === 'parrot' || ob.type === 'seagull' || ob.type === 'pigeon') {
+        oy = ob.y - 12; oh = 24; ox = ob.x - 12; ow = 24;
+      }
       if (ob.type === 'net') { ox = ob.x - 25; ow = 50; oh = 18; oy = ob.y - 18; }
+      if (ob.type === 'clothesline') { ox = ob.x - 30; ow = 60; }
+      if (ob.type === 'sign') { ox = ob.x - 20; ow = 40; }
+      if (ob.type === 'anchor') { ox = ob.x - 10; ow = 20; oh = 50; oy = ob.y - 50; }
 
       if (rectsOverlap(pLeft, pTop, pW, ph, ox, oy, ow, oh)) {
         ob.hit = true;
         S.hitFlash = 20;
         S.invincible = 60;
-        // Lose item or coins
         if (S.backpack.length > 0) {
-          const lost = S.backpack.pop();
+          S.backpack.pop();
           addParticles(S.px + 20, S.py - 20, '#ff4444', 10);
         } else if (S.coins > 0) {
           const lose = Math.min(3, S.coins);
@@ -600,16 +999,10 @@ function updateStreet(dt) {
   }
   S.particles = S.particles.filter(p => p.life > 0);
 
-  // Smooth finish: slow down near end
-  if (S.distance >= S.maxDistance * 0.9 && !S.finishing) {
-    S.finishing = true;
-  }
-  if (S.finishing) {
-    S.scrollSpeed = Math.max(0.5, S.scrollSpeed * 0.98); // decelerate
-  }
-  // Finish when nearly stopped
+  // Smooth finish
+  if (S.distance >= S.maxDistance * 0.9 && !S.finishing) S.finishing = true;
+  if (S.finishing) S.scrollSpeed = Math.max(0.5, S.scrollSpeed * 0.98);
   if (S.distance >= S.maxDistance && S.scrollSpeed < 1) {
-    // Wait until Agent K lands
     if (S.onGround) {
       if (S.streetDir === 'to_shop') openShop();
       else openLab();
@@ -617,22 +1010,39 @@ function updateStreet(dt) {
   }
 }
 
+// --- DRAW OBSTACLE (dispatcher) ---
+function drawObstacle(ob) {
+  switch (ob.type) {
+    case 'skripek': drawSkripek(ob.x, ob.y); break;
+    case 'barrel': drawBarrel(ob.x, ob.y); drawRepak(ob.x, ob.y - 30); break;
+    case 'parrot': drawKeksik(ob.x, ob.y, ob.frame); break;
+    case 'net': drawNet(ob.x, ob.y); break;
+    case 'crate': drawCrate(ob.x, ob.y); break;
+    case 'clothesline': drawClothesline(ob.x, ob.y); break;
+    case 'standing_pirate': drawStandingPirate(ob.x, ob.y); break;
+    case 'walking_pirate': drawWalkingPirate(ob.x, ob.y, ob.frame); break;
+    case 'sign': drawSign(ob.x, ob.y); break;
+    case 'chimney': drawChimney(ob.x, ob.y); break;
+    case 'pigeon': drawPigeon(ob.x, ob.y, ob.frame); break;
+    case 'seagull': drawSeagull(ob.x, ob.y, ob.frame); break;
+    case 'anchor': drawAnchor(ob.x, ob.y); break;
+  }
+}
+
 // --- DRAW STREET ---
 function drawStreet() {
   drawBackground();
 
-  // Draw obstacles
-  for (let ob of S.obstacles) {
-    if (ob.type === 'skripek') drawSkripek(ob.x, ob.y);
-    else if (ob.type === 'barrel') { drawBarrel(ob.x, ob.y); drawRepak(ob.x, ob.y - 30); }
-    else if (ob.type === 'parrot') drawKeksik(ob.x, ob.y, ob.frame);
-    else if (ob.type === 'net') drawNet(ob.x, ob.y);
+  // Draw chasers behind Agent (levels 1 & 5)
+  if (S.level && S.level.hasChaser && S.introTimer <= 0) {
+    drawChaserPirates(S.chaserX, S.py, S.frame);
   }
 
+  // Draw obstacles
+  for (let ob of S.obstacles) drawObstacle(ob);
+
   // Draw coins
-  for (let c of S.coinPickups) {
-    drawCoin(c.x, c.y, c.r, c.flash);
-  }
+  for (let c of S.coinPickups) drawCoin(c.x, c.y, c.r, c.flash);
 
   // Draw Agent K
   drawAgentK(S.px, S.py, S.frame, S.ducking);
@@ -653,19 +1063,23 @@ function drawStreet() {
 
   drawHUD();
 
-  // Destination indicator
-  const destText = S.streetDir === 'to_shop' ? 'OBCHOD -->' : 'LABORATOR -->';
-  ctx.fillStyle = '#ffd700'; ctx.font = `bold ${14*S.scale}px sans-serif`; ctx.textAlign = 'right';
-  ctx.globalAlpha = 0.5 + Math.sin(S.frame * 0.05) * 0.3;
-  ctx.fillText(destText, S.W - 15, S.H - 10);
-  ctx.globalAlpha = 1;
+  // Intro overlay
+  if (S.introTimer > 0) {
+    drawIntro();
+  } else {
+    // Destination indicator
+    const destText = S.streetDir === 'to_shop' ? 'OBCHOD -->' : 'LABORATOR -->';
+    ctx.fillStyle = '#ffd700'; ctx.font = `bold ${14*S.scale}px sans-serif`; ctx.textAlign = 'right';
+    ctx.globalAlpha = 0.5 + Math.sin(S.frame * 0.05) * 0.3;
+    ctx.fillText(destText, S.W - 15, S.H - 10);
+    ctx.globalAlpha = 1;
+  }
 }
 
 // --- SHOP ---
 function openShop() {
   S.phase = 'shop';
-  const shopEl = document.getElementById('shop');
-  shopEl.style.display = 'block';
+  document.getElementById('shop').style.display = 'block';
   renderShop();
 }
 
@@ -678,14 +1092,12 @@ function renderShop() {
     const div = document.createElement('div');
     div.className = 'shop-item' + (owned ? ' owned' : '');
     if (item.img) {
-      div.innerHTML = `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none';this.nextSibling.style.display='block'"><div class="emoji-icon" style="display:none">${item.emoji||'📦'}</div>`;
+      div.innerHTML = `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none';this.nextSibling.style.display='block'"><div class="emoji-icon" style="display:none">${item.emoji||'\u{1F4E6}'}</div>`;
     } else {
-      div.innerHTML = `<div class="emoji-icon">${item.emoji||'📦'}</div>`;
+      div.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
     }
     div.innerHTML += `<div class="item-name">${item.name}</div><div class="item-price">${item.price} minci</div>`;
-    if (!owned) {
-      div.addEventListener('click', () => buyItem(item));
-    }
+    if (!owned) div.addEventListener('click', () => buyItem(item));
     grid.appendChild(div);
   }
   renderBackpack();
@@ -710,9 +1122,9 @@ function renderBackpack() {
     const div = document.createElement('div');
     div.className = 'bp-icon';
     if (item.img) {
-      div.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<span style=font-size:24px>${item.emoji||'📦'}</span>'">`;
+      div.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<span style=font-size:24px>${item.emoji||'\u{1F4E6}'}</span>'">`;
     } else {
-      div.innerHTML = `<span style="font-size:24px">${item.emoji||'📦'}</span>`;
+      div.innerHTML = `<span style="font-size:24px">${item.emoji||'\u{1F4E6}'}</span>`;
     }
     bp.appendChild(div);
   }
@@ -730,33 +1142,28 @@ function openLab() {
   S.phase = 'lab';
   const labEl = document.getElementById('lab');
   labEl.style.display = 'block';
-
-  // Background
   const bgUrl = S.round % 2 === 0 ? 'img/L1.jpg' : 'img/L2.jpg';
   const labBg = document.getElementById('lab-bg');
   labBg.style.backgroundImage = `url(${bgUrl})`;
   labBg.style.backgroundColor = '#1a1a2e';
 
-  // Grid
   const grid = document.getElementById('lab-grid');
   grid.innerHTML = '';
   for (let i = 0; i < 12; i++) {
     const cell = document.createElement('div');
     cell.className = 'lab-cell';
     cell.dataset.index = i;
-    // Show already placed items
     const placed = S.placedItems.find(p => p.slot === i);
     if (placed) {
       const item = ITEMS.find(it => it.id === placed.id);
       if (item) {
         if (item.img) {
-          cell.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'📦'}</div>'">`;
+          cell.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
         } else {
-          cell.innerHTML = `<div class="emoji-icon">${item.emoji||'📦'}</div>`;
+          cell.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
         }
       }
     }
-    // Drop target
     cell.addEventListener('dragover', e => { e.preventDefault(); cell.classList.add('highlight'); });
     cell.addEventListener('dragleave', () => cell.classList.remove('highlight'));
     cell.addEventListener('drop', e => {
@@ -766,12 +1173,10 @@ function openLab() {
         placeItemInCell(cell, dragItem);
       }
     });
-    // Touch drop
     cell.addEventListener('touchmove', e => e.preventDefault());
     grid.appendChild(cell);
   }
 
-  // Tray
   const tray = document.getElementById('lab-tray');
   tray.innerHTML = '';
   const toPlace = S.backpack.filter(id => !S.placedItems.some(p => p.id === id));
@@ -783,40 +1188,26 @@ function openLab() {
     div.draggable = true;
     div.dataset.itemId = id;
     if (item.img) {
-      div.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'📦'}</div>'">`;
+      div.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
     } else {
-      div.innerHTML = `<div class="emoji-icon">${item.emoji||'📦'}</div>`;
+      div.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
     }
-    div.addEventListener('dragstart', e => {
-      dragItem = id;
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    // Touch drag
-    div.addEventListener('touchstart', e => {
-      dragItem = id;
-      dragEl = div;
-      div.style.opacity = '0.5';
-    });
+    div.addEventListener('dragstart', e => { dragItem = id; e.dataTransfer.effectAllowed = 'move'; });
+    div.addEventListener('touchstart', e => { dragItem = id; dragEl = div; div.style.opacity = '0.5'; });
     tray.appendChild(div);
   }
 
-  // Touch move on lab
-  labEl.ontouchmove = (e) => {
-    e.preventDefault();
-  };
+  labEl.ontouchmove = (e) => { e.preventDefault(); };
   labEl.ontouchend = (e) => {
     if (!dragItem) return;
     const touch = e.changedTouches[0];
     const el = document.elementFromPoint(touch.clientX, touch.clientY);
     if (el && el.classList.contains('lab-cell')) {
       const idx = parseInt(el.dataset.index);
-      if (!S.placedItems.find(p => p.slot === idx)) {
-        placeItemInCell(el, dragItem);
-      }
+      if (!S.placedItems.find(p => p.slot === idx)) placeItemInCell(el, dragItem);
     }
     if (dragEl) dragEl.style.opacity = '1';
-    dragItem = null;
-    dragEl = null;
+    dragItem = null; dragEl = null;
   };
 
   document.getElementById('lab-done-btn').style.display = 'none';
@@ -828,35 +1219,24 @@ function placeItemInCell(cell, itemId) {
   const item = ITEMS.find(i => i.id === itemId);
   if (!item) return;
   const slotIdx = parseInt(cell.dataset.index);
-
-  // Add to placed
   S.placedItems.push({ id: itemId, slot: slotIdx });
   localStorage.setItem('labPlaced', JSON.stringify(S.placedItems));
-
-  // Remove from backpack
   const bpIdx = S.backpack.indexOf(itemId);
   if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
-
-  // Show in cell with bounce animation
   if (item.img) {
-    cell.innerHTML = `<img src="${item.img}" style="transform:scale(0)" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'📦'}</div>'">`;
+    cell.innerHTML = `<img src="${item.img}" style="transform:scale(0)" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
   } else {
-    cell.innerHTML = `<div class="emoji-icon" style="transform:scale(0)">${item.emoji||'📦'}</div>`;
+    cell.innerHTML = `<div class="emoji-icon" style="transform:scale(0)">${item.emoji||'\u{1F4E6}'}</div>`;
   }
   const inner = cell.firstElementChild;
   requestAnimationFrame(() => {
     inner.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
     inner.style.transform = 'scale(1)';
   });
-
-  // Remove from tray
   const tray = document.getElementById('lab-tray');
   const trayItem = tray.querySelector(`[data-item-id="${itemId}"]`);
   if (trayItem) trayItem.remove();
-
-  // Volta speech
   showVoltaSpeech(VOLTA_QUOTES[Math.floor(Math.random() * VOLTA_QUOTES.length)]);
-
   dragItem = null;
   checkLabDone();
 }
@@ -879,11 +1259,8 @@ function checkLabDone() {
 
 document.getElementById('lab-done-btn').addEventListener('click', () => {
   S.round++;
-  if (S.round >= S.maxRounds) {
-    showCompletion();
-  } else {
-    startStreetRun('to_shop');
-  }
+  if (S.round >= S.maxRounds) showCompletion();
+  else startStreetRun('to_shop');
 });
 
 // --- COMPLETION ---
@@ -893,7 +1270,7 @@ function showCompletion() {
   const comp = document.getElementById('completion');
   comp.style.display = 'flex';
   document.getElementById('comp-text').innerHTML =
-    `Dokonci${S.maxRounds} kol!<br>Umisteno predmetu: ${S.placedItems.length}<br>Zbyvajici mince: ${S.coins}<br><br>Laborator Dr. Volty je pripravena!`;
+    `Dokoncil jsi ${S.maxRounds} kol!<br>Umisteno predmetu: ${S.placedItems.length}<br>Zbyvajici mince: ${S.coins}<br><br>Laborator Dr. Volty je pripravena!`;
 }
 
 // --- INPUT ---
@@ -902,10 +1279,9 @@ window.addEventListener('keydown', e => {
   keys[e.code] = true;
   if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'Space') e.preventDefault();
   if (S.phase === 'title') { startStreetRun('to_shop'); return; }
+  if (S.introTimer > 0) return; // No control during intro
   if ((e.code === 'ArrowUp' || e.code === 'Space') && S.onGround && !S.ducking) {
-    S.vy = -12;
-    S.onGround = false;
-    S.jumping = true;
+    S.vy = -12; S.onGround = false; S.jumping = true;
   }
   if (e.code === 'ArrowDown') S.ducking = true;
 });
@@ -914,24 +1290,18 @@ window.addEventListener('keyup', e => {
   if (e.code === 'ArrowDown') S.ducking = false;
 });
 
-// Touch controls
 canvas.addEventListener('touchstart', e => {
   e.preventDefault();
   if (S.phase === 'title') { startStreetRun('to_shop'); return; }
+  if (S.introTimer > 0) return;
   const t = e.touches[0];
-  const ty = t.clientY;
-  if (ty < S.H * 0.5) {
-    // Jump
+  if (t.clientY < S.H * 0.5) {
     if (S.onGround && !S.ducking) { S.vy = -12; S.onGround = false; S.jumping = true; }
   } else {
     S.ducking = true;
   }
 });
-canvas.addEventListener('touchend', e => {
-  S.ducking = false;
-});
-
-// Mouse click for title
+canvas.addEventListener('touchend', e => { S.ducking = false; });
 canvas.addEventListener('click', e => {
   if (S.phase === 'title') startStreetRun('to_shop');
 });
@@ -941,9 +1311,7 @@ let lastTime = 0;
 function gameLoop(time) {
   const dt = Math.min(3, (time - lastTime) / 16.67);
   lastTime = time;
-
   ctx.clearRect(0, 0, S.W, S.H);
-
   if (S.phase === 'title') {
     S.frame++;
     drawTitle();
@@ -951,8 +1319,6 @@ function gameLoop(time) {
     updateStreet(dt);
     drawStreet();
   }
-  // shop and lab are DOM overlays, canvas stays behind
-
   requestAnimationFrame(gameLoop);
 }
 requestAnimationFrame(gameLoop);
