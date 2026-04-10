@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Domácí učitel — Stavění laboratoře (Drag &amp; Drop)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: #0d1b2a;
+  color: #eee;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 14px;
+  background: #16213e;
+  border-bottom: 3px solid #f5c842;
+  flex-shrink: 0;
+  z-index: 10;
+}
+.top-bar .info { font-size: 0.9rem; font-weight: 600; }
+.top-bar .coins {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 1.1rem; font-weight: 700; color: #f5c842;
+}
+.coin-icon {
+  width: 24px; height: 24px;
+  background: radial-gradient(circle, #ffd700, #daa520);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: #333; font-weight: 700;
+  box-shadow: 0 0 8px rgba(255,215,0,0.4);
+}
+
+/* VOLTA SPEECH */
+.volta-speech {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22,33,62,0.95);
+  border: 2px solid #4ecca3;
+  border-radius: 14px;
+  padding: 10px 16px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 20;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.volta-speech.hidden { opacity: 0; }
+.volta-speech .volta-label {
+  font-weight: 700; color: #4ecca3; margin-bottom: 4px;
+}
+
+/* LAB AREA */
+.lab-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a2744 0%, #1e2d4a 60%, #2d2d44 85%, #1e1e30 100%);
+}
+
+/* Drop zones — invisible targets */
+.drop-zone {
+  position: absolute;
+  border: 2px dashed rgba(255,255,255,0.0);
+  border-radius: 8px;
+  transition: all 0.3s;
+  z-index: 2;
+}
+.drop-zone.highlight {
+  border-color: rgba(78,204,163,0.6);
+  background: rgba(78,204,163,0.1);
+  box-shadow: 0 0 15px rgba(78,204,163,0.2);
+}
+.drop-zone.filled {
+  border: none;
+}
+.drop-zone .zone-hint {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.drop-zone.highlight .zone-hint { opacity: 1; }
+
+/* Placed item in lab */
+.placed-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  animation: plop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes plop {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.placed-item .placed-icon { font-size: 2rem; }
+.placed-item.big .placed-icon { font-size: 2.8rem; }
+
+/* Floor item (wrong dependency) */
+.floor-item {
+  position: absolute;
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  animation: tumble 0.5s ease;
+  opacity: 0.6;
+}
+@keyframes tumble {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  40% { transform: translateY(5px) rotate(15deg); }
+  70% { transform: translateY(-3px) rotate(-8deg); }
+  100% { transform: translateY(0) rotate(5deg); opacity: 0.6; }
+}
+.floor-item .placed-icon { font-size: 1.6rem; }
+.floor-item .floor-label {
+  font-size: 0.55rem; color: #e94560;
+  margin-top: 2px;
+}
+
+/* INVENTORY BAR */
+.inventory-bar {
+  flex-shrink: 0;
+  background: #16213e;
+  border-top: 3px solid #3498db;
+  padding: 8px 10px;
+  z-index: 10;
+}
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.inv-header .inv-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3498db;
+}
+.inv-header .inv-count {
+  font-size: 0.75rem;
+  color: #8899aa;
+}
+.inv-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.inv-scroll::-webkit-scrollbar { height: 4px; }
+.inv-scroll::-webkit-scrollbar-thumb { background: #3498db; border-radius: 2px; }
+
+.inv-item {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  background: #0f3460;
+  border: 2px solid #2a4a7f;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transition: all 0.2s;
+  position: relative;
+}
+.inv-item:active { cursor: grabbing; }
+.inv-item .inv-icon { font-size: 1.8rem; }
+.inv-item .inv-name {
+  font-size: 0.55rem;
+  color: #aaa;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 65px;
+  overflow: hidden;
+}
+.inv-item.dragging {
+  opacity: 0.3;
+  transform: scale(0.9);
+}
+
+/* Drag ghost */
+.drag-ghost {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: transform 0.1s;
+}
+
+/* Buttons */
+.action-bar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 6px 10px;
+  background: #16213e;
+  flex-shrink: 0;
+}
+.btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:active { transform: scale(0.96); }
+.btn-gold {
+  background: linear-gradient(135deg, #f5c842, #e6a800);
+  color: #1a1a2e;
+}
+.btn-blue {
+  background: #0f3460;
+  color: #eee;
+  border: 2px solid #3498db;
+}
+.btn-green {
+  background: linear-gradient(135deg, #4ecca3, #27ae60);
+  color: #1a1a2e;
+}
+
+/* SHOP OVERLAY */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 50;
+  flex-direction: column;
+}
+.overlay.active { display: flex; }
+.shop-header {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 2px solid #f5c842;
+  background: #16213e;
+}
+.shop-header h2 { font-size: 1.2rem; color: #f5c842; }
+.shop-grid-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+.shop-card {
+  background: #16213e;
+  border: 2px solid #2a4a7f;
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.shop-card:active { transform: scale(0.95); }
+.shop-card.owned {
+  opacity: 0.35;
+  pointer-events: none;
+  border-color: #4ecca3;
+}
+.shop-card.cant-afford { opacity: 0.4; }
+.shop-card .s-icon { font-size: 2rem; }
+.shop-card .s-name { font-size: 0.7rem; margin: 4px 0 2px; line-height: 1.2; }
+.shop-card .s-price {
+  font-size: 0.85rem; font-weight: 700; color: #f5c842;
+}
+.shop-card.owned .s-price { color: #4ecca3; }
+.shop-bottom {
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  background: #16213e;
+  border-top: 2px solid #f5c842;
+}
+
+/* EVENT OVERLAY */
+.event-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 60;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.event-overlay.active { display: flex; }
+.event-box {
+  background: #16213e;
+  border: 2px solid #e94560;
+  border-radius: 16px;
+  padding: 24px 20px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+.event-box .ev-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.event-box .ev-title { font-size: 1.2rem; font-weight: 700; color: #e94560; margin-bottom: 8px; }
+.event-box .ev-text { font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px; }
+.event-choices { display: flex; flex-direction: column; gap: 8px; }
+.ev-choice {
+  display: flex; align-items: center; gap: 10px;
+  background: #0f3460; border: 2px solid transparent;
+  border-radius: 10px; padding: 12px 14px;
+  cursor: pointer; font-family: inherit; font-size: 0.9rem;
+  color: #eee; text-align: left; transition: all 0.2s;
+}
+.ev-choice:active { border-color: #3498db; background: #1a3a6e; }
+.ev-choice .ec-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+/* Score particles */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  z-index: 200;
+  animation: floatUp 1.2s ease forwards;
+}
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.7); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .inv-item { width: 60px; height: 60px; }
+  .inv-item .inv-icon { font-size: 1.5rem; }
+  .volta-speech { font-size: 0.78rem; max-width: 300px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="info">Den <span id="dayNum">1</span>/20 — Mise 1</div>
+  <div class="coins">
+    <div class="coin-icon">M</div>
+    <span id="coinDisplay">0</span>
+  </div>
+</div>
+
+<div class="volta-speech hidden" id="voltaSpeech">
+  <div class="volta-label">🧪 Dr. Volta</div>
+  <div id="voltaText"></div>
+</div>
+
+<div class="lab-area" id="labArea">
+  <!-- Drop zones and placed items render here -->
+</div>
+
+<div class="inventory-bar" id="invBar">
+  <div class="inv-header">
+    <div class="inv-title">📦 Tvoje díly — přetáhni do laby!</div>
+    <div class="inv-count"><span id="invCount">0</span> dílů</div>
+  </div>
+  <div class="inv-scroll" id="invScroll"></div>
+</div>
+
+<div class="action-bar">
+  <button class="btn btn-blue" onclick="openShop()">🛒 Obchod</button>
+  <button class="btn btn-green" onclick="endDay()">✅ Konec dne</button>
+</div>
+
+<!-- SHOP OVERLAY -->
+<div class="overlay" id="shopOverlay">
+  <div class="shop-header">
+    <h2>🏪 Voltův obchod</h2>
+  </div>
+  <div class="shop-grid-wrap">
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+  <div class="shop-bottom">
+    <button class="btn btn-blue" onclick="closeShop()">← Zpět do laby</button>
+  </div>
+</div>
+
+<!-- EVENT OVERLAY -->
+<div class="event-overlay" id="eventOverlay">
+  <div class="event-box" id="eventBox"></div>
+</div>
+
+<!-- DRAG GHOST -->
+<div class="drag-ghost" id="dragGhost" style="display:none"></div>
+
+<script>
+// ===== DATA =====
+const ITEMS = [
+  // {id, name, icon, price, cat, requires[], zoneX%, zoneY%, zoneW, zoneH, size}
+  // Positions are % of lab area
+  // ZÁKLAD
+  {id:'podlaha', name:'Podlaha', icon:'🟫', price:5, cat:'základ', requires:[], zx:10, zy:78, zw:80, zh:15, size:'big'},
+  {id:'dvere', name:'Dveře', icon:'🚪', price:8, cat:'základ', requires:['podlaha'], zx:2, zy:25, zw:12, zh:50, size:'big'},
+  {id:'okno', name:'Okno', icon:'🪟', price:6, cat:'základ', requires:['podlaha'], zx:70, zy:15, zw:15, zh:25},
+  {id:'svetlo', name:'Stropní lampa', icon:'💡', price:4, cat:'základ', requires:['podlaha'], zx:42, zy:2, zw:16, zh:12},
+  {id:'zasuvky', name:'Zásuvky', icon:'🔌', price:3, cat:'základ', requires:['podlaha'], zx:28, zy:55, zw:8, zh:10},
+
+  // NÁBYTEK
+  {id:'stul', name:'Velký stůl', icon:'🔬', price:25, cat:'nábytek', requires:['podlaha'], zx:30, zy:58, zw:25, zh:18, size:'big'},
+  {id:'stul2', name:'Malý stůl', icon:'🪑', price:12, cat:'nábytek', requires:['podlaha'], zx:58, zy:60, zw:18, zh:15},
+  {id:'regal', name:'Regál', icon:'🗄️', price:18, cat:'nábytek', requires:['podlaha'], zx:82, zy:30, zw:14, zh:45, size:'big'},
+  {id:'skrinka', name:'Skříňka', icon:'🗃️', price:10, cat:'nábytek', requires:['podlaha'], zx:15, zy:60, zw:12, zh:15},
+
+  // VYBAVENÍ
+  {id:'zkumavky', name:'Zkumavky', icon:'🧪', price:15, cat:'vybavení', requires:['stul'], zx:32, zy:50, zw:10, zh:10},
+  {id:'mikroskop', name:'Mikroskop', icon:'🔬', price:35, cat:'vybavení', requires:['stul'], zx:44, zy:48, zw:10, zh:12},
+  {id:'kahan', name:'Kahan', icon:'🔥', price:12, cat:'vybavení', requires:['stul','zasuvky'], zx:38, zy:50, zw:8, zh:10},
+  {id:'vaha', name:'Váha', icon:'⚖️', price:20, cat:'vybavení', requires:['stul2'], zx:60, zy:52, zw:10, zh:10},
+  {id:'banky', name:'Baňky', icon:'⚗️', price:10, cat:'vybavení', requires:['regal'], zx:84, zy:35, zw:10, zh:12},
+  {id:'chemie', name:'Chemikálie', icon:'🧴', price:8, cat:'vybavení', requires:['regal'], zx:84, zy:50, zw:10, zh:10},
+
+  // DOPLŇKY
+  {id:'plast', name:'Plášť', icon:'🥼', price:6, cat:'doplňky', requires:[], zx:8, zy:30, zw:10, zh:20},
+  {id:'bryle', name:'Brýle', icon:'🥽', price:3, cat:'doplňky', requires:[], zx:10, zy:22, zw:8, zh:8},
+  {id:'rukavice', name:'Rukavice', icon:'🧤', price:2, cat:'doplňky', requires:[], zx:18, zy:40, zw:8, zh:8},
+  {id:'lzicka', name:'Lžička', icon:'🥄', price:1, cat:'doplňky', requires:['stul'], zx:48, zy:52, zw:6, zh:6},
+  {id:'tabule', name:'Tabule', icon:'📋', price:10, cat:'doplňky', requires:['podlaha'], zx:22, zy:15, zw:14, zh:20},
+  {id:'poster', name:'Periodická tab.', icon:'📊', price:7, cat:'doplňky', requires:['podlaha'], zx:48, zy:10, zw:14, zh:18},
+  {id:'hodiny', name:'Hodiny', icon:'🕐', price:4, cat:'doplňky', requires:['podlaha'], zx:65, zy:8, zw:8, zh:10},
+  {id:'hasak', name:'Hasičák', icon:'🧯', price:5, cat:'doplňky', requires:['podlaha'], zx:3, zy:70, zw:8, zh:12},
+  {id:'kvetina', name:'Rostlinka', icon:'🌱', price:2, cat:'doplňky', requires:['stul2'], zx:68, zy:52, zw:8, zh:8},
+
+  // LUXUS
+  {id:'pc', name:'Počítač', icon:'💻', price:40, cat:'luxus', requires:['stul2','zasuvky'], zx:60, zy:50, zw:12, zh:12},
+  {id:'aquarium', name:'Akvárium', icon:'🐠', price:15, cat:'luxus', requires:['podlaha'], zx:76, zy:65, zw:10, zh:12},
+  {id:'robot', name:'Robot', icon:'🤖', price:50, cat:'luxus', requires:['pc'], zx:72, zy:68, zw:8, zh:10},
+  {id:'teleskop', name:'Dalekohled', icon:'🔭', price:30, cat:'luxus', requires:['okno'], zx:72, zy:30, zw:10, zh:15},
+  {id:'neon', name:'Neon LABA', icon:'✨', price:20, cat:'luxus', requires:['svetlo'], zx:35, zy:4, zw:20, zh:10},
+];
+
+const EVENTS = [
+  {
+    icon:'🏴‍☠️', title:'Křivák blokuje cestu!',
+    text:'Pirát stojí v cestě a chce tvoje mince!',
+    choices:[
+      {icon:'🏃', text:'Obejít parkem', result:'ok', msg:'Proběhneš parkem. Křivák má krátké nohy!'},
+      {icon:'💰', text:'Dát 5 mincí', result:-5, msg:'Bere 5 mincí. "Příště víc!"'},
+      {icon:'🗣️', text:'Zavolat o pomoc', result:'ok', msg:'Babička s deštníkem ho vyděsí!'},
+    ]
+  },
+  {
+    icon:'🦜', title:'Keksík útočí!',
+    text:'Papoušek letí na tvůj batoh! KEKSÍK!',
+    choices:[
+      {icon:'🍪', text:'Hodit sušenku', result:'ok', msg:'Chytí sušenku a odletí. Uplácitelný.'},
+      {icon:'🙈', text:'Schovat batoh', result:'ok', msg:'Krouží, ale nevidí. Odletí s prázdnou.'},
+      {icon:'😱', text:'Nechat ho', result:-3, msg:'Bere 3 mince. "KEKSÍÍÍK!"'},
+    ]
+  },
+  {
+    icon:'👮', title:'Policejní kontrola!',
+    text:'Strážník: "Máte doklad na ten mikroskop?"',
+    choices:[
+      {icon:'🏪', text:'Běžet pro účtenku', result:'ok', msg:'Prodavač ti dá účtenku. Strážník salutuje.'},
+      {icon:'📱', text:'Zavolat Voltovi', result:'ok', msg:'Volta přijde. "Promiňte, pane doktore!"'},
+      {icon:'🏃', text:'Utéct', result:-8, msg:'Pokuta 8 mincí. Utíkat od policie = špatný nápad.'},
+    ]
+  },
+  {
+    icon:'😋', title:'Řepák nabízí koláč!',
+    text:'Tlustý pirát s koláčem: "Ochutnej! Jen pár mincí..."',
+    choices:[
+      {icon:'🚶', text:'Jít dál', result:'ok', msg:'Řepák je línej se zvednout. Jdeš v klidu.'},
+      {icon:'🍰', text:'Ochutnat (4 mince)', result:-4, msg:'Fakt dobrý koláč. Ale 4 mince.'},
+      {icon:'🤝', text:'Výměna — pomůže nést', result:'ok', msg:'Za koláč udělá cokoliv!'},
+    ]
+  },
+  {
+    icon:'⚡', title:'Pirátka na motorce!',
+    text:'Skoro tě srazí! Ale motorka jí naskočí...',
+    choices:[
+      {icon:'🔧', text:'Pomoci opravit', result:3, msg:'Opravíš hadičku. Dá ti 3 mince!'},
+      {icon:'😂', text:'Zasmát se a jít', result:'ok', msg:'Pirátka řve, ale ty jsi daleko.'},
+      {icon:'🏃', text:'Rychle pryč', result:'ok', msg:'S Pirátkou nejsou žerty.'},
+    ]
+  },
+];
+
+const VOLTA_OK = [
+  "Přesně tam! Logika funguje! 🧠",
+  "Výborně! Takhle se staví laba!",
+  "Jo, to sedí. Pyšnej doktor!",
+  "Perfektní! Z tebe bude inženýr!",
+  "Ano ano! Přesně takhle!",
+];
+const VOLTA_WRONG = [
+  "Kam to dáváš? Chybí ti {dep}!",
+  "Bez {dep} to nejde. Leží to na zemi.",
+  "{dep} potřebuješ první!",
+  "Hmm... nejdřív {dep}, pak {item}.",
+];
+const VOLTA_MISS = [
+  "Vedle! Zkus to přetáhnout na správné místo.",
+  "Tamtudy ne... zkus jinam.",
+  "Hledej to správné místo!",
+];
+
+// ===== STATE =====
+let state = {
+  day: 1,
+  coins: 45,
+  owned: [],       // placed in lab
+  onFloor: [],     // wrong deps
+  inventory: [],   // bought, not yet placed
+  allBought: [],   // everything ever bought
+};
+
+// ===== DRAG STATE =====
+let dragState = {
+  active: false,
+  itemId: null,
+  ghostEl: null,
+  startX: 0,
+  startY: 0,
+};
+
+// ===== INIT =====
+function init() {
+  updateUI();
+  renderDropZones();
+  renderInventory();
+  renderPlaced();
+  voltaSay("Vítej v laboratoři! Nakup díly v obchodě a přetáhni je na správná místa. Začni podlahou! 🧪", 5000);
+}
+
+function updateUI() {
+  document.getElementById('dayNum').textContent = state.day;
+  document.getElementById('coinDisplay').textContent = state.coins;
+  document.getElementById('invCount').textContent = state.inventory.length;
+}
+
+// ===== VOLTA =====
+let voltaTimer = null;
+function voltaSay(text, duration = 3500) {
+  const el = document.getElementById('voltaSpeech');
+  document.getElementById('voltaText').textContent = text;
+  el.classList.remove('hidden');
+  clearTimeout(voltaTimer);
+  voltaTimer = setTimeout(() => el.classList.add('hidden'), duration);
+}
+
+// ===== DROP ZONES =====
+function renderDropZones() {
+  const lab = document.getElementById('labArea');
+  // Remove old zones
+  lab.querySelectorAll('.drop-zone').forEach(e => e.remove());
+
+  ITEMS.forEach(item => {
+    if (state.owned.includes(item.id)) return; // already placed
+    if (state.onFloor.includes(item.id)) return;
+
+    const zone = document.createElement('div');
+    zone.className = 'drop-zone';
+    zone.dataset.itemId = item.id;
+    zone.style.left = item.zx + '%';
+    zone.style.top = item.zy + '%';
+    zone.style.width = (item.zw || 10) + '%';
+    zone.style.height = (item.zh || 10) + '%';
+    zone.innerHTML = `<span class="zone-hint">${item.name}</span>`;
+    lab.appendChild(zone);
+  });
+}
+
+// ===== PLACED ITEMS =====
+function renderPlaced() {
+  const lab = document.getElementById('labArea');
+  lab.querySelectorAll('.placed-item, .floor-item').forEach(e => e.remove());
+
+  state.owned.forEach(id => {
+    const item = ITEMS.find(i => i.id === id);
+    if (!item) return;
+    const el = document.createElement('div');
+    el.className = 'placed-item' + (item.size === 'big' ? ' big' : '');
+    el.style.left = (item.zx + item.zw/2 - 3) + '%';
+    el.style.top = (item.zy + item.zh/2 - 4) + '%';
+    el.innerHTML = `<span class="placed-icon">${item.icon}</span>`;
+    lab.appendChild(el);
+  });
+
+  let fx = 15;
+  state.onFloor.forEach(id => {
+    const item = ITEMS.find(i => i.id === id);
+    if (!item) return;
+    const el = document.createElement('div');
+    el.className = 'floor-item';
+    el.style.left = fx + '%';
+    el.innerHTML = `<span class="placed-icon">${item.icon}</span><span class="floor-label">⚠️ chybí základ</span>`;
+    lab.appendChild(el);
+    fx += 7;
+  });
+}
+
+// ===== INVENTORY =====
+function renderInventory() {
+  const scroll = document.getElementById('invScroll');
+  scroll.innerHTML = '';
+  state.inventory.forEach(id => {
+    const item = ITEMS.find(i => i.id === id);
+    if (!item) return;
+    const el = document.createElement('div');
+    el.className = 'inv-item';
+    el.dataset.itemId = id;
+    el.innerHTML = `<span class="inv-icon">${item.icon}</span><span class="inv-name">${item.name}</span>`;
+    
+    // Touch events
+    el.addEventListener('touchstart', onDragStart, {passive: false});
+    el.addEventListener('mousedown', onDragStart);
+    
+    scroll.appendChild(el);
+  });
+  document.getElementById('invCount').textContent = state.inventory.length;
+}
+
+// ===== DRAG & DROP =====
+function onDragStart(e) {
+  e.preventDefault();
+  const el = e.currentTarget;
+  const itemId = el.dataset.itemId;
+  if (!itemId) return;
+
+  const item = ITEMS.find(i => i.id === itemId);
+  const touch = e.touches ? e.touches[0] : e;
+
+  dragState.active = true;
+  dragState.itemId = itemId;
+  el.classList.add('dragging');
+
+  // Create ghost
+  const ghost = document.getElementById('dragGhost');
+  ghost.textContent = item.icon;
+  ghost.style.display = 'block';
+  ghost.style.left = touch.clientX + 'px';
+  ghost.style.top = touch.clientY + 'px';
+
+  // Highlight matching drop zone
+  const zone = document.querySelector(`.drop-zone[data-item-id="${itemId}"]`);
+  if (zone) zone.classList.add('highlight');
+
+  // Bind move & end
+  document.addEventListener('touchmove', onDragMove, {passive: false});
+  document.addEventListener('touchend', onDragEnd);
+  document.addEventListener('mousemove', onDragMove);
+  document.addEventListener('mouseup', onDragEnd);
+}
+
+function onDragMove(e) {
+  if (!dragState.active) return;
+  e.preventDefault();
+  const touch = e.touches ? e.touches[0] : e;
+  const ghost = document.getElementById('dragGhost');
+  ghost.style.left = touch.clientX + 'px';
+  ghost.style.top = touch.clientY + 'px';
+}
+
+function onDragEnd(e) {
+  if (!dragState.active) return;
+  const touch = e.changedTouches ? e.changedTouches[0] : e;
+  const dropX = touch.clientX;
+  const dropY = touch.clientY;
+
+  // Hide ghost
+  document.getElementById('dragGhost').style.display = 'none';
+
+  // Remove highlight
+  document.querySelectorAll('.drop-zone.highlight').forEach(z => z.classList.remove('highlight'));
+
+  // Find which drop zone we're over
+  const item = ITEMS.find(i => i.id === dragState.itemId);
+  const zone = document.querySelector(`.drop-zone[data-item-id="${dragState.itemId}"]`);
+  
+  let placed = false;
+
+  if (zone) {
+    const rect = zone.getBoundingClientRect();
+    if (dropX >= rect.left && dropX <= rect.right && dropY >= rect.top && dropY <= rect.bottom) {
+      // Dropped on correct zone!
+      const missingDeps = item.requires.filter(r => !state.owned.includes(r));
+      
+      if (missingDeps.length === 0) {
+        // SUCCESS
+        state.owned.push(item.id);
+        state.inventory = state.inventory.filter(id => id !== item.id);
+        placed = true;
+        voltaSay(VOLTA_OK[Math.floor(Math.random() * VOLTA_OK.length)]);
+        spawnParticle(dropX, dropY, '✅', '#4ecca3');
+        
+        // Check if floor items can now be placed
+        autoPlaceFloorItems();
+      } else {
+        // Missing dependency — goes to floor
+        const depName = ITEMS.find(i => i.id === missingDeps[0])?.name || '???';
+        state.onFloor.push(item.id);
+        state.inventory = state.inventory.filter(id => id !== item.id);
+        placed = true;
+        let msg = VOLTA_WRONG[Math.floor(Math.random() * VOLTA_WRONG.length)];
+        msg = msg.replace('{dep}', depName).replace('{item}', item.name);
+        voltaSay(msg, 4000);
+        spawnParticle(dropX, dropY, '⚠️', '#e94560');
+      }
+    }
+  }
+
+  if (!placed) {
+    // Check if dropped on ANY other zone (wrong item on wrong zone)
+    const allZones = document.querySelectorAll('.drop-zone');
+    let hitAnyZone = false;
+    allZones.forEach(z => {
+      const r = z.getBoundingClientRect();
+      if (dropX >= r.left && dropX <= r.right && dropY >= r.top && dropY <= r.bottom) {
+        hitAnyZone = true;
+      }
+    });
+    
+    if (hitAnyZone || dropY < document.getElementById('labArea').getBoundingClientRect().bottom) {
+      // Dropped in lab area but wrong spot
+      voltaSay(VOLTA_MISS[Math.floor(Math.random() * VOLTA_MISS.length)]);
+    }
+  }
+
+  // Cleanup
+  document.querySelectorAll('.inv-item.dragging').forEach(el => el.classList.remove('dragging'));
+  dragState.active = false;
+  dragState.itemId = null;
+  document.removeEventListener('touchmove', onDragMove);
+  document.removeEventListener('touchend', onDragEnd);
+  document.removeEventListener('mousemove', onDragMove);
+  document.removeEventListener('mouseup', onDragEnd);
+
+  // Re-render
+  renderDropZones();
+  renderInventory();
+  renderPlaced();
+  updateUI();
+}
+
+function autoPlaceFloorItems() {
+  let moved = true;
+  while (moved) {
+    moved = false;
+    for (let i = state.onFloor.length - 1; i >= 0; i--) {
+      const id = state.onFloor[i];
+      const item = ITEMS.find(it => it.id === id);
+      if (item.requires.every(r => state.owned.includes(r))) {
+        state.onFloor.splice(i, 1);
+        state.owned.push(id);
+        moved = true;
+        voltaSay(`${item.icon} ${item.name} se automaticky postavil — teď máš vše co potřeboval!`, 3000);
+      }
+    }
+  }
+}
+
+// ===== PARTICLES =====
+function spawnParticle(x, y, text, color) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.textContent = text;
+  p.style.left = x + 'px';
+  p.style.top = y + 'px';
+  p.style.color = color;
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 1200);
+}
+
+// ===== SHOP =====
+function openShop() {
+  renderShopGrid();
+  document.getElementById('shopOverlay').classList.add('active');
+}
+function closeShop() {
+  document.getElementById('shopOverlay').classList.remove('active');
+}
+
+function renderShopGrid() {
+  const grid = document.getElementById('shopGrid');
+  grid.innerHTML = ITEMS.map(item => {
+    const bought = state.allBought.includes(item.id);
+    const cantAfford = !bought && item.price > state.coins;
+    let cls = 'shop-card';
+    if (bought) cls += ' owned';
+    if (cantAfford) cls += ' cant-afford';
+    
+    return `<div class="${cls}" onclick="${bought ? '' : `buyItem('${item.id}')`}">
+      <div class="s-icon">${item.icon}</div>
+      <div class="s-name">${item.name}</div>
+      <div class="s-price">${bought ? '✅' : item.price + ' M'}</div>
+    </div>`;
+  }).join('');
+}
+
+function buyItem(id) {
+  const item = ITEMS.find(i => i.id === id);
+  if (!item || state.allBought.includes(id)) return;
+  if (item.price > state.coins) {
+    voltaSay("Na tohle nemáš dost mincí! 💸");
+    return;
+  }
+
+  state.coins -= item.price;
+  state.allBought.push(id);
+  state.inventory.push(id);
+  updateUI();
+  renderShopGrid();
+  renderInventory();
+  spawnParticle(window.innerWidth/2, window.innerHeight/2, `−${item.price} M`, '#f5c842');
+  
+  // Random event after purchase (30% chance)
+  if (Math.random() < 0.3 && !document.getElementById('eventOverlay').classList.contains('active')) {
+    setTimeout(() => triggerEvent(), 500);
+  }
+}
+
+// ===== EVENTS =====
+function triggerEvent() {
+  closeShop();
+  const ev = EVENTS[Math.floor(Math.random() * EVENTS.length)];
+  window._currentEvent = ev;
+  
+  const box = document.getElementById('eventBox');
+  box.innerHTML = `
+    <div class="ev-icon">${ev.icon}</div>
+    <div class="ev-title">${ev.title}</div>
+    <div class="ev-text">${ev.text}</div>
+    <div class="event-choices">
+      ${ev.choices.map((c,i) => `
+        <button class="ev-choice" onclick="resolveEvent(${i})">
+          <span class="ec-icon">${c.icon}</span>
+          <span>${c.text}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+  document.getElementById('eventOverlay').classList.add('active');
+}
+
+function resolveEvent(idx) {
+  const ev = window._currentEvent;
+  const choice = ev.choices[idx];
+  let coinChange = typeof choice.result === 'number' ? choice.result : 0;
+  
+  state.coins = Math.max(0, state.coins + coinChange);
+  updateUI();
+
+  let coinMsg = '';
+  if (coinChange < 0) coinMsg = `<br><span style="color:#e94560">−${Math.abs(coinChange)} mincí</span>`;
+  if (coinChange > 0) coinMsg = `<br><span style="color:#4ecca3">+${coinChange} mincí!</span>`;
+
+  const box = document.getElementById('eventBox');
+  box.innerHTML = `
+    <div class="ev-icon">${coinChange >= 0 ? '✅' : '😅'}</div>
+    <div class="ev-text">${choice.msg}${coinMsg}</div>
+    <button class="btn btn-gold" onclick="closeEvent()" style="margin-top:16px">Pokračovat →</button>
+  `;
+}
+
+function closeEvent() {
+  document.getElementById('eventOverlay').classList.remove('active');
+}
+
+// ===== END DAY =====
+function endDay() {
+  const totalPlaced = state.owned.length;
+  const totalFloor = state.onFloor.length;
+  const totalValue = [...state.owned, ...state.onFloor].reduce((s, id) => s + (ITEMS.find(i=>i.id===id)?.price||0), 0);
+  
+  let msg = `Den ${state.day} hotový!\n\n`;
+  msg += `🏗️ Postaveno: ${totalPlaced} dílů\n`;
+  if (totalFloor > 0) msg += `⚠️ Na zemi: ${totalFloor}\n`;
+  msg += `💎 Hodnota laby: ${totalValue} M\n`;
+  msg += `🪙 Zbývá: ${state.coins} M\n\n`;
+  
+  if (state.day < 20) {
+    msg += `Zítra pokračujeme!`;
+    alert(msg);
+    state.day++;
+    state.coins += 30 + Math.floor(Math.random() * 30);
+    updateUI();
+    voltaSay(`Den ${state.day}! Máš nové mince, hurá do obchodu! 🛒`, 4000);
+  } else {
+    msg += `🎉 MISE 1 DOKONČENA!`;
+    alert(msg);
+  }
+}
+
+// ===== DEBUG =====
+document.addEventListener('keydown', e => {
+  if (e.key === 'm') { state.coins += 50; updateUI(); voltaSay('+50 mincí (debug)'); }
+  if (e.key === 'r') { state = {day:1,coins:45,owned:[],onFloor:[],inventory:[],allBought:[]}; init(); }
+});
+
+// ===== START =====
+init();
+</script>
+</body>
+</html>
