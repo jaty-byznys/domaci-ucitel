@@ -463,7 +463,13 @@ function goShop() {
   panel.style.display = 'block';
 
   const r = ROUNDS[GS.currentRound];
-  const itemsToShow = [...r.items, ...GS.lostItems.filter(id => !GS.bought.has(id))];
+  // Show round items + lost items, no duplicates, include already bought (greyed out)
+  const seen = new Set();
+  const itemsToShow = [...r.items, ...GS.lostItems].filter(id => {
+    if (seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
 
   itemsToShow.forEach((id, i) => {
     const data = ITEM_DATA[id];
@@ -496,9 +502,11 @@ function buyItem(id, cost, div) {
 }
 
 function checkShopDone() {
+  // Always show exit button - player can leave anytime
+  $('shop-done').style.display = 'block';
   const r = ROUNDS[GS.currentRound];
   const allBought = r.items.every(id => GS.bought.has(id));
-  $('shop-done').style.display = allBought ? 'block' : 'none';
+  $('shop-done').textContent = allBought ? 'Vsechno koupeno - zpet!' : 'Odejit z obchodu >';
 }
 
 function hideShop() {
