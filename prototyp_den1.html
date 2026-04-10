@@ -760,7 +760,7 @@ function waitForClick() {
 async function playDialogSequence(dialogs, bgKey) {
   if (bgKey) setBg(bgKey);
   for (const d of dialogs) {
-    showBubble(d.postava, d.text);
+    showBubble(d.postava || d.p, d.text || d.t);
     await waitForClick();
   }
   clearDialog();
@@ -870,7 +870,7 @@ async function startDay() {
   
   // 2. Dialog intro
   setBg('lab');
-  await playDialogSequence(scenarData.uvod, 'lab');
+  await playDialogSequence(scenarData.intro, 'lab');
   
   // 3. Run all 4 rounds
   for (let r = 0; r < scenarData.okruhy.length; r++) {
@@ -906,8 +906,8 @@ async function startDay() {
     }
     
     // Action after Q5
-    if (okruh.akce_po_5) {
-      const akce = okruh.akce_po_5;
+    if (okruh.akce) {
+      const akce = okruh.akce;
       const actionBgMap = [null, 'skripek', 'repak', 'keksik', null];
       const actionVideoMap = [null, 'skripek', 'repak', 'keksik', null];
       
@@ -917,11 +917,11 @@ async function startDay() {
       if (actionBgMap[r]) {
         setBg(actionBgMap[r]);
       }
-      if (akce.dialogy) {
-        await playDialogSequence(akce.dialogy);
+      if (akce.dialog) {
+        await playDialogSequence(akce.dialog);
       }
-      if (akce.sber && scenarData.sber_dne && scenarData.sber_dne[r]) {
-        await showCollectItem(scenarData.sber_dne[r]);
+      if (akce.sber) {
+        await showCollectItem(akce.sber);
       }
     }
     
@@ -942,17 +942,17 @@ async function startDay() {
     }
     
     // Scene after round
-    if (okruh.scenka_po) {
+    if (okruh.scenka && okruh.scenka.length > 0) {
       const sceneBgMap = ['lab', 'lab', 'lab', 'lab'];
       const sceneVideoMap = [null, null, null, null];
       
       setBg(sceneBgMap[r]);
-      if (okruh.scenka_po.dialogy) {
-        await playDialogSequence(okruh.scenka_po.dialogy);
+      if (okruh.scenka) {
+        await playDialogSequence(okruh.scenka);
       }
       
       // Collect item from scenka if available
-      if (okruh.scenka_po.sber) {
+      if (null) {
         const sberIndex = r < scenarData.sber_dne.length ? r : null;
         // Already collected from akce_po_5, check for secondary items
       }
@@ -968,10 +968,7 @@ async function startDay() {
     await playDialogSequence(scenarData.zaver, 'zaver');
   }
   
-  // Collect remaining items 
-  for (let i = collectedItems.length; i < scenarData.sber_dne.length; i++) {
-    await showCollectItem(scenarData.sber_dne[i]);
-  }
+  // Collect items already handled per-round
   
   // 5. Summary
   $roundLabel.textContent = '';
