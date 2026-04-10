@@ -88,7 +88,7 @@ const LEVELS = [
   { name:'KLICKOVANI', intro:'Tolik piratu... musim proklouznut jako stin.',
     skyColors:['#87CEEB','#FFD700','#FF8C00'], groundColor:'#8B7355',
     buildingColors:['#D2B48C','#DEB887','#C4A882'], hasChaser:false,
-    scrollSpeed:3, obstacleRate:0.035, types:['standing_pirate','walking_pirate','sign'],
+    scrollSpeed:3, obstacleRate:0.035, types:['standing_pirate','walking_pirate','sign','piratka'],
     hasStars:false, hasMoon:false },
   { name:'STRECHY', intro:'Pujdu po strechach. Tam me necekaji.',
     skyColors:['#FF6B35','#FF4500','#8B0000'], groundColor:'#8B4513',
@@ -99,12 +99,12 @@ const LEVELS = [
     skyColors:['#0a0a2e','#1a1a4e','#000020'], groundColor:'#4a6fa5',
     buildingColors:['#5C4033','#3E2723','#4E342E'], hasChaser:false,
     scrollSpeed:3.5, obstacleRate:0.022, hasPlatforms:true, hasWater:true,
-    types:['barrel','seagull','anchor'], hasStars:true, hasMoon:true },
+    types:['barrel','seagull','anchor','piratka'], hasStars:true, hasMoon:true },
   { name:'KRIVAK', intro:'Vsechno nebo nic.',
     skyColors:['#2c2c2c','#1a1a1a','#3d3d3d'], groundColor:'#555',
     buildingColors:['#333','#222','#444'], hasChaser:true,
     scrollSpeed:5, obstacleRate:0.03, hasLightning:true,
-    types:['barrel','skripek','parrot','net'], hasStars:false, hasMoon:false },
+    types:['barrel','skripek','parrot','net','piratka'], hasStars:false, hasMoon:false },
 ];
 
 // --- ITEMS ---
@@ -237,6 +237,7 @@ function spawnObstacle() {
   else if (type === 'skripek') { ob.w = 24; ob.h = 45; }
   else if (type === 'parrot') { ob.w = 24; ob.h = 24; ob.y = gy - 80 - Math.random()*40; ob.flying = true; }
   else if (type === 'net') { ob.w = 50; ob.h = 20; }
+  else if (type === 'piratka') { ob.w = 30; ob.h = 50; ob.cunning = true; ob.baseY = gy; }
 
   // For platform levels, place ground obstacles on platforms
   if (lvl.hasPlatforms && !ob.flying) {
@@ -289,58 +290,145 @@ function drawAgentK(x, y, frame, ducking) {
   if (S.hitFlash > 0) ctx.globalAlpha = 0.5 + Math.sin(S.hitFlash*0.5)*0.5;
   const dy = ducking ? 15 : 0;
   const bodyH = ducking ? 20 : 35;
-  ctx.fillStyle = '#2a2a3a';
-  ctx.fillRect(x-12, y-30+dy, 24, bodyH);
+  // Blue hoodie body
+  ctx.fillStyle = '#3B7DD8';
+  ctx.fillRect(x-13, y-30+dy, 26, bodyH);
+  // Hoodie pocket
+  ctx.fillStyle = '#2E6BC4';
+  ctx.fillRect(x-8, y-12+dy, 16, 8);
+  // Hood strings
+  ctx.strokeStyle = '#FFF'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x-3,y-28+dy); ctx.lineTo(x-5,y-18+dy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x+3,y-28+dy); ctx.lineTo(x+5,y-18+dy); ctx.stroke();
+  // Head - skin
   ctx.fillStyle = '#FFD1A4';
   ctx.beginPath(); ctx.arc(x, y-38+dy, 11, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle = '#000';
-  ctx.fillRect(x-9, y-42+dy, 7, 4);
-  ctx.fillRect(x+2, y-42+dy, 7, 4);
-  ctx.fillRect(x-2, y-41+dy, 4, 2);
-  ctx.fillStyle = '#2a2a3a';
-  ctx.fillRect(x-13, y-50+dy, 26, 5);
-  ctx.fillRect(x-9, y-58+dy, 18, 10);
+  // Brown hair (messy)
+  ctx.fillStyle = '#6B3A2A';
+  ctx.beginPath(); ctx.arc(x, y-42+dy, 12, Math.PI, 0); ctx.fill();
+  ctx.fillRect(x-12, y-44+dy, 5, 8); // side hair left
+  ctx.fillRect(x+7, y-44+dy, 5, 8);  // side hair right
+  // Tuft of hair sticking up
+  ctx.beginPath(); ctx.moveTo(x+2,y-53+dy); ctx.lineTo(x+6,y-58+dy); ctx.lineTo(x+10,y-52+dy); ctx.fill();
+  // Eyes
+  ctx.fillStyle = '#FFF';
+  ctx.beginPath(); ctx.arc(x-4, y-38+dy, 3.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+4, y-38+dy, 3.5, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#2C1810';
+  ctx.beginPath(); ctx.arc(x-3, y-38+dy, 2, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5, y-38+dy, 2, 0, Math.PI*2); ctx.fill();
+  // Small smile
+  ctx.strokeStyle = '#B8705A'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x+1, y-34+dy, 4, 0.1, Math.PI-0.1); ctx.stroke();
+  // Jeans (legs)
   if (!ducking) {
-    ctx.fillStyle = '#444';
+    ctx.fillStyle = '#3D5A80';
     const lo = Math.sin(frame * 0.25) * 8;
-    ctx.fillRect(x-7, y+5, 5, 16+lo);
-    ctx.fillRect(x+2, y+5, 5, 16-lo);
-    ctx.fillStyle = '#222';
-    ctx.fillRect(x-9, y+20+lo, 9, 4);
-    ctx.fillRect(x+1, y+20-lo, 9, 4);
+    ctx.fillRect(x-7, y+5, 6, 16+lo);
+    ctx.fillRect(x+1, y+5, 6, 16-lo);
+    // Sneakers
+    ctx.fillStyle = '#E8E8E8';
+    ctx.fillRect(x-9, y+20+lo, 10, 5);
+    ctx.fillRect(x, y+20-lo, 10, 5);
+    // Arms swinging
+    ctx.fillStyle = '#3B7DD8';
+    const armSwing = Math.sin(frame * 0.25) * 12;
+    ctx.fillRect(x-16, y-25+dy, 5, 14+armSwing*0.3);
+    ctx.fillRect(x+11, y-25+dy, 5, 14-armSwing*0.3);
+    // Hands - skin
+    ctx.fillStyle = '#FFD1A4';
+    ctx.beginPath(); ctx.arc(x-14, y-10+dy+armSwing*0.3, 3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x+14, y-10+dy-armSwing*0.3, 3, 0, Math.PI*2); ctx.fill();
   }
   ctx.restore();
 }
 
 function drawSkripek(x, y) {
-  ctx.fillStyle = '#8B4513';
+  // Dark silhouette pirate - scared, small
+  ctx.fillStyle = '#1a1a1a';
   ctx.fillRect(x-10, y-35, 20, 35);
-  ctx.fillStyle = '#FFD1A4';
   ctx.beginPath(); ctx.arc(x, y-42, 10, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle = '#FF0000';
-  ctx.fillRect(x-12, y-50, 24, 6);
+  // Red bandana
+  ctx.fillStyle = '#AA0000';
+  ctx.fillRect(x-12, y-50, 24, 5);
+  // Scared white eyes
   ctx.fillStyle = '#FFF';
-  ctx.beginPath(); ctx.arc(x-4, y-44, 4, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x+5, y-44, 4, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x-4, y-44, 3, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5, y-44, 3, 0, Math.PI*2); ctx.fill();
   ctx.fillStyle = '#000';
-  ctx.beginPath(); ctx.arc(x-4, y-44, 2, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x+5, y-44, 2, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.arc(x, y-36, 3, 0, Math.PI*2);
-  ctx.fillStyle='#600'; ctx.fill();
+  ctx.beginPath(); ctx.arc(x-4, y-44, 1.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+5, y-44, 1.5, 0, Math.PI*2); ctx.fill();
+  // Open scared mouth
+  ctx.fillStyle='#400';
+  ctx.beginPath(); ctx.arc(x, y-36, 3, 0, Math.PI*2); ctx.fill();
+  // Dark legs
+  ctx.fillRect(x-8, y, 6, 14);
+  ctx.fillRect(x+2, y, 6, 14);
 }
 
 function drawRepak(x, y) {
-  ctx.fillStyle = '#2E8B57';
+  // Dark silhouette pirate - big, dumb
+  ctx.fillStyle = '#1a1a1a';
   ctx.fillRect(x-14, y-40, 28, 40);
-  ctx.fillStyle = '#FFD1A4';
   ctx.beginPath(); ctx.arc(x, y-48, 13, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle = '#FF6600';
-  ctx.fillRect(x-15, y-58, 30, 7);
-  ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.arc(x, y-42, 6, 0, Math.PI); ctx.stroke();
-  ctx.fillStyle='#000';
+  // Orange bandana
+  ctx.fillStyle = '#CC5500';
+  ctx.fillRect(x-15, y-58, 30, 6);
+  // Dumb grin - white teeth
+  ctx.fillStyle = '#FFF';
+  ctx.beginPath(); ctx.arc(x, y-42, 5, 0, Math.PI); ctx.fill();
+  // Small eyes
+  ctx.fillStyle = '#FFF';
   ctx.beginPath(); ctx.arc(x-5,y-50,2,0,Math.PI*2); ctx.fill();
   ctx.beginPath(); ctx.arc(x+5,y-50,2,0,Math.PI*2); ctx.fill();
+  // Dark legs
+  ctx.fillRect(x-10, y, 8, 16);
+  ctx.fillRect(x+2, y, 8, 16);
+}
+
+function drawPiratka(x, y, frame) {
+  // Cunning female pirate - dark silhouette with purple accent
+  ctx.fillStyle = '#1a1a1a';
+  // Slimmer body
+  ctx.fillRect(x-10, y-35, 20, 35);
+  ctx.beginPath(); ctx.arc(x, y-42, 10, 0, Math.PI*2); ctx.fill();
+  // Long hair flowing
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(x-12, y-42, 4, 25);
+  ctx.fillRect(x+8, y-42, 4, 25);
+  // Purple bandana/headband
+  ctx.fillStyle = '#8B008B';
+  ctx.fillRect(x-11, y-50, 22, 4);
+  // Sly eyes (narrow, angled)
+  ctx.fillStyle = '#FFF';
+  ctx.save();
+  ctx.translate(x-4, y-44);
+  ctx.rotate(-0.15);
+  ctx.fillRect(-3, -1.5, 6, 3);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(x+4, y-44);
+  ctx.rotate(0.15);
+  ctx.fillRect(-3, -1.5, 6, 3);
+  ctx.restore();
+  ctx.fillStyle = '#0F0';
+  ctx.beginPath(); ctx.arc(x-4, y-44, 1.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(x+4, y-44, 1.5, 0, Math.PI*2); ctx.fill();
+  // Smirk
+  ctx.strokeStyle = '#800'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x+2, y-36, 4, 0.2, Math.PI*0.7); ctx.stroke();
+  // Legs (one extended to trip = when tripping)
+  ctx.fillStyle = '#1a1a1a';
+  if (frame % 120 > 80) {
+    // Trip pose - one leg extended forward
+    ctx.fillRect(x-8, y, 6, 14);
+    ctx.fillRect(x+2, y+5, 18, 5); // extended tripping leg
+    ctx.fillStyle = '#1a1a1a';
+    ctx.fillRect(x+18, y+3, 6, 4); // boot at end
+  } else {
+    ctx.fillRect(x-8, y, 6, 14);
+    ctx.fillRect(x+2, y, 6, 14);
+  }
 }
 
 function drawKeksik(x, y, frame) {
@@ -937,6 +1025,26 @@ function updateStreet(dt) {
     if (ob.type === 'walking_pirate') {
       ob.x += Math.sin(S.frame * 0.03) * 1.5;
     }
+    // Piratka cunning AI: mirrors player jumps, shifts position
+    if (ob.type === 'piratka' && ob.cunning) {
+      // Jump when player jumps (delayed reaction)
+      if (S.jumping && !ob.pJumping && ob.x < S.W * 0.8) {
+        ob.pJumping = true;
+        ob.pJumpTimer = 8; // delay before she jumps
+      }
+      if (ob.pJumpTimer > 0) { ob.pJumpTimer--; }
+      else if (ob.pJumping) {
+        ob.y = ob.baseY - 40; // she jumps too!
+        ob.pJumpHold = (ob.pJumpHold || 0) + 1;
+        if (ob.pJumpHold > 25) { ob.y = ob.baseY; ob.pJumping = false; ob.pJumpHold = 0; }
+      } else {
+        ob.y = ob.baseY;
+      }
+      // Slight horizontal dodge to be harder to avoid
+      if (Math.abs(ob.x - S.px) < 150) {
+        ob.x += Math.sin(S.frame * 0.08) * 1.2; // sway
+      }
+    }
   }
   S.obstacles = S.obstacles.filter(ob => ob.x > -80);
 
@@ -1026,6 +1134,7 @@ function drawObstacle(ob) {
     case 'pigeon': drawPigeon(ob.x, ob.y, ob.frame); break;
     case 'seagull': drawSeagull(ob.x, ob.y, ob.frame); break;
     case 'anchor': drawAnchor(ob.x, ob.y); break;
+    case 'piratka': drawPiratka(ob.x, ob.y, ob.frame); break;
   }
 }
 
