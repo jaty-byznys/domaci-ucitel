@@ -15,9 +15,9 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 #stars-count{font-size:14px;font-weight:700;color:#f59e0b}
 #q-progress{font-size:13px;color:#aaa}
 #dialog-area{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:8px 16px;overflow-y:auto}
-.bubble{width:50%;min-width:280px;padding:10px 14px;border-radius:14px;margin-bottom:4px;animation:pop .25s ease-out;align-self:center}
+.bubble{max-width:420px;min-width:200px;padding:8px 12px;border-radius:14px;margin-bottom:3px;animation:pop .25s ease-out;align-self:center}
 .bubble .name{font-size:12px;font-weight:700;margin-bottom:2px}
-.bubble .text{font-size:15px;line-height:1.45}
+.bubble .text{font-size:14px;line-height:1.4}
 .b-volta{background:rgba(26,39,68,.92);border:1.5px solid #3b6cf5}
 .b-volta .name{color:#8bb4ff}
 .b-volta .text{color:#d0dfff}
@@ -70,7 +70,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 </div>
 <script>
 var GH=''; // local files
-var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
+var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',skripek2:'img/m01/d01/D1S3b.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
 var VID={intro0:'video/m01/d01/D1-S0.mp4',intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
 var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
 var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
@@ -150,7 +150,7 @@ async function runFromSection(startSection){
   for(var ri=0;ri<data.okruhy.length;ri++){
     var ok=data.okruhy[ri];
     var bgK='quiz';
-    var vidK=[null,'skripek','repak','keksik'][ri];
+    var vidK=['skripek','repak','keksik',null][ri];
     // Okruh questions
     if(section<=(ri*2+1)){
       $rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
@@ -162,7 +162,19 @@ async function runFromSection(startSection){
     // Scenka after okruh
     if(section<=(ri*2+2)){
       if(vidK)await playVideo(vidK);
-      if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){if(vidK)setBg(vidK);await playD(ok.akce.dialog);clrD();}
+      if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){
+        if(vidK)setBg(vidK);
+        var bg2K=vidK+'2';
+        if(IMG[bg2K]){
+          var sIdx=0;
+          for(var si=0;si<ok.akce.dialog.length;si++){if(ok.akce.dialog[si].p==='agent'){sIdx=si;break;}}
+          if(sIdx>0){
+            await playD(ok.akce.dialog.slice(0,sIdx));clrD();
+            setBg(bg2K);
+            await playD(ok.akce.dialog.slice(sIdx));clrD();
+          }else{await playD(ok.akce.dialog);clrD();}
+        }else{await playD(ok.akce.dialog);clrD();}
+      }
       if(ok.akce&&ok.akce.sber)await showCollect(ok.akce.sber);
       if(ok.scenka&&ok.scenka.length>0){setBg(bgK);await playD(ok.scenka);clrD();}
       section=ri*2+3;
@@ -179,10 +191,10 @@ async function runFromSection(startSection){
 function setBg(k){$bg.style.backgroundImage='url('+(IMG[k]||k)+')';}
 var _userClicked=false;
 document.addEventListener('click',function(){_userClicked=true;},{ once:true });
-function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){res();return;}var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.muted=!_userClicked;v.src=u;v.onended=function(){b.style.display='none';v.src='';res();};v.onerror=function(){b.style.display='none';v.src='';res();};window._skR=res;v.load();v.play().catch(function(){});});}
+function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){console.warn('playVideo: no URL for key',k);res();return;}console.log('playVideo START:',k,u);var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.muted=!_userClicked;v.src=u;v.onended=function(){console.log('playVideo ENDED:',k);b.style.display='none';v.src='';res();};v.onerror=function(){console.error('playVideo ERROR:',k,v.error);b.style.display='none';v.src='';res();};window._skR=res;v.load();v.play().then(function(){console.log('playVideo PLAYING:',k);}).catch(function(e){console.error('playVideo PLAY FAILED:',k,e);});});}
 function skipVideo(){var b=document.getElementById('video-box'),v=document.getElementById('vid');v.pause();b.style.display='none';v.src='';if(window._skR){window._skR();window._skR=null;}}
 
-function addB(who,text){var d=document.createElement('div');d.className='bubble '+(SIDES[who]||'left')+' '+(BCLS[who]||'b-popis');var nm=NAMES[who];if(nm)d.innerHTML='<div class="name">'+nm+'</div><div class="text">'+text+'</div>';else d.innerHTML='<div class="text">'+text+'</div>';$dlg.appendChild(d);d.scrollIntoView({behavior:'smooth'});}
+function addB(who,text){var d=document.createElement('div');d.className='bubble '+(SIDES[who]||'left')+' '+(BCLS[who]||'b-popis');var nm=NAMES[who];if(nm)d.innerHTML='<div class="name">'+nm+'</div><div class="text">'+text+'</div>';else d.innerHTML='<div class="text">'+text+'</div>';$dlg.appendChild(d);while($dlg.children.length>3){$dlg.removeChild($dlg.firstChild);}d.scrollIntoView({behavior:'smooth'});}
 function clrD(){$dlg.innerHTML='';}
 function waitC(label){return new Promise(function(res){$cont.style.display='block';$cont.textContent=label||'Pokračovat →';$cont.onclick=function(){$cont.style.display='none';res();};});}
 async function playD(arr,bg){if(bg)setBg(bg);for(var i=0;i<arr.length;i++){addB(arr[i].postava||arr[i].p,arr[i].text||arr[i].t);await waitC();}}
