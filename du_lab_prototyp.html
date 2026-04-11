@@ -920,6 +920,10 @@ function startStreetRun(dir) {
   S.introTimer = 120;
   S.introAlpha = 1;
 
+  // Speech bubble state
+  S.speechText = '';
+  S.speechTimer = 0;
+
   // Platform generation
   if (S.level.hasPlatforms) {
     generatePlatforms();
@@ -953,6 +957,47 @@ function drawIntro() {
   ctx.font = `${20*S.scale}px sans-serif`;
   ctx.fillText(lvl.intro, S.W/2, S.H*0.50);
   ctx.shadowBlur = 0;
+  ctx.restore();
+}
+
+// --- SPEECH BUBBLE ---
+function showSpeech(text, duration) {
+  S.speechText = text;
+  S.speechTimer = duration || 90;
+}
+
+function drawSpeechBubble() {
+  if (S.speechTimer <= 0 || !S.speechText) return;
+  S.speechTimer--;
+  const alpha = S.speechTimer < 20 ? S.speechTimer / 20 : 1;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  const bx = S.px + 20, by = S.py - 75;
+  const text = S.speechText;
+  ctx.font = `bold ${13*S.scale}px sans-serif`;
+  const tw = ctx.measureText(text).width + 20;
+  // Bubble background
+  ctx.fillStyle = '#fff';
+  roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.fill();
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+  roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.stroke();
+  // Tail pointing down to Agent
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.moveTo(bx + 10, by + 12);
+  ctx.lineTo(bx + 5, by + 24);
+  ctx.lineTo(bx + 20, by + 12);
+  ctx.fill();
+  ctx.strokeStyle = '#333';
+  ctx.beginPath();
+  ctx.moveTo(bx + 10, by + 12);
+  ctx.lineTo(bx + 5, by + 24);
+  ctx.lineTo(bx + 20, by + 12);
+  ctx.stroke();
+  // Text
+  ctx.fillStyle = '#333';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, bx + 10, by);
   ctx.restore();
 }
 
@@ -1012,9 +1057,13 @@ function respawnOnPlatform() {
 
 // --- UPDATE STREET ---
 function updateStreet(dt) {
-  // During intro, just count down
+  // During intro, just count down + show speech after
   if (S.introTimer > 0) {
     S.introTimer -= dt;
+    if (S.introTimer <= 0) {
+      const lvl = S.level || LEVELS[0];
+      showSpeech(lvl.intro, 120);
+    }
     S.frame++;
     return;
   }
@@ -1160,12 +1209,17 @@ function updateStreet(dt) {
         S.hitFlash = 20;
         S.invincible = 60;
         if (S.backpack.length > 0) {
-          S.backpack.pop();
+          const lost = S.backpack.pop();
+          const lostItem = ITEMS.find(i => i.id === lost);
           addParticles(S.px + 20, S.py - 20, '#ff4444', 10);
+          showSpeech(lostItem ? lostItem.name + ' ukradena!' : 'Neco ukradli!', 80);
         } else if (S.coins > 0) {
-          const lose = Math.min(3, S.coins);
+          const lose = Math.min(5, S.coins);
           S.coins -= lose;
           addParticles(S.px, S.py - 20, '#ffd700', 8);
+          // Pirate theft messages
+          const msgs = ['Hele, mince!', '-'+lose+' minci!', 'Diky za mince!', 'Ha ha!', 'To je moje!'];
+          showSpeech(msgs[Math.floor(Math.random()*msgs.length)], 60);
         }
       }
     }
@@ -1231,6 +1285,9 @@ function drawStreet() {
 
   // Draw Agent K
   drawAgentK(S.px, S.py, S.frame, S.ducking);
+
+  // Speech bubble above Agent
+  drawSpeechBubble();
 
   // Particles
   for (let p of S.particles) {
