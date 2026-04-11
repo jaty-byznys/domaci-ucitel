@@ -44,6 +44,7 @@ canvas{display:block;width:100%;height:100%;}
 .lab-zone .emoji-icon{font-size:2em;filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.4));}
 .lab-zone .zone-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.7em;color:rgba(255,255,255,0.5);white-space:nowrap;pointer-events:none;}
 .door-pile{position:absolute;bottom:80px;left:8px;display:flex;flex-direction:column;gap:4px;z-index:4;}
+.fly-to-door{position:absolute;z-index:20;transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
 .door-pile-item{width:36px;height:36px;background:rgba(0,0,0,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;border:1px solid #555;}
 .door-pile-item img{width:28px;height:28px;object-fit:contain;}
 .door-pile-item .emoji-icon{font-size:20px;}
@@ -52,8 +53,8 @@ canvas{display:block;width:100%;height:100%;}
 .tray-item:active{cursor:grabbing;transform:scale(1.1);}
 .tray-item img{width:44px;height:44px;object-fit:contain;}
 .tray-item .emoji-icon{font-size:32px;}
-#volta-speech{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.85);color:#ffd700;padding:10px 14px;border-radius:12px;font-size:0.95em;max-width:280px;display:none;z-index:5;border:2px solid #ffd700;display:none;}
-#volta-speech::before{content:'';position:absolute;bottom:-8px;right:20px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #ffd700;}
+#volta-speech{background:rgba(0,0,0,0.9);color:#ffd700;padding:14px 18px;border-radius:14px;font-size:1.1em;font-weight:bold;max-width:300px;display:none;border:3px solid #ffd700;line-height:1.4;margin-bottom:4px;}
+#volta-speech::after{content:'';position:absolute;bottom:-10px;right:25px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #ffd700;}
 #lab-done-btn{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);display:none;z-index:5;}
 </style>
 </head>
@@ -77,9 +78,9 @@ canvas{display:block;width:100%;height:100%;}
   <div id="lab-bg"></div>
   <div id="lab-zones"></div>
   <div class="door-pile" id="door-pile"></div>
-  <div style="position:absolute;top:8px;right:8px;z-index:5;text-align:right;">
+  <div id="volta-box" style="position:absolute;top:10px;right:10px;z-index:5;text-align:right;max-width:320px;">
     <div id="volta-speech"></div>
-    <img src="img/V_happy.png" id="volta-portrait" style="width:55px;height:55px;border-radius:50%;border:2px solid #ffd700;margin-top:4px;" onerror="this.style.display='none'">
+    <img src="img/V_happy.png" id="volta-portrait" style="width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;margin-top:6px;background:#1a1a2e;" onerror="this.style.display='none'">
   </div>
   <div id="lab-tray"></div>
   <button class="btn" id="lab-done-btn">Dalsi kolo!</button>
@@ -196,22 +197,32 @@ const ITEMS = [
 
 // --- VOLTA QUOTES ---
 // Lab zones — where each item belongs (% positions on lab_empty.png / L1.jpg)
+// Zones matched to lab_empty.png layout:
+// Left wall: circuit poster (already drawn), door center-left, coat hooks under sign
+// Back wall: safety chart + periodic table (already drawn)
+// Right side: window + wooden shelves (empty)
+// Floor: empty space for desk/chair
 const LAB_ZONES = {
-  A1:  {x:28, y:55, w:25, h:20, name:'Stul'},
-  A2:  {x:40, y:72, w:10, h:14, name:'Stolicka'},
-  A3:  {x:68, y:22, w:22, h:12, name:'Policka'},
-  A4:  {x:70, y:30, w:8,  h:10, name:'Zkumavky'},
-  A5:  {x:30, y:45, w:10, h:14, name:'Mikroskop'},
-  A6:  {x:42, y:47, w:8,  h:12, name:'Kahan'},
-  A7:  {x:52, y:47, w:10, h:12, name:'Vahy'},
-  A8:  {x:40, y:8,  w:20, h:16, name:'Period. tabulka'},
-  A9:  {x:15, y:8,  w:14, h:16, name:'Bezpecnost'},
-  A10: {x:2,  y:10, w:12, h:14, name:'Obvod'},
-  A11: {x:80, y:30, w:8,  h:10, name:'Banky'},
-  A12: {x:25, y:42, w:7,  h:16, name:'Lampa'},
-  A13: {x:88, y:28, w:8,  h:10, name:'Knihy'},
-  A14: {x:90, y:35, w:8,  h:20, name:'Plast'},
-  A15: {x:75, y:30, w:8,  h:10, name:'Chemikalie'},
+  // PODLAHA — nábytek
+  A1:  {x:45, y:68, w:30, h:22, name:'Stul'},          // big desk, center-right floor
+  A2:  {x:55, y:82, w:10, h:14, name:'Stolicka'},       // chair in front of desk
+  // VESAK u dveri (3 hacky pod cedulkou Dr. Volta)
+  A14: {x:22, y:52, w:8,  h:18, name:'Plast'},          // coat on hooks left of door
+  // POLICE vpravo (drevene, pod oknem)
+  A3:  {x:78, y:62, w:18, h:10, name:'Policka'},        // shelf unit right side
+  A4:  {x:79, y:55, w:8,  h:8,  name:'Zkumavky'},       // on top shelf
+  A11: {x:87, y:55, w:8,  h:8,  name:'Banky'},          // on top shelf right
+  A15: {x:79, y:63, w:8,  h:8,  name:'Chemikalie'},     // on middle shelf
+  A13: {x:87, y:63, w:8,  h:8,  name:'Knihy'},           // on middle shelf right
+  // NA STOLE (after desk is placed)
+  A5:  {x:48, y:58, w:10, h:14, name:'Mikroskop'},      // on desk left
+  A6:  {x:58, y:60, w:8,  h:12, name:'Kahan'},          // on desk center
+  A7:  {x:66, y:60, w:10, h:12, name:'Vahy'},           // on desk right
+  A12: {x:46, y:55, w:7,  h:14, name:'Lampa'},          // desk lamp on left edge
+  // ZED — plakaty (uz namalovane na lab_empty, ale muzeme prekryt lepsimi)
+  A8:  {x:58, y:28, w:16, h:14, name:'Period. tabulka'},// over existing periodic table
+  A9:  {x:38, y:20, w:12, h:18, name:'Bezpecnost'},     // over existing safety chart
+  A10: {x:2,  y:15, w:14, h:22, name:'Obvod'},          // over existing circuit poster
 };
 
 // Volta comments when item doesn't belong in lab
@@ -1685,17 +1696,33 @@ function tryPlaceItem(zone, itemId) {
 
   // Does this item belong in the lab? (has a zone?)
   if (!LAB_ZONES[itemId]) {
-    // Non-lab item → behind the door
-    S.doorItems.push(itemId);
-    const bpIdx = S.backpack.indexOf(itemId);
-    if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
+    // Non-lab item → fly to door animation!
     const trayItem = document.querySelector(`#lab-tray [data-item-id="${itemId}"]`);
-    if (trayItem) trayItem.remove();
-    renderDoorPile();
-    showVoltaSpeech(VOLTA_WRONG_ROOM[Math.floor(Math.random() * VOLTA_WRONG_ROOM.length)]);
-    localStorage.setItem('labDoor', JSON.stringify(S.doorItems));
+    // Create flying clone
+    const flyEl = document.createElement('div');
+    flyEl.className = 'fly-to-door';
+    flyEl.innerHTML = itemImgHtml(item);
+    flyEl.style.cssText = 'left:50%;top:50%;width:60px;height:60px;';
+    document.getElementById('lab').appendChild(flyEl);
+    // Animate to door (left side, middle height)
+    requestAnimationFrame(() => {
+      flyEl.style.left = '25%';
+      flyEl.style.top = '45%';
+      flyEl.style.opacity = '0.3';
+      flyEl.style.transform = 'scale(0.3) rotate(360deg)';
+    });
+    setTimeout(() => {
+      flyEl.remove();
+      S.doorItems.push(itemId);
+      const bpIdx = S.backpack.indexOf(itemId);
+      if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
+      if (trayItem) trayItem.remove();
+      renderDoorPile();
+      showVoltaSpeech(VOLTA_WRONG_ROOM[Math.floor(Math.random() * VOLTA_WRONG_ROOM.length)]);
+      localStorage.setItem('labDoor', JSON.stringify(S.doorItems));
+      checkLabDone();
+    }, 900);
     dragItem = null;
-    checkLabDone();
     return;
   }
 
