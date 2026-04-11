@@ -71,9 +71,9 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 <div id="video-box"><video id="vid" playsinline></video><button id="skip-btn" onclick="skipVideo()">Přeskočit</button></div>
 </div>
 <script>
-var GH='https://raw.githubusercontent.com/jaty-byznys/domaci-ucitel/main/';
-var IMG={intro:GH+'img/m01/d01/D1S1.png',lab:GH+'img/m01/d01/D1S2.png',skripek:GH+'img/m01/d01/D1S3.png',repak:GH+'img/m01/d01/D1S4.png',keksik:GH+'img/m01/d01/D1S5.png',zaver:GH+'img/m01/d01/D1S6.png'};
-var VID={intro:GH+'video/m01/d01/D1-S1.mp4',skripek:GH+'video/m01/d01/D1-S3.mp4',repak:GH+'video/m01/d01/D1-S4.mp4',keksik:GH+'video/m01/d01/D1-S5.mp4',zaver:GH+'video/m01/d01/D1-S6.mp4'};
+var GH=''; // local files
+var IMG={intro:'img/m01/d01/D1S1.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
+var VID={intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
 var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
 var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
 var SIDES={volta:'left',agent:'right',skripek:'left',repak:'left',keksik:'left',krivak:'left',popis:'left'};
@@ -143,19 +143,24 @@ function showCollect(item){return new Promise(function(res){collected.push(item)
 function closeCollect(){document.getElementById('collect').style.display='none';if(window._cR){window._cR();window._cR=null;}}
 
 function showSum(){
+var coins = stars * 5 + correctFirst * 2; // 5 per star + 2 bonus per first-try
 var c=document.getElementById('summary-card');
 c.innerHTML='<h2 style="font-size:22px;color:#f59e0b;margin-bottom:12px">🎉 Den 1 hotový!</h2>'+
 '<div style="display:flex;gap:20px;justify-content:center;margin:16px 0">'+
 '<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#f59e0b">⭐ '+stars+'</div><div style="font-size:12px;color:#999">hvězd</div></div>'+
 '<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#22c55e">'+correctFirst+'</div><div style="font-size:12px;color:#999">napoprvé</div></div>'+
-'<div style="text-align:center"><div style="font-size:28px;font-weight:800">'+totalQ+'</div><div style="font-size:12px;color:#999">otázek</div></div></div>'+
+'<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#ffd700">💰 '+coins+'</div><div style="font-size:12px;color:#999">mincí</div></div></div>'+
 '<div style="margin-top:16px"><div style="font-size:14px;color:#f59e0b;font-weight:700;margin-bottom:8px">Sebrané předměty</div>'+
-collected.map(function(it){return '<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:6px 12px;border-radius:8px;margin:3px;font-size:13px">'+it.ikona+' '+it.nazev+'</div>';}).join('')+'</div>';
+collected.map(function(it){return '<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:6px 12px;border-radius:8px;margin:3px;font-size:13px">'+it.ikona+' '+it.nazev+'</div>';}).join('')+'</div>'+
+'<div style="margin-top:20px"><button onclick="goToMinigame('+coins+')" style="padding:16px 40px;border-radius:14px;border:none;background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-size:18px;font-weight:800;cursor:pointer;font-family:Nunito,sans-serif;">🎮 Jít stavět laboratoř! ('+coins+' mincí)</button></div>';
 document.getElementById('summary').style.display='flex';
+}
+function goToMinigame(coins){
+window.location.href='du_lab_prototyp.html?coins='+coins;
 }
 
 async function run(){
-try{var r=await fetch(GH+'mise01_scenar_d01.json');data=await r.json();}
+try{var r=await fetch('mise01_scenar_d01.json');data=await r.json();}
 catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center">Chyba. Obnov stránku.</div>';return;}
 Object.values(IMG).forEach(function(s){new Image().src=s;});
 $sc.textContent='⭐ 0';
