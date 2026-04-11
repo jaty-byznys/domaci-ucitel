@@ -9,7 +9,7 @@
 html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',sans-serif;background:#111;touch-action:none;user-select:none;}
 canvas{display:block;width:100%;height:100%;}
 #shop,#lab,#completion{position:absolute;inset:0;display:none;z-index:10;overflow-y:auto;}
-#shop{background:rgba(10,5,25,0.92);}
+#shop{background:rgba(10,5,25,0.92);background-image:url('img/O.jpg');background-size:cover;background-position:center;}
 #lab{background:rgba(0,0,0,0.95);}
 #completion{background:rgba(0,0,0,0.95);display:none;justify-content:center;align-items:center;flex-direction:column;color:#fff;text-align:center;}
 .overlay-title{color:#ffd700;font-size:2em;margin:12px 0;text-shadow:0 2px 8px rgba(255,215,0,0.4);}
@@ -242,7 +242,7 @@ const VOLTA_QUOTES = [
 
 // --- GAME STATE ---
 const S = {
-  coins: 15, round: 0, maxRounds: 5,
+  coins: 50, round: 0, maxRounds: 5, // coins come from quiz, 50 for testing
   placedItems: JSON.parse(localStorage.getItem('labPlaced') || '[]'),
   boughtItems: JSON.parse(localStorage.getItem('labBought') || '[]'),
   doorItems: JSON.parse(localStorage.getItem('labDoor') || '[]'),
