@@ -1487,13 +1487,6 @@ function drawStreet() {
   // Intro overlay
   if (S.introTimer > 0) {
     drawIntro();
-  } else {
-    // Destination indicator
-    const destText = S.streetDir === 'to_shop' ? 'OBCHOD -->' : 'LABORATOR -->';
-    ctx.fillStyle = '#ffd700'; ctx.font = `bold ${14*S.scale}px sans-serif`; ctx.textAlign = 'right';
-    ctx.globalAlpha = 0.5 + Math.sin(S.frame * 0.05) * 0.3;
-    ctx.fillText(destText, S.W - 15, S.H - 10);
-    ctx.globalAlpha = 1;
   }
 }
 
@@ -1799,13 +1792,17 @@ function checkLabDone() {
 }
 
 document.getElementById('lab-done-btn').addEventListener('click', () => {
+  // Force hide lab
+  document.getElementById('lab').style.display = 'none';
   S.round++;
+  S.backpack = []; // clear backpack for next run
+  console.log('Next round:', S.round, 'Level:', S.round % LEVELS.length, LEVELS[S.round % LEVELS.length].name);
   // Keep playing as long as player has coins and items to buy
   const unbought = ITEMS.filter(i => !S.boughtItems.includes(i.id) && !S.placedItems.some(p => p.id === i.id));
   if (S.coins <= 0 || unbought.length === 0) {
     showCompletion();
   } else {
-    startStreetRun('to_shop');
+    setTimeout(() => startStreetRun('to_shop'), 100); // small delay to ensure lab is hidden
   }
 });
 
