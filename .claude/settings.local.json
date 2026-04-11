@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(where python3:*)",
+      "Bash(where python:*)",
+      "Bash(where node:*)",
+      "Bash(where powershell:*)",
+      "Bash(powershell -Command ':*)",
+      "Bash(curl -s \"https://api.github.com/repos/jaty-byznys/domaci-ucitel/contents\")",
+      "Bash(ls \"C:\\\\Users\\\\noraj\\\\Downloads\\\\domaci-ucitel\\\\.claude\\\\worktrees\\\\interesting-cerf\"/*.json)",
+      "Bash(powershell -ExecutionPolicy Bypass -Command \"[System.IO.File]::ReadAllText\\('du_lab_prototyp.html'\\).Length\")"
+    ]
+  }
+}
