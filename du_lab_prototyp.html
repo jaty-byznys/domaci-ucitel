@@ -1605,7 +1605,8 @@ function openLab() {
   // Tray
   const tray = document.getElementById('lab-tray');
   tray.innerHTML = '';
-  const toPlace = S.backpack.filter(id => !S.placedItems.some(p => p.id === id) && !S.doorItems.includes(id));
+  // Show ALL bought items that aren't placed yet and aren't behind door
+  const toPlace = S.boughtItems.filter(id => !S.placedItems.some(p => p.id === id) && !S.doorItems.includes(id));
   for (const id of toPlace) {
     const item = ITEMS.find(i => i.id === id);
     if (!item) continue;
