@@ -1110,36 +1110,54 @@ function drawSpeechBubble() {
   const alpha = S.speechTimer < 20 ? S.speechTimer / 20 : 1;
   ctx.save();
   ctx.globalAlpha = alpha;
-  const bx = S.px + 20, by = S.py - 75;
-  const text = S.speechText;
-  ctx.font = `bold ${13*S.scale}px sans-serif`;
-  const tw = ctx.measureText(text).width + 20;
-  // Bubble colors: white for Agent, red for pirate
+  const fontSize = Math.max(11, 14 * S.scale);
+  ctx.font = `bold ${fontSize}px sans-serif`;
+  // Word wrap
+  const maxW = Math.min(220, S.W * 0.35);
+  const words = S.speechText.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxW - 20) {
+      if (line) lines.push(line);
+      line = w;
+    } else { line = test; }
+  }
+  if (line) lines.push(line);
+  const lineH = fontSize + 4;
+  const bubbleW = maxW;
+  const bubbleH = lines.length * lineH + 14;
+  const bx = Math.min(S.px + 25, S.W - bubbleW - 10);
+  const by = S.py - 70 - bubbleH;
+  // Colors
   const bgColor = S.speechPirate ? '#4a0000' : '#fff';
-  const borderColor = S.speechPirate ? '#ff3333' : '#333';
-  const textColor = S.speechPirate ? '#fff' : '#333';
-  // Bubble background
+  const borderColor = S.speechPirate ? '#ff3333' : '#555';
+  const textColor = S.speechPirate ? '#fff' : '#222';
+  // Bubble
   ctx.fillStyle = bgColor;
-  roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.fill();
+  roundRect(ctx, bx, by, bubbleW, bubbleH, 12); ctx.fill();
   ctx.strokeStyle = borderColor; ctx.lineWidth = 2;
-  roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.stroke();
-  // Tail pointing down to Agent
+  roundRect(ctx, bx, by, bubbleW, bubbleH, 12); ctx.stroke();
+  // Tail
   ctx.fillStyle = bgColor;
   ctx.beginPath();
-  ctx.moveTo(bx + 10, by + 12);
-  ctx.lineTo(bx + 5, by + 24);
-  ctx.lineTo(bx + 20, by + 12);
+  ctx.moveTo(bx + 15, by + bubbleH);
+  ctx.lineTo(bx + 8, by + bubbleH + 14);
+  ctx.lineTo(bx + 28, by + bubbleH);
   ctx.fill();
   ctx.strokeStyle = borderColor;
   ctx.beginPath();
-  ctx.moveTo(bx + 10, by + 12);
-  ctx.lineTo(bx + 5, by + 24);
-  ctx.lineTo(bx + 20, by + 12);
+  ctx.moveTo(bx + 15, by + bubbleH);
+  ctx.lineTo(bx + 8, by + bubbleH + 14);
+  ctx.lineTo(bx + 28, by + bubbleH);
   ctx.stroke();
-  // Text
+  // Text lines
   ctx.fillStyle = textColor;
-  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-  ctx.fillText(text, bx + 10, by);
+  ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  for (let i = 0; i < lines.length; i++) {
+    ctx.fillText(lines[i], bx + 10, by + 7 + i * lineH);
+  }
   ctx.restore();
 }
 
