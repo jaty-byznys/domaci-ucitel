@@ -111,41 +111,41 @@ const LEVELS = [
 const MAX_BACKPACK = 3; // max items per trip
 
 const ITEMS = [
-  // Lab essentials - prices based on size/importance
-  {id:'A1',name:'Pracovni stul',price:15,img:'img/A1.png'},
-  {id:'A2',name:'Stolicka',price:8,img:'img/A2.png'},
-  {id:'A3',name:'Policka',price:10,img:'img/A3.png'},
-  {id:'A4',name:'Zkumavky',price:12,img:'img/A4.png'},
-  {id:'A5',name:'Mikroskop',price:25,img:'img/A5.png'},
-  {id:'A6',name:'Kahan',price:14,img:'img/A6.png'},
-  {id:'A7',name:'Vahy',price:18,img:'img/A7.png'},
-  {id:'A8',name:'Period. tabulka',price:8,img:'img/A8.png'},
-  {id:'A9',name:'Bezpecnost. tabule',price:6,img:'img/A9.png'},
-  {id:'A10',name:'Elektr. obvod',price:10,img:'img/A10.png'},
-  {id:'A11',name:'Banky a kolby',price:16,img:'img/A11.png'},
-  {id:'A12',name:'Stolni lampa',price:10,img:'img/A12.png'},
-  {id:'A13',name:'Knihy',price:8,img:'img/A13.png'},
-  {id:'A14',name:'Labor. plast',price:6,img:'img/A14.png'},
-  {id:'A15',name:'Chemikalie',price:20,img:'img/A15.png'},
-  // Luxury / decoration
-  {id:'L1',name:'Koberec',price:18,img:null,emoji:'\u{1F7EB}'},
-  {id:'L2',name:'Kreslo pro Voltu',price:22,img:null,emoji:'\u{1FA91}'},
-  {id:'L3',name:'Houpaci sit',price:30,img:null,emoji:'\u{1F3D6}'},
-  {id:'L4',name:'Obraz na zed',price:12,img:null,emoji:'\u{1F5BC}'},
-  {id:'L5',name:'Kvetina',price:7,img:null,emoji:'\u{1F33A}'},
-  {id:'L6',name:'Nastenne hodiny',price:10,img:null,emoji:'\u{1F550}'},
-  {id:'L7',name:'Radio',price:14,img:null,emoji:'\u{1F4FB}'},
-  {id:'L8',name:'Zaclony',price:10,img:null,emoji:'\u{1FA9F}'},
-  {id:'L9',name:'Akvarium',price:35,img:null,emoji:'\u{1F41F}'},
-  {id:'L10',name:'Pohovka',price:28,img:null,emoji:'\u{1F6CB}'},
-  {id:'L11',name:'Lednicka',price:25,img:null,emoji:'\u{1F9CA}'},
-  {id:'L12',name:'Konvice na caj',price:8,img:null,emoji:'\u{2615}'},
-  {id:'L13',name:'Dalekohled',price:20,img:null,emoji:'\u{1F52D}'},
-  {id:'L14',name:'Globus',price:15,img:null,emoji:'\u{1F30D}'},
-  {id:'L15',name:'Agentova postel',price:22,img:null,emoji:'\u{1F6CF}'},
-  {id:'L16',name:'Nocni lampicka',price:9,img:null,emoji:'\u{1F4A1}'},
-  {id:'L17',name:'Skrin na obleceni',price:20,img:null,emoji:'\u{1F6AA}'},
-  {id:'L18',name:'Plakat na zed',price:5,img:null,emoji:'\u{1F3A8}'},
+  // Lab essentials - high prices (kid can have 80+ coins from quizzes)
+  {id:'A1',name:'Pracovni stul',price:35,img:'img/A1.png'},
+  {id:'A2',name:'Stolicka',price:20,img:'img/A2.png'},
+  {id:'A3',name:'Policka',price:25,img:'img/A3.png'},
+  {id:'A4',name:'Zkumavky',price:30,img:'img/A4.png'},
+  {id:'A5',name:'Mikroskop',price:60,img:'img/A5.png'},
+  {id:'A6',name:'Kahan',price:35,img:'img/A6.png'},
+  {id:'A7',name:'Vahy',price:45,img:'img/A7.png'},
+  {id:'A8',name:'Period. tabulka',price:20,img:'img/A8.png'},
+  {id:'A9',name:'Bezpecnost. tabule',price:15,img:'img/A9.png'},
+  {id:'A10',name:'Elektr. obvod',price:30,img:'img/A10.png'},
+  {id:'A11',name:'Banky a kolby',price:40,img:'img/A11.png'},
+  {id:'A12',name:'Stolni lampa',price:25,img:'img/A12.png'},
+  {id:'A13',name:'Knihy',price:20,img:'img/A13.png'},
+  {id:'A14',name:'Labor. plast',price:15,img:'img/A14.png'},
+  {id:'A15',name:'Chemikalie',price:50,img:'img/A15.png'},
+  // Luxury / decoration - expensive
+  {id:'L1',name:'Koberec',price:45,img:null,emoji:'\u{1F7EB}'},
+  {id:'L2',name:'Kreslo pro Voltu',price:55,img:null,emoji:'\u{1FA91}'},
+  {id:'L3',name:'Houpaci sit',price:75,img:null,emoji:'\u{1F3D6}'},
+  {id:'L4',name:'Obraz na zed',price:30,img:null,emoji:'\u{1F5BC}'},
+  {id:'L5',name:'Kvetina',price:18,img:null,emoji:'\u{1F33A}'},
+  {id:'L6',name:'Nastenne hodiny',price:25,img:null,emoji:'\u{1F550}'},
+  {id:'L7',name:'Radio',price:35,img:null,emoji:'\u{1F4FB}'},
+  {id:'L8',name:'Zaclony',price:28,img:null,emoji:'\u{1FA9F}'},
+  {id:'L9',name:'Akvarium',price:90,img:null,emoji:'\u{1F41F}'},
+  {id:'L10',name:'Pohovka',price:65,img:null,emoji:'\u{1F6CB}'},
+  {id:'L11',name:'Lednicka',price:60,img:null,emoji:'\u{1F9CA}'},
+  {id:'L12',name:'Konvice na caj',price:20,img:null,emoji:'\u{2615}'},
+  {id:'L13',name:'Dalekohled',price:50,img:null,emoji:'\u{1F52D}'},
+  {id:'L14',name:'Globus',price:40,img:null,emoji:'\u{1F30D}'},
+  {id:'L15',name:'Agentova postel',price:55,img:null,emoji:'\u{1F6CF}'},
+  {id:'L16',name:'Nocni lampicka',price:22,img:null,emoji:'\u{1F4A1}'},
+  {id:'L17',name:'Skrin na obleceni',price:50,img:null,emoji:'\u{1F6AA}'},
+  {id:'L18',name:'Plakat na zed',price:12,img:null,emoji:'\u{1F3A8}'},
 ];
 
 // --- VOLTA QUOTES ---
@@ -616,19 +616,36 @@ function drawAnchor(x, y) {
 }
 
 function drawChaserPirates(baseX, y, frame) {
+  const chasers = [
+    {color:'#4A2A15',bandana:'#CC2200',size:1},   // Skripek-like
+    {color:'#1B5E20',bandana:'#E65100',size:1.3},  // Repak-like (bigger)
+    {color:'#1a1a1a',bandana:'#8B008B',size:0.9},  // Piratka-like
+  ];
   for (let i = 0; i < 3; i++) {
-    const px = baseX - 60 - i*40;
+    const px = baseX - 50 - i*50;
     const py = y;
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
-    ctx.fillRect(px-12, py-30, 24, 35);
-    ctx.beginPath(); ctx.arc(px, py-40, 12, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#FF0000';
-    ctx.beginPath(); ctx.arc(px-4, py-42, 2, 0, Math.PI*2); ctx.fill();
-    ctx.beginPath(); ctx.arc(px+4, py-42, 2, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    const c = chasers[i];
+    const sz = c.size;
     const lo = Math.sin((frame + i*20) * 0.3) * 8;
-    ctx.fillRect(px-8, py+5, 6, 15+lo);
-    ctx.fillRect(px+2, py+5, 6, 15-lo);
+    // Body
+    ctx.fillStyle = c.color;
+    ctx.fillRect(px-12*sz, py-35*sz, 24*sz, 35*sz);
+    // Head
+    ctx.fillStyle = '#C8956B';
+    ctx.beginPath(); ctx.arc(px, py-40*sz, 10*sz, 0, Math.PI*2); ctx.fill();
+    // Bandana
+    ctx.fillStyle = c.bandana;
+    ctx.fillRect(px-12*sz, py-48*sz, 24*sz, 5);
+    // Angry eyes
+    ctx.fillStyle = '#FF3300';
+    ctx.beginPath(); ctx.arc(px-4*sz, py-42*sz, 2, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(px+4*sz, py-42*sz, 2, 0, Math.PI*2); ctx.fill();
+    // Running legs
+    ctx.fillStyle = c.color;
+    ctx.fillRect(px-7*sz, py, 5*sz, 14+lo);
+    ctx.fillRect(px+2*sz, py, 5*sz, 14-lo);
+    // Arms reaching forward
+    ctx.fillRect(px+10*sz, py-25*sz, 12, 4);
   }
 }
 
@@ -1150,10 +1167,11 @@ function updateStreet(dt) {
   S.particles = S.particles.filter(p => p.life > 0);
 
   // Smooth finish
-  if (S.distance >= S.maxDistance * 0.95 && !S.finishing) S.finishing = true;
+  if (S.distance >= S.maxDistance * 0.98 && !S.finishing) S.finishing = true;
   if (S.finishing) {
-    S.scrollSpeed = Math.max(0.3, S.scrollSpeed * 0.95); // faster deceleration
-    S.obstacles = S.obstacles.filter(ob => ob.x < S.px); // remove obstacles ahead
+    S.scrollSpeed = Math.max(0.2, S.scrollSpeed * 0.9); // very fast deceleration
+    S.obstacles = []; // clear ALL obstacles
+    S.coinPickups = S.coinPickups.filter(c => c.collected); // clear uncollected coins
   }
   if (S.distance >= S.maxDistance && S.scrollSpeed < 1) {
     if (S.onGround) {
