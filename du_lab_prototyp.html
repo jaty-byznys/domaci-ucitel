@@ -35,11 +35,18 @@ canvas{display:block;width:100%;height:100%;}
 .btn:hover{transform:scale(1.05);}
 .btn:active{transform:scale(0.95);}
 #lab-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
-#lab-grid{position:absolute;top:5%;left:5%;width:90%;height:65%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:4px;}
-.lab-cell{border:2px dashed rgba(255,255,255,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;position:relative;}
-.lab-cell.highlight{background:rgba(255,215,0,0.2);border-color:#ffd700;}
-.lab-cell img,.lab-cell .emoji-icon{max-width:90%;max-height:90%;object-fit:contain;}
-.lab-cell .emoji-icon{font-size:2.5em;}
+#lab-zones{position:absolute;inset:0;}
+.lab-zone{position:absolute;border:2px dashed rgba(255,255,255,0.15);border-radius:6px;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
+.lab-zone:hover{border-color:rgba(255,215,0,0.3);}
+.lab-zone.highlight{background:rgba(255,215,0,0.2);border-color:#ffd700;box-shadow:0 0 12px rgba(255,215,0,0.3);}
+.lab-zone.filled{border-color:transparent;background:none;}
+.lab-zone img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.4));}
+.lab-zone .emoji-icon{font-size:2em;filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.4));}
+.lab-zone .zone-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.7em;color:rgba(255,255,255,0.5);white-space:nowrap;pointer-events:none;}
+.door-pile{position:absolute;bottom:80px;left:8px;display:flex;flex-direction:column;gap:4px;z-index:4;}
+.door-pile-item{width:36px;height:36px;background:rgba(0,0,0,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;border:1px solid #555;}
+.door-pile-item img{width:28px;height:28px;object-fit:contain;}
+.door-pile-item .emoji-icon{font-size:20px;}
 #lab-tray{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;min-height:70px;align-items:center;z-index:5;}
 .tray-item{width:56px;height:56px;background:rgba(255,255,255,0.1);border:2px solid #ffd700;border-radius:8px;cursor:grab;display:flex;align-items:center;justify-content:center;transition:transform 0.1s;}
 .tray-item:active{cursor:grabbing;transform:scale(1.1);}
@@ -68,7 +75,8 @@ canvas{display:block;width:100%;height:100%;}
 </div>
 <div id="lab">
   <div id="lab-bg"></div>
-  <div id="lab-grid"></div>
+  <div id="lab-zones"></div>
+  <div class="door-pile" id="door-pile"></div>
   <div style="position:absolute;top:8px;right:8px;z-index:5;text-align:right;">
     <div id="volta-speech"></div>
     <img src="img/V_happy.png" id="volta-portrait" style="width:55px;height:55px;border-radius:50%;border:2px solid #ffd700;margin-top:4px;" onerror="this.style.display='none'">
@@ -182,6 +190,39 @@ const ITEMS = [
 ];
 
 // --- VOLTA QUOTES ---
+// Lab zones — where each item belongs (% positions on lab_empty.png / L1.jpg)
+const LAB_ZONES = {
+  A1:  {x:28, y:55, w:25, h:20, name:'Stul'},
+  A2:  {x:40, y:72, w:10, h:14, name:'Stolicka'},
+  A3:  {x:68, y:22, w:22, h:12, name:'Policka'},
+  A4:  {x:70, y:30, w:8,  h:10, name:'Zkumavky'},
+  A5:  {x:30, y:45, w:10, h:14, name:'Mikroskop'},
+  A6:  {x:42, y:47, w:8,  h:12, name:'Kahan'},
+  A7:  {x:52, y:47, w:10, h:12, name:'Vahy'},
+  A8:  {x:40, y:8,  w:20, h:16, name:'Period. tabulka'},
+  A9:  {x:15, y:8,  w:14, h:16, name:'Bezpecnost'},
+  A10: {x:2,  y:10, w:12, h:14, name:'Obvod'},
+  A11: {x:80, y:30, w:8,  h:10, name:'Banky'},
+  A12: {x:25, y:42, w:7,  h:16, name:'Lampa'},
+  A13: {x:88, y:28, w:8,  h:10, name:'Knihy'},
+  A14: {x:90, y:35, w:8,  h:20, name:'Plast'},
+  A15: {x:75, y:30, w:8,  h:10, name:'Chemikalie'},
+};
+
+// Volta comments when item doesn't belong in lab
+const VOLTA_WRONG_ROOM = [
+  "Na co mi je kytka, kdyz nemame ani stul?!",
+  "Houpaci sit? Do laboratore? Jsi si jisty?",
+  "To je hezke, ale tohle patri spis do obyvaku.",
+  "Bonbon? Agent K, tady se pracuje, ne mlsa!",
+  "Koberec do laboratore? Hmm... vlastne proc ne. Za dvere.",
+  "To neni vedecky pristroj. Za dvere s tim!",
+  "Zajimave. Ale nepomaha to vede. Za dvere.",
+  "Tohle dam za dvere. Az budeme mit druhy pokoj...",
+  "Balonek?! Tohle neni oslava! ...nebo ano?",
+  "Radio? No... mozna si pustim jazz pri experimentech.",
+];
+
 const VOLTA_QUOTES = [
   "Vyborne! To se hodi!","Presne co jsem potreboval!","Laborator roste!",
   "Skvele! Jeste neco a bude hotovo!","Hmm, kam to dame... tady!",
@@ -199,6 +240,7 @@ const S = {
   coins: 15, round: 0, maxRounds: 5,
   placedItems: JSON.parse(localStorage.getItem('labPlaced') || '[]'),
   boughtItems: JSON.parse(localStorage.getItem('labBought') || '[]'),
+  doorItems: JSON.parse(localStorage.getItem('labDoor') || '[]'),
   backpack: [],
   // runner
   px: 80, py: 0, vy: 0, jumping: false, ducking: false,
@@ -1456,44 +1498,44 @@ function openLab() {
   S.phase = 'lab';
   const labEl = document.getElementById('lab');
   labEl.style.display = 'block';
-  const bgUrl = 'img/L1.jpg'; // always destroyed lab until completion
   const labBg = document.getElementById('lab-bg');
-  labBg.style.backgroundImage = `url(${bgUrl})`;
+  labBg.style.backgroundImage = 'url(img/lab_empty.png), url(img/L1.jpg)';
   labBg.style.backgroundColor = '#1a1a2e';
 
-  const grid = document.getElementById('lab-grid');
-  grid.innerHTML = '';
-  for (let i = 0; i < 12; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'lab-cell';
-    cell.dataset.index = i;
-    const placed = S.placedItems.find(p => p.slot === i);
+  // Render zones
+  const zonesEl = document.getElementById('lab-zones');
+  zonesEl.innerHTML = '';
+  for (const [id, z] of Object.entries(LAB_ZONES)) {
+    const zone = document.createElement('div');
+    zone.className = 'lab-zone';
+    zone.dataset.itemId = id;
+    zone.style.cssText = `left:${z.x}%;top:${z.y}%;width:${z.w}%;height:${z.h}%;`;
+    // Already placed?
+    const placed = S.placedItems.find(p => p.id === id);
     if (placed) {
-      const item = ITEMS.find(it => it.id === placed.id);
-      if (item) {
-        if (item.img) {
-          cell.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
-        } else {
-          cell.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
-        }
-      }
+      zone.classList.add('filled');
+      const item = ITEMS.find(i => i.id === id);
+      if (item) zone.innerHTML = itemImgHtml(item);
+    } else {
+      zone.innerHTML = `<span class="zone-label">${z.name}</span>`;
     }
-    cell.addEventListener('dragover', e => { e.preventDefault(); cell.classList.add('highlight'); });
-    cell.addEventListener('dragleave', () => cell.classList.remove('highlight'));
-    cell.addEventListener('drop', e => {
-      e.preventDefault();
-      cell.classList.remove('highlight');
-      if (dragItem && !S.placedItems.find(p => p.slot === parseInt(cell.dataset.index))) {
-        placeItemInCell(cell, dragItem);
-      }
+    // Drop events
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('highlight'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('highlight'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault(); zone.classList.remove('highlight');
+      if (dragItem) tryPlaceItem(zone, dragItem);
     });
-    cell.addEventListener('touchmove', e => e.preventDefault());
-    grid.appendChild(cell);
+    zonesEl.appendChild(zone);
   }
 
+  // Door pile (non-lab items already placed behind door)
+  renderDoorPile();
+
+  // Tray
   const tray = document.getElementById('lab-tray');
   tray.innerHTML = '';
-  const toPlace = S.backpack.filter(id => !S.placedItems.some(p => p.id === id));
+  const toPlace = S.backpack.filter(id => !S.placedItems.some(p => p.id === id) && !S.doorItems.includes(id));
   for (const id of toPlace) {
     const item = ITEMS.find(i => i.id === id);
     if (!item) continue;
@@ -1501,58 +1543,123 @@ function openLab() {
     div.className = 'tray-item';
     div.draggable = true;
     div.dataset.itemId = id;
-    if (item.img) {
-      div.innerHTML = `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
-    } else {
-      div.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
-    }
+    div.innerHTML = itemImgHtml(item);
     div.addEventListener('dragstart', e => { dragItem = id; e.dataTransfer.effectAllowed = 'move'; });
-    div.addEventListener('touchstart', e => { dragItem = id; dragEl = div; div.style.opacity = '0.5'; });
+    div.addEventListener('touchstart', e => { e.preventDefault(); dragItem = id; dragEl = div; div.style.opacity = '0.5'; });
     tray.appendChild(div);
   }
 
+  // Touch drag for mobile
   labEl.ontouchmove = (e) => { e.preventDefault(); };
   labEl.ontouchend = (e) => {
     if (!dragItem) return;
     const touch = e.changedTouches[0];
     const el = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (el && el.classList.contains('lab-cell')) {
-      const idx = parseInt(el.dataset.index);
-      if (!S.placedItems.find(p => p.slot === idx)) placeItemInCell(el, dragItem);
+    if (el) {
+      const zone = el.closest('.lab-zone');
+      if (zone) {
+        tryPlaceItem(zone, dragItem);
+      } else if (!LAB_ZONES[dragItem]) {
+        // Non-lab item dropped anywhere → behind door
+        tryPlaceItem({dataset:{itemId:'_door'}}, dragItem);
+      }
     }
     if (dragEl) dragEl.style.opacity = '1';
     dragItem = null; dragEl = null;
   };
 
+  // Also handle drops on lab background (for non-lab items)
+  labEl.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (dragItem && !LAB_ZONES[dragItem]) {
+      tryPlaceItem({dataset:{itemId:'_door'}}, dragItem);
+    }
+  });
+  labEl.addEventListener('dragover', (e) => e.preventDefault());
+
   document.getElementById('lab-done-btn').style.display = 'none';
-  showVoltaSpeech('Vitej v laboratori! Umisti predmety do polic.');
+  showVoltaSpeech('Vitej! Pretahni predmety na spravna mista.');
   checkLabDone();
 }
 
-function placeItemInCell(cell, itemId) {
+function itemImgHtml(item) {
+  if (item.img) {
+    return `<img src="${item.img}" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'📦'}</div>'">`;
+  }
+  return `<div class="emoji-icon">${item.emoji||'📦'}</div>`;
+}
+
+function tryPlaceItem(zone, itemId) {
+  const targetId = zone.dataset.itemId;
   const item = ITEMS.find(i => i.id === itemId);
   if (!item) return;
-  const slotIdx = parseInt(cell.dataset.index);
-  S.placedItems.push({ id: itemId, slot: slotIdx });
-  localStorage.setItem('labPlaced', JSON.stringify(S.placedItems));
-  const bpIdx = S.backpack.indexOf(itemId);
-  if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
-  if (item.img) {
-    cell.innerHTML = `<img src="${item.img}" style="transform:scale(0)" onerror="this.outerHTML='<div class=emoji-icon>${item.emoji||'\u{1F4E6}'}</div>'">`;
-  } else {
-    cell.innerHTML = `<div class="emoji-icon" style="transform:scale(0)">${item.emoji||'\u{1F4E6}'}</div>`;
+
+  // Does this item belong in the lab? (has a zone?)
+  if (!LAB_ZONES[itemId]) {
+    // Non-lab item → behind the door
+    S.doorItems.push(itemId);
+    const bpIdx = S.backpack.indexOf(itemId);
+    if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
+    const trayItem = document.querySelector(`#lab-tray [data-item-id="${itemId}"]`);
+    if (trayItem) trayItem.remove();
+    renderDoorPile();
+    showVoltaSpeech(VOLTA_WRONG_ROOM[Math.floor(Math.random() * VOLTA_WRONG_ROOM.length)]);
+    localStorage.setItem('labDoor', JSON.stringify(S.doorItems));
+    dragItem = null;
+    checkLabDone();
+    return;
   }
-  const inner = cell.firstElementChild;
-  requestAnimationFrame(() => {
-    inner.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
-    inner.style.transform = 'scale(1)';
-  });
-  const tray = document.getElementById('lab-tray');
-  const trayItem = tray.querySelector(`[data-item-id="${itemId}"]`);
-  if (trayItem) trayItem.remove();
-  showVoltaSpeech(VOLTA_QUOTES[Math.floor(Math.random() * VOLTA_QUOTES.length)]);
+
+  // Correct zone?
+  if (targetId === itemId) {
+    // Place it!
+    S.placedItems.push({ id: itemId, slot: targetId });
+    localStorage.setItem('labPlaced', JSON.stringify(S.placedItems));
+    const bpIdx = S.backpack.indexOf(itemId);
+    if (bpIdx >= 0) S.backpack.splice(bpIdx, 1);
+    zone.classList.add('filled');
+    zone.innerHTML = '';
+    const inner = document.createElement('div');
+    inner.style.cssText = 'transform:scale(0);width:100%;height:100%;display:flex;align-items:center;justify-content:center;';
+    inner.innerHTML = itemImgHtml(item);
+    zone.appendChild(inner);
+    requestAnimationFrame(() => {
+      inner.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
+      inner.style.transform = 'scale(1)';
+    });
+    const trayItem = document.querySelector(`#lab-tray [data-item-id="${itemId}"]`);
+    if (trayItem) trayItem.remove();
+    showVoltaSpeech(VOLTA_QUOTES[Math.floor(Math.random() * VOLTA_QUOTES.length)]);
+    // Change Volta portrait to happy
+    const portrait = document.getElementById('volta-portrait');
+    if (portrait) portrait.src = 'img/V_happy.png';
+  } else {
+    // Wrong zone
+    showVoltaSpeech('Tohle patri jinam! Zkus to znovu.');
+    const portrait = document.getElementById('volta-portrait');
+    if (portrait) portrait.src = 'img/V_shock.png';
+  }
   dragItem = null;
   checkLabDone();
+}
+
+function renderDoorPile() {
+  const pile = document.getElementById('door-pile');
+  pile.innerHTML = '';
+  if (!S.doorItems || S.doorItems.length === 0) return;
+  const label = document.createElement('div');
+  label.style.cssText = 'color:#aaa;font-size:0.65em;text-align:center;margin-bottom:2px;';
+  label.textContent = 'Za dvermi';
+  pile.appendChild(label);
+  for (const id of S.doorItems) {
+    const item = ITEMS.find(i => i.id === id);
+    if (!item) continue;
+    const div = document.createElement('div');
+    div.className = 'door-pile-item';
+    div.title = item.name;
+    div.innerHTML = itemImgHtml(item);
+    pile.appendChild(div);
+  }
 }
 
 function showVoltaSpeech(text) {
@@ -1566,7 +1673,7 @@ function showVoltaSpeech(text) {
 function checkLabDone() {
   const tray = document.getElementById('lab-tray');
   const remaining = tray.querySelectorAll('.tray-item').length;
-  if (remaining === 0 && S.backpack.length === 0) {
+  if (remaining === 0) {
     document.getElementById('lab-done-btn').style.display = 'block';
   }
 }
