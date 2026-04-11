@@ -62,7 +62,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 <div id="game">
 <div id="bg"></div>
 <div id="ui">
-<div id="topbar"><div id="round-label"></div><div id="stars-count"></div><div id="q-progress"></div></div>
+<div id="topbar"><button id="back-btn" onclick="goBack()" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;margin-right:8px;">← Zpet</button><div id="round-label"></div><div id="stars-count"></div><div id="q-progress"></div></div>
 <div id="dialog-area"></div>
 <div id="answer-area"><div id="question-text"></div><div id="options"></div><button id="continue-btn"></button></div>
 </div>
@@ -81,6 +81,84 @@ var RICOS=['📖','🔢','🇬🇧','🌀'],RNAMES=['Čeština','Matika','Angli�
 var data,stars=0,totalQ=0,correctFirst=0,collected=[];
 var $bg=document.getElementById('bg'),$dlg=document.getElementById('dialog-area'),$qt=document.getElementById('question-text'),$opts=document.getElementById('options'),$cont=document.getElementById('continue-btn'),$rl=document.getElementById('round-label'),$sc=document.getElementById('stars-count'),$qp=document.getElementById('q-progress'),$ans=document.getElementById('answer-area');
 
+// Navigation - jump to any section
+var skipResolve=null;
+function goBack(){
+  // Show navigation panel
+  var nav=document.getElementById('nav-panel');
+  if(nav){nav.style.display=nav.style.display==='flex'?'none':'flex';return;}
+  // Create nav panel
+  nav=document.createElement('div');
+  nav.id='nav-panel';
+  nav.style.cssText='position:absolute;inset:0;z-index:200;background:rgba(0,0,0,0.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;';
+  nav.innerHTML='<h2 style="color:#ffd700;margin-bottom:10px">Navigace</h2>'+
+    '<button class="nav-btn" onclick="jumpTo(0)">Uvod + Dialog</button>'+
+    '<button class="nav-btn" onclick="jumpTo(1)">Okruh 1: Cestina</button>'+
+    '<button class="nav-btn" onclick="jumpTo(2)">Scenka 1: Skripek</button>'+
+    '<button class="nav-btn" onclick="jumpTo(3)">Okruh 2: Matika</button>'+
+    '<button class="nav-btn" onclick="jumpTo(4)">Scenka 2: Repak</button>'+
+    '<button class="nav-btn" onclick="jumpTo(5)">Okruh 3: Anglictina</button>'+
+    '<button class="nav-btn" onclick="jumpTo(6)">Scenka 3: Keksik</button>'+
+    '<button class="nav-btn" onclick="jumpTo(7)">Okruh 4: Mix</button>'+
+    '<button class="nav-btn" onclick="jumpTo(8)">Scenka 4: Krivak</button>'+
+    '<button class="nav-btn" onclick="jumpTo(9)">Zaver</button>'+
+    '<button class="nav-btn" style="background:#555;margin-top:10px" onclick="this.parentElement.style.display=\'none\'">Zavrit</button>';
+  document.getElementById('game').appendChild(nav);
+  // Add style for nav buttons
+  if(!document.getElementById('nav-style')){
+    var s=document.createElement('style');s.id='nav-style';
+    s.textContent='.nav-btn{width:250px;padding:12px;border:none;border-radius:10px;background:rgba(255,215,0,0.2);color:#ffd700;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;}.nav-btn:hover{background:rgba(255,215,0,0.4);transform:scale(1.03);}';
+    document.head.appendChild(s);
+  }
+}
+function jumpTo(section){
+  document.getElementById('nav-panel').style.display='none';
+  // Stop current flow
+  if(skipResolve){skipResolve();skipResolve=null;}
+  $dlg.innerHTML='';$qt.textContent='';$opts.innerHTML='';$cont.style.display='none';
+  document.getElementById('video-box').style.display='none';
+  document.getElementById('collect').style.display='none';
+  // Jump to section
+  runFromSection(section);
+}
+async function runFromSection(startSection){
+  if(!data){
+    try{var r=await fetch('mise01_scenar_d01.json');data=await r.json();}
+    catch(e){if(window._EMBEDDED_DATA)data=window._EMBEDDED_DATA;else return;}
+  }
+  $sc.textContent='⭐ '+stars;
+  var section=startSection;
+  // Intro
+  if(section<=0){setBg('lab');await playD(data.intro,'lab');clrD();section=1;}
+  // Okruhy loop
+  for(var ri=0;ri<data.okruhy.length;ri++){
+    var ok=data.okruhy[ri];
+    var bgK='lab';
+    var vidK=[null,'skripek','repak','keksik'][ri];
+    // Okruh questions
+    if(section<=(ri*2+1)){
+      $rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
+      if(ok.intro&&ok.intro.length>0){await playD(ok.intro);clrD();}
+      for(var qi=0;qi<ok.otazky.length;qi++){await askQ(ok.otazky[qi],qi+1,ok.otazky.length);clrD();}
+      section=ri*2+2;
+    }
+    // Scenka after okruh
+    if(section<=(ri*2+2)){
+      if(vidK)await playVideo(vidK);
+      if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){if(vidK)setBg(vidK);await playD(ok.akce.dialog);clrD();}
+      if(ok.akce&&ok.akce.sber)await showCollect(ok.akce.sber);
+      if(ok.scenka&&ok.scenka.length>0){setBg(bgK);await playD(ok.scenka);clrD();}
+      section=ri*2+3;
+    }
+  }
+  // Zaver
+  if(section<=9){
+    setBg('zaver');await playVideo('zaver');
+    if(data.zaver&&data.zaver.length>0)await playD(data.zaver,'zaver');
+    $rl.textContent='';$qt.textContent='';$opts.innerHTML='';$cont.style.display='none';$ans.style.display='none';
+    showSum();
+  }
+}
 function setBg(k){$bg.style.backgroundImage='url('+(IMG[k]||k)+')';}
 function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){res();return;}var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.src=u;v.onended=function(){b.style.display='none';v.src='';res();};v.onerror=function(){b.style.display='none';v.src='';res();};v.play().catch(function(){b.style.display='none';v.src='';res();});window._skR=res;});}
 function skipVideo(){var b=document.getElementById('video-box'),v=document.getElementById('vid');v.pause();b.style.display='none';v.src='';if(window._skR){window._skR();window._skR=null;}}
@@ -160,57 +238,14 @@ window.location.href='du_lab_prototyp.html?coins='+coins;
 }
 
 async function run(){
-try{
-// Try fetch first (works with server), fallback to embedded data
-var r=await fetch('mise01_scenar_d01.json');data=await r.json();
-}catch(e){
-// Fallback: try loading from script tag
-if(window._EMBEDDED_DATA){data=window._EMBEDDED_DATA;}
-else{document.body.innerHTML='<div style="padding:40px;text-align:center">Chyba nacitani dat. Spust pres HTTP server nebo pouzij verzi s vlozenymu daty.</div>';return;}
-}
+try{var r=await fetch('mise01_scenar_d01.json');data=await r.json();}
+catch(e){if(window._EMBEDDED_DATA){data=window._EMBEDDED_DATA;}
+else{document.body.innerHTML='<div style="padding:40px;text-align:center">Chyba nacitani dat.</div>';return;}}
 Object.values(IMG).forEach(function(s){new Image().src=s;});
 $sc.textContent='⭐ 0';
-
 setBg('intro');
 await playVideo('intro');
-setBg('lab');
-await playD(data.intro,'lab');
-clrD();
-
-var bgMap=['lab','lab','lab','lab'];
-var vidMap=[null,'skripek','repak','keksik'];
-
-for(var ri=0;ri<data.okruhy.length;ri++){
-var ok=data.okruhy[ri];
-setBg(bgMap[ri]);
-$rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
-
-if(ok.intro&&ok.intro.length>0){await playD(ok.intro);clrD();}
-
-for(var qi=0;qi<ok.otazky.length;qi++){
-await askQ(ok.otazky[qi],qi+1,ok.otazky.length);
-clrD();
-}
-
-if(vidMap[ri])await playVideo(vidMap[ri]);
-
-if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){
-if(vidMap[ri])setBg(vidMap[ri]);
-await playD(ok.akce.dialog);clrD();
-}
-if(ok.akce&&ok.akce.sber)await showCollect(ok.akce.sber);
-
-if(ok.scenka&&ok.scenka.length>0){
-setBg(bgMap[ri]);
-await playD(ok.scenka);clrD();
-}
-}
-
-setBg('zaver');await playVideo('zaver');
-if(data.zaver&&data.zaver.length>0)await playD(data.zaver,'zaver');
-
-$rl.textContent='';$qt.textContent='';$opts.innerHTML='';$cont.style.display='none';$ans.style.display='none';
-showSum();
+runFromSection(0);
 }
 window.addEventListener('load',run);
 </script>
