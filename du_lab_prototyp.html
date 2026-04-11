@@ -941,8 +941,8 @@ function startStreetRun(dir) {
   S.lightningTimer = 180 + Math.random() * 120;
   S.lightningFlash = 0;
 
-  // Intro timer (120 frames ~ 2 seconds)
-  S.introTimer = 120;
+  // Intro timer (60 frames ~ 1 second — shorter!)
+  S.introTimer = 60;
   S.introAlpha = 1;
 
   // Speech bubble state
@@ -986,9 +986,10 @@ function drawIntro() {
 }
 
 // --- SPEECH BUBBLE ---
-function showSpeech(text, duration) {
+function showSpeech(text, duration, isPirate) {
   S.speechText = text;
   S.speechTimer = duration || 90;
+  S.speechPirate = !!isPirate;
 }
 
 function drawSpeechBubble() {
@@ -1001,26 +1002,30 @@ function drawSpeechBubble() {
   const text = S.speechText;
   ctx.font = `bold ${13*S.scale}px sans-serif`;
   const tw = ctx.measureText(text).width + 20;
+  // Bubble colors: white for Agent, red for pirate
+  const bgColor = S.speechPirate ? '#4a0000' : '#fff';
+  const borderColor = S.speechPirate ? '#ff3333' : '#333';
+  const textColor = S.speechPirate ? '#fff' : '#333';
   // Bubble background
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = bgColor;
   roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.fill();
-  ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+  ctx.strokeStyle = borderColor; ctx.lineWidth = 2;
   roundRect(ctx, bx, by - 16, tw, 28, 10); ctx.stroke();
   // Tail pointing down to Agent
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = bgColor;
   ctx.beginPath();
   ctx.moveTo(bx + 10, by + 12);
   ctx.lineTo(bx + 5, by + 24);
   ctx.lineTo(bx + 20, by + 12);
   ctx.fill();
-  ctx.strokeStyle = '#333';
+  ctx.strokeStyle = borderColor;
   ctx.beginPath();
   ctx.moveTo(bx + 10, by + 12);
   ctx.lineTo(bx + 5, by + 24);
   ctx.lineTo(bx + 20, by + 12);
   ctx.stroke();
   // Text
-  ctx.fillStyle = '#333';
+  ctx.fillStyle = textColor;
   ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
   ctx.fillText(text, bx + 10, by);
   ctx.restore();
@@ -1237,7 +1242,7 @@ function updateStreet(dt) {
           const lost = S.backpack.pop();
           const lostItem = ITEMS.find(i => i.id === lost);
           addParticles(S.px + 20, S.py - 20, '#ff4444', 10);
-          showSpeech(lostItem ? lostItem.name + ' ukradena!' : 'Neco ukradli!', 80);
+          showSpeech(lostItem ? lostItem.name + ' ukradena!' : 'Neco ukradli!', 80, true);
         } else if (S.coins > 0) {
           const lose = Math.min(5, S.coins);
           S.coins -= lose;
@@ -1245,7 +1250,7 @@ function updateStreet(dt) {
           // Level-specific pirate messages
           const lvl = S.level || LEVELS[0];
           const msgs = lvl.hitMsgs || ['-'+lose+' minci!'];
-          showSpeech(msgs[Math.floor(Math.random()*msgs.length)] + ' (-'+lose+')', 70);
+          showSpeech(msgs[Math.floor(Math.random()*msgs.length)] + ' (-'+lose+')', 70, true);
         }
       }
     }
@@ -1260,18 +1265,22 @@ function updateStreet(dt) {
   S.particles = S.particles.filter(p => p.life > 0);
 
   // Smooth finish
-  if (S.distance >= S.maxDistance * 0.98 && !S.finishing) S.finishing = true;
-  if (S.finishing) {
-    S.scrollSpeed = Math.max(0.2, S.scrollSpeed * 0.9); // very fast deceleration
-    S.obstacles = []; // clear ALL obstacles
-    S.coinPickups = S.coinPickups.filter(c => c.collected); // clear uncollected coins
+  if (S.distance >= S.maxDistance && !S.finishing) {
+    S.finishing = true;
+    S.finishTimer = 40; // ~0.7 seconds then auto-enter building
   }
-  if (S.distance >= S.maxDistance && S.scrollSpeed < 1) {
-    if (S.onGround) {
+  if (S.finishing) {
+    S.scrollSpeed = 0; // instant stop
+    S.obstacles = [];
+    S.coinPickups = S.coinPickups.filter(c => c.collected);
+    S.finishTimer--;
+    if (S.finishTimer <= 0 && S.onGround) {
       if (S.streetDir === 'to_shop') openShop();
       else openLab();
+      return;
     }
   }
+  // (finish handled above)
 }
 
 // --- DRAW OBSTACLE (dispatcher) ---
