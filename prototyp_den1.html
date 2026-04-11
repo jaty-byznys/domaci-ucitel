@@ -14,10 +14,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 #round-label{font-size:14px;font-weight:700;flex:1}
 #stars-count{font-size:14px;font-weight:700;color:#f59e0b}
 #q-progress{font-size:13px;color:#aaa}
-#dialog-area{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:8px 16px;overflow-y:auto}
-.bubble{max-width:85%;padding:12px 16px;border-radius:16px;mhargin-bottom:8px;animation:pop .25s ease-out}
-.bubble.left{align-self:flex-start;border-bottom-left-radius:4px}
-.bubble.right{align-self:flex-end;border-bottom-right-radius:4px}
+#dialog-area{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:8px 16px;overflow-y:auto}
+.bubble{max-width:70%;padding:12px 16px;border-radius:16px;margin-bottom:6px;animation:pop .25s ease-out;align-self:center}
 .bubble .name{font-size:12px;font-weight:700;margin-bottom:2px}
 .bubble .text{font-size:15px;line-height:1.45}
 .b-volta{background:rgba(26,39,68,.92);border:1.5px solid #3b6cf5}
@@ -68,12 +66,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 </div>
 <div id="collect"><div id="collect-card"><div class="c-icon"></div><div class="c-title"></div><div class="c-desc"></div><button class="c-btn" onclick="closeCollect()">Sebrat!</button></div></div>
 <div id="summary"><div id="summary-card"></div></div>
-<div id="video-box"><video id="vid" playsinline></video><button id="skip-btn" onclick="skipVideo()">Přeskočit</button></div>
+<div id="video-box"><video id="vid" playsinline muted autoplay></video><button id="skip-btn" onclick="skipVideo()">Přeskočit</button></div>
 </div>
 <script>
 var GH=''; // local files
-var IMG={intro:'img/m01/d01/D1S1.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
-var VID={intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
+var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
+var VID={intro0:'video/m01/d01/D1-S0.mp4',intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
 var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
 var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
 var SIDES={volta:'left',agent:'right',skripek:'left',repak:'left',keksik:'left',krivak:'left',popis:'left'};
@@ -129,15 +127,34 @@ async function runFromSection(startSection){
   $sc.textContent='⭐ '+stars;
   var section=startSection;
   // Intro
-  if(section<=0){setBg('lab');await playD(data.intro,'lab');clrD();section=1;}
+  if(section<=0){
+    // D1-S1 — původní úvodní video
+    await playVideo('intro0');
+    // 1.V — druhé intro video
+    await playVideo('intro');
+    // 1.O — Volta sám, první část dialogů
+    setBg('intro');
+    var splitIdx=0;
+    for(var si=0;si<data.intro.length;si++){if(data.intro[si].p==='agent'){splitIdx=si;break;}}
+    if(splitIdx>0){
+      await playD(data.intro.slice(0,splitIdx));clrD();
+      // 2.O — Volta + Agent, zbytek dialogů
+      setBg('intro2');
+      await playD(data.intro.slice(splitIdx));clrD();
+    }else{
+      await playD(data.intro);clrD();
+    }
+    section=1;
+  }
   // Okruhy loop
   for(var ri=0;ri<data.okruhy.length;ri++){
     var ok=data.okruhy[ri];
-    var bgK='lab';
+    var bgK='quiz';
     var vidK=[null,'skripek','repak','keksik'][ri];
     // Okruh questions
     if(section<=(ri*2+1)){
       $rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
+      setBg('quiz');
       if(ok.intro&&ok.intro.length>0){await playD(ok.intro);clrD();}
       for(var qi=0;qi<ok.otazky.length;qi++){await askQ(ok.otazky[qi],qi+1,ok.otazky.length);clrD();}
       section=ri*2+2;
@@ -160,7 +177,9 @@ async function runFromSection(startSection){
   }
 }
 function setBg(k){$bg.style.backgroundImage='url('+(IMG[k]||k)+')';}
-function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){res();return;}var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.src=u;v.onended=function(){b.style.display='none';v.src='';res();};v.onerror=function(){b.style.display='none';v.src='';res();};v.play().catch(function(){b.style.display='none';v.src='';res();});window._skR=res;});}
+var _userClicked=false;
+document.addEventListener('click',function(){_userClicked=true;},{ once:true });
+function playVideo(k){return new Promise(function(res){var u=VID[k];if(!u){res();return;}var b=document.getElementById('video-box'),v=document.getElementById('vid');b.style.display='flex';v.muted=!_userClicked;v.src=u;v.onended=function(){b.style.display='none';v.src='';res();};v.onerror=function(){b.style.display='none';v.src='';res();};window._skR=res;v.load();v.play().catch(function(){});});}
 function skipVideo(){var b=document.getElementById('video-box'),v=document.getElementById('vid');v.pause();b.style.display='none';v.src='';if(window._skR){window._skR();window._skR=null;}}
 
 function addB(who,text){var d=document.createElement('div');d.className='bubble '+(SIDES[who]||'left')+' '+(BCLS[who]||'b-popis');var nm=NAMES[who];if(nm)d.innerHTML='<div class="name">'+nm+'</div><div class="text">'+text+'</div>';else d.innerHTML='<div class="text">'+text+'</div>';$dlg.appendChild(d);d.scrollIntoView({behavior:'smooth'});}
@@ -243,9 +262,7 @@ catch(e){if(window._EMBEDDED_DATA){data=window._EMBEDDED_DATA;}
 else{document.body.innerHTML='<div style="padding:40px;text-align:center">Chyba nacitani dat.</div>';return;}}
 Object.values(IMG).forEach(function(s){new Image().src=s;});
 $sc.textContent='⭐ 0';
-setBg('intro');
-await playVideo('intro');
-runFromSection(0);
+await runFromSection(0);
 }
 window.addEventListener('load',run);
 </script>
@@ -299,12 +316,7 @@ window.addEventListener('load',run);
       "okruh": 1,
       "predmet": "cestina",
       "tema": "Stavba slova",
-      "intro": [
-        {
-          "p": "volta",
-          "t": "Hele — tenhle se ještě drží pohromadě. Podívej se na ta slova a najdi jejich srdce — kořen."
-        }
-      ],
+      "intro": [],
       "otazky": [
         {
           "id": "CJ4-01-01-01",
@@ -318,7 +330,7 @@ window.addEventListener('load',run);
           ],
           "answer": "dom",
           "hint": "Kořen je společná část příbuzných slov — domek, domov, domácí...",
-          "vi": "Hele — tenhle se ještě drží pohromadě. Jaký je kořen slova DOMEK?",
+          "vi": "Tak jdeme na to! Jaký je kořen slova DOMEK?",
           "vs": "DOM! Domek, domov, domácí — celá rodina. Jako můj domov. Teda... MŮJ domov teď vypadá TAKHLE.",
           "vn": "Skoro! Kořen je ta NEJKRATŠÍ část, co pořád nese význam. Dom-ek — přípona je -ek. Co zbyde?"
         },
@@ -1473,10 +1485,6 @@ window.addEventListener('load',run);
   ],
   "intro": [
     {
-      "p": "popis",
-      "t": "Zničená laboratoř. Převrácené stoly, rozbité zkumavky, papíry všude. Na ledničce přilepená předpona VY-. Na tabuli napůl smazaný strom."
-    },
-    {
       "p": "volta",
       "t": "Agente! KONEČNĚ! Víš co je horší než když ti piráti ukradnou laboratoř?"
     },
@@ -1486,19 +1494,11 @@ window.addEventListener('load',run);
     },
     {
       "p": "volta",
-      "t": "Když ti rozstříhají POZNÁMKY! Podívej se na to — kořen BEZ přípony, přípona BEZ kořene, a předpona se přilepila na ledničku!"
-    },
-    {
-      "p": "agent",
-      "t": "Co se tu stalo?"
+      "t": "Když ti rozstříhají POZNÁMKY! Kořen BEZ přípony, přípona BEZ kořene, a předpona se přilepila na ledničku!"
     },
     {
       "p": "volta",
-      "t": "Piráti. Kapitán Krivák a jeho banda. Vykradli mi laboratoř, ukradli vynálezy, rozstříhali poznámky a UKRADLI MI KÁVOVAR!"
-    },
-    {
-      "p": "volta",
-      "t": "...Ten kávovar mě bolí nejvíc."
+      "t": "Normální zloděj ti ukradne televizi. PIRÁTI ti ukradnou GRAMATIKU. To je nová úroveň zla."
     },
     {
       "p": "agent",
@@ -1506,19 +1506,23 @@ window.addEventListener('load',run);
     },
     {
       "p": "volta",
-      "t": "Pomoct mi to dostat zpátky. Kousek po kousku. Já budu klást otázky — ty odpovídáš. Každá správná odpověď je úder pirátům."
+      "t": "Pomoct mi všechno z mé laboratoře dostat zpátky. Já kladu otázky — ty odpovídáš. Každá správná odpověď je úder pirátům, a pro tebe jedna mince."
     },
     {
       "p": "volta",
-      "t": "Jsou to piráti. Hoď po nich správnou odpověď a složí se jak domečky z karet. Já to vím — zkoušel jsem to."
+      "t": "Za ty můžeš nakupovat v obchodě nové vybavení pro naši laboratoř. Ale cesta do obchodu je kvůli pirátům nebezpečná, přepadávají všechny co se na ulici objeví, ale...."
     },
     {
       "p": "agent",
-      "t": "Porazit piráty správnými odpověďmi. To zní... neobvykle."
+      "t": "Ale?"
     },
     {
       "p": "volta",
-      "t": "Neobvyklé problémy vyžadují neobvyklá řešení! A hlavně — cestou jim bude vypadávat věci z kapes. Seber VŠECHNO. Každý papír, každý šroub, každé peříčko."
+      "t": "Ale TY nejsi všichni. Ty jsi AGENT. Agenti se nebojí. Agenti BĚŽÍ."
+    },
+    {
+      "p": "volta",
+      "t": "Cestou jim bude vypadávat věci z kapes. Seber VŠECHNO. Každý papír, každý šroub."
     },
     {
       "p": "agent",
@@ -1526,19 +1530,27 @@ window.addEventListener('load',run);
     },
     {
       "p": "volta",
-      "t": "Protože NEVÍME co budeme potřebovat! To je celá věda — sbíráš bordel, dokud z toho nevznikne objev."
+      "t": "Protože ve vědě platí jedno pravidlo: sbíráš bordel, dokud z toho nevznikne objev. Tak to funguje. Důvěřuj procesu."
     },
     {
       "p": "volta",
-      "t": "A ještě jedna věc — Krivák tu nechal hlídky. Za regálem se něco hýbe. Ale neboj. Jsou to piráti. Piráti, co neumí ČÍST."
+      "t": "A ještě — Krivák tu nechal hlídky. V pracovně slyším šramot."
     },
     {
-      "p": "popis",
-      "t": "Za regálem se ozve šramot a tlumené 'pššt!'"
+      "p": "agent",
+      "t": "Piráti?"
     },
     {
       "p": "volta",
-      "t": "Slyšíš? To je budoucnost. A budoucnost neumí být potichu. Tak — jdeme na to! Začneme od základu. Každé slovo má srdce — KOŘEN."
+      "t": "Jo. Ale jsou to piráti co neumí ČÍST. Stačí po nich házet předpony a utečou. Doslova. Zkoušel jsem to. Hodil jsem po jednom slovo PŘEDLOŽKA a on plakal."
+    },
+    {
+      "p": "agent",
+      "t": "To... to je smutné."
+    },
+    {
+      "p": "volta",
+      "t": "Ne. To je VĚDA. A věda nezná slitování. Tak — jdeme na to!"
     }
   ],
   "predmety_sberu": [
