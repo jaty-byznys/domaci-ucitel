@@ -202,27 +202,30 @@ const ITEMS = [
 // Back wall: safety chart + periodic table (already drawn)
 // Right side: window + wooden shelves (empty)
 // Floor: empty space for desk/chair
+// Zones matched to lab_empty.png:
+// Dvere vlevo-stred ~30%, police VPRAVO dole, okno vpravo nahore
+// Zed za dvermi vlevo, zed za plakaty stred
 const LAB_ZONES = {
-  // PODLAHA — nábytek
-  A1:  {x:45, y:68, w:30, h:22, name:'Stul'},          // big desk, center-right floor
-  A2:  {x:55, y:82, w:10, h:14, name:'Stolicka'},       // chair in front of desk
-  // VESAK u dveri (3 hacky pod cedulkou Dr. Volta)
-  A14: {x:22, y:52, w:8,  h:18, name:'Plast'},          // coat on hooks left of door
-  // POLICE vpravo (drevene, pod oknem)
-  A3:  {x:78, y:62, w:18, h:10, name:'Policka'},        // shelf unit right side
-  A4:  {x:79, y:55, w:8,  h:8,  name:'Zkumavky'},       // on top shelf
-  A11: {x:87, y:55, w:8,  h:8,  name:'Banky'},          // on top shelf right
-  A15: {x:79, y:63, w:8,  h:8,  name:'Chemikalie'},     // on middle shelf
-  A13: {x:87, y:63, w:8,  h:8,  name:'Knihy'},           // on middle shelf right
-  // NA STOLE (after desk is placed)
-  A5:  {x:48, y:58, w:10, h:14, name:'Mikroskop'},      // on desk left
-  A6:  {x:58, y:60, w:8,  h:12, name:'Kahan'},          // on desk center
-  A7:  {x:66, y:60, w:10, h:12, name:'Vahy'},           // on desk right
-  A12: {x:46, y:55, w:7,  h:14, name:'Lampa'},          // desk lamp on left edge
-  // ZED — plakaty (uz namalovane na lab_empty, ale muzeme prekryt lepsimi)
-  A8:  {x:58, y:28, w:16, h:14, name:'Period. tabulka'},// over existing periodic table
-  A9:  {x:38, y:20, w:12, h:18, name:'Bezpecnost'},     // over existing safety chart
-  A10: {x:2,  y:15, w:14, h:22, name:'Obvod'},          // over existing circuit poster
+  // PODLAHA — nábytek (vpravo od dveri, na podlaze)
+  A1:  {x:55, y:65, w:25, h:18, name:'Stul'},
+  A2:  {x:62, y:80, w:10, h:12, name:'Stolicka'},
+  // VESAK u dveri (hacky pod cedulkou "Dr. Volta - VYZKUM")
+  A14: {x:20, y:55, w:7,  h:15, name:'Plast'},
+  // POLICE vpravo dole (drevene police pod oknem)
+  A3:  {x:82, y:58, w:16, h:8,  name:'Policka'},
+  A4:  {x:83, y:50, w:7,  h:7,  name:'Zkumavky'},
+  A11: {x:91, y:50, w:7,  h:7,  name:'Banky'},
+  A15: {x:83, y:58, w:7,  h:7,  name:'Chemikalie'},
+  A13: {x:91, y:58, w:7,  h:7,  name:'Knihy'},
+  // NA STOLE
+  A5:  {x:57, y:55, w:8,  h:12, name:'Mikroskop'},
+  A6:  {x:66, y:57, w:7,  h:10, name:'Kahan'},
+  A7:  {x:73, y:57, w:8,  h:10, name:'Vahy'},
+  A12: {x:55, y:52, w:6,  h:14, name:'Lampa'},
+  // ZED — plakaty (prekryji namalovane na lab_empty)
+  A8:  {x:60, y:22, w:14, h:12, name:'Period. tabulka'},
+  A9:  {x:42, y:15, w:11, h:16, name:'Bezpecnost'},
+  A10: {x:3,  y:10, w:12, h:20, name:'Obvod'},
 };
 
 // Volta comments when item doesn't belong in lab
@@ -1009,10 +1012,10 @@ function drawHUD() {
   // Round indicator + level name
   const lvl = S.level || LEVELS[0];
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  const riW = 140*s;
-  roundRect(ctx, S.W - riW - 10, S.H - 30*s, riW, 24*s, 8); ctx.fill();
-  ctx.fillStyle = '#ffd700'; ctx.font = `bold ${11*s}px sans-serif`; ctx.textAlign = 'center';
-  ctx.fillText(`${lvl.name} (kolo ${S.round+1})`, S.W - riW/2 - 10, S.H - 14*s);
+  const riW = 100*s;
+  roundRect(ctx, S.W - riW - 8, S.H - 24*s, riW, 18*s, 6); ctx.fill();
+  ctx.fillStyle = '#ffd700'; ctx.font = `${9*s}px sans-serif`; ctx.textAlign = 'center';
+  ctx.fillText(`${lvl.name} #${S.round+1}`, S.W - riW/2 - 8, S.H - 13*s);
   ctx.restore();
 }
 
@@ -1121,10 +1124,10 @@ function drawSpeechBubble() {
   const alpha = S.speechTimer < 20 ? S.speechTimer / 20 : 1;
   ctx.save();
   ctx.globalAlpha = alpha;
-  const fontSize = Math.max(11, 14 * S.scale);
-  ctx.font = `bold ${fontSize}px sans-serif`;
+  const fontSize = Math.max(10, 11 * S.scale);
+  ctx.font = `${fontSize}px sans-serif`;
   // Word wrap
-  const maxW = Math.min(220, S.W * 0.35);
+  const maxW = Math.min(180, S.W * 0.28);
   const words = S.speechText.split(' ');
   const lines = [];
   let line = '';
@@ -1789,9 +1792,10 @@ function showVoltaSpeech(text) {
 function checkLabDone() {
   const tray = document.getElementById('lab-tray');
   const remaining = tray.querySelectorAll('.tray-item').length;
-  if (remaining === 0) {
-    document.getElementById('lab-done-btn').style.display = 'block';
-  }
+  // Always show button - player can leave anytime, button changes text
+  const btn = document.getElementById('lab-done-btn');
+  btn.style.display = 'block';
+  btn.textContent = remaining === 0 ? 'Dalsi kolo!' : 'Hotovo (' + remaining + ' zbyva)';
 }
 
 document.getElementById('lab-done-btn').addEventListener('click', () => {
