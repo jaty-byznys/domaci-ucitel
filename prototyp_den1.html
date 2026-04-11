@@ -70,7 +70,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 </div>
 <script>
 var GH=''; // local files
-var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
+var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',skripek2:'img/m01/d01/D1S3b.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
 var VID={intro0:'video/m01/d01/D1-S0.mp4',intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
 var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
 var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
@@ -162,7 +162,19 @@ async function runFromSection(startSection){
     // Scenka after okruh
     if(section<=(ri*2+2)){
       if(vidK)await playVideo(vidK);
-      if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){if(vidK)setBg(vidK);await playD(ok.akce.dialog);clrD();}
+      if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){
+        if(vidK)setBg(vidK);
+        var bg2K=vidK+'2';
+        if(IMG[bg2K]){
+          var sIdx=0;
+          for(var si=0;si<ok.akce.dialog.length;si++){if(ok.akce.dialog[si].p==='agent'){sIdx=si;break;}}
+          if(sIdx>0){
+            await playD(ok.akce.dialog.slice(0,sIdx));clrD();
+            setBg(bg2K);
+            await playD(ok.akce.dialog.slice(sIdx));clrD();
+          }else{await playD(ok.akce.dialog);clrD();}
+        }else{await playD(ok.akce.dialog);clrD();}
+      }
       if(ok.akce&&ok.akce.sber)await showCollect(ok.akce.sber);
       if(ok.scenka&&ok.scenka.length>0){setBg(bgK);await playD(ok.scenka);clrD();}
       section=ri*2+3;
