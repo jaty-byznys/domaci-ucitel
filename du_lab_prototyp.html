@@ -80,31 +80,41 @@ const ctx = canvas.getContext('2d');
 
 // --- LEVEL DEFINITIONS ---
 const LEVELS = [
-  { name:'UTEK!', intro:'Musim vypadnout, nez me chyti!',
+  { name:'UTEK!', intro:'Skripek a Repak! Musim pryc!',
     skyColors:['#1a1a3e','#2d1b69','#0d0d2b'], groundColor:'#3a3a4a',
     buildingColors:['#222','#333','#2a2a3a'], hasChaser:true,
-    scrollSpeed:4, obstacleRate:0.025, types:['barrel','skripek','crate','clothesline','parrot'],
+    scrollSpeed:4, obstacleRate:0.025,
+    types:['barrel','skripek','crate','clothesline','parrot'],
+    hitMsgs:['Skripek: Mam te!','Repak: Hehe, mince!','Keksik: KRAAA!'],
     hasStars:true, hasMoon:false },
-  { name:'KLICKOVANI', intro:'Tolik piratu... musim proklouznut jako stin.',
+  { name:'KLICKOVANI', intro:'Piratka nastrazila pasti... opatrne!',
     skyColors:['#87CEEB','#FFD700','#FF8C00'], groundColor:'#8B7355',
     buildingColors:['#D2B48C','#DEB887','#C4A882'], hasChaser:false,
-    scrollSpeed:3, obstacleRate:0.035, types:['standing_pirate','walking_pirate','sign','piratka'],
+    scrollSpeed:3, obstacleRate:0.035,
+    types:['standing_pirate','walking_pirate','sign','piratka','barrel'],
+    hitMsgs:['Piratka: Pozde!','Pirat: Stuj!','Piratka: Moje!','Cedule!'],
     hasStars:false, hasMoon:false },
-  { name:'STRECHY', intro:'Pujdu po strechach. Tam me necekaji.',
+  { name:'STRECHY', intro:'Nahoru! Po strechach me nedostanou!',
     skyColors:['#FF6B35','#FF4500','#8B0000'], groundColor:'#8B4513',
     buildingColors:['#A0522D','#8B4513','#654321'], hasChaser:false,
-    scrollSpeed:3.5, obstacleRate:0.022, hasPlatforms:true,
-    types:['chimney','pigeon'], hasStars:false, hasMoon:false },
-  { name:'PRISTAV', intro:'Pres pristav to bude kratsi... snad.',
+    scrollSpeed:3.5, obstacleRate:0.025, hasPlatforms:true,
+    types:['chimney','pigeon','skripek'],
+    hitMsgs:['Au, komin!','Holub mi vlitl do vlasu!','Skripek: Ja tu cekam!'],
+    hasStars:false, hasMoon:false },
+  { name:'PRISTAV', intro:'Pres lode! Pozor na vodu!',
     skyColors:['#0a0a2e','#1a1a4e','#000020'], groundColor:'#4a6fa5',
     buildingColors:['#5C4033','#3E2723','#4E342E'], hasChaser:false,
-    scrollSpeed:3.5, obstacleRate:0.022, hasPlatforms:true, hasWater:true,
-    types:['barrel','seagull','anchor','piratka'], hasStars:true, hasMoon:true },
-  { name:'KRIVAK', intro:'Vsechno nebo nic.',
+    scrollSpeed:3.5, obstacleRate:0.025, hasPlatforms:true, hasWater:true,
+    types:['barrel','seagull','anchor','piratka'],
+    hitMsgs:['Piratka: Ahoj namornicku!','Racek!','Kotva!','Mokre boty!'],
+    hasStars:true, hasMoon:true },
+  { name:'KRIVAK!', intro:'Krivak osobne! Vsechno nebo nic!',
     skyColors:['#2c2c2c','#1a1a1a','#3d3d3d'], groundColor:'#555',
     buildingColors:['#333','#222','#444'], hasChaser:true,
-    scrollSpeed:5, obstacleRate:0.03, hasLightning:true,
-    types:['barrel','skripek','parrot','net','piratka'], hasStars:false, hasMoon:false },
+    scrollSpeed:5, obstacleRate:0.035, hasLightning:true,
+    types:['barrel','skripek','parrot','net','piratka','standing_pirate','crate'],
+    hitMsgs:['Krivak: Nikam nejdes!','Krivak: Moje mince!','Krivak: HA!','Piratka: Sorry...'],
+    hasStars:false, hasMoon:false },
 ];
 
 // --- ITEMS ---
@@ -1217,9 +1227,10 @@ function updateStreet(dt) {
           const lose = Math.min(5, S.coins);
           S.coins -= lose;
           addParticles(S.px, S.py - 20, '#ffd700', 8);
-          // Pirate theft messages
-          const msgs = ['Hele, mince!', '-'+lose+' minci!', 'Diky za mince!', 'Ha ha!', 'To je moje!'];
-          showSpeech(msgs[Math.floor(Math.random()*msgs.length)], 60);
+          // Level-specific pirate messages
+          const lvl = S.level || LEVELS[0];
+          const msgs = lvl.hitMsgs || ['-'+lose+' minci!'];
+          showSpeech(msgs[Math.floor(Math.random()*msgs.length)] + ' (-'+lose+')', 70);
         }
       }
     }
