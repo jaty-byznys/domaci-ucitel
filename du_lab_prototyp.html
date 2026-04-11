@@ -55,7 +55,8 @@ canvas{display:block;width:100%;height:100%;}
 .tray-item .emoji-icon{font-size:32px;}
 #volta-speech{background:rgba(0,0,0,0.9);color:#ffd700;padding:14px 18px;border-radius:14px;font-size:1.1em;font-weight:bold;max-width:300px;display:none;border:3px solid #ffd700;line-height:1.4;margin-bottom:4px;}
 #volta-speech::after{content:'';position:absolute;bottom:-10px;right:25px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #ffd700;}
-#lab-done-btn{position:absolute;bottom:85px;left:50%;transform:translateX(-50%);display:none;z-index:20;font-size:1.2em;padding:14px 40px;}
+#lab-done-btn{font-size:1.1em;padding:12px 30px;}
+#lab-retry-btn{font-size:1.1em;padding:12px 30px;}
 </style>
 </head>
 <body>
@@ -83,7 +84,10 @@ canvas{display:block;width:100%;height:100%;}
     <img src="img/V_happy.png" id="volta-portrait" style="width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;margin-top:6px;background:#1a1a2e;" onerror="this.style.display='none'">
   </div>
   <div id="lab-tray"></div>
-  <button class="btn" id="lab-done-btn">Dalsi kolo!</button>
+  <div style="position:absolute;bottom:85px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:10px;">
+    <button class="btn" id="lab-done-btn">Dalsi kolo!</button>
+    <button class="btn" id="lab-retry-btn" style="background:#ff7043;color:#fff;">Zkusit znovu</button>
+  </div>
 </div>
 <div id="completion">
   <div class="overlay-title">Hotovo!</div>
@@ -1785,11 +1789,18 @@ function showVoltaSpeech(text) {
 function checkLabDone() {
   const tray = document.getElementById('lab-tray');
   const remaining = tray.querySelectorAll('.tray-item').length;
-  // Always show button - player can leave anytime, button changes text
-  const btn = document.getElementById('lab-done-btn');
-  btn.style.display = 'block';
-  btn.textContent = remaining === 0 ? 'Dalsi kolo!' : 'Hotovo (' + remaining + ' zbyva)';
+  // Always show buttons
+  document.getElementById('lab-done-btn').textContent = remaining === 0 ? 'Dalsi kolo!' : 'Dalsi kolo (' + remaining + ' zbyva)';
+  document.getElementById('lab-retry-btn').parentElement.style.display = 'flex';
 }
+
+// Retry current round (same level, keep coins but redo the run)
+document.getElementById('lab-retry-btn').addEventListener('click', () => {
+  document.getElementById('lab').style.display = 'none';
+  S.backpack = [];
+  // Don't increment round — replay same level
+  setTimeout(() => startStreetRun('to_shop'), 100);
+});
 
 document.getElementById('lab-done-btn').addEventListener('click', () => {
   // Force hide lab
