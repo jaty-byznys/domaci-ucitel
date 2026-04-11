@@ -150,7 +150,7 @@ async function runFromSection(startSection){
   for(var ri=0;ri<data.okruhy.length;ri++){
     var ok=data.okruhy[ri];
     var bgK='quiz';
-    var vidK=[null,'skripek','repak','keksik'][ri];
+    var vidK=['skripek','repak','keksik',null][ri];
     // Okruh questions
     if(section<=(ri*2+1)){
       $rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
