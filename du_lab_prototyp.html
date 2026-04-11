@@ -99,6 +99,7 @@ const ctx = canvas.getContext('2d');
 // --- LEVEL DEFINITIONS ---
 const LEVELS = [
   { name:'UTEK!', intro:'Skripek a Repak! Musim pryc!',
+    bgImage:'img/bg_street.png',
     skyColors:['#1a1a3e','#2d1b69','#0d0d2b'], groundColor:'#3a3a4a',
     buildingColors:['#222','#333','#2a2a3a'], hasChaser:true,
     scrollSpeed:4, obstacleRate:0.025,
@@ -106,6 +107,7 @@ const LEVELS = [
     hitMsgs:['Skripek: Mam te!','Repak: Hehe, mince!','Keksik: KRAAA!'],
     hasStars:true, hasMoon:false },
   { name:'KLICKOVANI', intro:'Piratka nastrazila pasti... opatrne!',
+    bgImage:'img/bg_market.png',
     skyColors:['#87CEEB','#FFD700','#FF8C00'], groundColor:'#8B7355',
     buildingColors:['#D2B48C','#DEB887','#C4A882'], hasChaser:false,
     scrollSpeed:3, obstacleRate:0.035,
@@ -113,6 +115,7 @@ const LEVELS = [
     hitMsgs:['Piratka: Pozde!','Pirat: Stuj!','Piratka: Moje!','Cedule!'],
     hasStars:false, hasMoon:false },
   { name:'STRECHY', intro:'Nahoru! Po strechach me nedostanou!',
+    bgImage:'img/bg_rooftops.png',
     skyColors:['#FF6B35','#FF4500','#8B0000'], groundColor:'#8B4513',
     buildingColors:['#A0522D','#8B4513','#654321'], hasChaser:false,
     scrollSpeed:3.5, obstacleRate:0.025, hasPlatforms:true,
@@ -120,6 +123,7 @@ const LEVELS = [
     hitMsgs:['Au, komin!','Holub mi vlitl do vlasu!','Skripek: Ja tu cekam!'],
     hasStars:false, hasMoon:false },
   { name:'PRISTAV', intro:'Pres lode! Pozor na vodu!',
+    bgImage:'img/bg_harbor.png',
     skyColors:['#0a0a2e','#1a1a4e','#000020'], groundColor:'#4a6fa5',
     buildingColors:['#5C4033','#3E2723','#4E342E'], hasChaser:false,
     scrollSpeed:3.5, obstacleRate:0.025, hasPlatforms:true, hasWater:true,
@@ -127,6 +131,7 @@ const LEVELS = [
     hitMsgs:['Piratka: Ahoj namornicku!','Racek!','Kotva!','Mokre boty!'],
     hasStars:true, hasMoon:true },
   { name:'KRIVAK!', intro:'Krivak osobne! Vsechno nebo nic!',
+    bgImage:'img/bg_storm.png',
     skyColors:['#2c2c2c','#1a1a1a','#3d3d3d'], groundColor:'#555',
     buildingColors:['#333','#222','#444'], hasChaser:true,
     scrollSpeed:5, obstacleRate:0.035, hasLightning:true,
@@ -754,9 +759,34 @@ function drawCoin(x, y, r, flash) {
   ctx.restore();
 }
 
+// --- PRELOAD BACKGROUND IMAGES ---
+const bgImages = {};
+LEVELS.forEach(lvl => {
+  if (lvl.bgImage) {
+    const img = new Image();
+    img.src = lvl.bgImage;
+    img.onload = () => { bgImages[lvl.bgImage] = img; };
+  }
+});
+
 // --- DRAW BACKGROUND ---
 function drawBackground() {
   const lvl = S.level || LEVELS[0];
+
+  // Try to use background image if loaded
+  const bgImg = lvl.bgImage && bgImages[lvl.bgImage];
+  if (bgImg) {
+    // Parallax scrolling with image (tile it)
+    const imgW = bgImg.width * (S.H / bgImg.height); // scale to canvas height
+    const offset = -(S.bgOffset2 % imgW);
+    for (let x = offset; x < S.W + imgW; x += imgW) {
+      ctx.drawImage(bgImg, x, 0, imgW, S.H);
+    }
+    // Still draw ground and other elements on top
+    return drawBackgroundOverlay();
+  }
+
+  // Fallback: canvas-drawn background
   const cols = lvl.skyColors;
 
   // Sky gradient
@@ -876,6 +906,46 @@ function drawBackground() {
     ctx.fillStyle = '#FFD700';
     ctx.fillRect(bldgX + 15, S.groundY - bldgH + 20, 18, 14);
     ctx.fillRect(bldgX + bldgW - 33, S.groundY - bldgH + 20, 18, 14);
+  }
+}
+
+// When using bg image, still draw overlays (lightning, building, platforms)
+function drawBackgroundOverlay() {
+  const lvl = S.level || LEVELS[0];
+  // Platforms for rooftop/harbor levels
+  if (lvl.hasPlatforms) {
+    if (lvl.hasWater) drawWater(S.W, S.groundY + 20, S.frame);
+    const platColor = lvl.hasWater ? '#5C4033' : '#8B4513';
+    for (let p of S.platforms) {
+      const px = p.x - S.bgOffset3;
+      if (px + p.w < -50 || px > S.W + 50) continue;
+      ctx.fillStyle = platColor;
+      ctx.fillRect(px, p.y, p.w, 20);
+      ctx.fillStyle = lvl.hasWater ? '#3E2723' : '#A0522D';
+      ctx.fillRect(px, p.y, p.w, 5);
+    }
+  }
+  // Lightning
+  if (lvl.hasLightning && S.lightningFlash > 0) {
+    ctx.fillStyle = `rgba(255,255,255,${S.lightningFlash * 0.1})`;
+    ctx.fillRect(0, 0, S.W, S.H);
+    S.lightningFlash--;
+  }
+  // Destination building
+  if (S.finishing) {
+    const bldgX = S.W - 100;
+    const bldgW = 100, bldgH = S.groundY - 30;
+    const isShop = S.streetDir === 'to_shop';
+    ctx.fillStyle = isShop ? '#DEB887' : '#7B9EA8';
+    ctx.fillRect(bldgX, S.groundY - bldgH, bldgW, bldgH);
+    ctx.fillStyle = isShop ? '#8B4513' : '#4A6670';
+    ctx.beginPath();
+    ctx.moveTo(bldgX-10, S.groundY-bldgH); ctx.lineTo(bldgX+bldgW/2, S.groundY-bldgH-30); ctx.lineTo(bldgX+bldgW+10, S.groundY-bldgH);
+    ctx.fill();
+    ctx.fillStyle = '#4A2A0A';
+    ctx.fillRect(bldgX+bldgW/2-15, S.groundY-50, 30, 50);
+    ctx.fillStyle = '#FFF'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(isShop ? 'OBCHOD' : 'LABORATOR', bldgX+bldgW/2, S.groundY-bldgH-35);
   }
 }
 
