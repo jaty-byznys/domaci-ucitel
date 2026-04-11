@@ -851,7 +851,7 @@ function drawHUD() {
   const riW = 140*s;
   roundRect(ctx, S.W - riW - 10, S.H - 30*s, riW, 24*s, 8); ctx.fill();
   ctx.fillStyle = '#ffd700'; ctx.font = `bold ${11*s}px sans-serif`; ctx.textAlign = 'center';
-  ctx.fillText(`${lvl.name} (${S.round+1}/${S.maxRounds})`, S.W - riW/2 - 10, S.H - 14*s);
+  ctx.fillText(`${lvl.name} (kolo ${S.round+1})`, S.W - riW/2 - 10, S.H - 14*s);
   ctx.restore();
 }
 
@@ -873,7 +873,7 @@ function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
 function startStreetRun(dir) {
   S.streetDir = dir;
   S.phase = dir === 'to_shop' ? 'street_to_shop' : 'street_to_lab';
-  const lvlIdx = Math.min(S.round, LEVELS.length - 1);
+  const lvlIdx = S.round % LEVELS.length; // cycle through levels
   S.level = LEVELS[lvlIdx];
   S.distance = 0;
   S.maxDistance = 3000 + S.round * 500;
@@ -1437,8 +1437,13 @@ function checkLabDone() {
 
 document.getElementById('lab-done-btn').addEventListener('click', () => {
   S.round++;
-  if (S.round >= S.maxRounds) showCompletion();
-  else startStreetRun('to_shop');
+  // Keep playing as long as player has coins and items to buy
+  const unbought = ITEMS.filter(i => !S.boughtItems.includes(i.id) && !S.placedItems.some(p => p.id === i.id));
+  if (S.coins <= 0 || unbought.length === 0) {
+    showCompletion();
+  } else {
+    startStreetRun('to_shop');
+  }
 });
 
 // --- COMPLETION ---
@@ -1448,7 +1453,8 @@ function showCompletion() {
   const comp = document.getElementById('completion');
   comp.style.display = 'flex';
   document.getElementById('comp-text').innerHTML =
-    `Dokoncil jsi ${S.maxRounds} kol!<br>Umisteno predmetu: ${S.placedItems.length}<br>Zbyvajici mince: ${S.coins}<br><br>Laborator Dr. Volty je pripravena!`;
+    `Dokoncil jsi ${S.round} kol!<br>Umisteno predmetu: ${S.placedItems.length}<br>Zbyvajici mince: ${S.coins}<br><br>` +
+    (S.coins <= 0 ? 'Dosly ti mince. Ziskej dalsi ucenim!' : 'Vsechno koupeno! Laborator je kompletni!');
 }
 
 // --- INPUT ---
