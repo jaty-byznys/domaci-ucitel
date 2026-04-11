@@ -18,11 +18,14 @@ canvas{display:block;width:100%;height:100%;}
 .shop-item{background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px;text-align:center;cursor:pointer;transition:all 0.15s;color:#fff;}
 .shop-item:hover{border-color:#ffd700;background:rgba(255,215,0,0.1);transform:scale(1.05);}
 .shop-item.owned{opacity:0.35;pointer-events:none;border-color:#555;}
+.shop-item.too-expensive{opacity:0.6;border-color:#ff5722;}
 .shop-item img,.shop-item .emoji-icon{width:64px;height:64px;object-fit:contain;display:block;margin:0 auto 4px;}
 .emoji-icon{font-size:48px;line-height:64px;text-align:center;}
 .shop-item .item-name{font-size:0.8em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .shop-item .item-price{color:#ffd700;font-weight:bold;font-size:0.9em;}
 .shop-coins{color:#ffd700;font-size:1.4em;font-weight:bold;text-align:center;padding:10px;}
+.cat-btn{padding:6px 14px;border:2px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:#ccc;border-radius:20px;cursor:pointer;font-size:0.85em;font-weight:bold;transition:all 0.15s;}
+.cat-btn:hover,.cat-btn.active{border-color:#ffd700;color:#ffd700;background:rgba(255,215,0,0.15);}
 .shop-backpack{background:rgba(255,255,255,0.05);border-top:1px solid rgba(255,255,255,0.1);padding:10px;text-align:center;position:sticky;bottom:0;}
 .shop-backpack h3{color:#aaa;margin-bottom:6px;font-size:0.9em;}
 .bp-items{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;min-height:40px;}
@@ -42,16 +45,20 @@ canvas{display:block;width:100%;height:100%;}
 .tray-item:active{cursor:grabbing;transform:scale(1.1);}
 .tray-item img{width:44px;height:44px;object-fit:contain;}
 .tray-item .emoji-icon{font-size:32px;}
-#volta-speech{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.8);color:#ffd700;padding:10px 14px;border-radius:10px;font-size:0.95em;max-width:250px;display:none;z-index:5;}
+#volta-speech{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.85);color:#ffd700;padding:10px 14px;border-radius:12px;font-size:0.95em;max-width:280px;display:none;z-index:5;border:2px solid #ffd700;display:none;}
+#volta-speech::before{content:'';position:absolute;bottom:-8px;right:20px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #ffd700;}
 #lab-done-btn{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);display:none;z-index:5;}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="shop">
-  <div class="overlay-title">Obchod</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 12px 0;">
+    <img src="img/volta.png" style="width:50px;height:50px;border-radius:50%;border:2px solid #ffd700;" onerror="this.style.display='none'">
+    <div class="overlay-title" style="margin:0">Obchod</div>
+  </div>
   <div class="shop-coins" id="shop-coins"></div>
-  <div class="overlay-sub">Klikni na predmet pro koupi</div>
+  <div id="shop-cats" style="display:flex;gap:6px;justify-content:center;padding:0 12px 8px;flex-wrap:wrap;"></div>
   <div id="shop-grid"></div>
   <div class="shop-backpack">
     <h3>Batoh</h3>
@@ -62,7 +69,10 @@ canvas{display:block;width:100%;height:100%;}
 <div id="lab">
   <div id="lab-bg"></div>
   <div id="lab-grid"></div>
-  <div id="volta-speech"></div>
+  <div style="position:absolute;top:8px;right:8px;z-index:5;text-align:right;">
+    <div id="volta-speech"></div>
+    <img src="img/V_happy.png" id="volta-portrait" style="width:55px;height:55px;border-radius:50%;border:2px solid #ffd700;margin-top:4px;" onerror="this.style.display='none'">
+  </div>
   <div id="lab-tray"></div>
   <button class="btn" id="lab-done-btn">Dalsi kolo!</button>
 </div>
@@ -122,53 +132,53 @@ const MAX_BACKPACK = 3; // max items per trip
 
 const ITEMS = [
   // Lab essentials - high prices (kid can have 80+ coins from quizzes)
-  {id:'A1',name:'Pracovni stul',price:35,img:'img/A1.png'},
-  {id:'A2',name:'Stolicka',price:20,img:'img/A2.png'},
-  {id:'A3',name:'Policka',price:25,img:'img/A3.png'},
-  {id:'A4',name:'Zkumavky',price:30,img:'img/A4.png'},
-  {id:'A5',name:'Mikroskop',price:60,img:'img/A5.png'},
-  {id:'A6',name:'Kahan',price:35,img:'img/A6.png'},
-  {id:'A7',name:'Vahy',price:45,img:'img/A7.png'},
-  {id:'A8',name:'Period. tabulka',price:20,img:'img/A8.png'},
-  {id:'A9',name:'Bezpecnost. tabule',price:15,img:'img/A9.png'},
-  {id:'A10',name:'Elektr. obvod',price:30,img:'img/A10.png'},
-  {id:'A11',name:'Banky a kolby',price:40,img:'img/A11.png'},
-  {id:'A12',name:'Stolni lampa',price:25,img:'img/A12.png'},
-  {id:'A13',name:'Knihy',price:20,img:'img/A13.png'},
-  {id:'A14',name:'Labor. plast',price:15,img:'img/A14.png'},
-  {id:'A15',name:'Chemikalie',price:50,img:'img/A15.png'},
+  {id:'A1',name:'Pracovni stul',price:35,cat:'lab',img:'img/A1.png'},
+  {id:'A2',name:'Stolicka',price:20,cat:'lab',img:'img/A2.png'},
+  {id:'A3',name:'Policka',price:25,cat:'lab',img:'img/A3.png'},
+  {id:'A4',name:'Zkumavky',price:30,cat:'lab',img:'img/A4.png'},
+  {id:'A5',name:'Mikroskop',price:60,cat:'lab',img:'img/A5.png'},
+  {id:'A6',name:'Kahan',price:35,cat:'lab',img:'img/A6.png'},
+  {id:'A7',name:'Vahy',price:45,cat:'lab',img:'img/A7.png'},
+  {id:'A8',name:'Period. tabulka',price:20,cat:'lab',img:'img/A8.png'},
+  {id:'A9',name:'Bezpecnost. tabule',price:15,cat:'lab',img:'img/A9.png'},
+  {id:'A10',name:'Elektr. obvod',price:30,cat:'lab',img:'img/A10.png'},
+  {id:'A11',name:'Banky a kolby',price:40,cat:'lab',img:'img/A11.png'},
+  {id:'A12',name:'Stolni lampa',price:25,cat:'lab',img:'img/A12.png'},
+  {id:'A13',name:'Knihy',price:20,cat:'lab',img:'img/A13.png'},
+  {id:'A14',name:'Labor. plast',price:15,cat:'lab',img:'img/A14.png'},
+  {id:'A15',name:'Chemikalie',price:50,cat:'lab',img:'img/A15.png'},
   // Luxury / decoration - expensive
-  {id:'L1',name:'Koberec',price:45,img:null,emoji:'\u{1F7EB}'},
-  {id:'L2',name:'Kreslo pro Voltu',price:55,img:null,emoji:'\u{1FA91}'},
-  {id:'L3',name:'Houpaci sit',price:75,img:null,emoji:'\u{1F3D6}'},
-  {id:'L4',name:'Obraz na zed',price:30,img:null,emoji:'\u{1F5BC}'},
-  {id:'L5',name:'Kvetina',price:18,img:null,emoji:'\u{1F33A}'},
-  {id:'L6',name:'Nastenne hodiny',price:25,img:null,emoji:'\u{1F550}'},
-  {id:'L7',name:'Radio',price:35,img:null,emoji:'\u{1F4FB}'},
-  {id:'L8',name:'Zaclony',price:28,img:null,emoji:'\u{1FA9F}'},
-  {id:'L9',name:'Akvarium',price:90,img:null,emoji:'\u{1F41F}'},
-  {id:'L10',name:'Pohovka',price:65,img:null,emoji:'\u{1F6CB}'},
-  {id:'L11',name:'Lednicka',price:60,img:null,emoji:'\u{1F9CA}'},
-  {id:'L12',name:'Konvice na caj',price:20,img:null,emoji:'\u{2615}'},
-  {id:'L13',name:'Dalekohled',price:50,img:null,emoji:'\u{1F52D}'},
-  {id:'L14',name:'Globus',price:40,img:null,emoji:'\u{1F30D}'},
-  {id:'L15',name:'Agentova postel',price:55,img:null,emoji:'\u{1F6CF}'},
-  {id:'L16',name:'Nocni lampicka',price:22,img:null,emoji:'\u{1F4A1}'},
-  {id:'L17',name:'Skrin na obleceni',price:50,img:null,emoji:'\u{1F6AA}'},
-  {id:'L18',name:'Plakat na zed',price:12,img:null,emoji:'\u{1F3A8}'},
+  {id:'L1',name:'Koberec',price:45,cat:'lux',img:null,emoji:'\u{1F7EB}'},
+  {id:'L2',name:'Kreslo pro Voltu',price:55,cat:'lux',img:null,emoji:'\u{1FA91}'},
+  {id:'L3',name:'Houpaci sit',price:75,cat:'lux',img:null,emoji:'\u{1F3D6}'},
+  {id:'L4',name:'Obraz na zed',price:30,cat:'lux',img:null,emoji:'\u{1F5BC}'},
+  {id:'L5',name:'Kvetina',price:18,cat:'lux',img:null,emoji:'\u{1F33A}'},
+  {id:'L6',name:'Nastenne hodiny',price:25,cat:'lux',img:null,emoji:'\u{1F550}'},
+  {id:'L7',name:'Radio',price:35,cat:'lux',img:null,emoji:'\u{1F4FB}'},
+  {id:'L8',name:'Zaclony',price:28,cat:'lux',img:null,emoji:'\u{1FA9F}'},
+  {id:'L9',name:'Akvarium',price:90,cat:'lux',img:null,emoji:'\u{1F41F}'},
+  {id:'L10',name:'Pohovka',price:65,cat:'lux',img:null,emoji:'\u{1F6CB}'},
+  {id:'L11',name:'Lednicka',price:60,cat:'lux',img:null,emoji:'\u{1F9CA}'},
+  {id:'L12',name:'Konvice na caj',price:20,cat:'lux',img:null,emoji:'\u{2615}'},
+  {id:'L13',name:'Dalekohled',price:50,cat:'lux',img:null,emoji:'\u{1F52D}'},
+  {id:'L14',name:'Globus',price:40,cat:'lux',img:null,emoji:'\u{1F30D}'},
+  {id:'L15',name:'Agentova postel',price:55,cat:'lux',img:null,emoji:'\u{1F6CF}'},
+  {id:'L16',name:'Nocni lampicka',price:22,cat:'lux',img:null,emoji:'\u{1F4A1}'},
+  {id:'L17',name:'Skrin na obleceni',price:50,cat:'lux',img:null,emoji:'\u{1F6AA}'},
+  {id:'L18',name:'Plakat na zed',price:12,cat:'lux',img:null,emoji:'\u{1F3A8}'},
   // Cheap junk / fun stuff
-  {id:'C1',name:'Tuzka',price:1,img:null,emoji:'\u{270F}'},
-  {id:'C2',name:'Kapesnik',price:1,img:null,emoji:'\u{1F9FB}'},
-  {id:'C3',name:'Toaletak',price:2,img:null,emoji:'\u{1F9F4}'},
-  {id:'C4',name:'Guma',price:1,img:null,emoji:'\u{1F4DD}'},
-  {id:'C5',name:'Oritko',price:1,img:null,emoji:'\u{1F4CF}'},
-  {id:'C6',name:'Svicka',price:2,img:null,emoji:'\u{1F56F}'},
-  {id:'C7',name:'Kridla',price:3,img:null,emoji:'\u{1F58D}'},
-  {id:'C8',name:'Lepidlo',price:2,img:null,emoji:'\u{1F4CE}'},
-  {id:'C9',name:'Hrnek',price:3,img:null,emoji:'\u{2615}'},
-  {id:'C10',name:'Bonbon',price:1,img:null,emoji:'\u{1F36C}'},
-  {id:'C11',name:'Zakladac',price:2,img:null,emoji:'\u{1F4C1}'},
-  {id:'C12',name:'Balonek',price:1,img:null,emoji:'\u{1F388}'},
+  {id:'C1',name:'Tuzka',price:1,cat:'fun',img:null,emoji:'\u{270F}'},
+  {id:'C2',name:'Kapesnik',price:1,cat:'fun',img:null,emoji:'\u{1F9FB}'},
+  {id:'C3',name:'Toaletak',price:2,cat:'fun',img:null,emoji:'\u{1F9F4}'},
+  {id:'C4',name:'Guma',price:1,cat:'fun',img:null,emoji:'\u{1F4DD}'},
+  {id:'C5',name:'Oritko',price:1,cat:'fun',img:null,emoji:'\u{1F4CF}'},
+  {id:'C6',name:'Svicka',price:2,cat:'fun',img:null,emoji:'\u{1F56F}'},
+  {id:'C7',name:'Kridla',price:3,cat:'fun',img:null,emoji:'\u{1F58D}'},
+  {id:'C8',name:'Lepidlo',price:2,cat:'fun',img:null,emoji:'\u{1F4CE}'},
+  {id:'C9',name:'Hrnek',price:3,cat:'fun',img:null,emoji:'\u{2615}'},
+  {id:'C10',name:'Bonbon',price:1,cat:'fun',img:null,emoji:'\u{1F36C}'},
+  {id:'C11',name:'Zakladac',price:2,cat:'fun',img:null,emoji:'\u{1F4C1}'},
+  {id:'C12',name:'Balonek',price:1,cat:'fun',img:null,emoji:'\u{1F388}'},
 ];
 
 // --- VOLTA QUOTES ---
@@ -176,7 +186,12 @@ const VOLTA_QUOTES = [
   "Vyborne! To se hodi!","Presne co jsem potreboval!","Laborator roste!",
   "Skvele! Jeste neco a bude hotovo!","Hmm, kam to dame... tady!",
   "Agent K, jsi nejlepsi!","To bude krasna laborator!","Perfektni vyber!",
-  "Veda nas ceka!","Super prace, agente!"
+  "Veda nas ceka!","Super prace, agente!",
+  "Tohle mi tu fakt chybelo!","Mikroskop! Konecne uvidim molekuly!",
+  "Kahan! Opatrne s ohnem!","Tohle jsem si vzdycky pral!",
+  "Pirati by zazelenali zavisiti!","Lepsi nez pred piratskym utekem!",
+  "Moje laborator! *slza stesti*","To je jako Vanoce!",
+  "Koberec? LUXUS! Diky, agente!","Akvarium?! To jsem necekal!",
 ];
 
 // --- GAME STATE ---
@@ -1336,21 +1351,52 @@ function openShop() {
   renderShop();
 }
 
+let shopCat = 'all';
+
+function renderShopCats() {
+  const cats = document.getElementById('shop-cats');
+  cats.innerHTML = '';
+  const categories = [
+    {id:'all', label:'Vse'},
+    {id:'lab', label:'Laborator'},
+    {id:'lux', label:'Luxus & Bydleni'},
+    {id:'fun', label:'Drobnosti'},
+  ];
+  for (const c of categories) {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (shopCat === c.id ? ' active' : '');
+    btn.textContent = c.label;
+    btn.onclick = () => { shopCat = c.id; renderShop(); };
+    cats.appendChild(btn);
+  }
+}
+
 function renderShop() {
   document.getElementById('shop-coins').textContent = 'Mince: ' + S.coins + '  |  Batoh: ' + S.backpack.length + '/' + MAX_BACKPACK;
+  renderShopCats();
   const grid = document.getElementById('shop-grid');
   grid.innerHTML = '';
-  for (const item of ITEMS) {
+  const filtered = shopCat === 'all' ? ITEMS : ITEMS.filter(i => i.cat === shopCat);
+  // Sort: not owned first, then by price
+  const sorted = [...filtered].sort((a,b) => {
+    const aOwn = S.boughtItems.includes(a.id) || S.placedItems.some(p => p.id === a.id);
+    const bOwn = S.boughtItems.includes(b.id) || S.placedItems.some(p => p.id === b.id);
+    if (aOwn !== bOwn) return aOwn ? 1 : -1;
+    return a.price - b.price;
+  });
+  for (const item of sorted) {
     const owned = S.boughtItems.includes(item.id) || S.placedItems.some(p => p.id === item.id);
+    const tooExpensive = !owned && item.price > S.coins;
     const div = document.createElement('div');
-    div.className = 'shop-item' + (owned ? ' owned' : '');
+    div.className = 'shop-item' + (owned ? ' owned' : '') + (tooExpensive ? ' too-expensive' : '');
     if (item.img) {
       div.innerHTML = `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none';this.nextSibling.style.display='block'"><div class="emoji-icon" style="display:none">${item.emoji||'\u{1F4E6}'}</div>`;
     } else {
       div.innerHTML = `<div class="emoji-icon">${item.emoji||'\u{1F4E6}'}</div>`;
     }
-    div.innerHTML += `<div class="item-name">${item.name}</div><div class="item-price">${item.price} minci</div>`;
-    if (!owned) div.addEventListener('click', () => buyItem(item));
+    const priceColor = owned ? '#555' : (tooExpensive ? '#ff5722' : '#ffd700');
+    div.innerHTML += `<div class="item-name">${item.name}</div><div class="item-price" style="color:${priceColor}">${owned ? 'Koupeno' : item.price + ' minci'}</div>`;
+    if (!owned && !tooExpensive) div.addEventListener('click', () => buyItem(item));
     grid.appendChild(div);
   }
   renderBackpack();
@@ -1401,7 +1447,7 @@ function openLab() {
   S.phase = 'lab';
   const labEl = document.getElementById('lab');
   labEl.style.display = 'block';
-  const bgUrl = S.round % 2 === 0 ? 'img/L1.jpg' : 'img/L2.jpg';
+  const bgUrl = 'img/L1.jpg'; // always destroyed lab until completion
   const labBg = document.getElementById('lab-bg');
   labBg.style.backgroundImage = `url(${bgUrl})`;
   labBg.style.backgroundColor = '#1a1a2e';
