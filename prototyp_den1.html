@@ -70,7 +70,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif
 </div>
 <script>
 var GH=''; // local files
-var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',skripek2:'img/m01/d01/D1S3b.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
+var IMG={intro:'img/m01/d01/D1S1.png',intro2:'img/m01/d01/D1S2.png',quiz:'img/m01/d01/D1S1-quiz.png',quizmat:'img/m01/d01/D1S4-quiz.png',lab:'img/m01/d01/D1S2.png',skripek:'img/m01/d01/D1S3.png',skripek2:'img/m01/d01/D1S3b.png',repak:'img/m01/d01/D1S4.png',keksik:'img/m01/d01/D1S5.png',zaver:'img/m01/d01/D1S6.png'};
 var VID={intro0:'video/m01/d01/D1-S0.mp4',intro:'video/m01/d01/D1-S1.mp4',skripek:'video/m01/d01/D1-S3.mp4',repak:'video/m01/d01/D1-S4.mp4',keksik:'video/m01/d01/D1-S5.mp4',zaver:'video/m01/d01/D1-S6.mp4'};
 var NAMES={volta:'Dr. Volta',agent:'Agent K',skripek:'Skřípek',repak:'Řepák',keksik:'Keksík',krivak:'Krivák'};
 var BCLS={volta:'b-volta',agent:'b-agent',skripek:'b-pirat',repak:'b-pirat',keksik:'b-pirat',krivak:'b-pirat',popis:'b-popis'};
@@ -149,12 +149,12 @@ async function runFromSection(startSection){
   // Okruhy loop
   for(var ri=0;ri<data.okruhy.length;ri++){
     var ok=data.okruhy[ri];
-    var bgK='quiz';
+    var bgK=['quiz','quizmat','quiz','quiz'][ri];
     var vidK=['skripek','repak','keksik',null][ri];
     // Okruh questions
     if(section<=(ri*2+1)){
       $rl.textContent=RICOS[ri]+' '+RNAMES[ri]+' — Okruh '+(ri+1);
-      setBg('quiz');
+      setBg(bgK);
       if(ok.intro&&ok.intro.length>0){await playD(ok.intro);clrD();}
       for(var qi=0;qi<ok.otazky.length;qi++){await askQ(ok.otazky[qi],qi+1,ok.otazky.length);clrD();}
       section=ri*2+2;
@@ -859,11 +859,11 @@ window.addEventListener('load',run);
         },
         {
           "p": "krivak",
-          "t": "HLÁSÍ SE KAPITÁN! KDO MI TAM PŘEROVNÁVÁ PAPÍRY?!"
+          "t": "PIRÁTKO! SKŘÍPKU JSEM ŘEKL, AŤ CHYTÍ TOHO AGENTA — NEVRÁTIL SE! POSLAL JSEM ŘEPÁKA — TAKY SE NEVRÁTIL!"
         },
         {
           "p": "volta",
-          "t": "Odposlouchává. Ale copak mu řekneme? NIC. Ať se trápí."
+          "t": "Odposloucháváme ho. Ví, že o nás ví, ale neví, že my víme. To je výhoda."
         },
         {
           "p": "repak",
