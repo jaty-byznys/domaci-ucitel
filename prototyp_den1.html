@@ -163,7 +163,7 @@ async function runFromSection(startSection){
     if(section<=(ri*2+2)){
       if(vidK)await playVideo(vidK);
       if(ok.akce&&ok.akce.dialog&&ok.akce.dialog.length>0){
-        if(vidK)setBg(vidK);
+        var dBg=vidK||'zaver';setBg(dBg);
         var bg2K=vidK+'2';
         if(IMG[bg2K]){
           var sIdx=0;
