@@ -261,7 +261,8 @@ c.innerHTML='<h2 style="font-size:22px;color:#f59e0b;margin-bottom:12px">🎉 De
 '<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:#ffd700">💰 '+coins+'</div><div style="font-size:12px;color:#999">mincí</div></div></div>'+
 '<div style="margin-top:16px"><div style="font-size:14px;color:#f59e0b;font-weight:700;margin-bottom:8px">Sebrané předměty</div>'+
 collected.map(function(it){return '<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:6px 12px;border-radius:8px;margin:3px;font-size:13px">'+it.ikona+' '+it.nazev+'</div>';}).join('')+'</div>'+
-'<div style="margin-top:20px"><button onclick="goToMinigame('+coins+')" style="padding:16px 40px;border-radius:14px;border:none;background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-size:18px;font-weight:800;cursor:pointer;font-family:Nunito,sans-serif;">🎮 Jít stavět laboratoř! ('+coins+' mincí)</button></div>';
+'<div style="margin-top:20px"><button onclick="goToMinigame('+coins+')" style="padding:16px 40px;border-radius:14px;border:none;background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-size:18px;font-weight:800;cursor:pointer;font-family:Nunito,sans-serif;">🎮 Jít stavět laboratoř! ('+coins+' mincí)</button></div>'+
+'<div style="margin-top:10px"><button onclick="goBack()" style="padding:10px 30px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:Nunito,sans-serif;">← Zpět do menu</button></div>';
 document.getElementById('summary').style.display='flex';
 }
 function goToMinigame(coins){
